@@ -23,3 +23,5 @@ collections:
         output: true
     enterprise:
         output: true
+    software:
+        output: true

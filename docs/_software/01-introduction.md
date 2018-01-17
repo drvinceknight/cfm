@@ -1,6 +1,6 @@
 ---
 layout     : post
-title      : "01 - Software development"
+title      : "01 - Enterprise and Software development"
 comments   : false
 ---
 
@@ -129,7 +129,7 @@ In the `cards.py` file write:
 
 ```python
 import itertools
-values = list(range(10)) + [10] * 3
+values = list(range(1, 11)) + [10] * 3
 suits = ["D", "S", "H", "C"]
 
 def get_deck():
@@ -188,3 +188,37 @@ Other things that will be covered in this term:
 - Automated testing of code (ensuring code does what it is supposed to do).
 
 
+## Tools
+
+I suggest you consider using some of the following tools for your workflow:
+
+# Messaging system
+
+These allow for quick exchange of information. There are various solutions
+available:
+
+- WhatsApp, Messenger, Snapchat: familiarity however not all are portable or
+  support productivity tools.
+- [Slack](https://slack.com/is), [gitter](https://gitter.im): popular in the
+  workplace and good support for integration with other tools.
+
+# Issue tracker (to do list)
+
+Having a cloud based issue/task tracker is common practice. There are a number
+of these available:
+
+- [Trello](https://trello.com/): simple user interface and a lot of
+  functionality.
+- [Github](https://github.com/): this is very specific to software projects and
+  is connected to using a software tool called "git".
+
+# Version control
+
+With your code some of you might want to learn version control: this is a tool
+to handle different versions of files and merge them for you. One of the most
+popular version control tools is called [git](https://git-scm.com/).
+
+For more information about git and github see:
+
+- https://vknight.org/rsd/chapters/05/
+- https://vknight.org/rsd/chapters/06/

@@ -21,7 +21,5 @@ collections:
         output: true
     assessment:
         output: true
-    enterprise:
-        output: true
     software:
         output: true

@@ -3,8 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to vkcfm's documentation!
-=================================
+Welcome to the personal course notes for Vince Knight's Computing for Mathematics class
+=======================================================================================
+
+The class notes are available here: https://vknight.org/cfm/
 
 .. toctree::
    :maxdepth: 2

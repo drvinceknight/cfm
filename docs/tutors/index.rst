@@ -17,3 +17,13 @@ During each lab session, the :code:`record.pdf` document should assist with:
 Throughout: feedback specific and/or general difficulties to Vince Knight.
 
 After week 10: return the filled in copies of :code:`record.pdf` to Vince Knight.
+
+Guidance
+--------
+
+- With code queries: point students at section of notes where the answer is and
+  then tell them what is needed.
+- With writing queries: ask them relevant questions (refer them to marking
+  criteria etc...).
+- Make an effort to ensure you are fair and not advantaging a given student.
+- Aim to be encouraging and enthusiastic.

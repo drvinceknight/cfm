@@ -20,3 +20,5 @@ my_plot.pdf
 *cache*
 docs/_build/*
 nbs/chapters/plot.pdf
+*bbl
+*blg

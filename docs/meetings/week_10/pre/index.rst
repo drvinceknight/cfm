@@ -42,6 +42,10 @@ possible**.
 Some notes about each piece:
 
 - :download:`sir.pdf <../../../../assets/rsc/sir/main.pdf>`: 
+  This is well written and does a good job investigating new pieces of
+  mathematics. The conclusion is a bit weak: so what is the question we can be
+  left asking? The final figure could have also investigated other areas
+  parameters.
 - :download:`page-rank.pdf <../../../../assets/rsc/page-rank/main.pdf>`: the
   writing of this piece is weak. It could be clearer, with more definitions
   used, small details like the lack of the Figure caption etc... It does however

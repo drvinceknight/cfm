@@ -18,6 +18,26 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
   async>
   </script>
+  <!-- MathJax configuration -->
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+			displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+			processEscapes: true,
+			processEnvironments: true
+		},
+		// Center justify equations in code and markdown cells. Elsewhere
+		// we use CSS to left justify single line equations in code cells.
+		displayAlign: 'center',
+		"HTML-CSS": {
+			styles: {'.MathJax_Display': {"margin": 0}},
+			linebreaks: { automatic: true }
+		}
+	});
+	</script>
+	<!-- End of mathjax configuration -->
+</head>
 
    
   <link rel="stylesheet" href="/cfm/assets/css/notebook.css">
@@ -51,13 +71,13 @@
                       
                           <li><a href=/cfm/chapters/01/>Variables Conditional Statements and Loops</a></li>
                       
-                          <li><a href=/cfm/chapters/02/>functions data structures</a></li>
+                          <li><a href=/cfm/chapters/02/>Functions and data structures</a></li>
                       
-                          <li><a href=/cfm/chapters/03/>files recursion</a></li>
+                          <li><a href=/cfm/chapters/03/>Writing to files and recursion</a></li>
                       
-                          <li><a href=/cfm/chapters/04/>object oriented programming</a></li>
+                          <li><a href=/cfm/chapters/04/>Object oriented programming</a></li>
                       
-                          <li><a href=/cfm/chapters/05/>symbolic mathematics with sympy</a></li>
+                          <li><a href=/cfm/chapters/05/>Symbolic mathematics with sympy</a></li>
                       
                           <li><a href=/cfm/chapters/06/>Scientific libraries</a></li>
                       
@@ -159,7 +179,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Or an entire row of A:</p>
+<p>Or an entire row of $A$:</p>
 
 </div>
 </div>
@@ -419,7 +439,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can also get the inverse and the determinant of a A:</p>
+<p>We can also get the inverse and the determinant of a $A$:</p>
 
 </div>
 </div>
@@ -1092,7 +1112,7 @@ $$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;networkx.classes.graph.Graph at 0x7f96566a0f28&gt;</pre>
+<pre>&lt;networkx.classes.graph.Graph at 0x7f0c7edada90&gt;</pre>
 </div>
 
 </div>

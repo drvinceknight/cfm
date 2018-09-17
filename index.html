@@ -18,6 +18,26 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
   async>
   </script>
+  <!-- MathJax configuration -->
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+			displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+			processEscapes: true,
+			processEnvironments: true
+		},
+		// Center justify equations in code and markdown cells. Elsewhere
+		// we use CSS to left justify single line equations in code cells.
+		displayAlign: 'center',
+		"HTML-CSS": {
+			styles: {'.MathJax_Display': {"margin": 0}},
+			linebreaks: { automatic: true }
+		}
+	});
+	</script>
+	<!-- End of mathjax configuration -->
+</head>
 
    
    
@@ -50,13 +70,13 @@
                       
                           <li><a href=/cfm/chapters/01/>Variables Conditional Statements and Loops</a></li>
                       
-                          <li><a href=/cfm/chapters/02/>functions data structures</a></li>
+                          <li><a href=/cfm/chapters/02/>Functions and data structures</a></li>
                       
-                          <li><a href=/cfm/chapters/03/>files recursion</a></li>
+                          <li><a href=/cfm/chapters/03/>Writing to files and recursion</a></li>
                       
-                          <li><a href=/cfm/chapters/04/>object oriented programming</a></li>
+                          <li><a href=/cfm/chapters/04/>Object oriented programming</a></li>
                       
-                          <li><a href=/cfm/chapters/05/>symbolic mathematics with sympy</a></li>
+                          <li><a href=/cfm/chapters/05/>Symbolic mathematics with sympy</a></li>
                       
                           <li><a href=/cfm/chapters/06/>Scientific libraries</a></li>
                       
@@ -83,17 +103,17 @@
           <li><a href=/cfm/chapters/01/>Variables Conditional Statements and Loops</a>
               (<a href=nbs/chapters/01-Variables-Conditional-Statements-and-Loops.ipynb>ipynb</a>)</li>
       
-          <li><a href=/cfm/chapters/02/>functions data structures</a>
-              (<a href=nbs/chapters/02-functions-data-structures.ipynb>ipynb</a>)</li>
+          <li><a href=/cfm/chapters/02/>Functions and data structures</a>
+              (<a href=nbs/chapters/02-Functions-and-data-structures.ipynb>ipynb</a>)</li>
       
-          <li><a href=/cfm/chapters/03/>files recursion</a>
-              (<a href=nbs/chapters/03-files-recursion.ipynb>ipynb</a>)</li>
+          <li><a href=/cfm/chapters/03/>Writing to files and recursion</a>
+              (<a href=nbs/chapters/03-Writing-to-files-and-recursion.ipynb>ipynb</a>)</li>
       
-          <li><a href=/cfm/chapters/04/>object oriented programming</a>
-              (<a href=nbs/chapters/04-object-oriented-programming.ipynb>ipynb</a>)</li>
+          <li><a href=/cfm/chapters/04/>Object oriented programming</a>
+              (<a href=nbs/chapters/04-Object-oriented-programming.ipynb>ipynb</a>)</li>
       
-          <li><a href=/cfm/chapters/05/>symbolic mathematics with sympy</a>
-              (<a href=nbs/chapters/05-symbolic-mathematics-with-sympy.ipynb>ipynb</a>)</li>
+          <li><a href=/cfm/chapters/05/>Symbolic mathematics with sympy</a>
+              (<a href=nbs/chapters/05-Symbolic-mathematics-with-sympy.ipynb>ipynb</a>)</li>
       
           <li><a href=/cfm/chapters/06/>Scientific libraries</a>
               (<a href=nbs/chapters/06-Scientific-libraries.ipynb>ipynb</a>)</li>

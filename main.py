@@ -170,17 +170,3 @@ if __name__ == "__main__":
     )
     with open("index.html", "w") as f:
         f.write(html)
-
-    html = render_template(
-        "chapters.html",
-        {
-            "chapters": chapters,
-            "root": ROOT,
-            "title": TITLE,
-            "description": DESCRIPTION,
-            "keywords": KEYWORDS,
-            "author": AUTHOR,
-        },
-    )
-    with open("./chapters/index.html", "w") as f:
-        f.write(html)

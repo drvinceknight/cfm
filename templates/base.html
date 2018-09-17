@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Computing for Mathematics</title>
+    <title>{{ title }}</title>
 
+  <!-- Mobile Specific Metas –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description }}">
+  <meta name="keywords" content="{{ keywords }}">
+  <meta name="author" content="{{ author }}">
+  <!-- CSS –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="/{{root}}/assets/css/main.css">
+  <link rel="stylesheet" href="/{{root}}/assets/css/normalize.css">
+  <link rel="stylesheet" href="/{{root}}/assets/css/skeleton.css">
   <link rel="shortcut icon" type="image/png" href="/{{root}}/assets/favicon.ico"/>
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+  async>
+  </script>
 
    {% block head %}
    {% endblock %}
@@ -19,26 +32,27 @@
     ga('create', 'UA-38016329-2', 'auto');
     ga('send', 'pageview');
     </script>
-
-    <!-- gitter side car -->
-
-   <script> ((window.gitter = {}).chat = {}).options = { room: 'computing-for-mathematics/Lobby' }; </script>
-    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
 </head>
 <body>
 
     {% include "header.html" %}
 
- <div class="page-content">
-    <div class="wrap">
-      <div class="home">
+    <div class="container">
         {% block body %}
         {% endblock %}
-      </div>
-  </div>
-</div>
+    </div>
 
 
+    <script>
+        document.querySelector('header nav ul').addEventListener('click', function(){
+            document.querySelector('#nav').checked = false;
+        });
+
+        var menuHeight = document.querySelector('header').offsetHeight;
+        document.querySelectorAll('.section-title').forEach(function(a){
+            a.style.paddingTop = menuHeight + 'px';
+            a.style.marginTop = '-' + menuHeight + 'px';
+        });
+    </script>
 </body>
 </html>

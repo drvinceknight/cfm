@@ -38,6 +38,13 @@ can compare the version they are using (for example by running:
 :code:`np.__version__`) to the list of libraries available here:
 https://github.com/drvinceknight/cfm/blob/master/environment.yml
 
+
+Some students might ask about other languages. Avoid saying things like this
+language is better than that language. If you're aware of strengths of some
+languages (for example C is fast) then by all means discuss them but encourage
+them to learn as many languages as possible and/or to speak to me.
+
+
 Preparation meeting agenda
 --------------------------
 

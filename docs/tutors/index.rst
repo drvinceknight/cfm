@@ -37,3 +37,25 @@ likely to have versions of the library that are backwards compatible) but you
 can compare the version they are using (for example by running:
 :code:`np.__version__`) to the list of libraries available here:
 https://github.com/drvinceknight/cfm/blob/master/environment.yml
+
+Preparation meeting agenda
+--------------------------
+
+Meet with all tutors prior to the start of semester to discuss:
+
+1. Undergraduate payment details.
+2. The course:
+
+    - Discuss the chapters;
+    - Discuss the weekly timetable;
+    - Show the record document and discuss;
+    - Discuss the coursework.
+
+3. Highlight the role of the tutor
+
+   - In lab;
+   - Post lab;
+   - Pre lab.
+
+4. Show the timetable.
+5. Questions?

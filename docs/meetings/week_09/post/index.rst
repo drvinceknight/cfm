@@ -29,11 +29,10 @@ LaTeX:
     Using Python to verify the algebra:
 
         \begin{minted}{python}
-        >>> import sympy as sym
-        >>> n = sym.symbols('n')
-        >>> p_n = (1 - 1 / (n + 1)) * (1 / (n - 1))
-        >>> p_n.simplify()
-        n/(n**2 - 1)
+        import sympy as sym
+        n = sym.symbols('n')
+        p_n = (1 - 1 / (n + 1)) * (1 / (n - 1))
+        p_n.simplify()
         \end{minted}
 
     \end{multicols}

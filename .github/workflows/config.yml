@@ -18,7 +18,6 @@ jobs:
         with:
            activate-environment: cfm
            environment-file: environment.yml
-      - name: Activate env
       - name: Conda info
         shell: bash -l {0}
         run: |

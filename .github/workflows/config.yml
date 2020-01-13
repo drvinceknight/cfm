@@ -15,16 +15,13 @@ jobs:
     steps:
       - uses: goanpeca/setup-miniconda@v1
         with:
-          auto-update-conda: true
-          python-version: ${{ matrix.python-version }}
+           activate-environment: cfm
+           environment-file: environment.yml
+           auto-activate-base: false
       - name: Conda info
         run: conda info
       - name: Conda list
         run: conda list
-      - name: Create environment
-        run: |
-          conda env create -f environment.yml
-          conda activate cfm
       - name: Test notebooks and documentation
         run: |
           pytest --nbval --current-env --doctest-glob="*.rst"

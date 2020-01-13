@@ -18,7 +18,6 @@ jobs:
         with:
            activate-environment: cfm
            environment-file: environment.yml
-           auto-activate-base: false
       - name: Conda info
         run: conda info
       - name: Conda list

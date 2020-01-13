@@ -9,12 +9,14 @@ Corresponding lab sheet:
 Objectives
 ----------
 
+- Hand out list of topics.
 - Introduce myself to students;
 - Motivate the content of the course;
 - Explain pedagogic approach;
 - Showcase all learning resources;
 - Schedule office hours and coursework deadline;
 - Explain goal of first lab session.
+- Discuss coursework
 
 Notes
 -----
@@ -48,9 +50,15 @@ Discuss answers together. Include examples like:
 - Obtaining conjectures;
 - Implementing tools.
 
+Hand out copies of `<vknight.org/cfm/other/concepts/>`_. Ask students to read
+through the document and discuss one of the code examples with a neighbour. Tell
+them to not worry if they cannot, over the next few weeks we will spend time
+reading this document and understanding it.
+
 Explain that we will now start to look at the course site:
 
 - Show the lab sheets: mention Jupyter.
+- Discuss list of topics
 - Show the documentation.
 - Show the teaching philosophy.
 - Mention class recording.

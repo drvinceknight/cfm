@@ -18,11 +18,12 @@ jobs:
         with:
            activate-environment: cfm
            environment-file: environment.yml
+      - name: Activate env
       - name: Conda info
-        run: conda info
-      - name: Conda list
-        run: conda list
+        shell: bash -l {0}
+        run: |
+          conda info
+          conda list
       - name: Test notebooks and documentation
         run: |
-          conda activate cfm
           pytest --nbval --current-env --doctest-glob="*.rst"

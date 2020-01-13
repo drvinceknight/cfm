@@ -13,6 +13,7 @@ jobs:
         python-version: [3.6, 3.7, 3.8]
 
     steps:
+      - uses: actions/checkout@v1
       - uses: goanpeca/setup-miniconda@v1
         with:
            activate-environment: cfm

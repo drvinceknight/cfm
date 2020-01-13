@@ -24,4 +24,5 @@ jobs:
         run: conda list
       - name: Test notebooks and documentation
         run: |
+          conda activate cfm
           pytest --nbval --current-env --doctest-glob="*.rst"

@@ -5,6 +5,8 @@ networkx
 matplotlib
 scikit-learn
 sympy
+# Utility libraries
+nbtutor
 # Testing requirements
 pytest
 nbval

@@ -1,12 +1,14 @@
+# Scientific libraries
 scipy
 numpy
 networkx
 matplotlib
 scikit-learn
+sympy
+# Testing requirements
 pytest
 nbval
 jinja2
 tqdm
 jupyter
 pytest
-nbval

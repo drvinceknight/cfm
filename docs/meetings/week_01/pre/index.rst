@@ -50,6 +50,8 @@ Discuss answers together. Include examples like:
 - Obtaining conjectures;
 - Implementing tools.
 
+Also, playing games, (possible show pong demo from week 11).
+
 Hand out copies of `<vknight.org/cfm/other/concepts/>`_. Ask students to read
 through the document and discuss one of the code examples with a neighbour. Tell
 them to not worry if they cannot, over the next few weeks we will spend time

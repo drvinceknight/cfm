@@ -37,9 +37,14 @@ not a perfect square
 - Find a perfect cube:
 
 >>> candidate = 2
+<<<<<<< HEAD
 >>> while round(candidate ** (1 / 3)) ** 3 != candidate:
 ...     candidate += 1
 >>> print(candidate)
+=======
+>>> while round(candidate ** (1 / 3)) ** 3 == candidate:
+...     candidate += 1
+... print(candidate)
 8
 
 - Obtain a list of 10 random numbers:
@@ -114,6 +119,7 @@ Let us take a look:
 110592
 117649
 125000
+<<<<<<< HEAD
 
 Another approach is:
 

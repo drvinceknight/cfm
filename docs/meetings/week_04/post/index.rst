@@ -37,15 +37,17 @@ not a perfect square
 - Find a perfect cube:
 
 >>> candidate = 2
->>> while round(candidate ** (1 / 3)) ** 3 == candidate:
+>>> while round(candidate ** (1 / 3)) ** 3 != candidate:
 ...     candidate += 1
-... print(candidate)
+>>> print(candidate)
 8
 
 - Obtain a list of 10 random numbers:
 
 >>> import random
->>> [random.random() for _ in range(10)]
+>>> numbers = [random.random() for _ in range(10)]
+>>> len(numbers) == 10
+True
 
 - Use functions and a list to find 50 perfect cubes:
 
@@ -60,6 +62,62 @@ not a perfect square
 
 Let us take a look:
 
+>>> for cube in perfect_cubes:
+...     print(cube)
+1
+8
+27
+64
+125
+216
+343
+512
+729
+1000
+1331
+1728
+2197
+2744
+3375
+4096
+4913
+5832
+6859
+8000
+9261
+10648
+12167
+13824
+15625
+17576
+19683
+21952
+24389
+27000
+29791
+32768
+35937
+39304
+42875
+46656
+50653
+54872
+59319
+64000
+68921
+74088
+79507
+85184
+91125
+97336
+103823
+110592
+117649
+125000
+
+Another approach is:
+
+>>> perfect_cubes = [n ** 3 for n in range(50)]
 >>> for cube in perfect_cubes:
 ...     print(cube)
 1

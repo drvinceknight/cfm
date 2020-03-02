@@ -55,7 +55,7 @@ True
 ...     return round(number ** (1 / 3)) ** 3 == number
 >>> perfect_cubes = []
 >>> candidate = 0
->>> while len(perfect_cubes) < 10:
+>>> while len(perfect_cubes) < 50:
 ...     candidate += 1
 ...     if is_cube(candidate):
 ...         perfect_cubes.append(candidate)

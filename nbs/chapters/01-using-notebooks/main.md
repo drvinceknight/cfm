@@ -35,7 +35,8 @@ and Leibniz denoted the derivate with the now more commonly used notation:
 
 The mathematics itself is unchanged: what changes is the language/notation used to communicate it.
 
-Similarly when giving instructions through code to a computer there are a number of different notations, more commonly called languages available.
+Similarly when giving instructions through code to a computer there are a number
+of notations, more commonly called languages available.
 
 We will be using a language called [**Python**](https://www.python.org).
 
@@ -96,7 +97,7 @@ Once this is done let us close the notebook by simlpy closing the corresponding 
 
 #### Organising our files
 
-Open your file browser (TODO check name of this no Windows):
+Open your file browser:
 
 1. File Explorer on **Windows**
 2. Finder on **OS X**
@@ -163,7 +164,9 @@ When you execute that it should look like:
 
 #### Saving your notebook to a different format
 
-Click on `File` and `Download As` this brings up a number of different formats that Jupyter notebooks can be exported to. Some of these might need other tools installed on your computer but a very portable option is `HTML`.
+Click on `File` and `Download As` this brings up a number of formats that
+Jupyter notebooks can be exported to. Some of these might need other tools
+installed on your computer but a portable option is `HTML`.
 
 Click on `HTML (.html)`.
 
@@ -392,7 +395,13 @@ Some further information on using Jupyter:
 
 #### Why can I not double click on a Jupyter notebook file
 
-When you double click on a file and your computer opens it in an application that is because a default is set for the particular file extension. For example double clicking on `main.docx` will automatically open up the document in a word processor (like Microsoft word). This is because the file has the extension `.docx` and your operating system has set that anything with that extension will be opened in that particular application. You could of course also open the application and navigate to the file and open it directly.
+When you double click on a file and your computer opens it in an application
+that is because a default is set for the particular file extension. For example
+double clicking on `main.docx` will automatically open up the document using a
+word processor (like Microsoft word). This is because the file has the extension
+`.docx` and your operating system has set that anything with that extension will
+be opened in that particular application. You could of course also open the
+application and navigate to the file and open it directly.
 
 With Jupyter notebooks no default is set by the operating system as the application that opens it is in fact a local web server in your browser. As such you do not have a choice and need to open it in the Jupyter interface.
 

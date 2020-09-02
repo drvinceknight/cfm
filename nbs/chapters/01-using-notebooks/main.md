@@ -1,6 +1,7 @@
 ---
 jupyter:
   jupytext:
+    formats: ipynb,md
     text_representation:
       extension: .md
       format_name: markdown
@@ -51,7 +52,7 @@ In this chapter we will cover:
 #### Installation
 
 1. Navigate to https://www.anaconda.com/products/individual.
-2. Identify and download the version of Python 3 for your operating system (Windows, Mac OSX, Linux). 
+2. Identify and download the version of Python 3 for your operating system (Windows, Mac OSX, Linux).
 3. Run the installer.
 
 **Note:** If you have already used Python it is still recommended that you use the Anaconda distribution. An explanation for this is available later.
@@ -68,9 +69,9 @@ Open a command line tool:
 In there type:
 
     $ jupyter notebook
-    
+
 and then press `Enter` on your keyboard.
-    
+
 **Note:** Throughout this course, when there are commands to be typed in a command line tool I will prefix them with a `$`. Do not type the `$`.
 
 ![](./img/starting_the_notebook_server/main.png)
@@ -100,7 +101,7 @@ Open your file browser (TODO check name of this no Windows):
 1. File Explorer on **Windows**
 2. Finder on **OS X**
 
-Navigate to where your notebook is (this might not be immediately obvious): you should see a `introduction.ipynb` file. 
+Navigate to where your notebook is (this might not be immediately obvious): you should see a `introduction.ipynb` file.
 
 Let us rearrange things.
 
@@ -132,7 +133,7 @@ When you have done that click on the `Run` button (you can also use `Shift + Ent
 <!-- #endregion -->
 
 ```python
-2 + 3
+2 + 2
 ```
 
 <!-- #region -->
@@ -166,7 +167,7 @@ Click on `File` and `Download As` this brings up a number of different formats t
 
 Click on `HTML (.html)`.
 
-Now use your file browser and open the downloaded file. This will open in your browser a static version of the file you have been working on. This is a helpful way to share your work with someone who might not have Jupyter (or even Python). 
+Now use your file browser and open the downloaded file. This will open in your browser a static version of the file you have been working on. This is a helpful way to share your work with someone who might not have Jupyter (or even Python).
 <!-- #endregion -->
 
 <!-- #region -->
@@ -175,7 +176,7 @@ Now use your file browser and open the downloaded file. This will open in your b
 #### Install Anaconda
 
 1. Navigate to https://www.anaconda.com/products/individual
-2. Download the distribution of anaconda for your Operating System 
+2. Download the distribution of anaconda for your Operating System
 3. Run the installer
 
 #### Start a Jupyter notebook server
@@ -243,7 +244,7 @@ Jupyter notebooks allow for markdown cells to not just include markdown but also
 
 Here is a brief overview of the syntax for arithmetic operations:
 
-- `\\\(a+b\\\)` gives: \\(a + b\\): 
+- `\\\(a+b\\\)` gives: \\(a + b\\):
 - `\\\(a-b\\\)` gives: \\(a-b\\)
 - `\\\(-a\\\)` gives: \\(-a\\)
 - `\\\(ab\\\)` gives \\(ab\\)
@@ -329,7 +330,7 @@ Click on `File` then `Download as` and choose the format you want to use. `HTML`
 
     ```md
     # Euler's equation
-    
+
     \\\[
      e ^ {i\pi} = -1
  \\\]
@@ -418,7 +419,7 @@ We will learn more about \\(\LaTeX\\) in the later part of this course but for n
 
 A markup language is a system that allows us to write content alongside annotations to specify how the content is to appear.
 
-This description of markdown from https://www.markdownguide.org/getting-started/ is not specific to markdown but to any markup language: 
+This description of markdown from https://www.markdownguide.org/getting-started/ is not specific to markdown but to any markup language:
 
 > Using Markdown is different than using a WYSIWYG editor. In an application like Microsoft Word, you click buttons to format words and phrases, and the changes are visible immediately. Markdown isn’t like that. When you create a Markdown-formatted file, you add Markdown syntax to the text to indicate which words and phrases should look different.
 

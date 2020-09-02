@@ -34,4 +34,4 @@ jobs:
         python -m pytest --ignore=nbs/drafts --nbval --current-env
     - name: Test prose of markdown files
       run: |
-        proselint nbs/**/*md 
+        python ./utils/run_proselint/main.py

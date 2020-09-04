@@ -9,7 +9,9 @@ def get_root_path():
 
 root = get_root_path()
 max_exit_code = 0
-for markdown_file_path in root.glob("**/*md"):
+for markdown_file_path in filter(
+    lambda path: ".ipynb_checkpoints" not in str(path), root.glob("**/*md")
+):
     output = subprocess.run(
         ["alex", markdown_file_path], capture_output=True, check=False
     )

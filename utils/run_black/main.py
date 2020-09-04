@@ -6,9 +6,9 @@ import re
 
 
 MD_PATTERN = re.compile(
-    r'(?P<before>^(?P<indent> *)```\s*python\n)'
-    r'(?P<code>.*?)'
-    r'(?P<after>^(?P=indent)```\s*$)',
+    r"(?P<before>^(?P<indent> *)```\s*python\n)"
+    r"(?P<code>.*?)"
+    r"(?P<after>^(?P=indent)```\s*$)",
     re.DOTALL | re.MULTILINE,
 )
 
@@ -36,8 +36,12 @@ for markdown_file_path in filter(
 
         if (exit_code := output.returncode) > 0:
             max_exit_code = max(max_exit_code, exit_code)
-            stderr_with_correct_filename = output.stderr.decode("utf-8").replace(str(temporary_file_path), str(markdown_file_path))
-            stderr_with_snippet_wording = stderr_with_correct_filename.replace("1 file would be reformatted", "1 code snippet does not follow black:")
+            stderr_with_correct_filename = output.stderr.decode("utf-8").replace(
+                str(temporary_file_path), str(markdown_file_path)
+            )
+            stderr_with_snippet_wording = stderr_with_correct_filename.replace(
+                "1 file would be reformatted", "1 code snippet does not follow black:"
+            )
             print(stderr_with_snippet_wording)
             print(python_code)
 

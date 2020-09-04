@@ -34,7 +34,7 @@ jobs:
         python -m pytest --ignore=nbs/drafts --nbval --current-env
     - name: Test code formatting with black of all py files
       run: |
-        python -m black .
+        python -m black --check .
     - name: Test code formatting with black of all md files
       run: |
         python ./utils/run_black/main.py

@@ -126,7 +126,7 @@ Use the interface to navigate to the `cfm` directory and inside that the `nbs` d
 In the first available "cell" write the following calculation:
 
 ```python
-2 +2
+2 + 2
 ```
 
 When you have done that click on the `Run` button (you can also use `Shift + Enter` as a keyboard shortcut).

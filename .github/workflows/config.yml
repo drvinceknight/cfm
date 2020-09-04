@@ -32,6 +32,12 @@ jobs:
     - name: Test notebooks give expected output
       run: |
         python -m pytest --ignore=nbs/drafts --nbval --current-env
+    - name: Test code formatting with black of all py files
+      run: |
+        python -m black .
+    - name: Test code formatting with black of all md files
+      run: |
+        python ./utils/run_black/main.py
     - name: Test prose of markdown files
       run: |
         python ./utils/run_proselint/main.py

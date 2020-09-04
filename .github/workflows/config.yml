@@ -39,7 +39,7 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         curl -sL install-node.now.sh/lts | bash
-        npm install alex --global
+        npm install --yes alex --global
     - name: Run alex
       run: |
         python ./utils/run_alex/main.py

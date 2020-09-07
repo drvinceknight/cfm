@@ -72,7 +72,8 @@ expression
 float(expression)
 ```
 
-The `sympy` library has a diverse set of tools available, one of which is to algorithmically attempt to simplify an expression. Here is how we do that:
+The `sympy` library has a diverse set of tools available, one of which is to
+algorithmically attempt to simplify an expression. Here is how we do that:
 
 ```python
 sympy.simplify(expression)
@@ -84,7 +85,7 @@ This implies that:
     \frac{1}{\sqrt{2} + 1} = -1 + \sqrt{2}
 \\]
 
-If we muliply both sides by \\({\sqrt{2} + 1}\\) we get:
+If we multiply both sides by \\({\sqrt{2} + 1}\\) we get:
 
 \\[
     1=\frac{1}{\sqrt{2} + 1}\times \left(\sqrt{2} + 1\right) = \left(-1 + \sqrt{2}\right)\times \left(\sqrt{2} + 1\right)
@@ -171,7 +172,7 @@ We can expand this:
 sympy.expand(completed_square)
 ```
 
-We will now use sympy to solve the various equations that arise from comparing the coefficiences of:
+We will now use sympy to solve the various equations that arise from comparing the coefficients of:
 
 \\[
     f(x) = 2x ^2 + x + 1
@@ -214,7 +215,7 @@ Comparing the coefficients of \\(x\\) we have the equation:
 \\]
 
 ```python
-equation = sympy.Eq(- 4 * b, 1)
+equation = sympy.Eq(-4 * b, 1)
 sympy.solveset(equation, b)
 ```
 
@@ -223,7 +224,7 @@ We will now substitute this value of \\(b\\) back in to our expression.
 **Note** that we make a point to tell sympy to treat \\(1 / 4\\) symbolically and to not calculate the numeric value:
 
 ```python
-completed_square = completed_square.subs({b: - 1 / sympy.S(4)})
+completed_square = completed_square.subs({b: -1 / sympy.S(4)})
 completed_square
 ```
 
@@ -257,7 +258,7 @@ Using this we can see that the there are indeed no values of \\(x\\) which give 
 The minimum is clearly when \\(x=-1/4\\) which gives: \\(f(-1/4)=7/8\\):
 
 ```python
-completed_square.subs({x: - 1 / sympy.S(4)})
+completed_square.subs({x: -1 / sympy.S(4)})
 ```
 
 <!-- #region -->

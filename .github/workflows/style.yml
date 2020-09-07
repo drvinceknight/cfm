@@ -32,6 +32,9 @@ jobs:
     - name: Test code formatting with black of all py files
       run: |
         python -m black --check .
+    - name: Test import order of all py files
+      run: |
+        python -m isort --check-only .
     - name: Test code formatting with black of all md files
       run: |
         python ./utils/run_style_checkers/main.py

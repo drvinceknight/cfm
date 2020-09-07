@@ -49,3 +49,8 @@ jobs:
     - name: Run alex
       run: |
         python ./utils/run_alex/main.py
+    - name: Install aspell (spell checker)
+      run: |
+        sudo apt-get install aspell aspell-en
+    - name: Run spell checker
+        python ./utils/run_spell_checker/main.py

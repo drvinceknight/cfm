@@ -56,4 +56,5 @@ jobs:
       run: |
         sudo apt-get install aspell aspell-en
     - name: Run spell checker
+      run: |
         python ./utils/run_spell_checker/main.py

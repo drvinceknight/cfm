@@ -34,7 +34,7 @@ jobs:
         python -m black --check .
     - name: Test code formatting with black of all md files
       run: |
-        python ./utils/run_black/main.py
+        python ./utils/run_style_checkers/main.py
     - name: Test prose of markdown files
       run: |
         python ./utils/run_proselint/main.py

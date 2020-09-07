@@ -46,7 +46,9 @@ for markdown_file_path in filter(
             print(python_code)
 
         output = subprocess.run(
-            ["isort", "--check-only", temporary_file_path], capture_output=True, check=False
+            ["isort", "--check-only", temporary_file_path],
+            capture_output=True,
+            check=False,
         )
 
         if (exit_code := output.returncode) > 0:

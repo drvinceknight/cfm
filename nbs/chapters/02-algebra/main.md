@@ -395,13 +395,153 @@ quadratic.subs({a: 1, b: sympy.S(7) / 8, c: 0})
 ### Reference
 
 
-#### Why do we need to use sympy?
-
 #### Why is some code in separate libraries?
 
+When we run the `import sympy` command we are telling Python that we want to use a specific set of tools. We will see other examples of this throughout this course.
+
+One of the advantages of having code in libraries is that it is more efficient for Python to only use what is needed.
+
+There are two types of Python libraries:
+
+- Those that are part of the so called "standard library": these are part of Python itself.
+- Those that are completely seperate: Sympy is one such example of this.
+
+This seperation allows for the development of tools to be not dependent on each others. The developers of Sympy do not need to coordinate with the developers of Python to make new releases of the software.
+
+#### Why do we need to use sympy?
+
+Sympt is the library for symbolic mathematics. There are other python libraries for carrying out mathematics in Python.
+
+For example, let us compute the value of the following expression:
+
+\\[
+    (\sqrt{2} + 2) ^ 2 - 2
+\\]
+
+We could compute this using the `math` library (for the square root tool):
+<!-- #endregion -->
+
+```python
+import math
+
+(math.sqrt(2) + 2) ** 2 - 2
+```
+
+We could also make use of the fact that we do not need a square root tool at all:
+
+\\[
+    (\sqrt{2} + 2) ^ 2 - 2 = (2 ^ {1 / 2} + 2) ^ 2 - 2
+\\]
+
+```python
+(2 ** (1 / 2) + 2) ** 2 - 2
+```
+
+We see that in both those instances, we have a numeric value for the expression that seems to be precise up to 14 decimal places.
+
+However, that is **not** the exact value of that expression. The exact value of the expression needs to be computed symbolically:
+
+```python
+expression = (sympy.sqrt(2) + 2) ** 2 - 2
+sympy.expand(expression)
+```
+
+This is just one example of why Sympy is an effective tool for mathematicians. The other one seen in this chapter is being able to compute expressions with no numerical value at all:
+
+```python
+sympy.factor(a ** 2 - b ** 2)
+```
+
+#### Why do I sometimes see `from sympy import *`?
+
+There a number of resources available from which you can learn to use Sympy. In some isntances you will not see `import sympy` but instead you will see `from sympy import *`.
+
+**This it not a good way to do it.**
+
+What this does is taking all the tools inside of sympy and putting it at the same level of all the other tools available to you.
+
+The problem with doing this is that it no longer makes your code clear.
+
+An example of this are trigonometric functions. These exist in a number of libraries:
+
+```python
+import math
+import sympy
+```
+
+```python
+sympy.cos(0)
+```
+
+```python
+math.cos(0)
+```
+
+One however allows us to carry out exact computations:
+
+```python
+sympy.cos(sympy.pi / 4)
+```
+
+```python
+math.cos(math.pi / 4)
+```
+
+If we chose to import all the functionality using `from sympy import *` then we cannot tell immediately which function we are using (except from its output):
+
+```python
+from sympy import *
+```
+
+```python
+from math import *
+```
+
+```python
+cos(pi / 4)
+```
+
+In that case the second import has overwritten the first. 
+
+**It is never recommended to use** `import *` this makes your code less clear and you are more likely to make mistakes when your code is not clear.
+
+<!-- #region -->
 #### Why do I sometimes see `import sympy as sym`?
+
+In some resources you will see that instead of `import sympy` people use: `import sympy as sym`. This is common and take advantage of the fact that Python can import a library and give it an alias/nickname at the same time:
+
+```python
+import <library> as <nickname>
+```
+
+So with sympy we can use:
+<!-- #endregion -->
+
+```python
+import sympy as sym
+
+sym.cos(sym.pi / 4)
+```
+
+There is nothing stopping you using whatever alias you want:
+
+```python
+import sympy as a_poor_name_choice
+
+a_poor_name_choice.cos(a_poor_name_choice.pi / 4)
+```
+
+**It is important** when doing this to use accepted conventions for these nicknames. For sympy, an accepted convention is indeed `import sympy as sym`.
+
 
 #### Are there other resources for learning sympy?
 
-#### Why do I sometimes see `from sympy import *`?
-<!-- #endregion -->
+There are a large number of resources for learning Sympy. Not all concentrate on the algebra that we have considered in this chapter, and we will be covering further Sympy functionality in the next chapters.
+
+Here are some resources:
+
+- The main sympy documentation: https://docs.sympy.org/latest/index.html
+- The scientific python lecture notes chapter on sympy: https://scipy-lectures.org/packages/sympy.html
+- A short tutorial: https://github.com/drvinceknight/Python-Mathematics-Handbook/blob/master/01-Symbolic-mathematics-with-Sympy.ipynb
+
+There are numerous other resources on the web, if you would like to know if they are reliable or not do not hesitate to ask.

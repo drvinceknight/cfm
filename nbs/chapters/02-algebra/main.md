@@ -180,7 +180,7 @@ We will now use sympy to solve the various equations that arise from comparing t
 
 with the completed square.
 
-First, we see that the coefficient of \\(x ^ 2\\) gives us a simple equation:
+First, we see that the coefficient of \\(x ^ 2\\) gives us the following equation:
 
 \\[
     a = 2
@@ -255,7 +255,7 @@ completed_square
 
 Using this we can see that the there are indeed no values of \\(x\\) which give negative values of \\(f(x)\\) as \\(f(x)\\) is a square added to a constant.
 
-The minimum is clearly when \\(x=-1/4\\) which gives: \\(f(-1/4)=7/8\\):
+The minimum is when \\(x=-1/4\\) which gives: \\(f(-1/4)=7/8\\):
 
 ```python
 completed_square.subs({x: -1 / sympy.S(4)})
@@ -373,7 +373,7 @@ sympy.solveset(equation, x)
 <!-- #region -->
 #### How to substitute a value in to an expression
 
-Given a Sympy expression it is possible to substite values in to it using the `.subs()` tool. This takes the variables and their values in the following format:
+Given a Sympy expression it is possible to substitute values in to it using the `.subs()` tool. This takes the variables and their values in the following format:
 
 ```python
 expression.subs({variable: value})
@@ -407,7 +407,7 @@ quadratic.subs({a: 1, b: sympy.S(7) / 8, c: 0})
     4. \\(4 x ^3 + 7x - 24 = 1\\)
 3. Consider the equation: \\(x ^ 2 + 4 - y = \frac{1}{y}\\):
     1. Find the solution to this equation for \\(x\\).
-    2. Obtain the specific solution when \\(y = 5\\). Do this in two ways: subsitute the value in to your equation and substitue the value in to your solution.
+    2. Obtain the specific solution when \\(y = 5\\). Do this in two ways: substitute the value in to your equation and substitute the value in to your solution.
 4. Consider the quadratic: \\(f(x)=4x ^ 2 + 16x + 25\\):
   1. Calculate the descriminant of the quadratic equation \\(4x ^ 2 + 16x + 25 =
      0\\). What does this tell us about the solutions to the equation? What
@@ -420,7 +420,7 @@ quadratic.subs({a: 1, b: sympy.S(7) / 8, c: 0})
      does this tell us about the graph of \\(f(x)\\)?
   2. By completing the square, show that the minimum point of \\(f(x)\\) is
      \\(\left(4, -97\right)\\)
-6. Consider the function \\(f(x) = x^ 2 +ax + b\\).
+6. Consider the function \\(f(x) = x^ 2 + a x + b\\).
   1. Given that \\(f(0) = 0\\) and \\(f(3) = 0\\) obtain the values of \\(a\\) and \\(b\\).
   2. By completing the square confirm that graph of \\(f(x)\\) has a line of symmetry at \\(x=\frac{3}{2}\\)
 
@@ -437,13 +437,13 @@ One of the advantages of having code in libraries is that it is more efficient f
 There are two types of Python libraries:
 
 - Those that are part of the so called "standard library": these are part of Python itself.
-- Those that are completely seperate: Sympy is one such example of this.
+- Those that are completely separate: Sympy is one such example of this.
 
-This seperation allows for the development of tools to be not dependent on each others. The developers of Sympy do not need to coordinate with the developers of Python to make new releases of the software.
+This separation allows for the development of tools to be not dependent on each others. The developers of Sympy do not need to coordinate with the developers of Python to make new releases of the software.
 
 #### Why do we need to use sympy?
 
-Sympt is the library for symbolic mathematics. There are other python libraries for carrying out mathematics in Python.
+Sympy is the library for symbolic mathematics. There are other python libraries for carrying out mathematics in Python.
 
 For example, let us compute the value of the following expression:
 
@@ -479,7 +479,7 @@ expression = (sympy.sqrt(2) + 2) ** 2 - 2
 sympy.expand(expression)
 ```
 
-This is just one example of why Sympy is an effective tool for mathematicians. The other one seen in this chapter is being able to compute expressions with no numerical value at all:
+This is one example of why Sympy is an effective tool for mathematicians. The other one seen in this chapter is being able to compute expressions with no numerical value at all:
 
 ```python
 sympy.factor(a ** 2 - b ** 2)
@@ -487,7 +487,7 @@ sympy.factor(a ** 2 - b ** 2)
 
 #### Why do I sometimes see `from sympy import *`?
 
-There a number of resources available from which you can learn to use Sympy. In some isntances you will not see `import sympy` but instead you will see `from sympy import *`.
+There a number of resources available from which you can learn to use Sympy. In some instances you will not see `import sympy` but instead you will see `from sympy import *`.
 
 **This it not a good way to do it.**
 
@@ -499,6 +499,9 @@ An example of this are trigonometric functions. These exist in a number of libra
 
 ```python
 import math
+```
+
+```python
 import sympy
 ```
 
@@ -543,7 +546,7 @@ In that case the second import has overwritten the first.
 
 In some resources you will see that instead of `import sympy` people use: `import sympy as sym`. This is common and take advantage of the fact that Python can import a library and give it an alias/nickname at the same time:
 
-```python
+```
 import <library> as <nickname>
 ```
 
@@ -575,6 +578,6 @@ Here are some resources:
 
 - The main sympy documentation: https://docs.sympy.org/latest/index.html
 - The scientific python lecture notes chapter on sympy: https://scipy-lectures.org/packages/sympy.html
-- A short tutorial: https://github.com/drvinceknight/Python-Mathematics-Handbook/blob/master/01-Symbolic-mathematics-with-Sympy.ipynb
+- A short tutorial is available at: https://github.com/drvinceknight/Python-Mathematics-Handbook/
 
 There are numerous other resources on the web, if you would like to know if they are reliable or not do not hesitate to ask.

@@ -57,10 +57,13 @@ We will start by creating a variable `expression` that has the value of the expr
 
 ```python
 import sympy as sym
+
 x = sym.Symbol("x")
 a = sym.Symbol("a")
 b = sym.Symbol("b")
-expression = (2 * (12 * x * (a - 4 * x) + (a-8 * x) * (b-4 * x))) / ((b - 4 * x) ** 4)
+expression = (2 * (12 * x * (a - 4 * x) + (a - 8 * x) * (b - 4 * x))) / (
+    (b - 4 * x) ** 4
+)
 expression
 ```
 
@@ -95,7 +98,7 @@ We will factor that equation:
 sym.factor(first_equation)
 ```
 
-Now we are going to create the second equation, subsituting \\(x=0\\) in to the value of the second derivative. We calculate the second derivative by passing a third (optional) input to `sym.diff`:
+Now we are going to create the second equation, substituting \\(x=0\\) in to the value of the second derivative. We calculate the second derivative by passing a third (optional) input to `sym.diff`:
 
 ```python
 second_derivative = sym.diff(expression, x, 2)
@@ -115,7 +118,7 @@ Now to solve the first equation to obtain a value for \\(a\\):
 sym.solveset(first_equation, a)
 ```
 
-Now to subsitute that value for \\(a\\) and solve the second equation for \\(b\\):
+Now to substitute that value for \\(a\\) and solve the second equation for \\(b\\):
 
 ```python
 second_equation = second_equation.subs({a: b / 3})
@@ -132,10 +135,12 @@ sym.root(192, 4)
 
 Recalling the question we know that \\(b>0\\) thus: \\(b = 2\sqrt{2}\sqrt[4]{3}\\) and \\(a=\frac{2\sqrt{2}\sqrt[4]{3}}{3}\\).
 
-We will substitue these values back and finish the question:
+We will substitute these values back and finish the question:
 
 ```python
-expression = expression.subs({a: 2 * sym.sqrt(2) * sym.root(3, 4) / 3, b: 2 * sym.sqrt(2) * sym.root(3, 4)})
+expression = expression.subs(
+    {a: 2 * sym.sqrt(2) * sym.root(3, 4) / 3, b: 2 * sym.sqrt(2) * sym.root(3, 4)}
+)
 expression
 ```
 
@@ -259,17 +264,17 @@ sym.limit(expression, h, 0)
     1. Find \\(f'(x)\\)
     2. You are given that \\(f(0)=10\\) and \\(f(1)=13\\), find \\(f(x)\\).
     3. Find all the stationary points of \\(f(x)\\) and determine their nature.
-4. Consider the function \\(f(x)=\frac{2}{3}x ^ 3 + b x ^ 2 + 2 x + 3\\), where \\(b\\) is some undertermined coefficient.
+4. Consider the function \\(f(x)=\frac{2}{3}x ^ 3 + b x ^ 2 + 2 x + 3\\), where \\(b\\) is some undetermined coefficient.
     1. Find \\(f'(x)\\) and \\(f''(x)\\)
     2. You are given that \\(f(x)\\) has a stationary point at \\(x=2\\). Use this information to find \\(b\\).
     3. Find the coordinates of the other stationary point.
     4. Determine the nature of both stationary points.
 5. Consider the functions \\(f(x)=-x^2+4x+4x\\) and \\(g(x)=-2x^3+5x^2-2x-1\\).
     1. Create a variable `turning_points` which has value the turning points of \\f(x)\\).
-    2. Create variable `intersection_points` which has value the the points where \\(f(x)\\) and \\(g(x)\\) intersect.
-    3. Using your answers to parts 2., calculate the area of the region between \\(f\\) and \\(g\\). Assign this value to a variable `area_of_shadded_region`.
+    2. Create variable `intersection_points` which has value of the points where \\(f(x)\\) and \\(g(x)\\) intersect.
+    3. Using your answers to parts 2., calculate the area of the region between \\(f\\) and \\(g\\). Assign this value to a variable `area_of_shaded_region`.
 
 
 ### References
 
-There is not specifcally any reference materials for this section.
+There is not specifically any reference materials for this section.

@@ -180,10 +180,96 @@ If we want to calculate a **definite** integral then instead of passing the sing
 sym.factor(sym.integrate(expression, (x, 5, 20)))
 ```
 
+<!-- #region -->
 ### How to
 
 
+#### Calculate the derivative of an expression.
+
+We can calculate the derivative of an expression using `sym.diff(<expression>, <variable>, [<degree>])`.
+
+For example to compute \\(\frac{d (4 x ^ 3 + 2 x + 1}{dx}\\):
+<!-- #endregion -->
+
+```python
+x = sym.Symbol("x")
+expression = 4 * x ** 3 + 2 * x + 1
+sym.diff(expression, x)
+```
+
+To compute the second derivative: \\(\frac{d ^ 2 (4 x ^ 3 + 2 x + 1}{dx ^ 2}\\)
+
+```python
+sym.diff(expression, x, 2)
+```
+
+#### Calculate the indefinite integral of an expression.
+
+We can calculate the indefinite integral of an expression using `sym.integrate(<expression>, <variable>)`.
+
+For example to compute \\(\int 4x^3 + 2x + 1 dx\\):
+
+```python
+sym.integrate(expression, x)
+```
+
+#### Calculate the definite integral of an expression.
+
+We can calculate the definite integral of an expression using `sym.integrate(<expression>, (<variable>, <lower_bound>, <upper_bound>))`.
+
+For example to compute \\(\int_0^4 4x^3 + 2x + 1 dx\\):
+
+```python
+sym.integrate(expression, (x, 0, 4))
+```
+
+#### Use \\(\infty\\)
+
+In sympy we can access \\(\infty\\) using `sym.oo`:
+
+```python
+sym.oo
+```
+
+#### Calculate limits
+
+We can calculate limits using `sym.limit(<expression>, <variable>, <value>)`.
+
+For example to compute \\(\lim_{h \to 0} \frac{4(x - h)^3 + 2(x - h) + 1  - 4x^3 - 2x - 1}{h}\\):
+
+```python
+h = sym.Symbol("h")
+expression = (4 * x ** 3 + 2 * x + 1 - 4 * (x - h) ** 3 - 2 * (x - h) - 1) / h
+sym.limit(expression, h, 0)
+```
+
 ### Exercises
+
+**After** completing the tutorial attempt the following exercises.
+
+**If you are not sure how to do something, have a look at the "How To" section.**
+
+1. For each of the following functions calculate \\(\frac{df}{dx}\\), \\(\frac{d^2f}{dx^2}\\) and \\(\int f(x) dx\\).
+    1. \\(f(x) = x\\)
+    2. \\(f(x) = x ^(1/3)\\)
+    3. \\(f(x) = 2 x (x - 3) (\sin(x) - 5)\\)
+    4. \\(f(x) = \frac{3  x ^ 3 + 6 \sqrt{x} + 3}{3  x ^ {1 / 4}}\\)
+2. Consider the function \\(f(x)=2x+1\\). By differentiating *from first principles* show that \\(f'(x)=2\\).
+3. Consider the second derivative \\(f''(x)=6x+4\\) of some cubic function \\(f(x)\\).
+    1. Find \\(f'(x)\\)
+    2. You are given that \\(f(0)=10\\) and \\(f(1)=13\\), find \\(f(x)\\).
+    3. Find all the stationary points of \\(f(x)\\) and determine their nature.
+4. Consider the function \\(f(x)=\frac{2}{3}x ^ 3 + b x ^ 2 + 2 x + 3\\), where \\(b\\) is some undertermined coefficient.
+    1. Find \\(f'(x)\\) and \\(f''(x)\\)
+    2. You are given that \\(f(x)\\) has a stationary point at \\(x=2\\). Use this information to find \\(b\\).
+    3. Find the coordinates of the other stationary point.
+    4. Determine the nature of both stationary points.
+5. Consider the functions \\(f(x)=-x^2+4x+4x\\) and \\(g(x)=-2x^3+5x^2-2x-1\\).
+    1. Create a variable `turning_points` which has value the turning points of \\f(x)\\).
+    2. Create variable `intersection_points` which has value the the points where \\(f(x)\\) and \\(g(x)\\) intersect.
+    3. Using your answers to parts 2., calculate the area of the region between \\(f\\) and \\(g\\). Assign this value to a variable `area_of_shadded_region`.
 
 
 ### References
+
+There is not specifcally any reference materials for this section.

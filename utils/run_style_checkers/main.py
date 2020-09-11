@@ -44,7 +44,9 @@ for markdown_file_path in filter(
             )
             print(stderr_with_snippet_wording)
             output = subprocess.run(
-                ["black", "--diff", temporary_file_path], capture_output=True, check=False
+                ["black", "--diff", temporary_file_path],
+                capture_output=True,
+                check=False,
             )
             print(output.stdout.decode("utf-8"))
 

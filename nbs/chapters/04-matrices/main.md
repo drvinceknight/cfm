@@ -25,7 +25,7 @@ Matrices form the building block of an area of mathematics referred to as Linear
 The specific mathematical problems discussed usually correspond to solving large systems of linear equations. However they have become an area of interest in their own right and manipulating matrices usually corresponds to:
 
 - calculating the determinant of a matrix;
-- calculating the inversse of a matrix.
+- calculating the inverse of a matrix.
 
 Here we will see how to instruct a computer to carry out these techniques.
 
@@ -125,18 +125,20 @@ B = sym.Matrix([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
 B
 ```
 
+<!-- #region -->
 **Note** that it is possible to write the code in a more readable way as long as an incomplete line ends with an open bracket:
 
-```python
+
+```
 B = sym.Matrix(
     [
-        [1, 2, 3, 4], 
-        [5, 6, 7, 8], 
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
         [9, 10, 11, 12]
     ]
 )
-B
 ```
+<!-- #endregion -->
 
 #### Calculate the determinant of a matrix
 
@@ -158,7 +160,7 @@ matrix.det()
 #### Calculate the inverse of a matrix
 
 
-To calcualte the inverse of a matrix, we use the `.inv` tool. For example to calculate the inverse of:
+To calculate the inverse of a matrix, we use the `.inv` tool. For example to calculate the inverse of:
 
 \\[
     \begin{pmatrix}
@@ -191,13 +193,13 @@ matrix = sym.Matrix([[sym.S(1) / 5, 1], [1, 1]])
 
 #### Add matrices together
 
-To add matrices we use the `+` operator. For exampel to compute:
+To add matrices we use the `+` operator. For example to compute:
 
 \\[
     \begin{pmatrix}
         1 / 5 & 1\\
         1 & 1
-    \end{pmatrix} + 
+    \end{pmatrix} +
     \begin{pmatrix}
         4 / 5 & 0\\
         0 & 0
@@ -213,14 +215,14 @@ matrix + other_matrix
 <!-- #region -->
 #### Multiply matrices together
 
-To multiply matrices together we use the `@` operator. For exampple to compute:
+To multiply matrices together we use the `@` operator. For example to compute:
 
 
 \\[
     \begin{pmatrix}
         1 / 5 & 1\\
         1 & 1
-    \end{pmatrix} 
+    \end{pmatrix}
     \begin{pmatrix}
         4 / 5 & 0\\
         0 & 0
@@ -255,7 +257,7 @@ To solve a given linear system that can be represented in matrix form, we create
 
 \\[
     \begin{array}
-        ax + 2y = 3\\
+        a x + 2y = 3\\
         3x + y + 2z = 4\\
         - y + z = 1\\
     \end{array}
@@ -273,7 +275,7 @@ A.inv() @ b
 
 **If you are not sure how to do something, have a look at the "How To" section.**
 
-1. Obtain the determinent and the inverses of the following matrices:
+1. Obtain the determinant and the inverses of the following matrices:
     1. \\(A = \begin{pmatrix} 1 / 5 & 1\\1 & 1\end{pmatrix}\\)
     2. \\(B = \begin{pmatrix} 1 / 5 & 1 & 5\\3 & 1 & 6 \\ 1 & 2 & 1\end{pmatrix}\\)
     3. \\(C = \begin{pmatrix} 1 / 5 & 5 & 5\\3 & 1 & 7 \\ a & b & c\end{pmatrix}\\)
@@ -288,12 +290,12 @@ A.inv() @ b
     3. State, giving a brief reason in each case, whether the simultaneous equations
         \\[
             \begin{array}
-                ax + 4y + 2z= 3a\\
+                a x + 4y + 2z= 3a\\
                 x + a  = 1\\
                 x + 2y + z = 3\\
             \end{array}
         \\]
-        
+
         have any solutions when:
           1. \\(a = 3\\);
           2. \\(a = 2\\)
@@ -303,7 +305,7 @@ A.inv() @ b
 
     \\[
     \begin{array}
-        ax + 2y = 3\\
+        a x + 2y = 3\\
         3x + y + 2z = 4\\
         - y + z = 1\\
     \end{array}
@@ -322,7 +324,7 @@ other_matrix = sym.Matrix([[sym.S(4) / 5, 0], [0, 0]])
 matrix * other_matrix
 ```
 
-However there are other libraries that can be used for linear algebra and in those libraries the `*` does not do matrix multiplication, it does element wise multiplication instead. So for clarity it is preffered to use `@` throughout.
+However there are other libraries that can be used for linear algebra and in those libraries the `*` does not do matrix multiplication, it does element wise multiplication instead. So for clarity it is preferred to use `@` throughout.
 
 
 #### I have read that `numpy` is a library for linear algebra?|

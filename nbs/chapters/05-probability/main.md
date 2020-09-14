@@ -71,7 +71,12 @@ bag = (
 bag
 ```
 
-**Note** We are there using the circular brackets `()` and the quotation marks `"`. Those are important and cannot be omitted. The choice of brackets `()` as opposed to `{}` or `[]` is in fact important as it instructs Python to do different things (we will learn about this later). The choice of quotation mark `"` or `'` is not important.
+**Note** We are there using the circular brackets `()` and the quotation marks
+`"`. Those are important and cannot be omitted. The choice of brackets `()` as
+opposed to `{}` or `[]` is in fact important as it instructs Python to do
+different things (we will learn about this later). You can use `"` or `'`
+interchangeably.
+
 
 Instead of writing every entry out we can create a Python **list** which allows for us to carry out some basic algebra on the items. Here we essentially:
 

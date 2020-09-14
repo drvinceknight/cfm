@@ -60,9 +60,19 @@ known_exceptions = {
     ),
     "04-matrices": set(
         (
-            ('garner.preferred_forms', "'né' is the preferred form.", 301, 122, 7118, 7121, 3, 'warning', 'né')
+            (
+                "garner.preferred_forms",
+                "'né' is the preferred form.",
+                301,
+                122,
+                7118,
+                7121,
+                3,
+                "warning",
+                "né",
+            )
         )
-        )
+    ),
 }
 
 root = get_root_path()

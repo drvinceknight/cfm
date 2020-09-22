@@ -1,4 +1,4 @@
-# Computing for mathematics
+#in Computing for mathematics
 
 # Syllabus and timeline
 
@@ -11,7 +11,7 @@
 5. Week starting 9th of November: [Combinatorics](https://vknight.org/pfm/05-combinations-permutations/introduction/main.html)
 6. Week starting 16th of November: [Probability](https://vknight.org/pfm/06-probability/introduction/main.html)
 7. Week starting 23rd of November: [Sequences](https://vknight.org/pfm/07-sequences/introduction/main.html)
-8. Week starting 30th of November: [Example coursework]({{root}}/assets/nbs/assessment/mock/main.ipynb)
+8. Week starting 30th of November: [Example coursework](./assets/nbs/assessment/mock/main.ipynb)
 9. Week starting 7th of December: **Revision/Slack**
 9. Week starting 14th of December: Coursework
 

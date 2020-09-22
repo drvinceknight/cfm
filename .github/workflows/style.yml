@@ -35,9 +35,6 @@ jobs:
     - name: Test import order of all py files
       run: |
         python -m isort --check-only .
-    - name: Test style of python snippets of all book md files
-      run: |
-        inv stylecheck
     - uses: actions/checkout@v2
     - name: Install node
       uses: actions/setup-node@v1

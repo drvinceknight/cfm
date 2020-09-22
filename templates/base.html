@@ -15,29 +15,6 @@
   <link rel="stylesheet" href="/{{root}}/assets/css/skeleton.css">
   <link rel="shortcut icon" type="image/png" href="/{{root}}/assets/favicon.ico"/>
 
-  <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
-  async>
-  </script>
-  <!-- MathJax configuration -->
-	<script type="text/x-mathjax-config">
-	MathJax.Hub.Config({
-		tex2jax: {
-			inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-			displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-			processEscapes: true,
-			processEnvironments: true
-		},
-		// Center justify equations in code and markdown cells. Elsewhere
-		// we use CSS to left justify single line equations in code cells.
-		displayAlign: 'center',
-		"HTML-CSS": {
-			styles: {'.MathJax_Display': {"margin": 0}},
-			linebreaks: { automatic: true }
-		}
-	});
-	</script>
-	<!-- End of mathjax configuration -->
 </head>
 
    {% block head %}
@@ -70,8 +47,6 @@
             <a href="https://github.com/drvinceknight/cfm">@drvinceknight</a>
             Powered by:
                 <a href="https://www.python.org/">Python</a>
-                <a href="http://jupyter.org/">Jupyter</a>
-                <a href="https://www.mathjax.org/">Mathjax</a>
                 <a href="https://pages.github.com/">Github pages</a>
                 <a href="http://getskeleton.com/">Skeleton css</a>
             </p>

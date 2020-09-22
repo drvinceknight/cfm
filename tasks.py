@@ -37,13 +37,14 @@ def get_markdown_files_to_check(root=REPO_ROOT, source_file_path=SOURCE_FILE_PAT
     markdown_exporter = nbconvert.MarkdownExporter()
     notebook_directory = root / "assets/nbs"
     for path in notebook_directory.glob("**/*.ipynb"):
-        md, _ = markdown_exporter.from_file(path)
+        if "checkpoint" not in str(path):
+            md, _ = markdown_exporter.from_file(path)
 
-        temporary_file = tempfile.NamedTemporaryFile(suffix=".md")
-        temporary_file_path = pathlib.Path(temporary_file.name)
+            temporary_file = tempfile.NamedTemporaryFile(suffix=".md")
+            temporary_file_path = pathlib.Path(temporary_file.name)
 
-        temporary_file_path.write_text(md)
-        yield path, temporary_file_path
+            temporary_file_path.write_text(md)
+            yield path, temporary_file_path
 
 
 def render_template(template_file, template_vars, searchpath="./templates/"):
@@ -150,7 +151,7 @@ def prosecheck(c, root=REPO_ROOT):
         for suggestion in filter(
             lambda suggestion: suggestion[0] not in ignored_suggestions, suggestions
         ):
-            print(f"proselint suggests the following in {markdown_file_path}")
+            print(f"proselint suggests the following in {relative_markdown_path}")
             print(suggestion)
             exit_code = 1
 
@@ -160,6 +161,7 @@ def prosecheck(c, root=REPO_ROOT):
 
         if output.returncode > 0:
             exit_code = max(output.returncode, exit_code)
-            print(output.stderr.decode("utf-8"))
+            stderr = output.stderr.decode("utf-8")
+            print(stderr.replace(str(markdown_file_path), relative_markdown_path))
 
     sys.exit(exit_code)

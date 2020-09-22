@@ -1,15 +1,15 @@
 import pathlib
+import subprocess
+import sys
+import tempfile
 
+import jinja2
+import markdown
 import nbconvert
 import nbformat
-import jinja2
-import tempfile
-import markdown
-from invoke import task
-import sys
-
-import subprocess
 import proselint
+from invoke import task
+
 import known
 
 WEB_ROOT = "cfm"
@@ -21,6 +21,7 @@ AUTHOR = "Vince Knight"
 REPO_ROOT = pathlib.Path(__file__).parent
 SOURCE_FILE_PATH = REPO_ROOT / "main.md"
 
+
 def get_markdown_files_to_check(root=REPO_ROOT, source_file_path=SOURCE_FILE_PATH):
     """
     Returns a generator of all the markdown sources files.
@@ -28,7 +29,7 @@ def get_markdown_files_to_check(root=REPO_ROOT, source_file_path=SOURCE_FILE_PAT
     This includes converting notebooks to markdown so that the prose can be
     checked.
     """
-    markdown_file_paths = (source_file_path, )
+    markdown_file_paths = (source_file_path,)
 
     for path in markdown_file_paths:
         yield path, path
@@ -43,6 +44,7 @@ def get_markdown_files_to_check(root=REPO_ROOT, source_file_path=SOURCE_FILE_PAT
 
         temporary_file_path.write_text(md)
         yield path, temporary_file_path
+
 
 def render_template(template_file, template_vars, searchpath="./templates/"):
     """

@@ -32,3 +32,6 @@ jobs:
     - name: Validate notebooks
       run: |
         inv validate
+    - name: Confirm page builds
+      run: |
+        inv build

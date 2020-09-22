@@ -7,9 +7,13 @@ words = set(
         "bc",
         "docstring",
         "inv",
+        "ipynb",
         "jupyter",
+        "nbs",
+        "nd",
         "sym",
         "sympy",
+        "th",
     )
 )
 

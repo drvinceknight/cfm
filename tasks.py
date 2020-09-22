@@ -88,13 +88,13 @@ def build(
 
 
 @task
-def test(c):
+def test(c, root=REPO_ROOT):
     """
     Test all notebooks
 
     The purpose of this is to mainly test that the assessment is correct.
     """
-    c.run("pytest --nbval --current-env")
+    c.run(f"pytest --nbval {root}/assets/nbs --current-env")
 
 
 @task

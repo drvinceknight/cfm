@@ -51,6 +51,7 @@ def build(
     with open("index.html", "w") as f:
         f.write(html)
 
+
 @task
 def test(c):
     """

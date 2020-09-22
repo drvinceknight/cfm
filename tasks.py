@@ -83,8 +83,9 @@ def build(
             "author": author,
         },
     )
-    with open("index.html", "w") as f:
-        f.write(html)
+    out_dir = pathlib.Path("_build")
+    out_dir.mkdir(exist_ok=True)
+    (out_dir / "index.html").write_text(html)
 
 
 @task

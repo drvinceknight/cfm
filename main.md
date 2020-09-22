@@ -1,4 +1,4 @@
-#in Computing for mathematics
+# Computing for mathematics
 
 # Syllabus and timeline
 

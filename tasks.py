@@ -1,4 +1,5 @@
 import pathlib
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -83,8 +84,10 @@ def build(
             "author": author,
         },
     )
-    out_file = pathlib.Path("index.html")
-    out_file.write_text(html)
+    out_dir = pathlib.Path("_build")
+    out_dir.mkdir(exist_ok=True)
+    (out_dir / "index.html").write_text(html)
+    shutil.copytree("assets", out_dir / "assets")
 
 
 @task

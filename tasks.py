@@ -88,7 +88,7 @@ def build(
 
 
 @task
-def test(c, root=REPO_ROOT):
+def validate(c, root=REPO_ROOT):
     """
     Test all notebooks
 

@@ -92,8 +92,9 @@ these interactions.
 Some examples of how this applies to me:
 
 - When a student is late or absent at a class **I** will assume they have good
-  reasons. If this happens regularly I first be concerned for
-  their well-being and second ask how **I** can help them catch up.
+  reasons. If this happens regularly
+    1. I will first be concerned for their well-being.
+    2. Ask how **I** can help them catch up.
 - If a student asks for an explanation of a topic that has been covered
   multiples times **I** will assume that some set of circumstances has prevented
   them from seeing these explanations and:

@@ -22,4 +22,5 @@ docs/_build/*
 nbs/chapters/plot.pdf
 *bbl
 *blg
-_build/
+index.html
+_build

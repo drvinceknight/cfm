@@ -7,7 +7,7 @@
 This course will follow 3 mains texts:
 
 1. A book covering the use of a programming language called Python:
-   [vknight.org/pfm/intro.html](https://vknight.org/pfm/intro.html)
+   [vknight.org/pfm/](https://vknight.org/pfm/)
 2. A set of short tutorials showing how to use the mathematical typesetting
    language LaTeX: [vknight.org/tex/](https://vknight.org/tex/)
 3. A document with guidelines writing mathematics.

@@ -1,5 +1,5 @@
 import pathlib
-import shutil
+import distutils.dir_util
 import subprocess
 import sys
 import tempfile
@@ -87,7 +87,7 @@ def build(
     out_dir = pathlib.Path("_build")
     out_dir.mkdir(exist_ok=True)
     (out_dir / "index.html").write_text(html)
-    shutil.copytree("assets", out_dir / "assets")
+    distutils.dir_util.copy_tree("assets", str(out_dir / "assets"))
 
 
 @task

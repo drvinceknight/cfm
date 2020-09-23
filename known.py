@@ -2,7 +2,10 @@ words = set(
     (
         "AttributeError",
         "Jupyter",
+        "LaTeX",
+        "Modularisation",
         "NameError",
+        "PyCons",
         "ax",
         "bc",
         "docstring",

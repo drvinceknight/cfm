@@ -97,9 +97,9 @@ Some examples of how this applies to me:
 - If a student asks for an explanation of a topic that has been covered
   multiples times **I** will assume that some set of circumstances has prevented
   them from seeing these explanations and:
-  1. will explain the topic.
-  2. also point them at the explanations in the course materials and/or class
-     recordings.
+      1. will explain the topic.
+      2. also point them at the explanations in the course materials and/or class
+         recordings.
   If this is a regular occurrence I might ask if there are any circumstances
   that I can help with.
 - If **I** make a mistake in a class explanation and someone helpfully points it

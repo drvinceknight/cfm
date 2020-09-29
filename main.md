@@ -39,15 +39,15 @@ This course will follow 3 mains texts:
 2. Week 2: Functions, data structures.
 3. Week 3: Object oriented programming
 4. Week 4: Using a terminal and an editor
-5. Modularisation of code
-6. Documentation of code
-7. Testing of code
-8. LaTeX and writing mathematics
-9. Presenting mathematics (to include watching conference
+5. Week 5: Modularisation of code
+6. Week 6: Documentation of code
+7. Week 7: Testing of code
+8. Week 8: LaTeX and writing mathematics
+9. Week 9: Presenting mathematics (to include watching conference
    presentations/critiques)
-10. Group work
-11. Group work
-12. Presentation week
+10. Week 10: Group work
+11. Week 11: Group work
+12. Week 12: Presentation week
 
 ---
 

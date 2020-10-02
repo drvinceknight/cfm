@@ -12,6 +12,26 @@ This course will follow 3 mains texts:
    language LaTeX: [vknight.org/tex/](https://vknight.org/tex/)
 3. A document with guidelines writing mathematics.
 
+## Weekly schedule
+
+Class (virtual via Zoom):
+
+- Tuesday 1500
+- Friday 1300
+
+Tutorial (virtual via Zoom):
+
+- Wednesday 1100: Groups A, B, C, D
+- Wednesday 1300: Groups E, F, G, H
+- Wednesday 1500: Groups I, J, K, L, M
+- Wednesday 1600: Groups N, O, P, Q, R
+
+Check your timetable to know which group you are in.
+
+Office hours (virtual using Zoom and/or discord):
+
+Time to be agreed in first class.
+
 ## First Semester
 
 1. Week starting 12th of October:
@@ -28,8 +48,7 @@ This course will follow 3 mains texts:
    [Probability](https://vknight.org/pfm/chapters/06-probability/introduction/main.html)
 7. Week starting 23rd of November:
    [Sequences](https://vknight.org/pfm/chapters/07-sequences/introduction/main.html)
-8. Week starting 30th of November: [Example
-   coursework](./assets/nbs/assessment/mock/main.ipynb)
+8. Week starting 30th of November: Example coursework
 9. Week starting 7th of December: **Revision/Slack**
 10. Week starting 14th of December: Coursework
 

@@ -35,7 +35,7 @@ Time to be agreed in first class.
 ## First Semester
 
 1. Week starting 12th of October:
-   [Introduction](https://vknight.org/pfm/chapters/01-using-notebooks/introduction/main.html)
+   [Using notebooks](https://vknight.org/pfm/chapters/01-using-notebooks/introduction/main.html)
 2. Week starting 19th of October:
    [Algebra](https://vknight.org/pfm/chapters/02-algebra/introduction/main.html)
 3. Week starting 26th of October:

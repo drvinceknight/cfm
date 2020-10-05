@@ -8,6 +8,7 @@ words = set(
         "PyCons",
         "ax",
         "bc",
+        "Cymru",
         "docstring",
         "inv",
         "ipynb",

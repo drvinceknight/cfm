@@ -24,7 +24,7 @@ Tutorial (virtual via Zoom):
 - Wednesday 1100: Groups A, B, C, D
 - Wednesday 1300: Groups E, F, G, H
 - Wednesday 1500: Groups I, J, K, L, M
-- Wednesday 1600: Groups N, O, P, Q, R
+- Wednesday 1600: Groups N, O, P, Q, R, Cymru
 
 Check your timetable to know which group you are in.
 

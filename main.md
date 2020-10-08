@@ -36,18 +36,25 @@ Time to be agreed in first class.
 
 1. Week starting 12th of October:
    [Using notebooks](https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html)
+   [Video demonstration of tutorial](https://youtu.be/6iB0Go9wr9E)
 2. Week starting 19th of October:
    [Algebra](https://vknight.org/pfm/tools-for-mathematics/02-algebra/introduction/main.html)
+   [Video demonstration of tutorial](https://youtu.be/E_TKJkvi-GY)
 3. Week starting 26th of October:
    [Calculus](https://vknight.org/pfm/tools-for-mathematics/03-calculus/introduction/main.html)
+   [Video demonstration of tutorial](https://youtu.be/7j4bqypXi48)
 4. Week starting 2nd of November:
    [Matrices](https://vknight.org/pfm/tools-for-mathematics/04-matrices/introduction/main.html)
+   [Video demonstration of tutorial](https://youtu.be/9aoz22SxZjY)
 5. Week starting 9th of November:
    [Combinatorics](https://vknight.org/pfm/tools-for-mathematics/05-combinations-permutations/introduction/main.html)
+   [Video demonstration of tutorial](https://youtu.be/7KpC9YN_rvQ)
 6. Week starting 16th of November:
    [Probability](https://vknight.org/pfm/tools-for-mathematics/06-probability/introduction/main.html)
+   [Video demonstration of tutorial](https://youtu.be/34mKnQ4fqHQ)
 7. Week starting 23rd of November:
    [Sequences](https://vknight.org/pfm/tools-for-mathematics/07-sequences/introduction/main.html)
+   [Video demonstration of tutorial](https://youtu.be/zSEv9DZ6yvw)
 8. Week starting 30th of November: Example coursework
 9. Week starting 7th of December: **Revision/Slack**
 10. Week starting 14th of December: Coursework

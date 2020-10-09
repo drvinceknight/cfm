@@ -83,3 +83,26 @@ Discuss structure of the book.
 - Assessment.
 
 - For first lab session: work through chapter 1. Give a brief demo.
+
+After class email
+-----------------
+
+Send the following email after class::
+
+    Hi all,
+
+    A recording of today's class is available at <>.
+
+    In this class we discussed multiple things about the class itself:
+
+    - Course documents available here: https://vknight.org/cfm/
+    - We agreed that office hours will be: <>
+    - Here is an invite to the discord if you have not already joined it:
+    - You can find my teaching philosophy here: https://vknight.org/tch-phi/
+
+    In preparation for your tutorial tomorrow please work through the first
+    chapter of the Python for mathematics book:
+    https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html
+
+    Please get in touch if I can assist with anything,
+    Vince

@@ -3,13 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the personal class notes for cfm
+Class meetings
 ===========================================
-
-The class notes are available here: https://vknight.org/cfm/
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   meetings/index.rst
+   ./01/index.rst

@@ -169,6 +169,7 @@ def prosecheck(c, root=REPO_ROOT):
 
     sys.exit(exit_code)
 
+
 @task
 def doctest(c):
     c.run(f"pytest -v --doctest-glob='*.rst'")

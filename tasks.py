@@ -168,3 +168,8 @@ def prosecheck(c, root=REPO_ROOT):
             print(stderr.replace(str(markdown_file_path), relative_markdown_path))
 
     sys.exit(exit_code)
+
+
+@task
+def doctest(c):
+    c.run(f"pytest -v --doctest-glob='*.rst'")

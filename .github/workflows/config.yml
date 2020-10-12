@@ -36,3 +36,7 @@ jobs:
     - name: Confirm page builds
       run: |
         inv build
+    - name: Doctest documentation (not on Windows)
+      if: matrix.os != 'windows-latest'
+      run: |
+        inv doctest

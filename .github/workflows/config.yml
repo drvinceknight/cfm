@@ -36,3 +36,6 @@ jobs:
     - name: Confirm page builds
       run: |
         inv build
+    - name: Doctest documentation
+      run: |
+        inv doctest

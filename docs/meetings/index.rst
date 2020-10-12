@@ -11,3 +11,4 @@ Class meetings
    :caption: Contents:
 
    ./01/index.rst
+   ./02/index.rst

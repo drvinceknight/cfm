@@ -166,3 +166,19 @@ Send the following email after class::
 
     Please get in touch if I can assist with anything,
     Vince
+
+
+Second meeting
+--------------
+
+- Give brief review of the contents of the chapter. Do this by browsing
+  through: https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/how/main.html
+- Ask if anyone has any questions/comments/feedback.
+- Remind everyone about the resources available to them (videos both on youtube
+  and LC, chapters, plan, discord etc...).
+- Explain that the following things seemed to be the main ones to come up:
+    1. Finding files on computer.
+    2. Difference between markdown and code cell.
+    3. Using brackets when doing computations.
+
+For each of those do a small walk-through showing the concepts again.

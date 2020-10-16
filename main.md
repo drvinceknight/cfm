@@ -104,8 +104,7 @@ This course will be assessed in two parts:
 You are welcome to get in touch with me at any time although I might not
 immediately be available to respond.
 
-**As a class** we will identify some hours a week for "office hours" during
-which I will be available.
+Office hours: Friday 1400 - 1600 (email me or get in touch on discord).
 
 ---
 

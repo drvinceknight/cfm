@@ -13,8 +13,9 @@ This course will follow 3 mains texts:
 3. A document with guidelines for writing mathematics.
 
 My personal notes for things I plan on discussing during class sessions can be
-found here: https://vkcfm.readthedocs.io. **Note** that you are not the intended
-audience for those notes (but you might still find them helpful).
+found here: [vkcfm.readthedocs.io](https://vkcfm.readthedocs.io). **Note** that
+you are not the intended audience for those notes (but you might still find them
+helpful).
 
 ## Weekly schedule
 

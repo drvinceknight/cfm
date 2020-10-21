@@ -14,14 +14,14 @@ Problem
 
 Explain to students that we will be solving the following problem:
 
-Consider the function $f(x)= x ^ 3 - ax ^ 2 + bx - 5
+Consider the function :math:`f(x)= x ^ 3 - ax ^ 2 + bx - 5`
 
-1. Given that $\frac{df}{dx}|_{x=0}=0$, $\frac{d^2f}{dx^2}|_{x=0}=5$ and that $b>0$ find the values of $a$ and $b$.
-2. For the specific values of $a$ and $b$ find:
-    1. $\lim_{x\to 0}f(x)$;
-    2. $\lim_{x\to \infty}f(x)$;
-    3. $\int f(x) dx$;
-    4. $\int_{5}^{\pi} f(x) dx$.
+1. Given that :math:`\frac{df}{dx}|_{x=0}=0$, $\frac{d^2f}{dx^2}|_{x=0}=5` and that :math:`b>0` find the values of :math:`a` and :math:`b`.
+2. For the specific values of :math:`a` and :math:`b` find:
+    1. :math:`\lim_{x\to 0}f(x)`;
+    2. :math:`\lim_{x\to \infty}f(x)`;
+    3. :math:`\int f(x) dx`;
+    4. :math:`\int_{5}^{\pi} f(x) dx`.
 
 
 Solution

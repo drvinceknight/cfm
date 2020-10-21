@@ -33,9 +33,8 @@ Tutorial (virtual via Zoom):
 
 Check your timetable to know which group you are in.
 
-Office hours (virtual using Zoom and/or discord):
-
-Time to be agreed in first class.
+Office hours (virtual using Zoom and/or discord): Friday 1400 - 1600 (email me
+or get in touch on discord).
 
 ## First Semester
 

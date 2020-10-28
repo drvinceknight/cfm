@@ -15,3 +15,4 @@ Class meetings
    ./03/index.rst
    ./04/index.rst
    ./05/index.rst
+   ./06/index.rst

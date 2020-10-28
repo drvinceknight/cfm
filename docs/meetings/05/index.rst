@@ -7,7 +7,7 @@ First meeting
 After this meeting students should:
 
 - Understand how to use the itertools library to solve combinatorial problems.
-- Know what they need to do to prepare for their fourth tutorial.
+- Know what they need to do to prepare for their fifth tutorial.
 
 Problem
 *******

@@ -18,8 +18,9 @@ The matrix :math:`A` is given by :math:`A=\begin{pmatrix}1 & 1 & a\\ 2 & a & 1\\
 
 1. Find the determinant of :math:`A`
 2. Hence find the values of :math:`a` for which :math:`A` is singular.
-3. For the following values of :math:`a`, when possible obtain :math:`A ^ {- 1}` and confirm
-   the result by computing :math:`AA^{-1}`:
+3. For the following values of :math:`a`, when possible obtain :math:`A ^ {- 1}`
+   and confirm the result by computing :math:`AA^{-1}`:
+
     1. :math:`a = 0`;
     2. :math:`a = 1`;
     3. :math:`a = 2`;

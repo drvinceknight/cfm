@@ -203,3 +203,20 @@ Rerun the cells but include a mistake::
 
 Note the type of error we then get. And show that here we want the kernel to
 forget everything.
+
+**If there is time** demonstrate plotting.
+
+Discuss that sympy has some basic plotting but that I do not recommend it.
+
+Point at matplotlib and numpy chapters and also specify that we will be using
+other things that are seen in future chapters (list comprehensions).::
+
+    >>> import numpy as np
+    >>> import matplotlib.pyplot as plt
+    >>> domain = np.linspace(0, 2 * np.pi, 100)
+    >>> f_image = [f.subs({x: x_value}) for x_value in domain]
+    >>> g_image = [g.subs({x: x_value}) for x_value in domain]
+    >>> plt.figure()  # doctest: +SKIP
+    >>> plt.plot(domain, f_image, label="$f(x)$")  # doctest: +SKIP
+    >>> plt.plot(domain, g_image, label="$g(x)$")  # doctest: +SKIP
+    >>> plt.legend()  # doctest: +SKIP

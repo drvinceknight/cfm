@@ -159,9 +159,9 @@ Consider the functions :math:`f(x) = x ^ 3 + 3x - 3` and :math:`g(x) = \cos(x)
 2. Create a variable `turning_points_of_g` which has value the turning points of
    :math:`g(X)`.
 3. Create a variable `max_of_f_on_unit_circle` which has the maximum value of
-   :math:`f` for :math:`x\in\[0, 2\pi\]`.
+   :math:`f` for :math:`x\in[0, 2\pi]`.
 4. Create a variable `max_of_g_on_unit_circle` which has the maximum value of
-   :math:`g` for :math:`x\in\[0, 2\pi\]`.
+   :math:`g` for :math:`x\in[0, 2\pi]`.
 5. Which function has the maximum value?
 
 

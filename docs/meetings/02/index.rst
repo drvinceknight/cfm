@@ -166,3 +166,67 @@ Send the following email after class::
 
     Please get in touch if I can assist with anything,
     Vince
+
+
+Second meeting
+--------------
+
+- Give brief review of the contents of the chapter. Do this by browsing
+  through: https://vknight.org/pfm/tools-for-mathematics/03-calculus/how/main.html
+- Mention that no specific query arose so I will do a coursework type question
+  but also demonstrate some difficulties that might arise with the Kernel.
+
+I will work through the following problem:
+
+Consider the functions :math:`f(x) = x ^ 3 + 3x - 3` and :math:`g(x) = \cos(x)
+\sin(x)`.`
+
+1. Create a variable `turning_points_of_f` which has value the turning points of
+   :math:`f(X)`.
+2. Create a variable `turning_points_of_g` which has value the turning points of
+   :math:`g(X)`.
+3. Create a variable `max_of_f_on_unit_circle` which has the maximum value of
+   :math:`f` for :math:`x\in\[0, 2\pi\]`.
+4. Create a variable `max_of_g_on_unit_circle` which has the maximum value of
+   :math:`g` for :math:`x\in\[0, 2\pi\]`.
+5. Which function has the maximum value?
+
+
+The solution approach::
+
+    >>> import sympy as sym
+    >>> x = sym.Symbol("x")
+    >>> f = x ** 3 + 3 * x - 3
+    >>> g = sym.cos(x) * sym.sin(x)
+    >>> turning_points_of_f = sym.solveset(sym.diff(f, x), x)
+    >>> turning_points_of_f
+    FiniteSet(I, -I)
+    >>> turning_points_of_g = sym.solveset(sym.diff(g, x), x)
+    >>> turning_points_of_g
+    Union(ImageSet(Lambda(_n, 2*_n*pi + 5*pi/4), Integers), ImageSet(Lambda(_n, 2*_n*pi + 3*pi/4), Integers), ImageSet(Lambda(_n, 2*_n*pi + 7*pi/4), Integers), ImageSet(Lambda(_n, 2*_n*pi + pi/4), Integers))
+    >>> max_of_f_on_unit_circle = max(f.subs({x: 0}), f.subs({x: 2 * sym.pi}))
+    >>> max_of_f_on_unit_circle
+    -3 + 6*pi + 8*pi**3
+    >>> max_of_g_on_unit_circle = max(g.subs({x: 5 * sym.pi / 4}), g.subs({x: 3 * sym.pi / 4}), g.subs({x: 7 * sym.pi / 4}), g.subs({x: sym.pi / 4}))
+    >>> max_of_g_on_unit_circle
+    1/2
+    >>> float(max_of_f_on_unit_circle)
+    263.8997...
+
+
+Highlight that the answer to the final question is thus :math:`f`.
+
+Note that `max` is not a function that has been specifically been seen before
+but that's not unexpected.
+
+Now explain what the kernel is. Draw a picture showing the notebook separated
+from the terminal. Analogy of a brain.
+
+Restart the kernel, show that the last command does not work.
+
+Rerun the cells but include a mistake::
+
+    sym.solveset = (sym.diff(f, x), x)
+
+Note the type of error we then get. And show that here we want the kernel to
+forget everything.

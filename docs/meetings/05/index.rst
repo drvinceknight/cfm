@@ -139,3 +139,34 @@ Send the following email after class::
 
     Please get in touch if I can assist with anything,
     Vince
+
+Second meeting
+--------------
+
+We will cover two points of dicciulty:
+
+- Understanding the summation notation
+- Understanding the ordering of a combination specifically by revisiting the
+  COMPUTER problem.
+
+Consider:
+
+.. math::
+
+   \sum_{i=0}^{100}i ^ 2
+
+Discuss the images at https://github.com/drvinceknight/pfm/issues/120
+
+Then discuss the COMPUTER solution.
+
+Highlight what happens when we add another :code:`P` to the end::
+
+    >>> letters = ("C", "O", "M", "P", "U", "T", "E", "R", "P")
+    >>> selections = tuple(itertools.combinations(letters, 3))
+    >>> sum(1 for selection in selections if selection == ("O", "P", "T"))
+    1
+
+However::
+
+    >>> sum(1 for selection in selections if selection == ("O", "P", "T") or selection == ("O", "T", "P"))
+    2

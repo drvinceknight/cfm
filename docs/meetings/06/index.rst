@@ -14,8 +14,9 @@ Problem
 
 Explain to students that we will be solving the following problem:
 
-A delivery company delivers fragile items. Some deliveries need to rush to be
-able to arrive on time. The probability that an item is delivered on time is
+A delivery company delivers fragile items. If a delivery is on time it is
+usually because it was rushed.
+The probability that an item is delivered on time is
 :math:`0.75`. The probability that an item is broken given that it arrived on
 time is :math:`0.3` and if it is late :math:`0.2`.
 
@@ -111,7 +112,7 @@ We have:
 
 .. math::
 
-    P(\text{On time})} = 0.75
+    P(\text{On time}) = 0.75
 
 .. math::
 

@@ -30,7 +30,7 @@ where :math:`k` is a constant.
 
 1. Write down an expression for :math:`a_2` in terms of :math:`k`.
 2. Show that :math:`a_3 = 9k - 16`
-3. Given that :math:`\sum_{r=1}^12 a_r = 50` find the value of :math:`k`.
+3. Given that :math:`\sum_{r=1}^{12} a_r = 50` find the value of :math:`k`.
 
 
 Solution

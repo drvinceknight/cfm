@@ -68,10 +68,10 @@ or get in touch on discord).
 1. Week 1: [Variables, conditional statements, and while loops](https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/introduction/main.html)
 2. Week 2: [Functions and data structures](https://vknight.org/pfm/building-tools/02-functions-and-data-structures/introduction/main.html)
 3. Week 3: [Object oriented programming](https://vknight.org/pfm/building-tools/03-objects/introduction/main.html)
-4. Week 4: Using a terminal and an editor
-5. Week 5: Modularisation of code
-6. Week 6: Documentation of code
-7. Week 7: Testing of code
+4. Week 4: [Using a terminal and an editor](https://vknight.org/pfm/building-tools/04-editor-and-cli/introduction/main.html)
+5. Week 5: [Modularisation of code](https://vknight.org/pfm/building-tools/05-modularisation/introduction/main.html)
+6. Week 6: [Documentation of code](https://vknight.org/pfm/building-tools/06-documentation/introduction/main.html)
+7. Week 7: [Testing of code](https://vknight.org/pfm/building-tools/07-testing/introduction/main.html)
 8. Week 8: LaTeX and writing mathematics
 9. Week 9: Presenting mathematics (to include watching conference
    presentations/critiques)

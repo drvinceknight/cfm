@@ -59,7 +59,8 @@ or get in touch on discord).
 7. Week starting 23rd of November:
     - Book chapter: [Sequences](https://vknight.org/pfm/tools-for-mathematics/07-sequences/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/zSEv9DZ6yvw)
-8. Week starting 30th of November: Example coursework
+8. Week starting 30th of November: Example and
+   [mock](./assets/nbs/assessment/mock/assignment.ipynb) coursework.
 9. Week starting 7th of December: **Revision/Slack**
 10. Week starting 14th of December: Coursework
 

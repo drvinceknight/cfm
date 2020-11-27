@@ -1,20 +1,35 @@
 words = set(
     (
         "AttributeError",
+        "Cymru",
+        "FiniteSet",
         "Jupyter",
         "LaTeX",
         "Modularisation",
         "NameError",
         "PyCons",
+        "allclose",
         "ax",
         "bc",
-        "Cymru",
+        "boolean",
         "docstring",
+        "dtype",
+        "dx",
+        "dy",
+        "expr",
+        "frisbee",
         "inv",
         "ipynb",
+        "isclose",
+        "itertools",
         "jupyter",
+        "len",
         "nbs",
         "nd",
+        "np",
+        "numpy",
+        "solveset",
+        "sqrt",
         "sym",
         "sympy",
         "th",
@@ -34,17 +49,7 @@ prose_exceptions = {
     ),
 }
 prose_suggestions_to_ignore = {
-    "assets/nbs/assessment/mock/main.ipynb": set(
-        ("typography.symbols.curly_quotes", "garner.preferred_forms")
-    ),
-    "assets/nbs/assessment/mock/assignment.ipynb": set(
-        ("typography.symbols.curly_quotes", "garner.preferred_forms")
-    ),
-    "assets/nbs/assessment/example/main.ipynb": set(
-        (
-            "typography.symbols.curly_quotes",
-            "typography.symbols.ellipsis",
-            "garner.preferred_forms",
-        )
-    ),
+    "assets/nbs/assessment/mock/main.ipynb": set(("typography.symbols.curly_quotes", "garner.preferred_forms")),
+    "assets/nbs/assessment/mock/assignment.ipynb": set(("typography.symbols.curly_quotes", "garner.preferred_forms")),
+    "assets/nbs/assessment/example/main.ipynb": set(("typography.symbols.curly_quotes", "typography.symbols.ellipsis", "garner.preferred_forms")),
 }

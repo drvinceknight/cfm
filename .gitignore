@@ -25,3 +25,6 @@ nbs/chapters/plot.pdf
 *blg
 index.html
 _build
+assets/nbs/assessment/**/submissions/*
+assets/nbs/assessment/**/data.csv
+assets/nbs/assessment/**/gmail.py

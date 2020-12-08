@@ -67,8 +67,7 @@ def main():
         match = re.match(pattern=STUDENT_ID_PATTERN, string=path)
         student_id = match.group(1)
         
-        # TODO Uncomment when ready to send to individual students.
-        #recipient =  f"{student_id}@cardiff.ac.uk"
+        recipient =  f"{student_id}@cardiff.ac.uk"
 
         text = f"""{student_id}
 

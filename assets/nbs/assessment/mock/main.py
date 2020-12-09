@@ -19,6 +19,7 @@ FEEDBACK_SUFFIX = "-feedback.md"
 SUBMISSIONS_PATH = pathlib.Path("./submissions/")
 STUDENT_ID_PATTERN = re.compile("submissions/Mock Coursework \(Optional\)_(.*)_attempt")
 
+
 def create_server(gmail_user, gmail_pwd):
     """
     Create an ssl server by logging in to my gmail account.
@@ -31,18 +32,19 @@ def create_server(gmail_user, gmail_pwd):
 
 def create_message(sender, recipient, text, subject):
     message = MIMEText(text)
-    message['Subject'] = subject
-    message['From'] = sender
-    message['To'] = recipient
+    message["Subject"] = subject
+    message["From"] = sender
+    message["To"] = recipient
     return message
+
 
 def send_message(server_ssl, sender, recipient, message):
     """
     Send an email using a given server
     """
     server_ssl.sendmail(from_addr=sender, to_addrs=recipient, msg=message.as_string())
-    #server_ssl.quit()
-    print(f'successfully sent the mail to {recipient}')
+    # server_ssl.quit()
+    print(f"successfully sent the mail to {recipient}")
 
 
 def close_server(server_ssl):
@@ -53,8 +55,8 @@ def close_server(server_ssl):
 
 
 def main():
-    sender = 'knightva@cardiff.ac.uk'
-    recipient  = 'knightva@cardiff.ac.uk'
+    sender = "knightva@cardiff.ac.uk"
+    recipient = "knightva@cardiff.ac.uk"
     server_ssl = create_server(gmail_user=gmail.gmail_user, gmail_pwd=gmail.gmail_pwd)
 
     df = pd.read_csv("./data.csv")
@@ -66,8 +68,8 @@ def main():
         feedback = pathlib.Path(path + FEEDBACK_SUFFIX).read_text()
         match = re.match(pattern=STUDENT_ID_PATTERN, string=path)
         student_id = match.group(1)
-        
-        recipient =  f"{student_id}@cardiff.ac.uk"
+
+        recipient = f"{student_id}@cardiff.ac.uk"
 
         text = f"""{student_id}
 
@@ -79,9 +81,13 @@ any questions email "knightva@cardiff.ac.uk" (DO NOT REPLY TO THIS EMAIL).
 {feedback}
 """
 
-        message = create_message(sender=sender, recipient=recipient, text=text, subject=SUBJECT)
+        message = create_message(
+            sender=sender, recipient=recipient, text=text, subject=SUBJECT
+        )
 
-        send_message(server_ssl=server_ssl, sender=sender, recipient=recipient, message=message)
+        send_message(
+            server_ssl=server_ssl, sender=sender, recipient=recipient, message=message
+        )
 
     close_server(server_ssl=server_ssl)
 

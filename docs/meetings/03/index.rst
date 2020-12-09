@@ -176,7 +176,7 @@ The solution approach::
     FiniteSet(I, -I)
     >>> turning_points_of_g = sym.solveset(sym.diff(g, x), x)
     >>> turning_points_of_g
-    Union(ImageSet(Lambda(_n, 2*_n*pi + 5*pi/4), Integers), ImageSet(Lambda(_n, 2*_n*pi + 3*pi/4), Integers), ImageSet(Lambda(_n, 2*_n*pi + 7*pi/4), Integers), ImageSet(Lambda(_n, 2*_n*pi + pi/4), Integers))
+    Union(ImageSet(Lambda(_n, _n*pi + pi/4), Integers), ImageSet(Lambda(_n, _n*pi + 3*pi/4), Integers))
     >>> max_of_f_on_unit_circle = max(f.subs({x: 0}), f.subs({x: 2 * sym.pi}))
     >>> max_of_f_on_unit_circle
     -3 + 6*pi + 8*pi**3

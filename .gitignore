@@ -18,6 +18,7 @@ my_plot.pdf
 *.pygstyle
 *.pygtex
 *cache*
+*.mov
 docs/_build/*
 nbs/chapters/plot.pdf
 *bbl

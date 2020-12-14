@@ -62,7 +62,8 @@ or get in touch on discord).
 8. Week starting 30th of November: Example and
    [mock](./assets/nbs/assessment/mock/assignment.ipynb) coursework.
 9. Week starting 7th of December: **Revision/Slack**
-10. Week starting 14th of December: Coursework
+10. Week starting 14th of December: [Coursework](./assets/nbs/assessment/2020/assignment.ipynb)
+    Deadline: submit before midnight on Friday the 18th of December.
 
 ## Second Semester
 
@@ -105,6 +106,34 @@ You are welcome to get in touch with me at any time although I might not
 immediately be available to respond.
 
 Office hours: Friday 1400 - 1600 (email me or get in touch on discord).
+
+---
+
+# Frequently asked questions
+
+## <a name="how-do-office-hours-work"></a>[How do office hours work?](./#how-do-office-hours-work)
+
+During the agreed office hours, send me an email or speak to me on discord. I
+will respond and if either of us finds it helpful I will send you a link to a
+video call.
+
+## <a name="how-to-download-the-coursework"></a>[How to download the coursework?](./#how-to-download-the-coursework)
+
+1. Right click on the link to the coursework and save the file to your computer
+   (make a note of where it is on your computer).
+2. **Do not double click on the file you have downloaded.** (see https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/why/main.html#why-can-i-not-double-click-on-a-jupyter-notebook-file for an explanation).
+3. Start a Jupyter notebook server (see
+   https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/how/main.html#start-a-jupyter-notebook-server
+   for instructions).
+4. Using the Jupyter notebook interface navigate to the notebook file you saved
+   on your computer in step 1 and click on it.
+
+## <a name="how-to-upload-the-coursework"></a>[How to upload the coursework?](./#how-to-upload-the-coursework)
+
+1. In learning central for computing for mathematics, you will find an
+   assignment.
+2. Locate the `ipynb` file that corresponds to your coursework on your computer.
+3. Upload it to the assignment on learning central.
 
 ---
 

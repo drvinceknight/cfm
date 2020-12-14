@@ -1,5 +1,10 @@
 words = set(
     (
+        "scipy",
+        "Combinatorics",
+        "rhs",
+        "lhs",
+        "df",
         "AttributeError",
         "Cymru",
         "FiniteSet",
@@ -54,6 +59,9 @@ prose_exceptions = {
     ),
 }
 prose_suggestions_to_ignore = {
+    "assets/nbs/assessment/2020/main.ipynb": set(
+        ("typography.symbols.curly_quotes", "garner.preferred_forms")
+    ),
     "assets/nbs/assessment/mock/main.ipynb": set(
         ("typography.symbols.curly_quotes", "garner.preferred_forms")
     ),

@@ -38,7 +38,7 @@ def get_markdown_files_to_check(root=REPO_ROOT, source_file_path=SOURCE_FILE_PAT
     markdown_exporter = nbconvert.MarkdownExporter()
     notebook_directory = root / "assets/nbs"
     for path in notebook_directory.glob("**/*.ipynb"):
-        if "checkpoint" not in str(path):
+        if "checkpoint" not in str(path) and "submissions" not in str(path):
             md, _ = markdown_exporter.from_file(path)
 
             temporary_file = tempfile.NamedTemporaryFile(suffix=".md")

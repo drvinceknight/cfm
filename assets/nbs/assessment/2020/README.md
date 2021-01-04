@@ -45,10 +45,10 @@ This submission was the mock coursework.
 
 Using:
 
-    >>> import pandas as pd
-    >>> df = pd.read_csv("data.csv")
-    >>> for _, row in df[(df["Score"] < 18) & df["Tags match"]].iterrows():
-    ...     print(row["Submission filepath"])
+    import pandas as pd
+    df = pd.read_csv("data.csv")
+    for _, row in df[(df["Score"] < 18) & df["Tags match"]].iterrows():
+        print(row["Submission filepath"])
 
 #### submissions/Coursework_c2009938_attempt_2020-12-22-23-02-18_C2009938.ipynb
 
@@ -75,10 +75,10 @@ The mark is correct.
 
 Using:
 
-    >>> import pandas as pd
-    >>> df = pd.read_csv("data.csv")
-    >>> for _, row in df.sample(n=10, rand m_state=0).iterrows():
-    ...     print(row["Submission filepath"])
+    import pandas as pd
+    df = pd.read_csv("data.csv")
+    for _, row in df.sample(n=10, rand m_state=0).iterrows():
+        print(row["Submission filepath"])
 
 #### submissions/Coursework_c1923953_attempt_2020-12-17-14-49-49_c1923953.ipynb
 
@@ -126,3 +126,21 @@ correct).
 #### submissions/Coursework_c21012303_attempt_2020-12-16-16-57-36_c21012303.ipynb
 
 The mark is correct.
+
+### Analysis
+
+Analysis done with:
+
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    df = pd.read_csv("data.csv")
+    df["Mark"] = df["Score"] * 100 / df["Maximum score"].max()
+    print(df["Mark"].describe())
+
+    plt.figure()
+    plt.hist(df["Mark"], bins=20, label="frequency")
+    median = df["Mark"].median()
+    plt.vlines(median, ymin=0, ymax=100, label=f"median={round(median,3)}")
+    plt.legend()
+    plt.xlabel("mark")
+    plt.savefig("main.pdf")

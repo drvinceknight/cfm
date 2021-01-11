@@ -93,7 +93,10 @@ def main():
             )
 
             send_message(
-                server_ssl=server_ssl, sender=sender, recipient=recipient, message=message
+                server_ssl=server_ssl,
+                sender=sender,
+                recipient=recipient,
+                message=message,
             )
 
     close_server(server_ssl=server_ssl)

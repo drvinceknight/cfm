@@ -26,5 +26,7 @@ nbs/chapters/plot.pdf
 index.html
 _build
 assets/nbs/assessment/**/submissions/*
-assets/nbs/assessment/**/data.csv
+assets/nbs/assessment/**/*data.csv
 assets/nbs/assessment/**/gmail.py
+assets/nbs/assessment/**/2019-resit/*
+assets/nbs/assessment/**/sent.txt

@@ -1,7 +1,7 @@
 # Coursework
 
 This coursework is written to be used with
-[nchkr](https://nbchkr.readthedocs.io/en/stable/). 
+[nchkr](https://nbchkr.readthedocs.io/en/stable/).
 
 `main.ipynb` is the source document.
 

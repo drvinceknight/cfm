@@ -62,6 +62,9 @@ prose_suggestions_to_ignore = {
     "assets/nbs/assessment/2020/main.ipynb": set(
         ("typography.symbols.curly_quotes", "garner.preferred_forms")
     ),
+    "assets/nbs/assessment/2020/solution.ipynb": set(
+        ("typography.symbols.curly_quotes", "garner.preferred_forms")
+    ),
     "assets/nbs/assessment/mock/main.ipynb": set(
         ("typography.symbols.curly_quotes", "garner.preferred_forms")
     ),

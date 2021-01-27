@@ -91,7 +91,11 @@ This course will be assessed in two parts:
   the total mark for the course.
 - A group coursework. Over the second semester you will work in a group to build
   a software tool to solve a type of mathematical problem of your choice. The
-  group will give a presentation of their work and write short explanation.
+  work will be assessed through:
+
+  - A 15 minute presentation
+  - A 2 page paper
+
   This will count for 50% of the total mark for the course.
 
 ---

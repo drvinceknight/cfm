@@ -14,10 +14,22 @@ After this meeting students should:
 Coursework
 **********
 
-TODO
-Explain goal of coursework.
+Explain goal of coursework:
 
-How it will be assessed (15 minute presentation).
+> To build and present a Python library to solve a mathematical problem of your
+  choice.
+
+How it will be assessed (15 minute presentation and 2 page (max) paper).
+
+Groups of 4. Self select and see instructions in email.
+
+Agree on deadline for formation of group.
+
+I recommend you meet regularly.
+
+Have an agenda for every meeting.
+
+Single point of contact.
 
 Problem
 *******
@@ -131,15 +143,29 @@ Send the following email after class::
 
     A recording of today's class is available at <>.
 
-    In this class I went over TODO Write description of for, while
+    In this class I went over 2 separate things:
+
+    1. The group coursework (please read the end of this email where action is
+       required).
+    2. Variables, loops and conditionals.
 
     In preparation for your tutorial tomorrow please work through the eighth
     chapter of the Python for mathematics book:
-    TODO Correct url
+    https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/introduction/main.html
 
     IMPORTANT ACTION REQUIRED
 
-    TODO Invite students to form groups
+    For your group coursework you have until <DEADLINE> to form groups with 4
+    people. I am letting you self select groups. If you do not have a group by
+    <DEADLINE> I will create a group for you.
+
+    Once you have created a group, 1 member of your group must email me (CC'ing
+    in all other members) with subject: "Group formed"
+
+    In the email please tell me the name of your group (you can be imaginative)
+    and also which member of your group is the point of contact.
+
+    ---
 
     Please get in touch if I can assist with anything,
     Vince

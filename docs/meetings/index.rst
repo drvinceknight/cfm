@@ -17,3 +17,4 @@ Class meetings
    ./05/index.rst
    ./06/index.rst
    ./07/index.rst
+   ./08/index.rst

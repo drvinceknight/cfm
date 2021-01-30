@@ -66,10 +66,18 @@ or get in touch on discord).
 
 ## Second Semester
 
-1. Week 1: [Variables, conditional statements, and while loops](https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/introduction/main.html)
-2. Week 2: [Functions and data structures](https://vknight.org/pfm/building-tools/02-functions-and-data-structures/introduction/main.html)
-3. Week 3: [Object oriented programming](https://vknight.org/pfm/building-tools/03-objects/introduction/main.html)
-4. Week 4: [Using a terminal and an editor](https://vknight.org/pfm/building-tools/04-editor-and-cli/introduction/main.html)
+1. Week 1:
+    - Book chapter: [Variables, conditional statements, and while loops](https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/introduction/main.html)
+    - [Video demonstration of tutorial](https://youtu.be/uoIUKmnuaYQ)
+2. Week 2:
+    - Book chapter: [Functions and data structures](https://vknight.org/pfm/building-tools/02-functions-and-data-structures/introduction/main.html)
+    - [Video demonstration of tutorial](https://youtu.be/ZzHIoe1crkE)
+3. Week 3:
+    - Book chapter: [Object oriented programming](https://vknight.org/pfm/building-tools/03-objects/introduction/main.html)
+    - [Video demonstration of tutorial](https://youtu.be/3DGb2_qqPmk)
+4. Week 4:
+    - Book chapter: [Using a terminal and an editor](https://vknight.org/pfm/building-tools/04-editor-and-cli/introduction/main.html)
+    - [Video demonstration of tutorial](https://youtu.be/MPk815rdwi0)
 5. Week 5: [Modularisation of code](https://vknight.org/pfm/building-tools/05-modularisation/introduction/main.html)
 6. Week 6: [Documentation of code](https://vknight.org/pfm/building-tools/06-documentation/introduction/main.html)
 7. Week 7: [Testing of code](https://vknight.org/pfm/building-tools/07-testing/introduction/main.html)
@@ -91,10 +99,7 @@ This course will be assessed in two parts:
   the total mark for the course.
 - A group coursework. Over the second semester you will work in a group to build
   a software tool to solve a type of mathematical problem of your choice. The
-  work will be assessed through:
-
-  - A 15 minute presentation
-  - A 2 page paper
+  work will be assessed through: A 15 minute presentation and a 2 page paper.
 
   This will count for 50% of the total mark for the course.
 

@@ -1,6 +1,36 @@
 Variables, conditionals and loops
 =================================
 
+Pre class email
+---------------
+
+Send the following email before class::
+
+    Hi all,
+
+    I hope you are all well.
+
+    This is a brief email to make you aware of a few things:
+
+    - The class timetable and weekly schedule for this Semester is available
+      here: https://vknight.org/cfm/
+    - This coming week, we will have class on Tuesday at 0900 am (feel free to
+      bring breakfast). This week we
+      will be covering this chapter
+      https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/introduction/main.html.
+    - This Semester your assessment is a group exercise. I am letting you self
+      select groups (groups of 4) but will assist anyone unable to find a group.
+      We will discuss this more on Tuesday.
+
+    Important: My wife and I are expecting our second child any day now, so at
+    some point over the next couple of weeks I will not be around (for a week).
+    Your weekly tutorial will still take place (with the usual expectations that
+    you work through the weekly content and use the tutorial to ask questions)
+    and we have sufficient time in the schedule to catch up.
+
+    Please get in touch if I can assist with anything,
+    Vince
+
 First meeting
 -------------
 

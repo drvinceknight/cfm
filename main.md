@@ -21,15 +21,15 @@ helpful).
 
 Class (virtual via Zoom):
 
-- Tuesday 1500
-- Friday 1300
+- Tuesday 0900
+- Friday 1300 (every other week)
 
 Tutorial (virtual via Zoom):
 
 - Wednesday 1100: Groups A, B, C, D
-- Wednesday 1300: Groups E, F, G, H
-- Wednesday 1500: Groups I, J, K, L, M
-- Wednesday 1600: Groups N, O, P, Q, R, Cymru
+- Wednesday 1200: Groups E, F, G, H
+- Wednesday 1400: Groups I, J, K, L, M
+- Wednesday 1500: Groups N, O, P, Q, R, Cymru
 
 Check your timetable to know which group you are in.
 

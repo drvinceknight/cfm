@@ -199,3 +199,219 @@ Send the following email after class::
 
     Please get in touch if I can assist with anything,
     Vince
+
+Post meeting
+------------
+
+The main difficulties raised were:
+
+- Sets
+- Modulo
+- Doing more involved problems
+
+Sets
+++++
+
+Create a set::
+
+    >>> set_1 = set((-1, 1, 1, 2, 3, 5))
+    >>> set_1
+    {1, 2, 3, 5, -1}
+    >>> set_2 = set(range(10))
+    >>> set_2
+    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+Union::
+
+    >>> set_1 | set_2
+    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1}
+
+Intersection::
+
+    >>> set_1 & set_2
+    {1, 2, 3, 5}
+
+Set subtraction::
+
+    >>> set_1 - set_2
+    {-1}
+
+Set inclusion::
+
+    >>> set_1 <= set_2
+    False
+
+Reasons for using sets:
+
+- The ability to to the above operations.
+- Immediate removal of duplicates.
+- Checking inclusion.
+
+
+Run the following timing examples::
+
+    N = 10 ** 4
+    numbers_as_range = range(N)
+    numbers_as_list = list(numbers_as_range)
+    numbers_as_tuple = tuple(numbers_as_range)
+    numbers_as_set = set(numbers_as_range)
+
+Testing the list::
+
+    %%timeit
+    5000 in numbers_as_list
+
+Testing the tuple::
+
+    %%timeit
+    5000 in numbers_as_tuple
+
+Testing the set::
+
+    %%timeit
+    5000 in numbers_as_set
+
+Testing the range itself::
+
+    %%timeit
+    5000 in numbers_as_range
+
+Modulo
+++++++
+
+Give some examples of modula arithmetic::
+
+    >>> 5 % 2
+    1
+    >>> 17 % 9
+    8
+    >>> for i in range(24 * 5):
+    ...     print(i % 24)
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+    19
+    20
+    21
+    22
+    23
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+    19
+    20
+    21
+    22
+    23
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+    19
+    20
+    21
+    22
+    23
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+    19
+    20
+    21
+    22
+    23
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+    19
+    20
+    21
+    22
+    23
+
+
+Doing more involved problems
+++++++++++++++++++++++++++++
+
+Discuss how important it is, when building tools to spend time away from the
+computer. Make the analogy of writing down a recipe before starting to cook.
+

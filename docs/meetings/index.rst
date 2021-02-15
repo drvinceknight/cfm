@@ -18,4 +18,6 @@ Class meetings
    ./06/index.rst
    ./07/index.rst
    ./08/index.rst
+   ./09/index.rst
+   ./10/index.rst
    ./marking-criteria/index.rst

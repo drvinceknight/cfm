@@ -17,7 +17,7 @@ Tell students we are going to investigate some group theory.
 
 Recall/tell them the property of a group.
 
-- Closure: if :math:`a,b\in G` then :math:`\a\cdot\b\in G`.
+- Closure: if :math:`a,b\in G` then :math:`a \cdot b\in G`.
 - Identity: :math:`\exists e in G:\; e\cdot a = a \cdot e = a\forall; a\in G`
 - Inverse: :math:`\forall\;a\in G\exists\;a^{-1}\in G:\; a\cdot a^{-1}=e`
 - Associativity: :math:`\forall; a,b,c\in G:\; (a\cdot b)\cdot c = a\cdot (b \cdot

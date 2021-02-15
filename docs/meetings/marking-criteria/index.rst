@@ -10,7 +10,7 @@ have been formed::
       purpose of the software for a diverse, non-specialist audience been
       provided?  [10%]
     - **A statement of need**: Do the authors clearly state what problems the
-      software is designed to solve and who the target audience is?
+      software is designed to solve and who the target audience is? [10%]
     - **State of the field**: Do the authors describe how this software compares
       to other commonly-used packages? [10%]
     - **Quality of writing**: Is the paper well written (i.e., it does not
@@ -27,7 +27,7 @@ have been formed::
       Reference and Explanation section? Is it clear? Is the source code clear?
       [10%]
     - **Modularity**: Is the code written in a modular way? [10%]
-    - **Testing**: Is all code tested? [10%]
+    - **Testing**: Is all code validated? [10%]
     - **Presentation**: Was the presentation format used appropriately? Were the
       visual aids appropriate? [10%]
 

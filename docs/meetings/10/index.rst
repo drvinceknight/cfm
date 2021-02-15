@@ -15,7 +15,7 @@ Problem
 
 Tell students we are going to investigate some group theory.
 
-Recall/tell them the property of a group.
+A group :math:`G` is defined as:
 
 - Closure: if :math:`a,b\in G` then :math:`a \cdot b\in G`.
 - Identity: :math:`\exists e in G:\; e\cdot a = a \cdot e = a\forall; a\in G`

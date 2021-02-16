@@ -18,9 +18,9 @@ Tell students we are going to investigate some group theory.
 A group :math:`G` is defined as:
 
 - Closure: if :math:`a,b\in G` then :math:`a \cdot b\in G`.
-- Identity: :math:`\exists e in G:\; e\cdot a = a \cdot e = a\forall; a\in G`
-- Inverse: :math:`\forall\;a\in G\exists\;a^{-1}\in G:\; a\cdot a^{-1}=e`
-- Associativity: :math:`\forall; a,b,c\in G:\; (a\cdot b)\cdot c = a\cdot (b \cdot
+- Identity: there exists :math:`e \in G:\; e\cdot a = a \cdot e = a` for all :math:`a\in G`
+- Inverse: for all :math:`a\in G` there exists :math:`a^{-1}\in G:\; a\cdot a^{-1}=e`
+- Associativity: for all :math:`a,b,c\in G:\; (a\cdot b)\cdot c = a\cdot (b \cdot
   c)`
 
 Consider the permutation group: https://en.wikipedia.org/wiki/Permutation_group.

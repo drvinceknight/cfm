@@ -78,9 +78,15 @@ or get in touch on discord).
 4. Week 4:
     - Book chapter: [Using a terminal and an editor](https://vknight.org/pfm/building-tools/04-editor-and-cli/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/MPk815rdwi0)
-5. Week 5: [Modularisation of code](https://vknight.org/pfm/building-tools/05-modularisation/introduction/main.html)
-6. Week 6: [Documentation of code](https://vknight.org/pfm/building-tools/06-documentation/introduction/main.html)
-7. Week 7: [Testing of code](https://vknight.org/pfm/building-tools/07-testing/introduction/main.html)
+5. Week 5:
+    - Book chapter: [Modularisation of code](https://vknight.org/pfm/building-tools/05-modularisation/introduction/main.html)
+    - [Video demonstration of tutorial](https://youtu.be/s2cDg-Zncrw)
+6. Week 6:
+    - Book chapter: [Documentation of code](https://vknight.org/pfm/building-tools/06-documentation/introduction/main.html)
+    - [Video demonstration of tutorial](https://youtu.be/FLHJ27Srqbk)
+7. Week 7:
+    - Book chapter: [Testing of code](https://vknight.org/pfm/building-tools/07-testing/introduction/main.html)
+    - [Video demonstration of tutorial](https://youtu.be/TaZYDG6Vags)
 8. Week 8: LaTeX and writing mathematics
 9. Week 9: Presenting mathematics (to include watching conference
    presentations/critiques)

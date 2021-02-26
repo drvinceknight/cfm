@@ -21,4 +21,5 @@ Class meetings
    ./09/index.rst
    ./10/index.rst
    ./11/index.rst
+   ./12/index.rst
    ./marking-criteria/index.rst

@@ -134,15 +134,17 @@ Modify the documentation in the `README.md` file to use doctests::
     We can obtain a tour using the following:
 
     ```python
-    >>> import tsp
-    >>> tour = tsp.run_2_opt_algorithm(number_of_stops=4, distance_matrix=distance_matrix, iterations=1000, seed=0)
-    >>> tour
+    >>> import tsp  # doctest: +SKIP
+    >>> tour = tsp.run_2_opt_algorithm(number_of_stops=4, distance_matrix=distance_matrix, iterations=1000, seed=0)  # doctest: +SKIP
+    >>> tour  # doctest: +SKIP
     [0, 3, 1, 2, 0]
 
     ```
 
     The `tsp` library includes further functionality which you can read in the
     How To guides.
+
+**Note** that the doctests are skipped when checked for this documentation.
 
 Run the doc tests by typing::
 

@@ -87,7 +87,9 @@ or get in touch on discord).
 7. Week 7:
     - Book chapter: [Testing of code](https://vknight.org/pfm/building-tools/07-testing/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/TaZYDG6Vags)
-8. Week 8: LaTeX and writing mathematics
+8. Week 8: [LaTeX](https://vknight.org/tex/) and writing mathematics:
+    - ["Some guidelines for Good Mathematical Writing" by Francis Su](https://vknight.org/cfm/assets/pdf/writing-mathematics-guidelines/main.pdf)
+    - ["A guide to writing mathematics" by Kevin Lee](https://vknight.org/cfm/assets/pdf/a-guide-to-writing-mathematics/main.pdf)
 9. Week 9: Presenting mathematics (to include watching conference
    presentations/critiques)
 10. Week 10: Group work

@@ -54,8 +54,8 @@ Send the following email after class::
     We also discussed principles of presentation: https://vknight.org/pop/
 
     You can find the paper that corresponds to the presentation here:
-    https://vknight.org/assets/pdf/ertai_paper/main.pdf (the tex source code is
-    available here: https://vknight.org/assets/pdf/ertai_paper/main.tex).
+    https://vknight.org/cfm/assets/pdf/ertai_paper/main.pdf (the tex source code is
+    available here: https://vknight.org/cfm/assets/pdf/ertai_paper/main.tex).
 
     Please get in touch if I can assist with anything,
     Vince

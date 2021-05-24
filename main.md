@@ -62,7 +62,7 @@ or get in touch on discord).
 8. Week starting 30th of November: Example and
    [mock](./assets/nbs/assessment/mock/assignment.ipynb) coursework.
 9. Week starting 7th of December: **Revision/Slack**
-10. Week starting 14th of December: [Coursework](./assets/nbs/assessment/2020/assignment.ipynb) [Solution](./assets/nbs/assessment/2020/solution.ipynb)
+10. Week starting 14th of December: [Coursework](./assets/assessment/2020-2021/ind/assignment.ipynb) [Solution](./assets/assessment/2020-2021/ind/solution.ipynb)
 
 ## Second Semester
 

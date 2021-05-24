@@ -12,6 +12,7 @@ my_plot.pdf
 *.log
 *.nav
 *.out
+*.xdv
 *.snm
 *.toc
 *.vrb
@@ -25,8 +26,14 @@ nbs/chapters/plot.pdf
 *blg
 index.html
 _build
-assets/nbs/assessment/**/submissions/*
-assets/nbs/assessment/**/*data.csv
-assets/nbs/assessment/**/gmail.py
-assets/nbs/assessment/**/2019-resit/*
-assets/nbs/assessment/**/sent.txt
+**/submissions/*
+**/sent.txt
+**/assessment/**/*data.csv
+**/gmail.py
+*.xlsx
+**/2019-resit/*
+**assets/data/2020-2021/
+*.numbers
+assets/assessment/2020-2021/group/main.csv
+assets/assessment/2020-2021/main.ipynb
+assets/nbs/assessment/*

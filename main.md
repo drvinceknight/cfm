@@ -21,48 +21,43 @@ helpful).
 
 Class (virtual via Zoom):
 
-- Tuesday 0900
-- Friday 1300 (every other week)
+- Monday 1600
+- Friday 1700
 
-Tutorial (virtual via Zoom):
+Tutorials (in Abacws: see timetable).
 
-- Wednesday 0900 -> 0945: Groups N, O, P, Q, R, Cymru
-- Wednesday 1100 -> 1145: Groups A, B, C, D
-- Wednesday 1200 -> 1245: Groups E, F, G, H
-- Wednesday 1500 -> 1545: Groups I, J, K, L, M
-
-Check your timetable to know which group you are in.
-
-Office hours (virtual using Zoom and/or discord): Friday 1400 - 1600 (email me
-or get in touch on discord).
+Office hours (in Abacws: office 2.52 and/or virtually): time to be arranged in
+class.
 
 ## First Semester
 
-1. Week starting 12th of October:
+1. Week starting 4th of October:
     - Book chapter: [Using notebooks](https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/6iB0Go9wr9E)
-2. Week starting 19th of October:
+2. Week starting 11th of October:
     - Book chapter: [Algebra](https://vknight.org/pfm/tools-for-mathematics/02-algebra/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/E_TKJkvi-GY)
-3. Week starting 26th of October:
+3. Week starting 18th of October:
     - Book chapter: [Calculus](https://vknight.org/pfm/tools-for-mathematics/03-calculus/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/7j4bqypXi48)
-4. Week starting 2nd of November:
+4. Week starting 25th of November:
     - Book chapter: [Matrices](https://vknight.org/pfm/tools-for-mathematics/04-matrices/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/9aoz22SxZjY)
-5. Week starting 9th of November:
+5. Week starting 1st of November:
     - Book chapter: [Combinatorics](https://vknight.org/pfm/tools-for-mathematics/05-combinations-permutations/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/7KpC9YN_rvQ)
-6. Week starting 16th of November:
+6. Week starting 8th of November:
     - Book chapter: [Probability](https://vknight.org/pfm/tools-for-mathematics/06-probability/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/34mKnQ4fqHQ)
-7. Week starting 23rd of November:
+7. Week starting 15th of November:
     - Book chapter: [Sequences](https://vknight.org/pfm/tools-for-mathematics/07-sequences/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/zSEv9DZ6yvw)
-8. Week starting 30th of November: Example and
+8. Week starting 22nd of November: Example and
    [mock](./assets/nbs/assessment/mock/assignment.ipynb) coursework.
-9. Week starting 7th of December: **Revision/Slack**
-10. Week starting 14th of December: [Coursework](./assets/assessment/2020-2021/ind/assignment.ipynb) [Solution](./assets/assessment/2020-2021/ind/solution.ipynb)
+9. Week starting 29th of November: **Revision/Slack**
+10. Week starting 6th of December: **Revision/Slack** and release of individual
+    coursework.
+11. Week starting 13th of December: Individual coursework deadline.
 
 ## Second Semester
 
@@ -117,11 +112,12 @@ This course will be assessed in two parts:
 
 - My email address is `knightva@cardiff.ac.uk`.
 - I will be sending invitations to a discord server (a messaging application).
+- My office: Abacws 2.52
 
 You are welcome to get in touch with me at any time although I might not
 immediately be available to respond.
 
-Office hours: Friday 1400 - 1600 (email me or get in touch on discord).
+Office hours: to be agreed in class.
 
 ---
 
@@ -129,9 +125,8 @@ Office hours: Friday 1400 - 1600 (email me or get in touch on discord).
 
 ## <a name="how-do-office-hours-work"></a>[How do office hours work?](./#how-do-office-hours-work)
 
-    During the agreed office hours, send me an email or speak to me on discord.
-    I will respond and if either of us finds it helpful I will send you a link
-    to a video call.
+    During the agreed office hours, feel free to knock on my door or 
+    send me an email or speak to me on discord.
 
 ## <a name="how-to-download-the-coursework"></a>[How to download the coursework?](./#how-to-download-the-coursework)
 

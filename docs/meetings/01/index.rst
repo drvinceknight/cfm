@@ -6,6 +6,22 @@
 Introduction week
 =================
 
+Pre class email
+---------------
+
+Send the following email before class::
+
+    Hi all,
+
+    Here is the zoom information for today's class:
+
+    <zoom information>
+
+    Here is a discord invite to the server I use for teaching: <server link>
+
+    Please get in touch if I can assist with anything,
+    Vince
+
 First meeting
 -------------
 

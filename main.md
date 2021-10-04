@@ -26,8 +26,7 @@ Class (virtual via Zoom):
 
 Tutorials (in Abacws: see timetable).
 
-Office hours (in Abacws: office 2.52 and/or virtually): time to be arranged in
-class.
+Office hours (in Abacws: office 2.52 and/or virtually): Fridays 1000 - 1200
 
 ## First Semester
 
@@ -40,7 +39,7 @@ class.
 3. Week starting 18th of October:
     - Book chapter: [Calculus](https://vknight.org/pfm/tools-for-mathematics/03-calculus/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/7j4bqypXi48)
-4. Week starting 25th of November:
+4. Week starting 25th of October:
     - Book chapter: [Matrices](https://vknight.org/pfm/tools-for-mathematics/04-matrices/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/9aoz22SxZjY)
 5. Week starting 1st of November:

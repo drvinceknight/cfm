@@ -6,6 +6,22 @@
 Introduction week
 =================
 
+Pre class email
+---------------
+
+Send the following email before class::
+
+    Hi all,
+
+    Here is the zoom information for today's class:
+
+    <zoom information>
+
+    Here is a discord invite to the server I use for teaching: <server link>
+
+    Please get in touch if I can assist with anything,
+    Vince
+
 First meeting
 -------------
 
@@ -21,6 +37,7 @@ Introduce myself
 ****************
 
 - Pick 4 or 5 pictures of my family and I to introduce myself.
+- Discuss my parental leave (Geraint Palmer from 1st of November)
 - Mathematician (where/what I studied)
 - Trustee of the UK Python association https://uk.python.org
 - Conference and workshop organiser
@@ -31,10 +48,9 @@ Introduce myself
 Programming
 ***********
 
-1. Group exercise (breakout rooms of 3): ask students to spend 2 minutes
-   answering the question: "What is programming".
+1. Class exercise: get a class word cloud association for the word "programming". (Using mentimeter.com).
 2. Show them https://twitter.com/MissReeeves/status/1313587567137370113
-3. Group exercise (breakout rooms of 3):  answer "What are uses for programming
+3. Class exercises: get a class word cloud association "What are uses for programming
    in Mathematics?"
 
    - Proving theorems;
@@ -56,10 +72,8 @@ As a class identify office hours.
 
 Potential times are:
 
-Friday:
-
-11-1300
-14-1600
+Tuesday: 12-1400
+Friday: 10-1200
 
 
 How the class works
@@ -68,7 +82,7 @@ How the class works
 Direct students at my teaching philosophy page: <https://vknight.org/tch-phi/>
 
 Discuss the philosophy of the main text, specifically discussing this
-<https://vknight.org/pfm/_images/main2.png>
+<https://vknight.org/pfm/overview/introduction/main.html#fig-knowledge-vs-technique>
 
 Discuss structure of the book.
 

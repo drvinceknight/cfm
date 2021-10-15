@@ -166,3 +166,17 @@ Send the following email after class::
 
     Please get in touch if I can assist with anything,
     Vince
+
+Post class meeting
+------------------
+
+Discuss the following:
+
+- Python syntax errors:  specifically things like :code:`3x` versus :code:`3 *
+  x`.
+- Discuss :math:`3/\sqrt{3}` using :math:`6/12` as an analogy.
+- Brackets (different types of brackets), readability (variable names) and
+  space. End with discussion of PEP8.
+- Discuss :code:`sympy.S` versus `sympy.Symbol` (again pointing at readability).
+- Discuss Kernels: restarting a kernel, overwriting some things etc...
+- Discuss output (using the :code:`print` statement, outputting a tuple etc...).

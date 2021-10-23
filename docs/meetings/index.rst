@@ -17,6 +17,7 @@ Class meetings
    ./05/index.rst
    ./06/index.rst
    ./07/index.rst
+   ./example-coursework/index.rst
    ./08/index.rst
    ./09/index.rst
    ./10/index.rst

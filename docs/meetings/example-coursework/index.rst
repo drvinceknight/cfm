@@ -16,6 +16,7 @@ Download and show students this notebook :download:`assignment.ipynb </_static/e
 Could be beneficial to show students how to download and open it (from the
 this page of notes). This is a task
 that is often difficult. Point students at: https://vknight.org/cfm/#how-to-download-the-coursework
+and here is a video showing how to do it as well: https://www.youtube.com/watch?v=LpDtq589P8w
 
 Work through the example coursework.
 

@@ -52,7 +52,7 @@ Office hours (in Abacws: office 2.52 and/or virtually): Fridays 1000 - 1200
     - Book chapter: [Sequences](https://vknight.org/pfm/tools-for-mathematics/07-sequences/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/zSEv9DZ6yvw)
 8. Week starting 22nd of November: Example and
-   [mock](./assets/nbs/assessment/mock/assignment.ipynb) coursework.
+   [mock](./assets/assessment/mock/assignment.ipynb) coursework.
 9. Week starting 29th of November: **Revision/Slack**
 10. Week starting 6th of December: **Revision/Slack** and release of individual
     coursework.

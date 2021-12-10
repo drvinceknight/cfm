@@ -54,8 +54,7 @@ Office hours (in Abacws: office 2.52 and/or virtually): Fridays 1000 - 1200
 8. Week starting 22nd of November: Example and
    [mock](./assets/assessment/mock/assignment.ipynb) coursework.
 9. Week starting 29th of November: **Revision/Slack**
-10. Week starting 6th of December: **Revision/Slack** and release of individual
-    coursework.
+10. Week starting 6th of December: **Revision/Slack** and release of [individual coursework](./assets/assessment/2021-2022/ind/assignment.ipynb).
 11. Week starting 13th of December: Individual coursework deadline.
 
 ## Second Semester

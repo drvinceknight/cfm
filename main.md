@@ -22,11 +22,12 @@ helpful).
 Class (virtual via Zoom):
 
 - Monday 1600
-- Friday 1700
+- Friday 1300
 
-Tutorials (in Abacws: see timetable).
+Tutorials (in Abacws: see timetable) for the first 4 weeks.
 
-Office hours (in Abacws: office 2.52 and/or virtually): Fridays 1000 - 1200
+Office hours (in Abacws: office 2.52 and/or virtually): to be agreed on in
+class.
 
 ## First Semester
 

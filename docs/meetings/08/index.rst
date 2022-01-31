@@ -14,19 +14,19 @@ Send the following email before class::
 
     - The class timetable and weekly schedule for this Semester is available
       here: https://vknight.org/cfm/
-    - This coming week, we will have class on Tuesday at 0900 am (feel free to
-      bring breakfast). This week we
+    - This week we have class at 1600 (via Zoom) and we
       will be covering this chapter
       https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/introduction/main.html.
     - This Semester your assessment is a group exercise. I am letting you self
       select groups (groups of 4) but will assist anyone unable to find a group.
-      We will discuss this more on Tuesday.
+      We will discuss this more today in class.
 
-    Important: My wife and I are expecting our second child any day now, so at
-    some point over the next couple of weeks I will not be around (for a week).
-    Your weekly tutorial will still take place (with the usual expectations that
-    you work through the weekly content and use the tutorial to ask questions)
-    and we have sufficient time in the schedule to catch up.
+    I am about to send you your draft individual coursework feedback.
+    **Important** This will come from `vincent.knight@gmail.com` and the subject
+    will be `DO NOTE REPLY - Coursework mark and feedback`. Note that I consider
+    this first feedback I send you to be a *draft*. As it is automatically marked
+    it is not unlikely that a mistake has crept in. Feel free to get in touch
+    with me if anything is unclear in the feedback.
 
     Please get in touch if I can assist with anything,
     Vince
@@ -179,7 +179,7 @@ Send the following email after class::
        required).
     2. Variables, loops and conditionals.
 
-    In preparation for your tutorial tomorrow please work through the eighth
+    In preparation for your tutorial on Wednesday please work through the eighth
     chapter of the Python for mathematics book:
     https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/introduction/main.html
 

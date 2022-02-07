@@ -41,6 +41,7 @@ Now show::
     ...     """
     ...     Compute the right hand side of the identity which aims to calculate
     ...     a summation of powers a^ib^(n - i) with a binomial coefficient.
+    ...     """
     ...     return sum(scipy.special.binom(n, i) * a ** i * b ** (n - i) for i in range(n + 1))
     >>> get_rhs(a=5, b=10, n=5)
     759375.0

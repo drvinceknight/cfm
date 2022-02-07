@@ -60,7 +60,7 @@ Now create the following function to check the identify::
 Now create all checks::
 
     >>> checks = [
-    ...    lhs(a=a_val, b=b_val, n=n_val) == rhs(a=a_val, b=b_val, n=n_val)
+    ...    check_identity(a=a_val, b=b_val, n=n_val)
     ...    for a_val in range(101) for b_val in range(101) for n_val in range(1, 11)
     ... ]
 
@@ -75,6 +75,7 @@ Ask why this is the case. Have a discussion leading to the fix::
     ...     """
     ...     Compute the right hand side of the identity which aims to calculate
     ...     a summation of powers a^ib^(n - i) with a binomial coefficient.
+    ...     """
     ...     return sum(int(scipy.special.binom(n, i)) * a ** i * b ** (n - i) for i in range(n + 1))
 
 Re define :code:`check_identity`::
@@ -89,7 +90,7 @@ Re define :code:`check_identity`::
 Now create all checks::
 
     >>> checks = [
-    ...    lhs(a=a_val, b=b_val, n=n_val) == rhs(a=a_val, b=b_val, n=n_val)
+    ...    check_identity(a=a_val, b=b_val, n=n_val)
     ...    for a_val in range(101) for b_val in range(101) for n_val in range(1, 11)
     ... ]
 

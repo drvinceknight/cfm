@@ -37,7 +37,6 @@ Introduce myself
 ****************
 
 - Pick 4 or 5 pictures of my family and I to introduce myself.
-- Discuss my parental leave (Geraint Palmer from 1st of November)
 - Mathematician (where/what I studied)
 - Trustee of the UK Python association https://uk.python.org
 - Conference and workshop organiser
@@ -73,7 +72,9 @@ As a class identify office hours.
 Potential times are:
 
 Tuesday: 12-1400
-Friday: 10-1200
+Friday: 1000-1400
+or
+Friday: 1500-1700
 
 
 How the class works

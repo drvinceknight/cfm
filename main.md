@@ -21,42 +21,40 @@ helpful).
 
 Class (virtual via Zoom):
 
-- Monday 1600
-- Friday 1300
-
-Tutorials (in Abacws: see timetable) for the first 4 weeks.
+- Monday 1100
+- Friday 1400
 
 Office hours (in Abacws: office 2.52 and/or virtually): to be agreed on in
 class.
 
 ## First Semester
 
-1. Week starting 4th of October:
+1. Week starting 3rd of October:
     - Book chapter: [Using notebooks](https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html)
-    - [Video demonstration of tutorial](https://youtu.be/6iB0Go9wr9E)
-2. Week starting 11th of October:
+    - [Video demonstration of tutorial](https://youtu.be/xvqFZhG71bs)
+2. Week starting 10th of October:
     - Book chapter: [Algebra](https://vknight.org/pfm/tools-for-mathematics/02-algebra/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/E_TKJkvi-GY)
-3. Week starting 18th of October:
+3. Week starting 17th of October:
     - Book chapter: [Calculus](https://vknight.org/pfm/tools-for-mathematics/03-calculus/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/7j4bqypXi48)
-4. Week starting 25th of October:
+4. Week starting 24th of October:
     - Book chapter: [Matrices](https://vknight.org/pfm/tools-for-mathematics/04-matrices/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/9aoz22SxZjY)
-5. Week starting 1st of November:
+5. Week starting 31st of October:
     - Book chapter: [Combinatorics](https://vknight.org/pfm/tools-for-mathematics/05-combinations-permutations/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/7KpC9YN_rvQ)
-6. Week starting 8th of November:
+6. Week starting 7th of November:
     - Book chapter: [Probability](https://vknight.org/pfm/tools-for-mathematics/06-probability/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/34mKnQ4fqHQ)
-7. Week starting 15th of November:
+7. Week starting 14th of November:
     - Book chapter: [Sequences](https://vknight.org/pfm/tools-for-mathematics/07-sequences/introduction/main.html)
     - [Video demonstration of tutorial](https://youtu.be/zSEv9DZ6yvw)
-8. Week starting 22nd of November: Example and
+8. Week starting 21nd of November: Example and
    [mock](./assets/assessment/mock/assignment.ipynb) coursework.
-9. Week starting 29th of November: **Revision/Slack**
-10. Week starting 6th of December: **Revision/Slack** and release of [individual coursework](./assets/assessment/2021-2022/ind/assignment.ipynb).
-11. Week starting 13th of December: Individual coursework deadline.
+9. Week starting 28th of November: **Revision/Slack**
+10. Week starting 5th of December: **Revision/Slack** and release of individual coursework.
+11. Week starting 12th of December: Individual coursework deadline.
 
 ## Second Semester
 

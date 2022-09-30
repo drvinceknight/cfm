@@ -109,8 +109,8 @@ This course will be assessed in two parts:
 
 # Contact details
 
-- I am on parental leave. Geraint Palmer's email address is `palmergi1@cardiff.ac.uk`.
-- My office: Abacws 2.54
+- My address is `knightva@cardiff.ac.uk`.
+- My office: Abacws 2.52
 
 You are welcome to get in touch with me at any time although I might not
 immediately be available to respond.

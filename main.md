@@ -25,7 +25,7 @@ Class (virtual via Zoom):
 - Friday 1400
 
 Office hours (in Abacws: office 2.52 and/or virtually) every Friday from 1500
-until 1500.
+until 1700.
 
 ## First Semester
 

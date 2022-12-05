@@ -19,7 +19,7 @@ helpful).
 
 ## Weekly schedule
 
-Class (virtual via Zoom):
+Class:
 
 - Monday 1100
 - Friday 1400

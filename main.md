@@ -53,7 +53,7 @@ until 1500.
 8. Week starting 21nd of November: Example and
    [mock](./assets/assessment/mock/assignment.ipynb) coursework.
 9. Week starting 28th of November: **Revision/Slack**
-10. Week starting 5th of December: **Revision/Slack** and release of individual coursework.
+10. Week starting 5th of December: **Revision/Slack** and release of [individual coursework](./assets/assessment/2022-2023/ind/assignment.ipynb).
 11. Week starting 12th of December: Individual coursework deadline.
 
 ## Second Semester

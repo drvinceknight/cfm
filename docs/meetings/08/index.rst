@@ -179,9 +179,11 @@ Send the following email after class::
        required).
     2. Variables, loops and conditionals.
 
-    In preparation for your tutorial on Wednesday please work through the eighth
-    chapter of the Python for mathematics book:
+    I recommend working through the following chapter of the class text:
     https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/introduction/main.html
+
+    If you have any questions I will be in 2.35 on Wednesday from 1000 until
+    1200 for the first 4 weeks of the course.
 
     IMPORTANT ACTION REQUIRED
 
@@ -194,6 +196,9 @@ Send the following email after class::
 
     In the email please tell me the name of your group (you can be imaginative)
     and also which member of your group is the point of contact.
+
+    Once you have created a group and started working, please use https://forms.office.com/e/qnVdB1KUG7
+    to record weekly progress.
 
     ---
 

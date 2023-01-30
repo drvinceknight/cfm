@@ -19,13 +19,14 @@ helpful).
 
 ## Weekly schedule
 
-Class:
+Class in 0.01:
 
-- Monday 1100
-- Friday 1400
+- Monday 1600
+- Friday 1600
 
-Office hours (in Abacws: office 2.52 and/or virtually) every Friday from 1500
-until 1700.
+Optional drop in 2.35:
+
+- Wednesday 1000 - 1200 during the first 4 weeks.
 
 ## First Semester
 

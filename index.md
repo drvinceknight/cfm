@@ -4,10 +4,21 @@ layout: default
 
 ## [Schedule](#schedule)
 
-{% for week in site.data.toc %}
-### {{ week.title }}
+
+{% for semester in site.data.toc %}
+
+---
+
+### {{ semester.title }}
+
+---
+
+{% for week in semester.weeks %}
+
+#### {{ week.title }}
 {% for topic in week.topics %}
 - [{{ topic.title }}](./topics/{{topic.title | slugify}}.html)
+{% endfor %}
 {% endfor %}
 {% endfor %}
 

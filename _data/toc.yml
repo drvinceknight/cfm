@@ -1,32 +1,66 @@
-- title: Week 1
-  topics:
-    - title: About the course
-    - title: Normal form games
-- title: Week 2
-  topics:
-    - title: Strategies
-    - title: Best responses
-- title: Week 3
-  topics:
-    - title: Support enumeration
-- title: Week 4
-  topics:
-    - title: Meetings
-    - title: Extensive form games
-- title: Week 5
-  topics:
-    - title: Repeated games
-    - title: Prisoners Dilemma
-- title: Week 6
-  topics:
-    - title: Replicator dynamics
-    - title: Moran processes
-- title: "Week 7: Individual coursework preparation"
-- title: "Week 8: Individual coursework deadline"
-- title: Week 9
-  topics:
-    - title: Presentation
-- title: Week 10
-  topics:
-    - title: Contemporary research
-- title: "Week 11: Group Presentation"
+- title: Autumn
+  weeks:
+    - title: Week 1
+      topics:
+        - title: About the course
+        - title: Using notebooks
+    - title: Week 2
+      topics:
+        - title: Algebra
+    - title: Week 3
+      topics:
+        - title: Calculus
+    - title: Week 4
+      topics:
+        - title: Matrices
+    - title: Week 5
+      topics:
+        - title: Combinatorics
+    - title: Week 6
+      topics:
+        - title: Probability
+    - title: Week 7
+      topics:
+        - title: Sequences
+    - title: Week 8
+      topics:
+        - title: Differential equations
+    - title: Week 9
+      topics:
+        - title: Statistics
+    - title: "Week 10: Individual Coursework release"
+    - title: "Week 11: Individual Coursework deadline"
+- title: Spring
+  weeks:
+  - title: Week 1
+    topics:
+      - title: About the course
+      - title: Normal form games
+  - title: Week 2
+    topics:
+      - title: Strategies
+      - title: Best responses
+  - title: Week 3
+    topics:
+      - title: Support enumeration
+  - title: Week 4
+    topics:
+      - title: Meetings
+      - title: Extensive form games
+  - title: Week 5
+    topics:
+      - title: Repeated games
+      - title: Prisoners Dilemma
+  - title: Week 6
+    topics:
+      - title: Replicator dynamics
+      - title: Moran processes
+  - title: "Week 7: Individual coursework preparation"
+  - title: "Week 8: Individual coursework deadline"
+  - title: Week 9
+    topics:
+      - title: Presentation
+  - title: Week 10
+    topics:
+      - title: Contemporary research
+  - title: "Week 11: Group Presentation"

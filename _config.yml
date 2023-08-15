@@ -18,15 +18,12 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Game Theory
+title: Computing for Mathematics
 email: knightva@cardif.ac.uk
 description: >- # this means to ignore newlines until "baseurl:"
-  This module introduces students to the mathematical study of multiple
-  interactive agent decision making. This is an introduction to Game Theory using
-  programming through notions such as Nash Equilibria and Evolutionary Game
-  Theory. Students will learn Game Theory in an active way through role playing
-  and student-led activities.
-baseurl: "/gt" # the subpath of your site, e.g. /blog
+  This module introduces students to the use of open source software to carry 
+  out mathematics.
+baseurl: "/cfm" # the subpath of your site, e.g. /blog
 url: "https://vknight.org" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: drvinceknight
 github_username:  drvinceknight

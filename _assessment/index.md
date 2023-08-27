@@ -3,81 +3,111 @@ layout: default
 tag: assessment
 ---
 
-# Individual coursework (40%)
+# Individual coursework (50%)
 
 A mock coursework is available:
 [here]({{site.baseurl}}/assets/assessment/mock/ind/assignment.ipynb).
 
-The 2022-2023 coursework is available here:
-[here]({{site.baseurl}}/assets/assessment/2022-2023/ind/assignment.ipynb).
-
 The topics for the individual coursework for the past few years have been:
 
 - 2022-2023:
-    1. [Repeated games]({{ site.baseurl }}/topics/repeated-games.html)
-    2. [Replicator Dynamics]({{ site.baseurl }}/topics/replicator-dynamics.html)
-    3. [Support enumeration]({{ site.baseurl }}/topics/support-enumeration.html)
-    4. [Asymmetric replicator dynamics](https://nashpy.readthedocs.io/en/stable/text-book/asymmetric-replicator-dynamics.html)
+  1. [Sequences]({{ site.baseurl }}/topics/sequences.html)
+  2. [Probability]({{ site.baseurl }}/topics/probability.html)
+  3. [Algebra]({{ site.baseurl }}/topics/algebra.html)
+  4. [Matrices]({{ site.baseurl }}/topics/matrices.html)
 - 2021-2022:
-    1. [Moran Process]({{ site.baseurl }}/topics/moran-process.html)
-    2. [Replicator Dynamics]({{ site.baseurl }}/topics/replicator-dynamics.html)
-    3. [Support enumeration]({{ site.baseurl }}/topics/support-enumeration.html)
-    4. [Fictitious play](https://nashpy.readthedocs.io/en/stable/text-book/fictitious-play.html)
+  1. [Matrices]({{ site.baseurl }}/topics/matrices.html)
+  2. [Sequences]({{ site.baseurl }}/topics/sequences.html)
+  3. [Matrices]({{ site.baseurl }}/topics/matrices.html)
+  4. [Calculus]({{ site.baseurl }}/topics/calculus.html)
+- 2020-2021:
+  1. [Probability]({{ site.baseurl }}/topics/probability.html)
+  2. [Combinatorics]({{ site.baseurl }}/topics/combinatorics.html)
+  3. [Calculus]({{ site.baseurl }}/topics/calculus.html)
+  4. [Sequences]({{ site.baseurl }}/topics/sequences.html)
 - Mock:
-    1. [Support enumeration]({{ site.baseurl }}/topics/support-enumeration.html)
-    2. [Prisoners dilemma]({{ site.baseurl }}/topics/prisoners-dilemma.html)
-    3. [Repeated games]({{ site.baseurl }}/topics/repeated-games.html)
-    4. [Lemke Howson Algorithm](https://nashpy.readthedocs.io/en/stable/text-book/lemke-howson.html#the-lemke-howson-algorithm)
+  1. [Arithmetic]({{ site.baseurl }}/topics/using-notebooks.html)
+  2. [Algebra]({{ site.baseurl }}/topics/algebra.html)
+  3. [Matrices]({{ site.baseurl }}/topics/matrices.html)
+  4. [Probability]({{ site.baseurl }}/topics/probability.html)
 
-# Group project (60%)
+# Group project (50%)
 
-Carry out a group research project using Game Theory. This can either be a
-theoretical exploration of a topic of Game Theory or an applied problem:
-investigating some interactive process using the tools of the course.
+Build a Python library to provide tools for a problem related to mathematic.
 
-You will evidence your progress with 3 mediums:
+You will evidence your progress with 2 mediums:
 
-1. Regular logs (to be filled in individually).
 2. A 2 page paper
-3. A 15 minute presentation
+3. A 15 minute recorded presentation
+
+Your final submission should include the following **7** files:
+
+1. A `main.tex` file: the source file for a 2 page paper written in [LaTeX](({{ site.baseurl }}/topics/latex.html)
+   ).
+2. A `main.pdf` file: the pdf file for a 2 page paper written in [LaTeX](({{ site.baseurl }}/topics/latex.html)
+   ).
+3. A `<library>.py` file: the [source file for your Python library]({{ site.baseurl }}/topics/modularisation-of-code.html)
+4. A `test_<library>.py` file: [the test files for your Python library]({{ site.baseurl }}/topics/testing-of-code.html)
+5. A `README.md` file: [the documentation for your Python library]({{ site.baseurl }}/topics/documentation-of-code.html)
+6. A `presentation.mp4` (or similar file format): the video recording of [your 15 minute presentation]({{ site.baseurl }}/topics/presenting-mathematics.html)
+7. A `contribution.md` file: a file describing the contributions of every member of your group.
 
 ## [Marking criteria](#marking-criteria)
 
 ### 2 Page Paper
 
-- Summary: Has a clear description of the high-level work undertaken been given. [10%]
-0  A statement of need: Do the authors clearly state what problems their work is applied to.
-- State of the field: Do the authors describe how any other work relates to theirs? [10%]
-- Quality of writing: Is the paper well written (i.e., it does not require editing for structure, language, or writing quality)? [10%]
-- References: Is the list of references complete, and is everything cited appropriately that should be cited (e.g., papers, datasets, software)? Do references in the text use the proper citation syntax? [10%]
+- **Summary**: Has a clear description of the high-level functionality and
+  purpose of the software for a diverse, non-specialist audience been
+  provided? [10%]
+- **A statement of need**: Do the authors clearly state what problems the
+  software is designed to solve and who the target audience is? [10%]
+- **State of the field**: Do the authors describe how this software compares
+  to other commonly used packages? [10%]
+- **Quality of writing**: Is the paper well written (i.e., it does not
+  require editing for structure, language, or writing quality)? [10%]
+- **References**: Is the list of references complete, and is everything
+  cited appropriately that should be cited (e.g., papers, datasets,
+  software)? Do references in the text use the proper citation syntax? [10%]
 
-### 15 Minute Presentation
+### 15 Presentation
 
-- Scope: Are the details of the work clear? [10%]
-- Theory: Is an understanding of relevant theory demonstrated? [10%]
-- Code: Is code well written and appropriate? [10%]
-- Accuracy: Is the work correct? [10%]
-- Presentation: Was the presentation format used appropriately? Were the visual aids appropriate? [10%]
+- **Functionality**: Have the functional claims of the software been
+  confirmed? [10%]
+- **Documentation**: Does the documentation have a Tutorial, How to section,
+  Reference and Explanation section? Is it clear? Is the source code clear?
+  [10%]
+- **Modularity**: Is the code written in a modular way? [10%]
+- **Testing**: Have tests been written for all functionality of the software? [10%]
+- **Presentation**: Was the presentation format used appropriately? Were the
+  visual aids appropriate? [10%]
 
-Examples of presentations are available at: [vknight.org/pop/](https://vknight.org/pop/)
+Note that this marking criteria has some overlap with the review criteria
+for the Journal of Open Source Software
+<https://joss.readthedocs.io/en/latest/review_checklist.html>. Some examples
+of papers written for that journal that can be helpful are:
+
+- Matching: A Python library for solving matching games <https://joss.theoj.org/papers/10.21105/joss.02169>
+- Nashpy: A Python library for the computation of Nash equilibria <https://joss.theoj.org/papers/10.21105/joss.00904>
 
 ## [Past group projects](#past-group-projects)
 
 A list of titles of past projects:
 
 {% for year in site.data.projects %}
-### {{ year.year }}
-{% for title in year.titles %}
-- {{ title }}
-{% endfor %}
-{% endfor %}
 
+### {{ year.year }}
+
+{% for title in year.titles %}
+
+- {{ title }}
+  {% endfor %}
+  {% endfor %}
 
 ## [Log of past relevant classes](#log-of-past-relevant-classes)
 
 {% for post in site.posts %}
-    {% if post.tags contains page.tag %}
+{% if post.tags contains page.tag %}
 [{{post.date | date: "%D"}}: {{ post.title }}]({{site.baseurl}}{{post.url}})
-  {{ post.excerpt }}
-    {% endif %}
+{{ post.excerpt }}
+{% endif %}
 {% endfor %}

@@ -54,32 +54,33 @@ Your final submission should include the following **7** files:
 
 ## [Marking criteria](#marking-criteria)
 
-### 2 Page Paper
+The various components of the submission should aim to demonstrate how the following
+aspects of the work have been addressed:
 
 - **Summary**: Has a clear description of the high-level functionality and
   purpose of the software for a diverse, non-specialist audience been
-  provided? [10%]
+  provided?
 - **A statement of need**: Do the authors clearly state what problems the
   software is designed to solve and who the target audience is? [10%]
 - **State of the field**: Do the authors describe how this software compares
-  to other commonly used packages? [10%]
+  to other commonly used packages?
 - **Quality of writing**: Is the paper well written (i.e., it does not
-  require editing for structure, language, or writing quality)? [10%]
+  require editing for structure, language, or writing quality)?
 - **References**: Is the list of references complete, and is everything
   cited appropriately that should be cited (e.g., papers, datasets,
-  software)? Do references in the text use the proper citation syntax? [10%]
-
-### 15 Presentation
-
+  software)? Do references in the text use the proper citation syntax?
 - **Functionality**: Have the functional claims of the software been
-  confirmed? [10%]
+  confirmed?
 - **Documentation**: Does the documentation have a Tutorial, How to section,
   Reference and Explanation section? Is it clear? Is the source code clear?
-  [10%]
-- **Modularity**: Is the code written in a modular way? [10%]
-- **Testing**: Have tests been written for all functionality of the software? [10%]
+- **Modularity**: Is the code written in a modular way?
+- **Testing**: Have tests been written for all functionality of the software?
 - **Presentation**: Was the presentation format used appropriately? Were the
-  visual aids appropriate? [10%]
+  visual aids appropriate?
+
+A suggestion would be to use the paper for the **summary**, **statement of need** and **state
+of the field** whereas the presentation can be used for the **functionality**, **documentation**, **modularity**
+and **testing**.
 
 Note that this marking criteria has some overlap with the review criteria
 for the Journal of Open Source Software

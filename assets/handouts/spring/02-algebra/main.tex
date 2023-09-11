@@ -6,6 +6,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{hyperref}
 \usepackage{minted}
+\usepackage{multicol}
 
 \pagenumbering{gobble}
 
@@ -106,4 +107,65 @@ Consider the equation: $x ^ 2 + 4 - y = \frac{1}{y}$:
    the equation for $x$ (as a function of $y$).
 \item Create a variable \mintinline{python}{specific_solution} which has value the set of solutions when $y = 5$. 
 \end{enumerate}
+
+\section{Summary examples}
+
+\begin{multicols}{2}
+        Create the symbolic value $1 / 3$
+
+        \begin{minted}[frame=single]{python}
+import sympy
+value = 1 / sympy.S(3)
+        \end{minted}
+
+        Get the numeric value of a symbolic variable $1 / 3$
+
+        \begin{minted}[frame=single]{python}
+import sympy
+float(value)
+        \end{minted}
+
+        Factor an expression
+
+        \begin{minted}[frame=single]{python}
+import sympy
+x = sympy.Symbol("x")
+sympy.factor(x ** 2 - 81)
+        \end{minted}
+
+        Expand an expression
+
+        \begin{minted}[frame=single]{python}
+import sympy
+x = sympy.Symbol("x")
+sympy.expand((x - 1) * (x + 1))
+        \end{minted}
+
+        How to simplify an expression
+
+        \begin{minted}[frame=single]{python}
+import sympy
+x = sympy.Symbol("x")
+sympy.simplify((x - 3) * (x - 3))
+        \end{minted}
+
+        Solve an equation
+
+        \begin{minted}[frame=single]{python}
+import sympy
+x = sympy.Symbol("x")
+equation = sym.Eq(x + 4, x ** 2)
+sympy.solveset(equation, x)
+        \end{minted}
+
+        Substitute a value in to an expression
+
+        \begin{minted}[frame=single]{python}
+import sympy
+x = sympy.Symbol("x")
+expression = x ** 2 - 4
+expression.subs({x: -2})
+        \end{minted}
+\end{multicols}
+
 \end{document}

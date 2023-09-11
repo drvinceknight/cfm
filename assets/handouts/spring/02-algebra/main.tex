@@ -1,0 +1,109 @@
+\documentclass{article}
+
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 2}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered and an activity to
+carry out prior or during your lab session.
+
+At the end of the handout is a specific coursework like exercise.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/tools-for-mathematics/02-algebra/exercises/main.html}{the
+algebra chapter of Python for Mathematics}.
+
+\section{Summary}\label{summary}
+\hrule
+
+
+The purpose of this handout is to cover Algebra which
+corresponds to the
+\href{https://vknight.org/pfm/tools-for-mathematics/02-algebra/introduction/main.html}{Algebra
+chapter of Python for Mathematics}.
+
+The topics covered are:
+
+\begin{itemize}
+\item
+  Creating symbolic numeric values
+\item
+  Getting numerical value of a symbolic expression
+\item
+  Factorising an expression
+\item
+  Expanding an expression
+\item
+  Simplifying an expression
+\item
+  Solving an equation
+\item
+  Substituting values in to expressions
+\end{itemize}
+
+
+\section{Activity}\label{activity}
+\hrule
+
+We will be tackling the problem from the
+\href{https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/tutorial/}{tutorial
+of the Algebra chapter of Python for Mathematics}.
+
+\begin{enumerate}
+    \item Rationalise the denominator of $\frac{1}{\sqrt{2} + 1}$
+    \item Consider the quadratic: $f(x)=2x ^ 2 + x + 1$:
+        \begin{enumerate}
+            \item Calculate the discriminant of the quadratic equation $2x ^ 2 + x + 1 =
+                 0$. What does this tell us about the solutions to the equation? What
+                 does this tell us about the graph of $f(x)$?
+         \item By completing the square, show that the minimum point of $f(x)$ is
+     $\left(-\frac{1}{4}, \frac{7}{8}\right)$
+        \end{enumerate}
+\end{enumerate}
+
+There are instructions for how to do all of this is in the
+\href{https://vknight.org/pfm/tools-for-mathematics/algebra/how/}{Algebra chapter of Python for Mathematics}.
+
+
+\begin{enumerate}
+\item
+  Create the variable \mintinline{python}{expression} which has value
+        $\frac{1}{\sqrt{2}} + 1$.
+\item Use the \mintinline{python}{sympy.simplify} command to rationalise the
+        denominator.
+\item Create the variable \mintinline{python}{expression} which has value the
+        quadratic from the second part of the question: $f(x) = 2x^ 2 + x + 1$.
+\item Use the \mintinline{python}{sympy.equation} and
+        \mintinline{python}{sympy.sovleset} command to find the roots of $f$.
+\item Create the variable \mintinline{python}{expression} which has value the
+        expression $a(x-b) ^ 2 + c$.
+\item Solve the various equations that give the correct values of $a, b$ and
+    $c$ to be able to complete the square for $f(x)$.
+\end{enumerate}
+
+
+\section{Coursework like exercise}
+\hrule
+
+
+Consider the equation: $x ^ 2 + 4 - y = \frac{1}{y}$:
+
+\begin{enumerate}
+    \item Create a variable \mintinline{python}{general_solution} which has value the set of solutions to
+   the equation for $x$ (as a function of $y$).
+\item Create a variable \mintinline{python}{specific_solution} which has value the set of solutions when $y = 5$. 
+\end{enumerate}
+\end{document}

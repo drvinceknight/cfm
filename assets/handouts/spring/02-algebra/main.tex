@@ -125,7 +125,7 @@ import sympy
 float(value)
         \end{minted}
 
-        Factor an expression
+        Factor $x ^ 2 - 81$
 
         \begin{minted}[frame=single]{python}
 import sympy
@@ -133,7 +133,7 @@ x = sympy.Symbol("x")
 sympy.factor(x ** 2 - 81)
         \end{minted}
 
-        Expand an expression
+        Expand $(x - 1) (x + 1)$
 
         \begin{minted}[frame=single]{python}
 import sympy
@@ -141,7 +141,7 @@ x = sympy.Symbol("x")
 sympy.expand((x - 1) * (x + 1))
         \end{minted}
 
-        How to simplify an expression
+        Simplify $(x - 3) (x - 3)$
 
         \begin{minted}[frame=single]{python}
 import sympy
@@ -149,7 +149,7 @@ x = sympy.Symbol("x")
 sympy.simplify((x - 3) * (x - 3))
         \end{minted}
 
-        Solve an equation
+        Solve $x + 4 = x ^ 2$
 
         \begin{minted}[frame=single]{python}
 import sympy
@@ -158,8 +158,8 @@ equation = sym.Eq(x + 4, x ** 2)
 sympy.solveset(equation, x)
         \end{minted}
 
-        Substitute a value in to an expression
-
+        Substitute $x=-2$ in to $x ^ 2 - 4$
+        
         \begin{minted}[frame=single]{python}
 import sympy
 x = sympy.Symbol("x")

@@ -1,0 +1,152 @@
+\documentclass{article}
+
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{multicol}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 3}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered and an activity to
+carry out prior or during your lab session.
+
+At the end of the handout is a specific coursework like exercise.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/tools-for-mathematics/03-calculus/exercises/main.html}{the
+calculus chapter of Python for Mathematics}.
+
+\section{Summary}\label{summary}
+\hrule
+
+
+The purpose of this handout is to cover Calculus which
+corresponds to the
+\href{https://vknight.org/pfm/tools-for-mathematics/03-calculus/introduction/main.html}{Calculus
+chapter of Python for Mathematics}.
+
+The topics covered are:
+
+\begin{itemize}
+\item
+  Getting the derivative of a symbolic expression.
+\item
+  Getting the indefinite integral of a symbolic expression.
+\item
+  Getting the definite integral of a symbolic expression.
+\item
+  Getting the limit of a symbolic expression.
+\end{itemize}
+
+
+\section{Activity}\label{activity}
+\hrule
+
+We will be tackling the problem from the
+\href{https://vknight.org/pfm/tools-for-mathematics/03-calculus/tutorial/}{tutorial
+of the Calculus chapter of Python for Mathematics}.
+
+Consider the function $f(x)= \frac{24 x \left(a - 4 x\right) + 2 \left(a - 8 x\right) \left(b - 4 x\right)}{\left(b - 4 x\right)^{4}}$
+
+\begin{enumerate}
+    \item Given that $\frac{df}{dx}|_{x=0}=0$, $\frac{d^2f}{dx^2}|_{x=0}=-1$ and
+    that $b>0$ find the values of $a$ and $b$.
+    \item For the specific values of $a$ and $b$ find:
+        \begin{enumerate}
+            \item $\lim_{x\to 0}f(x)$;
+            \item $\lim_{x\to \infty}f(x)$;
+            \item $\int f(x) dx$;
+            \item $\int_{5}^{20} f(x) dx$.
+        \end{enumerate}
+\end{enumerate}
+
+There are instructions for how to do all of this is in the
+\href{https://vknight.org/pfm/tools-for-mathematics/03-calculus/how/}{Calculus chapter of Python for Mathematics}.
+
+
+\begin{enumerate}
+\item
+  Create the variable \mintinline{python}{expression} which has value
+        $f(x)= \frac{24 x \left(a - 4 x\right) + 2 \left(a - 8 x\right) \left(b - 4 x\right)}{\left(b - 4 x\right)^{4}}$.
+\item Use the \mintinline{python}{sympy.diff} command to obtain the
+        derivative.
+\item Create the variable \mintinline{python}{first_equation} which has value the
+    equation that comes from the first condition of the question:
+        $\frac{df}{dx}|_{x=0} = 0$.
+\item Create the variable \mintinline{python}{second_equation} which has value the
+    equation that comes from the second condition of the question:
+        $\frac{d^2f}{dx^2}|_{x=0} = -1$.
+    \item Solve both equations (use substitution if you helpful) and recalling
+        that $b>0$ substitute the correct values of $a$ and $b$ in to
+        \mintinline{python}{expression}.
+    \item Obtain the required limits.
+\end{enumerate}
+
+
+\section{Coursework like exercise}
+\hrule
+
+
+Consider the second derivative $f''(x)=4 x + \cos(x)$.
+
+\begin{enumerate}
+    \item Create a variable \mintinline{python}{derivative} which has value 
+        $f'(x)$ (use the variables \mintinline{python}{x} and
+        \mintinline{python}{c1} if necessary):
+    \item Create a variable \mintinline{python}{equation} that has value the 
+        equation $f'(0)=0$.
+    \item Using the solution to that equation, output the value of $\int_{0}^{5\pi}f(x)dx$.
+\end{enumerate}
+
+\section{Summary examples}
+
+\begin{multicols}{2}
+    Calculate the second derivative of $\cos(x^2)$:
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+x = sym.Symbol("x")
+expression = sym.cos(x ** 2)
+sym.diff(expression, x, 2)
+    \end{minted}
+
+        Calculate the indefinite integral of $e^(x)$
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+x = sym.Symbol("x")
+expression = sym.exp(x)
+sym.integrate(expression, x)
+        \end{minted}
+
+        Calculate the definite integral $\int_0^{5}1/x$
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+x = sym.Symbol("x")
+expression = 1 / x
+sym.integrate(expression, (x, 0, 5))
+        \end{minted}
+
+        Obtain the limit $\lim_{h \to \infty}\frac{1}{cos^2(x)}$
+
+        \begin{minted}[frame=single]{python}
+import sympy
+x = sympy.Symbol("x")
+expression = 1 / (sym.cos(x) ** 2)
+sym.limit(expression, x, sym.oo)
+        \end{minted}
+\end{multicols}
+
+\end{document}

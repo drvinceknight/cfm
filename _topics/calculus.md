@@ -5,3 +5,5 @@ tag: using-notebooks
 note_urls:
   - "https://vknight.org/pfm/tools-for-mathematics/03-calculus/introduction/main.html"
 ---
+
+A handout is available [here]({{site.baseurl}}/assets/handouts/spring/03-calculus/main.pdf).

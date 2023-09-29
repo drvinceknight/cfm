@@ -6,21 +6,6 @@
 Introduction week
 =================
 
-Pre class email
----------------
-
-Send the following email before class::
-
-    Hi all,
-
-    Here is the zoom information for today's class:
-
-    <zoom information>
-
-    Here is a discord invite to the server I use for teaching: <server link>
-
-    Please get in touch if I can assist with anything,
-    Vince
 
 First meeting
 -------------
@@ -36,6 +21,8 @@ After this meeting students should:
 Introduce myself
 ****************
 
+Use this slide deck: :download:`main </_static/speak/intro-to-class/main.key>`
+
 - Pick 4 or 5 pictures of my family and I to introduce myself.
 - Mathematician (where/what I studied)
 - Trustee of the UK Python association https://uk.python.org
@@ -48,7 +35,7 @@ Programming
 ***********
 
 1. Class exercise: get a class word cloud association for the word "programming". (Using mentimeter.com).
-2. Show them https://twitter.com/MissReeeves/status/1313587567137370113
+2. Class exercise: how to make a cup of tea in 3 steps (using menti)
 3. Class exercises: get a class word cloud association "What are uses for programming
    in Mathematics?"
 
@@ -71,10 +58,10 @@ As a class identify office hours.
 
 Potential times are:
 
-Tuesday: 12-1400
-Friday: 1000-1400
+Tuesday: 1000-1200
+Friday: 1100-1300
 or
-Friday: 1500-1700
+Friday: 1300-1500
 
 
 How the class works
@@ -112,12 +99,14 @@ Send the following email after class::
 
     - Course documents available here: https://vknight.org/cfm/
     - We agreed that office hours will be: <>
-    - Here is an invite to the discord if you have not already joined it:
     - You can find my teaching philosophy here: https://vknight.org/tch-phi/
 
-    In preparation for your tutorial tomorrow please work through the first
-    chapter of the Python for mathematics book:
+    The goal of this week is to make sure you are able to install the software
+    necessary. Follow the instruction in this chapter of the course text: 
     https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html
+
+    If you are unable to follow through the tutorial and/or the exercises please
+    come by the optional drop in session on Wednesday.
 
     Please get in touch if I can assist with anything,
     Vince
@@ -126,8 +115,8 @@ Send the following email after class::
 Second meeting
 --------------
 
-- Give brief review of the contents of the chapter. Do this by browsing
-  through: https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/how/main.html
+- Give brief review of the contents of the chapter. Do this by working through
+  the tutorial and the how to section of the relevant chapter of the class.
 - Ask if anyone has any questions/comments/feedback.
 - Remind everyone about the resources available to them (videos both on youtube
   and LC, chapters, plan, discord etc...).

@@ -21,7 +21,7 @@ After this meeting students should:
 Introduce myself
 ****************
 
-Use this slide deck: :download:`Week structure </_static/speak/intro-to-class/main.key>`
+Use this slide deck: :download:`main </_static/speak/intro-to-class/main.key>`
 
 - Pick 4 or 5 pictures of my family and I to introduce myself.
 - Mathematician (where/what I studied)

@@ -25,16 +25,8 @@ Explain to students that we will be solving the following problem:
 Solution
 ********
 
-Group exercise (breakout rooms of 3): ask students to spend 5 minutes writing a
-plan to tackle that problem (not necessarily carrying out each step).
-
-Clearly write down these steps:
-
-
-1. For first question: multiply by :math:`\sqrt{3} - 1`.
-2. Calculate discriminant: compare to 0. If negative: no roots.
-3. Complete the square to make :math:`f(x) = a (x - b ) ^2 + c`. Do this by
-   expending that formula and comparing coefficients.
+Ask students to spend 5 minutes if they know/remember how to do this by hand.
+(This is just to get the students to think about it)
 
 Now show how to get code to do this::
 
@@ -134,10 +126,6 @@ We will substitute this value back in::
     >>> sympy.expand(completed_square)
     -x**2 + 8*x - 18
 
-Ask students to break out in to groups of 3 and do the following:
-
-1. Confirm that this answers the question.
-2. Explain to each other what we did using code.
 
 Come back: with time take any questions.
 

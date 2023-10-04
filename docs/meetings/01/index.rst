@@ -124,5 +124,6 @@ Second meeting
     1. Finding files on computer.
     2. Difference between markdown and code cell.
     3. Using brackets when doing computations.
+- Work through the exercises and solutions.
 
 For each of those do a small walk-through showing the concepts again.

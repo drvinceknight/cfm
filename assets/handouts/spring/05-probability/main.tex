@@ -1,0 +1,191 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{multicol}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 5}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered and an activity to
+carry out prior or during your lab session.
+
+At the end of the handout is a specific coursework like exercise.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/tools-for-mathematics/06-probability/introduction/main.html}{the
+probability chapter of Python for Mathematics}.
+
+\section{Summary}\label{summary}
+\hrule
+
+
+The purpose of this handout is to cover probability which
+corresponds to the
+\href{https://vknight.org/pfm/tools-for-mathematics/06-probability/introduction/main.html}{probability
+chapter of Python for Mathematics}.
+
+The topics covered are:
+
+\begin{itemize}
+\item
+  Generating random numbers
+\item
+  Randomly sample from a given collection of items.
+\item 
+  Write python functions to be able to repeat experiments.
+\end{itemize}
+
+
+\section{Activity}\label{activity}
+\hrule
+
+We will be tackling the problem from the
+\href{https://vknight.org/pfm/tools-for-mathematics/06-probability/tutorial/main.html}{tutorial
+of the probability chapter of Python for Mathematics}.
+
+An experiment consists of selecting a token from a bag and spinning a coin. The
+bag contains 5 red tokens and 7 blue tokens. A token is selected at random from
+the bag, its colour is noted and then the token is returned to the bag.
+
+When a red token is selected, a biased coin with probability \(\frac{2}{3}\) of landing heads is
+spun.
+
+When a blue token is selected a fair coin is spun.
+
+\begin{enumerate}
+    \item What is the probability of picking a red token?
+    \item What is the probability of obtaining Heads?
+    \item If a heads is obtained, what is the probability of having selected a red token.
+\end{enumerate}
+
+There are instructions for how to do all of this is in the
+\href{https://vknight.org/pfm/tools-for-mathematics/06-probability/how/main.html}{probability chapter of Python for Mathematics}.
+
+
+\begin{enumerate}
+    \item Create a variable \mintinline{python}{digits} which has value the
+        collection of integers 1, 2, 3, 4 and 5.
+\item
+    Use the \mintinline{python}{itertools.permutations} tool to create the
+        variable \mintinline{python}{permutations} which has value the
+        permutations of the integers 1, 2, 3, 4 and 5. 
+    \item Convert the \mintinline{python}{permutations} variable to a
+        \mintinline{python}{tuple} and use the \mintinline{python}{len} command
+        to count the number of different permutations that exist.
+    \item Use the \mintinline{python}{sum} command to calculate:
+        \[\sum_{\pi \in \Pi}\pi_5\mod 2\] where $\Pi$ is the collection of all
+        permutations. 
+    \item Use the \mintinline{python}{sum} command to calculate:
+
+        \[\sum_{\pi \in \Pi \text{ if }\pi_1 10 ^ 4 + \pi_2 10 ^ 3 + \pi_3 10 ^ 2 + \pi_4 10 + \pi_5 \leq 23000} 1 \] 
+        where $\Pi$ is the collection of all
+        permutations. 
+\end{enumerate}
+
+
+\section{Coursework like exercise}
+\hrule
+
+
+\begin{enumerate}
+    \item Create a variable \mintinline{python}{number_of_permutations} that gives the 
+number of permutations of size 4 of:
+
+\mintinline{python}{pets = ("cat", "dog", "fish", "lizard", "hamster")}
+
+Do this by generating and counting them.
+\item Create a variable \mintinline{python}{direct_number_of_permutations} that gives 
+    the number of permutations of \mintinline{python}{pets} of size 4 by 
+        direct computation.
+\end{enumerate}
+
+\section{Summary examples}
+\hrule
+
+\begin{multicols}{2}
+    Create the collection: \((A, A, B)\).
+
+        \begin{minted}[frame=single]{python}
+collection = ("A", "A", "B")
+    \end{minted}
+
+        Obtain the 2nd element in the collection \((A, A, B)\).
+
+        \begin{minted}[frame=single]{python}
+collection = ("A", "A", "B")
+collection[1]
+        \end{minted}
+
+        Check a boolean condition like if \("C"\in (A, A, B)\).
+
+        \begin{minted}[frame=single]{python}
+collection = ("A", "A", "B")
+"C" in collection
+        \end{minted}
+
+        Create the collection of integers from 1 to 11:
+
+        \begin{minted}[frame=single]{python}
+range(1, 12)
+        \end{minted}
+
+        Create the permutations of the collection \((A, A, B)\) of size 2.
+
+        \begin{minted}[frame=single]{python}
+import itertools
+collection = ("A", "A", "B")
+itertools.permutations(collection, r=2)
+        \end{minted}
+
+        Create the combinations of the collection \((A, A, B)\) of size 2.
+
+        \begin{minted}[frame=single]{python}
+import itertools
+collection = ("A", "A", "B")
+itertools.combinations(collection, r=2)
+        \end{minted}
+
+        Calculate \(\sum_{i=1\text{ if }i\text{ even}}^{20}i ^ 2\)
+
+        \begin{minted}[frame=single]{python}
+sum(i ** 2 for i in range(1, 21) if (i % 2 == 0))
+        \end{minted}
+
+        Obtain \(5!\):
+
+        \begin{minted}[frame=single]{python}
+import math
+math.factorial(5)
+        \end{minted}
+
+        Obtain \({5 \choose 2}\):
+
+        \begin{minted}[frame=single]{python}
+import scipy.special
+scipy.special.comb(5, 2)
+        \end{minted}
+
+        Obtain \(^5 P_2\):
+
+        \begin{minted}[frame=single]{python}
+import scipy.special
+scipy.special.perm(5, 2)
+        \end{minted}
+
+
+\end{multicols}
+
+\end{document}

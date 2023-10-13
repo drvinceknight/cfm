@@ -9,8 +9,13 @@ In class today we reviewed the concepts from the Algebra chapter.
 You can see a recording of the class [here](https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3f4f4eee-cd22-4233-84a4-b09500c65282)
 
 We started off with the quiz reviewing a number of concepts and I'm really sorry
-I messed up the last question. Nonetheless congratulations to Cian who now has 1
-win as well as Ben.
+I messed up the last question. I declared Cian (who was leading at the
+penultimate question) the winner **however** I got my to my desk and input the
+correct answer in the slide, mentimeter was able to redo the results (I should
+have just done this in class) and as you can see below: **Joe** won! So Joe and
+Ben lead the quiz with 1 win each.
+
+![Results from the quiz](https://media.cleanshot.cloud/media/11983/BQrM7tj270AHb44vTCjeJ5dfDuJ8lMLI6oszpver.gif?Expires=1697215985&Signature=IblxVMphldVIynWegADc~cCFe9-bZ5RQt3pEKWnVzNBfM8j-mN4Jbbtyt~OvysdnK~DqtGhnl~i-MMREPZ4TKOVqKhVCbd2c~lPYzrMz52InqWqugzpP3fNN0PIUWr1dFaVDnqnaHlW0HQox~ZUWZxHlPXz1K99FY0wLv-E3ovcv9lgYZeWbppRrREIR6QHVx~hZL9eXu5nQVqVU67XskEDlKbfVWOhNtsGMeYwQiUXuFQ~Zql0XTCf6K3uztWhbs56UiwnlzVU0wUOF6~Z8UjNCQbIGVzi3D~2PCkznj~BJ0RvCJb5-SRd2tLBmZrALjnlB05je~EQY~hTprL3Nxg__&Key-Pair-Id=K269JMAT9ZF4GZ)
 
 In class today we ended up discussing a number of things as you all asked great
 questions:

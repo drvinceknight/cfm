@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introduction to calculus"
-tags: algebra
+tags: calculus
 ---
 
 In class today we discussed how to use Sympy to do differentiation, integration

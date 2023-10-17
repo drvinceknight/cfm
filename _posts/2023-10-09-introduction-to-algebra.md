@@ -21,7 +21,7 @@ In class I used Sympy to solve the following problem:
 This is similar to the tutorial in the python for mathematics chapter which is
 what your lab tutor will be taking you through in labs.
 
-Here the notebook I used in class:
+Here is the notebook I used in class:
 [algebra.ipynb]({{site.baseurl}}/assets/nbs/2023-2024/algebra.ipynb)
 
 ### Following along in class

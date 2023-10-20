@@ -6,7 +6,7 @@ tag: assessment
 # Individual coursework (50%)
 
 A mock coursework is available:
-[here]({{site.baseurl}}/assets/assessment/mock/ind/assignment.ipynb).
+[here]({{site.baseurl}}/assets/assessment/mock/assignment.ipynb).
 
 The topics for the individual coursework for the past few years have been:
 

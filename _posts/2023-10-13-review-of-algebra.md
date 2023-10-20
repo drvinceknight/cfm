@@ -15,8 +15,6 @@ correct answer in the slide, mentimeter was able to redo the results (I should
 have just done this in class) and in fact **Joe** won! So Joe and
 Ben lead the quiz with 1 win each.
 
-![Results from the quiz](https://media.cleanshot.cloud/media/11983/BQrM7tj270AHb44vTCjeJ5dfDuJ8lMLI6oszpver.gif?Expires=1697215985&Signature=IblxVMphldVIynWegADc~cCFe9-bZ5RQt3pEKWnVzNBfM8j-mN4Jbbtyt~OvysdnK~DqtGhnl~i-MMREPZ4TKOVqKhVCbd2c~lPYzrMz52InqWqugzpP3fNN0PIUWr1dFaVDnqnaHlW0HQox~ZUWZxHlPXz1K99FY0wLv-E3ovcv9lgYZeWbppRrREIR6QHVx~hZL9eXu5nQVqVU67XskEDlKbfVWOhNtsGMeYwQiUXuFQ~Zql0XTCf6K3uztWhbs56UiwnlzVU0wUOF6~Z8UjNCQbIGVzi3D~2PCkznj~BJ0RvCJb5-SRd2tLBmZrALjnlB05je~EQY~hTprL3Nxg__&Key-Pair-Id=K269JMAT9ZF4GZ)
-
 In class today we ended up discussing a number of things as you all asked great
 questions:
 

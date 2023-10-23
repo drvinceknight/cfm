@@ -11,7 +11,7 @@ combinatorics type problems.
 You can see a recording of the class [here](https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=63c0d3df-4297-4947-9059-b09f00f7d192)
 
 Here is the notebook I used in class:
-[algebra.ipynb]({{site.baseurl}}/assets/nbs/2023-2024/combinatorics.ipynb)
+[combinatorics.ipynb]({{site.baseurl}}/assets/nbs/2023-2024/combinatorics.ipynb)
 
 To solve the following problem:
 

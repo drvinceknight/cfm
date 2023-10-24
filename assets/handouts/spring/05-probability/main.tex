@@ -1,0 +1,209 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{multicol}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 5}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered and an activity to
+carry out prior or during your lab session.
+
+At the end of the handout is a specific coursework like exercise.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/tools-for-mathematics/06-probability/introduction/main.html}{the
+probability chapter of Python for Mathematics}.
+
+\section{Summary}\label{summary}
+\hrule
+
+
+The purpose of this handout is to cover probability which
+corresponds to the
+\href{https://vknight.org/pfm/tools-for-mathematics/06-probability/introduction/main.html}{probability
+chapter of Python for Mathematics}.
+
+The topics covered are:
+
+\begin{itemize}
+\item
+  Generating random numbers
+\item
+  Randomly sample from a given collection of items.
+\item 
+  Write python functions to be able to repeat experiments.
+\end{itemize}
+
+
+\section{Activity}\label{activity}
+\hrule
+
+We will be tackling the problem from the
+\href{https://vknight.org/pfm/tools-for-mathematics/06-probability/tutorial/main.html}{tutorial
+of the probability chapter of Python for Mathematics}.
+
+An experiment consists of selecting a token from a bag and spinning a coin. The
+bag contains 5 red tokens and 7 blue tokens. A token is selected at random from
+the bag, its colour is noted and then the token is returned to the bag.
+
+When a red token is selected, a biased coin with probability \(\frac{2}{3}\) of landing heads is
+spun.
+
+When a blue token is selected a fair coin is spun.
+
+\begin{enumerate}
+    \item What is the probability of picking a red token?
+    \item What is the probability of obtaining Heads?
+    \item If a heads is obtained, what is the probability of having selected a red token.
+\end{enumerate}
+
+There are instructions for how to do all of this is in the
+\href{https://vknight.org/pfm/tools-for-mathematics/06-probability/how/main.html}{probability chapter of Python for Mathematics}.
+
+
+\begin{enumerate}
+    \item Create a variable \mintinline{python}{bag} which has value the
+        list with 5 copies of the string \mintinline{python}{"Red"} and 7
+        copies of the string \mintinline{python}{"Blue"}.
+    \item Write a python function \mintinline{python}{pick_a_token} which can be
+        used to randomly choose an element from any given container.
+    \item Create a variable \mintinline{python}{samples} which has value a list
+        with 10,000 random choices from \mintinline{python}{bag}.
+    \item Count how many of the elements of \mintinline{python}{samples} are
+        \mintinline{python}{"Red"} and use this to approximate the probability of
+        picking a red token.
+    \item Write a python function \mintinline{python}{sample_experiment} which
+        carries out a single instance of the experiment described in the
+        question. This function should return both the color of the token and
+        the face of the coin.
+    \item Create a variable \mintinline{python}{samples} which has value a list
+        with 10,000 outcomes of the experiment.
+    \item Use \mintinline{python}{samples} to approximate the probability of picking
+        Heads.
+    \item Use \mintinline{python}{samples} to approximate the probability of picking
+        a red token given that Heads is selected.
+\end{enumerate}
+
+
+\section{Coursework like exercise}
+\hrule
+
+During a game of cricket, a ball is bowled:
+
+\begin{itemize}
+    \item 45\% of the time using spin;
+    \item 55\% of the time using pace.
+\end{itemize}
+
+The ball is hit:
+
+\begin{itemize}
+    \item 40\% of the time when it is bowled using spin;
+    \item 35\% of the time when it is bowled using pace.
+\end{itemize}
+
+\begin{enumerate}
+    \item Write a function \mintinline{python}{sample_experiment} that simulates a given ball
+        and returns the bowl type (as a string with value
+        \mintinline{python}{"backhand"} or
+        \mintinline{python}{"forehand"}) and whether it was caught (as a
+        boolean: either \mintinline{python}{True} or \mintinline{python}{False}).
+    \item Using 1,000,000 samples create a variable
+        \mintinline{python}{probability_of_hit} which
+        has value an estimate for the probability of the ball being hit.
+    \item Using the above, create a variable
+        \mintinline{python}{probability_of_spin_given_hit} which has value an estimate for the
+        probability of the ball being bowled with spin given that it
+        was hit.
+\end{enumerate}
+
+
+\section{Summary examples}
+\hrule
+
+\begin{multicols}{2}
+    Create the collection \((A, A, B)\) as a list.
+ 
+        \begin{minted}[frame=single]{python}
+collection = ["A", "A", "B"]
+    \end{minted}
+
+        Modify the 2nd element in the collection \((A, A, B)\).
+
+        \begin{minted}[frame=single]{python}
+collection = ["A", "A", "B"]
+collection[1] = "C"
+        \end{minted}
+
+        Include a new element in a collection:
+
+        \begin{minted}[frame=single]{python}
+collection = ["A", "A", "B"]
+collection.append("C")
+        \end{minted}
+
+        Define and call $f(x)=x^2 + 1$:
+
+        \begin{minted}[frame=single]{python}
+def square(x):
+    """
+    Returns x ^ 2 + 1
+    """
+    return x ** 2 + 1
+
+square(5)
+        \end{minted}
+
+        \vspace{2cm}
+        Running conditional code:
+
+        \begin{minted}[frame=single]{python}
+def absolute_value(x):
+    """
+    A function that returns -x if x is 
+    negative and returns x otherwise
+    """
+    if x < 0:
+        return - x
+    return x
+        \end{minted}
+
+        Create a list with the numbers $(0 ^ 2, 1 ^ 2, 2 ^ 2, 3 ^ 2, 4 ^ 2)$:
+
+        \begin{minted}[frame=single]{python}
+[x ** 2 for x in range(5)]
+        \end{minted}
+
+        Sample from the numbers $(0, 1, 2)$
+
+        \begin{minted}[frame=single]{python}
+import random
+
+random.seed(0)
+random.choice(range(3))
+        \end{minted}
+
+        Sample a random number between 0 and 1:
+
+        \begin{minted}[frame=single]{python}
+import random
+random.seed(0)
+random.random()
+        \end{minted}
+\end{multicols}
+
+\end{document}

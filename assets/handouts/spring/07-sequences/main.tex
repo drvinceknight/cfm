@@ -1,0 +1,127 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{multicol}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 7}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered and an activity to
+carry out prior or during your lab session.
+
+At the end of the handout is a specific coursework like exercise.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/tools-for-mathematics/07-sequences/introduction/main.html}{the
+sequences chapter of Python for Mathematics}.
+
+\section{Summary}\label{summary}
+\hrule
+
+
+The purpose of this handout is to cover sequences which
+corresponds to the
+\href{https://vknight.org/pfm/tools-for-mathematics/07-sequences/introduction/main.html}{probability
+chapter of Python for Mathematics}.
+
+The main topic covered here is recursion.
+
+\section{Activity}\label{activity}
+\hrule
+
+We will be tackling the problem from the
+\href{https://vknight.org/pfm/tools-for-mathematics/07-sequences/tutorial/main.html}{tutorial
+of the sequences chapter of Python for Mathematics}.
+
+A sequence $a_1, a_2, a_3, …$ is defined by:
+
+$$
+    \left\{
+    \begin{array}{l}
+        a_1 = k,\\
+        a_{n + 1} = 2a_n – 7, n \geq 1,
+    \end{array}
+    \right.
+$$
+
+where $k$ is a constant.
+
+
+\begin{enumerate}
+    \item Write down an expression for $a_2$ in terms of $k$.
+    \item Show that $a_3 = 4k -21$
+    \item Given that $\sum_{r=1}^4 a_r = 43$ find the value of $k$.
+\end{enumerate}
+
+There are instructions for how to do all of this is in the
+\href{https://vknight.org/pfm/tools-for-mathematics/07-sequences/how/main.html}{probability chapter of Python for Mathematics}.
+
+
+\begin{enumerate}
+    \item Define a python function \mintinline{python}{generate_a} which uses
+        recursion to give the values of the sequence \(a_n\).
+    \item Use a symbolic variable for \(k\) to obtain $a_1$, $a_2$, $a_3$ and
+        $a_4$.
+    \item Obtain the sum of these four values to get an equation for \(k\).
+\end{enumerate}
+
+
+\section{Coursework like exercise}
+\hrule
+
+Consider this recursive definition for the sequence $a_n$:
+
+$$
+a_n = \begin{cases}
+        c & \text{ if n = 1}\\
+        3a_{n - 1} + \frac{c}{n}
+      \end{cases}
+$$
+
+
+\begin{enumerate}
+    \item Output the sum of the 15 terms.
+    \item Given that $c=2$ output $\frac{df}{dx}$ where:
+             $$
+             f(x) = a_1 + a_2 x + a_3 x ^ 2 + a_4 x ^ 3
+             $$
+    \item Given that $c=2$ output $\int f(x)dx$
+\end{enumerate}
+
+
+\section{Summary examples}
+\hrule
+
+    Define the following sequence:
+
+    \[
+        a_n = \begin{cases}
+                1 & \text{ if }n=1\\
+                \frac{1}{a_{n - 1} + 1}&\text{ otherwise}
+              \end{cases}
+    \]
+
+        \begin{minted}[frame=single]{python}
+def generate_a(n):
+    """
+    Generate the sequence a_n using recursion
+    """
+    if n == 1:
+        return 1
+    return 1 / (generate_a(n - 1) + 1)
+    \end{minted}
+
+\end{document}

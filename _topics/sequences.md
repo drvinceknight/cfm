@@ -7,3 +7,5 @@ note_urls:
 video_urls:
   - "Video demonstration of tutorial. - [YouTube](https://youtu.be/zSEv9DZ6yvw)"
 ---
+
+A handout is available [here]({{site.baseurl}}/assets/handouts/spring/07-sequences/main.pdf).

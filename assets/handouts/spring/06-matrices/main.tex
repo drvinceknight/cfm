@@ -1,0 +1,160 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{multicol}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 6}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered and an activity to
+carry out prior or during your lab session.
+
+At the end of the handout is a specific coursework like exercise.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/tools-for-mathematics/04-matrices/introduction/main.html}{the
+matrices chapter of Python for Mathematics}.
+
+\section{Summary}\label{summary}
+\hrule
+
+
+The purpose of this handout is to cover matrices which
+corresponds to the
+\href{https://vknight.org/pfm/tools-for-mathematics/04-matrices/introduction/main.html}{probability
+chapter of Python for Mathematics}.
+
+The topics covered are:
+
+\begin{itemize}
+\item
+  Creating matrices.
+\item
+  Manipulating matrices.
+\item 
+  Solving a system of linear equations using matrices.
+\end{itemize}
+
+
+\section{Activity}\label{activity}
+\hrule
+
+We will be tackling the problem from the
+\href{https://vknight.org/pfm/tools-for-mathematics/04-matrices/tutorial/main.html}{tutorial
+of the matrices chapter of Python for Mathematics}.
+
+The matrix $A$ is given by $A=\begin{pmatrix}a & 1 & 1\\ 1 & a & 1\\ 1 & 1 & 2\end{pmatrix}$.
+
+1. Find the determinant of $A$
+2. Hence find the values of $a$ for which $A$ is singular.
+3. For the following values of $a$, when possible obtain $A ^ {- 1}$ and confirm
+   the result by computing $AA^{-1}$:
+    1. $a = 0$;
+    2. $a = 1$;
+    3. $a = 2$;
+    4. $a = 3$.
+
+There are instructions for how to do all of this is in the
+\href{https://vknight.org/pfm/tools-for-mathematics/04-matrices/how/main.html}{probability chapter of Python for Mathematics}.
+
+
+\begin{enumerate}
+    \item Create a variable \mintinline{python}{A} which has value the
+        matrix \(A\).
+    \item Create a variable \mintinline{python}{determinant} which has value the 
+        determinant of \(A\).
+    \item Find the values of $a$ for which the determinant of \(A\) is 0. This
+        corresponds to the values for which \(A\) is singular.
+    \item Substitute the given values of $a$ in to \mintinline{python}{A} and
+        compute the inverse. Multiply the inverse by \(A\) to obtain the
+        identity matrix $\begin{pmatrix}1 & 0 & \\ 0 & 1 & 0\\ 0 & 0 & 1\end{pmatrix}$
+        which confirms the result.
+\end{enumerate}
+
+
+\section{Coursework like exercise}
+\hrule
+
+The matrix $A$ is given by $A=\begin{pmatrix}a & 3 & 1\\ a & 2a & 3\\ -3 & 2 & 2
+a\end{pmatrix}$.
+
+\begin{enumerate}
+    \item Create a variable \mintinline{python}{determinant} which has value the
+        determinant of $A$
+    \item Create a variable \mintinline{python}{singular_values_of_a} which has
+        value the set of values of $a$ for which $A$ is singular.
+    \item Output a list which contains the singular values of $a$ which are pure
+        real numbers.
+\end{enumerate}
+
+
+\section{Summary examples}
+\hrule
+
+\begin{multicols}{2}
+    Create the matrix \(B = \begin{pmatrix} 3 & 5 \\ 1 & -2 \end{pmatrix}\).
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+B = sym.Matrix(((3, 5), (1, -2)))
+        \end{minted}
+
+    Obtain the determinant of \(B = \begin{pmatrix} 3 & 5 \\ 1 & -2 \end{pmatrix}\).
+
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+B = sym.Matrix(((3, 5), (1, -2)))
+B.det()
+        \end{minted}
+
+    Obtain the inverse of \(B = \begin{pmatrix} 3 & 5 \\ 1 & -2 \end{pmatrix}\)
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+B = sym.Matrix(((3, 5), (1, -2)))
+B.inv()
+        \end{minted}
+
+    Calculate \(\begin{pmatrix} 3 & 5 \\ 1 & -2
+        \end{pmatrix}\left(\begin{pmatrix} 3 & 1 \\ 4 & 1 \end{pmatrix} +
+            6\begin{pmatrix} 2 & 3 \\ 1 & 1 \end{pmatrix} \right)\)
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+B = sym.Matrix(((3, 5), (1, -2)))
+C = sym.Matrix(((3, 1), (4, 1)))
+D = sym.Matrix(((2, 3), (1, 1)))
+B @ (C + 6 * D)
+        \end{minted}
+
+        Solve the linear system:
+$$
+    \begin{array}{l}
+        x + 2y = 3\\
+        3x + y= 4\\
+    \end{array}
+$$
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+M = sym.Matrix(((1, 2), (3, 1)))
+b = sym.Matrix(((3,), (4,)))
+M.inv() @ b
+        \end{minted}
+\end{multicols}
+
+\end{document}

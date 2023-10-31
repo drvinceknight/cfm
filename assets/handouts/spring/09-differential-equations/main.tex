@@ -1,0 +1,141 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{multicol}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 9}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered and an activity to
+carry out prior or during your lab session.
+
+At the end of the handout is a specific coursework like exercise.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/tools-for-mathematics/09-differential-equations/introduction/main.html}{the
+differential equations chapter of Python for Mathematics}.
+
+\section{Summary}\label{summary}
+\hrule
+
+
+The purpose of this handout is to cover differential equations which
+corresponds to the
+\href{https://vknight.org/pfm/tools-for-mathematics/09-differential-equations/introduction/main.html}{differential equations
+chapter of Python for Mathematics}.
+
+The topics covered are:
+
+\begin{itemize}
+    \item Creating a symbolic function
+    \item Writing a differential equation
+    \item Solving a differential equation
+\end{itemize}
+\section{Activity}\label{activity}
+\hrule
+
+We will be tackling the problem from the
+\href{https://vknight.org/pfm/tools-for-mathematics/09-differential-equations/tutorial/main.html}{tutorial
+of the differential equations chapter of Python for Mathematics}.
+
+A container has volume $V$ of liquid which is poured in at a rate proportional
+to $e^{-t}$ (where $t$ is some measurement of time). Initially the container is empty and
+after $t=3$ time units the rate at which the liquid is poured is 15.
+
+1. Show that $V(t)=\frac{-15e^{3}}{1-e^{3}}(1 - e^{-t})$
+2. Obtain the limit $\lim_{t\to \infty}V(t)$
+
+There are instructions for how to do all of this is in the
+\href{https://vknight.org/pfm/tools-for-mathematics/09-differential-equations/how/main.html}{differential equations chapter of Python for Mathematics}.
+
+
+\begin{enumerate}
+    \item Create the symbolic variables \mintinline{python}{t} and
+        \mintinline{python}{k} as well as the symbolic function
+        \mintinline{python}{V}.
+    \item Create the variable \mintinline{python}{differential_equation} which
+    has value the differential equation $\frac{d}{dt}V(t)=ke^{-t}$    
+    \item Use the \mintinline{python}{sympy.dsolve} tool to obtain the general
+        solution to this differential equation.
+    \item Use the initial conditions given (that $V(0)=0$) to obtain the
+        particular solution to this differential equation.
+    \item Use the fact that $V(3)=15$ to obtain a particular value for $k$.
+    \item Obtain the required limit.
+\end{enumerate}
+
+
+\section{Coursework like exercise}
+\hrule
+
+
+\begin{enumerate}
+    \item Create a variable \mintinline{python}{differential_equation} that has value a
+        the differential equation: $\frac{dy}{dx}=\cos{y}$.
+    \item Create a variable \mintinline{python}{general_solution} that has
+        value the general solution (as an equation) for the differential equation.
+    \item Create a variable \mintinline{python}{particular_solution} that has
+        value the particular solution (as an equation) for the differential
+        equation for the condition that $y(\pi)=5$.
+\end{enumerate}
+
+\section{Summary examples}
+\hrule
+
+\begin{multicols}{2}
+
+    Create a symbolic function $g$:
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+g = sym.Function(g)
+\end{minted}
+
+    Create the differential equation $\frac{dy}{dx}=x$:
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+y = sym.Function(g)
+x = sym.Function(x)
+
+lhs = sym.diff(y(x), x)
+differential_equation = sym.Eq(lhs, x)
+\end{minted}
+
+    \vspace{2cm}
+
+    Solve the differential equation $\frac{dy}{dx}=x ^ 2$ given the condition
+    $y(1)=0$
+
+        \begin{minted}[frame=single]{python}
+import sympy as sym
+y = sym.Function(g)
+x = sym.Function(x)
+
+lhs = sym.diff(y(x), x)
+rhs = x ** 2
+differential_equation = sym.Eq(lhs, rhs)
+
+condition = {y(1): 0}
+solution = sym.dsolve(
+    differential_equation,
+    y(x),
+    ics=condition,
+)
+\end{minted}
+
+\end{multicols}
+
+\end{document}

@@ -8,7 +8,7 @@ tags:
 In class today I gave an overview of how to use the `random` library to simulate
 random event to study probability problems.
 
-You can see a recording of the class [here]()
+You can see a recording of the class [here](https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b4800948-60fe-4273-a0d0-b0a600f7d842)
 
 Here is the notebook I used in class:
 [probability.ipynb]({{site.baseurl}}/assets/nbs/2023-2024/probability.ipynb)

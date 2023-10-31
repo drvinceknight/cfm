@@ -1,0 +1,188 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{multicol}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 8}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered and an activity to
+carry out prior or during your lab session.
+
+At the end of the handout is a specific coursework like exercise.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/tools-for-mathematics/08-statistics/introduction/main.html}{the
+statistics chapter of Python for Mathematics}.
+
+\section{Summary}\label{summary}
+\hrule
+
+
+The purpose of this handout is to cover statistics which
+corresponds to the
+\href{https://vknight.org/pfm/tools-for-mathematics/08-statistics/introduction/main.html}{probability
+chapter of Python for Mathematics}.
+
+The topics covered are:
+
+\begin{itemize}
+    \item Calculating measures of central tendency and spread
+    \item Calculating bivariate coefficients
+    \item Fitting a line of best fit
+    \item Using the Normal distribution
+\end{itemize}
+\section{Activity}\label{activity}
+\hrule
+
+We will be tackling the problem from the
+\href{https://vknight.org/pfm/tools-for-mathematics/08-statistics/tutorial/main.html}{tutorial
+of the statistics chapter of Python for Mathematics}.
+
+Anna is investigating the relationship between exercise and resting heart rate.
+She takes a random sample of 19 people in her year group and records for each person
+
+- their resting heart rate, $h$ beats per minute.
+- the number of minutes, $m$, spent exercising each week.
+
+A table with the data is available in the statistics chapter of Python for
+Mathematics where you can also see a scatter plot.
+
+\begin{enumerate}
+    \item For all collected values of $h$ and $m$ obtain:
+
+    \begin{itemize}
+        \item The mean
+        \item The median
+        \item The quartiles
+        \item The standard deviation
+        \item The variation
+        \item The maximum
+        \item The minimum
+    \end{itemize}
+
+\item Obtain the Pearson Coefficient of correlation for the variables $h$ and $m$.
+\item Obtain the line of best fit for variables $x$ and $y$ as
+   defined by:
+
+   $$x=\ln(m)\qquad y=\ln(h)$$
+
+\item Using the above obtain a relationship between $m$ and $h$ of the form:
+
+   $$h=cm^k$$
+\end{enumerate}
+
+There are instructions for how to do all of this is in the
+\href{https://vknight.org/pfm/tools-for-mathematics/08-statistics/how/main.html}{probability chapter of Python for Mathematics}.
+
+
+\begin{enumerate}
+    \item Create the variables \mintinline{python}{h} and \mintinline{python}{m}
+        which have values the data for $h$ and $m$ respectively.
+    \item Import the \mintinline{python}{statistics} library and use it to
+        obtain the mean, media, quartiles, standard deviation and variation of
+        both $h$ and $m$.
+    \item Use the \mintinline{python}{min} and \mintinline{python}{max} tools to
+        compute the minimum and maximum of both $h$ and $m$.
+    \item Use the \mintinline{python}{statistics} library to compute the Pearson
+        Coefficient of correlation between $h$ and $m$.
+    \item Create \mintinline{python}{x} which has value $x=\ln(m)$.
+    \item Create \mintinline{python}{y} which has value $y=\ln{h}$.
+    \item Use the \mintinline{python}{statistics} library to compute the slope
+        and intercept for a linear regression line between $y$ and $x$.
+    \item Use \mintinline{python}{sympy} to obtain the required final expression
+        for $h$ as a function of $m$.
+\end{enumerate}
+
+
+\section{Coursework like exercise}
+\hrule
+
+
+\begin{enumerate}
+    \item Create a variable \mintinline{python}{distribution} that has value a
+        Normal distribution with mean 10 and standard deviation .5:
+    \item Create a variable \mintinline{python}{probability_of_less_than_eight}
+        which has value the probability of selecting a random variable from the
+        distribution which has value less than eight.
+    \item Output the value of a variable from the distribution which has
+        probability of being less than, .9.
+\end{enumerate}
+
+\section{Summary examples}
+\hrule
+
+\begin{multicols}{2}
+
+    Calculate the sample standard deviation of $1, 4, 2, 3, 1.5, 7$:
+
+        \begin{minted}[frame=single]{python}
+import statistics as st
+data = (1, 4, 2, 3, 1.5, 7)
+st.stdev(data)
+\end{minted}
+
+Other tools exist in the statistics library to compute measures of spread and
+tendency: \mintinline{python}{mean}, \mintinline{python}{median},
+    \mintinline{python}{pstdev}, \mintinline{python}{stdev},
+    \mintinline{python}{pvariance}, \mintinline{python}{variance},
+    \mintinline{python}{quantiles}.
+
+    Calculate the maximum and minimum of $1, 2, 3$:
+
+        \begin{minted}[frame=single]{python}
+data = (1, 2, 3)
+max(data), min(data)
+\end{minted}
+
+    Obtain the covariance between $1, 2, 3$ and $3, 2, 1$:
+
+        \begin{minted}[frame=single]{python}
+import statistics as st
+x = (1, 2, 3)
+y = (3, 2, 1)
+st.covariance(x, y)
+\end{minted}
+
+    Obtain the Pearson correlation coefficient between $1, 2, 3$ and $3, 2, 1$:
+
+        \begin{minted}[frame=single]{python}
+import statistics as st
+x = (1, 2, 3)
+y = (3, 2, 1)
+st.correlation(x, y)
+\end{minted}
+
+    Fit a line of best fit between $1, 2.5, 3$ and $2.9, 2, 1$:
+
+        \begin{minted}[frame=single]{python}
+import statistics as st
+x = (1, 2.5, 3)
+y = (2.9, 2, 1)
+st.linear_regression(x, y)
+\end{minted}
+
+    Create an instance of the normal distribution with mean $5$ and standard
+    deviation $1$:
+
+        \begin{minted}[frame=single]{python}
+import statistics as st
+st.NormalDist(mu=5, sigma=1)
+\end{minted}
+
+\end{multicols}
+
+\end{document}

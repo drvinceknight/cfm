@@ -14,7 +14,6 @@ This week's quiz was won by Daf who now has 2 wins!
 4 people have a single win:
 
 - Anthony
-- Daf
 - Ben
 - Joe
 - Millie

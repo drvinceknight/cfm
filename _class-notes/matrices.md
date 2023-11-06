@@ -32,44 +32,32 @@ Solution
 
     >>> import sympy as sym
     >>> a = sym.Symbol("a")
-    >>> A = sym.Matrix([[1, 1, 3], [2, a, 1], [a, 1, 0]])
+    >>> A = sym.Matrix(((1, 1, a), (2, a, 1), (a, 1, 2 * a)))
     >>> A
     Matrix([
-    [1, 1, 3],
-    [2, a, 1],
-    [a, 1, 0]])
+    [1, 1,   a],
+    [2, a,   1],
+    [a, 1, 2*a]])
 
 Now to calculate the determinant::
 
     >>> determinant = A.det()
     >>> determinant
-    -3*a**2 + a + 5
+    -a**3 + 2*a**2 - a - 1
 
 This can now be used to give us our first equation::
 
     >>> sym.solveset(determinant, a)
-    {1/6 - sqrt(61)/6, 1/6 + sqrt(61)/6}
-
-Indeed we can substitute those values in to the matrix and compute the inverse::
-
-    >>> A.subs({a: sym.S(1) / 6 - sym.sqrt(61) / 6})
-    Matrix([
-    [               1,                1, 3],
-    [               2, 1/6 - sqrt(61)/6, 1],
-    [1/6 - sqrt(61)/6,                1, 0]])
-    >>> A.subs({a: sym.S(1) / 6 - sym.sqrt(61) / 6}).inv()
-    Traceback (most recent call last):
-    ...
-    sympy.matrices.common.NonInvertibleMatrixError: Matrix det == 0; not invertible.
+    {-(3*sqrt(93)/2 + 29/2)**(1/3)/3 - 1/(3*(3*sqrt(93)/2 + 29/2)**(1/3)) + 2/3, 1/(6*(3*sqrt(93)/2 + 29/2)**(1/3)) + (3*sqrt(93)/2 + 29/2)**(1/3)/6 + 2/3 + I*(-sqrt(3)/(6*(3*sqrt(93)/2 + 29/2)**(1/3)) + sqrt(3)*(3*sqrt(93)/2 + 29/2)**(1/3)/6), 1/(6*(3*sqrt(93)/2 + 29/2)**(1/3)) + (3*sqrt(93)/2 + 29/2)**(1/3)/6 + 2/3 + I*(-sqrt(3)*(3*sqrt(93)/2 + 29/2)**(1/3)/6 + sqrt(3)/(6*(3*sqrt(93)/2 + 29/2)**(1/3)))}
 
 Now for each value of :math:`a` we can compute the inverse and confirm that
 inverse acts as required::
 
     >>> A.subs({a: 0}).inv()
     Matrix([
-    [-1/5,  3/5,  1/5],
-    [   0,    0,    1],
-    [ 2/5, -1/5, -2/5]])
+    [ 1, 0, -1],
+    [ 0, 0,  1],
+    [-2, 1,  2]])
     >>> A.subs({a: 0}).inv() @ A.subs({a: 0})
     Matrix([
     [1, 0, 0],
@@ -77,9 +65,9 @@ inverse acts as required::
     [0, 0, 1]])
     >>> A.subs({a: 1}).inv()
     Matrix([
-    [-1/3,  1, -2/3],
-    [ 1/3, -1,  5/3],
-    [ 1/3,  0, -1/3]])
+    [-1,  1,  0],
+    [ 3, -1, -1],
+    [-1,  0,  1]])
     >>> A.subs({a: 1}).inv() @ A.subs({a: 1})
     Matrix([
     [1, 0, 0],
@@ -87,9 +75,9 @@ inverse acts as required::
     [0, 0, 1]])
     >>> A.subs({a: 2}).inv()
     Matrix([
-    [ 1/5, -3/5,  1],
-    [-2/5,  6/5, -1],
-    [ 2/5, -1/5,  0]])
+    [-7/3,  2/3,  1],
+    [   2,    0, -1],
+    [ 2/3, -1/3,  0]])
     >>> A.subs({a: 2}).inv() @ A.subs({a: 2})
     Matrix([
     [1, 0, 0],
@@ -97,9 +85,9 @@ inverse acts as required::
     [0, 0, 1]])
     >>> A.subs({a: 3}).inv()
     Matrix([
-    [ 1/19, -3/19,  8/19],
-    [-3/19,  9/19, -5/19],
-    [ 7/19, -2/19, -1/19]])
+    [-17/13,  3/13,  8/13],
+    [  9/13,  3/13, -5/13],
+    [  7/13, -2/13, -1/13]])
     >>> A.subs({a: 3}).inv() @ A.subs({a: 3})
     Matrix([
     [1, 0, 0],

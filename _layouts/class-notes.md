@@ -2,10 +2,12 @@
 layout: default
 ---
 
-<div class="container" style="border:red;">
+<div class="container" style="border:red; border-width:5px; border-style:solid;">
 
-<h1> {{ page.title }} </h1>
+<tt>
+<h1 > {{ page.title }} </h1>
 
+<div style="border:red; border-width:3px; border-style:dashed;">
 <b>Note: These are not designed to be
 student facing.</b>
 
@@ -16,9 +18,11 @@ notes from class.
 <p>
 Student facing resources for each topic are all available at <a href={{site.baseurl}}/>vknight.org/cfm/</a>.
 </p>
+</div>
 
 {{ page.content }}
 
 </div>
 
 {% include utterances.html %}
+</tt>

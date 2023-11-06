@@ -1,0 +1,2 @@
+# Versions are not pinned to ensure CI catches updates to libraries.
+sympy

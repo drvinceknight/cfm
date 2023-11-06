@@ -37,3 +37,4 @@ _build
 assets/assessment/2020-2021/group/main.csv
 assets/assessment/2020-2021/main.ipynb
 assets/nbs/assessment/*
+env/

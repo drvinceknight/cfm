@@ -56,4 +56,16 @@ layout: default
 {% endfor %}
 </div>
 
+{% for notes in site.class-notes %}
+{% if notes.tags contains page.tag %}
+
+<small>
+<code><a href="{{site.baseurl}}{{notes.url}}">Class notes: {{ notes.title }}
+</a></code>
+</small>
+{% endif %}
+{% endfor %}
+
+</div>
+
 {% include utterances.html %}

@@ -1,11 +1,7 @@
 name: Test notes
 
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   deploy-book:
     runs-on: ubuntu-latest

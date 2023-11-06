@@ -48,7 +48,7 @@ Now to calculate the determinant::
 This can now be used to give us our first equation::
 
     >>> sym.solveset(determinant, a)
-    FiniteSet(1/6 - sqrt(61)/6, 1/6 + sqrt(61)/6)
+    {1/6 - sqrt(61)/6, 1/6 + sqrt(61)/6}
 
 Indeed we can substitute those values in to the matrix and compute the inverse::
 

@@ -4,7 +4,7 @@ title: "Statistics"
 tags: statistics
 ---
 
-# Sequences week
+# Statistics week
 
 ## First meeting
 

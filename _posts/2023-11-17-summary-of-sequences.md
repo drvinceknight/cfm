@@ -40,7 +40,7 @@ def get_sequence(n):
 During the discussion about what `get_sequence(n=7)` gives I drew the following
 on the board:
 
-![]({site.baseurl}/assets/nbs/2023-2024/get_sequence.png)
+![]({{site.baseurl}}/assets/nbs/2023-2024/get_sequence.png)
 
 If we work back from the end points of that image we get:
 

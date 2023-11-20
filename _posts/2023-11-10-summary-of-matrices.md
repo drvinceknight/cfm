@@ -14,7 +14,7 @@ Here is the notebook I used in class:
 
 We started with the quiz (won by Tom who has 1 win):
 
-4 people have a single win:
+5 people have a single win:
 
 - Daf: 2 wins
 - Anthony: 1 win

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Introduction to Sequences"
+title: "Introduction to statistics"
 tags:
-  - sequences
+  - statistics
 ---
 
 In class today I gave an overview of how to carry out statistical calculations

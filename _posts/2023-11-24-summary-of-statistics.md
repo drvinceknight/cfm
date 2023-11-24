@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Summary of Statistics"
+title: "Summary of Statistics and some discussion about assessment"
 tags:
   - statistics
+  - about-the-course
 ---
 
 In class today I we went over the Statistics chapter.

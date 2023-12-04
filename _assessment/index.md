@@ -5,11 +5,19 @@ tag: assessment
 
 # Individual coursework (50%)
 
+**The individual coursework is available:
+[here]({{site.baseurl}}/assets/assessment/2023-2024/assignment.ipynb) ([cy]({{site.baseurl}}/assets/assessment/2023-2024/cy/assignment.ipynb)).**
+
 A mock coursework is available:
 [here]({{site.baseurl}}/assets/assessment/mock/assignment.ipynb).
 
 The topics for the individual coursework for the past few years have been:
 
+- 2023-2024 [here]({{site.baseurl}}/assets/assessment/2023-2024/assignment.ipynb) ([cy]({{site.baseurl}}/assets/assessment/2023-2024/cy/assignment.ipynb)):
+  1. [Differential equations]({{ site.baseurl }}/topics/differential-equations.html)
+  2. [Algebra]({{ site.baseurl }}/topics/algebra.html)
+  3. [Sequences]({{ site.baseurl }}/topics/sequences.html)
+  4. [Matrices]({{ site.baseurl }}/topics/matrices.html)
 - 2022-2023:
   1. [Sequences]({{ site.baseurl }}/topics/sequences.html)
   2. [Probability]({{ site.baseurl }}/topics/probability.html)
@@ -33,7 +41,7 @@ The topics for the individual coursework for the past few years have been:
 
 # Group project (50%)
 
-Build a Python library to provide tools for a problem related to mathematic.
+Build a Python library to provide tools for a problem related to mathematics.
 
 You will evidence your progress with 2 mediums:
 

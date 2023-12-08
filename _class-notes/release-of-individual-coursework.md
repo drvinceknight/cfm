@@ -6,6 +6,8 @@ tag: "release-of-individual-coursework"
 
 # Computing for Mathematics: Release of individual coursework
 
+## First class
+
 Send the following announcement to students:
 
 ```
@@ -31,3 +33,16 @@ If there is time, walk through the example coursework [here]({{site.baseurl}}/as
 The solution is available [here]({{site.baseurl}}/assets/assessment/example/solution.ipynb)
 
 More information about assessment: [here]({{ site.baseurl}}/assessment/)
+
+## Second class
+
+Ask students if they know where to submit the work. Show them.
+
+Clarify the deadline.
+
+Go over the mock coursework:
+
+- [assignment.ipynb]({{site.baseurl}}/assets/assessment/mock/assignment.ipynb).
+- [solution.ipynb]({{site.baseurl}}/assets/assessment/mock/solution.ipynb)
+
+Ask students if they have any questions.

@@ -33,7 +33,7 @@ The topics for the individual coursework for the past few years have been:
   2. [Combinatorics]({{ site.baseurl }}/topics/combinatorics.html)
   3. [Calculus]({{ site.baseurl }}/topics/calculus.html)
   4. [Sequences]({{ site.baseurl }}/topics/sequences.html)
-- Mock:
+- Mock [here]({{site.baseurl}}/assets/assessment/mock/assignment.ipynb):
   1. [Arithmetic]({{ site.baseurl }}/topics/using-notebooks.html)
   2. [Algebra]({{ site.baseurl }}/topics/algebra.html)
   3. [Matrices]({{ site.baseurl }}/topics/matrices.html)

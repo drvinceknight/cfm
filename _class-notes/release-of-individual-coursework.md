@@ -1,5 +1,5 @@
 ---
-layout: topic
+layout: class-notes
 title: "Release of individual coursework"
 tag: "release-of-individual-coursework"
 ---

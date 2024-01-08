@@ -13,7 +13,7 @@ A mock coursework is available:
 
 The topics for the individual coursework for the past few years have been:
 
-- 2023-2024 [here]({{site.baseurl}}/assets/assessment/2023-2024/assignment.ipynb) ([cy]({{site.baseurl}}/assets/assessment/2023-2024/cy/assignment.ipynb)):
+- 2023-2024 [here]({{site.baseurl}}/assets/assessment/2023-2024/ind/assignment.ipynb) ([cy]({{site.baseurl}}/assets/assessment/2023-2024/ind/cy/assignment.ipynb)) ([solution]({{site.baseurl}}/assets/assessment/2023-2024/ind/assignment.ipynb))
   1. [Differential equations]({{ site.baseurl }}/topics/differential-equations.html)
   2. [Algebra]({{ site.baseurl }}/topics/algebra.html)
   3. [Sequences]({{ site.baseurl }}/topics/sequences.html)

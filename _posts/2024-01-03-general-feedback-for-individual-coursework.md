@@ -8,6 +8,8 @@ tags:
 
 Thanks all for your efforts in doing the individual coursework!
 
+You can find the solution [here]({{site.baseurl}}/assets/assessment/2023-2024/ind/solution.ipynb).
+
 The performance was really good, below are some summary statistics of your
 marks:
 

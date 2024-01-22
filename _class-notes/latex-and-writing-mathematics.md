@@ -1,17 +1,15 @@
-Writing
-=======
-
-First meeting
--------------
+---
+layout: class-notes
+title: "LaTeX and Writing Mathematics"
+tag: writing
+---
 
 After this meeting students should:
 
 - Understand how to use LaTeX
 - Have access to guidance on writing
 
-
-In class discussion
--------------------
+## In class discussion
 
 Discuss how they already have seen an example a markup language: LaTeX.
 
@@ -59,8 +57,7 @@ something specifically useful in there.
 After breakout rooms ask all students to write down those things in a shared
 medium (for example the class discord).
 
-After class email
------------------
+## After class communication
 
 Send the following email after class::
 

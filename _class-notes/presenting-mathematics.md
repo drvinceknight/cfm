@@ -1,10 +1,12 @@
-Presenting
-==========
+---
+layout: class-notes
+title: "Presenting Mathematics"
+tag: presenting
+---
 
-Before first meeting
---------------------
+## Pre class communication
 
-Send the following email before class::
+Send the following message before class::
 
     Hi all,
 
@@ -20,9 +22,7 @@ Send the following email before class::
     Please get in touch if I can assist with anything,
     Vince
 
-
-In class meeting
-----------------
+## In class meeting
 
 Give a presentation.
 
@@ -34,13 +34,9 @@ After the presentation, if there are any questions about the tpic answer them.
 After that, give an overview of the principles of presentation:
 https://vknight.org/pop/
 
-Use breakout rooms of about 4 students to ask them to discuss the presentation
-and the principles.
-
 Bring back for a group discussion.
 
-After class email
------------------
+## Post class communication
 
 Send the following email after class::
 

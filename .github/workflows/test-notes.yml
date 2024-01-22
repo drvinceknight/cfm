@@ -26,4 +26,4 @@ jobs:
 
       - name: Test the documentation
         run: |
-          python -m doctest ./_class-notes/*.md
+          python -m doctest -o=ELLIPSIS ./_class-notes/*.md

@@ -1,17 +1,15 @@
-Documentation
-=============
-
-First meeting
--------------
+---
+layout: class-notes
+title: "Documentation of code"
+tags: documentation
+---
 
 After this meeting students should:
 
 - Understand the general structure required for documentation
 - Understand how to write further markdown
 
-
-Writing documentation
----------------------
+# Writing documentation
 
 Discuss how we will write documentation for the `tsp` library we wrote in the
 first section.
@@ -28,11 +26,10 @@ discuss amongst themselves.
 
 Say that we will address this after writing the documentation.
 
-Writing the tutorial
-********************
+## Writing the tutorial
 
-Open a markdown file (in the same location as the :code:`tsp.py` file) and call it
-:code:`README.md`.
+Open a markdown file (in the same location as the `tsp.py` file) and call it
+`README.md`.
 
 Write the following::
 
@@ -249,10 +246,7 @@ Write the following::
     > Aarts, Emile, Emile HL Aarts, and Jan Karel Lenstra, eds. Local search in
     > combinatorial optimization. Princeton University Press, 2003.
 
-
-
-After class email
------------------
+## After class communication
 
 Send the following email after class::
 

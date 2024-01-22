@@ -1,13 +1,14 @@
-Using the cli and an editor
-===========================
+---
+layout: class-notes
+title: "Using the terminal and an editor"
+tags: using-a-terminal-and-an-editor
+---
 
-First meeting
--------------
+# First meeting
 
 After this meeting students should:
 
 - Understand the basic idea of using a cli and an editor
-
 
 Explain that there is no specific class problem today as there is no new python
 concept to cover.
@@ -20,8 +21,7 @@ concept to cover.
 Now open VScode (show how to install), create a file and put it in the folder.
 Run it.
 
-After class email
------------------
+# After class communication
 
 Send the following email after class::
 

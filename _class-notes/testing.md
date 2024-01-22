@@ -1,8 +1,15 @@
-Testing
-=======
+---
+layout: class-notes
+title: "Testing of code"
+tags: testing
+---
 
-First meeting
--------------
+After this meeting students should:
+
+- Understand the general structure required for documentation
+- Understand how to write further markdown
+
+## First meeting
 
 After this meeting students should:
 
@@ -10,15 +17,12 @@ After this meeting students should:
 - Understand how to write unit tests using assert statements
 - Understand how to write tests for documentation
 
-
-Testing software
-----------------
+### Testing software
 
 Discuss how we will write automated tests for the `tsp` library we wrote in the
 first section.
 
-Writing the unit tests
-**********************
+#### Writing the unit tests
 
 Write the following in a `test_tsp.py` file::
 
@@ -93,8 +97,7 @@ Write the following in a `test_tsp.py` file::
     test_run_2_opt_algorithm_with_seed_1()
     test_plot_tour()
 
-
-Run the above tests by running::
+Run the above tests by running:
 
     $ python test_tsp.py
 
@@ -109,10 +112,10 @@ At each step modify the source code and then modify the tests.
 Discuss importance of tests as a debugging tool.
 
 Testing the documentation
-*************************
+
+---
 
 Modify the documentation in the `README.md` file to use doctests::
-
 
     # TSP
 
@@ -150,15 +153,14 @@ Run the doc tests by typing::
 
     $ python -m doctest README.md
 
-
 Discussion around 3 pillars of software development
-***************************************************
+
+---
 
 Specifically look at diagram in further information section:
 https://vknight.org/pfm/building-tools/07-testing/why/main.html#how-are-modularisation-documentation-and-testing-related
 
-After class email
------------------
+### After class communication
 
 Send the following email after class::
 

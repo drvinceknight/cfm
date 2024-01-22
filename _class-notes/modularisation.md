@@ -1,8 +1,8 @@
-Modularisation
-==============
-
-First meeting
--------------
+---
+layout: class-notes
+title: "Modularisation of code"
+tags: modularisation
+---
 
 After this meeting students should:
 
@@ -10,8 +10,7 @@ After this meeting students should:
 - Understand how to import a file from a file.
 
 Show students the following code and ask them to go in breakout rooms and
-discuss what it does.::
-
+discuss what it does:
 
     >>> def run_2_opt_algorithm(
     ...     number_of_stops,
@@ -49,9 +48,7 @@ discuss what it does.::
     ...
     ...     return tour
 
-
-The mathematical problem considered
------------------------------------
+## The mathematical problem considered
 
 Ask students what the travelling sales agent problem is.
 
@@ -69,7 +66,7 @@ We can visualise this::
     >>> plt.scatter(x, y)
     <matplotlib...
 
-A python library called :math:`sklearn` has a lot of functionality that can be
+A python library called `sklearn` has a lot of functionality that can be
 used to look at data, for example we can get the distances here::
 
     >>> import sklearn.metrics.pairwise
@@ -121,7 +118,6 @@ We can use this to for example get the cost of our tour::
     >>> get_cost(tour=tour, distance_matrix=distance_matrix)
     133.40828432465426
 
-
 Show how the code is much cleaner now::
 
     >>> def run_2_opt_algorithm(
@@ -146,10 +142,9 @@ Show how the code is much cleaner now::
 
 Discuss the need for docstrings.
 
-Then put the code in :code:`tsp.py` and show how it can be imported.
+Then put the code in `tsp.py` and show how it can be imported.
 
-After class email
------------------
+## After class communication
 
 Send the following email after class::
 

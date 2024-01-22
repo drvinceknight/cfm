@@ -1,8 +1,10 @@
-Object oriented programming
-===========================
+---
+layout: class-notes
+title: "Object oriented programming"
+tags: object-oriented-programming
+---
 
-First meeting
--------------
+# Object oriented programming
 
 After this meeting students should:
 
@@ -10,45 +12,42 @@ After this meeting students should:
 - Understand the basic syntax of how to create classes and instances
 - Know what they need to do to prepare for their tutorial
 
-Problem
-*******
+## Problem
 
 Tell students we are going to investigate some group theory.
 
-A group :math:`G` is defined as:
+    A group $G$ is defined as:
 
-- Closure: if :math:`a,b\in G` then :math:`a \cdot b\in G`.
-- Identity: there exists :math:`e \in G:\; e\cdot a = a \cdot e = a` for all :math:`a\in G`
-- Inverse: for all :math:`a\in G` there exists :math:`a^{-1}\in G:\; a\cdot a^{-1}=e`
-- Associativity: for all :math:`a,b,c\in G:\; (a\cdot b)\cdot c = a\cdot (b \cdot
-  c)`
+    - Closure: if $a,b\in G$ then $a \cdot b\in G$.
+    - Identity: there exists $e \in G:\; e\cdot a = a \cdot e = a$ for all $a\in G$
+    - Inverse: for all $a\in G$ there exists $a^{-1}\in G:\; a\cdot a^{-1}=e$
+    - Associativity: for all $a,b,c\in G:\; (a\cdot b)\cdot c = a\cdot (b \cdot
+      c)$
 
-Consider the permutation group: https://en.wikipedia.org/wiki/Permutation_group.
-On two elements: :math:`\{0, 1\}` there are two permutations:
+    Consider the permutation group: https://en.wikipedia.org/wiki/Permutation_group.
+    On two elements: $\{0, 1\}$ there are two permutations:
 
-- :math:`\sigma_{01}(0) = 0` and :math:`\sigma_{01}(1) = 1` (identity)
-- :math:`\sigma_{10}(0) = 1` and :math:`\sigma_{10}(1) = 0` (flip)
+    - $\sigma_{01}(0) = 0$ and $\sigma_{01}(1) = 1$ (identity)
+    - $\sigma_{10}(0) = 1$ and $\sigma_{10}(1) = 0$ (flip)
 
-Obtain the multiplication table for this group.
+    Obtain the multiplication table for this group.
 
-Solution
-********
+## Solution
 
-.. math::
-
+$$
    \begin{pmatrix}
     01 & 10\\
     10 & 01
    \end{pmatrix}
+$$
 
 Explain that we can create an **abstract** object in Python that allows us to
 manipulate these elements in the same way that we can manipulate integers and/or
-floats. Or in the same way that :code:`<insert popular video game>` manipulates
+floats. Or in the same way that `<insert popular video game>` manipulates
 characters.
 
 Here is how we create a very basic class that allows us to create an element
-corresponding to a given :math:`\sigma`::
-
+corresponding to a given $\sigma$:
 
     >>> class Permutation():
     ...     """A class that corresponds to an element of a permutation group"""
@@ -60,7 +59,6 @@ corresponding to a given :math:`\sigma`::
     ...         """Given a vector of integers permute them."""
     ...         return [self.sigma[i] for i in vector]
 
-
 We can use this to create specific elements of the Permutation group::
 
     >>> pi_01 = Permutation([0, 1])
@@ -70,16 +68,13 @@ We can use this to create specific elements of the Permutation group::
     >>> pi_10.sigma, pi_10.N
     ([1, 0], 2)
 
-
-The :code:`permute` method allows us to permute a given vector: for example what
-does :math:`\sigma_{10}` do to :math:`(0, 1)`::
+The `permute` method allows us to permute a given vector: for example what
+does $\sigma_{10}$ do to $(0, 1)$:
 
     >>> pi_10.permute([0, 1])
     [1, 0]
 
-
-We now have all we need to define the group operation on the permutation class::
-
+We now have all we need to define the group operation on the permutation class:
 
     >>> class Permutation():
     ...     """A class that corresponds to an element of a permutation group"""
@@ -94,8 +89,7 @@ We now have all we need to define the group operation on the permutation class::
     ...         """Define the group operation on self and other"""
     ...         return Permutation(self.permute(other.permute(range(self.N))))
 
-
-Redefining our new instances::
+Redefining our new instances:
 
     >>> pi_01 = Permutation([0, 1])
     >>> pi_10 = Permutation([1, 0])
@@ -104,7 +98,7 @@ Redefining our new instances::
 
 We see that a new instance of the `Permutation` class has been produced (which
 is expected) but we cannot really tell what it is. Let us implement another
-magic method to do so::
+magic method to do so:
 
     >>> class Permutation():
     ...     """A class that corresponds to an element of a permutation group"""
@@ -121,16 +115,16 @@ magic method to do so::
     ...         """Define the group operation on self and other"""
     ...         return Permutation(self.permute(other.permute(range(self.N))))
 
-Redefining our new instances::
+Redefining our new instances:
 
     >>> pi_01 = Permutation([0, 1])
     >>> pi_10 = Permutation([1, 0])
     >>> pi_10.operate(pi_01)
     [1, 0]
 
-We see that when :math:`\sigma_{01}` operates on `\sigma_{10}` we get
-`\sigma_{10}` back. A nice way to be able to check this using Python's
-:code:`==` operator is to include a new special method::
+We see that when $\sigma_{01}$ operates on $\sigma_{10}$ we get
+$\sigma_{10}$ back. A nice way to be able to check this using Python's
+`==` operator is to include a new special method::
 
     >>> class Permutation():
     ...     """A class that corresponds to an element of a permutation group"""
@@ -156,8 +150,8 @@ Let us confirm this now::
     >>> pi_10.operate(pi_01) == pi_10
     True
 
-One final change we're going to make is replace the :code:`operate` method to
-use a magic python method::
+One final change we're going to make is replace the `operate` method to
+use a magic python method:
 
     >>> class Permutation():
     ...     """A class that corresponds to an element of a permutation group"""
@@ -176,7 +170,7 @@ use a magic python method::
     ...         """Define the group operation on self and other"""
     ...         return Permutation(self.permute(other.permute(range(self.N))))
 
-We can now use the :code:`*` operator::
+We can now use the `*` operator::
 
     >>> pi_01 = Permutation([0, 1])
     >>> pi_10 = Permutation([1, 0])
@@ -193,7 +187,6 @@ table for our group**::
     ...             products.append(first * second)
     ...         print(products)
 
-
 We can now use this::
 
     >>> permutations = [pi_01, pi_10]
@@ -201,8 +194,7 @@ We can now use this::
     [[0, 1], [1, 0]]
     [[1, 0], [0, 1]]
 
-
-Let us modify this to look at permutations of size :math:`N=3`.
+Let us modify this to look at permutations of size $N=3$.
 Explain that we will make use of a very handy Python library for creating
 permutations of things::
 
@@ -221,7 +213,6 @@ Let us take a look at the multiplication table::
     [[1, 2, 0], [1, 0, 2], [2, 1, 0], [2, 0, 1], [0, 1, 2], [0, 2, 1]]
     [[2, 0, 1], [2, 1, 0], [0, 2, 1], [0, 1, 2], [1, 2, 0], [1, 0, 2]]
     [[2, 1, 0], [2, 0, 1], [1, 2, 0], [1, 0, 2], [0, 2, 1], [0, 1, 2]]
-
 
 **Can students see the various properties closure, associativity, inverse and
 identity?**
@@ -300,10 +291,7 @@ We can also use this to check for larger group sizes::
     >>> test_group(elements=permutations)
     True
 
-After class email
------------------
-
-Send the following email after class::
+### After class communication
 
     Hi all,
 

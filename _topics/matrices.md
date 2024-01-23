@@ -8,4 +8,4 @@ video_urls:
   - "Video demonstration of tutorial. - [YouTube](https://www.youtube.com/watch?v=9aoz22SxZjY)"
 ---
 
-A handout is available [here]({{site.baseurl}}/assets/handouts/spring/06-matrices/main.pdf).
+A handout is available [here]({{site.baseurl}}/assets/handouts/autumn/06-matrices/main.pdf).

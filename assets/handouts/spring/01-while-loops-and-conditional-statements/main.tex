@@ -1,0 +1,94 @@
+\documentclass{article}
+
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 1}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered as well as outline of
+expected progress.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/exercises/main.html}{the
+Variables, conditionals and loops chapter of Python for Mathematics}.
+
+\section{Expected progress}
+\hrule
+
+At the end of this week you should have a group assigned.
+
+\begin{itemize}
+    \item Agree on a way for your group to stay in touch;
+    \item Schedule 1 or 2 regular meeting times a week to work specifically on
+        the project.
+    \item Have an exchange of early ideas of possible project topics.
+\end{itemize}
+
+\begin{center}
+\framebox{
+\textbf{At this stage I would expect you to have some ideas written down.}
+}
+\end{center}
+
+\section{Summary}\label{summary}
+\hrule
+
+The programming topics covered in the
+\href{https://vknight.org/pfm/building-tools/01-variables-conditionals-loops/introduction/main.html}{variables,
+conditionals and loops chapter of Python for Mathematics} are:
+
+\begin{itemize}
+\item
+  Creating variables
+
+        \begin{minted}[frame=single]{python}
+age = 40
+        \end{minted}
+\item
+  Run code depending on a given condition.
+
+
+        \begin{minted}[frame=single]{python}
+if age < 18:
+    party = True
+else:
+    party = False
+age += 1
+        \end{minted}
+
+\item Check type of a variable
+
+        \begin{minted}[frame=single]{python}
+type(age)
+        \end{minted}
+\item
+  Repeat code as long as a given condition is met.
+
+        \begin{minted}[frame=single]{python}
+while boolean_condition:
+    <code to repeat>
+        \end{minted}
+
+\item
+  Repeat code over a given set.
+
+
+        \begin{minted}[frame=single]{python}
+for variable in iterable:
+    <code to repeat>
+        \end{minted}
+\end{itemize}
+
+\end{document}

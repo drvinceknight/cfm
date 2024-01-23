@@ -8,4 +8,4 @@ video_urls:
   - "Video demonstration of tutorial. - [YouTube](https://youtu.be/F73G8jVwdmA?si=VMXGBcq29xINKrxE)"
 ---
 
-A handout is available [here]({{site.baseurl}}/assets/handouts/spring/09-differential-equations/main.pdf).
+A handout is available [here]({{site.baseurl}}/assets/handouts/autumn/09-differential-equations/main.pdf).

@@ -8,4 +8,4 @@ video_urls:
   - "Video demonstration of tutorial. - [YouTube](https://youtu.be/bheeUG6iwjA?si=58jwdBN04MEKLqC4)"
 ---
 
-A handout is available [here]({{site.baseurl}}/assets/handouts/spring/08-statistics/main.pdf).
+A handout is available [here]({{site.baseurl}}/assets/handouts/autumn/08-statistics/main.pdf).

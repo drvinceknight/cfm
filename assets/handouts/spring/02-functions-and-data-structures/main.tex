@@ -1,0 +1,105 @@
+\documentclass{article}
+
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 2}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered as well as outline of
+expected progress.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/building-tools/02-functions-and-data-structures/exercises/main.html}{the
+functions and data structures chapter of Python for Mathematics}.
+
+\section{Expected progress}
+\hrule
+
+At the end of this week you should have a few potential ideas for projects.
+
+\begin{itemize}
+    \item For each of your ideas: what tools will be in your library?
+    \item Have some early code for each of your ideas: this might help identify
+        the coding techniques you will need to learn.
+    \item Have an early conversation with me (Vince) about each idea.
+\end{itemize}
+
+\begin{center}
+\framebox{
+\textbf{At this stage I'd expect you to have some ideas and code written in a
+    Jupyter notebook}
+}
+\end{center}
+
+\section{Summary}\label{summary}
+\hrule
+
+The programming topics covered in the
+\href{https://vknight.org/pfm/building-tools/02-functions-and-data-structures/introduction/main.html}{functions
+and data structures} are:
+
+% TODO
+
+\begin{itemize}
+\item
+  Write docstrings:
+
+        \begin{minted}[frame=single]{python}
+def square(x):
+    """
+    Returns x ^ 2 + 1
+
+    Parameters
+    ----------
+    x : float
+        The element x
+
+    Returns
+    -------
+    float
+        The image
+    """
+    return x ** 2 + 1
+        \end{minted}
+
+
+\item
+  Create a set:
+
+        \begin{minted}[frame=single]{python}
+unique_values = {"one", 2, "3"}
+        \end{minted}
+
+
+\item
+  Do set operations:
+
+        \begin{minted}[frame=single]{python}
+unique_values = {"one", 2, "3"}
+other_vaues = {1, 2, 3}
+union = unique_values | other_values
+intersection = unique_value & other_values
+difference = unique_values - other_values
+        \end{minted}
+
+\item Using hash tables (called dictionaries in Python):
+
+        \begin{minted}[frame=single]{python}
+id_numbers = {"Vince": 839, "Julien": 20, "Kaitlynn": 1049}
+id_numbers["Vince"]
+        \end{minted}
+\end{itemize}
+
+\end{document}

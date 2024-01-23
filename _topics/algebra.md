@@ -8,4 +8,4 @@ video_urls:
   - "Video demonstration of tutorial. - [YouTube](https://youtu.be/E_TKJkvi-GY)"
 ---
 
-A handout is available [here]({{site.baseurl}}/assets/handouts/spring/02-algebra/main.pdf).
+A handout is available [here]({{site.baseurl}}/assets/handouts/autumn/02-algebra/main.pdf).

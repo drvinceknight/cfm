@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{minted}
+
+\pagenumbering{gobble}
+
+\title{Computing for Mathematics: Handout 3}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+This handout contains a summary of the topics covered as well as outline of
+expected progress.
+
+For further practice you can do the exercises available at 
+\href{https://vknight.org/pfm/building-tools/03-object-oriented-programming/exercises/main.html}{the
+object oriented programming chapter of Python for Mathematics}.
+
+\section{Expected progress}
+\hrule
+
+At the end of this week you should have a clear project defined.
+
+\begin{itemize}
+    \item Have a concise answer to "What is the purpose of our library"?
+    \item Have some general ideas about how your library would work.
+    \item Have a list of similar and/or related tools.
+\end{itemize}
+
+\begin{center}
+\framebox{
+\textbf{At this stage I'd expect you to have a clear library in mind as well as
+early code and documentation in Jupyter notebooks}
+}
+\end{center}
+
+\section{Summary}\label{summary}
+\hrule
+
+The programming topics covered in the
+\href{https://vknight.org/pfm/building-tools/03-object-oriented-programming/introduction/main.html}{functions
+and data structures} are:
+
+% TODO
+
+\begin{itemize}
+\item
+  Writing a class:
+
+        \begin{minted}[frame=single]{python}
+class Polygon:
+    """A class to represent a Polygon"""
+    def __init__(self, number_of_sides):
+        self.number_of_sides = number_of_sides
+
+    def get_perimeter(self, length_of_side=None):
+        """
+        Computes the perimeter of the Polygon.
+
+        If no side length is given, this assumes the unit length is the length
+        of a given side.
+
+        Parameters
+        ----------
+        length_of_side : int
+            The length of a given side. The default is None.
+
+        Returns
+        -------
+        float
+            The perimeter of the polygon
+        """
+        return self.number_of_sides * length_of_side
+        
+        \end{minted}
+
+
+\item
+Create an instance of a class:
+
+        \begin{minted}[frame=single]{python}
+triangle = Polygon(number_of_sides=3)
+        \end{minted}
+
+\item
+Call a method of a class:
+
+        \begin{minted}[frame=single]{python}
+triangle.get_perimeter(length_of_side=3)
+        \end{minted}
+
+
+\item
+  Use inheritance
+
+        \begin{minted}[frame=single]{python}
+class Triangle(Polygon):
+    """A class to represent polygons with 3 sides"""
+    def __init__(self):
+        self.number_of_sides = 3
+        \end{minted}
+
+\end{itemize}
+
+\end{document}

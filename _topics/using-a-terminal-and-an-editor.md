@@ -7,3 +7,5 @@ note_urls:
 video_urls:
   - "Video demonstration of tutorial. - [YouTube](https://youtu.be/MPk815rdwi0)"
 ---
+
+A handout is available [here]({{site.baseurl}}/assets/handouts/spring/04-using-a-terminal-and-an-editor/main.pdf).

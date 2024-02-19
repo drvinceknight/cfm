@@ -3,7 +3,7 @@ layout: post
 title: "Mid module feedback and documentation"
 tags:
   - modularisation
-  - about-the-course
+  - about
 ---
 
 On Friday we discussed documentation and your mid module feedback.

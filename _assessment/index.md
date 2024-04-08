@@ -98,6 +98,8 @@ of papers written for that journal that can be helpful are:
 - Matching: A Python library for solving matching games <https://joss.theoj.org/papers/10.21105/joss.02169>
 - Nashpy: A Python library for the computation of Nash equilibria <https://joss.theoj.org/papers/10.21105/joss.00904>
 
+Deadline: 2024-05-06 (Monday of week 12).
+
 ## [Past group projects](#past-group-projects)
 
 A list of titles of past projects:

@@ -3,10 +3,17 @@ layout: default
 tag: assessment
 ---
 
-# Individual coursework (50%)
+# Individual quizzes (20%)
 
-**The individual coursework is available:
-[here]({{site.baseurl}}/assets/assessment/2023-2024/assignment.ipynb) ([cy]({{site.baseurl}}/assets/assessment/2023-2024/cy/assignment.ipynb)).**
+A series of individual tests that you can complete at any time before the final
+deadline.
+
+**I recommend you do each quiz as the corresponding content is covered.**
+
+Each quiz corresponds to topics covered in the course. You can attempt each quiz
+as many times as you wish.
+
+# Individual coursework (20%)
 
 A mock coursework is available:
 [here]({{site.baseurl}}/assets/assessment/mock/assignment.ipynb).
@@ -39,7 +46,7 @@ The topics for the individual coursework for the past few years have been:
   3. [Matrices]({{ site.baseurl }}/topics/matrices.html)
   4. [Probability]({{ site.baseurl }}/topics/probability.html)
 
-# Group project (50%)
+# Group project (60%)
 
 Build a Python library to provide tools for a problem related to mathematics.
 
@@ -65,32 +72,113 @@ Your final submission should include the following **7** files:
 The various components of the submission should aim to demonstrate how the following
 aspects of the work have been addressed:
 
+### Communication (both paper and presentation) (30%)
+
 - **Summary**: Has a clear description of the high-level functionality and
   purpose of the software for a diverse, non-specialist audience been
   provided?
 - **A statement of need**: Do the authors clearly state what problems the
-  software is designed to solve and who the target audience is? [10%]
-- **State of the field**: Do the authors describe how this software compares
-  to other commonly used packages?
+  software is designed to solve and who the target audience is?
 - **Quality of writing**: Is the paper well written (i.e., it does not
   require editing for structure, language, or writing quality)?
-- **References**: Is the list of references complete, and is everything
-  cited appropriately that should be cited (e.g., papers, datasets,
-  software)? Do references in the text use the proper citation syntax?
 - **Functionality**: Have the functional claims of the software been
   confirmed?
+- **Presentation**: Was the presentation format used appropriately? Were the
+  visual aids appropriate?
+
+Typical description of mark:
+
+- Below 40%
+
+  Difficult to read and lacks a logical train of thought or argument. Very poor organisation and communication of work.
+
+- Between 40 and 49%
+
+  Poor style of writing with some parts difficult to follow. Poor organisation and presentation of material.
+
+- Between 50 and 59%
+
+  Satisfactorily written and presented with adequate technical content.
+
+- Between 60 and 69%
+
+  Well organised and clearly written with sound technical content. Results analysed and clearly presented.
+
+- Above 70%
+
+  Very well organised and clearly written with good technical content. Results assessed critically and arguments very well presented and supported.
+
+### Scope (50%)
+
 - **Documentation**: Does the documentation have a Tutorial, How to section,
   Reference and Explanation section? Is it clear? Is the source code clear?
 - **Modularity**: Is the code written in a modular way?
 - **Testing**: Have tests been written for all functionality of the software?
-- **Presentation**: Was the presentation format used appropriately? Were the
-  visual aids appropriate?
 
-A suggestion would be to use the paper for the **summary**, **statement of need** and **state
-of the field** whereas the presentation can be used for the **functionality**, **documentation**, **modularity**
-and **testing**.
+Typical description of mark:
 
-Note that this marking criteria has some overlap with the review criteria
+- Below 40%
+
+  The work does not correspond to the project description.
+
+- Between 40 and 49%
+
+  The library includes documentation, some modular functionality and an attempt
+  at automatic testing.
+
+- Between 50 and 59%
+
+  The documentation follows the Diataxis framework although it is poorly
+  written. The code is modular but has a number of areas of improvement. The
+  tests have been written and test some functionality of the code.
+
+- Between 60 and 69%
+
+  The documentation is clear. The code is written in a modular way with few
+  areas of improvement. The tests confirm most functionality of the code and the
+  documentation.
+
+- Above 70%
+
+  Well written documentation, code is modular and follows all conventions and
+  guidelines covered in the course. The tests cover all functionality of the
+  code and the documentation.
+
+### Research (20%)
+
+- **State of the field**: Do the authors describe how this software compares
+  to other commonly used packages?
+- **References**: Is the list of references complete, and is everything
+  cited appropriately that should be cited (e.g., papers, datasets,
+  software)? Do references in the text use the proper citation syntax?
+
+Typical description of mark:
+
+- Below 40%
+
+  No state if the field or references included.
+
+- Between 40 and 49%
+
+  An inaccurate state of the field included. Some poor references
+  included.
+
+- Between 50 and 59%
+
+  An accurate state of the field included. Good references included but with
+  little to no context and/or explanation.
+
+- Between 60 and 69%
+
+  A well written state of the field and good references with context and depth.
+
+- Above 70%
+
+  Outstanding state of the field demonstrating a great understanding not only of
+  the library but of the already existing tools. The references are all of high
+  quality and a thorough demonstration of understanding is given.
+
+Note that this assessment has some overlap with the review criteria
 for the Journal of Open Source Software
 <https://joss.readthedocs.io/en/latest/review_checklist.html>. Some examples
 of papers written for that journal that can be helpful are:
@@ -98,7 +186,7 @@ of papers written for that journal that can be helpful are:
 - Matching: A Python library for solving matching games <https://joss.theoj.org/papers/10.21105/joss.02169>
 - Nashpy: A Python library for the computation of Nash equilibria <https://joss.theoj.org/papers/10.21105/joss.00904>
 
-Deadline: 2024-05-06 (Monday of week 12).
+Deadline: TBD.
 
 ## [Past group projects](#past-group-projects)
 

@@ -9,3 +9,7 @@ video_urls:
 ---
 
 A handout is available [here]({{site.baseurl}}/assets/handouts/autumn/03-calculus/main.pdf).
+
+- Here is the `sympy` documentation for plotting:
+  <https://docs.sympy.org/latest/modules/plotting.html>
+- Here is the official `matplotlib` documentation: <https://matplotlib.org>

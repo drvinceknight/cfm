@@ -116,7 +116,7 @@ how or why it works. Let us fix that::
 We can use this to for example get the cost of our tour::
 
     >>> get_cost(tour=tour, distance_matrix=distance_matrix)
-    133.40828432465426
+    np.float64(133.40828432465426)
 
 Show how the code is much cleaner now::
 

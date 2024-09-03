@@ -41,7 +41,7 @@ Now show::
     ...     """
     ...     return sum(scipy.special.binom(n, i) * a ** i * b ** (n - i) for i in range(n + 1))
     >>> get_rhs(a=5, b=10, n=5)
-    759375.0
+    np.float64(759375.0)
 
 Ask if this confirms the identity?
 

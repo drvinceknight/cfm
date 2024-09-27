@@ -3,15 +3,28 @@ layout: default
 tag: assessment
 ---
 
-# Individual quizzes (20%)
+# Individual tests (20%)
 
-A series of individual tests that you can complete at any time before the final
-deadline.
+A series of 6 individual tests:
+
+- Test 1: [Algebra]({{ site.baseurl }}/topics/algebra.html) and [Calculus]({{ site.baseurl }}/topics/calculus.html)
+- Test 2: [Combinatorics]({{ site.baseurl }}/topics/combinatorics.html) and [Probability]({{ site.baseurl }}/topics/probability.html)
+- Test 3: [Matrices]({{ site.baseurl }}/topics/matrices.html) and [Sequences]({{ site.baseurl }}/topics/sequences.html)
+- Test 4: [Statistics]({{ site.baseurl }}/topics/statistics.html) and [Differential Equations]({{ site.baseurl }}/topics/differential-equations.html)
+- Test 5: [Variables, conditional statements and while loops]({{ site.baseurl }}/topics/variables-conditional-statements-and-while-loops.html) and [Functions and
+  data structures]({{ site.baseurl }}/topics/functions-and-data-structures.html)
+- Test 6: [Object Oriented Programming]({{ site.baseurl }}/topics/object-oriented-programming.html) and [Using a terminal and an
+  editor]({{ site.baseurl }}/topics/using-a-terminal-and-an-editor.html).
+
+You can complete each test when it is released. The deadline for completing all
+of them is at the end of the Spring Semester.
 
 **I recommend you do each quiz as the corresponding content is covered.**
+Content for the first 4 tests is covered in the Autumn Semester. Content for the
+last 2 tests is covered in the Spring Semester.
 
 Each quiz corresponds to topics covered in the course. You can attempt each quiz
-as many times as you wish.
+as many times as you wish (your last attempt is the one that counts).
 
 # Individual coursework (20%)
 

@@ -23,7 +23,7 @@ After this meeting students should:
 - Fellow of the sustainable software institute
 - Maintainer of a number of open source scientific research packages
 
-There are slide for this [here]{{site.baseurl}}/assets/about/main.key).
+There are slide for this [here]({{site.baseurl}}/assets/about/main.key).
 
 ### Programming
 

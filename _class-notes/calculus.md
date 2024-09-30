@@ -75,7 +75,7 @@ and get the second equation:
 Now to solve the first equation to obtain a value for $b$:
 
     >>> sym.solveset(first_equation, b)
-    FiniteSet(0)
+    {0}
 
 Now to substitute that value for \$a\$ (note that this is not necessary)
 and solve the second equation for \$a\$:
@@ -87,7 +87,7 @@ and solve the second equation for \$a\$:
 We can solve this:
 
     >>> sym.solveset(second_equation, a)
-    FiniteSet(-5/2)
+    {-5/2}
 
 Substituting these back:
 
@@ -171,7 +171,7 @@ The solution approach:
     >>> g = sym.cos(x) * sym.sin(x)
     >>> turning_points_of_f = sym.solveset(sym.diff(f, x), x)
     >>> turning_points_of_f
-    FiniteSet(I, -I)
+    {-I, I}
     >>> turning_points_of_g = sym.solveset(sym.diff(g, x), x)
     >>> turning_points_of_g
     Union(ImageSet(Lambda(_n, _n*pi + pi/4), Integers), ImageSet(Lambda(_n, _n*pi + 3*pi/4), Integers))

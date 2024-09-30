@@ -7,14 +7,14 @@ tag: assessment
 
 A series of 6 individual tests:
 
-- Test 1: [Algebra]({{ site.baseurl }}/topics/algebra.html) and [Calculus]({{ site.baseurl }}/topics/calculus.html)
-- Test 2: [Combinatorics]({{ site.baseurl }}/topics/combinatorics.html) and [Probability]({{ site.baseurl }}/topics/probability.html)
-- Test 3: [Matrices]({{ site.baseurl }}/topics/matrices.html) and [Sequences]({{ site.baseurl }}/topics/sequences.html)
-- Test 4: [Statistics]({{ site.baseurl }}/topics/statistics.html) and [Differential Equations]({{ site.baseurl }}/topics/differential-equations.html)
+- Test 1: [Algebra]({{ site.baseurl }}/topics/algebra.html) and [Calculus]({{ site.baseurl }}/topics/calculus.html) (released Week 3 of Autumn Semester)
+- Test 2: [Combinatorics]({{ site.baseurl }}/topics/combinatorics.html) and [Probability]({{ site.baseurl }}/topics/probability.html) (released Week 5 of Autumn Semester).
+- Test 3: [Matrices]({{ site.baseurl }}/topics/matrices.html) and [Sequences]({{ site.baseurl }}/topics/sequences.html) (released Week 7 of Autumn Semester).
+- Test 4: [Statistics]({{ site.baseurl }}/topics/statistics.html) and [Differential Equations]({{ site.baseurl }}/topics/differential-equations.html) (released Week 9 of Autumn Semester).
 - Test 5: [Variables, conditional statements and while loops]({{ site.baseurl }}/topics/variables-conditional-statements-and-while-loops.html) and [Functions and
-  data structures]({{ site.baseurl }}/topics/functions-and-data-structures.html)
+  data structures]({{ site.baseurl }}/topics/functions-and-data-structures.html) (released Week 2 of Spring Semester).
 - Test 6: [Object Oriented Programming]({{ site.baseurl }}/topics/object-oriented-programming.html) and [Using a terminal and an
-  editor]({{ site.baseurl }}/topics/using-a-terminal-and-an-editor.html).
+  editor]({{ site.baseurl }}/topics/using-a-terminal-and-an-editor.html) (released Week 4 of Spring Semester).
 
 You can complete each test when it is released. The deadline for completing all
 of them is at the end of the Spring Semester.

@@ -24,7 +24,7 @@ files that create that website at
 I will use a virtual board throughout class:
 
 - This will allow you to see the board more clearly on the class recordings.
-- Private access will allow you to write on the board if you want to.
+- I will share a copy of the board with you after each class.
 
 ## Technology in class
 
@@ -33,8 +33,8 @@ know if I can help with anything.
 
 ## Office hours
 
-I will hold 2-3 hours a week for office hours during which you may come and get
-help. Specific hours will be determined collaboratively as a class.
+I will not hold specific office hours: please email me to arrange a time to come
+and see me.
 
 ## Kindness
 
@@ -67,9 +67,10 @@ Some examples of how this applies to me:
 
 ## Assessment
 
-There are two piece of assessment in this course:
+There are three pieces of assessment in this course:
 
-- Individual coursework (50%)
-- Group coursework (50%)
+- Individual coursework (20%)
+- A collection of individual quizzes (20%)
+- Group coursework (60%)
 
 More information about assessment: [here]({{ site.baseurl}}/assessment/)

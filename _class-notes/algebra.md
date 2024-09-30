@@ -74,7 +74,7 @@ Confirm by solving the quadratic equation:
     Eq(-x**2 + 8*x - 18, 0)
 
     >>> sympy.solveset(expression, x)
-    FiniteSet(4 + sqrt(2)*I, 4 - sqrt(2)*I)
+    {4 - sqrt(2)*I, 4 + sqrt(2)*I}
 
 Now to move on to next part of the problem: completing the square:
 
@@ -110,7 +110,7 @@ straightforward, let us solve it using `sympy`:
 
     >>> equation = sympy.Eq(lhs=2 * b, rhs=8)
     >>> sympy.solveset(equation, b)
-    FiniteSet(4)
+    {4}
 
 We will substitute this value for $b$ back in to the completed square,
 and expand again:
@@ -126,7 +126,7 @@ $sympy$:
 
     >>> equation = sympy.Eq(lhs=c - 16, rhs= -18)
     >>> sympy.solveset(equation, c)
-    FiniteSet(-2)
+    {-2}
 
 We will substitute this value back in:
 

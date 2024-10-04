@@ -5,10 +5,9 @@ tags: using-notebooks
 ---
 
 In class today we covered the usage of notebooks.
+You can see a recording of the class [here](https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=7e5aa1b4-4ec7-4a13-8c92-b1fa00a5686b).
 
-You can see a recording of the class [here](https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=7e5aa1b4-4ec7-4a13-8c92-b1fa00a5686b)
-
-We started by doing a quiz (congratulations to Micheal, I'll give the person
+We started by doing a quiz (congratulations to Michael, I'll give the person
 with the most wins a text book at the end of the Semester)
 where we went over:
 
@@ -25,4 +24,4 @@ you're still having trouble setting up feel free to get in touch to arrange a
 time for me to help you.
 
 Next week we will be starting to do some symbolic algebra, if you are interested
-you can start reading about it [here](https://vknight.org/cfm/topics/algebra.html)
+you can start reading about it [here](https://vknight.org/cfm/topics/algebra.html).

@@ -16,6 +16,7 @@ After this meeting students should:
 
 Explain to students that we will be solving the following problem:
 
+```md
 Consider the function $f(x)= x ^ 3 - ax ^ 2 + bx - 5$
 
 1.  Given that $\frac{df}{dx}|_{x=0}=0$, $\frac{d^2f}{dx^2}|_{x=0}=5$
@@ -23,11 +24,15 @@ Consider the function $f(x)= x ^ 3 - ax ^ 2 + bx - 5$
 
 2.  For the specific values of $a$ and $b$ find:
 
-    : 1. $\lim_{x\to 0}f(x)$; 2. $\lim_{x\to \infty}f(x)$; 3. $\int f(x) dx$; 4. $\int_{5}^{\pi} f(x) dx$.
+    1. $\lim_{x\to 0}f(x)$;
+    2. $\lim_{x\to \infty}f(x)$;
+    3. $\int f(x) dx$;
+    4. $\int_{\pi}^{5} f(x) dx$.
+```
 
 ### Solution
 
-Group exercise (breakout rooms of 3): ask students to spend 5 minutes
+Ask students to spend 5 minutes
 writing a plan to tackle that problem (not necessarily carrying out each
 step).
 

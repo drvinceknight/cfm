@@ -14,8 +14,8 @@ Here is the notebook I used in class:
 
 At the end of class I got a few good questions:
 
-Q: What is the LaTeX code for $\pi$?
+Q: What is the LaTeX code for \\(\pi\\)?
 A: `$\pi$`
 
 Q: How do we create capital Greek symbols with sympy?
-A: `sympy.Symbol(Phi)` will give $\Phi$
+A: `sympy.Symbol(Phi)` will give \\(\Phi\\)

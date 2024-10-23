@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Virtual lab: Combinatorics"
-tags: calculus
+tags: combinatorics
 ---
 
 Today's virtual lab went over the tutorial for the Calculus chapter for [Python

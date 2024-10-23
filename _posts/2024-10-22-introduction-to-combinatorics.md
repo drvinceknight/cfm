@@ -77,7 +77,7 @@ import sympy as sym
 k = sym.Symbol("k")
 p = sym.Symbol("p")
 equation = sym.Eq(lhs=k, rhs=p + 1).subs({p: k})
-sym.solves
+sym.solveset(equation, k)
 ```
 
 - Q: is The Boys the best show?

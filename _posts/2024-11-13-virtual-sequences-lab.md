@@ -11,4 +11,4 @@ You can see a recording of the class [here](https://cardiff.cloud.panopto.eu/Pan
 
 You can find the notebook I worked on here [sequences-tutorial.ipynb]({{site.baseurl}}/assets/nbs/2024-2025/sequences-tutorial.ipynb).
 
-You can also find the board I wrote on when talking about [the Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) here [collatz]({{site.baseurl}}/assets/boards/2024-2025/collatz.ipynb)
+You can also find the board I wrote on when talking about [the Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) here [collatz]({{site.baseurl}}/assets/boards/2024-2025/collatz.pdf)

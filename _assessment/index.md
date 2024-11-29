@@ -31,6 +31,8 @@ as many times as you wish (your last attempt is the one that counts).
 A mock coursework is available:
 [here]({{site.baseurl}}/assets/assessment/mock/assignment.ipynb).
 
+**The 2024-2025 individual coursework is available [here]({{site.baseurl}}/assets/assessment/2024-2025/ind/assignment.ipynb).**
+
 The topics for the individual coursework for the past few years have been:
 
 - 2023-2024 [here]({{site.baseurl}}/assets/assessment/2023-2024/ind/assignment.ipynb) ([cy]({{site.baseurl}}/assets/assessment/2023-2024/ind/cy/assignment.ipynb)) ([solution]({{site.baseurl}}/assets/assessment/2023-2024/ind/assignment.ipynb))

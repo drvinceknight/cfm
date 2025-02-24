@@ -1,8 +1,7 @@
 ---
 layout: post
-title: "Objects, command line and editors"
+title: "Command line and editors"
 tags:
-  - object-oriented-programming
   - using-a-terminal-and-an-editor
 ---
 

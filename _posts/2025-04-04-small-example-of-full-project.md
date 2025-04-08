@@ -10,7 +10,7 @@ tags:
 On Friday I gave you a further example of all that is required for the software
 aspect of your project.
 
-You can see a recording of the class [here](https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bd07703f-bcc0-4dd4-af85-b2b000f7cbdf)
+You can see a recording of the class [here](https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0551da62-8133-4375-88d1-b2b000b5d1da)
 
 In class I built a small library for Bayes' theorem. You can find each of the 3
 files below:

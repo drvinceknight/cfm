@@ -1,3 +1,65 @@
+- year: 2024-2025
+  titles:
+    - "Guessing games" # Ada Lovelace # 100
+    - "Upwards" # Grace Hopper # 100
+    - "Geometria" # Abdulalim A. Shabazz  # 100
+    - "Wordle" # Euphemia Haynes  # 100
+    - "ChessEngine" # Emmy Noether  # 99
+    - "NinePlusTen: Blackjack" # Sacrobosco # 98
+    - "Ravioli" # Alan Turing # 95
+    - "SudokuPy: Sudoku Solver" # Hypatia # 94
+    - "Modelling 2D Collisions with Python" # Terence Tao # 93
+    - "Variance in Variation: Stat F" # Takakazu Seki # 91
+    - "A library for Normal distributions" # Émilie du Châtelet # 85
+    - "Rouletter" # Zaha Hadid # 83
+    - "Simulating Dice with Python" # Maria Gaetana Agnesi  # 81
+    - "Pulleys" # Shakuntala Devi  # 80
+    - "Investment Appraisal" # Brahmagupta  # 79
+    - "Motion" # Evelyn Boyd Granville  # 78
+    - "Musical Intervals" # Chike Obi # 78
+    - "Projectile" # David Blackwell  #77
+    - "Go Fish" # Mary Cartwright
+    - "Projectile" # Charles Loring Brace # 75
+    - "Balance Sheet Analysis" # Ruth Gonzalez  # 74
+    - "Incline Planes Library" # C. R. Rao  # 74
+    - "GeomPy - The Geometric Problem Solver with Python" # Ken Ono  # 73
+    - "RubixCube" # Norbert Wiener  # 73
+    - "Appraisal library" # Mangala Narlikar  # 72
+    - "Exploring n-th Roots of Complex Numbers using Python" # Marjorie Lee Browne  # 72
+    - "Hypothesis test" # Benjamin Banneker  # 71
+    - "Ratio Analysis" # Maryam Mirzakhani # 71
+    - "RepMat: Representation theory of finite groups in Python." #  John Mighton  # 70
+    - "Projectiles" # José Mariano Mociño #69
+    - "Modeling Projectile Motion: A Computational Approach" # Jonathan Farley # 68
+    - "Appraisal" # Thābit ibn Qurra  # 68
+    - "Sudo Solve" # Cathy O’Neil
+    - "Space" # Madhava of Sangamagrama  # 66
+    - "ComplexNum" # Évariste Galois # 66
+    - "Balancing Equations with chemicalEquationBalancer" # Olga Taussky-Todd # 65
+    - "Golf Simulator" # Alena Buyx  # 65
+    - "Money Manager" # Katherine Johnson  # 64
+    - "DiffEq" # Bertrand Russell  # 63
+    - "Projectiles" #  Alice T. Schafer  # 62
+    - "Blackjack" # Al-Samawal al-Maghribi  # 62
+    - "SUVAT solver" # Julia Robinson  # 61
+    - "Sudo" # Melanie Wood # 60
+    - "Blackjack Hand Simulator" # J.J. Sylvester # 60
+    - "Blackjack" # Fan Chung # 61
+    - "Blackjack" # Ramanujan # 60
+    - "PCP Finance vs Lease Calculator" # Liu Hui # 58
+    - "Anagram solver" # Ali Nesin  # 57
+    - "Blackjack" # George Polya # 55
+    - "Temptrack" # Elbert Frank Cox # 54
+    - "Blackjack" # S. S. Pillai # 51
+    - "Zipf's law" # Omar Khayyam  # 45
+    - "Wordle Solver" # Mary Somerville  # 41
+    - "The art of Splitting the G" # Ivo Babuška # 40
+    - "Bouncing ball" # Florence Nightingale
+    - "SUVAT" # Nalini Joshi #38
+    - "xG: expected goals" # Sofia Kovalevskaya # 30
+    - "Connect 4" # Sophie Morel # 29
+    - "Slot Machines" # Persi Diaconis # 15
+    - "Tic Tac Toe" # Ingrid Daubechies # 5
 - year: 2023-2024
   titles:
     - "LinAlg: Determining and Utilising Bases of $R^n$ Vector Spaces"

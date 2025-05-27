@@ -1,3 +1,65 @@
+- year: 2024-2025
+  titles:
+    - "Guessing games" # Ada Lovelace
+    - "Upwards" # Grace Hopper
+    - "Geometria" # Abdulalim A. Shabazz
+    - "Wordle" # Euphemia Haynes
+    - "ChessEngine" # Emmy Noether
+    - "NinePlusTen: Blackjack" # Sacrobosco
+    - "Ravioli" # Alan Turing
+    - "SudokuPy: Sudoku Solver" # Hypatia
+    - "Modelling 2D Collisions with Python" # Terence Tao
+    - "Variance in Variation: Stat F" # Takakazu Seki
+    - "A library for Normal distributions" # Émilie du Châtelet
+    - "Rouletter" # Zaha Hadid
+    - "Simulating Dice with Python" # Maria Gaetana Agnesi
+    - "Pulleys" # Shakuntala Devi
+    - "Investment Appraisal" # Brahmagupta
+    - "Motion" # Evelyn Boyd Granville
+    - "Musical Intervals" # Chike Obi
+    - "Projectile" # David Blackwell
+    - "Go Fish" # Mary Cartwright
+    - "Projectile" # Charles Loring Brace
+    - "Balance Sheet Analysis" # Ruth Gonzalez
+    - "Incline Planes Library" # C. R. Rao
+    - "GeomPy - The Geometric Problem Solver with Python" # Ken Ono
+    - "RubixCube" # Norbert Wiener
+    - "Appraisal library" # Mangala Narlikar
+    - "Exploring n-th Roots of Complex Numbers using Python" # Marjorie Lee Browne
+    - "Hypothesis test" # Benjamin Banneker
+    - "Ratio Analysis" # Maryam Mirzakhani
+    - "RepMat: Representation theory of finite groups in Python." #  John Mighton
+    - "Projectiles" # José Mariano Mociño
+    - "Modeling Projectile Motion: A Computational Approach" # Jonathan Farley
+    - "Appraisal" # Thābit ibn Qurra
+    - "Sudo Solve" # Cathy O’Neil
+    - "Space" # Madhava of Sangamagrama
+    - "ComplexNum" # Évariste Galois
+    - "Balancing Equations with chemicalEquationBalancer" # Olga Taussky-Todd
+    - "Golf Simulator" # Alena Buyx
+    - "Money Manager" # Katherine Johnson
+    - "DiffEq" # Bertrand Russell
+    - "Projectiles" #  Alice T. Schafer
+    - "Blackjack" # Al-Samawal al-Maghribi
+    - "SUVAT solver" # Julia Robinson
+    - "Sudo" # Melanie Wood
+    - "Blackjack Hand Simulator" # J.J. Sylvester
+    - "Blackjack" # Fan Chung
+    - "Blackjack" # Ramanujan
+    - "PCP Finance vs Lease Calculator" # Liu Hui
+    - "Anagram solver" # Ali Nesin
+    - "Blackjack" # George Polya
+    - "Temptrack" # Elbert Frank Cox
+    - "Blackjack" # S. S. Pillai
+    - "Zipf's law" # Omar Khayyam
+    - "Wordle Solver" # Mary Somerville
+    - "The art of Splitting the G" # Ivo Babuška
+    - "Bouncing ball" # Florence Nightingale
+    - "SUVAT" # Nalini Joshi
+    - "xG: expected goals" # Sofia Kovalevskaya
+    - "Connect 4" # Sophie Morel
+    - "Slot Machines" # Persi Diaconis
+    - "Tic Tac Toe" # Ingrid Daubechies
 - year: 2023-2024
   titles:
     - "LinAlg: Determining and Utilising Bases of $R^n$ Vector Spaces"

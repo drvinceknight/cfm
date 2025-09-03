@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+
+% \usepackage{fullpage}
+\usepackage{geometry}
+\geometry{margin=0.8in, top=1in, bottom=0.9in}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage[T1,hyphens]{url}
+\usepackage{hyperref}
+\usepackage{minitoc}
+\usepackage{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes,snakes}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{pdfpages}
+\usepackage{array}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{color, colortbl}
+\usepackage{diagbox}
+\usepackage{titlesec}
+\usepackage[gen]{eurosym}
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\usepackage{amsfonts}
+\usepackage[shortlabels]{enumitem}
+\usepackage{minted}
+\usepackage[ruled]{algorithm2e}
+\usepackage{xfrac}
+\usepackage[shortlabels]{enumitem}
+\usepackage{titlesec, blindtext, color}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+
+\setlength{\headsep}{10mm}
+
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+
+\titleformat{\chapter}[hang]{\LARGE\bfseries}{\thechapter\hsp\textcolor{gray75}{$\vline$}\hsp}{0pt}{\LARGE\bfseries}
+
+\renewcommand\familydefault{\sfdefault}
+
+\newcommand{\specialcelll}[2][l]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+
+\definecolor{codebg}{RGB}{255, 255, 230}
+\setminted[python]{
+    frame=single,
+    framesep=2mm,
+    bgcolor=codebg,
+    framerule=0.5mm,
+    fontsize=\small,
+}
+
+\BeforeBeginEnvironment{minted}{\vspace{-3mm}}
+\AfterEndEnvironment{minted}{\vspace{-3mm}}
+
+
+\nomtcrule
+
+\begin{document}
+
+\begin{center}
+\LARGE{\textit{Tin Can Example - Writing Only}}
+\end{center}
+
+\vspace{15mm}
+
+\textbf{\textit{QUESTION:}}
+
+\textbf{Consider a cylindrical tin can with radius $r$ and height $h$. Let its volume $V$ be non-zero and fixed. Find the relationship between $h$ and $r$ such that the surface area of the tin can is minimised.}
+
+\vspace{5mm}
+\hrule
+\vspace{5mm}
+
+\textbf{\textit{SOLUTION:}}
+
+\vspace{5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+First, let $r$ be the radius of the cylinder, $h$ be its height, and $V$ be its volume. We have expressions for the tin's volume and surface area:
+\end{mdframed}
+
+\vspace{10.5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+As the volume $V$ is fixed, then we have a relationship between $r$ and $h$ that is dependant on $V$:
+\end{mdframed}
+
+\vspace{10.5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Therefore the surface area now becomes a function of $V$ and $r$:
+\end{mdframed}
+
+\vspace{10.5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+The surface area is minimised when its derivative is equal to zero:
+\end{mdframed}
+
+\vspace{10.5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Then solving gives $\tilde{r}$, the value of $r$ that minimises the surface area, in terms of $V$:
+\end{mdframed}
+
+\vspace{10.5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+However, as mentioned above, the volume $V$ is fixed, and is itself a function of $r$ and $h$. Substituting this in gives an implicit relationship between $\tilde{r}$ and $h$:
+\end{mdframed}
+
+\vspace{10.5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Solving for either $\tilde{r}$ or $h$ will give an explicit relationship between $\tilde{r}$ and $h$, as required.
+\end{mdframed}
+
+\vspace{10.5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Therefore, for a fixed non-zero volume cylinder, the relationship between the radius $r$ and height $h$ that minimised the surface area is $h = 2r$.
+\end{mdframed}
+
+
+
+\end{document}

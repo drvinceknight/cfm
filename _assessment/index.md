@@ -42,7 +42,7 @@ There will be 8 questions, each worth 5 marks:
   - *1 marks*: Code that partly answers the question correctly
   - *2 marks*: Code that mostly answers the question correctly
   - *3 marks*: Code that answers the question correctly
-+ **2 marks** are awarded for the quality of the **communication**: This means the narraitve and story given by words (if appropriate for the question), and the clarity of the code including using sensible variable names.
++ **2 marks** are awarded for the quality of the **communication**: This means the narrative and story given by words (if appropriate for the question), and the clarity of the code including using sensible variable names.
   - *0 marks*: No narrative given
   - *1 marks*: An attempt at some narrative and readable code
   - *2 marks*: Clear narrative, clear code with descriptive variable names

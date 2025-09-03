@@ -29,37 +29,26 @@ as many times as you wish (your last attempt is the one that counts).
 # Individual coursework (20%)
 
 A mock coursework is available:
-[here]({{site.baseurl}}/assets/assessment/mock/assignment.ipynb).
+[here]({{site.baseurl}}/assets/assessment/mock/mock.ipynb).
 
-**The 2024-2025 individual coursework is available [here]({{site.baseurl}}/assets/assessment/2024-2025/ind/assignment.ipynb).**
+Solutions to the mock are [here]({{site.baseurl}}/assets/assessment/mock/mock_solutions.ipynb).
 
-The topics for the individual coursework for the past few years have been:
+## [Marking criteria](#marking-criteria-individual)
 
-- 2023-2024 [here]({{site.baseurl}}/assets/assessment/2023-2024/ind/assignment.ipynb) ([cy]({{site.baseurl}}/assets/assessment/2023-2024/ind/cy/assignment.ipynb)) ([solution]({{site.baseurl}}/assets/assessment/2023-2024/ind/assignment.ipynb))
-  1. [Differential equations]({{ site.baseurl }}/topics/differential-equations.html)
-  2. [Algebra]({{ site.baseurl }}/topics/algebra.html)
-  3. [Sequences]({{ site.baseurl }}/topics/sequences.html)
-  4. [Matrices]({{ site.baseurl }}/topics/matrices.html)
-- 2022-2023:
-  1. [Sequences]({{ site.baseurl }}/topics/sequences.html)
-  2. [Probability]({{ site.baseurl }}/topics/probability.html)
-  3. [Algebra]({{ site.baseurl }}/topics/algebra.html)
-  4. [Matrices]({{ site.baseurl }}/topics/matrices.html)
-- 2021-2022:
-  1. [Matrices]({{ site.baseurl }}/topics/matrices.html)
-  2. [Sequences]({{ site.baseurl }}/topics/sequences.html)
-  3. [Matrices]({{ site.baseurl }}/topics/matrices.html)
-  4. [Calculus]({{ site.baseurl }}/topics/calculus.html)
-- 2020-2021:
-  1. [Probability]({{ site.baseurl }}/topics/probability.html)
-  2. [Combinatorics]({{ site.baseurl }}/topics/combinatorics.html)
-  3. [Calculus]({{ site.baseurl }}/topics/calculus.html)
-  4. [Sequences]({{ site.baseurl }}/topics/sequences.html)
-- Mock [here]({{site.baseurl}}/assets/assessment/mock/assignment.ipynb):
-  1. [Arithmetic]({{ site.baseurl }}/topics/using-notebooks.html)
-  2. [Algebra]({{ site.baseurl }}/topics/algebra.html)
-  3. [Matrices]({{ site.baseurl }}/topics/matrices.html)
-  4. [Probability]({{ site.baseurl }}/topics/probability.html)
+There will be 8 questions, each worth 5 marks:
+
++ **3 marks** are awarded for the quality of the **analysis**: This means the correctness and the appropriateness of the code.
+  - *0 marks*: Code that does not answer the question
+  - *1 marks*: Code that partly answers the question correctly
+  - *2 marks*: Code that mostly answers the question correctly
+  - *3 marks*: Code that answers the question correctly
++ **2 marks** are awarded for the quality of the **communication**: This means the narraitve and story given by words (if appropriate for the question), and the clarity of the code including using sensible variable names.
+  - *0 marks*: No narrative given
+  - *1 marks*: An attempt at some narrative and readable code
+  - *2 marks*: Clear narrative, clear code with descriptive variable names
+
+
+
 
 # Group project (60%)
 

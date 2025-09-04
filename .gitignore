@@ -9,6 +9,9 @@ my_plot.pdf
 *.aux
 *.fdb_latexmk
 *.fls
+*.maf
+*.mtc
+*.mtc0
 *.log
 *.nav
 *.out

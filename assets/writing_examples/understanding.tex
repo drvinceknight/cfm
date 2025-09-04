@@ -1,0 +1,24 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\draw[ultra thick, -triangle 90] (-2, 0) -- (20, 0);
+\node at (21.5, 0.25){understanding /};
+\node at (21.5, -0.25){clarity};
+
+\draw[ultra thick] (1, 1) -- (1, 0);
+\draw[ultra thick] (8, 1) -- (8, 0);
+\draw[ultra thick] (16, 1) -- (16, 0);
+
+\node[minimum width=4.2cm, draw=black, fill=cyan!10] at (1, 1) {Mathematical notation only};
+\node[minimum width=4.2cm, draw=black, fill=orange!10] at (8, 1) {Words only};
+\node[minimum width=4.2cm, draw=black, fill=orange!10] at (16, 1.25) {Words \&};
+\node[minimum width=4.2cm, draw=black, fill=cyan!10] at (16, 0.75) {mathematical notation};
+
+\end{tikzpicture}
+
+\end{document}

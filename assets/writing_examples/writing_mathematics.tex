@@ -1,0 +1,643 @@
+\documentclass[12pt]{article}
+
+% \usepackage{fullpage}
+\usepackage{geometry}
+\geometry{margin=0.8in, top=1in, bottom=0.9in}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage[T1,hyphens]{url}
+\usepackage{hyperref}
+\usepackage{minitoc}
+\usepackage{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes,snakes}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{pdfpages}
+\usepackage{array}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{color, colortbl}
+\usepackage{diagbox}
+\usepackage{titlesec}
+\usepackage[gen]{eurosym}
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\usepackage{amsfonts}
+\usepackage[shortlabels]{enumitem}
+\usepackage{minted}
+\usepackage[ruled]{algorithm2e}
+\usepackage{xfrac}
+\usepackage[shortlabels]{enumitem}
+\usepackage{titlesec, blindtext, color}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+
+\setlength{\headsep}{10mm}
+
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+
+\titleformat{\chapter}[hang]{\LARGE\bfseries}{\thechapter\hsp\textcolor{gray75}{$\vline$}\hsp}{0pt}{\LARGE\bfseries}
+
+\renewcommand\familydefault{\sfdefault}
+
+\newcommand{\specialcelll}[2][l]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+
+\definecolor{codebg}{RGB}{255, 255, 230}
+\setminted[python]{
+    frame=single,
+    framesep=2mm,
+    bgcolor=codebg,
+    framerule=0.5mm,
+    fontsize=\small,
+}
+
+\BeforeBeginEnvironment{minted}{\vspace{-3mm}}
+\AfterEndEnvironment{minted}{\vspace{-3mm}}
+
+
+\nomtcrule
+
+\begin{document}
+
+\begin{center}
+\LARGE{\textit{Writing Mathematics}}
+\end{center}
+
+
+\begin{center}\textit{We have not ``done mathematics'' unless we have communicated it.}\end{center}
+
+\vspace{5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+Mathematical notation ($4+1$, $f(x) = x^2$, $\sin(x) \approx x$, etc.) is itself a language - but it cannot tell us the full story! It is useful for communicating:
+\begin{itemize}
+  \item \textbf{what} calculations were done,
+  \item \textbf{what} manipulations were done,
+  \item \textbf{how} manipulations were done,
+  \item \textbf{what} relationships exist.
+\end{itemize}
+\end{mdframed}
+
+\vspace{5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+But we still need \textit{words} (in English / Welsh / Spanish / Chinese, etc.) to:
+\begin{itemize}
+  \item tell us \textbf{why} calculations were done,
+  \item tell us \textbf{why} manipulations were done,
+  \item \textbf{motivate} why we care that certain relationships exist,
+  \item \textbf{interpret} results and relationships,
+  \item \textbf{explain} logic,
+  \item \textbf{remind} the reader of useful facts.
+\end{itemize}
+\end{mdframed}
+
+\vspace{5mm}
+
+On the next pages are two examples if pieces of mathematical work. Notice that understanding improves when words are included:
+
+\vspace{15mm}
+
+\begin{center}
+\includestandalone[width=\textwidth]{understanding}
+\end{center}
+
+\vspace{15mm}
+
+So the \fcolorbox{black}{orange!10}{words} are much more important than the \fcolorbox{black}{cyan!10}{mathematical notation}!
+
+\newpage
+
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+We should write words in such a way that it \textit{tells a story}.
+\end{mdframed}
+
+\vspace{5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+Mathematical notation should be used to \textit{give details}.
+\end{mdframed}
+
+\vspace{5mm}
+
+The details might change, without changing the story. For example you may use a different mathematical method to find the same result.
+
+In fact, sometimes these details are so unimportant to the story, we can ``outsource'' this work to a computer, that is \textit{use code}, allowing a computer to do those calculations for us.
+
+\vspace{5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=codebg]
+When communicating work that uses code, we can replace the \fcolorbox{black}{cyan!10}{mathematical notation} with code.
+
+\vspace{5mm}
+
+(Even better, we might show both the \fcolorbox{black}{cyan!10}{mathematical notation} and code to communicate out all the details of the story told by the \fcolorbox{black}{orange!10}{words}.)
+\end{mdframed}
+
+\vspace{5mm}
+
+In this case, the words are still the most important part!
+
+\vspace{15mm}
+
+\begin{center}
+\includestandalone[width=\textwidth]{understanding_code}
+\end{center}
+
+\vspace{15mm}
+
+But we still need to write code in such a way that we can read and understand what is going on. Code is not mathematical notation, and so we can write it more freely, and use descriptive variable names.
+
+\newpage
+
+\begin{center}
+\LARGE{\textit{Writing Mathematics - Tin Can Example}}
+\end{center}
+
+\vspace{15mm}
+
+\textbf{\textit{QUESTION:}}
+
+\textbf{Consider a cylindrical tin can with radius $r$ and height $h$. Let its volume $V$ be non-zero and fixed. Find the relationship between $h$ and $r$ such that the surface area of the tin can is minimised.}
+
+\vspace{5mm}
+\hrule
+\vspace{5mm}
+
+\textbf{\textit{SOLUTION:}}
+
+\vspace{5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+First, let $r$ be the radius of the cylinder, $h$ be its height, and $V$ be its volume. We have expressions for the tin's volume and surface area:
+\end{mdframed}
+
+\begin{minipage}[t]{.37\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\begin{align*}
+V &= \pi r^2 h \\
+S &= 2\pi r^2 + 2 \pi rh
+\end{align*}
+\vspace{1.8cm}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.63\textwidth} %
+\begin{minted}{python}
+>>> import sympy as sym
+>>> r = sym.Symbol("r")
+>>> h = sym.Symbol("h")
+>>> V = sym.Symbol("V")
+>>> can_lid = sym.pi * r ** 2
+>>> can_body = 2 * sym.pi * r * h
+
+>>> surface_area = (2 * can_lid) + can_body
+>>> volume = can_lid * h
+\end{minted}
+\end{minipage}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+As the volume $V$ is fixed, then we have a relationship between $r$ and $h$ that is dependant on $V$:
+\end{mdframed}
+
+\begin{minipage}[t]{.37\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\begin{align*}
+V &= \pi r^2 h \\
+\frac{V}{\pi r^2} &= h \\
+\end{align*}
+\vspace{0.8cm}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.63\textwidth} %
+\begin{minted}{python}
+>>> volume_equation = sym.Eq(volume, V)
+>>> volume_equation
+
+
+>>> sym.solveset(volume_equation, h)
+
+
+
+>>> fixed_h = V / (sym.pi * (r ** 2))
+\end{minted}
+\vspace{-4.125cm}
+
+\hspace{0.5cm}\begin{minipage}{3cm}$\pi h r^2 = V$\end{minipage}
+
+\vspace{1cm}
+
+\hspace{0.5cm}\begin{minipage}{3cm}$\displaystyle{\left\{\frac{V}{\pi r^2}\right\}}$\end{minipage}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Therefore the surface area now becomes a function of $V$ and $r$:
+\end{mdframed}
+
+\begin{minipage}[t]{.37\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\begin{align*}
+S &= 2\pi r^2 + 2 \pi rh \\
+&= 2\pi r^2 + 2 \pi r\left(\frac{V}{\pi r^2}\right) \\
+&= 2\pi r^2 + \frac{2 V}{r} \\
+\end{align*}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.63\textwidth} %
+\begin{minted}{python}
+>>> surface_area = surface_area.subs({h: fixed_h})
+>>> surface_area
+
+
+
+
+
+
+\end{minted}
+\vspace{-3.5cm}
+
+\hspace{0.5cm}\begin{minipage}{3cm}$\displaystyle{\frac{2V}{r} + 2\pi r^2}$\end{minipage}
+\end{minipage}
+\vspace{0.5cm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+The surface area is minimised when its derivative is equal to zero:
+\end{mdframed}
+
+\begin{minipage}[t]{.37\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\begin{align*}
+0 &= \frac{dS}{dr} \\
+&= 4\pi r - 2Vr^{-2}
+\end{align*}
+\vspace{1mm}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.63\textwidth} %
+\begin{minted}{python}
+>>> diff_surface = sym.diff(surface_area, r)
+>>> differential_equation = sym.Eq(diff_surface, 0)
+>>> differential_equation
+
+
+
+\end{minted}
+\vspace{-2cm}
+
+\hspace{0.5cm}\begin{minipage}{3cm}$\displaystyle{-\frac{2V}{r^2} + 4\pi r = 0}$\end{minipage}
+\end{minipage}
+\vspace{0.5cm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Then solving gives $\tilde{r}$, the value of $r$ that minimises the surface area, in terms of $V$:
+\end{mdframed}
+
+\begin{minipage}[t]{.37\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\begin{align*}
+4\pi \tilde{r} - \frac{2V}{\tilde{r}^{2}} &= 0 \\
+4\pi \tilde{r} &= \frac{2V}{\tilde{r}^{2}} \\
+4\pi \tilde{r}^3 &= 2V \\
+\tilde{r}^3 &= \frac{V}{2\pi} \\
+\tilde{r} &= \sqrt[3]{\frac{V}{2\pi}} \\
+\end{align*}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.63\textwidth} %
+\begin{minted}{python}
+>>> sym.solveset(differential_equation, r)
+
+
+
+
+>>> # Take the real valued solution
+>>> r_tilde =(2 * V / sym.pi) ** (1 / sym.S(3))
+>>> r_tilde_eq = sym.Eq(r_tilde, r)
+>>> r_tilde_eq
+
+
+
+\end{minted}
+\vspace{-5.5cm}
+
+\hspace{0.5cm}\begin{minipage}{\textwidth}$\left\{\frac{2^{\frac{2}{3}} \sqrt[3]{V}}{2 \sqrt[3]{\pi}}, - \frac{2^{\frac{2}{3}} \sqrt[3]{V}}{4 \sqrt[3]{\pi}} - \frac{2^{\frac{2}{3}} \sqrt{3} i \sqrt[3]{V}}{4 \sqrt[3]{\pi}}, - \frac{2^{\frac{2}{3}} \sqrt[3]{V}}{4 \sqrt[3]{\pi}} + \frac{2^{\frac{2}{3}} \sqrt{3} i \sqrt[3]{V}}{4 \sqrt[3]{\pi}}\right\} \setminus \left\{0\right\}$\end{minipage}
+
+\vspace{2.7cm}
+
+\hspace{0.5cm}\begin{minipage}{\textwidth}$r = \frac{\sqrt[3]{2} \sqrt[3]{V}}{\sqrt[3]{\pi}}$\end{minipage}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+However, as mentioned above, the volume $V$ is fixed, and is itself a function of $r$ and $h$. Substituting this in gives an implicit relationship between $\tilde{r}$ and $h$:
+\end{mdframed}
+
+\begin{minipage}[t]{.37\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\begin{align*}
+\tilde{r} &= \sqrt[3]{\frac{V}{2\pi}} \\
+&= \sqrt[3]{\frac{\pi \tilde{r}^2 h}{2\pi}} \\
+&= \sqrt[3]{\frac{\tilde{r}^2 h}{2}}
+\end{align*}
+\vspace{3mm}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.63\textwidth} %
+\begin{minted}{python}
+>>> r_tilde_eq = r_tilde_eq.subs({V: volume})
+>>> r_tilde_eq
+
+
+
+
+
+
+
+
+\end{minted}
+\vspace{-4.5cm}
+
+\hspace{0.5cm}\begin{minipage}{\textwidth}$r = \frac{2^{\frac{2}{3}} \sqrt[3]{h r^2}}{2}$\end{minipage}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Solving for either $\tilde{r}$ or $h$ will give an explicit relationship between $\tilde{r}$ and $h$, as required.
+\end{mdframed}
+
+\begin{minipage}[t]{.37\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\begin{align*}
+\tilde{r} &= \sqrt[3]{\frac{\tilde{r}^2 h}{2}} \\
+\tilde{r}^3 &= \frac{\tilde{r}^2 h}{2} \\
+2\tilde{r}^3 &= \tilde{r}^2 h \\
+2\tilde{r} &= h \\
+\end{align*}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.63\textwidth} %
+\begin{minted}{python}
+>>> sym.solveset(r_tilde_eq, h)
+
+
+
+
+
+
+
+
+\end{minted}
+\vspace{-4.8cm}
+
+\hspace{0.5cm}\begin{minipage}{\textwidth}$\left\{2r\right\}$\end{minipage}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Therefore, for a fixed non-zero volume cylinder, the relationship between the radius $r$ and height $h$ that minimised the surface area is $h = 2r$.
+\end{mdframed}
+
+
+
+
+\newpage
+
+\begin{center}
+\LARGE{\textit{Writing Mathematics - Sales Example}}
+\end{center}
+
+\vspace{15mm}
+
+\textbf{\textit{QUESTION:}}
+
+\textbf{You have a new product that you would like to put on sale. It costs £8064 to set up a factory to begin manufacturing the products, and each product costs £2 to make. You expect the number of sales $S$ to be dependent on the price you set each unit, $P$, according to the relationship $S = 700 - 2P$. What price should be set to maximise profit, and how many units are sold?}
+
+\vspace{5mm}
+\hrule
+\vspace{5mm}
+
+\textbf{\textit{SOLUTION:}}
+
+\vspace{5mm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+From the information given, we can find expressions for the number of units sold, and the total profit:
+\end{mdframed}
+
+\begin{minipage}[t]{.6\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\vspace{-3mm}
+\small{%
+\begin{align*}
+S &= 700 - 2P \\[2mm]
+C &= 8064 + 2S \\
+&= 8064 + 2(700 - 2P)\\
+&= 9464 - 4P \\[2mm]
+I &= PS \\
+&= P(700 - 2P) \\
+&= -2P^2 + 700P \\[2mm]
+T &= I - C \\
+&= (-2P^2 + 700P) - (9464 - 4P) \\
+&= -2P^2 + 704P - 9464
+\end{align*}%
+}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.4\textwidth} %
+\begin{minted}{python}
+>>> import sympy as sym
+>>> P = sym.Symbol("P")
+>>> setup = 8064
+>>> sales = 700 - (2 * P)
+>>> costs = setup + (2 * sales)
+>>> income = sales * P
+>>> profit = income - costs
+>>> sym.expand(profit)
+
+
+
+
+
+
+\end{minted}
+\vspace{-3.7cm}
+
+\hspace{0.5cm}\begin{minipage}{\textwidth}$-2P^{2} + 704P - 9464$\end{minipage}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+We can see that the profit is a quadratic function of the price. This is a quadratic whose $x^2$ coefficient is negative, and so has a maximum. the maximum will lie halfway between its roots.
+
+Therefore we find its roots:
+\end{mdframed}
+
+\begin{minipage}[t]{.3\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\vspace{-3mm}
+\small{%
+\begin{align*}
+T &= -2P^2 + 704P - 9464 \\
+&= -(2P + a)(P + b)
+\end{align*}
+where
+\begin{align*}
+2b + 1 &= -704 \\
+ab &= 9464
+\end{align*}
+implies that:
+\begin{align*}
+a &= -28 \\
+b &= -338
+\end{align*}
+and so:
+\begin{equation*}
+T = -(2P - 28)(P-338)
+\end{equation*}
+and so:
+\begin{align*}
+P_1 &= 14 \\
+P_2 &= 338
+\end{align*}
+\vspace{-0.55cm}
+}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.36\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\vspace{-3mm}
+\small{%
+\begin{equation*}
+T = -2P^2 + 704P - 9464
+\end{equation*}
+using the quadratic equation:
+\begin{align*}
+P &= \frac{704 \pm \sqrt{(704^2 - 4(2)(9464))}}{2 \times 2)} \\
+&= \frac{704 \pm \sqrt{419904}}{4} \\
+&= 176 \pm 162
+\end{align*}
+\begin{align*}
+P_1 &= 14 \\
+P_2 &= 338
+\end{align*}
+\vspace{3cm}
+}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.32\textwidth} %
+\begin{minted}{python}
+>>> sym.solveset(profit)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{minted}
+\vspace{-10.4cm}
+
+\hspace{0.5cm}\begin{minipage}{\textwidth}$\left\{14, 3380\right\}$\end{minipage}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+The maximum of the quadratic function will be at the midpoint between the roots:
+\end{mdframed}
+
+\begin{minipage}[t]{.6\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\begin{align*}
+\tilde{P} &= \frac{P_2 - P_1}{2} \\
+&= \frac{388 - 14}{2} \\
+&= 162
+\end{align*}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.4\textwidth} %
+\begin{minted}{python}
+>>> P_tilde = (338 - 14) / 2
+>>> P_tilde
+162.0
+
+
+
+\end{minted}
+\end{minipage}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Therefore the price that maximises the total profit is £162. We can substitute this into the expression for the sales and for the profit to find the maximum number of sales and maximum profit that can be made:
+\end{mdframed}
+
+\begin{minipage}[t]{.6\textwidth} %
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=cyan!10]
+\vspace{-0.6cm}
+\begin{align*}
+\tilde{S} &= 700 - 2\tilde{P} \\
+&= 700 - 2(162) \\
+&= 376 \\[3mm]
+\tilde{T} &= -2\tilde{P}^2 + 704\tilde{P} - 9464 \\
+&= -2(162^2) + (704 \times 162) - 9464 \\
+&= 52096
+\end{align*}
+\vspace{-0.85cm}
+\end{mdframed}
+\end{minipage} %
+\begin{minipage}[t]{.4\textwidth} %
+\begin{minted}{python}
+>>> sales.subs({P: midpoint})
+
+
+>>> profit.subs({P: midpoint})
+
+
+
+
+\end{minted}
+\vspace{-3.8cm}
+
+\hspace{0.5cm}\begin{minipage}{\textwidth}$376.0$\end{minipage} 
+
+\vspace{1cm}
+
+\hspace{0.5cm}\begin{minipage}{\textwidth}$52096.0$\end{minipage}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{mdframed}[linewidth=0.5mm, backgroundcolor=orange!10]
+Therefore, the maximum amount of profit that can be made is £52,096, by selling 376 units at a price of £162 each.
+\end{mdframed}
+
+\end{document}

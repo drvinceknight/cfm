@@ -48,6 +48,8 @@ There will be 8 questions, each worth 5 marks:
   - *2 marks*: Clear narrative, clear code with descriptive variable names
 
 
+The coursework for 2025/2026 can be downloaded available [here]({{site.baseurl}}/assets/assessment/ind/assignment.ipynb).
+
 
 
 # Group project (60%)

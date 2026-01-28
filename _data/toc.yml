@@ -37,33 +37,32 @@
         - title: Individual Coursework deadline
 - title: Spring
   weeks:
-    - title: "Week 1 - Expected progress: Group Formation"
+    - title: "Week 2 - Expected progress: Group Formation"
       topics:
         - title: Variables, conditional statements, and while loops
-    - title: "Week 2 - Expected progress: Initial Ideas"
+    - title: "Week 3 - Expected progress: Initial Ideas"
       topics:
         - title: Functions and data structures
-    - title: "Week 3 - Expected progress: Idea consolidation"
+    - title: "Week 4 - Expected progress: Idea consolidation"
       topics:
         - title: Object Oriented Programming
-    - title: "Week 4 - Expected progress: Prototype"
+    - title: "Week 5 - Expected progress: Prototype"
       topics:
         - title: Using a terminal and an editor
-    - title: "Week 5 - Expected progress: Modularisation of code"
+    - title: "Week 6 - Expected progress: Modularisation of code"
       topics:
         - title: Modularisation of code
-    - title: "Week 6 - Expected progress: Documentation of code"
+    - title: "Week 7 - Expected progress: Documentation of code"
       topics:
         - title: Documentation of code
-    - title: "Week 7 - Expected progress: Testing of code"
+    - title: "Week 8 - Expected progress: Testing of code"
       topics:
         - title: Testing of code
-    - title: "Week 8 - Expected progress: Start of research paper"
+    - title: "Week 9 - Expected progress: Start of research paper"
       topics:
         - title: LaTeX and Writing Mathematics
-    - title: "Week 9: Group work - Expected progress: Start of presentation story board"
+    - title: "Week 10: Group work - Expected progress: Start of presentation story board"
       topics:
         - title: Presenting mathematics
-    - title: "Week 10: Group work - Expected progress: Finish paper and visual aids for presentation"
-    - title: "Week 11: Group work - Expected progress: Finish visual aids and rehears paper"
+    - title: "Week 11: Group work - Expected progress: Finish paper, visual aids for presentation and rehearse"
     - title: "Week 12: Group coursework deadline"

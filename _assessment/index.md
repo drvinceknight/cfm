@@ -194,6 +194,39 @@ of papers written for that journal that can be helpful are:
 
 Deadline: TBD.
 
+## [Use of Code Generation Tools](#use-of-code-generation-tools)
+
+
+Code generation tools (for example Large Language Models such as ChatGPT or
+Google Gemini) are increasingly capable of producing working programming code.
+These tools can sometimes generate high-quality solutions, but they can also
+produce incorrect, inefficient, or unsafe code.
+
+**The purpose of this module is for you to develop your own programming,
+problem-solving, and debugging skills.**
+
+For this coursework, you must submit your own original work.
+
+You must not:
+
+- Submit code that you do not fully understand
+- Submit code generated wholly or partially by automated code generation tools
+- Use code generation tools to complete assessed programming tasks
+
+You may:
+
+- Use lecture materials, textbooks, and official documentation
+- Discuss general programming ideas with others (but not share code)
+- Use standard debugging tools
+
+Automated code generation often produces recognisable artefacts. Where there is
+reasonable evidence that submitted work was generated using such tools, the
+submission may be treated as an academic integrity violation and penalties may
+apply, including a mark of zero.
+
+**This policy exists to ensure you develop the skills required for later modules
+and professional programming practice.**
+
 ## [Past group projects](#past-group-projects)
 
 A list of titles of past projects:

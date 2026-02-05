@@ -222,7 +222,7 @@ You may:
 Automated code generation often produces recognisable artefacts. Where there is
 reasonable evidence that submitted work was generated using such tools, the
 submission may be treated as an academic integrity violation and penalties may
-apply, including a mark of zero.
+apply.
 
 **This policy exists to ensure you develop the skills required for later modules
 and professional programming practice.**

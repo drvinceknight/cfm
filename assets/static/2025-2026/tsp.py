@@ -18,10 +18,14 @@ def get_tour(number_of_stops, seed=None):
         np.random.seed(seed)
         np.random.shuffle(internal_stops)
     return [0] + internal_stops + [0]
+
+
 def swap_cities(tour, steps):
     i, j = sorted(steps)
     new_tour = tour[:i] + tour[i:j + 1][::-1] + tour[j + 1:]
     return new_tour
+
+
 def get_cost(tour, distance_matrix):
     return sum(
         distance_matrix[current_stop, next_stop]

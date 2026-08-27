@@ -1,0 +1,137 @@
+title: Matrices
+pick: 5
+questions:
+  - q: "We import sympy as `sym`. How do we create the matrix \\(\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\\)?"
+    options:
+      - text: "`sym.Matrix([[1, 2], [3, 4]])`"
+        correct: true
+      - text: "`sym.Matrix([1, 2, 3, 4])`"
+      - text: "`sym.Matrix((1, 2), (3, 4))`"
+      - text: "`sym.Matrix(1, 2, 3, 4)`"
+    explain: "`sym.Matrix` takes a list of rows; each row is itself a list."
+
+  - q: "How do we compute the determinant of a matrix `matrix`?"
+    options:
+      - text: "`matrix.det()`"
+        correct: true
+      - text: "`sym.det(matrix)`"
+      - text: "`matrix.determinant()`"
+      - text: "`sym.Matrix.det(matrix)`"
+    explain: "The determinant is a method on the matrix object: `matrix.det()`."
+
+  - q: "How do we compute the inverse of a matrix `matrix`?"
+    options:
+      - text: "`matrix.inv()`"
+        correct: true
+      - text: "`sym.inv(matrix)`"
+      - text: "`matrix.inverse()`"
+      - text: "`matrix ** -1` only"
+    explain: "`.inv()` returns the matrix inverse."
+
+  - q: "What is the inverse of a matrix whose determinant is zero?"
+    options:
+      - text: "it does not exist; the matrix is singular"
+        correct: true
+      - text: "the zero matrix"
+      - text: "the identity matrix"
+      - text: "its transpose"
+    explain: "A matrix is invertible if and only if its determinant is non-zero."
+
+  - q: "How do we multiply two matrices `a` and `b` in sympy?"
+    options:
+      - text: "`a * b`"
+        correct: true
+      - text: "`a.times(b)`"
+      - text: "`sym.matmul(a, b)`"
+      - text: "`a @ b` only"
+    explain: "In sympy, `*` is matrix multiplication on `Matrix` objects."
+
+  - q: "How do we access the entry in row 0, column 1 of a matrix `matrix`?"
+    options:
+      - text: "`matrix[0, 1]`"
+        correct: true
+      - text: "`matrix(0, 1)`"
+      - text: "`matrix.entry(0, 1)`"
+      - text: "`matrix[0][1]` only"
+    explain: "sympy matrices support tuple indexing: `matrix[row, column]`."
+
+  - q: "What does `matrix.T` return?"
+    options:
+      - text: "the transpose of the matrix"
+        correct: true
+      - text: "the inverse of the matrix"
+      - text: "the determinant of the matrix"
+      - text: "the trace of the matrix"
+    explain: "`.T` is the matrix transpose."
+
+  - q: "What does `matrix.rref()` return?"
+    options:
+      - text: "the reduced row echelon form (and the pivot columns)"
+        correct: true
+      - text: "the inverse of the matrix"
+      - text: "the rank of the matrix"
+      - text: "the eigenvalues of the matrix"
+    explain: "`.rref()` returns the reduced row echelon form, together with a tuple of pivot columns."
+
+  - q: "Which call gives the eigenvalues of a matrix?"
+    options:
+      - text: "`matrix.eigenvals()`"
+        correct: true
+      - text: "`matrix.eigen()`"
+      - text: "`sym.eig(matrix)`"
+      - text: "`matrix.det().eig()`"
+    explain: "`.eigenvals()` returns a dictionary mapping each eigenvalue to its algebraic multiplicity."
+
+  - q: "How do we solve the linear system \\(A x = b\\) where `a` is a matrix and `b` is a column vector?"
+    options:
+      - text: "`a.solve(b)`"
+        correct: true
+      - text: "`sym.solveset(a, b)`"
+      - text: "`a.inv(b)`"
+      - text: "`a.b()`"
+    explain: "The `.solve` method on a matrix solves the linear system against the right-hand side."
+
+  - q: "Why use `sym.Matrix` rather than a list of lists for linear algebra?"
+    options:
+      - text: "it gives us determinant, inverse, transpose and other linear-algebra tools as methods"
+        correct: true
+      - text: "lists of lists cannot store numbers"
+      - text: "`sym.Matrix` is faster for arbitrary Python tasks"
+      - text: "lists of lists are not supported by Python"
+    explain: "`sym.Matrix` is a dedicated linear-algebra type with the tools we expect."
+
+  - q: "What does `sym.eye(3)` return?"
+    options:
+      - text: "the \\(3 \\times 3\\) identity matrix"
+        correct: true
+      - text: "a vector with three ones"
+      - text: "a \\(3 \\times 3\\) zero matrix"
+      - text: "a \\(3 \\times 3\\) matrix of threes"
+    explain: "`sym.eye(n)` is the \\(n \\times n\\) identity matrix."
+
+  - q: "What does `sym.zeros(2, 3)` return?"
+    options:
+      - text: "a \\(2 \\times 3\\) matrix of zeros"
+        correct: true
+      - text: "the integer 0 twice and 3 thrice"
+      - text: "a \\(3 \\times 2\\) matrix of zeros"
+      - text: "a vector of two zeros"
+    explain: "`sym.zeros(rows, cols)` builds a zero matrix of that shape."
+
+  - q: "What does `matrix.rank()` return?"
+    options:
+      - text: "the rank of the matrix"
+        correct: true
+      - text: "the determinant of the matrix"
+      - text: "the number of rows"
+      - text: "the largest eigenvalue"
+    explain: "`.rank()` returns the rank of the matrix."
+
+  - q: "Why would we use exact symbolic matrices rather than floating-point ones for theory work?"
+    options:
+      - text: "to keep exact rationals and surds in eigenvalues and inverses"
+        correct: true
+      - text: "because floating-point matrices cannot be transposed"
+      - text: "because sympy is faster than numpy"
+      - text: "because floats cannot represent integers"
+    explain: "Symbolic matrices avoid floating-point error; numerical libraries are better suited to large numerical computations."

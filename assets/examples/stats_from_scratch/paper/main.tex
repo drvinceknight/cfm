@@ -1,0 +1,138 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{Summary statistics from scratch}
+\author{Group N}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present \texttt{stats\_from\_scratch}, a small Python library
+that implements the mean, the median, the population and sample
+standard deviations, and the three quartiles directly from their
+definitions. Every function is checked against the matching function
+in the standard library \texttt{statistics} module; we treat the
+standard library as a reference implementation in the tests, not in
+the library code. The library follows the Diataxis framework for
+documentation~\cite{procida2017} and the statistics chapter of the
+open-source textbook \emph{Python for
+Mathematics}~\cite{knight2024}; we mention the wider statistical
+context in~\cite{rice2007}.
+\end{abstract}
+
+\section{Introduction}
+
+The summary statistics of a sample are the most basic description of
+its location and spread. For a sample
+\(x_1, x_2, \dots, x_n\) the arithmetic mean is
+\(\bar{x} = (1/n) \sum_i x_i\), the median is the middle of the
+sorted sample, and the standard deviation is the square root of the
+mean squared deviation from the mean. The two common variants of the
+standard deviation differ in the divisor: \(n\) for the population
+version and \(n - 1\) for the sample version~\cite{rice2007}.
+
+The standard library \texttt{statistics} module already implements
+all of these. We wanted a library that we could read and understand
+in full, with the formulas in plain sight, and we treat the standard
+library as the reference implementation in our tests.
+
+We present a five-function library,
+\texttt{stats\_from\_scratch}; every function is implemented from
+its definition; and every function is checked against the matching
+function in the standard library \texttt{statistics} module.
+
+\section{The library}
+
+The library lives in the single module
+\texttt{stats\_from\_scratch.py} and follows the statistics chapter
+of \emph{Python for Mathematics}~\cite{knight2024}.
+
+\texttt{mean(values)} returns
+\(\sum_i x_i / n\).
+
+\texttt{median(values)} sorts the sample,
+returns the middle value for an odd count, and the average of the
+two middle values for an even count.
+
+\texttt{population\_standard\_deviation(values)} and
+\texttt{sample\_standard\_deviation(values)} return the square root
+of the mean squared deviation with divisors \(n\) and \(n - 1\)
+respectively.
+
+\texttt{quartiles(values)} returns the three
+cut points \(Q_1\), \(Q_2\), \(Q_3\), using the 'exclusive' method
+of the standard library: the \(k\)-th cut is at the fractional
+1-indexed position \(k (n + 1) / 4\) of the sorted sample, with
+linear interpolation between the surrounding values. We picked this
+method so the library agrees with \texttt{statistics.quantiles(data,
+n=4)} exactly.
+
+\section{Worked example}
+
+We illustrate the library on the sample \([1, 2, 3, 4, 5]\). The
+mean is \(3\), the median is \(3\), and the three quartiles are
+\((1.5, 3, 4.5)\), as expected. The population standard deviation is
+\(\sqrt{2} \approx 1.414\) and the sample standard deviation is
+\(\sqrt{2.5} \approx 1.581\). The values match
+\texttt{statistics.mean}, \texttt{statistics.median},
+\texttt{statistics.pstdev}, \texttt{statistics.stdev}, and
+\texttt{statistics.quantiles(data, n=4)} to within floating-point
+precision (Table~\ref{tab:demo}).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l l l}
+\toprule
+Quantity & Library & \texttt{statistics} \\
+\midrule
+mean    & \(3.0\)              & \(3\) \\
+median  & \(3\)                & \(3\) \\
+pstdev  & \(\sqrt{2}\)         & \(\sqrt{2}\) \\
+stdev   & \(\sqrt{2.5}\)       & \(\sqrt{2.5}\) \\
+quartiles & \((1.5, 3, 4.5)\)  & \([1.5, 3.0, 4.5]\) \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Agreement with the standard library on
+$[1, 2, 3, 4, 5]$.} Every function in the library returns a value
+that matches \texttt{statistics} to within floating-point
+precision.}
+\label{tab:demo}
+\end{table}
+
+\section{Discussion}
+
+The standard library already covers
+this material in full. We wrote the library because we wanted to
+know what the formulas were doing, and the act of writing them out
+in clean form was itself instructive.
+
+There are several methods in
+use~\cite{rice2007}. We picked the 'exclusive' method so that the
+library agrees with the standard library's
+\texttt{statistics.quantiles}. A natural extension would be to
+expose a ``method'' keyword so that other methods can be selected.
+
+The library handles only one-dimensional
+samples. A natural extension is the two-sample case (correlation,
+covariance, Pearson and Spearman coefficients), each of which has a
+short definition and an obvious unit-test target in
+\texttt{statistics} or \texttt{scipy.stats}.
+
+\section{Conclusion}
+
+We have presented \texttt{stats\_from\_scratch}, a small library
+that implements the basic summary statistics from their definitions
+and agrees with the standard library \texttt{statistics} module on
+every test case we tried.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

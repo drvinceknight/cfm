@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testing and reseach - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Testing and reseach</h1>
+<p><small>2025-03-24</small></p>
+
+<p>On Friday the subject librarian Cathy Parker took our class to discuss
+research, sources and plagiarism. I had also not written a summary of the
+previous class on testing so I'll summarise that here.</p>
+<h2 id="finding-sources-for-your-work">Finding sources for your work</h2>
+<p>You can see a recording of the session lead by Cathy Parker <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=22805be5-18b0-442d-be6e-b2a200d6beca">here</a>.</p>
+<p>Cathy covered the following topics:</p>
+<ul>
+<li>How the session is relevant to the coursework</li>
+<li>Using good quality information, journal articles, what journal articles are</li>
+<li>Where to find journal articles, mentioned LibrarySearch, Google Scholar and Elicit</li>
+<li>Gen AI tools, how to use with academic integrity, potential uses, examples of tools, limitations and concerns</li>
+<li>Examples of plagiarism</li>
+<li>Citing and referencing - generating BibTeX files, using these in LaTeX</li>
+<li>Signposting to support - tutorials on academic writing, group work, giving presentations. Also stressed to contact me if they have questions.</li>
+</ul>
+<h2 id="testing">Testing</h2>
+<p>You can see the class on test <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=80582424-7769-4d86-9123-b29b00d6c587">here</a>.</p>
+<p>In that class we wrote <code>test_tsp.py</code> for the <code>tsp</code> library.</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

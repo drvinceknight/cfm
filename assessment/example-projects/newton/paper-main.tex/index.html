@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>paper/main.tex - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#newton">Example Group Projects / newton</a>
+  /
+  paper/main.tex
+</p>
+
+<h1>paper/main.tex</h1>
+
+<div class="highlight"><pre><code class="language-latex"><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="na">[margin=1in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>parskip<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath, amssymb, amsthm<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+
+<span class="k">\title</span><span class="nb">{</span>A small library for Newton-Raphson root finding with
+       symbolic differentiation<span class="nb">}</span>
+<span class="k">\author</span><span class="nb">{</span>Group N<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\maketitle</span>
+
+<span class="k">\begin</span><span class="nb">{</span>abstract<span class="nb">}</span>
+We present <span class="k">\texttt</span><span class="nb">{</span>newton<span class="nb">}</span>, a small Python library that finds roots of
+single-variable expressions using the Newton-Raphson method, with the
+derivative computed symbolically by <span class="k">\texttt</span><span class="nb">{</span>sympy<span class="nb">}</span>. We show that the
+library recovers <span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">}</span><span class="s">\)</span> and other roots of low-degree polynomials
+to a tolerance of <span class="s">\(</span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">10</span><span class="nb">}</span><span class="s">\)</span> in fewer than ten iterations, and we
+illustrate the quadratic convergence rate on a worked example. The
+library is documented following the Diataxis framework and tested with
+both <span class="k">\texttt</span><span class="nb">{</span>assert<span class="nb">}</span> statements and doctests embedded in the
+documentation.
+<span class="k">\end</span><span class="nb">{</span>abstract<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Introduction<span class="nb">}</span>
+
+The Newton-Raphson method is one of the oldest and most widely used
+techniques for finding roots of a differentiable function~<span class="k">\cite</span><span class="nb">{</span>burden2015<span class="nb">}</span>.
+Given a function <span class="s">\(</span><span class="nb">f</span><span class="s">\)</span> and an initial estimate <span class="s">\(</span><span class="nb">x_</span><span class="m">0</span><span class="s">\)</span> of a root, the method
+constructs the sequence
+
+<span class="sb">\[</span>
+<span class="nb">    x_{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">} </span><span class="o">=</span><span class="nb"> x_n </span><span class="o">-</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{f</span><span class="o">(</span><span class="nb">x_n</span><span class="o">)</span><span class="nb">}{f&#39;</span><span class="o">(</span><span class="nb">x_n</span><span class="o">)</span><span class="nb">},</span>
+<span class="s">\]</span>
+
+which, under mild conditions on <span class="s">\(</span><span class="nb">f</span><span class="s">\)</span>, converges quadratically to a simple
+root in a neighbourhood of <span class="s">\(</span><span class="nb">x_</span><span class="m">0</span><span class="s">\)</span>~<span class="k">\cite</span><span class="nb">{</span>atkinson1988<span class="nb">}</span>.
+
+Many implementations of Newton-Raphson approximate <span class="s">\(</span><span class="nb">f&#39;</span><span class="o">(</span><span class="nb">x_n</span><span class="o">)</span><span class="s">\)</span> numerically.
+We take a different approach. By computing <span class="s">\(</span><span class="nb">f&#39;</span><span class="s">\)</span> symbolically with
+<span class="k">\texttt</span><span class="nb">{</span>sympy<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>meurer2017<span class="nb">}</span>, we avoid the discretisation error of a
+finite-difference approximation and we obtain exact rational iterates when
+<span class="s">\(</span><span class="nb">x_</span><span class="m">0</span><span class="s">\)</span> is itself given as a rational.
+
+We present a library, <span class="k">\texttt</span><span class="nb">{</span>newton<span class="nb">}</span>, that
+implements three small functions for symbolic Newton-Raphson; we verify
+the implementation against worked examples in tests and doctests; and we
+present convergence data on two low-degree polynomials. The library
+follows the Diataxis framework for documentation~<span class="k">\cite</span><span class="nb">{</span>procida2017<span class="nb">}</span> and
+the conventions of the open-source textbook
+<span class="k">\emph</span><span class="nb">{</span>Python for Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+
+<span class="k">\section</span><span class="nb">{</span>The library<span class="nb">}</span>
+
+The library consists of three functions, defined in the single module
+<span class="k">\texttt</span><span class="nb">{</span>newton.py<span class="nb">}</span>.
+
+<span class="k">\texttt</span><span class="nb">{</span>newton.newton<span class="k">\_step</span>(expression, variable,
+current<span class="k">\_value</span>)<span class="nb">}</span> applies the update
+
+<span class="sb">\[</span>
+<span class="nb">    x_{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">} </span><span class="o">=</span><span class="nb"> x_n </span><span class="o">-</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{f</span><span class="o">(</span><span class="nb">x_n</span><span class="o">)</span><span class="nb">}{f&#39;</span><span class="o">(</span><span class="nb">x_n</span><span class="o">)</span><span class="nb">}</span>
+<span class="s">\]</span>
+
+once. The derivative is computed inside the function with
+<span class="k">\texttt</span><span class="nb">{</span>sympy.diff<span class="nb">}</span>; we use <span class="k">\texttt</span><span class="nb">{</span>.subs(<span class="k">\{</span>variable: current<span class="k">\_value\}</span>)<span class="nb">}</span> to
+evaluate <span class="s">\(</span><span class="nb">f</span><span class="o">(</span><span class="nb">x_n</span><span class="o">)</span><span class="s">\)</span> and <span class="s">\(</span><span class="nb">f&#39;</span><span class="o">(</span><span class="nb">x_n</span><span class="o">)</span><span class="s">\)</span> symbolically.
+
+<span class="k">\texttt</span><span class="nb">{</span>newton.iterate(expression,
+variable, initial<span class="k">\_value</span>, number<span class="k">\_of\_iterations</span>)<span class="nb">}</span> returns the list
+
+<span class="sb">\[</span>
+<span class="nb">    x_</span><span class="m">0</span><span class="nb">, x_</span><span class="m">1</span><span class="nb">, </span><span class="nv">\dots</span><span class="nb">, x_N,</span>
+<span class="s">\]</span>
+
+where <span class="s">\(</span><span class="nb">N</span><span class="s">\)</span> is <span class="k">\texttt</span><span class="nb">{</span>number<span class="k">\_of\_iterations</span><span class="nb">}</span>. Each entry is held
+symbolically so that the trail of iterates can be inspected exactly.
+
+<span class="k">\texttt</span><span class="nb">{</span>newton.find<span class="k">\_root</span>(expression,
+variable, initial<span class="k">\_value</span>, tolerance, maximum<span class="k">\_iterations</span>)<span class="nb">}</span> iterates the
+Newton update until two successive iterates differ by less than
+<span class="k">\texttt</span><span class="nb">{</span>tolerance<span class="nb">}</span> in absolute value, or until <span class="k">\texttt</span><span class="nb">{</span>maximum<span class="k">\_iterations</span><span class="nb">}</span>
+steps have been taken. It returns a tuple <span class="k">\texttt</span><span class="nb">{</span>(root, iterations)<span class="nb">}</span> so
+that the caller can detect early termination at the iteration cap.
+
+<span class="k">\section</span><span class="nb">{</span>Worked example: the square root of two<span class="nb">}</span>
+
+We compute <span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">}</span><span class="s">\)</span> by solving <span class="s">\(</span><span class="nb">f</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> x^</span><span class="m">2</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="m">2</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="s">\)</span> starting at
+<span class="s">\(</span><span class="nb">x_</span><span class="m">0</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span>. The Newton update is
+
+<span class="sb">\[</span>
+<span class="nb">    x_{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">} </span><span class="o">=</span><span class="nb"> x_n </span><span class="o">-</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{x_n^</span><span class="m">2</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="m">2</span><span class="nb">}{</span><span class="m">2</span><span class="nb"> x_n} </span><span class="o">=</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{x_n^</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="m">2</span><span class="nb">}{</span><span class="m">2</span><span class="nb"> x_n}.</span>
+<span class="s">\]</span>
+
+Calling
+<span class="k">\texttt</span><span class="nb">{</span>newton.iterate(x**2 - 2, x, sympy.S(1), number<span class="k">\_of\_iterations</span>=4)<span class="nb">}</span>
+returns the iterates shown in Table~<span class="k">\ref</span><span class="nb">{</span>tab:sqrt2<span class="nb">}</span>. The exact rational
+form is preserved at each step.
+
+<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[h]
+<span class="k">\centering</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>l l l<span class="nb">}</span>
+<span class="k">\toprule</span>
+<span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> <span class="nb">&amp;</span> <span class="s">\(</span><span class="nb">x_n</span><span class="s">\)</span> (exact) <span class="nb">&amp;</span> <span class="s">\(</span><span class="nb">x_n</span><span class="s">\)</span> (numeric) <span class="k">\\</span>
+<span class="k">\midrule</span>
+0 <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">1</span><span class="s">\)</span>               <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">1</span><span class="nb">.</span><span class="m">0000000000</span><span class="s">\)</span> <span class="k">\\</span>
+1 <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">3</span><span class="o">/</span><span class="m">2</span><span class="s">\)</span>             <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">1</span><span class="nb">.</span><span class="m">5000000000</span><span class="s">\)</span> <span class="k">\\</span>
+2 <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">17</span><span class="o">/</span><span class="m">12</span><span class="s">\)</span>           <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">1</span><span class="nb">.</span><span class="m">4166666667</span><span class="s">\)</span> <span class="k">\\</span>
+3 <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">577</span><span class="o">/</span><span class="m">408</span><span class="s">\)</span>         <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">1</span><span class="nb">.</span><span class="m">4142156863</span><span class="s">\)</span> <span class="k">\\</span>
+4 <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">665857</span><span class="nb"> </span><span class="o">/</span><span class="nb"> </span><span class="m">470832</span><span class="s">\)</span> <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">1</span><span class="nb">.</span><span class="m">4142135624</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="k">\bottomrule</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>Iterates of Newton-Raphson on <span class="s">\(</span><span class="nb">x^</span><span class="m">2</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="m">2</span><span class="s">\)</span>.<span class="nb">}</span> The library
+preserves the exact rational form of every iterate; the numeric column is
+shown for context. The error <span class="s">\(</span><span class="nb">|x_n </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">}|</span><span class="s">\)</span> is approximately
+<span class="s">\(</span><span class="m">5</span><span class="nb"> </span><span class="nv">\times</span><span class="nb"> </span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="s">\)</span>, <span class="s">\(</span><span class="m">8</span><span class="nb"> </span><span class="nv">\times</span><span class="nb"> </span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">2</span><span class="nb">}</span><span class="s">\)</span>, <span class="s">\(</span><span class="m">2</span><span class="nb"> </span><span class="nv">\times</span><span class="nb"> </span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">3</span><span class="nb">}</span><span class="s">\)</span>,
+<span class="s">\(</span><span class="m">2</span><span class="nb"> </span><span class="nv">\times</span><span class="nb"> </span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">6</span><span class="nb">}</span><span class="s">\)</span> and <span class="s">\(</span><span class="m">2</span><span class="nb"> </span><span class="nv">\times</span><span class="nb"> </span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">12</span><span class="nb">}</span><span class="s">\)</span> for <span class="s">\(</span><span class="nb">n </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="nb">, </span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">, </span><span class="m">3</span><span class="nb">, </span><span class="m">4</span><span class="s">\)</span>
+respectively, which is consistent with the expected doubling of the
+number of correct digits per step.<span class="nb">}</span>
+<span class="k">\label</span><span class="nb">{</span>tab:sqrt2<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>A second example: the cube root of eight<span class="nb">}</span>
+
+To check that the library is not specialised to quadratics, we also solve
+<span class="s">\(</span><span class="nb">g</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> x^</span><span class="m">3</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="m">8</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="s">\)</span> starting at <span class="s">\(</span><span class="nb">x_</span><span class="m">0</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span>. The expected root is
+<span class="s">\(</span><span class="nb">x </span><span class="o">=</span><span class="nb"> </span><span class="m">2</span><span class="s">\)</span>, since <span class="s">\(</span><span class="m">8</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">2</span><span class="nb">^</span><span class="m">3</span><span class="s">\)</span>. Calling
+<span class="k">\texttt</span><span class="nb">{</span>newton.find<span class="k">\_root</span><span class="nb">}</span> on <span class="s">\(</span><span class="nb">x^</span><span class="m">3</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="m">8</span><span class="s">\)</span> from <span class="s">\(</span><span class="nb">x_</span><span class="m">0</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span> with
+tolerance <span class="s">\(</span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">8</span><span class="nb">}</span><span class="s">\)</span> and a cap of 50 iterations returns <span class="s">\(</span><span class="m">2</span><span class="nb">.</span><span class="m">0</span><span class="s">\)</span> to
+within tolerance in nine iterations. The starting point is deliberately some distance from the
+root, so the early iterates take large steps before settling.
+
+<span class="k">\section</span><span class="nb">{</span>Discussion<span class="nb">}</span>
+
+Both examples in this paper exhibit the expected
+quadratic convergence rate near the root. Once the iterate enters a
+neighbourhood of the root in which <span class="s">\(</span><span class="nb">f&#39;&#39;</span><span class="o">/</span><span class="nb">f&#39;</span><span class="s">\)</span> is bounded, the error
+roughly squares at each step. Table~<span class="k">\ref</span><span class="nb">{</span>tab:sqrt2<span class="nb">}</span> shows this effect
+clearly: the error halves in the first step, drops by an order of
+magnitude in the second, and then by several orders of magnitude in each
+of the next two.
+
+The method can diverge if <span class="s">\(</span><span class="nb">x_</span><span class="m">0</span><span class="s">\)</span> is too far from
+the root, or if the iterate lands at a point where <span class="s">\(</span><span class="nb">f&#39;</span><span class="s">\)</span> is close to
+zero. Our <span class="k">\texttt</span><span class="nb">{</span>find<span class="k">\_root</span><span class="nb">}</span> returns the iteration count alongside the
+final iterate so that the caller can detect that the iteration cap was
+reached. A natural extension would be to add a damping factor or a switch
+to bisection when the Newton step grows too large; we leave this as a
+direction for future work.
+
+A finite-difference approximation
+to <span class="s">\(</span><span class="nb">f&#39;</span><span class="s">\)</span> introduces its own error, which competes with the
+<span class="s">\(</span><span class="nv">\text</span><span class="nb">{O}</span><span class="o">(</span><span class="nb">h^</span><span class="m">2</span><span class="o">)</span><span class="s">\)</span> of Newton&#39;s method. By using <span class="k">\texttt</span><span class="nb">{</span>sympy.diff<span class="nb">}</span> we
+sidestep that trade-off entirely. The cost is that the iterates can
+become large symbolic fractions; <span class="k">\texttt</span><span class="nb">{</span>sympy<span class="nb">}</span> keeps them in lowest
+terms but a future extension could simplify aggressively to keep the
+trail compact.
+
+<span class="k">\section</span><span class="nb">{</span>Conclusion<span class="nb">}</span>
+
+We have presented <span class="k">\texttt</span><span class="nb">{</span>newton<span class="nb">}</span>, a three-function Python library that
+combines the classical Newton-Raphson iteration with symbolic
+differentiation. The library is documented following the Diataxis
+framework and tested through both unit tests and doctests in the
+documentation. The library recovers <span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">}</span><span class="s">\)</span> and <span class="s">\(</span><span class="m">2</span><span class="s">\)</span> to a
+tolerance of <span class="s">\(</span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">10</span><span class="nb">}</span><span class="s">\)</span> in fewer than ten iterations from
+<span class="s">\(</span><span class="nb">x_</span><span class="m">0</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span>, and the iterates exhibit the expected quadratic convergence
+rate.
+
+A natural extension is to add a safeguarded variant that falls back to
+bisection when the Newton step would diverge; this is a direction for
+future work.
+
+<span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
+<span class="k">\bibliography</span><span class="nb">{</span>references<span class="nb">}</span>
+
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

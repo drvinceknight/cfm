@@ -1,0 +1,137 @@
+title: Statistics
+pick: 5
+questions:
+  - q: "Which standard library do we use for descriptive statistics in this course?"
+    options:
+      - text: "`statistics` (imported as `st`)"
+        correct: true
+      - text: "`sympy`"
+      - text: "`numpy`"
+      - text: "`itertools`"
+    explain: "Python's standard `statistics` library provides mean, median, variance and quantiles."
+
+  - q: "Which call computes the mean of `data`?"
+    options:
+      - text: "`st.mean(data)`"
+        correct: true
+      - text: "`st.average(data)`"
+      - text: "`data.mean()`"
+      - text: "`mean(data)`"
+    explain: "`statistics.mean(data)` returns the arithmetic mean."
+
+  - q: "Which call computes the median of `data`?"
+    options:
+      - text: "`st.median(data)`"
+        correct: true
+      - text: "`st.middle(data)`"
+      - text: "`data.median()`"
+      - text: "`median(data)`"
+    explain: "`statistics.median(data)` returns the middle value of the sorted data."
+
+  - q: "What is the difference between `st.stdev` and `st.pstdev`?"
+    options:
+      - text: "`st.stdev` is the sample standard deviation; `st.pstdev` is the population standard deviation"
+        correct: true
+      - text: "`st.stdev` is the variance; `st.pstdev` is the standard deviation"
+      - text: "they are aliases"
+      - text: "`st.stdev` requires sorted data; `st.pstdev` does not"
+    explain: "Sample statistics use \\(n - 1\\) in the denominator; population statistics use \\(n\\)."
+
+  - q: "Which call computes the quartiles of `data`?"
+    options:
+      - text: "`st.quantiles(data, n=4)`"
+        correct: true
+      - text: "`st.quartiles(data)`"
+      - text: "`st.split(data, 4)`"
+      - text: "`data.quartiles()`"
+    explain: "`statistics.quantiles(data, n=4)` returns the cut points that split `data` into four equal-sized groups."
+
+  - q: "Which call computes the sample variance of `data`?"
+    options:
+      - text: "`st.variance(data)`"
+        correct: true
+      - text: "`st.pvariance(data)`"
+      - text: "`st.stdev(data) ** 2`"
+      - text: "`st.var(data)`"
+    explain: "`statistics.variance(data)` returns the sample variance; `pvariance` is the population version."
+
+  - q: "Why subtract the mean before squaring when computing variance?"
+    options:
+      - text: "to measure how far values spread from the centre, regardless of sign"
+        correct: true
+      - text: "to make the answer positive"
+      - text: "to scale the data to unit length"
+      - text: "to centre the median at zero"
+    explain: "Variance measures average squared deviation from the mean."
+
+  - q: "What is the relationship between standard deviation and variance?"
+    options:
+      - text: "standard deviation is the square root of variance"
+        correct: true
+      - text: "standard deviation is the square of variance"
+      - text: "they are the same"
+      - text: "standard deviation is half the variance"
+    explain: "By definition, \\(\\sigma = \\sqrt{\\sigma^2}\\)."
+
+  - q: "Which library do we use for plotting in this course?"
+    options:
+      - text: "`matplotlib.pyplot` (imported as `plt`)"
+        correct: true
+      - text: "`sympy.plot`"
+      - text: "`seaborn`"
+      - text: "`plotly`"
+    explain: "`import matplotlib.pyplot as plt` is the standard import for plots."
+
+  - q: "Which call makes a histogram of `data` with matplotlib?"
+    options:
+      - text: "`plt.hist(data)`"
+        correct: true
+      - text: "`plt.bar(data)`"
+      - text: "`plt.plot(data)`"
+      - text: "`plt.scatter(data)`"
+    explain: "`plt.hist(data)` draws a histogram of the values."
+
+  - q: "Which call shows a figure that we have built up with matplotlib?"
+    options:
+      - text: "`plt.show()`"
+        correct: true
+      - text: "`plt.draw()`"
+      - text: "`plt.render()`"
+      - text: "`plt.print()`"
+    explain: "`plt.show()` displays the current figure."
+
+  - q: "Why prefer the median to the mean when the data has outliers?"
+    options:
+      - text: "the median is less sensitive to extreme values"
+        correct: true
+      - text: "the median is always larger than the mean"
+      - text: "the median is unique"
+      - text: "the median is faster to compute"
+    explain: "A few extreme values can shift the mean a long way; the median moves much less."
+
+  - q: "What does `len(data)` give for a list of numbers?"
+    options:
+      - text: "the number of values, which is the sample size"
+        correct: true
+      - text: "the sum of the values"
+      - text: "the mean of the values"
+      - text: "the variance"
+    explain: "`len` returns the number of elements; statistically, the sample size."
+
+  - q: "Why split a calculation into helper functions like `mean_squared_error` rather than writing it inline?"
+    options:
+      - text: "to make each piece named, testable and reusable"
+        correct: true
+      - text: "to make the code shorter"
+      - text: "to avoid imports"
+      - text: "to disable type checking"
+    explain: "Helper functions document intent and can be unit-tested individually."
+
+  - q: "Which is a sensible workflow for summarising a small data set?"
+    options:
+      - text: "compute mean, median, standard deviation, then plot a histogram"
+        correct: true
+      - text: "skip plotting altogether"
+      - text: "use only the median"
+      - text: "use only the mean and ignore spread"
+    explain: "We typically report a measure of centre, a measure of spread, and a visual summary."

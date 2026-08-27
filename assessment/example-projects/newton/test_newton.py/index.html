@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test_newton.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#newton">Example Group Projects / newton</a>
+  /
+  test_newton.py
+</p>
+
+<h1>test_newton.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">newton</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_newton_step_on_quadratic</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check one Newton step on f(x) = x ^ 2 - 2, starting at x = 1.</span>
+
+<span class="sd">    The derivative is 2 x, so the step gives</span>
+
+<span class="sd">        x - (x ^ 2 - 2) / (2 x) = (x ^ 2 + 2) / (2 x).</span>
+
+<span class="sd">    At x = 1 this is 3 / 2.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">next_value</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">newton_step</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">expected_next_value</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">next_value</span> <span class="o">==</span> <span class="n">expected_next_value</span><span class="p">,</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Expected </span><span class="si">{</span><span class="n">expected_next_value</span><span class="si">}</span><span class="s2">, obtained </span><span class="si">{</span><span class="n">next_value</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_newton_step_on_cubic</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check one Newton step on f(x) = x ^ 3 - 8, starting at x = 1.</span>
+
+<span class="sd">    The derivative is 3 x ^ 2, so the step gives</span>
+
+<span class="sd">        x - (x ^ 3 - 8) / (3 x ^ 2) = (2 x ^ 3 + 8) / (3 x ^ 2).</span>
+
+<span class="sd">    At x = 1 this is 10 / 3.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">next_value</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">newton_step</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">expected_next_value</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+    <span class="k">assert</span> <span class="n">next_value</span> <span class="o">==</span> <span class="n">expected_next_value</span><span class="p">,</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Expected </span><span class="si">{</span><span class="n">expected_next_value</span><span class="si">}</span><span class="s2">, obtained </span><span class="si">{</span><span class="n">next_value</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_iterate_returns_correct_length</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check that ``iterate`` returns ``number_of_iterations + 1`` values.</span>
+
+<span class="sd">    Starting at x = 1 and taking 4 steps on f(x) = x ^ 2 - 2, the result</span>
+<span class="sd">    should contain five entries (the initial value and four iterates).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">iterates</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">number_of_iterations</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">iterates</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expected 5 iterates, obtained </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">iterates</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_iterate_starts_at_initial_value</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The first entry returned by ``iterate`` is the initial value itself.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">initial_value</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">iterates</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">initial_value</span><span class="p">,</span> <span class="n">number_of_iterations</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">iterates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">initial_value</span><span class="p">,</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Expected first iterate </span><span class="si">{</span><span class="n">initial_value</span><span class="si">}</span><span class="s2">, obtained </span><span class="si">{</span><span class="n">iterates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_find_root_recovers_sqrt_two</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Newton-Raphson on f(x) = x ^ 2 - 2 from x = 1 should converge to</span>
+<span class="sd">    sqrt(2). We check that the final iterate matches to within the</span>
+<span class="sd">    convergence tolerance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">root</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">find_root</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">tolerance</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">maximum_iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">expected_root</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">root</span> <span class="o">-</span> <span class="n">expected_root</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">**-</span><span class="mi">10</span><span class="p">,</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Expected sqrt(2) ~ </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">expected_root</span><span class="p">)</span><span class="si">}</span><span class="s2">, obtained </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_find_root_terminates_within_few_iterations</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Newton-Raphson on a smooth function with a good starting point should</span>
+<span class="sd">    converge quickly. We check that fewer than 20 iterations suffice for</span>
+<span class="sd">    f(x) = x ^ 2 - 2 starting at x = 1 with tolerance 10 ^ -10.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">find_root</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">tolerance</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">maximum_iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">iterations</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expected fewer than 20 iterations, took </span><span class="si">{</span><span class="n">iterations</span><span class="si">}</span><span class="s2">.&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_find_root_respects_maximum_iterations</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    With a very small ``maximum_iterations`` budget, ``find_root`` should</span>
+<span class="sd">    stop early and return the iterate it has reached.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">find_root</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">tolerance</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">maximum_iterations</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">iterations</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expected to stop at the iteration cap of 3, took </span><span class="si">{</span><span class="n">iterations</span><span class="si">}</span><span class="s2">.&quot;</span>
+
+
+<span class="n">test_newton_step_on_quadratic</span><span class="p">()</span>
+<span class="n">test_newton_step_on_cubic</span><span class="p">()</span>
+<span class="n">test_iterate_returns_correct_length</span><span class="p">()</span>
+<span class="n">test_iterate_starts_at_initial_value</span><span class="p">()</span>
+<span class="n">test_find_root_recovers_sqrt_two</span><span class="p">()</span>
+<span class="n">test_find_root_terminates_within_few_iterations</span><span class="p">()</span>
+<span class="n">test_find_root_respects_maximum_iterations</span><span class="p">()</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

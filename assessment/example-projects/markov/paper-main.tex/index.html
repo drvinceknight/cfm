@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>paper/main.tex - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#markov">Example Group Projects / markov</a>
+  /
+  paper/main.tex
+</p>
+
+<h1>paper/main.tex</h1>
+
+<div class="highlight"><pre><code class="language-latex"><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="na">[margin=1in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>parskip<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath, amssymb, amsthm<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
+
+<span class="k">\title</span><span class="nb">{</span>A small library for finite discrete-time Markov chains<span class="nb">}</span>
+<span class="k">\author</span><span class="nb">{</span>Group N<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\maketitle</span>
+
+<span class="k">\begin</span><span class="nb">{</span>abstract<span class="nb">}</span>
+We present <span class="k">\texttt</span><span class="nb">{</span>markov<span class="nb">}</span>, a small Python library for finite
+discrete-time Markov chains. The library represents a chain by its
+transition matrix as a <span class="k">\texttt</span><span class="nb">{</span>sympy.Matrix<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>meurer2017<span class="nb">}</span> and
+exposes three short functions: a stochasticity check, the distribution
+after <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> steps, and the stationary distribution. We illustrate the
+library on a two-state chain whose stationary distribution we compute
+exactly as <span class="s">\(</span><span class="o">(</span><span class="m">4</span><span class="o">/</span><span class="m">7</span><span class="nb">, </span><span class="m">3</span><span class="o">/</span><span class="m">7</span><span class="o">)</span><span class="s">\)</span>, and we verify numerically that the
+distribution after <span class="s">\(</span><span class="m">50</span><span class="s">\)</span> steps from a deterministic start agrees with
+the stationary distribution to within <span class="s">\(</span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">10</span><span class="nb">}</span><span class="s">\)</span>. The library follows
+the Diataxis framework for documentation~<span class="k">\cite</span><span class="nb">{</span>procida2017<span class="nb">}</span> and the
+matrices chapter of the open-source textbook <span class="k">\emph</span><span class="nb">{</span>Python for
+Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+<span class="k">\end</span><span class="nb">{</span>abstract<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Introduction<span class="nb">}</span>
+
+A discrete-time Markov chain on a finite state space is a stochastic
+process where the next state depends only on the current state and not
+on the history. The chain is described by its transition matrix <span class="s">\(</span><span class="nb">P</span><span class="s">\)</span>,
+a row-stochastic matrix where <span class="s">\(</span><span class="nb">P_{ij}</span><span class="s">\)</span> is the probability of moving
+from state <span class="s">\(</span><span class="nb">i</span><span class="s">\)</span> to state <span class="s">\(</span><span class="nb">j</span><span class="s">\)</span> in one step~<span class="k">\cite</span><span class="nb">{</span>norris1998<span class="nb">}</span>. The
+distribution of the chain after <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> steps, starting from the row
+vector <span class="s">\(</span><span class="nv">\pi</span><span class="nb">_</span><span class="m">0</span><span class="s">\)</span> of initial probabilities, is
+
+<span class="sb">\[</span>
+<span class="nb">    </span><span class="nv">\pi</span><span class="nb">_n </span><span class="o">=</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb">_</span><span class="m">0</span><span class="nb"> P^n.</span>
+<span class="s">\]</span>
+
+A stationary distribution is a row vector <span class="s">\(</span><span class="nv">\pi</span><span class="s">\)</span> such that
+<span class="s">\(</span><span class="nv">\pi</span><span class="nb"> P </span><span class="o">=</span><span class="nb"> </span><span class="nv">\pi</span><span class="s">\)</span>. For an irreducible, aperiodic chain on a finite state
+space, the stationary distribution exists and is unique, and the
+distribution after <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> steps converges to it from any starting
+point~<span class="k">\cite</span><span class="nb">{</span>norris1998<span class="nb">}</span>.
+
+We wanted a small library that we could use to inspect the
+distributions of a chain step by step and to compute the stationary
+distribution exactly. The <span class="k">\texttt</span><span class="nb">{</span>numpy<span class="nb">}</span> package can multiply matrices
+quickly but loses the exact rational form of the answer. We chose to
+build on <span class="k">\texttt</span><span class="nb">{</span>sympy.Matrix<span class="nb">}</span> instead, following the conventions of
+the matrices chapter of <span class="k">\emph</span><span class="nb">{</span>Python for
+Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+
+We present a three-function library,
+<span class="k">\texttt</span><span class="nb">{</span>markov<span class="nb">}</span>; we recover the stationary distribution of a
+two-state chain in closed form; and we show numerically that <span class="s">\(</span><span class="nb">P^n</span><span class="s">\)</span>
+applied to a deterministic initial distribution agrees with the
+stationary distribution to within <span class="s">\(</span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">10</span><span class="nb">}</span><span class="s">\)</span> after <span class="s">\(</span><span class="m">50</span><span class="s">\)</span> steps.
+
+<span class="k">\section</span><span class="nb">{</span>The library<span class="nb">}</span>
+
+The library lives in the single module <span class="k">\texttt</span><span class="nb">{</span>markov.py<span class="nb">}</span> and exposes
+three functions.
+
+<span class="k">\texttt</span><span class="nb">{</span>markov.is<span class="k">\_stochastic</span>(transition<span class="k">\_matrix</span>)<span class="nb">}</span>
+returns <span class="k">\texttt</span><span class="nb">{</span>True<span class="nb">}</span> if every row of the matrix sums to one. We use
+<span class="k">\texttt</span><span class="nb">{</span>sympy.simplify<span class="nb">}</span> on the difference so that the check works even
+when the entries are symbolic.
+
+<span class="k">\texttt</span><span class="nb">{</span>markov.n<span class="k">\_step\_distribution</span>(initial<span class="k">\_distribution</span>,
+transition<span class="k">\_matrix</span>, number<span class="k">\_of\_steps</span>)<span class="nb">}</span> multiplies the row vector
+<span class="s">\(</span><span class="nv">\pi</span><span class="nb">_</span><span class="m">0</span><span class="s">\)</span> by <span class="s">\(</span><span class="nb">P^n</span><span class="s">\)</span>. The matrix power is computed by <span class="k">\texttt</span><span class="nb">{</span>sympy<span class="nb">}</span>
+using fast exponentiation, so even moderately large values of <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span>
+are cheap.
+
+<span class="k">\texttt</span><span class="nb">{</span>markov.stationary<span class="k">\_distribution</span>(transition<span class="k">\_matrix</span>)<span class="nb">}</span> returns
+the row vector <span class="s">\(</span><span class="nv">\pi</span><span class="s">\)</span> with <span class="s">\(</span><span class="nv">\pi</span><span class="nb"> P </span><span class="o">=</span><span class="nb"> </span><span class="nv">\pi</span><span class="s">\)</span> and <span class="s">\(</span><span class="nv">\sum</span><span class="nb">_i </span><span class="nv">\pi</span><span class="nb">_i </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span>.
+We compute it as the null space of <span class="s">\(</span><span class="nb">P^T </span><span class="o">-</span><span class="nb"> I</span><span class="s">\)</span> and normalise. This
+direct approach is short and works on any matrix; for very large
+chains a sparse implementation would be more efficient, but the
+library is designed for small chains where exactness matters more
+than speed.
+
+<span class="k">\section</span><span class="nb">{</span>Worked example<span class="nb">}</span>
+
+We illustrate the library on the two-state chain with transition matrix
+
+<span class="sb">\[</span>
+<span class="nb">    P </span><span class="o">=</span><span class="nb"> </span><span class="nv">\begin</span><span class="nb">{pmatrix} </span><span class="m">7</span><span class="o">/</span><span class="m">10</span><span class="nb"> &amp; </span><span class="m">3</span><span class="o">/</span><span class="m">10</span><span class="nb"> </span><span class="nv">\\</span><span class="nb"> </span><span class="m">4</span><span class="o">/</span><span class="m">10</span><span class="nb"> &amp; </span><span class="m">6</span><span class="o">/</span><span class="m">10</span><span class="nb"> </span><span class="nv">\end</span><span class="nb">{pmatrix}.</span>
+<span class="s">\]</span>
+
+The stationary distribution can be computed by hand: solving
+<span class="s">\(</span><span class="nv">\pi</span><span class="nb"> P </span><span class="o">=</span><span class="nb"> </span><span class="nv">\pi</span><span class="s">\)</span> with <span class="s">\(</span><span class="nv">\pi</span><span class="nb">_</span><span class="m">0</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb">_</span><span class="m">1</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span> gives <span class="s">\(</span><span class="nv">\pi</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="o">(</span><span class="m">4</span><span class="o">/</span><span class="m">7</span><span class="nb">, </span><span class="m">3</span><span class="o">/</span><span class="m">7</span><span class="o">)</span><span class="s">\)</span>.
+The library returns this answer exactly. Starting from
+<span class="s">\(</span><span class="nv">\pi</span><span class="nb">_</span><span class="m">0</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="o">(</span><span class="m">1</span><span class="nb">, </span><span class="m">0</span><span class="o">)</span><span class="s">\)</span>, the distributions after <span class="s">\(</span><span class="m">1</span><span class="s">\)</span>, <span class="s">\(</span><span class="m">2</span><span class="s">\)</span> and <span class="s">\(</span><span class="m">50</span><span class="s">\)</span>
+steps are shown in Table~<span class="k">\ref</span><span class="nb">{</span>tab:steps<span class="nb">}</span>.
+
+<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[h]
+<span class="k">\centering</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>l l<span class="nb">}</span>
+<span class="k">\toprule</span>
+<span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> <span class="nb">&amp;</span> <span class="s">\(</span><span class="nv">\pi</span><span class="nb">_n</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="k">\midrule</span>
+<span class="s">\(</span><span class="m">0</span><span class="s">\)</span>  <span class="nb">&amp;</span> <span class="s">\(</span><span class="o">(</span><span class="m">1</span><span class="nb">, </span><span class="m">0</span><span class="o">)</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="s">\(</span><span class="m">1</span><span class="s">\)</span>  <span class="nb">&amp;</span> <span class="s">\(</span><span class="o">(</span><span class="m">7</span><span class="o">/</span><span class="m">10</span><span class="nb">, </span><span class="m">3</span><span class="o">/</span><span class="m">10</span><span class="o">)</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="s">\(</span><span class="m">2</span><span class="s">\)</span>  <span class="nb">&amp;</span> <span class="s">\(</span><span class="o">(</span><span class="m">61</span><span class="o">/</span><span class="m">100</span><span class="nb">, </span><span class="m">39</span><span class="o">/</span><span class="m">100</span><span class="o">)</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="s">\(</span><span class="m">50</span><span class="s">\)</span> <span class="nb">&amp;</span> numerically <span class="s">\(</span><span class="o">(</span><span class="m">0</span><span class="nb">.</span><span class="m">571429</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">428571</span><span class="o">)</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="k">\bottomrule</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>Convergence to the stationary distribution.<span class="nb">}</span>
+Starting from <span class="s">\(</span><span class="nv">\pi</span><span class="nb">_</span><span class="m">0</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="o">(</span><span class="m">1</span><span class="nb">, </span><span class="m">0</span><span class="o">)</span><span class="s">\)</span>, the distribution after <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> steps
+moves quickly towards the stationary distribution <span class="s">\(</span><span class="o">(</span><span class="m">4</span><span class="o">/</span><span class="m">7</span><span class="nb">, </span><span class="m">3</span><span class="o">/</span><span class="m">7</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span>
+<span class="o">(</span><span class="m">0</span><span class="nb">.</span><span class="m">571</span><span class="nv">\dots</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">428</span><span class="nv">\dots</span><span class="o">)</span><span class="s">\)</span>. After <span class="s">\(</span><span class="m">50</span><span class="s">\)</span> steps the error in each
+component is below <span class="s">\(</span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">10</span><span class="nb">}</span><span class="s">\)</span>.<span class="nb">}</span>
+<span class="k">\label</span><span class="nb">{</span>tab:steps<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Discussion<span class="nb">}</span>
+
+For small chains the stationary
+distribution often has a clean rational form (such as <span class="s">\(</span><span class="o">(</span><span class="m">4</span><span class="o">/</span><span class="m">7</span><span class="nb">, </span><span class="m">3</span><span class="o">/</span><span class="m">7</span><span class="o">)</span><span class="s">\)</span>)
+that a numeric library would round to a decimal. We wanted to recover
+the closed form, and <span class="k">\texttt</span><span class="nb">{</span>sympy.Matrix<span class="nb">}</span> keeps every step exact.
+
+The library handles only finite chains, and only
+the discrete-time case. A natural extension is to add continuous-time
+chains, where the rate matrix <span class="s">\(</span><span class="nb">Q</span><span class="s">\)</span> plays the role of <span class="s">\(</span><span class="nb">P </span><span class="o">-</span><span class="nb"> I</span><span class="s">\)</span> and
+the distribution after time <span class="s">\(</span><span class="nb">t</span><span class="s">\)</span> is <span class="s">\(</span><span class="nv">\pi</span><span class="nb">_</span><span class="m">0</span><span class="nb"> </span><span class="nv">\exp</span><span class="o">(</span><span class="nb">Q t</span><span class="o">)</span><span class="s">\)</span>. Symbolic
+matrix exponentials are available in <span class="k">\texttt</span><span class="nb">{</span>sympy<span class="nb">}</span> so this would
+follow the same shape as the existing code.
+
+<span class="k">\section</span><span class="nb">{</span>Conclusion<span class="nb">}</span>
+
+We have presented <span class="k">\texttt</span><span class="nb">{</span>markov<span class="nb">}</span>, a three-function library for
+finite discrete-time Markov chains, written on top of
+<span class="k">\texttt</span><span class="nb">{</span>sympy.Matrix<span class="nb">}</span>. The library recovers the stationary
+distribution of a two-state chain in closed form and the iterates
+converge to it as expected.
+
+<span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
+<span class="k">\bibliography</span><span class="nb">{</span>references<span class="nb">}</span>
+
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

@@ -68,7 +68,9 @@ Discuss structure of the book.
 
 - For first lab session: work through chapter 1. Give a brief demo.
 
-## After class email
+## Communications
+
+### After class
 
 Send the following email after class::
 

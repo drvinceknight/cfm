@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaTeX and Writing Mathematics - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>LaTeX and Writing Mathematics</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="http://vknight.org/tex/">Mathematical writing notes: LaTeX and Writing Mathematics</a></li>
+
+</ul>
+
+
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Writing mathematics", "pick": 5, "questions": [{"q": "Which typesetting system do we use to produce mathematical documents in this course?", "options": [{"text": "LaTeX", "correct": true}, {"text": "Microsoft Word"}, {"text": "Google Docs"}, {"text": "Markdown only"}], "explain": "LaTeX is the standard for mathematical writing because it produces high-quality maths and is plain text."}, {"q": "Which command compiles a LaTeX source file `main.tex` from the terminal?", "options": [{"text": "`pdflatex main.tex`", "correct": true}, {"text": "`latex main`"}, {"text": "`pdf main.tex`"}, {"text": "`python main.tex`"}], "explain": "`pdflatex` is the standard command-line compiler."}, {"q": "How do we typeset inline maths in LaTeX?", "options": [{"text": "with `\\( ... \\)` (or `$...$`)", "correct": true}, {"text": "with `<math> ... </math>`"}, {"text": "with `[ ... ]`"}, {"text": "with backticks"}], "explain": "`\\( ... \\)` is the modern inline delimiter; `$...$` is the older equivalent."}, {"q": "How do we typeset a displayed equation in LaTeX?", "options": [{"text": "with `\\[ ... \\]` (or `$$ ... $$`)", "correct": true}, {"text": "with `\\display{...}`"}, {"text": "with `<display>`"}, {"text": "with `equation{...}`"}], "explain": "`\\[ ... \\]` is the modern display delimiter."}, {"q": "Which environment do we use to typeset a numbered, referenceable equation?", "options": [{"text": "`equation`", "correct": true}, {"text": "`displaymath`"}, {"text": "`math`"}, {"text": "`number`"}], "explain": "`\\begin{equation} ... \\end{equation}` produces a numbered equation we can label with `\\label`."}, {"q": "How do we cite a reference with key `knuth1984` in the body of a LaTeX paper?", "options": [{"text": "`\\cite{knuth1984}`", "correct": true}, {"text": "`\\ref{knuth1984}`"}, {"text": "`\\quote{knuth1984}`"}, {"text": "`[[knuth1984]]`"}], "explain": "`\\cite` is the standard citation command; the keys come from a `.bib` file."}, {"q": "Which command makes a figure referenceable later via `\\ref`?", "options": [{"text": "`\\label{...}` inside the figure environment", "correct": true}, {"text": "`\\name{...}`"}, {"text": "`\\figure{...}`"}, {"text": "`\\tag{...}`"}], "explain": "`\\label{key}` defines the key; `\\ref{key}` or `Figure~\\ref{key}` references it."}, {"q": "Why use a `.bib` file for references rather than typing them inline?", "options": [{"text": "to reuse references across documents and keep the source clean", "correct": true}, {"text": "because LaTeX requires it"}, {"text": "to make the document shorter"}, {"text": "to disable compilation"}], "explain": "Bibliography databases let us cite by key and let the bibliography style format the entry."}, {"q": "Which package do we typically use for theorem-like environments?", "options": [{"text": "`amsthm`", "correct": true}, {"text": "`amsmath` only"}, {"text": "`theorem-pkg`"}, {"text": "`graphicx`"}], "explain": "`amsthm` provides theorem, lemma and proof environments."}, {"q": "Which environment is the right place for an inline list of bullet points?", "options": [{"text": "`itemize`", "correct": true}, {"text": "`equation`"}, {"text": "`enumerate` only"}, {"text": "`abstract`"}], "explain": "`itemize` produces bulleted lists; `enumerate` produces numbered lists."}, {"q": "Why is LaTeX source plain text rather than a binary format?", "options": [{"text": "so we can version-control it with Git and see meaningful diffs", "correct": true}, {"text": "to make the file smaller"}, {"text": "to allow editing on a phone"}, {"text": "to compile faster"}], "explain": "Plain-text formats are diffable and mergeable, which is essential when several authors collaborate."}, {"q": "What is the role of the preamble of a LaTeX document?", "options": [{"text": "to load packages, define commands, and set up the document before `\\begin{document}`", "correct": true}, {"text": "to hold the body of the paper"}, {"text": "to list the bibliography"}, {"text": "to display the title page"}], "explain": "Everything before `\\begin{document}` configures the document."}, {"q": "Which is the right way to refer to Theorem 2 in the body of a paper?", "options": [{"text": "`Theorem~\\ref{thm:key}`", "correct": true}, {"text": "`Theorem 2`"}, {"text": "`Theorem {2}`"}, {"text": "`\\theorem{2}`"}], "explain": "Use `\\ref` so the number updates automatically; the tilde keeps `Theorem` and the number on the same line."}, {"q": "Why use \\(\\sin\\) (with `\\sin`) rather than `sin` in maths mode?", "options": [{"text": "`\\sin` is set in upright type as a recognised operator; `sin` is set in italics like a variable", "correct": true}, {"text": "`\\sin` is shorter to type"}, {"text": "`sin` produces an error"}, {"text": "`\\sin` automatically computes the value"}], "explain": "Named operators have their own commands so they typeset correctly."}, {"q": "Which is the natural workflow when LaTeX fails to compile?", "options": [{"text": "read the first error in the log; the rest are often consequences of the first", "correct": true}, {"text": "delete the file and start again"}, {"text": "ignore the error and use the previous PDF"}, {"text": "switch to Word"}], "explain": "LaTeX errors cascade; fixing the first usually resolves many later ones."}]}</script>
+</div>
+
+
+<p>Writing Mathematics:</p>
+<ul>
+<li><a href="../assets/pdf/writing-mathematics-guidelines/main.pdf">'Some Guidelines for Good Mathematical Writing' by Francis Su</a></li>
+<li><a href="../assets/pdf/a-guide-to-writing-mathematics/main.pdf">'A guide to writing mathematics' by Kevin Lee</a></li>
+</ul>
+<p>A handout is available <a href="../assets/handouts/spring/08-writing/main.pdf">here</a></p>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2026-04-17-writing.html">2026-04-17: Writing</a></h4>
+<p>On Friday, the subject librarian, Cathy gave a presentation around good practice with writing. This covered aspect from the use of AI to finding good sources.
+All important aspects for your paper that are covered in the marking criteria.</p>
+
+<h4><a href="../posts/2026-03-20-testing-and-latex.html">2026-03-20: Testing and LaTeX</a></h4>
+<p>Today we discussed testing and writing with LaTeX</p>
+
+<h4><a href="../posts/2025-03-28-writing-and-presentation.html">2025-03-28: Writing and presentation</a></h4>
+<p>On Friday I gave you an example of a paper, showed you how to use LaTeX
+(required to write the paper) and also spoke about presentations.</p>
+
+<h4><a href="../posts/2025-03-24-testing-and-research.html">2025-03-24: Testing and reseach</a></h4>
+<p>On Friday the subject librarian Cathy Parker took our class to discuss
+research, sources and plagiarism. I had also not written a summary of the
+previous class on testing so I'll summarise that here.</p>
+
+<h4><a href="../posts/2024-02-27-research.html">2024-02-27: Finding sources for your work</a></h4>
+<p>On Tuesday the subject librarian Cathy Parker took our class to discuss
+research, sources and plagiarism.</p>
+
+<h4><a href="../posts/2024-02-23-testing-and-latex.html">2024-02-23: Testing and LaTeX</a></h4>
+<p>On Friday we discussed testing and writing with LaTeX</p>
+
+
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

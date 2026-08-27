@@ -98,7 +98,9 @@ Come back: with time take any questions.
 
 Point at resources.
 
-## After class communication
+## Communications
+
+### After class
 
 Send the following email after class::
 

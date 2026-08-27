@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Algebra (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Algebra</h1>
+
+<h2 id="first-meeting">First meeting</h2>
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand how to use the Sympy library to carry out basic Algebraic
+  tasks.</li>
+<li>Know what they need to do to prepare for their second tutorial.</li>
+</ul>
+<h3 id="problem">Problem</h3>
+<p>Explain to students that we will be solving the following problem:</p>
+<ol>
+<li>
+<p>Rationalise the following expression: <span class="arithmatex">\(\frac{1}{\sqrt{3} + 1}\)</span>.</p>
+</li>
+<li>
+<p>Consider the quadratic <span class="arithmatex">\(f(x) = -x ^ 2 + 8 x - 18\)</span>.</p>
+<blockquote>
+<ol>
+<li>Calculate the discriminant of the quadratic equation <span class="arithmatex">\(f(x)=0\)</span>.
+    What does this tell us about the graph of <span class="arithmatex">\(f(x)\)</span>.</li>
+<li>By completing the square, confirm that <span class="arithmatex">\((4, -2)\)</span> is the
+    maximum of point of <span class="arithmatex">\(f(x)\)</span>.</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h3 id="solution">Solution</h3>
+<p>Group exercise (breakout rooms of 3): ask students to spend 5 minutes
+writing a plan to tackle that problem (not necessarily carrying out each
+step).</p>
+<p>Clearly write down these steps:</p>
+<ol>
+<li>For first question: multiply by <span class="arithmatex">\(\sqrt{3} - 1\)</span>.</li>
+<li>Calculate discriminant: compare to 0. If negative: no roots.</li>
+<li>Complete the square to make <span class="arithmatex">\(f(x) = a (x - b ) ^2 + c\)</span>. Do this by
+    expending that formula and comparing coefficients.</li>
+</ol>
+<p>Now show how to get code to do this:</p>
+<pre><code>&gt;&gt;&gt; import sympy
+&gt;&gt;&gt; expression = 1 / (sympy.sqrt(3) + 1)
+&gt;&gt;&gt; expression
+1/(1 + sqrt(3))
+&gt;&gt;&gt; sympy.simplify(expression)
+-1/2 + sqrt(3)/2
+</code></pre>
+<p>Discuss here how this differs if we used <code>math.sqrt</code>. Explain that
+<code>sympy.simplify</code> is essentially acting as a black box here.</p>
+<p>Now to carry out the rest of the problem:</p>
+<pre><code>&gt;&gt;&gt; x = sympy.Symbol("x")
+&gt;&gt;&gt; expression = - x ** 2 + 8 * x - 18
+&gt;&gt;&gt; expression
+-x**2 + 8*x - 18
+&gt;&gt;&gt; sympy.discriminant(expression)
+-8
+</code></pre>
+<p>Confirm results by hand.</p>
+<p>Discuss what this implies:</p>
+<ul>
+<li>Quadratic equation has no real roots.</li>
+<li>Graph does not intersect the <span class="arithmatex">\(y=0\)</span> line.</li>
+<li>Concave parabola (sign of leading coefficient of quadratic).</li>
+</ul>
+<p>Confirm by solving the quadratic equation:</p>
+<pre><code>&gt;&gt;&gt; equation = sympy.Eq(lhs=expression, rhs=0)
+&gt;&gt;&gt; equation
+Eq(-x**2 + 8*x - 18, 0)
+
+&gt;&gt;&gt; sympy.solveset(expression, x)
+{4 - sqrt(2)*I, 4 + sqrt(2)*I}
+</code></pre>
+<p>Now to move on to next part of the problem: completing the square:</p>
+<pre><code>&gt;&gt;&gt; a, b, c = sympy.Symbol("a"), sympy.Symbol("b"), sympy.Symbol("c")
+&gt;&gt;&gt; completed_square = a * (x - b) ** 2 + c
+&gt;&gt;&gt; completed_square
+a*(-b + x)**2 + c
+</code></pre>
+<p>Let us expand and compare the coefficients:</p>
+<pre><code>&gt;&gt;&gt; sympy.expand(completed_square)
+a*b**2 - 2*a*b*x + a*x**2 + c
+</code></pre>
+<p>We see that <span class="arithmatex">\(a\)</span> is <span class="arithmatex">\(-1\)</span>. Let us substitute this value in to the
+expression:</p>
+<pre><code>&gt;&gt;&gt; completed_square.subs({a: -1})
+c - (-b + x)**2
+</code></pre>
+<p>We can in fact overwrite the expression:</p>
+<pre><code>&gt;&gt;&gt; completed_square = completed_square.subs({a: -1})
+&gt;&gt;&gt; completed_square
+c - (-b + x)**2
+</code></pre>
+<p>If we now expand again and compare coefficients:</p>
+<pre><code>&gt;&gt;&gt; sympy.expand(completed_square)
+-b**2 + 2*b*x + c - x**2
+</code></pre>
+<p>We see that <span class="arithmatex">\(2b=8\)</span>. Despite the fact that this equation is relatively
+straightforward, let us solve it using <code>sympy</code>:</p>
+<pre><code>&gt;&gt;&gt; equation = sympy.Eq(lhs=2 * b, rhs=8)
+&gt;&gt;&gt; sympy.solveset(equation, b)
+{4}
+</code></pre>
+<p>We will substitute this value for <span class="arithmatex">\(b\)</span> back in to the completed square,
+and expand again:</p>
+<pre><code>&gt;&gt;&gt; completed_square = completed_square.subs({b: 4})
+&gt;&gt;&gt; completed_square
+c - (x - 4)**2
+&gt;&gt;&gt; sympy.expand(completed_square)
+c - x**2 + 8*x - 16
+</code></pre>
+<p>We see that <span class="arithmatex">\(c - 16=-18\)</span>. Let us again solve that equation using
+<span class="arithmatex">\(sympy\)</span>:</p>
+<pre><code>&gt;&gt;&gt; equation = sympy.Eq(lhs=c - 16, rhs= -18)
+&gt;&gt;&gt; sympy.solveset(equation, c)
+{-2}
+</code></pre>
+<p>We will substitute this value back in:</p>
+<pre><code>&gt;&gt;&gt; completed_square = completed_square.subs({c: -2})
+&gt;&gt;&gt; completed_square
+-(x - 4)**2 - 2
+&gt;&gt;&gt; sympy.expand(completed_square)
+-x**2 + 8*x - 18
+</code></pre>
+<p>Ask students to break out in to groups of 3 and do the following:</p>
+<ol>
+<li>Confirm that this answers the question.</li>
+<li>Explain to each other what we did using code.</li>
+</ol>
+<p>Come back: with time take any questions.</p>
+<p>Point at resources.</p>
+<h2 id="communications">Communications</h2>
+<h3 id="after-class">After class</h3>
+<p>Send the following email after class:</p>
+<pre><code>Hi all,
+
+A recording of today's class is available at &lt;&gt;.
+
+In this class I went over a demonstration of using Python to solve an
+algebraic problem. I did the following mathematical techniques:
+
+- Simplifying an exact numerical expression.
+- Calculating the discriminant of a quadratic.
+- Solving a symbolic equation.
+- Substitute values in to a symbolic expression.
+
+In preparation for your tutorial tomorrow please work through the second
+chapter of the Python for mathematics book:
+https://vknight.org/pfm/tools-for-mathematics/02-algebra/introduction/main.html
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

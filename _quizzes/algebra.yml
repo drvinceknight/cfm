@@ -1,0 +1,137 @@
+title: Algebra
+pick: 5
+questions:
+  - q: "Which Python library do we use for symbolic algebra in this course?"
+    options:
+      - text: "sympy"
+        correct: true
+      - text: "numpy"
+      - text: "scipy"
+      - text: "pandas"
+    explain: "We use `sympy` for symbolic mathematics: symbols, expressions, expansions, factorisations and solvers."
+
+  - q: "How do we declare a symbol for \\(x\\) using sympy?"
+    options:
+      - text: "`x = sympy.Symbol(\"x\")`"
+        correct: true
+      - text: "`x = sympy.S(\"x\")`"
+      - text: "`x = sympy.factor(\"x\")`"
+      - text: "`x = \"x\"`"
+    explain: "`sympy.Symbol(\"x\")` declares an algebraic symbol that we then build expressions from."
+
+  - q: "What does `sympy.S(3)` return?"
+    options:
+      - text: "a symbolic integer with value 3"
+        correct: true
+      - text: "the floating-point number 3.0"
+      - text: "an error"
+      - text: "a Python `int`"
+    explain: "`sympy.S` lifts a number into a symbolic value so arithmetic stays exact."
+
+  - q: "Which tool expands the product \\((x + 1)(x - 1)\\) to \\(x^2 - 1\\)?"
+    options:
+      - text: "`sympy.expand`"
+        correct: true
+      - text: "`sympy.factor`"
+      - text: "`sympy.simplify`"
+      - text: "`sympy.solveset`"
+    explain: "`sympy.expand` distributes products. Its inverse is `sympy.factor`."
+
+  - q: "Which tool factorises \\(x^2 - 9\\) into \\((x - 3)(x + 3)\\)?"
+    options:
+      - text: "`sympy.factor`"
+        correct: true
+      - text: "`sympy.expand`"
+      - text: "`sympy.solveset`"
+      - text: "`sympy.simplify`"
+    explain: "`sympy.factor` writes an expression as a product of factors."
+
+  - q: "Which tool do we use in this course to solve an equation symbolically?"
+    options:
+      - text: "`sympy.solveset`"
+        correct: true
+      - text: "`sympy.solve`"
+      - text: "`sympy.factor`"
+      - text: "`sympy.expand`"
+    explain: "`sympy.solveset(equation, variable)` returns the set of solutions. It is the modern sympy interface."
+
+  - q: "How do we encode the equation \\(a x^2 + b x + c = 0\\) for `solveset`?"
+    options:
+      - text: "`sympy.Eq(a * x ** 2 + b * x + c, 0)`"
+        correct: true
+      - text: "`a * x ** 2 + b * x + c == 0`"
+      - text: "`a x^2 + b x + c = 0`"
+      - text: "`sympy.solve(a * x ** 2 + b * x + c, 0)`"
+    explain: "`sympy.Eq(lhs, rhs)` builds an equation; `sympy.solveset(equation, variable)` then solves it."
+
+  - q: "What does `float(sympy.S(1) / 5)` give?"
+    options:
+      - text: "the approximation 0.2"
+        correct: true
+      - text: "the symbolic value 1/5"
+      - text: "the integer 0"
+      - text: "an error"
+    explain: "`float` converts a symbolic value to its floating-point approximation."
+
+  - q: "What does `int(sympy.S(1) / 5)` give?"
+    options:
+      - text: "0"
+        correct: true
+      - text: "1"
+      - text: "0.2"
+      - text: "5"
+    explain: "`int` returns the integer part; it does not round to the nearest integer."
+
+  - q: "Which call substitutes \\(x = 2\\) into the expression `expression`?"
+    options:
+      - text: "`expression.subs({x: 2})`"
+        correct: true
+      - text: "`expression.subs(x, 2)`"
+      - text: "`expression(x=2)`"
+      - text: "`expression.replace(2)`"
+    explain: "`.subs({variable: value})` performs symbolic substitution; multiple substitutions can share one dict."
+
+  - q: "Why is `sympy.S(1) / 5` preferred over `1 / 5` when we need to stay symbolic?"
+    options:
+      - text: "`1 / 5` evaluates to a floating-point 0.2; `sympy.S(1) / 5` stays as the exact rational 1/5"
+        correct: true
+      - text: "`1 / 5` raises an error in Python"
+      - text: "`1 / 5` rounds to 0"
+      - text: "they are equivalent"
+    explain: "Lifting one operand into sympy keeps the whole expression symbolic and exact."
+
+  - q: "How do we declare three symbols \\(a, b, c\\) at once?"
+    options:
+      - text: "`a, b, c = sympy.Symbol(\"a\"), sympy.Symbol(\"b\"), sympy.Symbol(\"c\")`"
+        correct: true
+      - text: "`a, b, c = sympy.S(\"a b c\")`"
+      - text: "`a = sympy.Symbol(\"a b c\")`"
+      - text: "`a, b, c = \"a\", \"b\", \"c\"`"
+    explain: "We declare each symbol with its own `sympy.Symbol` call, as the algebra chapter does."
+
+  - q: "Which call substitutes all three of \\(a, b, c\\) into a quadratic at once?"
+    options:
+      - text: "`quadratic.subs({a: 1, b: 2, c: 3})`"
+        correct: true
+      - text: "`quadratic.subs(a, 1).subs(b, 2).subs(c, 3)` only"
+      - text: "`quadratic({a: 1, b: 2, c: 3})`"
+      - text: "`quadratic[a, b, c] = [1, 2, 3]`"
+    explain: "`.subs` accepts a single dictionary of multiple substitutions."
+
+  - q: "What does `sympy.solveset(sympy.Eq(x ** 2 - 4, 0), x)` return?"
+    options:
+      - text: "the set \\(\\{-2, 2\\}\\)"
+        correct: true
+      - text: "the list `[2, -2]`"
+      - text: "the value 2"
+      - text: "an error"
+    explain: "`solveset` returns a sympy set containing both roots of the quadratic."
+
+  - q: "Why prefer symbolic arithmetic over floats for exact algebra?"
+    options:
+      - text: "it preserves exact values like 1/3 without rounding"
+        correct: true
+      - text: "it is always faster than floating-point arithmetic"
+      - text: "it uses less memory than floating-point arithmetic"
+      - text: "it allows us to plot expressions"
+    explain: "Symbolic values keep exact rationals and surds; floats introduce rounding error."

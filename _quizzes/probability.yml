@@ -1,0 +1,137 @@
+title: Probability
+pick: 5
+questions:
+  - q: "Which library do we use to sample randomly in this course?"
+    options:
+      - text: "`random`"
+        correct: true
+      - text: "`itertools`"
+      - text: "`math`"
+      - text: "`sympy`"
+    explain: "Python's standard `random` library provides `random.choice`, `random.random` and `random.seed`."
+
+  - q: "Which call picks a random element from `basket`?"
+    options:
+      - text: "`random.choice(basket)`"
+        correct: true
+      - text: "`random.pick(basket)`"
+      - text: "`random.sample(basket)`"
+      - text: "`basket.random()`"
+    explain: "`random.choice(collection)` returns one uniformly chosen element."
+
+  - q: "Which call returns a random number in \\([0, 1)\\)?"
+    options:
+      - text: "`random.random()`"
+        correct: true
+      - text: "`random.choice([0, 1])`"
+      - text: "`random.uniform()`"
+      - text: "`random.range(0, 1)`"
+    explain: "`random.random()` samples a float uniformly from \\([0, 1)\\)."
+
+  - q: "Why seed the random number generator?"
+    options:
+      - text: "to make a stochastic simulation reproducible"
+        correct: true
+      - text: "to make samples more random"
+      - text: "to make each call faster"
+      - text: "to bias the distribution"
+    explain: "Seeding fixes the pseudo-random stream so the same code produces the same outputs."
+
+  - q: "Which call seeds the generator with 0?"
+    options:
+      - text: "`random.seed(0)`"
+        correct: true
+      - text: "`random.set_seed(0)`"
+      - text: "`random.start(0)`"
+      - text: "`random.fix(0)`"
+    explain: "`random.seed(integer)` sets the seed of the global generator."
+
+  - q: "We import sympy as `sym`. Which keeps probabilities as exact rationals?"
+    options:
+      - text: "`sym.S(1) / 6`"
+        correct: true
+      - text: "`1 / 6`"
+      - text: "`float(1 / 6)`"
+      - text: "`1.0 / 6.0`"
+    explain: "Lifting one operand with `sym.S` keeps the result symbolic; plain `1 / 6` is a float."
+
+  - q: "What is \\(P(A \\cap B)\\) when \\(A\\) and \\(B\\) are independent?"
+    options:
+      - text: "\\(P(A) \\cdot P(B)\\)"
+        correct: true
+      - text: "\\(P(A) + P(B)\\)"
+      - text: "\\(P(A) + P(B) - P(A \\cup B)\\)"
+      - text: "\\(P(A) / P(B)\\)"
+    explain: "Independence means the joint probability factorises."
+
+  - q: "What does \\(P(A \\mid B)\\) mean?"
+    options:
+      - text: "the probability of \\(A\\) given that \\(B\\) has happened"
+        correct: true
+      - text: "the probability of \\(A\\) and \\(B\\)"
+      - text: "the probability of \\(A\\) or \\(B\\)"
+      - text: "the probability of \\(B\\) given \\(A\\)"
+    explain: "Conditional probability: \\(P(A \\mid B) = P(A \\cap B) / P(B)\\)."
+
+  - q: "Bayes' theorem expresses \\(P(A \\mid B)\\) in terms of which quantities?"
+    options:
+      - text: "\\(P(B \\mid A)\\), \\(P(A)\\) and \\(P(B)\\)"
+        correct: true
+      - text: "\\(P(A)\\) and \\(P(B)\\) only"
+      - text: "\\(P(A)\\) and \\(P(B \\mid A)\\) only"
+      - text: "\\(P(A \\cap B)\\) and \\(P(A \\cup B)\\)"
+    explain: "\\(P(A \\mid B) = \\frac{P(B \\mid A) P(A)}{P(B)}\\)."
+
+  - q: "Which loop is the most natural way to estimate a probability by simulation?"
+    options:
+      - text: "repeat the experiment many times and count the fraction of successes"
+        correct: true
+      - text: "repeat the experiment once and report that result"
+      - text: "use `random.seed` repeatedly"
+      - text: "use `sym.solveset` on the probability expression"
+    explain: "Monte Carlo estimation: relative frequency over many trials approximates the true probability."
+
+  - q: "After `random.seed(0)`, what is true of subsequent `random.random()` calls?"
+    options:
+      - text: "they produce a deterministic sequence that can be reproduced by re-seeding with 0"
+        correct: true
+      - text: "they always return 0"
+      - text: "they always return values close to 0"
+      - text: "they are no longer pseudo-random"
+    explain: "Seeding fixes the start of the pseudo-random stream so the same sequence is produced each run."
+
+  - q: "How would we simulate one roll of a fair six-sided die?"
+    options:
+      - text: "`random.choice([1, 2, 3, 4, 5, 6])`"
+        correct: true
+      - text: "`random.random()`"
+      - text: "`random.choice(6)`"
+      - text: "`math.factorial(6)`"
+    explain: "Pick uniformly from the six outcomes; `random.choice` does this."
+
+  - q: "How would we simulate a biased coin with probability \\(p = 0.7\\) of heads using `random.random`?"
+    options:
+      - text: "`\"H\" if random.random() < 0.7 else \"T\"`"
+        correct: true
+      - text: "`random.choice([0.7, 0.3])`"
+      - text: "`random.random() == 0.7`"
+      - text: "`random.seed(0.7)`"
+    explain: "`random.random()` is uniform on \\([0, 1)\\); the inequality \\(< 0.7\\) holds with probability \\(0.7\\)."
+
+  - q: "Why prefer exact rationals over floats when calculating textbook probabilities?"
+    options:
+      - text: "to keep answers like \\(\\tfrac{1}{6}\\) exact rather than the inexact 0.16666..."
+        correct: true
+      - text: "floats are not allowed in sympy"
+      - text: "rationals are faster than floats"
+      - text: "floats are always wrong"
+    explain: "Symbolic rationals are exact; floats introduce rounding."
+
+  - q: "What does the law of total probability say about \\(P(B)\\)?"
+    options:
+      - text: "\\(P(B) = \\sum_i P(B \\mid A_i) P(A_i)\\) for a partition \\(\\{A_i\\}\\)"
+        correct: true
+      - text: "\\(P(B) = P(B \\mid A) + P(B \\mid A^c)\\)"
+      - text: "\\(P(B) = P(B \\mid A) P(A \\mid B)\\)"
+      - text: "\\(P(B) = 1 - P(B^c)^2\\)"
+    explain: "We sum conditional probabilities weighted by the partition probabilities."

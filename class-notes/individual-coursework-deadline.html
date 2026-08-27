@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Individual Coursework Deadline (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Individual Coursework Deadline</h1>
+
+<h1 id="computing-for-mathematics-individual-coursework-deadline">Computing for Mathematics: Individual Coursework Deadline</h1>
+<p>No formal class this week but send announcement to students with information
+about how to create a group (after they have submitted) .</p>
+<pre><code>Next Semester you will be carrying out a group project.
+
+You will be able to form groups yourselves.
+
+Groups must have 4 people in it.
+
+To register your group please use the following form: &lt;form url&gt;.
+
+The deadline to form a group yourself is &lt;deadline&gt;. After this I will create
+the groups randomly.
+</code></pre>
+<p>Create a webform with the following 17 fields:</p>
+<ul>
+<li><code>Name of Group</code></li>
+<li><code>Member 1: Student number</code></li>
+<li><code>Member 1: Email Address</code></li>
+<li><code>Member 1: Surname</code></li>
+<li><code>Member 1: Forename</code></li>
+<li><code>Member 2: Student number</code></li>
+<li><code>Member 2: Email Address</code></li>
+<li><code>Member 2: Surname</code></li>
+<li><code>Member 2: Forename</code></li>
+<li><code>Member 3: Student number</code></li>
+<li><code>Member 3: Email Address</code></li>
+<li><code>Member 3: Surname</code></li>
+<li><code>Member 3: Forename</code></li>
+<li><code>Member 4: Student number</code></li>
+<li><code>Member 4: Email Address</code></li>
+<li><code>Member 4: Surname</code></li>
+<li><code>Member 4: Forename</code></li>
+</ul>
+<h2 id="second-class-which-takes-place-after-submission">Second class (which takes place after submission)</h2>
+<p>Show recordings of some student presentations.</p>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

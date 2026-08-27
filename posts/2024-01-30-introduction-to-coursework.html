@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introduction to the coursework - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Introduction to the coursework</h1>
+<p><small>2024-01-30</small></p>
+
+<p>In class today we spoke about the coursework.</p>
+<p>You can see a recording of this here: <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=53ced2ac-b8f5-4b07-9b3a-b10201087ba1">https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=53ced2ac-b8f5-4b07-9b3a-b10201087ba1</a></p>
+<p>Current second year students, Olivia, Lilly and Holly spoke gave their presentation from last year showing their project <code>appraisal</code>.</p>
+<p>After this we discussed the timetable. And I answered some questions regarding
+the coursework.</p>
+<ul>
+<li><strong>Q: Is there a list of topics that students can view</strong>?</li>
+<li>
+<p>A: Yes you can find it here: <a href="https://vknight.org/cfm/assessment/#past-group-projects">https://vknight.org/cfm/assessment/#past-group-projects</a></p>
+</li>
+<li>
+<p><strong>Q: What will be doing in class</strong>?</p>
+</li>
+<li>
+<p>A: We will be working the relevant chapters of <a href="https://vknight.org/pfm/cover.html">Python for Mathematics</a>. We are tackling the <em>building tools</em> section of the course.</p>
+</li>
+<li>
+<p><strong>Q: Are we writing all the code in a Jupyter notebook</strong>?</p>
+</li>
+<li>
+<p>A: You can see a list of the files that are expected to be submitted here: <a href="https://vknight.org/cfm/assessment/">https://vknight.org/cfm/assessment/</a></p>
+</li>
+<li>
+<p><strong>Q (to the <code>appraisal</code> group): How did you work?</strong></p>
+</li>
+<li>A [Vince paraphrasing]: We worked together on all the topics, meeting and working together each week
+  but also working alone each week.</li>
+</ul>
+<p>A suggested progress timeline is below:</p>
+<ul>
+<li>Week 1 - Expected progress: Group Formation</li>
+<li>Week 2 - Expected progress: Initial Ideas</li>
+<li>Week 3 - Expected progress: Idea consolidation</li>
+<li>Week 4 - Expected progress: Prototype</li>
+<li>Week 5 - Expected progress: Modularisation of code</li>
+<li>Week 6 - Expected progress: Documentation of code</li>
+<li>Week 7 - Expected progress: Testing of code</li>
+<li>Week 8 - Expected progress: Start of research paper</li>
+<li>Week 9: Group work - Expected progress: Start of presentation story board</li>
+<li>Week 10: Group work - Expected progress: Finish paper and visual aids for presentation</li>
+<li>Week 11: Group work - Expected progress: Finish visual aids and rehearse paper</li>
+<li>Week 12: Group coursework deadline</li>
+</ul>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

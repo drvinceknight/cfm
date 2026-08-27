@@ -160,7 +160,9 @@ Discussion around 3 pillars of software development
 Specifically look at diagram in further information section:
 https://vknight.org/pfm/building-tools/07-testing/why/main.html#how-are-modularisation-documentation-and-testing-related
 
-### After class communication
+## Communications
+
+### After class
 
 Send the following email after class::
 

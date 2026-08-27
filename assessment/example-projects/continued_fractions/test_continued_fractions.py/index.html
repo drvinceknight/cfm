@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test_continued_fractions.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#continued_fractions">Example Group Projects / continued_fractions</a>
+  /
+  test_continued_fractions.py
+</p>
+
+<h1>test_continued_fractions.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">continued_fractions</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_continued_fraction_of_three_halves</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">continued_fraction</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_continued_fraction_of_twenty_two_sevenths</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">continued_fraction</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_continued_fraction_terminates_for_rationals</span><span class="p">():</span>
+    <span class="n">coefficients</span> <span class="o">=</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">continued_fraction</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">355</span><span class="p">,</span> <span class="mi">113</span><span class="p">),</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">20</span>
+    <span class="n">reconstructed</span> <span class="o">=</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">convergents</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">reconstructed</span> <span class="o">==</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">355</span><span class="p">,</span> <span class="mi">113</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_convergents_of_golden_ratio_give_fibonacci_ratios</span><span class="p">():</span>
+    <span class="n">golden_convergents</span> <span class="o">=</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">golden_ratio_convergents</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+        <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="k">assert</span> <span class="n">golden_convergents</span> <span class="o">==</span> <span class="n">expected</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_convergents_approach_golden_ratio</span><span class="p">():</span>
+    <span class="n">last</span> <span class="o">=</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">golden_ratio_convergents</span><span class="p">(</span><span class="mi">20</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">golden_ratio_value</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">5</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">last</span><span class="p">)</span> <span class="o">-</span> <span class="n">golden_ratio_value</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="mf">1e-8</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_convergents_of_finite_list</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">convergents</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">[</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+
+
+<span class="n">test_continued_fraction_of_three_halves</span><span class="p">()</span>
+<span class="n">test_continued_fraction_of_twenty_two_sevenths</span><span class="p">()</span>
+<span class="n">test_continued_fraction_terminates_for_rationals</span><span class="p">()</span>
+<span class="n">test_convergents_of_golden_ratio_give_fibonacci_ratios</span><span class="p">()</span>
+<span class="n">test_convergents_approach_golden_ratio</span><span class="p">()</span>
+<span class="n">test_convergents_of_finite_list</span><span class="p">()</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

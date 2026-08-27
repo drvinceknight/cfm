@@ -1,0 +1,137 @@
+title: Using notebooks
+pick: 5
+questions:
+  - q: "What is a Jupyter notebook?"
+    options:
+      - text: "a document made of cells that mix code, output and prose, run from the browser"
+        correct: true
+      - text: "a compiled Python program that runs from the command line"
+      - text: "a text-only configuration file used by Python"
+      - text: "a synonym for a Python script saved as a .py file"
+    explain: "A notebook is a sequence of cells (code, markdown or raw) that can be executed in any order from a browser interface."
+
+  - q: "What is the file extension of a Jupyter notebook?"
+    options:
+      - text: ".ipynb"
+        correct: true
+      - text: ".py"
+      - text: ".jpy"
+      - text: ".nbk"
+    explain: "Notebook files use the `.ipynb` extension; under the hood the file is JSON."
+
+  - q: "What does Shift+Enter do in a Jupyter notebook?"
+    options:
+      - text: "runs the current cell and moves to the next"
+        correct: true
+      - text: "saves the notebook to disk"
+      - text: "interrupts the kernel"
+      - text: "deletes the current cell"
+    explain: "Shift+Enter executes the active cell and advances. Ctrl+Enter runs the cell without advancing."
+
+  - q: "Which cell type is used for prose, headings and LaTeX maths?"
+    options:
+      - text: "markdown"
+        correct: true
+      - text: "code"
+      - text: "raw"
+      - text: "header"
+    explain: "Markdown cells render formatted text, including LaTeX maths via MathJax."
+
+  - q: "If you run cells out of order, which of the following can happen?"
+    options:
+      - text: "a variable defined later in the notebook is unavailable to an earlier cell that has not been re-run"
+        correct: true
+      - text: "the notebook automatically re-runs earlier cells for you"
+      - text: "nothing, all cells share state regardless of execution order"
+      - text: "the kernel resets after every cell"
+    explain: "Cells share state with the kernel, but only after they have actually been executed in the current session."
+
+  - q: "What does the kernel do in a Jupyter notebook?"
+    options:
+      - text: "executes the code in cells and holds the live Python session state"
+        correct: true
+      - text: "renders the markdown cells"
+      - text: "saves the notebook to disk"
+      - text: "manages the browser tab"
+    explain: "The kernel is the underlying Python (or other language) process that runs code cells."
+
+  - q: "How do you typeset \\(\\sqrt{2}\\) inside a markdown cell?"
+    options:
+      - text: "wrap it in dollar signs: $\\sqrt{2}$"
+        correct: true
+      - text: "wrap it in single backticks"
+      - text: "wrap it in triple backticks with the language `latex`"
+      - text: "you cannot show LaTeX in a notebook"
+    explain: "Notebook markdown uses `$...$` and `$$...$$` for MathJax; the LaTeX `\\(...\\)` delimiters are not reliably rendered there."
+
+  - q: "Which of these is a sensible reason to use a notebook for a mathematics task?"
+    options:
+      - text: "to interleave explanation, computation and output as a single document"
+        correct: true
+      - text: "to write a library that other people will `import`"
+      - text: "to deploy a website"
+      - text: "to manage version control"
+    explain: "Notebooks shine for narrative computation. They are not the right format for shipping a reusable library."
+
+  - q: "What happens when you restart the kernel?"
+    options:
+      - text: "all variables are cleared and you must re-run the cells you need"
+        correct: true
+      - text: "the notebook file is deleted"
+      - text: "the cells are reshuffled"
+      - text: "the markdown is re-rendered but variables persist"
+    explain: "Restarting the kernel discards every defined name; a clean restart followed by Run All is a useful sanity check."
+
+  - q: "What is the safest sequence to confirm a notebook is reproducible?"
+    options:
+      - text: "Restart the kernel and Run All cells from the top"
+        correct: true
+      - text: "Save the notebook"
+      - text: "Run only the cell that produced the headline figure"
+      - text: "Close and reopen the browser tab"
+    explain: "A clean restart followed by Run All ensures every result was produced from the code currently on the page."
+
+  - q: "Why might we still write a Python file rather than a notebook for some work?"
+    options:
+      - text: "to build a reusable library that can be imported, tested and documented"
+        correct: true
+      - text: "to run any Python at all"
+      - text: "to use LaTeX maths"
+      - text: "to make plots"
+    explain: "Notebooks are great for narrative work; library code lives in `.py` modules so it can be imported, tested and shared."
+
+  - q: "Where in a notebook do code outputs appear?"
+    options:
+      - text: "directly below the cell that produced them"
+        correct: true
+      - text: "in a separate terminal window"
+      - text: "in a log file in the working directory"
+      - text: "at the very end of the notebook"
+    explain: "Each code cell's output is captured and shown immediately under that cell."
+
+  - q: "Which command-line tool launches the modern notebook interface?"
+    options:
+      - text: "`jupyter lab` (or `jupyter notebook`)"
+        correct: true
+      - text: "`python --notebook`"
+      - text: "`pip notebook`"
+      - text: "`run notebook`"
+    explain: "Either `jupyter lab` or `jupyter notebook` starts a local server you connect to from the browser."
+
+  - q: "If a code cell never finishes running, what is a good first step?"
+    options:
+      - text: "interrupt the kernel and check the cell for an infinite loop"
+        correct: true
+      - text: "reinstall Python"
+      - text: "delete the notebook file"
+      - text: "rename the cell"
+    explain: "Interrupting the kernel stops the running cell so we can inspect why it hung, usually an infinite loop or stuck input."
+
+  - q: "Which of the following is the best use of a notebook in this course?"
+    options:
+      - text: "exploring a calculation interactively and writing up the result alongside the code"
+        correct: true
+      - text: "running automated tests for a library"
+      - text: "deploying a web application"
+      - text: "editing the library source code"
+    explain: "Notebooks are used for exploratory work and write-ups; library source lives in `.py` files."

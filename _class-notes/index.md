@@ -1,11 +1,6 @@
 ---
 layout: class-notes
+title: "Class notes"
 ---
 
-## Class notes
-
-{% for notes in site.class-notes %}
-
-- [{{ notes.title }}]({{notes.title | slugify}}.html)
-
-{% endfor %}
+The list of all class notes is rendered by the build script.

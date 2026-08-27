@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>README.md - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#dice">Example Group Projects / dice</a>
+  /
+  README.md
+</p>
+
+<h1>README.md</h1>
+
+<div class="highlight"><pre><code class="language-markdown"><span class="gh"># dice</span>
+
+A small Python library for simulating and analysing sums of fair dice.
+We provide a simulator, the empirical distribution of simulated sums,
+the exact theoretical distribution, and a small set of summary
+statistics.
+
+<span class="gu">## Tutorial</span>
+
+We are going to look at the sum of two six-sided dice. The classical
+result is that there are 36 equally likely outcomes, the sum
+\(s = 7\) is the most likely, and the sums \(s = 2\) and \(s = 12\)
+are the least likely. We start by importing the library:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">dice</span>
+
+<span class="sb">```</span>
+
+The exact theoretical distribution is
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">fractions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fraction</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">distribution</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">theoretical_distribution</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">distribution</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">36</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">distribution</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">distribution</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">36</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+The probabilities sum to one:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">distribution</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+To simulate \(N\) rolls of two dice and look at the empirical
+distribution, we pass a seed for reproducibility:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sums</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">simulate_sums</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10_000</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">empirical</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">empirical_distribution</span><span class="p">(</span><span class="n">sums</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">0.13</span> <span class="o">&lt;</span> <span class="n">empirical</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.20</span>
+<span class="kc">True</span>
+
+<span class="sb">```</span>
+
+The empirical probability of rolling a 7 is close to the theoretical
+\(1/6 \approx 0.167\).
+
+<span class="gu">## How to guide</span>
+
+<span class="gu">### How to roll a fixed number of dice</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">dice</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">all</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">face</span> <span class="o">&lt;=</span> <span class="mi">6</span> <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">result</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to simulate many sums of dice</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">dice</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sums</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">simulate_sums</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">sums</span><span class="p">)</span>
+<span class="mi">100</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to compute the empirical distribution from samples</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">dice</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dice</span><span class="o">.</span><span class="n">empirical_distribution</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span>
+<span class="o">...</span>     <span class="mi">2</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">7</span><span class="p">,</span>
+<span class="o">...</span> <span class="p">}</span>
+<span class="kc">True</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to get the exact theoretical distribution</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">dice</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">fractions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fraction</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dice</span><span class="o">.</span><span class="n">theoretical_distribution</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span>
+<span class="o">...</span>     <span class="n">face</span><span class="p">:</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="o">...</span> <span class="p">}</span>
+<span class="kc">True</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to compute summary statistics</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">dice</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dice</span><span class="o">.</span><span class="n">summary_statistics</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.5811388300841898</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## Discussion</span>
+
+The sum of \(n\) fair \(s\)-sided dice has a known distribution that
+can be computed by hand for small \(n\). For \(n = 2\) and \(s = 6\)
+the well-known triangular distribution gives \(P(s = 2) = 1/36\),
+\(P(s = 7) = 6/36 = 1/6\), and \(P(s = 12) = 1/36\). For larger \(n\)
+the formula in closed form involves an alternating sum of binomial
+coefficients, which is awkward to write out by hand. We use repeated
+convolution instead: starting from the uniform distribution of one
+die, we convolve with itself \(n - 1\) times to get the distribution
+of the sum. This is short to implement and easy to test.
+
+For 10 000 rolls of two dice the empirical probability of a 7 is
+reliably between 0.13 and 0.20, which spans the theoretical
+\(1/6 \approx 0.167\) by a comfortable margin.
+
+<span class="gu">### How we built this</span>
+
+We keep the probabilities exact using <span class="sb">`fractions.Fraction`</span> from the
+standard library, which means that the sum of all probabilities is
+exactly \(1\) (not just approximately). This matches the convention
+of the textbook chapter on probability [1], where the worked examples
+use rationals rather than decimals.
+
+The empirical distribution is computed from a simulation: we use
+<span class="sb">`random.randint`</span> to generate face values and count how often each sum
+occurs. The <span class="sb">`summary_statistics`</span> function uses the <span class="sb">`statistics`</span>
+module from the standard library: <span class="sb">`statistics.mean`</span>,
+<span class="sb">`statistics.median`</span>, and the sample standard deviation
+<span class="sb">`statistics.stdev`</span> (with a divisor of \(n - 1\)).
+
+<span class="gu">## Reference</span>
+
+<span class="gu">### List of functionality</span>
+
+A list of functionality in this library is:
+
+<span class="k">-</span><span class="w"> </span><span class="sb">`roll(number_of_dice, sides=6, seed=None)`</span>: roll dice once.
+<span class="k">-</span><span class="w"> </span><span class="sb">`simulate_sums(number_of_dice, number_of_rolls, sides=6, seed=None)`</span>:
+  simulate many rolls of a fixed number of dice and return the sums.
+<span class="k">-</span><span class="w"> </span><span class="sb">`empirical_distribution(samples)`</span>: relative-frequency distribution.
+<span class="k">-</span><span class="w"> </span><span class="sb">`theoretical_distribution(number_of_dice, sides=6)`</span>: exact
+  distribution as a dictionary of <span class="sb">`Fraction`</span> values.
+<span class="k">-</span><span class="w"> </span><span class="sb">`summary_statistics(samples)`</span>: mean, median, and sample standard
+  deviation.
+
+<span class="gu">### Tests</span>
+
+The tests live in <span class="sb">`test_dice.py`</span> and can be run with:
+
+<span class="sb">```sh</span>
+python<span class="w"> </span>test_dice.py
+<span class="sb">```</span>
+
+They check that <span class="sb">`roll`</span> returns values in range, that
+<span class="sb">`theoretical_distribution`</span> agrees with the textbook values for two
+six-sided dice, and that the empirical distribution from a
+seeded simulation lies within a wide interval around the theoretical
+probability of rolling a 7.
+
+<span class="gu">### Bibliography</span>
+
+[1] Knight, V. <span class="ge">*Python for Mathematics*</span>, vknight.org/pfm. Accessed 2026.
+
+[2] Ross, S. M. <span class="ge">*A First Course in Probability*</span>. Pearson, 9th edition,
+2014.
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Functions and data structures (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Functions and data structures</h1>
+
+<h1 id="functions-and-data-structures">Functions and data structures</h1>
+<h2 id="first-meeting">First meeting</h2>
+<p>After this meeting students should:</p>
+<ul>
+<li>Have an understanding of functions.</li>
+<li>Have an understanding of lists.</li>
+</ul>
+<h3 id="problem">Problem</h3>
+<p>Explain to students that we will be solving the following problem:</p>
+<pre><code>Verify the following identity for all integer values of $0 \leq a \leq
+100$, $0 \leq b \leq 100$ and $1 \leq n \leq 10$:
+
+$$(a + b) ^ n = \sum_{i=0}^n\binom{n}{i} a ^ i b ^ {n - i}$$
+</code></pre>
+<h3 id="solution">Solution</h3>
+<p>Now show::</p>
+<pre><code>&gt;&gt;&gt; def get_lhs(a, b, n):
+...     """
+...     Compute (a + b) ^ n directly
+...     """
+...     return (a + b) ** n
+&gt;&gt;&gt; get_lhs(a=5, b=10, n=5)
+759375
+&gt;&gt;&gt; import scipy.special
+&gt;&gt;&gt; def get_rhs(a, b, n):
+...     """
+...     Compute the right hand side of the identity which aims to calculate
+...     a summation of powers a^ib^(n - i) with a binomial coefficient.
+...     """
+...     return sum(scipy.special.binom(n, i) * a ** i * b ** (n - i) for i in range(n + 1))
+&gt;&gt;&gt; get_rhs(a=5, b=10, n=5)
+np.float64(759375.0)
+</code></pre>
+<p>Ask if this confirms the identity?</p>
+<p>Now create the following function to check the identify::</p>
+<pre><code>&gt;&gt;&gt; def check_identity(a, b, n):
+...     """
+...     Check the relationship
+...     """
+...     return get_lhs(a=a, b=b, n=n) == get_rhs(a=a, b=b, n=n)
+</code></pre>
+<p>Now create all checks::</p>
+<pre><code>&gt;&gt;&gt; checks = [
+...    check_identity(a=a_val, b=b_val, n=n_val)
+...    for a_val in range(101) for b_val in range(101) for n_val in range(1, 11)
+... ]
+</code></pre>
+<p>Note that we can check all of them::</p>
+<pre><code>&gt;&gt;&gt; all(checks)
+False
+</code></pre>
+<p>Ask why this is the case. Have a discussion leading to the fix::</p>
+<pre><code>&gt;&gt;&gt; def get_rhs(a, b, n):
+...     """
+...     Compute the right hand side of the identity which aims to calculate
+...     a summation of powers a^ib^(n - i) with a binomial coefficient.
+...     """
+...     return sum(int(scipy.special.binom(n, i)) * a ** i * b ** (n - i) for i in range(n + 1))
+</code></pre>
+<p>Re define <code>check_identity</code>:</p>
+<pre><code>&gt;&gt;&gt; def check_identity(a, b, n):
+...     """
+...     Check the relationship
+...     """
+...     return get_lhs(a=a, b=b, n=n) == get_rhs(a=a, b=b, n=n)
+</code></pre>
+<p>Now create all checks::</p>
+<pre><code>&gt;&gt;&gt; checks = [
+...    check_identity(a=a_val, b=b_val, n=n_val)
+...    for a_val in range(101) for b_val in range(101) for n_val in range(1, 11)
+... ]
+</code></pre>
+<p>Note that we can check all of them::</p>
+<pre><code>&gt;&gt;&gt; all(checks)
+True
+</code></pre>
+<p>Come back: with time take any questions.</p>
+<p>Point at resources.</p>
+<h2 id="communications">Communications</h2>
+<h3 id="after-class">After class</h3>
+<p>Send the following email after class::</p>
+<pre><code>Hi all,
+
+A recording of today's class is available at &lt;&gt;.
+
+In this class I we used functions and list comprehensions. The chapter we
+are covering this week also includes sections on dictionaries and sets.
+
+In preparation for your tutorial please work through the following chapter:
+https://vknight.org/pfm/building-tools/02-functions-and-data-structures/introduction/main.html
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

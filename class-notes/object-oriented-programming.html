@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Object oriented programming (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Object oriented programming</h1>
+
+<h1 id="object-oriented-programming">Object oriented programming</h1>
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand the motivation for using objects</li>
+<li>Understand the basic syntax of how to create classes and instances</li>
+<li>Know what they need to do to prepare for their tutorial</li>
+</ul>
+<h2 id="problem">Problem</h2>
+<p>Tell students we are going to investigate some group theory.</p>
+<pre><code>A group $G$ is defined as:
+
+- Closure: if $a,b\in G$ then $a \cdot b\in G$.
+- Identity: there exists $e \in G:\; e\cdot a = a \cdot e = a$ for all $a\in G$
+- Inverse: for all $a\in G$ there exists $a^{-1}\in G:\; a\cdot a^{-1}=e$
+- Associativity: for all $a,b,c\in G:\; (a\cdot b)\cdot c = a\cdot (b \cdot
+  c)$
+
+Consider the permutation group: https://en.wikipedia.org/wiki/Permutation_group.
+On two elements: $\{0, 1\}$ there are two permutations:
+
+- $\sigma_{01}(0) = 0$ and $\sigma_{01}(1) = 1$ (identity)
+- $\sigma_{10}(0) = 1$ and $\sigma_{10}(1) = 0$ (flip)
+
+Obtain the multiplication table for this group.
+</code></pre>
+<h2 id="solution">Solution</h2>
+<div class="arithmatex">\[
+   \begin{pmatrix}
+    01 &amp; 10\\
+    10 &amp; 01
+   \end{pmatrix}
+\]</div>
+<p>Explain that we can create an <strong>abstract</strong> object in Python that allows us to
+manipulate these elements in the same way that we can manipulate integers and/or
+floats. Or in the same way that <code>&lt;insert popular video game&gt;</code> manipulates
+characters.</p>
+<p>Here is how we create a very basic class that allows us to create an element
+corresponding to a given <span class="arithmatex">\(\sigma\)</span>:</p>
+<pre><code>&gt;&gt;&gt; class Permutation():
+...     """A class that corresponds to an element of a permutation group"""
+...     def __init__(self, sigma):
+...         """When creating an instance set attributes."""
+...         self.sigma = sigma
+...         self.N = len(sigma)
+...     def permute(self, vector):
+...         """Given a vector of integers permute them."""
+...         return [self.sigma[i] for i in vector]
+</code></pre>
+<p>We can use this to create specific elements of the Permutation group::</p>
+<pre><code>&gt;&gt;&gt; pi_01 = Permutation([0, 1])
+&gt;&gt;&gt; pi_10 = Permutation([1, 0])
+&gt;&gt;&gt; pi_01.sigma, pi_01.N
+([0, 1], 2)
+&gt;&gt;&gt; pi_10.sigma, pi_10.N
+([1, 0], 2)
+</code></pre>
+<p>The <code>permute</code> method allows us to permute a given vector: for example what
+does <span class="arithmatex">\(\sigma_{10}\)</span> do to <span class="arithmatex">\((0, 1)\)</span>:</p>
+<pre><code>&gt;&gt;&gt; pi_10.permute([0, 1])
+[1, 0]
+</code></pre>
+<p>We now have all we need to define the group operation on the permutation class:</p>
+<pre><code>&gt;&gt;&gt; class Permutation():
+...     """A class that corresponds to an element of a permutation group"""
+...     def __init__(self, sigma):
+...         """When creating an instance set attributes."""
+...         self.sigma = sigma
+...         self.N = len(sigma)
+...     def permute(self, vector):
+...         """Given a vector of integers permute them."""
+...         return [self.sigma[i] for i in vector]
+...     def operate(self, other):
+...         """Define the group operation on self and other"""
+...         return Permutation(self.permute(other.permute(range(self.N))))
+</code></pre>
+<p>Redefining our new instances:</p>
+<pre><code>&gt;&gt;&gt; pi_01 = Permutation([0, 1])
+&gt;&gt;&gt; pi_10 = Permutation([1, 0])
+&gt;&gt;&gt; pi_10.operate(pi_01)
+&lt;__main__.Permutation ...&gt;
+</code></pre>
+<p>We see that a new instance of the <code>Permutation</code> class has been produced (which
+is expected) but we cannot really tell what it is. Let us implement another
+magic method to do so:</p>
+<pre><code>&gt;&gt;&gt; class Permutation():
+...     """A class that corresponds to an element of a permutation group"""
+...     def __init__(self, sigma):
+...         """When creating an instance set attributes."""
+...         self.sigma = sigma
+...         self.N = len(sigma)
+...     def permute(self, vector):
+...         """Given a vector of integers permute them."""
+...         return [self.sigma[i] for i in vector]
+...     def __repr__(self):
+...         return str(self.sigma)
+...     def operate(self, other):
+...         """Define the group operation on self and other"""
+...         return Permutation(self.permute(other.permute(range(self.N))))
+</code></pre>
+<p>Redefining our new instances:</p>
+<pre><code>&gt;&gt;&gt; pi_01 = Permutation([0, 1])
+&gt;&gt;&gt; pi_10 = Permutation([1, 0])
+&gt;&gt;&gt; pi_10.operate(pi_01)
+[1, 0]
+</code></pre>
+<p>We see that when <span class="arithmatex">\(\sigma_{01}\)</span> operates on <span class="arithmatex">\(\sigma_{10}\)</span> we get
+<span class="arithmatex">\(\sigma_{10}\)</span> back. A nice way to be able to check this using Python's
+<code>==</code> operator is to include a new special method::</p>
+<pre><code>&gt;&gt;&gt; class Permutation():
+...     """A class that corresponds to an element of a permutation group"""
+...     def __init__(self, sigma):
+...         """When creating an instance set attributes."""
+...         self.sigma = sigma
+...         self.N = len(sigma)
+...     def permute(self, vector):
+...         """Given a vector of integers permute them."""
+...         return [self.sigma[i] for i in vector]
+...     def __repr__(self):
+...         return str(self.sigma)
+...     def __eq__(self, other):
+...         return self.sigma == other.sigma
+...     def operate(self, other):
+...         """Define the group operation on self and other"""
+...         return Permutation(self.permute(other.permute(range(self.N))))
+</code></pre>
+<p>Let us confirm this now::</p>
+<pre><code>&gt;&gt;&gt; pi_01 = Permutation([0, 1])
+&gt;&gt;&gt; pi_10 = Permutation([1, 0])
+&gt;&gt;&gt; pi_10.operate(pi_01) == pi_10
+True
+</code></pre>
+<p>One final change we're going to make is replace the <code>operate</code> method to
+use a magic python method:</p>
+<pre><code>&gt;&gt;&gt; class Permutation():
+...     """A class that corresponds to an element of a permutation group"""
+...     def __init__(self, sigma):
+...         """When creating an instance set attributes."""
+...         self.sigma = sigma
+...         self.N = len(sigma)
+...     def permute(self, vector):
+...         """Given a vector of integers permute them."""
+...         return [self.sigma[i] for i in vector]
+...     def __repr__(self):
+...         return str(self.sigma)
+...     def __eq__(self, other):
+...         return self.sigma == other.sigma
+...     def __mul__(self, other):
+...         """Define the group operation on self and other"""
+...         return Permutation(self.permute(other.permute(range(self.N))))
+</code></pre>
+<p>We can now use the <code>*</code> operator::</p>
+<pre><code>&gt;&gt;&gt; pi_01 = Permutation([0, 1])
+&gt;&gt;&gt; pi_10 = Permutation([1, 0])
+&gt;&gt;&gt; pi_10 * pi_01 == pi_10
+True
+</code></pre>
+<p><strong>Ask student to write code that uses this class to obtain the multiplication
+table for our group</strong>::</p>
+<pre><code>&gt;&gt;&gt; def display_multiplication_table(elements):
+...     for first in elements:
+...         products = []
+...         for second in elements:
+...             products.append(first * second)
+...         print(products)
+</code></pre>
+<p>We can now use this::</p>
+<pre><code>&gt;&gt;&gt; permutations = [pi_01, pi_10]
+&gt;&gt;&gt; display_multiplication_table(elements=permutations)
+[[0, 1], [1, 0]]
+[[1, 0], [0, 1]]
+</code></pre>
+<p>Let us modify this to look at permutations of size <span class="arithmatex">\(N=3\)</span>.
+Explain that we will make use of a very handy Python library for creating
+permutations of things::</p>
+<pre><code>&gt;&gt;&gt; import itertools
+&gt;&gt;&gt; N = 3
+&gt;&gt;&gt; permutations = [Permutation(list(perm)) for perm in itertools.permutations(range(N))]
+&gt;&gt;&gt; permutations
+[[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]]
+</code></pre>
+<p>Let us take a look at the multiplication table::</p>
+<pre><code>&gt;&gt;&gt; display_multiplication_table(elements=permutations)
+[[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]]
+[[0, 2, 1], [0, 1, 2], [2, 0, 1], [2, 1, 0], [1, 0, 2], [1, 2, 0]]
+[[1, 0, 2], [1, 2, 0], [0, 1, 2], [0, 2, 1], [2, 1, 0], [2, 0, 1]]
+[[1, 2, 0], [1, 0, 2], [2, 1, 0], [2, 0, 1], [0, 1, 2], [0, 2, 1]]
+[[2, 0, 1], [2, 1, 0], [0, 2, 1], [0, 1, 2], [1, 2, 0], [1, 0, 2]]
+[[2, 1, 0], [2, 0, 1], [1, 2, 0], [1, 0, 2], [0, 2, 1], [0, 1, 2]]
+</code></pre>
+<p><strong>Can students see the various properties closure, associativity, inverse and
+identity?</strong></p>
+<p>If there is any remaining time, invite students to write code that checks these
+conditions.</p>
+<p><strong>Walk and discuss with them.</strong></p>
+<p>Closure::</p>
+<pre><code>&gt;&gt;&gt; def test_closure(elements):
+...     return all(first * second in elements
+...                for first in elements
+...                for second in elements)
+&gt;&gt;&gt; test_closure(elements=permutations)
+True
+</code></pre>
+<p>Identity::</p>
+<pre><code>&gt;&gt;&gt; def test_specific_identity_element(elements, identity):
+...     return all(first * identity == first for first in elements)
+&gt;&gt;&gt; def test_identity_element(elements):
+...     return any(test_specific_identity_element(elements=elements, identity=identity)
+...                for identity in permutations)
+&gt;&gt;&gt; test_identity_element(elements=permutations)
+True
+</code></pre>
+<p>Inverse::</p>
+<pre><code>&gt;&gt;&gt; def test_inverse_element_for_given_identity(elements, identity):
+...     has_inverse = []
+...     for first in elements:
+...         products = []
+...         for second in elements:
+...             products.append(first * second)
+...         has_inverse.append(identity in products)
+...     return all(has_inverse)
+&gt;&gt;&gt; def test_inverse_element(elements):
+...     return any(test_inverse_element_for_given_identity(elements=permutations, identity=identity)
+...                for identity in elements)
+&gt;&gt;&gt; test_inverse_element(elements=permutations)
+True
+</code></pre>
+<p>Associativity::</p>
+<pre><code>&gt;&gt;&gt; def test_associativity(elements):
+...     return all((first * second) * third == first * (second * third)
+...                for first, second, third in itertools.product(elements, repeat=3))
+&gt;&gt;&gt; test_associativity(elements=permutations)
+True
+</code></pre>
+<p>These can all be brought together::</p>
+<pre><code>&gt;&gt;&gt; def test_group(elements):
+...     return (test_closure(elements=elements) and
+...             test_identity_element(elements=elements) and
+...             test_inverse_element(elements=elements) and
+...             test_associativity(elements=elements))
+&gt;&gt;&gt; test_group(elements=permutations)
+True
+</code></pre>
+<p>Not all subsets of a group are a group::</p>
+<pre><code>&gt;&gt;&gt; test_group(elements=permutations[:-1])
+False
+</code></pre>
+<p>We can also use this to check for larger group sizes::</p>
+<pre><code>&gt;&gt;&gt; N = 4
+&gt;&gt;&gt; permutations = [Permutation(list(perm)) for perm in itertools.permutations(range(N))]
+&gt;&gt;&gt; test_group(elements=permutations)
+True
+&gt;&gt;&gt; N = 5  # This takes a little while
+&gt;&gt;&gt; permutations = [Permutation(list(perm)) for perm in itertools.permutations(range(N))]
+&gt;&gt;&gt; test_group(elements=permutations)
+True
+</code></pre>
+<h2 id="communications">Communications</h2>
+<h3 id="after-class">After class</h3>
+<pre><code>Hi all,
+
+A recording of today's class is available at &lt;&gt;.
+
+In this class I went over 1 main thing: Object Oriented Programming.
+
+In preparation for your tutorial tomorrow please work through the tenth
+chapter of the Python for mathematics book:
+https://vknight.org/pfm/building-tools/03-objects/introduction/main.html
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

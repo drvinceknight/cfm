@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example Group Projects - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../start-here/">Start here</a></li>
+        <li><a href="../../#schedule">Schedule</a></li>
+        <li><a href="../../assessment/">Assessment</a></li>
+        <li><a href="../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Example Group Projects</h1>
+
+<p>These example projects are worked submissions for the group project.
+Each one is a small Python library that satisfies the
+<a href="../../assessment/#submission">submission requirements</a>:
+a library file, a test file, a <code>README.md</code> with the four Diataxis
+sections, and a short paper.</p>
+<p>The example projects are written at the <strong>'good'</strong> level of the
+<a href="../../assessment/#marking-criteria">marking scheme</a>, not
+the 'exemplary' level. They are intended as a model of a submission
+that hits every component clearly, not as a ceiling.</p>
+<p>Each example is listed below. Click the file name to view its source,
+or follow the project page link for an overview.</p>
+
+
+  <h2 id="binomial">binomial</h2>
+  <p>The probability mass function, cumulative distribution function, mean, variance, and a simulator for the binomial distribution.</p>
+  <ul>
+    
+      <li><a href="../../assessment/example-projects/binomial/binomial.py/">binomial.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/binomial/test_binomial.py/">test_binomial.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/binomial/README.md/">README.md</a></li>
+    
+      <li><a href="../../assessment/example-projects/binomial/paper-main.tex/">paper/main.tex</a></li>
+    
+      <li><a href="../../assessment/example-projects/binomial/paper-references.bib/">paper/references.bib</a></li>
+    
+    
+      <li><a href="../../assets/examples/binomial/paper/main.pdf">paper (PDF)</a></li>
+    
+  </ul>
+
+  <h2 id="continued_fractions">continued_fractions</h2>
+  <p>The continued fraction expansion of a rational number and the resulting list of convergents.</p>
+  <ul>
+    
+      <li><a href="../../assessment/example-projects/continued_fractions/continued_fractions.py/">continued_fractions.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/continued_fractions/test_continued_fractions.py/">test_continued_fractions.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/continued_fractions/README.md/">README.md</a></li>
+    
+      <li><a href="../../assessment/example-projects/continued_fractions/paper-main.tex/">paper/main.tex</a></li>
+    
+      <li><a href="../../assessment/example-projects/continued_fractions/paper-references.bib/">paper/references.bib</a></li>
+    
+    
+      <li><a href="../../assets/examples/continued_fractions/paper/main.pdf">paper (PDF)</a></li>
+    
+  </ul>
+
+  <h2 id="dice">dice</h2>
+  <p>Simulated and exact distributions for the sum of fair dice.</p>
+  <ul>
+    
+      <li><a href="../../assessment/example-projects/dice/dice.py/">dice.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/dice/test_dice.py/">test_dice.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/dice/README.md/">README.md</a></li>
+    
+      <li><a href="../../assessment/example-projects/dice/paper-main.tex/">paper/main.tex</a></li>
+    
+      <li><a href="../../assessment/example-projects/dice/paper-references.bib/">paper/references.bib</a></li>
+    
+    
+      <li><a href="../../assets/examples/dice/paper/main.pdf">paper (PDF)</a></li>
+    
+  </ul>
+
+  <h2 id="markov">markov</h2>
+  <p>Finite discrete-time Markov chains: the distribution after $n$ steps and the stationary distribution.</p>
+  <ul>
+    
+      <li><a href="../../assessment/example-projects/markov/markov.py/">markov.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/markov/test_markov.py/">test_markov.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/markov/README.md/">README.md</a></li>
+    
+      <li><a href="../../assessment/example-projects/markov/paper-main.tex/">paper/main.tex</a></li>
+    
+      <li><a href="../../assessment/example-projects/markov/paper-references.bib/">paper/references.bib</a></li>
+    
+    
+      <li><a href="../../assets/examples/markov/paper/main.pdf">paper (PDF)</a></li>
+    
+  </ul>
+
+  <h2 id="newton">newton</h2>
+  <p>The Newton-Raphson method for finding roots of single-variable expressions, with symbolic differentiation.</p>
+  <ul>
+    
+      <li><a href="../../assessment/example-projects/newton/newton.py/">newton.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/newton/test_newton.py/">test_newton.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/newton/README.md/">README.md</a></li>
+    
+      <li><a href="../../assessment/example-projects/newton/paper-main.tex/">paper/main.tex</a></li>
+    
+      <li><a href="../../assessment/example-projects/newton/paper-references.bib/">paper/references.bib</a></li>
+    
+    
+      <li><a href="../../assets/examples/newton/paper/main.pdf">paper (PDF)</a></li>
+    
+  </ul>
+
+  <h2 id="ode_flow">ode_flow</h2>
+  <p>Solving and sampling first-order initial value problems for ordinary differential equations.</p>
+  <ul>
+    
+      <li><a href="../../assessment/example-projects/ode_flow/ode_flow.py/">ode_flow.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/ode_flow/test_ode_flow.py/">test_ode_flow.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/ode_flow/README.md/">README.md</a></li>
+    
+      <li><a href="../../assessment/example-projects/ode_flow/paper-main.tex/">paper/main.tex</a></li>
+    
+      <li><a href="../../assessment/example-projects/ode_flow/paper-references.bib/">paper/references.bib</a></li>
+    
+    
+      <li><a href="../../assets/examples/ode_flow/paper/main.pdf">paper (PDF)</a></li>
+    
+  </ul>
+
+  <h2 id="quadratic">quadratic</h2>
+  <p>Real quadratic equations: the discriminant, the set of real roots, the number of real roots, and the vertex of the parabola.</p>
+  <ul>
+    
+      <li><a href="../../assessment/example-projects/quadratic/quadratic.py/">quadratic.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/quadratic/test_quadratic.py/">test_quadratic.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/quadratic/README.md/">README.md</a></li>
+    
+      <li><a href="../../assessment/example-projects/quadratic/paper-main.tex/">paper/main.tex</a></li>
+    
+      <li><a href="../../assessment/example-projects/quadratic/paper-references.bib/">paper/references.bib</a></li>
+    
+    
+      <li><a href="../../assets/examples/quadratic/paper/main.pdf">paper (PDF)</a></li>
+    
+  </ul>
+
+  <h2 id="stats_from_scratch">stats_from_scratch</h2>
+  <p>The mean, the median, the population and sample standard deviations, and the three quartiles, implemented directly from their definitions.</p>
+  <ul>
+    
+      <li><a href="../../assessment/example-projects/stats_from_scratch/stats_from_scratch.py/">stats_from_scratch.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/stats_from_scratch/test_stats_from_scratch.py/">test_stats_from_scratch.py</a></li>
+    
+      <li><a href="../../assessment/example-projects/stats_from_scratch/README.md/">README.md</a></li>
+    
+      <li><a href="../../assessment/example-projects/stats_from_scratch/paper-main.tex/">paper/main.tex</a></li>
+    
+      <li><a href="../../assessment/example-projects/stats_from_scratch/paper-references.bib/">paper/references.bib</a></li>
+    
+    
+      <li><a href="../../assets/examples/stats_from_scratch/paper/main.pdf">paper (PDF)</a></li>
+    
+  </ul>
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../assets/js/quiz.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meeting minutes: Week 6 - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Meeting minutes: Week 6</h1>
+
+
+
+
+
+
+
+
+
+<p>This week's group meeting covers the following topics from the
+<a href="https://vknight.org/pfm/">Python for Mathematics</a> book:</p>
+<ul>
+<li><a href="../topics/variables-conditional-statements-and-while-loops.html">Variables, conditional statements, and while loops</a></li>
+<li><a href="../topics/functions-and-data-structures.html">Functions and data structures</a></li>
+</ul>
+<h2 id="example-template">Example template</h2>
+<p>Download and print the Week 6 minutes form, or copy the structure into a
+sheet of your own:</p>
+<p><a href="../assets/minutes/week-6.pdf"><strong>Week 6 minutes template (PDF)</strong></a></p>
+<p>The form covers attendance, what was discussed, any disagreements that
+arose, questions for the contact hour, and action items for the coming
+week. See the <a href="../topics/meetings.html">Meetings</a> topic
+page for the format of meeting minutes in general and the recipe we use
+for disagreements.</p>
+<h2 id="reminders">Reminders</h2>
+<ul>
+<li>The <strong>chair</strong> and the <strong>secretary</strong> for the meeting are different roles,
+  and both rotate from week to week. The secretary writes the minutes
+  during the meeting.</li>
+<li>This is your group's first meeting. An
+  <a href="../assets/agendas/first-meeting.pdf">example agenda</a>
+  for the first meeting is available as a PDF.</li>
+<li>Submit the printed minutes as a group at the weekly contact hour.</li>
+</ul>
+
+
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

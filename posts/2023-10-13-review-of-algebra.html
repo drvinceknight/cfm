@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review of Algebra - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Review of Algebra</h1>
+<p><small>2023-10-13</small></p>
+
+<p>In class today we reviewed the concepts from the Algebra chapter.</p>
+<p>You can see a recording of the class <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3f4f4eee-cd22-4233-84a4-b09500c65282">here</a></p>
+<p>We started off with the quiz reviewing a number of concepts and I'm really sorry
+I messed up the last question. I declared Cian (who was leading at the
+penultimate question) the winner <strong>however</strong> I got my to my desk and input the
+correct answer in the slide, mentimeter was able to redo the results (I should
+have just done this in class) and in fact <strong>Joe</strong> won! So Joe and
+Ben lead the quiz with 1 win each.</p>
+<p>In class today we ended up discussing a number of things as you all asked great
+questions:</p>
+<ul>
+<li>We spoke about code conventions and how <code>sympy.Equation</code> uses a capital <code>E</code>
+  because it follows the convention for <strong>creating</strong> a thing/object. This
+  differs from <code>sympy.solveset</code> (which uses a small <code>s</code>) because this <strong>does</strong>
+  something.</li>
+<li>We also talked a bit about different types of errors, for example a <code>NameError</code>
+  is Python telling you that it does not know what something is. A <code>SyntaxError</code>
+  is Python telling you that you're not writing Python.</li>
+<li>We talked about what the Python Kernel actually is. There is a chapter of
+  Python for Mathematics that goes over this: <a href="https://vknight.org/pfm/further-information/03-kernel/introduction/main.html">Kernels</a>
+  if anyone is interested in understanding this further.</li>
+</ul>
+<p>One thing I did not think we had time to do was cover the <em>coursework like
+exercise from the handout</em>. Do attempt to do that (as well as all the other
+practice exercises available to you) and I'll happily find time for us to go
+over it together.</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

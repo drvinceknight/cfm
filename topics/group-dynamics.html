@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Group dynamics - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Group dynamics</h1>
+
+
+
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Group dynamics", "pick": 5, "questions": [{"q": "Which statement best describes disagreement in a group?", "options": [{"text": "disagreement is normal and often useful; the aim is to handle it well, not eliminate it", "correct": true}, {"text": "disagreement is always a sign of conflict and should be avoided"}, {"text": "groups that never disagree are the most productive"}, {"text": "disagreement should only be raised with the lecturer"}], "explain": "A group that never disagrees may be dominated by one voice or not engaging deeply with the work."}, {"q": "What does a group that never disagrees most likely indicate?", "options": [{"text": "either one member is dominating, or the group is not engaging deeply", "correct": true}, {"text": "the group is functioning perfectly"}, {"text": "the group is more efficient"}, {"text": "the group is following the agenda"}], "explain": "Genuine engagement leads to some disagreement; its absence is itself a warning sign."}, {"q": "Which of these is a disagreement of fact?", "options": [{"text": "two members believe different things about what a function does", "correct": true}, {"text": "two members prefer different code styles"}, {"text": "one member feels another is not contributing"}, {"text": "the group disagrees on which task to tackle next"}], "explain": "Factual disagreements are settled by checking the source."}, {"q": "Which of these is a disagreement of approach?", "options": [{"text": "the group agrees on the goal but disagrees on how to reach it", "correct": true}, {"text": "two members read the docstring differently"}, {"text": "members disagree about how much effort to spend on a task"}, {"text": "one member is not contributing fairly"}], "explain": "Approach disagreements concern means rather than ends."}, {"q": "Which of these is a disagreement of priority?", "options": [{"text": "members disagree about which task to tackle next or how much time to spend on it", "correct": true}, {"text": "two members hold opposite beliefs about a formula"}, {"text": "the group disagrees on the coding style"}, {"text": "one member is consistently late"}], "explain": "Priority disagreements are about where to invest effort."}, {"q": "Which of these is a disagreement of effort?", "options": [{"text": "one member feels that another is not contributing fairly", "correct": true}, {"text": "two members disagree on a numerical answer"}, {"text": "the group disagrees on the order of agenda items"}, {"text": "members differ on coding conventions"}], "explain": "Effort disagreements arise when contributions feel unequal."}, {"q": "What are the four steps of the framework for handling disagreement?", "options": [{"text": "Listen, Restate, Identify, Choose", "correct": true}, {"text": "Discuss, Decide, Defer, Document"}, {"text": "Listen, Discuss, Decide, Defer"}, {"text": "Prepare, Listen, Decide, Record"}], "explain": "These four steps are deliberately prescriptive so they can be recited in the middle of a meeting."}, {"q": "Why does the framework ask each person to restate the other's position?", "options": [{"text": "most disagreements shrink once each person understands what the other actually said", "correct": true}, {"text": "to slow the conversation down"}, {"text": "to keep the secretary busy"}, {"text": "to make the meeting last longer"}], "explain": "Restating tests whether we have actually heard each other."}, {"q": "Why is identifying which kind of disagreement we are in useful?", "options": [{"text": "the right way to resolve depends on the category; identifying it makes the next step obvious", "correct": true}, {"text": "it is required by the marking scheme"}, {"text": "it makes the disagreement feel smaller"}, {"text": "it allows the chair to end the meeting"}], "explain": "Fact, approach, priority and effort disagreements all need slightly different resolutions."}, {"q": "Why does the course prescribe a four-step framework rather than letting groups develop their own?", "options": [{"text": "this is the first year of a three-year layered approach; we are deliberately scaffolding", "correct": true}, {"text": "the framework is the only correct way to handle disagreement"}, {"text": "the framework is shorter than alternatives"}, {"text": "the framework was chosen by the students"}], "explain": "By the final year you will be expected to manage your own group dynamics with confidence."}, {"q": "What is the chair's job when a disagreement arises?", "options": [{"text": "to ensure that no one talks over anyone else and that each position is heard in turn", "correct": true}, {"text": "to decide the outcome alone"}, {"text": "to write the minutes"}, {"text": "to leave the room"}], "explain": "The chair facilitates the discussion; the resolution comes from the framework."}, {"q": "If a factual disagreement persists, what is the natural next step?", "options": [{"text": "check the source: the textbook, the docstring, the data", "correct": true}, {"text": "take a vote"}, {"text": "escalate to the lecturer"}, {"text": "defer the work"}], "explain": "Factual disagreements are resolved by consulting the authoritative source."}, {"q": "Why is it important to record decisions in the minutes?", "options": [{"text": "so the group has a shared written record of what was agreed and can act on it", "correct": true}, {"text": "to please the chair"}, {"text": "because the lecturer reads the minutes"}, {"text": "to make the minutes longer"}], "explain": "Without a written record, the same disagreements tend to recur."}, {"q": "Which of these is the right response to a member who feels left out of a discussion?", "options": [{"text": "the chair invites every member to comment in turn (round-robin)", "correct": true}, {"text": "ignore it; the member should speak up"}, {"text": "always ask the quietest member to speak first"}, {"text": "skip discussion items and go straight to decisions"}], "explain": "Round-robin invites everyone, with the option to pass; it shares the floor without singling people out."}, {"q": "Why is this the first year of a three-year layered approach to group dynamics?", "options": [{"text": "the practices are deliberately prescriptive now and we expect more autonomy in later years", "correct": true}, {"text": "the framework will be removed next year"}, {"text": "first-year groups are different from later-year groups"}, {"text": "this is the only year you will work in groups"}], "explain": "Scaffolding is removed gradually as students gain experience."}]}</script>
+</div>
+
+
+<p>Working in a group is a skill, and like all skills it is built through
+practice. This module is the first of three years in your degree in which
+your group work will be scaffolded; by the final year we will expect you to
+manage your own group dynamics with confidence. This page describes the
+basic, prescriptive practices we ask you to use <strong>right now</strong>, while you are
+learning.</p>
+<p>The single most important point is this: <strong>disagreement in a group is
+normal, and often useful</strong>. A group that never disagrees is either a group
+in which one person is dominating, or a group that is not engaging deeply
+with the work. The aim is not to eliminate disagreement, but to handle it
+productively.</p>
+<h2 id="why-disagreements-happen">Why disagreements happen</h2>
+<p>In academic group work, most disagreements fall into one of a few categories.</p>
+<ul>
+<li>
+<p><strong>Disagreements of fact.</strong> Two members believe different things about how
+  a piece of mathematics works, what a function does, or what a deadline
+  requires. These are the easiest to resolve: check the source.</p>
+</li>
+<li>
+<p><strong>Disagreements of approach.</strong> The group agrees on the goal but disagrees
+  on how to reach it. For example, two members prefer different ways of
+  structuring the code.</p>
+</li>
+<li>
+<p><strong>Disagreements of priority.</strong> Members disagree about how much time and
+  effort to spend on a particular part of the work, or about which task to
+  tackle next.</p>
+</li>
+<li>
+<p><strong>Disagreements of effort.</strong> One member feels that another is not
+  contributing fairly.</p>
+</li>
+</ul>
+<p>Each kind of disagreement is handled slightly differently, but the underlying
+process is the same.</p>
+<h2 id="a-simple-framework">A simple framework</h2>
+<p>We ask you to follow this four-step framework whenever a disagreement
+surfaces. It is deliberately prescriptive: you should be able to recite it
+to yourself in the middle of a meeting.</p>
+<ol>
+<li>
+<p><strong>Listen.</strong> Let each person describe their position in their own words,
+   without interruption. The chair ensures that no one talks over anyone
+   else.</p>
+</li>
+<li>
+<p><strong>Restate.</strong> Each person restates the other's position to that person's
+   satisfaction. This step exists because most disagreements turn out to be
+   smaller than they first appear once both sides understand what the other
+   is actually saying.</p>
+</li>
+<li>
+<p><strong>Identify.</strong> Decide which of the four categories above the disagreement
+   belongs to. This usually makes the next step obvious.</p>
+</li>
+<li>
+<p><strong>Choose.</strong> Pick a resolution and move on. For factual disagreements,
+   look up the answer. For approach disagreements, agree to try one and
+   revisit if it does not work. For priority disagreements, ask the chair
+   to decide. For effort disagreements, see the section below.</p>
+</li>
+</ol>
+<p>The minutes for each meeting include a <strong>disagreements and decisions</strong>
+section. If a disagreement was resolved during the meeting, record the
+resolution there. If it remains open, record what was decided about how to
+move forward (for example, "we will revisit at the next meeting after
+trying both approaches").</p>
+<h2 id="practical-recipes">Practical recipes</h2>
+<p>Some specific techniques the group can use when discussion stalls.</p>
+<p><strong>Take a short break.</strong> A five-minute pause can defuse a stalled argument
+and let everyone return with fresh perspective.</p>
+<p><strong>Try both for a week.</strong> When two reasonable approaches are on the table
+and the cost of trying one is low, agree to try each for a short time and
+review at the next meeting. Record the trial in the minutes.</p>
+<p><strong>Defer to the chair.</strong> The chair for the week is not a leader; they are a
+facilitator. But when a decision is needed and the group is split, the
+chair makes the call. The decision is recorded in the minutes.</p>
+<p><strong>Write it down.</strong> When a discussion is going in circles, ask the secretary
+to write the disagreement on a single sheet of paper in one sentence each
+for each side. Often the disagreement looks smaller in writing than in
+speech.</p>
+<h2 id="disagreements-of-effort">Disagreements of effort</h2>
+<p>Disagreements about effort are the most delicate. They are also the most
+common source of group dysfunction. We ask groups to handle them as follows.</p>
+<p>If you feel that a group member is not contributing fairly, <strong>raise it in a
+meeting, not outside of one</strong>. Use the structured agenda. State the concern
+in terms of observable facts (for example, "the function that was due last
+Tuesday is not yet written") rather than character judgements.</p>
+<p>The minutes record what was said, what was agreed, and what each person
+will do before the next meeting. If the situation does not improve, the
+group raises the issue with the instructor during the contact hour.</p>
+<p>The <a href="../assessment/#marking-scheme">geometric mean marking scheme</a>
+is designed to make this fair. A member who does not contribute will not
+benefit from the rest of the group's strong work, and a member who
+carries the group will not be marked down by the weakest contributor.</p>
+<h2 id="inclusive-practice">Inclusive practice</h2>
+<p>A group of four or five people will always include people who speak
+readily and people who speak less readily. A well-functioning group makes
+space for both <strong>without putting any single member on the spot</strong>.</p>
+<p>We ask the chair to do two things at each meeting:</p>
+<ol>
+<li>
+<p><strong>Take open discussion points round-robin.</strong> When the meeting reaches
+   a discussion item, the chair invites each member in turn to comment.
+   Vary the starting member from week to week so the same person is not
+   always first or last. State at the outset that any member may pass
+   without comment, and treat a pass as unremarkable. The aim is to make
+   contribution the default and silence a free choice, rather than to
+   single out who is quiet.</p>
+</li>
+<li>
+<p><strong>Check decisions explicitly.</strong> Before moving on from a decision, the
+   chair asks each member in turn whether they agree. A nod is not
+   enough; each member says yes, or no with a reason.</p>
+</li>
+</ol>
+<p>These practices look artificial when you first use them. By the third or
+fourth meeting they feel ordinary.</p>
+
+
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

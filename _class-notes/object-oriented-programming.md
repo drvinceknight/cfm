@@ -291,7 +291,9 @@ We can also use this to check for larger group sizes::
     >>> test_group(elements=permutations)
     True
 
-### After class communication
+## Communications
+
+### After class
 
     Hi all,
 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overview of assessment performance - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Overview of assessment performance</h1>
+<p><small>2024-05-21</small></p>
+
+<p>In this post I will discuss the performance of the class:</p>
+<ul>
+<li>Summarise the overall performance of the class (including the performance on
+  the individual coursework);</li>
+<li>Summarise the performance of the class on the group coursework</li>
+</ul>
+<p><strong>Note that at this point in time the marks are provisional and could be scaled
+by the Exam board.</strong></p>
+<h2 id="overall-class-performance">Overall class performance</h2>
+<p>A summary of the overall class performance is given here:</p>
+<pre><code class="language-txt">count    235
+mean      72.38
+std       17.84
+min        0
+25%       63
+50%       74.5
+75%       85.25
+max      100
+</code></pre>
+<p>The average is a bit above the University guidelines which are that the mean class mark
+should be within \(62 \pm \frac{80}{\sqrt{n}}\) where \(n\) is 235 in this class (the
+number of students in the class).</p>
+<h2 id="group-class-performance">Group class performance</h2>
+<p>I was incredibly impressed with the work you accomplished this Semester. Some
+projects where really innovative and well executed.</p>
+<p>Some of the projects were really excellent and went up and above of what was
+expected.</p>
+<p>I particularly enjoyed a number of discussions I had with groups this Semester.
+Some of you clearly put a lot of work in to this work and you should be proud of
+overcoming the various hurdles and difficulties.</p>
+<p>A summary of the class marks are here:</p>
+<pre><code class="language-txt">count    235
+mean      61.02
+std       25.61
+min        0
+25%       39
+50%       69
+75%       75
+max      100
+</code></pre>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

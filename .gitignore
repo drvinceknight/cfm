@@ -21,13 +21,13 @@ my_plot.pdf
 *.vrb
 *.pygstyle
 *.pygtex
-*cache*
+__pycache__/
+.venv/
 *.mov
 docs/_build/*
 nbs/chapters/plot.pdf
 *bbl
 *blg
-index.html
 _build
 **/submissions/*
 **/sent.txt
@@ -49,3 +49,14 @@ assets/assessment/2023-2024/ind/cy/
 assets/assessment/2023-2024/ind/docstrings.txt
 assets/assessment/2023-2024/ind/main.ipynb
 assets/assessment/2023-2024/to_upload.csv
+
+# Marking working files: these carry identifiable student information and
+# marks.  The published copies of past assessments live in
+# assets/assessment/past/.
+assets/assessment/[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]/
+gc_*.csv
+
+# Generated PDFs: the served copies are committed under assets/.
+tex/**/*.pdf
+
+.ipynb_checkpoints/

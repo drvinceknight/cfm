@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ site_title }}</h1>
+
+<div class="textbook-note">
+  <strong>About the textbook.</strong> This course follows the open-source
+  textbook <em>Python for mathematics</em> at
+  <a href="https://vknight.org/pfm/">vknight.org/pfm</a>, which contains every
+  topic we cover, with worked tutorials, how-to recipes, exercises and full
+  solutions. Not every chapter of the textbook is on the course: the schedule
+  below lists what we cover, but you are very welcome to read the other
+  chapters too.
+</div>
+
+<h2 id="schedule">Schedule</h2>
+
+{% for semester in toc %}
+<h3>{{ semester.title }}</h3>
+{% for week in semester.weeks %}
+<h4>{{ week.title }}</h4>
+<ul>
+{% for topic in week.topics %}
+  <li><a href="{{ baseurl }}/topics/{{ topic.title | slugify }}.html">{{ topic.title }}</a></li>
+{% endfor %}
+</ul>
+{% endfor %}
+{% endfor %}
+
+<h2 id="faqs">FAQs</h2>
+{% for faq in faqs %}
+<h3 id="{{ faq.slug }}">{{ faq.title }}</h3>
+{{ faq.content_html }}
+{% endfor %}
+
+<h2 id="assessment-link"><a href="{{ baseurl }}/assessment/">Assessment</a></h2>
+
+{% endblock %}

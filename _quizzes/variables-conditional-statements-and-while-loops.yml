@@ -1,0 +1,137 @@
+title: Variables, conditional statements and while loops
+pick: 5
+questions:
+  - q: "Which of these correctly assigns the value 7 to a variable `n`?"
+    options:
+      - text: "`n = 7`"
+        correct: true
+      - text: "`7 = n`"
+      - text: "`let n = 7`"
+      - text: "`n == 7`"
+    explain: "In Python `=` is the assignment operator; `==` is the equality test."
+
+  - q: "What is `==` used for in Python?"
+    options:
+      - text: "comparing two values for equality"
+        correct: true
+      - text: "assigning one variable to another"
+      - text: "checking for identity"
+      - text: "raising to a power"
+    explain: "`==` returns `True` when both sides are equal."
+
+  - q: "Which keyword starts a conditional in Python?"
+    options:
+      - text: "`if`"
+        correct: true
+      - text: "`when`"
+      - text: "`?`"
+      - text: "`switch`"
+    explain: "Python uses `if`, with optional `elif` and `else` branches."
+
+  - q: "What does the following return when `n = 4`? `n % 2 == 0`"
+    options:
+      - text: "`True`"
+        correct: true
+      - text: "`False`"
+      - text: "0"
+      - text: "an error"
+    explain: "`n % 2` is the remainder of `n` divided by 2; for `n = 4` this is 0, which equals 0."
+
+  - q: "What is the role of indentation in a Python `if` statement?"
+    options:
+      - text: "it marks the code block that runs when the condition is true"
+        correct: true
+      - text: "it is purely cosmetic"
+      - text: "it determines variable scope only"
+      - text: "it must always be a tab"
+    explain: "Python uses indentation to delimit blocks. Consistent four-space indentation is conventional."
+
+  - q: "Which loop is best when we know how many iterations are needed?"
+    options:
+      - text: "a `for` loop over a `range`"
+        correct: true
+      - text: "a `while` loop with no condition"
+      - text: "a recursive function"
+      - text: "a `try` block"
+    explain: "`for n in range(21)` makes the iteration count explicit."
+
+  - q: "Which loop is best when we do not know in advance how many iterations are needed?"
+    options:
+      - text: "a `while` loop with a stopping condition"
+        correct: true
+      - text: "a `for` loop"
+      - text: "a list comprehension"
+      - text: "a `match` statement"
+    explain: "A `while boolean:` loop keeps running until the condition fails."
+
+  - q: "What does `range(21)` produce?"
+    options:
+      - text: "the integers 0, 1, 2, ..., 20"
+        correct: true
+      - text: "the integers 1, 2, 3, ..., 21"
+      - text: "the integer 21"
+      - text: "the integers 0 to 21 inclusive"
+    explain: "`range(stop)` starts at 0 and stops just before `stop`."
+
+  - q: "Given `import sympy as sym`, how do we check if 47 is prime?"
+    options:
+      - text: "`sym.isprime(47)`"
+        correct: true
+      - text: "`sym.is_prime(47)`"
+      - text: "`sym.prime(47)`"
+      - text: "`sym.factor(47).is_prime`"
+    explain: "`sym.isprime(n)` returns `True` if `n` is prime."
+
+  - q: "What does `all(checks)` return when `checks` is a list of booleans?"
+    options:
+      - text: "`True` only if every element of `checks` is `True`"
+        correct: true
+      - text: "`True` only if at least one element is `True`"
+      - text: "the number of `True` elements"
+      - text: "the first `True` element"
+    explain: "`all` is a Python built-in that tests whether every element is truthy."
+
+  - q: "What does `any(checks)` return when `checks` is a list of booleans?"
+    options:
+      - text: "`True` if at least one element of `checks` is `True`"
+        correct: true
+      - text: "`True` only if every element is `True`"
+      - text: "the number of `True` elements"
+      - text: "the last element"
+    explain: "`any` returns `True` as soon as one element is truthy."
+
+  - q: "Which list comprehension collects `p(n)` for `n` from 0 to 20?"
+    options:
+      - text: "`[p(n) for n in range(21)]`"
+        correct: true
+      - text: "`[p(n) for n in range(20)]`"
+      - text: "`(p(n) for n in range(21))`"
+      - text: "`p(range(21))`"
+    explain: "`range(21)` gives 0 through 20 inclusive, which is what we want."
+
+  - q: "What is wrong with a `while` loop whose condition is always `True`?"
+    options:
+      - text: "it never stops (an infinite loop), unless we `break` out of it"
+        correct: true
+      - text: "it stops immediately"
+      - text: "it raises a `ValueError`"
+      - text: "it loops exactly once"
+    explain: "Without a way for the condition to become false (or a `break`), the loop runs forever."
+
+  - q: "Which statement leaves a loop early?"
+    options:
+      - text: "`break`"
+        correct: true
+      - text: "`return`"
+      - text: "`stop`"
+      - text: "`exit`"
+    explain: "`break` exits the innermost enclosing loop."
+
+  - q: "Which statement skips the rest of the current iteration?"
+    options:
+      - text: "`continue`"
+        correct: true
+      - text: "`break`"
+      - text: "`pass`"
+      - text: "`return`"
+    explain: "`continue` jumps straight to the next iteration of the loop."

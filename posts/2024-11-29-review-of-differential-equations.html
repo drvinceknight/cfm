@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab and Review of Differential Equations - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Lab and Review of Differential Equations</h1>
+<p><small>2024-11-29</small></p>
+
+<p>You can see the recordings from the Lab and the review session below:</p>
+<ul>
+<li><a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c3108da0-8489-49c5-9155-b23500c0ba73">Lab</a></li>
+<li><a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=a4145d84-60ca-48c3-90fe-b23200a56a4e">Review class</a></li>
+</ul>
+<p>You can see the notebooks:</p>
+<ul>
+<li><a href="../assets/nbs/2024-2025/differential-equations-tutorial.ipynb">differential-equations-tutorial</a></li>
+<li><a href="../assets/nbs/2024-2025/differential-equations-review.ipynb">differential-equations-review</a></li>
+</ul>
+<p>This week's quiz was won again by Michael.</p>
+<p>7 usernames have won:</p>
+<ul>
+<li>Michael</li>
+<li>bc</li>
+<li>Dmitry (2)</li>
+<li>Homelander</li>
+<li>Hacker</li>
+<li>Matt</li>
+<li>Michael</li>
+</ul>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

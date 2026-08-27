@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - {{ site_title }}{% endblock %}
+
+{% block content %}
+
+<p class="breadcrumb">
+  <a href="{{ baseurl }}/assessment/example-projects/#{{ page.project }}">Example Group Projects / {{ page.project }}</a>
+  /
+  {{ page.title }}
+</p>
+
+<h1>{{ page.title }}</h1>
+
+<div class="highlight"><pre><code class="language-{{ page.language }}">{{ page.body | safe }}</code></pre></div>
+
+{% endblock %}

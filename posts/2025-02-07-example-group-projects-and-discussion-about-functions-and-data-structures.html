@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project examples, Functions and Data Structures - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Project examples, Functions and Data Structures</h1>
+<p><small>2025-02-07</small></p>
+
+<p>In class today we spoke about group coursework an I showed you two examples of past projects.</p>
+<p>You can see a recording of this <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=262587de-c824-4b5b-a7d0-b27800c662a1">here</a></p>
+<p>I spoke at length about what you are required to submit and when we will cover these aspects of the course.</p>
+<p>After this I worked through an example of using functions and data structues to check the following identity:</p>
+<div class="arithmatex">\[(a + b) ^ n = \sum_{i=0}^n\binom{n}{i} a ^ i b ^ {n - i}\]</div>
+<p>You can find a notebook with all this <a href="../assets/nbs/2024-2025/functions-and-data-structures.ipynb">here</a></p>
+<p>In your groups I would expect you to now:</p>
+<ol>
+<li>Identify a regular time in your timetable to meet each week.</li>
+<li>Use your first meeting to discuss ideas for your project.</li>
+<li>Work through <a href="https://vknight.org/pfm/building-tools/02-functions-and-data-structures/introduction/main.html">this chapter</a> of Python for Mathematics.</li>
+</ol>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

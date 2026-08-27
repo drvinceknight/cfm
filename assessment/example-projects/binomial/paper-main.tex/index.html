@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>paper/main.tex - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#binomial">Example Group Projects / binomial</a>
+  /
+  paper/main.tex
+</p>
+
+<h1>paper/main.tex</h1>
+
+<div class="highlight"><pre><code class="language-latex"><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="na">[margin=1in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>parskip<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath, amssymb, amsthm<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
+
+<span class="k">\title</span><span class="nb">{</span>A small library for the binomial distribution<span class="nb">}</span>
+<span class="k">\author</span><span class="nb">{</span>Group N<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\maketitle</span>
+
+<span class="k">\begin</span><span class="nb">{</span>abstract<span class="nb">}</span>
+We present <span class="k">\texttt</span><span class="nb">{</span>binomial<span class="nb">}</span>, a small Python library for the binomial
+distribution <span class="s">\(</span><span class="nb">X </span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\text</span><span class="nb">{Bin}</span><span class="o">(</span><span class="nb">n, p</span><span class="o">)</span><span class="s">\)</span>. The library exposes five
+short functions: the probability mass function, the cumulative
+distribution function, the mean, the variance, and a simulator. The
+binomial coefficient is computed exactly with
+<span class="k">\texttt</span><span class="nb">{</span>scipy.special.comb<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>virtanen2020<span class="nb">}</span>. We verify the
+library on the fair-coin case <span class="s">\(</span><span class="nb">n </span><span class="o">=</span><span class="nb"> </span><span class="m">10</span><span class="s">\)</span>, <span class="s">\(</span><span class="nb">p </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="s">\)</span>: the PMF and
+CDF agree with the textbook values, the PMF sums to one, and the
+empirical mean of <span class="s">\(</span><span class="m">5000</span><span class="s">\)</span> simulated draws of <span class="s">\(</span><span class="nv">\text</span><span class="nb">{Bin}</span><span class="o">(</span><span class="m">20</span><span class="nb">, </span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="o">)</span><span class="s">\)</span>
+lies within <span class="s">\(</span><span class="m">0</span><span class="nb">.</span><span class="m">3</span><span class="s">\)</span> of the theoretical mean of <span class="s">\(</span><span class="m">10</span><span class="s">\)</span>. The library
+follows the Diataxis framework for documentation~<span class="k">\cite</span><span class="nb">{</span>procida2017<span class="nb">}</span>
+and the combinatorics and probability chapters of the open-source
+textbook <span class="k">\emph</span><span class="nb">{</span>Python for Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+<span class="k">\end</span><span class="nb">{</span>abstract<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Introduction<span class="nb">}</span>
+
+The binomial distribution describes the number of successes in <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span>
+independent Bernoulli trials, each with success probability
+<span class="s">\(</span><span class="nb">p </span><span class="nv">\in</span><span class="nb"> </span><span class="o">[</span><span class="m">0</span><span class="nb">, </span><span class="m">1</span><span class="o">]</span><span class="s">\)</span>. Writing <span class="s">\(</span><span class="nb">X </span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\text</span><span class="nb">{Bin}</span><span class="o">(</span><span class="nb">n, p</span><span class="o">)</span><span class="s">\)</span>, the
+probability mass function and the cumulative distribution function
+are
+
+<span class="sb">\[</span>
+<span class="nb">    P</span><span class="o">(</span><span class="nb">X </span><span class="o">=</span><span class="nb"> k</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\binom</span><span class="nb">{n}{k} p^k </span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> p</span><span class="o">)</span><span class="nb">^{n </span><span class="o">-</span><span class="nb"> k},</span>
+<span class="nb">    </span><span class="nv">\qquad</span>
+<span class="nb">    P</span><span class="o">(</span><span class="nb">X </span><span class="nv">\le</span><span class="nb"> k</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\sum</span><span class="nb">_{j </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="nb">}^{k} </span><span class="nv">\binom</span><span class="nb">{n}{j} p^j </span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> p</span><span class="o">)</span><span class="nb">^{n </span><span class="o">-</span><span class="nb"> j},</span>
+<span class="s">\]</span>
+
+and the mean and variance are <span class="s">\(</span><span class="nv">\mathbb</span><span class="nb">{E}</span><span class="o">[</span><span class="nb">X</span><span class="o">]</span><span class="nb"> </span><span class="o">=</span><span class="nb"> n p</span><span class="s">\)</span> and
+<span class="s">\(</span><span class="nv">\text</span><span class="nb">{Var}</span><span class="o">(</span><span class="nb">X</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> n p </span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> p</span><span class="o">)</span><span class="s">\)</span>~<span class="k">\cite</span><span class="nb">{</span>ross2014<span class="nb">}</span>.
+
+The binomial distribution is built into
+<span class="k">\texttt</span><span class="nb">{</span>scipy.stats.binom<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>virtanen2020<span class="nb">}</span>, which provides every
+function we implement here. We wanted a small library that we could
+read and understand line by line, with the binomial coefficient
+computed exactly and the simulator written out as Bernoulli trials.
+
+We present a five-function library,
+<span class="k">\texttt</span><span class="nb">{</span>binomial<span class="nb">}</span>; we verify it on the fair-coin case <span class="s">\(</span><span class="nb">n </span><span class="o">=</span><span class="nb"> </span><span class="m">10</span><span class="s">\)</span>,
+<span class="s">\(</span><span class="nb">p </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="s">\)</span>; and we show that the empirical mean of <span class="s">\(</span><span class="m">5000</span><span class="s">\)</span>
+simulated draws of <span class="s">\(</span><span class="nv">\text</span><span class="nb">{Bin}</span><span class="o">(</span><span class="m">20</span><span class="nb">, </span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="o">)</span><span class="s">\)</span> is close to the
+theoretical mean.
+
+<span class="k">\section</span><span class="nb">{</span>The library<span class="nb">}</span>
+
+The library lives in the single module <span class="k">\texttt</span><span class="nb">{</span>binomial.py<span class="nb">}</span> and
+follows the combinatorics and probability chapters of <span class="k">\emph</span><span class="nb">{</span>Python
+for Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+
+<span class="k">\texttt</span><span class="nb">{</span>pmf(number<span class="k">\_of\_successes</span>,
+number<span class="k">\_of\_trials</span>, success<span class="k">\_probability</span>)<span class="nb">}</span> returns
+<span class="s">\(</span><span class="nv">\binom</span><span class="nb">{n}{k} p^k </span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> p</span><span class="o">)</span><span class="nb">^{n </span><span class="o">-</span><span class="nb"> k}</span><span class="s">\)</span>. The binomial coefficient is
+computed exactly with <span class="k">\texttt</span><span class="nb">{</span>scipy.special.comb(<span class="k">\dots</span>,
+exact=True)<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>virtanen2020<span class="nb">}</span>; we then multiply by the
+probabilities.
+
+<span class="k">\texttt</span><span class="nb">{</span>cdf(number<span class="k">\_of\_successes</span>,
+number<span class="k">\_of\_trials</span>, success<span class="k">\_probability</span>)<span class="nb">}</span> returns the partial sum
+of the PMF up to <span class="s">\(</span><span class="nb">k</span><span class="s">\)</span>. Summing eleven floats for a small <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> is
+cheap, so we did not reach for <span class="k">\texttt</span><span class="nb">{</span>scipy.stats.binom.cdf<span class="nb">}</span>.
+
+<span class="k">\texttt</span><span class="nb">{</span>mean(number<span class="k">\_of\_trials</span>, success<span class="k">\_probability</span>)<span class="nb">}</span> and
+<span class="k">\texttt</span><span class="nb">{</span>variance(number<span class="k">\_of\_trials</span>, success<span class="k">\_probability</span>)<span class="nb">}</span> return
+<span class="s">\(</span><span class="nb">n p</span><span class="s">\)</span> and <span class="s">\(</span><span class="nb">n p </span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> p</span><span class="o">)</span><span class="s">\)</span> respectively.
+
+<span class="k">\texttt</span><span class="nb">{</span>simulate(number<span class="k">\_of\_trials</span>, success<span class="k">\_probability</span>,
+number<span class="k">\_of\_simulations</span>, seed)<span class="nb">}</span> draws each binomial sample as the
+number of <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> independent uniform draws that fall below <span class="s">\(</span><span class="nb">p</span><span class="s">\)</span>. The
+``seed&#39;&#39; argument lets us reproduce a simulation.
+
+<span class="k">\section</span><span class="nb">{</span>Worked example<span class="nb">}</span>
+
+We illustrate the library on the fair-coin case <span class="s">\(</span><span class="nb">n </span><span class="o">=</span><span class="nb"> </span><span class="m">10</span><span class="s">\)</span>,
+<span class="s">\(</span><span class="nb">p </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="s">\)</span>. The PMF and CDF agree with the textbook values shown
+in Table~<span class="k">\ref</span><span class="nb">{</span>tab:fair-coin<span class="nb">}</span>. The PMF sums to one and the CDF
+reaches one at <span class="s">\(</span><span class="nb">k </span><span class="o">=</span><span class="nb"> n</span><span class="s">\)</span>.
+
+<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[h]
+<span class="k">\centering</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>r l l<span class="nb">}</span>
+<span class="k">\toprule</span>
+<span class="s">\(</span><span class="nb">k</span><span class="s">\)</span> <span class="nb">&amp;</span> <span class="s">\(</span><span class="nb">P</span><span class="o">(</span><span class="nb">X </span><span class="o">=</span><span class="nb"> k</span><span class="o">)</span><span class="s">\)</span> <span class="nb">&amp;</span> <span class="s">\(</span><span class="nb">P</span><span class="o">(</span><span class="nb">X </span><span class="nv">\le</span><span class="nb"> k</span><span class="o">)</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="k">\midrule</span>
+0  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">1</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span>    <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">1</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span> <span class="k">\\</span>
+1  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">10</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span>   <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">11</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span> <span class="k">\\</span>
+2  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">45</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span>   <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">56</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span> <span class="k">\\</span>
+3  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">120</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span>  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">176</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span> <span class="k">\\</span>
+4  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">210</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span>  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">386</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span> <span class="k">\\</span>
+5  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">252</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span>  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">638</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="k">\bottomrule</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>The PMF and CDF of <span class="s">$</span><span class="nb">X </span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\text</span><span class="nb">{Bin}</span><span class="o">(</span><span class="m">10</span><span class="nb">, </span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="o">)</span><span class="s">$</span>.<span class="nb">}</span>
+The mode is at <span class="s">\(</span><span class="nb">k </span><span class="o">=</span><span class="nb"> </span><span class="m">5</span><span class="s">\)</span>, with probability <span class="s">\(</span><span class="m">252</span><span class="o">/</span><span class="m">1024</span><span class="s">\)</span>. The library
+returns these values to floating-point precision, with the binomial
+coefficient computed exactly.<span class="nb">}</span>
+<span class="k">\label</span><span class="nb">{</span>tab:fair-coin<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+
+For <span class="s">\(</span><span class="nv">\text</span><span class="nb">{Bin}</span><span class="o">(</span><span class="m">20</span><span class="nb">, </span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="o">)</span><span class="s">\)</span> the theoretical mean is <span class="s">\(</span><span class="m">10</span><span class="s">\)</span> and the
+theoretical variance is <span class="s">\(</span><span class="m">5</span><span class="s">\)</span>. The empirical mean of <span class="s">\(</span><span class="m">5000</span><span class="s">\)</span>
+simulated draws lies within <span class="s">\(</span><span class="m">0</span><span class="nb">.</span><span class="m">3</span><span class="s">\)</span> of the theoretical mean in the
+seeded run that we used as a test.
+
+<span class="k">\section</span><span class="nb">{</span>Discussion<span class="nb">}</span>
+
+<span class="k">\texttt</span><span class="nb">{</span>scipy.stats.binom<span class="nb">}</span> would have
+covered everything. We wrote a small library because we wanted to
+read the formulas inside, and because each function ends up being a
+single line that maps to the definition in the probability
+chapter~<span class="k">\cite</span><span class="nb">{</span>ross2014<span class="nb">}</span>.
+
+The default
+<span class="k">\texttt</span><span class="nb">{</span>scipy.special.comb<span class="nb">}</span> returns a float, which is fast but
+already rounded for moderately large <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span>. With <span class="k">\texttt</span><span class="nb">{</span>exact=True<span class="nb">}</span>
+the function returns a Python integer, so the factor in front of
+<span class="s">\(</span><span class="nb">p^k </span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> p</span><span class="o">)</span><span class="nb">^{n </span><span class="o">-</span><span class="nb"> k}</span><span class="s">\)</span> is exact and only the probabilities
+contribute rounding error.
+
+The library handles only the binomial
+distribution. A natural extension is the multinomial distribution,
+which generalises to more than two outcomes per trial. The same
+approach (an exact multinomial coefficient and an explicit
+simulator) would carry over.
+
+<span class="k">\section</span><span class="nb">{</span>Conclusion<span class="nb">}</span>
+
+We have presented <span class="k">\texttt</span><span class="nb">{</span>binomial<span class="nb">}</span>, a small library for the
+binomial distribution. The library agrees with the textbook values
+for the fair-coin case and the simulator produces samples whose
+empirical mean is close to the theoretical mean.
+
+<span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
+<span class="k">\bibliography</span><span class="nb">{</span>references<span class="nb">}</span>
+
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

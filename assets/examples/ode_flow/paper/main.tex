@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{A small library for first-order initial value problems}
+\author{Group N}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present \texttt{ode\_flow}, a small Python library for solving and
+sampling first-order initial value problems of the form
+\(y'(t) = f(t, y(t))\) with \(y(t_0) = y_0\). The library is a thin
+wrapper around \texttt{sympy.dsolve}~\cite{meurer2017}, with
+additional helpers to evaluate the solution at a list of times and to
+verify that a candidate expression satisfies the ODE. We illustrate
+the library on three standard problems: exponential growth, constant
+growth, and quadratic growth. The library follows the Diataxis
+framework for documentation~\cite{procida2017} and the differential
+equations chapter of the open-source textbook \emph{Python for
+Mathematics}~\cite{knight2024}.
+\end{abstract}
+
+\section{Introduction}
+
+A first-order ordinary differential equation has the form
+
+\[
+    y'(t) = f(t, y(t)),
+\]
+
+and an initial value problem adds the condition \(y(t_0) = y_0\). For
+many right-hand sides \(f\) the solution can be written in closed
+form by recognising one of the standard cases (separable, linear,
+exact)~\cite{boyce2017}. The library \texttt{sympy}~\cite{meurer2017}
+implements these cases through \texttt{sympy.dsolve}, so we treat the
+solver as the engine and focus on a small wrapper that makes the
+common operations easy.
+
+We present a three-function library,
+\texttt{ode\_flow}, that solves a first-order initial value problem,
+samples the solution at a list of times, and verifies that a
+candidate expression satisfies the ODE.
+
+\section{The library}
+
+The library lives in the single module \texttt{ode\_flow.py} and
+follows the differential equations chapter of \emph{Python for
+Mathematics}~\cite{knight2024}: we use \texttt{sym.Function} for the
+unknown, \texttt{sym.Eq} for the equation, and \texttt{sym.dsolve}
+with the \texttt{ics} keyword for the initial condition.
+
+\texttt{solve\_initial\_value\_problem(right\_hand\_side,
+time\_variable, function, initial\_time, initial\_value)} builds the
+equation, calls \texttt{sym.dsolve}, and returns the right-hand side
+of the resulting equation \texttt{y(t) = expression}.
+
+\texttt{trajectory(solution\_expression, time\_variable,
+sample\_times)} evaluates the solution at a list of times. Each
+evaluation is cast to \texttt{float} so the output is easy to plot.
+
+\texttt{verify\_solution(solution\_expression, right\_hand\_side,
+time\_variable, function)} substitutes the candidate into the
+right-hand side and compares with the derivative of the candidate;
+the two simplify to the same expression for a genuine solution.
+
+\section{Worked examples}
+
+The problem \(y' = y\) with
+\(y(0) = 1\) has the well-known solution \(y(t) = e^t\). The library
+recovers this exactly; sampling at \(t = 0, 1, 2\) gives
+\(1, e, e^2\) cast to floats. The verifier accepts \(e^t\) and
+rejects \(t\).
+
+The problem \(y' = 1\) with \(y(0) = 0\)
+has the solution \(y(t) = t\). The library returns this in one line.
+
+The problem \(y' = 2t\) with \(y(0) = 0\)
+has the solution \(y(t) = t^2\). Sampling at the integer times
+\(0, 1, 2, 3\) gives the squares \(0, 1, 4, 9\).
+
+The problem \(y' = y\) with
+\(y(1) = e\) also has the solution \(y(t) = e^t\); the verifier
+accepts it. This is useful because it confirms that the initial
+condition does not need to be at \(t_0 = 0\).
+
+\section{Discussion}
+
+\texttt{sym.dsolve} can already solve
+everything in this paper. The library exists because we wanted a
+shorter interface for the common case (first-order, scalar, initial
+value problem), and because building the equation and the
+\texttt{ics} dictionary by hand each time is fiddly enough that we
+preferred to encapsulate it.
+
+The library handles only scalar first-order
+problems. Systems of ODEs, higher-order equations, and boundary value
+problems are all natural extensions. A natural next step is to allow
+the right-hand side to depend on extra parameters and to expose the
+sweep over those parameters as a separate function.
+
+\section{Conclusion}
+
+We have presented \texttt{ode\_flow}, a three-function library for
+first-order initial value problems. The library recovers the
+closed-form solutions of three standard problems and confirms them
+through both sampling and symbolic verification.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meetings - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Meetings</h1>
+
+
+
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Meetings", "pick": 5, "questions": [{"q": "What is the key difference between a meeting and a workshop in this course?", "options": [{"text": "a meeting has a fixed agenda and produces decisions; a workshop is a working session with laptops open", "correct": true}, {"text": "meetings happen online; workshops happen in person"}, {"text": "meetings have a chair; workshops do not"}, {"text": "workshops are longer than meetings"}], "explain": "Conflating the two produces a poor version of both."}, {"q": "What are the three purposes of a meeting we use in this course?", "options": [{"text": "Inform, Discuss, Decide", "correct": true}, {"text": "Plan, Build, Review"}, {"text": "Read, Discuss, Write"}, {"text": "Inform, Plan, Submit"}], "explain": "Every agenda item should serve exactly one of these three purposes."}, {"q": "What are the three phases of a meeting?", "options": [{"text": "Before, During, After", "correct": true}, {"text": "Open, Discuss, Decide"}, {"text": "Plan, Run, Reflect"}, {"text": "Agenda, Discussion, Minutes"}], "explain": "Each phase has its own job: preparing the agenda, working through it, and following up."}, {"q": "What is the role of the chair?", "options": [{"text": "to keep the meeting on time and move it through the agenda", "correct": true}, {"text": "to take the minutes"}, {"text": "to write the code afterwards"}, {"text": "to decide alone what the group does"}], "explain": "The chair facilitates; the group decides."}, {"q": "What is the role of the secretary?", "options": [{"text": "to record the discussion, decisions and action items", "correct": true}, {"text": "to chair the meeting"}, {"text": "to schedule the next meeting only"}, {"text": "to write code during the meeting"}], "explain": "The minutes are the secretary's responsibility for the week."}, {"q": "Why rotate the secretary role each week?", "options": [{"text": "so every member shares responsibility and gains experience taking minutes", "correct": true}, {"text": "because the marking scheme requires it"}, {"text": "to make the minutes shorter"}, {"text": "to keep the chair happy"}], "explain": "Rotation distributes the workload and gives every member the experience."}, {"q": "If an agenda item is neither an information item, a discussion item, nor a decision item, what is the recommendation?", "options": [{"text": "the item is not yet ready for the meeting; revise it first", "correct": true}, {"text": "include it anyway and see what happens"}, {"text": "remove it permanently"}, {"text": "ask the chair to clarify it on the spot"}], "explain": "Items that do not have a clear purpose waste meeting time."}, {"q": "What is the recommendation about whether to hold a meeting with no clear purpose?", "options": [{"text": "reschedule it; a meeting with no clear purpose is worse than no meeting", "correct": true}, {"text": "hold it anyway, in case something comes up"}, {"text": "cancel it permanently"}, {"text": "make it longer to find a purpose"}], "explain": "Meetings cost everyone time; have one only when there is something to inform, discuss or decide."}, {"q": "What should an action item include?", "options": [{"text": "the action, the name of the person responsible and the deadline", "correct": true}, {"text": "the action only"}, {"text": "the action and the name of the chair"}, {"text": "the action and a list of options"}], "explain": "Action items are how the meeting translates into work; ownership and a deadline are essential."}, {"q": "Which of these is the right place for free-flowing discussion of how to fix a bug?", "options": [{"text": "the workshop that follows the meeting", "correct": true}, {"text": "the meeting itself"}, {"text": "an email thread after the meeting"}, {"text": "the minutes"}], "explain": "Detailed problem-solving belongs in the workshop, not the meeting."}, {"q": "Why share the agenda before the meeting rather than at the start?", "options": [{"text": "so every member can prepare and the meeting can start on time", "correct": true}, {"text": "to make the chair's job easier"}, {"text": "to fill space in email"}, {"text": "to allow members to skip the meeting"}], "explain": "Members who have read the agenda contribute better and the meeting runs faster."}, {"q": "What is the best way to phrase a discussion item on the agenda?", "options": [{"text": "as a specific question with one or more candidate answers", "correct": true}, {"text": "as a single keyword"}, {"text": "as a long paragraph of context"}, {"text": "as a decision already made"}], "explain": "A specific question focuses the discussion; a vague item drifts."}, {"q": "What is the best way to phrase a decision item on the agenda?", "options": [{"text": "as the decision to be made, framed as a question", "correct": true}, {"text": "as a brainstorm"}, {"text": "as an information item"}, {"text": "as a follow-up to last week"}], "explain": "Stating the decision as a question makes it clear when the item is closed."}, {"q": "What is the relationship between the meeting and the minutes you submit?", "options": [{"text": "the minutes record what happened in the meeting and are submitted to evidence the group's work", "correct": true}, {"text": "the minutes replace the meeting"}, {"text": "the minutes are only for the chair"}, {"text": "the minutes are private"}], "explain": "Minutes turn a transient conversation into a written record."}, {"q": "Why does the meeting end when the agenda is exhausted?", "options": [{"text": "the meeting has done its job; further conversation belongs in a workshop or a later meeting", "correct": true}, {"text": "it has to last a fixed time"}, {"text": "the chair gets tired"}, {"text": "the secretary has too much to write"}], "explain": "Meetings are shorter than people expect when the agenda is genuinely followed."}]}</script>
+</div>
+
+
+<p>In the second half of this module your group meets every week. The quality of
+those meetings is the foundation for everything else you produce together.
+These notes describe what a meeting is, what it is not, and how to run one.</p>
+<p>The material is adapted from the
+<a href="https://github.com/drvinceknight/pom">Principles of Meetings</a> repository,
+which itself summarises the literature on effective meetings [1, 2].</p>
+<h2 id="a-meeting-is-not-a-workshop">A meeting is not a workshop</h2>
+<p>The two activities that take place during group work in this course are
+<strong>meetings</strong> and <strong>workshops</strong>. They serve different purposes and are run
+differently.</p>
+<p>A <strong>meeting</strong> is a structured gathering with a fixed agenda. The group comes
+together to inform, discuss, or decide. People take turns to speak, decisions
+are recorded, and the meeting ends when the agenda is exhausted. A meeting is
+short. It does not need a laptop.</p>
+<p>A <strong>workshop</strong> is a group working session. The group sits together to write
+code, debug a function, draft a paragraph, or work through an exercise.
+Laptops are open. Discussion is informal and free-flowing. There is no fixed
+agenda; instead, there is a piece of work to make progress on.</p>
+<p>We emphasise the distinction because the two are often conflated, and the
+result is a poor version of both. A workshop dressed up as a meeting wastes
+time. A meeting that drifts into a workshop never reaches its decisions.</p>
+<p>In practice your group will hold a short meeting at the start of each
+collaboration session, then move into a workshop for the rest of the time.
+The meeting is what produces the minutes you submit.</p>
+<h2 id="the-three-purposes-of-a-meeting">The three purposes of a meeting</h2>
+<p>Every meeting has one of three purposes:</p>
+<ol>
+<li><strong>Inform.</strong> One member shares information with the others. For example,
+   one member explains what they learnt about a particular section of the
+   Python for Mathematics book.</li>
+<li><strong>Discuss.</strong> The group exchanges views on a question that has more than one
+   reasonable answer. For example, which problem the group library should
+   address.</li>
+<li><strong>Decide.</strong> The group reaches a concrete decision. For example, who will
+   write which function before the next meeting.</li>
+</ol>
+<p>A meeting can have all three purposes in turn, but each agenda item should
+have exactly one. If you find yourself unable to say whether an item is to
+inform, discuss, or decide, the item is not yet ready for the meeting.</p>
+<h2 id="the-three-phases-of-a-meeting">The three phases of a meeting</h2>
+<h3 id="before-the-meeting">Before the meeting</h3>
+<p>Decide whether the meeting needs to happen. Rescheduling a meeting that has
+no clear purpose is better than holding a meeting that has no clear purpose.</p>
+<p>Write the agenda. Be precise. For information items, include the information
+in the agenda itself. For discussion items, write the specific questions to
+be discussed. For decision items, write the decision as a question. Share
+the agenda with all members in advance.</p>
+<h3 id="during-the-meeting">During the meeting</h3>
+<p>Start on time. Identify a chair and a secretary for the meeting (see roles
+below). Work through the agenda, item by item. The chair keeps the meeting
+on time; the secretary records the discussion and decisions.</p>
+<p>For each agenda item, finish with a clear outcome: the information has been
+shared, the discussion is closed, or the decision has been made. Note any
+action items that arise, with the name of the person responsible and the
+deadline.</p>
+<h3 id="after-the-meeting">After the meeting</h3>
+<p>The secretary completes the minutes and shares them with the group. The
+group hands in the printed minutes during the contact hour. Action items
+are tracked at the next meeting.</p>
+<h2 id="roles">Roles</h2>
+<p>Group meetings in this module use three roles.</p>
+<p><strong>Chair.</strong> The chair sets the agenda before the meeting and runs the meeting
+itself. During the meeting the chair keeps to time, moves the group from
+item to item, and ensures that everyone has a chance to contribute. For
+discussion items the chair provides what one of our reference texts calls
+"psychological safety to encourage everyone to participate" [1]. For
+decision items the chair gathers the relevant information; the decision
+itself need not be democratic, but it should be informed.</p>
+<p><strong>Secretary.</strong> The secretary records the meeting. This means writing down
+who attended, what was discussed, what was decided, and what action items
+were assigned. The secretary's notes are the <strong>minutes</strong> of the meeting,
+which the group submits each week.</p>
+<p><strong>Members.</strong> Every other member of the group is an active participant. They
+contribute to discussions, raise questions, propose decisions, and accept
+action items. Being a member is not a passive role.</p>
+<p>We ask groups to <strong>rotate the chair and the secretary each week</strong> so that
+every member experiences both roles over the course of the project.</p>
+<h2 id="application-to-your-group-meetings-this-term">Application to your group meetings this term</h2>
+<p>Each week of the group project phase, your group holds a meeting at the
+start of its working session. The meeting agenda has three standing items:</p>
+<ol>
+<li><strong>Inform.</strong> Each member reports on what they covered in the Python for
+   Mathematics book since the previous meeting.</li>
+<li><strong>Discuss.</strong> Any questions arising from that material, and the state of
+   the group project.</li>
+<li><strong>Decide.</strong> Action items for the coming week (who does what by when),
+   and any questions to raise with the instructor in the contact hour.</li>
+</ol>
+<p>The secretary records the meeting in the week's minutes template (see
+below) and the group submits a printed copy during the contact hour. The
+remainder of the working session is a workshop: open laptops, write code,
+make progress.</p>
+<h2 id="example-agenda-for-the-first-meeting">Example agenda for the first meeting</h2>
+<p>The chair circulates an agenda before the meeting. As an example of what
+an agenda looks like in practice, we provide one for your group's first
+meeting in Week 6:</p>
+<p><a href="../assets/agendas/first-meeting.pdf"><strong>Example agenda: first meeting (PDF)</strong></a></p>
+<p>Use it as a model when you write your own agendas for subsequent weeks.
+A good agenda is specific: each item names the purpose (inform, discuss,
+or decide) and an estimated duration.</p>
+<h2 id="format-of-meeting-minutes">Format of meeting minutes</h2>
+<p>The minutes are the written record of the meeting. They serve two
+purposes: they let absent members catch up, and they are the evidence
+used for the individual component of the group project mark. Every
+week's minutes should contain:</p>
+<ul>
+<li><strong>Meeting details.</strong> Date, location, start time, end time, group
+  identifier, the name of the chair, and the name of the secretary.</li>
+<li><strong>Attendance.</strong> The name of every member of the group, with a signature
+  or initials against the names of those present.</li>
+<li><strong>Content covered.</strong> For each Python for Mathematics topic studied
+  since the previous meeting: the sections worked through, a short
+  summary of what was understood, and any questions that arose.</li>
+<li><strong>Project progress.</strong> From Week 8 onwards, a short description of what
+  the group has written, tested, or decided about the project itself
+  since the previous meeting.</li>
+<li><strong>Discussion notes.</strong> A summary of broader discussion: how tasks have
+  been divided, decisions taken, and other matters arising.</li>
+<li><strong>Disagreements and decisions.</strong> Any disagreement that surfaced
+  during the meeting, the category it falls into (fact, approach,
+  priority, or effort), and the resolution or the agreed next step. See
+  the <a href="../topics/group-dynamics.html">Group dynamics</a>
+  topic for the framework.</li>
+<li><strong>Questions for the contact hour.</strong> Anything to raise with the
+  instructor during the weekly contact session.</li>
+<li><strong>Action items.</strong> A table of tasks for the next week, each with the
+  name of the person responsible and a deadline.</li>
+</ul>
+<p>We provide a printable template for each week. The templates differ
+slightly to match the content of the week:</p>
+<ul>
+<li><a href="../assets/minutes/week-6.pdf">Week 6 minutes template (PDF)</a></li>
+<li><a href="../assets/minutes/week-7.pdf">Week 7 minutes template (PDF)</a></li>
+<li><a href="../assets/minutes/week-8.pdf">Week 8 minutes template (PDF)</a></li>
+<li><a href="../assets/minutes/week-9.pdf">Week 9 minutes template (PDF)</a></li>
+<li><a href="../assets/minutes/week-10.pdf">Week 10 minutes template (PDF)</a></li>
+</ul>
+<p>Print and bring the form to the meeting, or copy the structure onto a
+sheet of your own. The group submits the printed minutes together at
+the contact hour.</p>
+<h2 id="references">References</h2>
+<ol>
+<li>Felix Haller, 2021. <em>Meeting Success Habits</em>. Independently published.</li>
+<li>Leigh Espy, 2017. <em>Bad Meetings Happen to Good People</em>. Blue Room Press.</li>
+</ol>
+
+
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

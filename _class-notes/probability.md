@@ -126,7 +126,9 @@ Come back: with time take any questions.
 
 Point at resources.
 
-## After class email
+## Communications
+
+### After class
 
 Send the following email after class:
 
@@ -148,8 +150,3 @@ Send the following email after class:
 
     Please get in touch if I can assist with anything,
     Vince
-
-## Post meeting
-
-Here is a video recording of a short review given in the 2020/2021
-academic year: <https://www.youtube.com/watch?v=u-ii1TeLHrM>

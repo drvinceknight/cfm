@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introduction, lab and review of matrices - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Introduction, lab and review of matrices</h1>
+<p><small>2024-11-08</small></p>
+
+<p>This is a brief summary of the 3 classes we have had this week about matrices.</p>
+<p>The 3 recordings are available:</p>
+<ul>
+<li><a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=af280eb5-6fb8-43d8-87e4-b21a010839c6">introduction</a></li>
+<li><a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=eb068ac0-70be-4ac4-8ee3-b22000c19e6b">virtual lab</a></li>
+<li><a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2cdaef07-dc0f-4969-b9ea-b21d00a56425">review</a></li>
+</ul>
+<p>You can find the three notebooks here:</p>
+<ul>
+<li><a href="../assets/nbs/2024-2025/matrices.ipynb">matrices.ipynb</a></li>
+<li><a href="../assets/nbs/2024-2025/matrices-tutorial.ipynb">matrices-tutorial.ipynb</a></li>
+<li><a href="../assets/nbs/2024-2025/matrices-review.ipynb">matrices-review.ipynb</a></li>
+</ul>
+<p>While there is some new mathematical content here for those of you who have not
+done much linear algebra before there is little new programming concepts: just
+the code needed to compute some of these new values.</p>
+<p>I did not have time today in class to go over question 3 from the exercises
+though. This might be a problem that you would find useful to further your
+understanding of linear algebra.</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

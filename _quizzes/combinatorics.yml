@@ -1,0 +1,137 @@
+title: Combinatorics
+pick: 5
+questions:
+  - q: "Which library provides `permutations` and `combinations` in this course?"
+    options:
+      - text: "`itertools`"
+        correct: true
+      - text: "`sympy`"
+      - text: "`numpy`"
+      - text: "`random`"
+    explain: "`itertools` ships with Python and provides `itertools.permutations` and `itertools.combinations`."
+
+  - q: "Which tool computes the factorial \\(n!\\)?"
+    options:
+      - text: "`math.factorial`"
+        correct: true
+      - text: "`itertools.factorial`"
+      - text: "`sympy.factorial` only"
+      - text: "`fact`"
+    explain: "We use `math.factorial(n)` from Python's `math` library."
+
+  - q: "Which call generates all permutations of `basket = (\"a\", \"b\", \"c\")`?"
+    options:
+      - text: "`itertools.permutations(basket)`"
+        correct: true
+      - text: "`itertools.combinations(basket)`"
+      - text: "`itertools.product(basket)`"
+      - text: "`basket.permutations()`"
+    explain: "`itertools.permutations(iterable)` yields all orderings."
+
+  - q: "Which call yields all permutations of size 2 from `basket`?"
+    options:
+      - text: "`itertools.permutations(basket, r=2)`"
+        correct: true
+      - text: "`itertools.permutations(basket)[:2]`"
+      - text: "`itertools.permutations(basket, 2, 2)`"
+      - text: "`itertools.combinations(basket, r=2)`"
+    explain: "The optional `r` argument restricts the length of each permutation."
+
+  - q: "Which call yields all size-2 combinations of `basket`?"
+    options:
+      - text: "`itertools.combinations(basket, r=2)`"
+        correct: true
+      - text: "`itertools.permutations(basket, r=2)`"
+      - text: "`itertools.product(basket, r=2)`"
+      - text: "`itertools.choose(basket, 2)`"
+    explain: "`itertools.combinations(iterable, r)` yields all unordered selections of size `r`."
+
+  - q: "What is the key difference between permutations and combinations?"
+    options:
+      - text: "permutations care about order; combinations do not"
+        correct: true
+      - text: "permutations allow repetition; combinations do not"
+      - text: "combinations are always larger than permutations"
+      - text: "permutations are unordered; combinations are ordered"
+    explain: "Permutations are ordered selections; combinations are unordered."
+
+  - q: "How many distinct permutations does \\(n!\\) count?"
+    options:
+      - text: "the orderings of \\(n\\) distinct items"
+        correct: true
+      - text: "the size-\\(n\\) subsets of an \\(n\\)-element set"
+      - text: "the bit strings of length \\(n\\)"
+      - text: "the divisors of \\(n\\)"
+    explain: "\\(n!\\) is the number of ways to arrange \\(n\\) distinct objects in a line."
+
+  - q: "Which call computes the binomial coefficient \\(\\binom{n}{r}\\) using scipy?"
+    options:
+      - text: "`scipy.special.comb(n, r)`"
+        correct: true
+      - text: "`scipy.special.choose(n, r)`"
+      - text: "`scipy.comb(n, r)`"
+      - text: "`math.comb(n, r)` only"
+    explain: "The pfm chapter uses `scipy.special.comb(n, r)` to compute binomial coefficients."
+
+  - q: "How many results does `itertools.permutations` produce when its input has \\(n\\) distinct items and no `r`?"
+    options:
+      - text: "\\(n!\\)"
+        correct: true
+      - text: "\\(n\\)"
+      - text: "\\(2^n\\)"
+      - text: "\\(\\binom{n}{2}\\)"
+    explain: "All orderings of \\(n\\) distinct items; there are \\(n!\\) of them."
+
+  - q: "How many size-\\(r\\) combinations does an \\(n\\)-element set have?"
+    options:
+      - text: "\\(\\binom{n}{r}\\)"
+        correct: true
+      - text: "\\(n^r\\)"
+      - text: "\\(r!\\)"
+      - text: "\\(\\frac{n!}{r}\\)"
+    explain: "There are \\(\\binom{n}{r} = \\frac{n!}{r!(n - r)!}\\) such subsets."
+
+  - q: "What does `itertools.product(a, b)` yield?"
+    options:
+      - text: "the Cartesian product of `a` and `b`, as pairs"
+        correct: true
+      - text: "the union of `a` and `b`"
+      - text: "the elementwise product `a[i] * b[i]`"
+      - text: "the intersection of `a` and `b`"
+    explain: "`itertools.product` yields every pair (or tuple) you can form by picking one element from each input."
+
+  - q: "Which evaluates to 120?"
+    options:
+      - text: "`math.factorial(5)`"
+        correct: true
+      - text: "`math.factorial(4)`"
+      - text: "`math.factorial(6)`"
+      - text: "`math.factorial(3)`"
+    explain: "\\(5! = 120\\)."
+
+  - q: "Why convert an `itertools` result to a `tuple` before printing?"
+    options:
+      - text: "the iterator is exhausted after one pass, so converting captures all results"
+        correct: true
+      - text: "tuples are faster than iterators"
+      - text: "tuples are required to count length"
+      - text: "tuples render with LaTeX"
+    explain: "`itertools` returns lazy iterators; calling `tuple(...)` materialises every element."
+
+  - q: "Which is the most natural choice for an unordered hand of 5 cards from a deck of 52?"
+    options:
+      - text: "`itertools.combinations(deck, r=5)`"
+        correct: true
+      - text: "`itertools.permutations(deck, r=5)`"
+      - text: "`itertools.product(deck, r=5)`"
+      - text: "`random.choice(deck)`"
+    explain: "A hand is unordered, so we use combinations, not permutations."
+
+  - q: "Which is the most natural choice for a finishing order in a race of 8 runners?"
+    options:
+      - text: "`itertools.permutations(runners)`"
+        correct: true
+      - text: "`itertools.combinations(runners, r=8)`"
+      - text: "`itertools.product(runners, r=8)`"
+      - text: "`random.shuffle(runners)`"
+    explain: "Finishing positions are ordered, so we use permutations."

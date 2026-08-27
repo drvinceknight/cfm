@@ -1,0 +1,137 @@
+title: Modularisation of code
+pick: 5
+questions:
+  - q: "Why split a long Python script into smaller modules?"
+    options:
+      - text: "so each piece has a clear responsibility and can be imported, tested and reused independently"
+        correct: true
+      - text: "to make the program run faster"
+      - text: "because Python cannot load files longer than 100 lines"
+      - text: "to avoid having to write tests"
+    explain: "Modular code is easier to understand, test and reuse."
+
+  - q: "How do we import the file `dice.py` from a notebook in the same directory?"
+    options:
+      - text: "`import dice`"
+        correct: true
+      - text: "`import dice.py`"
+      - text: "`from dice import`"
+      - text: "`import \"dice.py\"`"
+    explain: "`import dice` imports the file `dice.py` as a module."
+
+  - q: "After `import dice`, how do we call `dice.roll_a_dice()`?"
+    options:
+      - text: "`dice.roll_a_dice()`"
+        correct: true
+      - text: "`roll_a_dice()`"
+      - text: "`dice[\"roll_a_dice\"]()`"
+      - text: "`dice->roll_a_dice()`"
+    explain: "Access module-level names with dot notation."
+
+  - q: "Which is the natural unit of modularisation in Python?"
+    options:
+      - text: "a function (or a class)"
+        correct: true
+      - text: "a single line of code"
+      - text: "a single variable"
+      - text: "a comment"
+    explain: "Functions group lines of code under a name so they can be reused; classes group state and behaviour."
+
+  - q: "A long function `add_tip_and_get_bill_share` does both adding a tip and dividing. Which is a sensible refactor?"
+    options:
+      - text: "split it into `add_tip` and `get_bill_share`, each with one responsibility"
+        correct: true
+      - text: "rename it"
+      - text: "delete one of the responsibilities"
+      - text: "make it a method on a class with no attributes"
+    explain: "Each function should have a single, clear responsibility; that is the spirit of modularisation."
+
+  - q: "Why prefer many small functions over one long one?"
+    options:
+      - text: "each small function can be tested and reused on its own"
+        correct: true
+      - text: "Python forbids long functions"
+      - text: "small functions are always faster"
+      - text: "small functions use less memory"
+    explain: "Small, named pieces are testable in isolation and easier to reuse from other code."
+
+  - q: "What is the purpose of a docstring on a function?"
+    options:
+      - text: "to document what the function does, its inputs and its outputs"
+        correct: true
+      - text: "to give the function a private name"
+      - text: "to make the function run faster"
+      - text: "to mark the function as exported"
+    explain: "Docstrings are the function's own description; they are read by humans and by tools."
+
+  - q: "Which placement is the correct one for a docstring?"
+    options:
+      - text: "as a triple-quoted string immediately after `def`"
+        correct: true
+      - text: "as a `#` comment above the function"
+      - text: "as a `print` statement at the start of the function"
+      - text: "as a string returned by the function"
+    explain: "Triple-quoted strings immediately after `def` are picked up as the docstring."
+
+  - q: "Why give functions descriptive names like `add_tip` rather than `f`?"
+    options:
+      - text: "the name documents the function's role and makes call sites readable"
+        correct: true
+      - text: "longer names run faster"
+      - text: "Python requires names of at least 5 characters"
+      - text: "short names raise errors"
+    explain: "Readable names reduce the need for comments and make the calling code self-documenting."
+
+  - q: "After `import sympy as sym`, can we still access `sympy.factor` directly?"
+    options:
+      - text: "yes, via `sym.factor` (the alias makes both names available)"
+        correct: true
+      - text: "no, only via `sym`"
+      - text: "no, the import fails"
+      - text: "yes, but only inside functions"
+    explain: "`import X as Y` binds the module to the new name `Y` in the current namespace."
+
+  - q: "Which is a sensible structure for a library `dice`?"
+    options:
+      - text: "a directory with `dice.py` (or `dice/__init__.py`) containing related functions, plus a `test_dice.py` next to it"
+        correct: true
+      - text: "every function in its own file"
+      - text: "one giant `main.py` with everything inside"
+      - text: "the library and the tests in the same file"
+    explain: "Keep the library and its tests as separate files; group related functions in one module."
+
+  - q: "Which is the natural way to share constants used by several functions in a module?"
+    options:
+      - text: "define them at module level above the functions"
+        correct: true
+      - text: "pass them as parameters to every function"
+      - text: "duplicate them inside every function"
+      - text: "store them in a file on disk"
+    explain: "Module-level constants are the simplest sharing mechanism inside a single module."
+
+  - q: "What is the role of an `__init__.py` file in a package directory?"
+    options:
+      - text: "it marks the directory as a Python package and runs when the package is first imported"
+        correct: true
+      - text: "it is a temporary file"
+      - text: "it is required for every Python script"
+      - text: "it stores test results"
+    explain: "`__init__.py` makes the directory importable as a package and can re-export names."
+
+  - q: "Which is the better fit when two functions naturally share state?"
+    options:
+      - text: "wrap them in a class with that state as attributes"
+        correct: true
+      - text: "use global variables"
+      - text: "pass the state as parameters to every call"
+      - text: "duplicate the state in each function"
+    explain: "Classes are the right tool when state and behaviour belong together."
+
+  - q: "Why avoid `from module import *`?"
+    options:
+      - text: "it pollutes the current namespace and hides where each name came from"
+        correct: true
+      - text: "it is slower than `import module`"
+      - text: "it does not work in Python"
+      - text: "it deletes the module"
+    explain: "Explicit imports make it clear which module each name comes from."

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presenting Mathematics - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Presenting Mathematics</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="http://vknight.org/pop/">Principles of presentations: Presenting Mathematics</a></li>
+
+</ul>
+
+
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Presenting mathematics", "pick": 5, "questions": [{"q": "What is the single most important thing to know before preparing a presentation?", "options": [{"text": "who the audience is and what they already know", "correct": true}, {"text": "the colour of the slides"}, {"text": "the length of the title"}, {"text": "the version of LaTeX"}], "explain": "The audience determines what to include, what to cut and what to assume."}, {"q": "Which is a sensible aim for the opening of a talk?", "options": [{"text": "to tell the audience what the talk is about and why they should care", "correct": true}, {"text": "to apologise for the topic"}, {"text": "to list every reference"}, {"text": "to read out the abstract verbatim"}], "explain": "An opening should orient the audience and give them a reason to listen."}, {"q": "Why prefer a small number of clear slides to a large number of dense ones?", "options": [{"text": "the audience can only follow one idea at a time", "correct": true}, {"text": "fewer slides take less time to prepare"}, {"text": "fewer slides require fewer references"}, {"text": "more slides cost more to print"}], "explain": "Density on a slide competes with the speaker for the audience's attention."}, {"q": "Which is a useful test for whether a slide is overloaded?", "options": [{"text": "the audience cannot read it from the back of the room while you are speaking", "correct": true}, {"text": "the slide takes more than five minutes to design"}, {"text": "the slide uses more than one colour"}, {"text": "the slide contains a figure"}], "explain": "If the audience has to choose between reading and listening, they will do neither well."}, {"q": "Which of these is the most natural way to structure a research talk?", "options": [{"text": "context, problem, contribution, evidence, take-away", "correct": true}, {"text": "every detail in chronological order"}, {"text": "history of the field, then the contribution, then references"}, {"text": "your CV, then the work"}], "explain": "Set the scene, state the problem, present the contribution, support it, and end with what to remember."}, {"q": "Why end with a clear take-away message?", "options": [{"text": "if the audience remembers only one thing, this is it", "correct": true}, {"text": "it fills empty space"}, {"text": "it shows you have references"}, {"text": "the time slot requires it"}], "explain": "A clear take-away gives the audience something to walk away with."}, {"q": "Which is the right way to handle a complex equation on a slide?", "options": [{"text": "introduce each symbol in words and reveal the equation piece by piece", "correct": true}, {"text": "put the full derivation on one slide"}, {"text": "hide the equation behind text"}, {"text": "skip the equation altogether"}], "explain": "Stepping through an equation lets the audience follow."}, {"q": "Why rehearse a talk out loud rather than reading it silently?", "options": [{"text": "out-loud rehearsal reveals timing, transitions and awkward phrasing", "correct": true}, {"text": "silent reading is forbidden"}, {"text": "out-loud rehearsal warms up the projector"}, {"text": "silent reading takes longer"}], "explain": "Saying the words is the only way to discover whether the talk works as a spoken artefact."}, {"q": "Which is a sensible response to a question from the audience that you cannot answer?", "options": [{"text": "say so honestly, suggest what you would do to find out, and move on", "correct": true}, {"text": "make up an answer"}, {"text": "ignore the question"}, {"text": "blame the questioner"}], "explain": "Honesty earns trust; speculation costs it."}, {"q": "Why face the audience rather than the slides while speaking?", "options": [{"text": "the audience listens to whom is looking at them", "correct": true}, {"text": "the slides are decorative"}, {"text": "the projector requires it"}, {"text": "the room is dark"}], "explain": "Eye contact keeps the audience engaged; reading slides aloud loses them."}, {"q": "Which is the right way to use a figure on a slide?", "options": [{"text": "include only what supports the point being made and label the axes clearly", "correct": true}, {"text": "include the full notebook output"}, {"text": "include every figure from the paper"}, {"text": "include no figures at all"}], "explain": "Figures should be edited for the talk just like the prose is."}, {"q": "Why include a title slide and a final slide with your name?", "options": [{"text": "to orient the audience at the start and to invite questions at the end", "correct": true}, {"text": "to fill the slot"}, {"text": "because the template requires it"}, {"text": "to advertise the institution"}], "explain": "Title and final slides bracket the talk and give the audience time to settle in and out."}, {"q": "Which is a sensible time-management strategy for a 15-minute talk?", "options": [{"text": "plan for 12 to 13 minutes so there is room for questions and minor overruns", "correct": true}, {"text": "plan for exactly 15 minutes and speak faster if needed"}, {"text": "plan for 20 minutes and stop when the time is up"}, {"text": "plan for 5 minutes and improvise"}], "explain": "Planning under the slot leaves room for questions and small slips."}, {"q": "Which is the natural place to put the references?", "options": [{"text": "a final slide listing the key references; cite them on the slide where the result appears", "correct": true}, {"text": "the title slide"}, {"text": "every slide"}, {"text": "an external document only"}], "explain": "Cite where the work is used; keep a tidy list for the end."}, {"q": "Why prefer a high-contrast colour scheme on slides?", "options": [{"text": "to remain readable on every projector and accessible to viewers with colour-vision differences", "correct": true}, {"text": "to match the institution's branding"}, {"text": "to look more professional"}, {"text": "to use less ink"}], "explain": "Accessibility and robustness across rooms beat decorative palettes."}]}</script>
+</div>
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

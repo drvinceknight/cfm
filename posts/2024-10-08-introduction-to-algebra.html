@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introduction to algebra with Sympy - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Introduction to algebra with Sympy</h1>
+<p><small>2024-10-08</small></p>
+
+<p>In class today I gave an introduction to using <a href="https://www.sympy.org/en/index.html">Sympy</a> to study algebra.</p>
+<p>You can see a recording of the class <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ef9d5ee7-66b2-4794-9220-b1fe00f7e1d1">here</a>.
+I have just realised that the recording has not captured the screen which is frustrating. You can find the notebook I was writing on (which is the only thing that was on the screen)
+here: <a href="../assets/nbs/2024-2025/algebra.ipynb">algebra.ipynb</a></p>
+<p>In class I used Sympy to solve the following problem:</p>
+<ol>
+<li>Rationalise the following expression: \(\frac{1}{\sqrt{3} + 1}\).</li>
+<li>
+<p>Consider the quadratic \(f(x) = -x ^ 2 + 8 x - 18\).</p>
+</li>
+<li>
+<p>Calculate the discriminant of the quadratic equation <span class="arithmatex">\(f(x)=0\)</span>. What
+      does this tell us about the graph of \(f(x)\).</p>
+</li>
+<li>By completing the square, confirm that \((4, -2)\) is the maximum
+      point of \(f(x)\).</li>
+</ol>
+<p>This is similar to the tutorial in the python for mathematics chapter which is
+what we will work through during the lab session tomorrow.</p>
+<h3 id="problems-installing-the-software">Problems installing the software</h3>
+<p>If you are still having trouble getting the software installed then please make
+time to meet with me (get in touch and we can find a time).</p>
+<p>In the meantime, I suggest you use any of the web services that I recommend for
+students using chromebooks: <a href="https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/why/main.html#i-only-have-a-chromebook-how-can-i-use-notebooks">https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/why/main.html#i-only-have-a-chromebook-how-can-i-use-notebooks</a>.</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

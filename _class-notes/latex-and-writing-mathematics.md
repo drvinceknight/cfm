@@ -57,7 +57,9 @@ something specifically useful in there.
 After breakout rooms ask all students to write down those things in a shared
 medium (for example the class discord).
 
-## After class communication
+## Communications
+
+### After class
 
 Send the following email after class::
 

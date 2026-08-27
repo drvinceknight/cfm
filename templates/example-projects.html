@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Example Group Projects - {{ site_title }}{% endblock %}
+
+{% block content %}
+
+<h1>Example Group Projects</h1>
+
+{{ page.content_html }}
+
+{% for example in page.examples %}
+  <h2 id="{{ example.slug }}">{{ example.title }}</h2>
+  <p>{{ example.description }}</p>
+  <ul>
+    {% for file in example.files %}
+      <li><a href="{{ baseurl }}/assessment/example-projects/{{ example.slug }}/{{ file.path }}/">{{ file.label }}</a></li>
+    {% endfor %}
+    {% if example.paper_pdf %}
+      <li><a href="{{ baseurl }}/{{ example.paper_pdf }}">paper (PDF)</a></li>
+    {% endif %}
+  </ul>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class notes - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="class-notes-banner">
+  <strong>Note:</strong> These are not designed to be student facing. They are
+  planning/teaching notes. Student facing resources for each topic are at
+  <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Class notes</h1>
+
+<ul>
+
+  <li><a href="../class-notes/about-the-course.html">About the course</a></li>
+
+  <li><a href="../class-notes/algebra.html">Algebra</a></li>
+
+  <li><a href="../class-notes/calculus.html">Calculus</a></li>
+
+  <li><a href="../class-notes/combinatorics.html">Combinatorics</a></li>
+
+  <li><a href="../class-notes/differential-equations.html">Differential Equations</a></li>
+
+  <li><a href="../class-notes/documentation.html">Documentation of code</a></li>
+
+  <li><a href="../class-notes/functions-and-data-structure.html">Functions and data structures</a></li>
+
+  <li><a href="../class-notes/individual-coursework-deadline.html">Individual Coursework Deadline</a></li>
+
+  <li><a href="../class-notes/latex-and-writing-mathematics.html">LaTeX and Writing Mathematics</a></li>
+
+  <li><a href="../class-notes/matrices.html">Matrices</a></li>
+
+  <li><a href="../class-notes/modularisation.html">Modularisation of code</a></li>
+
+  <li><a href="../class-notes/object-oriented-programming.html">Object oriented programming</a></li>
+
+  <li><a href="../class-notes/presenting-mathematics.html">Presenting Mathematics</a></li>
+
+  <li><a href="../class-notes/probability.html">Probability</a></li>
+
+  <li><a href="../class-notes/release-of-individual-coursework.html">Release of individual coursework</a></li>
+
+  <li><a href="../class-notes/sequences.html">Sequences</a></li>
+
+  <li><a href="../class-notes/statistics.html">Statistics</a></li>
+
+  <li><a href="../class-notes/testing.html">Testing of code</a></li>
+
+  <li><a href="../class-notes/using-a-terminal-and-an-editor.html">Using the terminal and an editor</a></li>
+
+  <li><a href="../class-notes/variables-conditionals-and-loops.html">Variables, conditionals and loops</a></li>
+
+</ul>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

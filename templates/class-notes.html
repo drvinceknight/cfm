@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ note.title }} (facilitator notes) - {{ site_title }}{% endblock %}
+
+{% block content %}
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="{{ baseurl }}/">{{ site_title }}</a>.
+</div>
+
+<h1>{{ note.title }}</h1>
+
+{{ note.content_html }}
+
+</div>
+
+{% endblock %}

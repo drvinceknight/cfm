@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>newton.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#newton">Example Group Projects / newton</a>
+  /
+  newton.py
+</p>
+
+<h1>newton.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">newton_step</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">current_value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply one Newton-Raphson step to ``expression`` at ``current_value``.</span>
+
+<span class="sd">    Given an expression $f$ and a variable $x$, with current value</span>
+<span class="sd">    $x_n$, return</span>
+
+<span class="sd">    $$</span>
+<span class="sd">        x_{n + 1} = x_n - \\frac{f(x_n)}{f&#39;(x_n)}.</span>
+<span class="sd">    $$</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    expression : sympy.Expr</span>
+<span class="sd">        the symbolic expression $f(x)$</span>
+<span class="sd">    variable : sympy.Symbol</span>
+<span class="sd">        the symbol that appears in ``expression``</span>
+<span class="sd">    current_value : sympy.Expr or numeric</span>
+<span class="sd">        the current iterate $x_n$, preferably symbolic (use ``sympy.S``)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sympy.Expr</span>
+<span class="sd">        the next iterate $x_{n + 1}$ as a symbolic value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">derivative</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
+    <span class="n">function_value</span> <span class="o">=</span> <span class="n">expression</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">variable</span><span class="p">:</span> <span class="n">current_value</span><span class="p">})</span>
+    <span class="n">derivative_value</span> <span class="o">=</span> <span class="n">derivative</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">variable</span><span class="p">:</span> <span class="n">current_value</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">current_value</span> <span class="o">-</span> <span class="n">function_value</span> <span class="o">/</span> <span class="n">derivative_value</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">iterate</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">initial_value</span><span class="p">,</span> <span class="n">number_of_iterations</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply ``number_of_iterations`` Newton-Raphson steps to ``expression``.</span>
+
+<span class="sd">    Starting at ``initial_value``, return the list of iterates</span>
+<span class="sd">    $x_0, x_1, \\dots, x_N$, where $N$ is ``number_of_iterations``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    expression : sympy.Expr</span>
+<span class="sd">        the symbolic expression $f(x)$</span>
+<span class="sd">    variable : sympy.Symbol</span>
+<span class="sd">        the symbol that appears in ``expression``</span>
+<span class="sd">    initial_value : sympy.Expr or numeric</span>
+<span class="sd">        the starting iterate $x_0$</span>
+<span class="sd">    number_of_iterations : int</span>
+<span class="sd">        the number of Newton steps to take</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        the list of $N + 1$ iterates</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">iterates</span> <span class="o">=</span> <span class="p">[</span><span class="n">initial_value</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_iterations</span><span class="p">):</span>
+        <span class="n">iterates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newton_step</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">iterates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">iterates</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_root</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">initial_value</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">maximum_iterations</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Iterate Newton-Raphson until the change is within ``tolerance``.</span>
+
+<span class="sd">    Take Newton steps starting at ``initial_value``. Stop as soon as two</span>
+<span class="sd">    successive iterates differ by less than ``tolerance`` (in absolute</span>
+<span class="sd">    value), or after ``maximum_iterations`` steps have been taken.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    expression : sympy.Expr</span>
+<span class="sd">        the symbolic expression $f(x)$</span>
+<span class="sd">    variable : sympy.Symbol</span>
+<span class="sd">        the symbol that appears in ``expression``</span>
+<span class="sd">    initial_value : sympy.Expr or numeric</span>
+<span class="sd">        the starting iterate $x_0$</span>
+<span class="sd">    tolerance : float</span>
+<span class="sd">        the convergence tolerance on $|x_{n + 1} - x_n|$</span>
+<span class="sd">    maximum_iterations : int</span>
+<span class="sd">        the maximum number of iterations to take</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        the pair ``(root, iterations)``, where ``root`` is the final</span>
+<span class="sd">        iterate and ``iterations`` is the number of steps taken</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">current_value</span> <span class="o">=</span> <span class="n">initial_value</span>
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">maximum_iterations</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">next_value</span> <span class="o">=</span> <span class="n">newton_step</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">current_value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">next_value</span> <span class="o">-</span> <span class="n">current_value</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">next_value</span><span class="p">,</span> <span class="n">iteration</span>
+        <span class="n">current_value</span> <span class="o">=</span> <span class="n">next_value</span>
+    <span class="k">return</span> <span class="n">current_value</span><span class="p">,</span> <span class="n">maximum_iterations</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

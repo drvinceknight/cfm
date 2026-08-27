@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Probability (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Probability</h1>
+
+<h2 id="first-meeting">First meeting</h2>
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand how to use the random library to simulate random events</li>
+<li>Know what they need to do to prepare for their sixth tutorial.</li>
+</ul>
+<h3 id="problem">Problem</h3>
+<p>Explain to students that we will be solving the following problem:</p>
+<p>A delivery company delivers fragile items. If a delivery is on time it
+is usually because it was rushed. The probability that an item is
+delivered on time is <span class="arithmatex">\(0.75\)</span>. The probability that an item is broken
+given that it arrived on time is <span class="arithmatex">\(0.3\)</span> and if it is late <span class="arithmatex">\(0.2\)</span>.</p>
+<ol>
+<li>What is the probability that an item is late?</li>
+<li>Given that an item is broken what is the probability that it was on
+    time?</li>
+</ol>
+<h3 id="solution">Solution</h3>
+<p>Group exercise (breakout rooms of 3): ask students to spend 5 minutes
+writing a plan to tackle that problem (not necessarily carrying out each
+step).</p>
+<p>Now explain that we are going get a computer to simulate the described
+events from which we can measure the probabilities (and theoretically
+compare to the expected results).</p>
+<p>Now show how to get code to first write a function to simulate a
+delivery:</p>
+<pre><code>&gt;&gt;&gt; import random
+&gt;&gt;&gt; def is_delivery_late():
+...     """
+...     A function to randomly simulate if a delivery is late or not.
+...     """
+...     return random.random() &gt; 0.75
+</code></pre>
+<p>Spend some time explaining what is happening here, including:</p>
+<ul>
+<li>The random library</li>
+<li>Functions (importance of white space, importance of the docstring,
+  the help statement...)</li>
+<li>The return statement</li>
+</ul>
+<p>Now we will use that function to create a number of experiments:</p>
+<pre><code>&gt;&gt;&gt; number_of_repetitions = 10000
+&gt;&gt;&gt; samples = [is_delivery_late() for repetition in range(number_of_repetitions)]
+&gt;&gt;&gt; samples  # doctest: +SKIP
+[True, False, True, ..., False, True, False]
+</code></pre>
+<p>We can confirm the number of samples:</p>
+<pre><code>&gt;&gt;&gt; len(samples)
+10000
+</code></pre>
+<p>We can now confirm the probability:</p>
+<pre><code>&gt;&gt;&gt; sum(sample for sample in samples) / number_of_repetitions  # doctest: +SKIP
+0.2459
+</code></pre>
+<p>Now explain that we will cover the entire question by writing a function
+to simulate both the delivery and whether or not the item is broken:</p>
+<pre><code>&gt;&gt;&gt; def sample_experiment():
+...     """
+...     This samples a delivery and depending on whether or not it is late
+...     selects whether or not the item is broken.
+...     """
+...     is_late = is_delivery_late()
+...
+...     if is_late is True:
+...         probability_of_broken = 0.2
+...     else:
+...         probability_of_broken = 0.3
+...
+...     is_broken = random.random() &lt; probability_of_broken
+...     return is_late, is_broken
+</code></pre>
+<p>We can use this to confirm the previous result:</p>
+<pre><code>&gt;&gt;&gt; samples = [sample_experiment() for repetition in range(number_of_repetitions)]
+&gt;&gt;&gt; sum(is_broken for is_late, is_broken in samples) / number_of_repetitions # doctest: +SKIP
+0.2699
+</code></pre>
+<p>Now we can compute the probability of an item being on time if it is
+broken:</p>
+<pre><code>&gt;&gt;&gt; samples_with_broken = [(is_late, is_broken) for is_late, is_broken in samples if is_broken is True]
+&gt;&gt;&gt; sum(is_late for is_late, is_broken in samples_with_broken) / len(samples_with_broken)  # doctest: +SKIP
+0.18114406
+</code></pre>
+<p>Note that we can use Bayes\' theorem to confirm this theoretically:</p>
+<div class="arithmatex">\[P(\text{On time}|\text{Broken}) = \frac{P(\text{Broken} | \text{On time})P(\text{On time})}{P(\text{Broken})}\]</div>
+<p>We have:</p>
+<div class="arithmatex">\[P(\text{Broken} | \text{On time}) = 0.3\]</div>
+<div class="arithmatex">\[P(\text{On time}) = 0.75\]</div>
+<div class="arithmatex">\[P(\text{Broken}) = 0.3 \times 0.75 + 0.2 \times 0.25\]</div>
+<p>We can compute this:</p>
+<pre><code>&gt;&gt;&gt; probability_of_on_time_if_broken = 0.3 * 0.75 / (0.3 * 0.75 + 0.2 * 0.25)
+&gt;&gt;&gt; probability_of_on_time_if_broken  # doctest: +ELLIPSIS
+0.818181...
+</code></pre>
+<p>Thus the probability for the question is:</p>
+<pre><code>&gt;&gt;&gt; 1 - probability_of_on_time_if_broken  # doctest: +ELLIPSIS
+0.181818...
+</code></pre>
+<p>Come back: with time take any questions.</p>
+<p>Point at resources.</p>
+<h2 id="communications">Communications</h2>
+<h3 id="after-class">After class</h3>
+<p>Send the following email after class:</p>
+<pre><code>Hi all,
+
+A recording of today's class is available at &lt;&gt;.
+
+In this class I went over a demonstration of using Python to solve a
+probabilitistic problem. I demontrated how to simulate random events and
+measure probabilities directly. We did this using the following Python
+tools:
+
+- Writing functions.
+- List comprehensions.
+
+In preparation for your tutorial tomorrow please work through the sixth
+chapter of the Python for mathematics book:
+https://vknight.org/pfm/tools-for-mathematics/06-probability/introduction/main.html
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

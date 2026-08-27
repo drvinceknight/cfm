@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>paper/main.tex - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#ode_flow">Example Group Projects / ode_flow</a>
+  /
+  paper/main.tex
+</p>
+
+<h1>paper/main.tex</h1>
+
+<div class="highlight"><pre><code class="language-latex"><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="na">[margin=1in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>parskip<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath, amssymb, amsthm<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
+
+<span class="k">\title</span><span class="nb">{</span>A small library for first-order initial value problems<span class="nb">}</span>
+<span class="k">\author</span><span class="nb">{</span>Group N<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\maketitle</span>
+
+<span class="k">\begin</span><span class="nb">{</span>abstract<span class="nb">}</span>
+We present <span class="k">\texttt</span><span class="nb">{</span>ode<span class="k">\_flow</span><span class="nb">}</span>, a small Python library for solving and
+sampling first-order initial value problems of the form
+<span class="s">\(</span><span class="nb">y&#39;</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> f</span><span class="o">(</span><span class="nb">t, y</span><span class="o">(</span><span class="nb">t</span><span class="o">))</span><span class="s">\)</span> with <span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="nb">t_</span><span class="m">0</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> y_</span><span class="m">0</span><span class="s">\)</span>. The library is a thin
+wrapper around <span class="k">\texttt</span><span class="nb">{</span>sympy.dsolve<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>meurer2017<span class="nb">}</span>, with
+additional helpers to evaluate the solution at a list of times and to
+verify that a candidate expression satisfies the ODE. We illustrate
+the library on three standard problems: exponential growth, constant
+growth, and quadratic growth. The library follows the Diataxis
+framework for documentation~<span class="k">\cite</span><span class="nb">{</span>procida2017<span class="nb">}</span> and the differential
+equations chapter of the open-source textbook <span class="k">\emph</span><span class="nb">{</span>Python for
+Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+<span class="k">\end</span><span class="nb">{</span>abstract<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Introduction<span class="nb">}</span>
+
+A first-order ordinary differential equation has the form
+
+<span class="sb">\[</span>
+<span class="nb">    y&#39;</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> f</span><span class="o">(</span><span class="nb">t, y</span><span class="o">(</span><span class="nb">t</span><span class="o">))</span><span class="nb">,</span>
+<span class="s">\]</span>
+
+and an initial value problem adds the condition <span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="nb">t_</span><span class="m">0</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> y_</span><span class="m">0</span><span class="s">\)</span>. For
+many right-hand sides <span class="s">\(</span><span class="nb">f</span><span class="s">\)</span> the solution can be written in closed
+form by recognising one of the standard cases (separable, linear,
+exact)~<span class="k">\cite</span><span class="nb">{</span>boyce2017<span class="nb">}</span>. The library <span class="k">\texttt</span><span class="nb">{</span>sympy<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>meurer2017<span class="nb">}</span>
+implements these cases through <span class="k">\texttt</span><span class="nb">{</span>sympy.dsolve<span class="nb">}</span>, so we treat the
+solver as the engine and focus on a small wrapper that makes the
+common operations easy.
+
+We present a three-function library,
+<span class="k">\texttt</span><span class="nb">{</span>ode<span class="k">\_flow</span><span class="nb">}</span>, that solves a first-order initial value problem,
+samples the solution at a list of times, and verifies that a
+candidate expression satisfies the ODE.
+
+<span class="k">\section</span><span class="nb">{</span>The library<span class="nb">}</span>
+
+The library lives in the single module <span class="k">\texttt</span><span class="nb">{</span>ode<span class="k">\_flow</span>.py<span class="nb">}</span> and
+follows the differential equations chapter of <span class="k">\emph</span><span class="nb">{</span>Python for
+Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>: we use <span class="k">\texttt</span><span class="nb">{</span>sym.Function<span class="nb">}</span> for the
+unknown, <span class="k">\texttt</span><span class="nb">{</span>sym.Eq<span class="nb">}</span> for the equation, and <span class="k">\texttt</span><span class="nb">{</span>sym.dsolve<span class="nb">}</span>
+with the <span class="k">\texttt</span><span class="nb">{</span>ics<span class="nb">}</span> keyword for the initial condition.
+
+<span class="k">\texttt</span><span class="nb">{</span>solve<span class="k">\_initial\_value\_problem</span>(right<span class="k">\_hand\_side</span>,
+time<span class="k">\_variable</span>, function, initial<span class="k">\_time</span>, initial<span class="k">\_value</span>)<span class="nb">}</span> builds the
+equation, calls <span class="k">\texttt</span><span class="nb">{</span>sym.dsolve<span class="nb">}</span>, and returns the right-hand side
+of the resulting equation <span class="k">\texttt</span><span class="nb">{</span>y(t) = expression<span class="nb">}</span>.
+
+<span class="k">\texttt</span><span class="nb">{</span>trajectory(solution<span class="k">\_expression</span>, time<span class="k">\_variable</span>,
+sample<span class="k">\_times</span>)<span class="nb">}</span> evaluates the solution at a list of times. Each
+evaluation is cast to <span class="k">\texttt</span><span class="nb">{</span>float<span class="nb">}</span> so the output is easy to plot.
+
+<span class="k">\texttt</span><span class="nb">{</span>verify<span class="k">\_solution</span>(solution<span class="k">\_expression</span>, right<span class="k">\_hand\_side</span>,
+time<span class="k">\_variable</span>, function)<span class="nb">}</span> substitutes the candidate into the
+right-hand side and compares with the derivative of the candidate;
+the two simplify to the same expression for a genuine solution.
+
+<span class="k">\section</span><span class="nb">{</span>Worked examples<span class="nb">}</span>
+
+The problem <span class="s">\(</span><span class="nb">y&#39; </span><span class="o">=</span><span class="nb"> y</span><span class="s">\)</span> with
+<span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span> has the well-known solution <span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> e^t</span><span class="s">\)</span>. The library
+recovers this exactly; sampling at <span class="s">\(</span><span class="nb">t </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="nb">, </span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="s">\)</span> gives
+<span class="s">\(</span><span class="m">1</span><span class="nb">, e, e^</span><span class="m">2</span><span class="s">\)</span> cast to floats. The verifier accepts <span class="s">\(</span><span class="nb">e^t</span><span class="s">\)</span> and
+rejects <span class="s">\(</span><span class="nb">t</span><span class="s">\)</span>.
+
+The problem <span class="s">\(</span><span class="nb">y&#39; </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span> with <span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="s">\)</span>
+has the solution <span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> t</span><span class="s">\)</span>. The library returns this in one line.
+
+The problem <span class="s">\(</span><span class="nb">y&#39; </span><span class="o">=</span><span class="nb"> </span><span class="m">2</span><span class="nb">t</span><span class="s">\)</span> with <span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="s">\)</span>
+has the solution <span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> t^</span><span class="m">2</span><span class="s">\)</span>. Sampling at the integer times
+<span class="s">\(</span><span class="m">0</span><span class="nb">, </span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">, </span><span class="m">3</span><span class="s">\)</span> gives the squares <span class="s">\(</span><span class="m">0</span><span class="nb">, </span><span class="m">1</span><span class="nb">, </span><span class="m">4</span><span class="nb">, </span><span class="m">9</span><span class="s">\)</span>.
+
+The problem <span class="s">\(</span><span class="nb">y&#39; </span><span class="o">=</span><span class="nb"> y</span><span class="s">\)</span> with
+<span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="m">1</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> e</span><span class="s">\)</span> also has the solution <span class="s">\(</span><span class="nb">y</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> e^t</span><span class="s">\)</span>; the verifier
+accepts it. This is useful because it confirms that the initial
+condition does not need to be at <span class="s">\(</span><span class="nb">t_</span><span class="m">0</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="s">\)</span>.
+
+<span class="k">\section</span><span class="nb">{</span>Discussion<span class="nb">}</span>
+
+<span class="k">\texttt</span><span class="nb">{</span>sym.dsolve<span class="nb">}</span> can already solve
+everything in this paper. The library exists because we wanted a
+shorter interface for the common case (first-order, scalar, initial
+value problem), and because building the equation and the
+<span class="k">\texttt</span><span class="nb">{</span>ics<span class="nb">}</span> dictionary by hand each time is fiddly enough that we
+preferred to encapsulate it.
+
+The library handles only scalar first-order
+problems. Systems of ODEs, higher-order equations, and boundary value
+problems are all natural extensions. A natural next step is to allow
+the right-hand side to depend on extra parameters and to expose the
+sweep over those parameters as a separate function.
+
+<span class="k">\section</span><span class="nb">{</span>Conclusion<span class="nb">}</span>
+
+We have presented <span class="k">\texttt</span><span class="nb">{</span>ode<span class="k">\_flow</span><span class="nb">}</span>, a three-function library for
+first-order initial value problems. The library recovers the
+closed-form solutions of three standard problems and confirms them
+through both sampling and symbolic verification.
+
+<span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
+<span class="k">\bibliography</span><span class="nb">{</span>references<span class="nb">}</span>
+
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

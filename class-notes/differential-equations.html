@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Differential Equations (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Differential Equations</h1>
+
+<h1 id="differential-equations-week">Differential equations week</h1>
+<h2 id="first-meeting">First meeting</h2>
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand how to write a differential equation.</li>
+<li>Understand how to use the <code>sympy</code> library to solve differential equations to
+  obtain both the general and particular solution.</li>
+</ul>
+<h3 id="problem">Problem</h3>
+<p>Explain to students that we will be solving the following problem:</p>
+<pre><code>Obtain the general solution to the following differential equation:
+
+$$\frac{dy}{dx}=3y^2-5xy^2$$
+
+Obtain the particular solution given that $y(3)=4$.
+
+</code></pre>
+<p>Set up the variable and the function:</p>
+<pre><code>&gt;&gt;&gt; import sympy as sym
+&gt;&gt;&gt; x = sym.Symbol("x")
+&gt;&gt;&gt; y = sym.Function("y")
+</code></pre>
+<p>Write the differential equation:</p>
+<pre><code>&gt;&gt;&gt; differential_equation = sym.Eq(lhs=sym.diff(y(x), x), rhs=3 * y(x) ** 2 - 5 * x * y(x) ** 2)
+&gt;&gt;&gt; differential_equation
+Eq(Derivative(y(x), x), -5*x*y(x)**2 + 3*y(x)**2)
+</code></pre>
+<p>Use <code>sympy.dsolve</code> to obtain the general equation:</p>
+<pre><code>&gt;&gt;&gt; sym.dsolve(differential_equation, y(x))
+Eq(y(x), 2/(C1 + 5*x**2 - 6*x))
+</code></pre>
+<p>Create the boundary conditions:</p>
+<pre><code>&gt;&gt;&gt; condition = {y(3): 4}
+&gt;&gt;&gt; sym.dsolve(differential_equation, y(x), ics=condition)
+Eq(y(x), 2/(5*x**2 - 6*x - 53/2))
+</code></pre>
+<p>Come back: with time take any questions.</p>
+<p>Point at resources.</p>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

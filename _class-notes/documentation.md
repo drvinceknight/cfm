@@ -246,7 +246,9 @@ Write the following::
     > Aarts, Emile, Emile HL Aarts, and Jan Karel Lenstra, eds. Local search in
     > combinatorial optimization. Princeton University Press, 2003.
 
-## After class communication
+## Communications
+
+### After class
 
 Send the following email after class::
 

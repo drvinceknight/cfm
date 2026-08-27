@@ -1,0 +1,57 @@
+name: Test example projects
+
+on: [push, pull_request]
+
+jobs:
+  test-examples:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Lint example projects with ruff
+        run: |
+          set -e
+          for example in assets/examples/*/; do
+            echo "=== ruff check $example ==="
+            uv run --python ${{ matrix.python-version }} --with ruff \
+              ruff check "$example"
+            echo "=== ruff format --check $example ==="
+            uv run --python ${{ matrix.python-version }} --with ruff \
+              ruff format --check "$example"
+          done
+
+      - name: Run library tests for each example
+        run: |
+          set -e
+          for example in assets/examples/*/; do
+            name=$(basename "$example")
+            if [ -f "$example/test_$name.py" ]; then
+              echo "=== Running test_$name.py ==="
+              (cd "$example" && \
+                uv run --python ${{ matrix.python-version }} \
+                  --with sympy --with scipy \
+                  python "test_$name.py")
+            fi
+          done
+
+      - name: Run doctests in each example README
+        run: |
+          set -e
+          for example in assets/examples/*/; do
+            if [ -f "$example/README.md" ]; then
+              echo "=== Doctesting $example/README.md ==="
+              (cd "$example" && \
+                uv run --python ${{ matrix.python-version }} \
+                  --with sympy --with scipy \
+                  python -m doctest README.md)
+            fi
+          done

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>markov.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#markov">Example Group Projects / markov</a>
+  /
+  markov.py
+</p>
+
+<h1>markov.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="sd">&quot;&quot;&quot;Discrete-time Markov chains with exact arithmetic.</span>
+
+<span class="sd">A discrete-time Markov chain is described by a transition matrix</span>
+<span class="sd">$P$, where $P_{ij}$ is the probability of moving from state</span>
+<span class="sd">$i$ to state $j$ in one step. We use ``sympy`` matrices so that</span>
+<span class="sd">the probabilities and distributions stay exactly as rationals.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_stochastic</span><span class="p">(</span><span class="n">transition_matrix</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return ``True`` if every row of ``transition_matrix`` sums to 1.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    transition_matrix : sympy.Matrix</span>
+<span class="sd">        A square matrix of probabilities.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        ``True`` if the matrix is row-stochastic.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">row_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">transition_matrix</span><span class="o">.</span><span class="n">rows</span><span class="p">):</span>
+        <span class="n">row_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">transition_matrix</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">row_index</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">sym</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">row_sum</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">n_step_distribution</span><span class="p">(</span><span class="n">initial_distribution</span><span class="p">,</span> <span class="n">transition_matrix</span><span class="p">,</span> <span class="n">number_of_steps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the distribution after ``number_of_steps`` steps.</span>
+
+<span class="sd">    If $\\pi_0$ is the row vector of initial probabilities and</span>
+<span class="sd">    $P$ is the transition matrix, then the distribution after</span>
+<span class="sd">    $n$ steps is $\\pi_0 P^n$.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    initial_distribution : sympy.Matrix</span>
+<span class="sd">        A row vector of probabilities summing to 1.</span>
+<span class="sd">    transition_matrix : sympy.Matrix</span>
+<span class="sd">        A square row-stochastic matrix.</span>
+<span class="sd">    number_of_steps : int</span>
+<span class="sd">        The number of one-step transitions to apply.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sympy.Matrix</span>
+<span class="sd">        The row vector $\\pi_0 P^n$.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">initial_distribution</span> <span class="o">*</span> <span class="n">transition_matrix</span><span class="o">**</span><span class="n">number_of_steps</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">stationary_distribution</span><span class="p">(</span><span class="n">transition_matrix</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the stationary distribution of a Markov chain.</span>
+
+<span class="sd">    The stationary distribution is the row vector $\\pi$ satisfying</span>
+<span class="sd">    $\\pi P = \\pi$ with $\\sum_i \\pi_i = 1$. We compute it as</span>
+<span class="sd">    the (normalised) basis vector of the null space of</span>
+<span class="sd">    $P^T - I$, which is equivalent to the left eigenvector of</span>
+<span class="sd">    $P$ for eigenvalue $1$.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    transition_matrix : sympy.Matrix</span>
+<span class="sd">        A square row-stochastic matrix.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sympy.Matrix</span>
+<span class="sd">        The stationary distribution as a row vector.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">number_of_states</span> <span class="o">=</span> <span class="n">transition_matrix</span><span class="o">.</span><span class="n">rows</span>
+    <span class="n">identity_matrix</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">number_of_states</span><span class="p">)</span>
+    <span class="n">null_space_vectors</span> <span class="o">=</span> <span class="p">(</span><span class="n">transition_matrix</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">identity_matrix</span><span class="p">)</span><span class="o">.</span><span class="n">nullspace</span><span class="p">()</span>
+    <span class="n">vector</span> <span class="o">=</span> <span class="n">null_space_vectors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+    <span class="n">normalised</span> <span class="o">=</span> <span class="n">vector</span> <span class="o">/</span> <span class="n">total</span>
+    <span class="k">return</span> <span class="n">normalised</span><span class="o">.</span><span class="n">T</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

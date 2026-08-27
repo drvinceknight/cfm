@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Class notes - {{ site_title }}{% endblock %}
+
+{% block content %}
+
+<div class="class-notes-banner">
+  <strong>Note:</strong> These are not designed to be student facing. They are
+  planning/teaching notes. Student facing resources for each topic are at
+  <a href="{{ baseurl }}/">{{ site_title }}</a>.
+</div>
+
+<h1>Class notes</h1>
+
+<ul>
+{% for note in notes %}
+  <li><a href="{{ baseurl }}/class-notes/{{ note.slug }}.html">{{ note.title }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

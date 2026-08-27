@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>paper/main.tex - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#stats_from_scratch">Example Group Projects / stats_from_scratch</a>
+  /
+  paper/main.tex
+</p>
+
+<h1>paper/main.tex</h1>
+
+<div class="highlight"><pre><code class="language-latex"><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="na">[margin=1in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>parskip<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath, amssymb, amsthm<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
+
+<span class="k">\title</span><span class="nb">{</span>Summary statistics from scratch<span class="nb">}</span>
+<span class="k">\author</span><span class="nb">{</span>Group N<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\maketitle</span>
+
+<span class="k">\begin</span><span class="nb">{</span>abstract<span class="nb">}</span>
+We present <span class="k">\texttt</span><span class="nb">{</span>stats<span class="k">\_from\_scratch</span><span class="nb">}</span>, a small Python library
+that implements the mean, the median, the population and sample
+standard deviations, and the three quartiles directly from their
+definitions. Every function is checked against the matching function
+in the standard library <span class="k">\texttt</span><span class="nb">{</span>statistics<span class="nb">}</span> module; we treat the
+standard library as a reference implementation in the tests, not in
+the library code. The library follows the Diataxis framework for
+documentation~<span class="k">\cite</span><span class="nb">{</span>procida2017<span class="nb">}</span> and the statistics chapter of the
+open-source textbook <span class="k">\emph</span><span class="nb">{</span>Python for
+Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>; we mention the wider statistical
+context in~<span class="k">\cite</span><span class="nb">{</span>rice2007<span class="nb">}</span>.
+<span class="k">\end</span><span class="nb">{</span>abstract<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Introduction<span class="nb">}</span>
+
+The summary statistics of a sample are the most basic description of
+its location and spread. For a sample
+<span class="s">\(</span><span class="nb">x_</span><span class="m">1</span><span class="nb">, x_</span><span class="m">2</span><span class="nb">, </span><span class="nv">\dots</span><span class="nb">, x_n</span><span class="s">\)</span> the arithmetic mean is
+<span class="s">\(</span><span class="nv">\bar</span><span class="nb">{x} </span><span class="o">=</span><span class="nb"> </span><span class="o">(</span><span class="m">1</span><span class="o">/</span><span class="nb">n</span><span class="o">)</span><span class="nb"> </span><span class="nv">\sum</span><span class="nb">_i x_i</span><span class="s">\)</span>, the median is the middle of the
+sorted sample, and the standard deviation is the square root of the
+mean squared deviation from the mean. The two common variants of the
+standard deviation differ in the divisor: <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> for the population
+version and <span class="s">\(</span><span class="nb">n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span> for the sample version~<span class="k">\cite</span><span class="nb">{</span>rice2007<span class="nb">}</span>.
+
+The standard library <span class="k">\texttt</span><span class="nb">{</span>statistics<span class="nb">}</span> module already implements
+all of these. We wanted a library that we could read and understand
+in full, with the formulas in plain sight, and we treat the standard
+library as the reference implementation in our tests.
+
+We present a five-function library,
+<span class="k">\texttt</span><span class="nb">{</span>stats<span class="k">\_from\_scratch</span><span class="nb">}</span>; every function is implemented from
+its definition; and every function is checked against the matching
+function in the standard library <span class="k">\texttt</span><span class="nb">{</span>statistics<span class="nb">}</span> module.
+
+<span class="k">\section</span><span class="nb">{</span>The library<span class="nb">}</span>
+
+The library lives in the single module
+<span class="k">\texttt</span><span class="nb">{</span>stats<span class="k">\_from\_scratch</span>.py<span class="nb">}</span> and follows the statistics chapter
+of <span class="k">\emph</span><span class="nb">{</span>Python for Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+
+<span class="k">\texttt</span><span class="nb">{</span>mean(values)<span class="nb">}</span> returns
+<span class="s">\(</span><span class="nv">\sum</span><span class="nb">_i x_i </span><span class="o">/</span><span class="nb"> n</span><span class="s">\)</span>.
+
+<span class="k">\texttt</span><span class="nb">{</span>median(values)<span class="nb">}</span> sorts the sample,
+returns the middle value for an odd count, and the average of the
+two middle values for an even count.
+
+<span class="k">\texttt</span><span class="nb">{</span>population<span class="k">\_standard\_deviation</span>(values)<span class="nb">}</span> and
+<span class="k">\texttt</span><span class="nb">{</span>sample<span class="k">\_standard\_deviation</span>(values)<span class="nb">}</span> return the square root
+of the mean squared deviation with divisors <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> and <span class="s">\(</span><span class="nb">n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="s">\)</span>
+respectively.
+
+<span class="k">\texttt</span><span class="nb">{</span>quartiles(values)<span class="nb">}</span> returns the three
+cut points <span class="s">\(</span><span class="nb">Q_</span><span class="m">1</span><span class="s">\)</span>, <span class="s">\(</span><span class="nb">Q_</span><span class="m">2</span><span class="s">\)</span>, <span class="s">\(</span><span class="nb">Q_</span><span class="m">3</span><span class="s">\)</span>, using the &#39;exclusive&#39; method
+of the standard library: the <span class="s">\(</span><span class="nb">k</span><span class="s">\)</span>-th cut is at the fractional
+1-indexed position <span class="s">\(</span><span class="nb">k </span><span class="o">(</span><span class="nb">n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="o">)</span><span class="nb"> </span><span class="o">/</span><span class="nb"> </span><span class="m">4</span><span class="s">\)</span> of the sorted sample, with
+linear interpolation between the surrounding values. We picked this
+method so the library agrees with <span class="k">\texttt</span><span class="nb">{</span>statistics.quantiles(data,
+n=4)<span class="nb">}</span> exactly.
+
+<span class="k">\section</span><span class="nb">{</span>Worked example<span class="nb">}</span>
+
+We illustrate the library on the sample <span class="s">\(</span><span class="o">[</span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">, </span><span class="m">3</span><span class="nb">, </span><span class="m">4</span><span class="nb">, </span><span class="m">5</span><span class="o">]</span><span class="s">\)</span>. The
+mean is <span class="s">\(</span><span class="m">3</span><span class="s">\)</span>, the median is <span class="s">\(</span><span class="m">3</span><span class="s">\)</span>, and the three quartiles are
+<span class="s">\(</span><span class="o">(</span><span class="m">1</span><span class="nb">.</span><span class="m">5</span><span class="nb">, </span><span class="m">3</span><span class="nb">, </span><span class="m">4</span><span class="nb">.</span><span class="m">5</span><span class="o">)</span><span class="s">\)</span>, as expected. The population standard deviation is
+<span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">} </span><span class="nv">\approx</span><span class="nb"> </span><span class="m">1</span><span class="nb">.</span><span class="m">414</span><span class="s">\)</span> and the sample standard deviation is
+<span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">.</span><span class="m">5</span><span class="nb">} </span><span class="nv">\approx</span><span class="nb"> </span><span class="m">1</span><span class="nb">.</span><span class="m">581</span><span class="s">\)</span>. The values match
+<span class="k">\texttt</span><span class="nb">{</span>statistics.mean<span class="nb">}</span>, <span class="k">\texttt</span><span class="nb">{</span>statistics.median<span class="nb">}</span>,
+<span class="k">\texttt</span><span class="nb">{</span>statistics.pstdev<span class="nb">}</span>, <span class="k">\texttt</span><span class="nb">{</span>statistics.stdev<span class="nb">}</span>, and
+<span class="k">\texttt</span><span class="nb">{</span>statistics.quantiles(data, n=4)<span class="nb">}</span> to within floating-point
+precision (Table~<span class="k">\ref</span><span class="nb">{</span>tab:demo<span class="nb">}</span>).
+
+<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[h]
+<span class="k">\centering</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>l l l<span class="nb">}</span>
+<span class="k">\toprule</span>
+Quantity <span class="nb">&amp;</span> Library <span class="nb">&amp;</span> <span class="k">\texttt</span><span class="nb">{</span>statistics<span class="nb">}</span> <span class="k">\\</span>
+<span class="k">\midrule</span>
+mean    <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">3</span><span class="nb">.</span><span class="m">0</span><span class="s">\)</span>              <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">3</span><span class="s">\)</span> <span class="k">\\</span>
+median  <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">3</span><span class="s">\)</span>                <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">3</span><span class="s">\)</span> <span class="k">\\</span>
+pstdev  <span class="nb">&amp;</span> <span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">}</span><span class="s">\)</span>         <span class="nb">&amp;</span> <span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">}</span><span class="s">\)</span> <span class="k">\\</span>
+stdev   <span class="nb">&amp;</span> <span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">.</span><span class="m">5</span><span class="nb">}</span><span class="s">\)</span>       <span class="nb">&amp;</span> <span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">.</span><span class="m">5</span><span class="nb">}</span><span class="s">\)</span> <span class="k">\\</span>
+quartiles <span class="nb">&amp;</span> <span class="s">\(</span><span class="o">(</span><span class="m">1</span><span class="nb">.</span><span class="m">5</span><span class="nb">, </span><span class="m">3</span><span class="nb">, </span><span class="m">4</span><span class="nb">.</span><span class="m">5</span><span class="o">)</span><span class="s">\)</span>  <span class="nb">&amp;</span> <span class="s">\(</span><span class="o">[</span><span class="m">1</span><span class="nb">.</span><span class="m">5</span><span class="nb">, </span><span class="m">3</span><span class="nb">.</span><span class="m">0</span><span class="nb">, </span><span class="m">4</span><span class="nb">.</span><span class="m">5</span><span class="o">]</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="k">\bottomrule</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>Agreement with the standard library on
+<span class="s">$</span><span class="o">[</span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">, </span><span class="m">3</span><span class="nb">, </span><span class="m">4</span><span class="nb">, </span><span class="m">5</span><span class="o">]</span><span class="s">$</span>.<span class="nb">}</span> Every function in the library returns a value
+that matches <span class="k">\texttt</span><span class="nb">{</span>statistics<span class="nb">}</span> to within floating-point
+precision.<span class="nb">}</span>
+<span class="k">\label</span><span class="nb">{</span>tab:demo<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Discussion<span class="nb">}</span>
+
+The standard library already covers
+this material in full. We wrote the library because we wanted to
+know what the formulas were doing, and the act of writing them out
+in clean form was itself instructive.
+
+There are several methods in
+use~<span class="k">\cite</span><span class="nb">{</span>rice2007<span class="nb">}</span>. We picked the &#39;exclusive&#39; method so that the
+library agrees with the standard library&#39;s
+<span class="k">\texttt</span><span class="nb">{</span>statistics.quantiles<span class="nb">}</span>. A natural extension would be to
+expose a ``method&#39;&#39; keyword so that other methods can be selected.
+
+The library handles only one-dimensional
+samples. A natural extension is the two-sample case (correlation,
+covariance, Pearson and Spearman coefficients), each of which has a
+short definition and an obvious unit-test target in
+<span class="k">\texttt</span><span class="nb">{</span>statistics<span class="nb">}</span> or <span class="k">\texttt</span><span class="nb">{</span>scipy.stats<span class="nb">}</span>.
+
+<span class="k">\section</span><span class="nb">{</span>Conclusion<span class="nb">}</span>
+
+We have presented <span class="k">\texttt</span><span class="nb">{</span>stats<span class="k">\_from\_scratch</span><span class="nb">}</span>, a small library
+that implements the basic summary statistics from their definitions
+and agrees with the standard library <span class="k">\texttt</span><span class="nb">{</span>statistics<span class="nb">}</span> module on
+every test case we tried.
+
+<span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
+<span class="k">\bibliography</span><span class="nb">{</span>references<span class="nb">}</span>
+
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

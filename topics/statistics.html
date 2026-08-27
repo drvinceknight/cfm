@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statistics - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Statistics</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="https://vknight.org/pfm/tools-for-mathematics/08-statistics/introduction/main.html">Python for mathematics: Statistics</a></li>
+
+</ul>
+
+
+
+<h3>Videos</h3>
+<ol>
+
+  <li>Video demonstration of tutorial. - <a href="https://youtu.be/bheeUG6iwjA?si=58jwdBN04MEKLqC4">YouTube</a></li>
+
+</ol>
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Statistics", "pick": 5, "questions": [{"q": "Which standard library do we use for descriptive statistics in this course?", "options": [{"text": "`statistics` (imported as `st`)", "correct": true}, {"text": "`sympy`"}, {"text": "`numpy`"}, {"text": "`itertools`"}], "explain": "Python's standard `statistics` library provides mean, median, variance and quantiles."}, {"q": "Which call computes the mean of `data`?", "options": [{"text": "`st.mean(data)`", "correct": true}, {"text": "`st.average(data)`"}, {"text": "`data.mean()`"}, {"text": "`mean(data)`"}], "explain": "`statistics.mean(data)` returns the arithmetic mean."}, {"q": "Which call computes the median of `data`?", "options": [{"text": "`st.median(data)`", "correct": true}, {"text": "`st.middle(data)`"}, {"text": "`data.median()`"}, {"text": "`median(data)`"}], "explain": "`statistics.median(data)` returns the middle value of the sorted data."}, {"q": "What is the difference between `st.stdev` and `st.pstdev`?", "options": [{"text": "`st.stdev` is the sample standard deviation; `st.pstdev` is the population standard deviation", "correct": true}, {"text": "`st.stdev` is the variance; `st.pstdev` is the standard deviation"}, {"text": "they are aliases"}, {"text": "`st.stdev` requires sorted data; `st.pstdev` does not"}], "explain": "Sample statistics use \\(n - 1\\) in the denominator; population statistics use \\(n\\)."}, {"q": "Which call computes the quartiles of `data`?", "options": [{"text": "`st.quantiles(data, n=4)`", "correct": true}, {"text": "`st.quartiles(data)`"}, {"text": "`st.split(data, 4)`"}, {"text": "`data.quartiles()`"}], "explain": "`statistics.quantiles(data, n=4)` returns the cut points that split `data` into four equal-sized groups."}, {"q": "Which call computes the sample variance of `data`?", "options": [{"text": "`st.variance(data)`", "correct": true}, {"text": "`st.pvariance(data)`"}, {"text": "`st.stdev(data) ** 2`"}, {"text": "`st.var(data)`"}], "explain": "`statistics.variance(data)` returns the sample variance; `pvariance` is the population version."}, {"q": "Why subtract the mean before squaring when computing variance?", "options": [{"text": "to measure how far values spread from the centre, regardless of sign", "correct": true}, {"text": "to make the answer positive"}, {"text": "to scale the data to unit length"}, {"text": "to centre the median at zero"}], "explain": "Variance measures average squared deviation from the mean."}, {"q": "What is the relationship between standard deviation and variance?", "options": [{"text": "standard deviation is the square root of variance", "correct": true}, {"text": "standard deviation is the square of variance"}, {"text": "they are the same"}, {"text": "standard deviation is half the variance"}], "explain": "By definition, \\(\\sigma = \\sqrt{\\sigma^2}\\)."}, {"q": "Which library do we use for plotting in this course?", "options": [{"text": "`matplotlib.pyplot` (imported as `plt`)", "correct": true}, {"text": "`sympy.plot`"}, {"text": "`seaborn`"}, {"text": "`plotly`"}], "explain": "`import matplotlib.pyplot as plt` is the standard import for plots."}, {"q": "Which call makes a histogram of `data` with matplotlib?", "options": [{"text": "`plt.hist(data)`", "correct": true}, {"text": "`plt.bar(data)`"}, {"text": "`plt.plot(data)`"}, {"text": "`plt.scatter(data)`"}], "explain": "`plt.hist(data)` draws a histogram of the values."}, {"q": "Which call shows a figure that we have built up with matplotlib?", "options": [{"text": "`plt.show()`", "correct": true}, {"text": "`plt.draw()`"}, {"text": "`plt.render()`"}, {"text": "`plt.print()`"}], "explain": "`plt.show()` displays the current figure."}, {"q": "Why prefer the median to the mean when the data has outliers?", "options": [{"text": "the median is less sensitive to extreme values", "correct": true}, {"text": "the median is always larger than the mean"}, {"text": "the median is unique"}, {"text": "the median is faster to compute"}], "explain": "A few extreme values can shift the mean a long way; the median moves much less."}, {"q": "What does `len(data)` give for a list of numbers?", "options": [{"text": "the number of values, which is the sample size", "correct": true}, {"text": "the sum of the values"}, {"text": "the mean of the values"}, {"text": "the variance"}], "explain": "`len` returns the number of elements; statistically, the sample size."}, {"q": "Why split a calculation into helper functions like `mean_squared_error` rather than writing it inline?", "options": [{"text": "to make each piece named, testable and reusable", "correct": true}, {"text": "to make the code shorter"}, {"text": "to avoid imports"}, {"text": "to disable type checking"}], "explain": "Helper functions document intent and can be unit-tested individually."}, {"q": "Which is a sensible workflow for summarising a small data set?", "options": [{"text": "compute mean, median, standard deviation, then plot a histogram", "correct": true}, {"text": "skip plotting altogether"}, {"text": "use only the median"}, {"text": "use only the mean and ignore spread"}], "explain": "We typically report a measure of centre, a measure of spread, and a visual summary."}]}</script>
+</div>
+
+
+<p>A handout is available <a href="../assets/handouts/autumn/08-statistics/main.pdf">here</a>.</p>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2024-11-22-review-of-statistics.html">2024-11-22: Review of Statistics</a></h4>
+<p>In class today we reviewed statistics.</p>
+
+<h4><a href="../posts/2024-11-20-virtual-statistics-lab.html">2024-11-20: Virtual lab: Statistics</a></h4>
+<p>Today's virtual lab went over the tutorial for the Statistics chapter for <a href="https://vknight.org/pfm/tools-for-mathematics/08-statistics/tutorial/main.html">Python
+for Mathematics</a>.</p>
+
+<h4><a href="../posts/2024-11-19-introduction-to-statistics.html">2024-11-19: Introduction to statistics</a></h4>
+<p>In class today I gave an overview of how to carry out statistical calculations
+using the <code>statistics</code> library.</p>
+
+<h4><a href="../posts/2023-11-24-summary-of-statistics.html">2023-11-24: Summary of Statistics and some discussion about assessment</a></h4>
+<p>In class today I we went over the Statistics chapter.</p>
+
+<h4><a href="../posts/2023-11-20-introduction-to-statistics.html">2023-11-20: Introduction to statistics</a></h4>
+<p>In class today I gave an overview of how to carry out statistical calculations
+using the <code>statistics</code> library.</p>
+
+
+
+
+
+<p><small><code><a href="../class-notes/statistics.html">Facilitator notes: Statistics</a></code></small></p>
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

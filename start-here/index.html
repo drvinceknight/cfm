@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Start here - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1 id="start-here">Start here</h1>
+<p>Whoever you are, this module is designed to be predictable. The first half is
+about using a mathematics-oriented set of Python tools; the second half is a
+group project in which you build a small library of your own. The
+<a href="../#schedule">schedule</a> lists every topic; the
+<a href="../assessment/">Assessment</a> page lists every component and
+how marks are combined.</p>
+<p>The five students below are caricatures, but most of us are a mix of them.
+Find the one closest to you and follow the signposts.</p>
+<figure class="persona-figure">
+  <img src="../assets/img/personas/main.png"
+       alt="The five student personas and where each finds help">
+</figure>
+
+<h2 id="the-minimum-to-pass">The minimum to pass</h2>
+<p>If you do nothing else, do this, in order:</p>
+<ol>
+<li>Read the <a href="../assessment/">Assessment</a> page so you know
+   how marks are combined: quizzes plus an individual coursework plus a
+   group project, weighted as set out there.</li>
+<li>For every topic on the <a href="../#schedule">schedule</a>, start
+   with the <strong>quick quiz</strong> at the top of the page to check the basics, then
+   work through the tutorial and the how-to from the textbook
+   <a href="https://vknight.org/pfm/">Python for mathematics</a>.</li>
+<li>Submit each weekly quiz and the individual coursework on time.</li>
+<li>In the second half of the module, attend every group meeting and let the
+   secretary record you as present in the minutes. Your individual
+   contribution mark for the group project is based on this record.</li>
+</ol>
+<p>That is the whole target. It is finite and it does not change much from
+year to year.</p>
+<h2 id="if-you-are-aiming-for-the-top-mark">If you are aiming for the top mark</h2>
+<p>Going beyond the minimum:</p>
+<ul>
+<li>Work the <strong>exercises</strong> at the end of each textbook chapter, not only the
+  tutorial. The <a href="https://vknight.org/pfm/">solutions</a> are there so you can
+  check your reasoning.</li>
+<li>Aim for the <strong>top end of the quizzes</strong>: every quiz reshuffles, so you
+  can keep attempting until you are answering quickly and confidently.</li>
+<li>Treat the <strong>individual coursework</strong> as a chance to write clean,
+  well-narrated code; the marking scheme rewards communication as well as
+  correctness.</li>
+<li>Use the <strong>facilitator-style chapters</strong> of the textbook (the <em>why</em>
+  sections) to deepen your understanding beyond the tools.</li>
+<li>Take the <strong>group project</strong> seriously as a piece of software: read the
+  <a href="../assessment/">Assessment</a> marking scheme and aim for
+  the <em>exemplary</em> level in every component.</li>
+<li>The <a href="../assessment/example-projects/">example projects</a>
+  linked from the Assessment page are worked submissions. Read them as
+  a model for what a strong submission looks like, not as a ceiling.</li>
+</ul>
+<h2 id="if-you-came-here-because-you-are-good-at-differentiating">If you came here because you are good at differentiating</h2>
+<p>You may have signed up to a mathematics degree because school mathematics
+came naturally, and the openness of university mathematics (and of this
+module in particular) is taking some getting used to. The good news is
+that almost nothing on this module is school-style "find the answer"
+mathematics. It is mostly new <strong>skills</strong>: writing code, writing about
+mathematics, organising a project, working in a group.</p>
+<ul>
+<li>Treat each topic as a skill, not a test. The point of the <strong>tutorial</strong>
+  on each topic page is to walk you through the tool; the point of the
+  <strong>how-to</strong> is to show you the moves; the point of the <strong>exercises</strong> is
+  to let you practise.</li>
+<li>The <strong>quick quiz</strong> at the top of each topic page reshuffles, so there
+  is no harm in repeating it until the basics feel routine.</li>
+<li>You are not behind. By the end of the module you will be writing and
+  testing your own Python library.</li>
+</ul>
+<h2 id="if-you-do-not-think-you-are-a-coder">If you do not think you are a coder</h2>
+<p>You do not have to be a coder when you start. The module is structured so
+that the <strong>first half</strong> introduces tools one at a time, with worked
+examples, and the <strong>second half</strong> lets you build something using those
+tools as part of a group.</p>
+<ul>
+<li>Lean on the <strong>notebook-first</strong> workflow: every tools-for-mathematics
+  topic starts in a notebook where you can explore.</li>
+<li>Use each topic's <strong>quick quiz</strong> to confirm the basics have stuck before
+  the exercises.</li>
+<li>In the second half of the module, you do not need to write code from
+  day one to be a valuable group member. Taking minutes, writing the
+  paper, drafting the documentation and running the tests are all part of
+  the project. The marking scheme rewards each of these.</li>
+<li>The <a href="../assessment/example-projects/">example projects</a>
+  linked from the Assessment page show what finished libraries look
+  like, with all of the pieces in place. They are worth reading even
+  before you start writing your own code.</li>
+</ul>
+<h2 id="if-you-are-dreading-the-group-project">If you are dreading the group project</h2>
+<p>Group work can be a sore subject if you have had a bad experience of it
+before. The first half of the module is independent: every quiz, the
+individual coursework, and your engagement with the tutorials are all
+yours alone. The second half is deliberately scaffolded so that the
+group project is fair and not a free-for-all.</p>
+<ul>
+<li>Get the <strong>individual components</strong> done well early: the quizzes and the
+  individual coursework are independent of any group and account for
+  40% of your mark.</li>
+<li>Read the <a href="../assessment/">Assessment</a> page closely.
+  Your individual mark for the group project is recorded weekly via the
+  meeting minutes and combined with the group mark using a geometric mean,
+  which prevents a free rider from carrying the rest of the group and
+  rewards consistent contribution.</li>
+<li>Read the <a href="../topics/meetings.html">Meetings</a> page so
+  that you know what a meeting is for and what it is not for.</li>
+<li>Read the <a href="../topics/group-dynamics.html">Group dynamics</a>
+  page. The four-step framework for handling disagreement is deliberately
+  prescriptive; you should be able to recite it to yourself in the middle
+  of a meeting.</li>
+</ul>
+<h2 id="if-you-are-short-on-time">If you are short on time</h2>
+<p>If you are juggling the module with everything else:</p>
+<ul>
+<li>Use the minimum-to-pass list above to prioritise.</li>
+<li>The <strong>quick quiz</strong> on each topic is the fastest way to test yourself
+  when you only have a few minutes; the weekly quiz is also the cheapest
+  mark in the module.</li>
+<li>Skim the textbook chapter before each topic's class; you do not have
+  to read every section to make the tutorial worthwhile.</li>
+<li>During the group project the <strong>weekly meeting</strong> is the load-bearing
+  hour: turn up, contribute, let the secretary record you present in
+  the minutes.</li>
+</ul>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

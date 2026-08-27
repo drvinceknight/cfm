@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>README.md - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#quadratic">Example Group Projects / quadratic</a>
+  /
+  README.md
+</p>
+
+<h1>README.md</h1>
+
+<div class="highlight"><pre><code class="language-markdown"><span class="gh"># quadratic</span>
+
+A small Python library for solving real quadratic equations. We return
+the discriminant, the set of real roots, the number of real roots, and
+the vertex of the parabola.
+
+<span class="gu">## Tutorial</span>
+
+We are going to solve the quadratic \(x^2 - 3 x + 2 = 0\). The
+coefficients are \(a = 1\), \(b = -3\), \(c = 2\). We start by importing
+the library:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">quadratic</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+The discriminant is positive:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">discriminant</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">1</span>
+
+<span class="sb">```</span>
+
+so we expect two distinct real roots. Calling <span class="sb">`solutions`</span> returns a
+<span class="sb">`sympy`</span> set containing them:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">solutions</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+
+<span class="sb">```</span>
+
+The number of real roots is
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">number_of_real_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">2</span>
+
+<span class="sb">```</span>
+
+and the vertex of the parabola \(y = x^2 - 3 x + 2\) is at
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">vertex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## How to guide</span>
+
+<span class="gu">### How to compute the discriminant</span>
+
+To compute \(b^2 - 4 a c\) for a quadratic \(a x^2 + b x + c\):
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">quadratic</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">discriminant</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">0</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to find the real roots</span>
+
+To find the real roots we need to pass a <span class="sb">`sympy.Symbol`</span> for the
+unknown:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">quadratic</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">solutions</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">}</span>
+
+<span class="sb">```</span>
+
+If there are no real roots the returned set is empty:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">solutions</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">EmptySet</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to classify by number of real roots</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">quadratic</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">number_of_real_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">number_of_real_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">number_of_real_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">0</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to find the vertex of the parabola</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">quadratic</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">vertex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## Discussion</span>
+
+A quadratic equation has the form \(a x^2 + b x + c = 0\) with
+\(a \ne 0\). The quadratic formula gives the two solutions as
+
+\[
+    x = \frac{-b \pm \sqrt{b^2 - 4 a c}}{2 a}.
+\]
+
+The quantity under the square root is the discriminant
+\(\Delta = b^2 - 4 a c\). When \(\Delta &gt; 0\) the equation has two
+distinct real roots; when \(\Delta = 0\) the two roots collapse onto a
+single repeated root; and when \(\Delta &lt; 0\) there are no real roots
+because the formula asks for the square root of a negative number.
+
+The vertex of the parabola \(y = a x^2 + b x + c\) is at
+\(x = -b / (2 a)\), which is also halfway between the two real roots
+when they exist. We expose this as a separate function because it is
+useful for sketching the parabola without having to solve the quadratic
+first.
+
+<span class="gu">### How we built this</span>
+
+We could have implemented the quadratic formula by hand, but
+<span class="sb">`sympy.solveset`</span> already handles every case, including the empty-set
+case when there are no real roots. We pass the domain <span class="sb">`sympy.S.Reals`</span>
+so that we only get real solutions back: the default domain would also
+include complex roots, and the marking scheme of this module asks us
+only about real roots.
+
+The library is built on the conventions of the <span class="sb">`pfm`</span> algebra chapter
+[<span class="nl">1</span>]: <span class="na">every input is treated symbolically by wrapping it in</span>
+<span class="sb">`sympy.S(...)`</span> before doing arithmetic, and the answer comes back as a
+<span class="sb">`sympy`</span> expression rather than a <span class="sb">`float`</span>.
+
+<span class="gu">## Reference</span>
+
+<span class="gu">### List of functionality</span>
+
+A list of functionality in this library is:
+
+<span class="k">-</span><span class="w"> </span>`discriminant(quadratic_coefficient, linear_coefficient,
+  constant_coefficient)`: return \(b^2 - 4 a c\).
+<span class="k">-</span><span class="w"> </span>`solutions(quadratic_coefficient, linear_coefficient,
+  constant_coefficient, variable)`: return the real roots as a
+  <span class="sb">`sympy.Set`</span>.
+<span class="k">-</span><span class="w"> </span>`number_of_real_roots(quadratic_coefficient, linear_coefficient,
+  constant_coefficient)`: return 0, 1, or 2.
+<span class="k">-</span><span class="w"> </span>`vertex(quadratic_coefficient, linear_coefficient,
+  constant_coefficient)`: return the vertex of the parabola.
+
+<span class="gu">### Tests</span>
+
+The tests live in <span class="sb">`test_quadratic.py`</span> and can be run with:
+
+<span class="sb">```sh</span>
+python<span class="w"> </span>test_quadratic.py
+<span class="sb">```</span>
+
+They cover the three discriminant cases and check the vertex against
+the known parabolas \(y = x^2\) and \(y = (x - 1)^2\).
+
+<span class="gu">### Bibliography</span>
+
+[1] Knight, V. <span class="ge">*Python for Mathematics*</span>, vknight.org/pfm. Accessed 2026.
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

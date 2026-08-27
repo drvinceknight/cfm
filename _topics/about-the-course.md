@@ -65,6 +65,27 @@ Some examples of how this applies to me:
   and either go over the mistake then and there or go over it again at
   a future meeting.
 
+## Structure of the course
+
+The course runs over a single semester and is divided into two halves.
+
+In the first half (Weeks 1 to 6), we cover the mathematical and computational
+foundations of the module in scheduled classes.
+
+In the second half (Weeks 6 to 11), the emphasis shifts to self-directed group
+work. Groups meet independently each week to study the Python for Mathematics
+book content and to make progress on their group project. There is a single
+one-hour contact session per week in the second half; this session is used to
+hand in the week's meeting minutes and to ask questions. **Groups are formed
+during Week 1** so that you have your group from the very start of the module.
+
+Each week in the group project phase has a minutes template linked in the
+schedule. One member acts as secretary for the meeting (the role rotates each
+week) and is responsible for completing the minutes. The group prints the
+minutes and submits the hard copy as a group during the contact hour. The
+attendance recorded in the minutes is the evidence used for the individual
+component of the group project mark.
+
 ## Assessment
 
 There are three pieces of assessment in this course:

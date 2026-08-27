@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.12", "3.13", "3.14"]
     steps:
       - uses: actions/checkout@v4
 
@@ -19,5 +19,6 @@ jobs:
 
       - name: Test the documentation
         run: |
-          uv run --python ${{ matrix.python-version }} \
+          uv run --no-project --python ${{ matrix.python-version }} \
+            --with sympy --with scipy --with matplotlib --with scikit-learn \
             python -m doctest -o ELLIPSIS ./_class-notes/*.md

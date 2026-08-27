@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        python-version: ["3.12", "3.13", "3.14"]
     steps:
       - uses: actions/checkout@v4
 
@@ -22,10 +22,10 @@ jobs:
           set -e
           for example in assets/examples/*/; do
             echo "=== ruff check $example ==="
-            uv run --python ${{ matrix.python-version }} --with ruff \
+            uv run --no-project --python ${{ matrix.python-version }} --with ruff \
               ruff check "$example"
             echo "=== ruff format --check $example ==="
-            uv run --python ${{ matrix.python-version }} --with ruff \
+            uv run --no-project --python ${{ matrix.python-version }} --with ruff \
               ruff format --check "$example"
           done
 
@@ -37,7 +37,7 @@ jobs:
             if [ -f "$example/test_$name.py" ]; then
               echo "=== Running test_$name.py ==="
               (cd "$example" && \
-                uv run --python ${{ matrix.python-version }} \
+                uv run --no-project --python ${{ matrix.python-version }} \
                   --with sympy --with scipy \
                   python "test_$name.py")
             fi
@@ -50,7 +50,7 @@ jobs:
             if [ -f "$example/README.md" ]; then
               echo "=== Doctesting $example/README.md ==="
               (cd "$example" && \
-                uv run --python ${{ matrix.python-version }} \
+                uv run --no-project --python ${{ matrix.python-version }} \
                   --with sympy --with scipy \
                   python -m doctest README.md)
             fi

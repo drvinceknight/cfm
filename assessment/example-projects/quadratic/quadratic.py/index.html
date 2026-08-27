@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>quadratic.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#quadratic">Example Group Projects / quadratic</a>
+  /
+  quadratic.py
+</p>
+
+<h1>quadratic.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="sd">&quot;&quot;&quot;Solving real quadratic equations symbolically.</span>
+
+<span class="sd">We use ``sympy.solveset`` to find the roots of $a x^2 + b x + c$, the</span>
+<span class="sd">discriminant to classify the nature of the roots, and a small helper to</span>
+<span class="sd">compute the coordinates of the vertex of the corresponding parabola.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">discriminant</span><span class="p">(</span><span class="n">quadratic_coefficient</span><span class="p">,</span> <span class="n">linear_coefficient</span><span class="p">,</span> <span class="n">constant_coefficient</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the discriminant of $a x^2 + b x + c$.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    quadratic_coefficient : int, float, or sympy expression</span>
+<span class="sd">        The coefficient of $x^2$.</span>
+<span class="sd">    linear_coefficient : int, float, or sympy expression</span>
+<span class="sd">        The coefficient of $x$.</span>
+<span class="sd">    constant_coefficient : int, float, or sympy expression</span>
+<span class="sd">        The constant term.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sympy expression</span>
+<span class="sd">        The discriminant $b^2 - 4 a c$.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">linear_coefficient</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">quadratic_coefficient</span> <span class="o">*</span> <span class="n">constant_coefficient</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solutions</span><span class="p">(</span>
+    <span class="n">quadratic_coefficient</span><span class="p">,</span>
+    <span class="n">linear_coefficient</span><span class="p">,</span>
+    <span class="n">constant_coefficient</span><span class="p">,</span>
+    <span class="n">variable</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the real solutions of $a x^2 + b x + c = 0$.</span>
+
+<span class="sd">    We pass the expression to ``sympy.solveset`` over ``sympy.S.Reals``;</span>
+<span class="sd">    the return type is a :class:`sympy.Set`, which is the recommended</span>
+<span class="sd">    interface in :mod:`sympy`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    quadratic_coefficient : int, float, or sympy expression</span>
+<span class="sd">        The coefficient of $x^2$.</span>
+<span class="sd">    linear_coefficient : int, float, or sympy expression</span>
+<span class="sd">        The coefficient of $x$.</span>
+<span class="sd">    constant_coefficient : int, float, or sympy expression</span>
+<span class="sd">        The constant term.</span>
+<span class="sd">    variable : sympy.Symbol</span>
+<span class="sd">        The unknown.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sympy.Set</span>
+<span class="sd">        The set of real roots.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">quadratic_coefficient</span> <span class="o">*</span> <span class="n">variable</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">linear_coefficient</span> <span class="o">*</span> <span class="n">variable</span> <span class="o">+</span> <span class="n">constant_coefficient</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">solveset</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">S</span><span class="o">.</span><span class="n">Reals</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">number_of_real_roots</span><span class="p">(</span><span class="n">quadratic_coefficient</span><span class="p">,</span> <span class="n">linear_coefficient</span><span class="p">,</span> <span class="n">constant_coefficient</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the number of real roots: 0, 1, or 2.</span>
+
+<span class="sd">    The result is based on the sign of the discriminant. We treat the</span>
+<span class="sd">    repeated-root case (discriminant zero) as one root.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">discriminant</span><span class="p">(</span><span class="n">quadratic_coefficient</span><span class="p">,</span> <span class="n">linear_coefficient</span><span class="p">,</span> <span class="n">constant_coefficient</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">delta</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">vertex</span><span class="p">(</span><span class="n">quadratic_coefficient</span><span class="p">,</span> <span class="n">linear_coefficient</span><span class="p">,</span> <span class="n">constant_coefficient</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the vertex $(x, y)$ of $y = a x^2 + b x + c$.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    quadratic_coefficient : int, float, or sympy expression</span>
+<span class="sd">        The coefficient of $x^2$.</span>
+<span class="sd">    linear_coefficient : int, float, or sympy expression</span>
+<span class="sd">        The coefficient of $x$.</span>
+<span class="sd">    constant_coefficient : int, float, or sympy expression</span>
+<span class="sd">        The constant term.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple of sympy expressions</span>
+<span class="sd">        The coordinates $(x_v, y_v)$ of the vertex.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_value</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="n">quadratic_coefficient</span><span class="p">)</span>
+    <span class="n">b_value</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="n">linear_coefficient</span><span class="p">)</span>
+    <span class="n">c_value</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="n">constant_coefficient</span><span class="p">)</span>
+    <span class="n">x_vertex</span> <span class="o">=</span> <span class="o">-</span><span class="n">b_value</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a_value</span><span class="p">)</span>
+    <span class="n">y_vertex</span> <span class="o">=</span> <span class="n">c_value</span> <span class="o">-</span> <span class="n">b_value</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">a_value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_vertex</span><span class="p">,</span> <span class="n">y_vertex</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

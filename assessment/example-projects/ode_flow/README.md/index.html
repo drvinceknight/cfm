@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>README.md - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#ode_flow">Example Group Projects / ode_flow</a>
+  /
+  README.md
+</p>
+
+<h1>README.md</h1>
+
+<div class="highlight"><pre><code class="language-markdown"><span class="gh"># ode_flow</span>
+
+A small Python library for solving and sampling first-order initial
+value problems. The solver returns a symbolic solution, a helper
+evaluates that solution at a list of sample times, and a verifier
+checks that a candidate expression satisfies the equation.
+
+<span class="gu">## Tutorial</span>
+
+We are going to solve the exponential-growth problem
+\(y&#39;(t) = y(t)\) with \(y(0) = 1\). The exact solution is
+\(y(t) = e^t\). We start by importing the library and declaring the
+symbols:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">ode_flow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+The right-hand side of the ODE is the expression <span class="sb">`y(t)`</span>:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">solution</span> <span class="o">=</span> <span class="n">ode_flow</span><span class="o">.</span><span class="n">solve_initial_value_problem</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">solution</span>
+<span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+We can sample the solution at a list of times:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ode_flow</span><span class="o">.</span><span class="n">trajectory</span><span class="p">(</span><span class="n">solution</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.718281828459045</span><span class="p">,</span> <span class="mf">7.38905609893065</span><span class="p">]</span>
+
+<span class="sb">```</span>
+
+We can also check that the candidate solution satisfies the ODE:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ode_flow</span><span class="o">.</span><span class="n">verify_solution</span><span class="p">(</span><span class="n">solution</span><span class="p">,</span> <span class="n">y</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## How to guide</span>
+
+<span class="gu">### How to solve a first-order initial value problem</span>
+
+The right-hand side is a <span class="sb">`sympy`</span> expression in the time variable and
+the unknown function. The initial time and value can be either
+symbolic or numeric.
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">ode_flow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ode_flow</span><span class="o">.</span><span class="n">solve_initial_value_problem</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to sample a symbolic solution at a list of times</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">ode_flow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ode_flow</span><span class="o">.</span><span class="n">trajectory</span><span class="p">(</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">]</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to verify that an expression satisfies an ODE</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">ode_flow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ode_flow</span><span class="o">.</span><span class="n">verify_solution</span><span class="p">(</span><span class="n">sym</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ode_flow</span><span class="o">.</span><span class="n">verify_solution</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="kc">False</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## Discussion</span>
+
+A first-order initial value problem has the form
+\(y&#39;(t) = f(t, y(t))\) with \(y(t_0) = y_0\). For many right-hand
+sides \(f\), the solution can be written down in closed form by
+recognising one of the standard cases (separable, linear, exact). The
+solver <span class="sb">`sympy.dsolve`</span> already implements these cases, and a great deal
+more, so we treat it as the engine and focus on the interface.
+
+The <span class="sb">`trajectory`</span> helper exists because the natural next step after
+finding a symbolic solution is to plot it. The <span class="sb">`verify_solution`</span>
+helper exists for tests: given a candidate symbolic solution, it
+substitutes the candidate into the right-hand side and compares
+against the derivative of the candidate. The general theory of ODEs
+is covered in [2].
+
+<span class="gu">### How we built this</span>
+
+We pass the right-hand side and the initial condition through
+<span class="sb">`sym.Eq`</span> and the <span class="sb">`ics=`</span> keyword of <span class="sb">`sym.dsolve`</span>. The return value of
+<span class="sb">`sym.dsolve`</span> is an <span class="sb">`Eq`</span> of the form \(y(t) = \text{expression}\); we
+take <span class="sb">`.rhs`</span> to return the expression itself, which is easier to
+substitute into. Inside <span class="sb">`trajectory`</span> we convert each substitution to
+<span class="sb">`float`</span> so that the output is small and plottable; the symbolic
+solution remains available if exactness is needed.
+
+We follow the differential equations chapter of *Python for
+Mathematics* [1]: we use <span class="sb">`sym.Function`</span> for the unknown, <span class="sb">`sym.Eq`</span>
+for the equation, and <span class="sb">`sym.dsolve`</span> with the <span class="sb">`ics`</span> keyword for the
+initial condition.
+
+<span class="gu">## Reference</span>
+
+<span class="gu">### List of functionality</span>
+
+A list of functionality in this library is:
+
+<span class="k">-</span><span class="w"> </span>`solve_initial_value_problem(right_hand_side, time_variable,
+  function, initial_time, initial_value)`: return the symbolic
+  solution to a first-order initial value problem.
+<span class="k">-</span><span class="w"> </span><span class="sb">`trajectory(solution_expression, time_variable, sample_times)`</span>:
+  evaluate the solution at a list of times.
+<span class="k">-</span><span class="w"> </span>`verify_solution(solution_expression, right_hand_side,
+  time_variable, function)`: check that a candidate solves the ODE.
+
+<span class="gu">### Tests</span>
+
+The tests live in <span class="sb">`test_ode_flow.py`</span> and can be run with:
+
+<span class="sb">```sh</span>
+python<span class="w"> </span>test_ode_flow.py
+<span class="sb">```</span>
+
+They check the solver on the exponential-growth problem
+\(y&#39; = y\), the constant-growth problem \(y&#39; = 1\), the explicit
+time-dependent problem \(y&#39; = 2t\), and the same exponential-growth
+problem with a non-zero initial time. They also check that
+<span class="sb">`trajectory`</span> returns the correct length and known values, and that
+<span class="sb">`verify_solution`</span> accepts a correct candidate and rejects an
+incorrect one.
+
+<span class="gu">### Bibliography</span>
+
+[1] Knight, V. <span class="ge">*Python for Mathematics*</span>, vknight.org/pfm. Accessed 2026.
+
+[2] Boyce, W. E. and DiPrima, R. C. *Elementary Differential Equations
+and Boundary Value Problems*. Wiley, 11th edition, 2017.
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

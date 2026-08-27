@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>paper/main.tex - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#dice">Example Group Projects / dice</a>
+  /
+  paper/main.tex
+</p>
+
+<h1>paper/main.tex</h1>
+
+<div class="highlight"><pre><code class="language-latex"><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="na">[margin=1in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>parskip<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath, amssymb, amsthm<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
+
+<span class="k">\title</span><span class="nb">{</span>A small library for simulating and analysing sums of fair dice<span class="nb">}</span>
+<span class="k">\author</span><span class="nb">{</span>Group N<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\maketitle</span>
+
+<span class="k">\begin</span><span class="nb">{</span>abstract<span class="nb">}</span>
+We present <span class="k">\texttt</span><span class="nb">{</span>dice<span class="nb">}</span>, a small Python library for simulating sums
+of fair <span class="s">\(</span><span class="nb">s</span><span class="s">\)</span>-sided dice and comparing the empirical distribution
+with the exact theoretical distribution. We use the standard library
+throughout: <span class="k">\texttt</span><span class="nb">{</span>random<span class="nb">}</span> for the simulation, <span class="k">\texttt</span><span class="nb">{</span>statistics<span class="nb">}</span>
+for the summary numbers, and <span class="k">\texttt</span><span class="nb">{</span>fractions.Fraction<span class="nb">}</span> for the
+exact distribution. We recover the textbook values
+<span class="s">\(</span><span class="nb">P</span><span class="o">(</span><span class="nb">s </span><span class="o">=</span><span class="nb"> </span><span class="m">2</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="o">/</span><span class="m">36</span><span class="s">\)</span>, <span class="s">\(</span><span class="nb">P</span><span class="o">(</span><span class="nb">s </span><span class="o">=</span><span class="nb"> </span><span class="m">7</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="o">/</span><span class="m">6</span><span class="s">\)</span> and <span class="s">\(</span><span class="nb">P</span><span class="o">(</span><span class="nb">s </span><span class="o">=</span><span class="nb"> </span><span class="m">12</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="o">/</span><span class="m">36</span><span class="s">\)</span> for
+two six-sided dice, and we show that the empirical distribution from
+<span class="s">\(</span><span class="m">10000</span><span class="s">\)</span> simulated rolls agrees with the theoretical values to
+within sampling error. The library follows the Diataxis framework for
+documentation~<span class="k">\cite</span><span class="nb">{</span>procida2017<span class="nb">}</span> and the conventions of the
+open-source textbook <span class="k">\emph</span><span class="nb">{</span>Python for
+Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+<span class="k">\end</span><span class="nb">{</span>abstract<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Introduction<span class="nb">}</span>
+
+The distribution of the sum of <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> fair <span class="s">\(</span><span class="nb">s</span><span class="s">\)</span>-sided dice is a
+standard probability example. For small <span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> the distribution can be
+written out by hand: for <span class="s">\(</span><span class="nb">n </span><span class="o">=</span><span class="nb"> </span><span class="m">2</span><span class="s">\)</span> and <span class="s">\(</span><span class="nb">s </span><span class="o">=</span><span class="nb"> </span><span class="m">6</span><span class="s">\)</span> the well-known
+triangular distribution has <span class="s">\(</span><span class="nb">P</span><span class="o">(</span><span class="nb">s </span><span class="o">=</span><span class="nb"> </span><span class="m">2</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="o">/</span><span class="m">36</span><span class="s">\)</span>, <span class="s">\(</span><span class="nb">P</span><span class="o">(</span><span class="nb">s </span><span class="o">=</span><span class="nb"> </span><span class="m">7</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">6</span><span class="o">/</span><span class="m">36</span><span class="s">\)</span>,
+and the rest of the values fall symmetrically between. For larger
+<span class="s">\(</span><span class="nb">n</span><span class="s">\)</span> the closed-form expression in terms of binomial coefficients is
+awkward to state and easy to get wrong.
+
+We wanted a small library that lets us both simulate the sum and
+compute the exact distribution, with the latter as a sanity check on
+the former. The standard library provides everything we need:
+<span class="k">\texttt</span><span class="nb">{</span>random<span class="nb">}</span> for the simulation, <span class="k">\texttt</span><span class="nb">{</span>statistics<span class="nb">}</span> for the
+summary numbers, and <span class="k">\texttt</span><span class="nb">{</span>fractions.Fraction<span class="nb">}</span> for the rationals.
+
+We present a five-function library,
+<span class="k">\texttt</span><span class="nb">{</span>dice<span class="nb">}</span>; we recover the textbook values for two six-sided dice;
+and we show that the empirical distribution from <span class="s">\(</span><span class="m">10000</span><span class="s">\)</span> rolls is
+within a comfortable margin of the theoretical values.
+
+<span class="k">\section</span><span class="nb">{</span>The library<span class="nb">}</span>
+
+The library lives in the single module <span class="k">\texttt</span><span class="nb">{</span>dice.py<span class="nb">}</span> and follows
+the probability chapter of <span class="k">\emph</span><span class="nb">{</span>Python for
+Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+
+<span class="k">\texttt</span><span class="nb">{</span>roll(number<span class="k">\_of\_dice</span>, sides, seed)<span class="nb">}</span> returns
+a tuple of face values, each drawn uniformly from
+<span class="s">\(</span><span class="nv">\{</span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">, </span><span class="nv">\dots</span><span class="nb">, s</span><span class="nv">\}</span><span class="s">\)</span>. An optional ``seed`` argument lets us
+reproduce a roll.
+
+<span class="k">\texttt</span><span class="nb">{</span>simulate<span class="k">\_sums</span>(number<span class="k">\_of\_dice</span>,
+number<span class="k">\_of\_rolls</span>, sides, seed)<span class="nb">}</span> returns a list of sums, one per roll.
+
+<span class="k">\texttt</span><span class="nb">{</span>empirical<span class="k">\_distribution</span>(samples)<span class="nb">}</span> returns a dictionary
+mapping each observed value to its relative frequency.
+
+<span class="k">\texttt</span><span class="nb">{</span>theoretical<span class="k">\_distribution</span>(number<span class="k">\_of\_dice</span>, sides)<span class="nb">}</span> computes
+the exact distribution by repeated convolution of the single-die
+distribution. We use <span class="k">\texttt</span><span class="nb">{</span>fractions.Fraction<span class="nb">}</span> so that the
+probabilities are exact rationals.
+
+<span class="k">\texttt</span><span class="nb">{</span>summary<span class="k">\_statistics</span>(samples)<span class="nb">}</span>
+returns the mean, median, and sample standard deviation, using
+<span class="k">\texttt</span><span class="nb">{</span>statistics.mean<span class="nb">}</span>, <span class="k">\texttt</span><span class="nb">{</span>statistics.median<span class="nb">}</span> and
+<span class="k">\texttt</span><span class="nb">{</span>statistics.stdev<span class="nb">}</span>.
+
+<span class="k">\section</span><span class="nb">{</span>Worked example<span class="nb">}</span>
+
+We illustrate the library on the sum of two six-sided dice. The
+theoretical distribution is the triangular distribution shown in
+Table~<span class="k">\ref</span><span class="nb">{</span>tab:two-d6<span class="nb">}</span>. We then simulate <span class="s">\(</span><span class="m">10000</span><span class="s">\)</span> rolls with
+seed <span class="s">\(</span><span class="m">0</span><span class="s">\)</span>; the empirical probability of rolling a <span class="s">\(</span><span class="m">7</span><span class="s">\)</span> is
+<span class="s">\(</span><span class="m">0</span><span class="nb">.</span><span class="m">16</span><span class="nb">{</span><span class="nv">\sim</span><span class="nb">}</span><span class="m">0</span><span class="nb">.</span><span class="m">17</span><span class="s">\)</span>, which lies inside the interval <span class="s">\(</span><span class="o">[</span><span class="m">0</span><span class="nb">.</span><span class="m">13</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">20</span><span class="o">]</span><span class="s">\)</span>
+that we use in the doctest.
+
+<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[h]
+<span class="k">\centering</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>l l l l l l l l l l l l<span class="nb">}</span>
+<span class="k">\toprule</span>
+Sum <span class="nb">&amp;</span> 2 <span class="nb">&amp;</span> 3 <span class="nb">&amp;</span> 4 <span class="nb">&amp;</span> 5 <span class="nb">&amp;</span> 6 <span class="nb">&amp;</span> 7 <span class="nb">&amp;</span> 8 <span class="nb">&amp;</span> 9 <span class="nb">&amp;</span> 10 <span class="nb">&amp;</span> 11 <span class="nb">&amp;</span> 12 <span class="k">\\</span>
+Prob.<span class="k">\</span> (<span class="s">$</span><span class="nv">\times</span><span class="nb"> </span><span class="m">36</span><span class="s">$</span>) <span class="nb">&amp;</span> 1 <span class="nb">&amp;</span> 2 <span class="nb">&amp;</span> 3 <span class="nb">&amp;</span> 4 <span class="nb">&amp;</span> 5 <span class="nb">&amp;</span> 6 <span class="nb">&amp;</span> 5 <span class="nb">&amp;</span> 4 <span class="nb">&amp;</span> 3 <span class="nb">&amp;</span> 2 <span class="nb">&amp;</span> 1 <span class="k">\\</span>
+<span class="k">\bottomrule</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>The exact distribution of the sum of two six-sided
+dice.<span class="nb">}</span> The probability of each total is shown as a multiple of
+<span class="s">\(</span><span class="m">1</span><span class="o">/</span><span class="m">36</span><span class="s">\)</span>. The mode is at <span class="s">\(</span><span class="m">7</span><span class="s">\)</span>, with probability <span class="s">\(</span><span class="m">6</span><span class="o">/</span><span class="m">36</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="o">/</span><span class="m">6</span><span class="s">\)</span>.
+The library returns these values exactly using
+<span class="k">\texttt</span><span class="nb">{</span>fractions.Fraction<span class="nb">}</span>.<span class="nb">}</span>
+<span class="k">\label</span><span class="nb">{</span>tab:two-d6<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Discussion<span class="nb">}</span>
+
+The probability chapter of <span class="k">\emph</span><span class="nb">{</span>Python for Mathematics<span class="nb">}</span> reaches for
+<span class="k">\texttt</span><span class="nb">{</span>sympy.Rational<span class="nb">}</span>, which would also work. We chose
+<span class="k">\texttt</span><span class="nb">{</span>fractions.Fraction<span class="nb">}</span> because the rest of the library is
+standard-library only, and bringing in <span class="k">\texttt</span><span class="nb">{</span>sympy<span class="nb">}</span> would be
+disproportionate for the small amount of exact arithmetic we need.
+
+We only handle fair dice. A natural extension
+would be to accept a custom probability mass function on the faces of
+each die, so that we can model loaded dice or dice with non-standard
+faces. The convolution code already accepts a dictionary, so this
+extension would be small.
+
+<span class="k">\section</span><span class="nb">{</span>Conclusion<span class="nb">}</span>
+
+We have presented <span class="k">\texttt</span><span class="nb">{</span>dice<span class="nb">}</span>, a small library for simulating sums
+of fair dice and comparing them against the exact distribution. The
+library recovers the textbook values for two six-sided dice and the
+empirical distribution from a seeded simulation agrees with them to
+within sampling error.
+
+<span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
+<span class="k">\bibliography</span><span class="nb">{</span>references<span class="nb">}</span>
+
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

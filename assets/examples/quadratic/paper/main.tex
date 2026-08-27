@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{A small library for solving real quadratic equations symbolically}
+\author{Group N}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present \texttt{quadratic}, a small Python library for solving the
+real quadratic equation \(a x^2 + b x + c = 0\). The library exposes
+four short functions: the discriminant, the set of real solutions, the
+number of real roots, and the coordinates of the vertex of the
+corresponding parabola. The roots are returned exactly using
+\texttt{sympy.solveset}~\cite{meurer2017}; the documentation follows
+the Diataxis framework~\cite{procida2017} and the conventions of the
+open-source textbook \emph{Python for Mathematics}~\cite{knight2024}.
+\end{abstract}
+
+\section{Introduction}
+
+The real quadratic equation \(a x^2 + b x + c = 0\) is the first
+non-trivial equation that mathematics students meet at school and one
+of the few for which a closed-form solution is taught directly. The
+solutions are given by the quadratic formula
+
+\[
+    x = \frac{-b \pm \sqrt{b^2 - 4 a c}}{2 a},
+\]
+
+and the nature of the roots depends on the sign of the discriminant
+\(\Delta = b^2 - 4 a c\). When \(\Delta > 0\) there are two distinct
+real roots; when \(\Delta = 0\) the two roots coincide; and when
+\(\Delta < 0\) there are no real roots.
+
+Several Python libraries can solve quadratics. The
+\texttt{numpy.roots} function works with numeric inputs and returns
+floating-point approximations, which is convenient but loses the exact
+form of the answer. The standard \texttt{math} library does not handle
+quadratics at all. We take a different approach. By calling
+\texttt{sympy.solveset}~\cite{meurer2017} with the domain restricted
+to \texttt{sympy.S.Reals} we get an exact \texttt{sympy.Set} of real
+roots, which is also the recommended interface in the \texttt{sympy}
+documentation.
+
+We present a four-function library,
+\texttt{quadratic}, that returns exact real solutions, the
+discriminant, the number of real roots, and the vertex of the
+parabola. The library is small but covers the three discriminant cases
+in its tests.
+
+\section{The library}
+
+The library lives in the single module \texttt{quadratic.py} and
+follows the conventions of the algebra chapter of \emph{Python for
+Mathematics}~\cite{knight2024}: every input is wrapped in
+\texttt{sympy.S(\dots)} before any arithmetic, so that an integer
+input is automatically promoted to \texttt{sympy.Integer} and an
+expression input passes through unchanged.
+
+\texttt{discriminant(quadratic\_coefficient, linear\_coefficient,
+constant\_coefficient)} returns \(b^2 - 4 a c\).
+
+\texttt{solutions(quadratic\_coefficient, linear\_coefficient,
+constant\_coefficient, variable)} returns the set of real roots. We
+pass the constructed expression to \texttt{sympy.solveset} with
+\texttt{domain=sympy.S.Reals}; this returns an empty set when
+\(\Delta < 0\), a one-element set when \(\Delta = 0\) and a two-element
+set otherwise.
+
+\texttt{number\_of\_real\_roots(quadratic\_coefficient,
+linear\_coefficient, constant\_coefficient)} returns \(0\), \(1\), or
+\(2\) according to the sign of the discriminant.
+
+\texttt{vertex(quadratic\_coefficient,
+linear\_coefficient, constant\_coefficient)} returns the coordinates
+\((-b/(2a), c - b^2/(4a))\) of the vertex of the parabola
+\(y = a x^2 + b x + c\).
+
+\section{Worked examples}
+
+For \(x^2 - 3 x + 2 = 0\) the discriminant is
+\(1 > 0\), so we expect two real roots. The library returns
+\(\{1, 2\}\), which we verified by hand.
+
+For \(x^2 - 2 x + 1 = 0\) the discriminant
+is zero. The library returns the singleton \(\{1\}\), and the vertex
+of \(y = (x - 1)^2\) is at \((1, 0)\), as expected.
+
+For \(x^2 + 1 = 0\) the discriminant is
+\(-4 < 0\). The library returns the empty set; the vertex of
+\(y = x^2 + 1\) is at \((0, 1)\), above the \(x\)-axis, which is
+consistent with the parabola not crossing it.
+
+\section{Discussion}
+
+The \texttt{sympy} documentation
+recommends \texttt{solveset} over the older \texttt{solve} because it
+returns a \texttt{Set}, which gives a uniform way to talk about the
+empty case (no real roots) and the singleton case (repeated root).
+Working with sets is also easier when the caller wants to combine the
+result with set operations such as union or membership.
+
+The library handles only quadratics. Cubic and
+higher-degree polynomials would need a different formula (cubics) or
+no closed form at all (degree five and above by Abel-Ruffini). A
+natural extension would be to fall back to \texttt{sympy.solveset} for
+higher-degree polynomials and expose the same interface.
+
+\section{Conclusion}
+
+We have presented \texttt{quadratic}, a small library for solving real
+quadratic equations symbolically. The library returns exact roots, the
+number of real roots, the discriminant, and the vertex of the parabola.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

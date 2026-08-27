@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Differential Equations - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Differential Equations</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="https://vknight.org/pfm/tools-for-mathematics/09-differential-equations/introduction/main.html">Python for mathematics: Differential Equations</a></li>
+
+</ul>
+
+
+
+<h3>Videos</h3>
+<ol>
+
+  <li>Video demonstration of tutorial. - <a href="https://youtu.be/F73G8jVwdmA?si=VMXGBcq29xINKrxE">YouTube</a></li>
+
+</ol>
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Differential equations", "pick": 5, "questions": [{"q": "We import sympy as `sym`. Which call declares a symbolic function `y`?", "options": [{"text": "`y = sym.Function(\"y\")`", "correct": true}, {"text": "`y = sym.Symbol(\"y\")`"}, {"text": "`y = sym.S(\"y\")`"}, {"text": "`y = sym.dsolve(\"y\")`"}], "explain": "`sym.Function` declares an undefined symbolic function we can differentiate and solve for."}, {"q": "How do we write \\(y'(x)\\) with sympy when `y = sym.Function(\"y\")` and `x = sym.Symbol(\"x\")`?", "options": [{"text": "`sym.diff(y(x), x)`", "correct": true}, {"text": "`y.diff(x)`"}, {"text": "`sym.diff(y, x)`"}, {"text": "`y(x).diff()`"}], "explain": "`y(x)` is the expression and `sym.diff(y(x), x)` is its derivative with respect to \\(x\\)."}, {"q": "Which call wraps two expressions into the equation `lhs = rhs`?", "options": [{"text": "`sym.Eq(lhs, rhs)`", "correct": true}, {"text": "`lhs == rhs`"}, {"text": "`sym.equation(lhs, rhs)`"}, {"text": "`sym.Equation(lhs, rhs)`"}], "explain": "`sym.Eq(lhs, rhs)` is the sympy equation constructor."}, {"q": "Which sympy tool solves an ODE?", "options": [{"text": "`sym.dsolve`", "correct": true}, {"text": "`sym.solveset`"}, {"text": "`sym.solve`"}, {"text": "`sym.diff`"}], "explain": "`sym.dsolve(equation, function)` solves an ordinary differential equation symbolically."}, {"q": "How do we set up the ODE \\(y'(x) = \\cos(x) y(x)\\)?", "options": [{"text": "`sym.Eq(sym.diff(y(x), x), sym.cos(x) * y(x))`", "correct": true}, {"text": "`sym.Eq(sym.diff(y, x), sym.cos(x) * y)`"}, {"text": "`sym.dsolve(sym.cos(x) * y(x), y(x))`"}, {"text": "`y(x).diff() == sym.cos(x) * y(x)`"}], "explain": "The left-hand side is the derivative of `y(x)`; the right-hand side is `cos(x) * y(x)`."}, {"q": "Once we have the equation, how do we ask `dsolve` to solve for `y(x)`?", "options": [{"text": "`sym.dsolve(equation, y(x))`", "correct": true}, {"text": "`sym.dsolve(equation, y)`"}, {"text": "`equation.dsolve(y(x))`"}, {"text": "`sym.solve(equation, y(x))`"}], "explain": "Pass the equation and the function to solve for."}, {"q": "Which argument is used to give `dsolve` initial conditions?", "options": [{"text": "`ics`", "correct": true}, {"text": "`init`"}, {"text": "`bc`"}, {"text": "`initial`"}], "explain": "Pass `ics={y(0): 1}` (for example) so that the constant of integration is fixed."}, {"q": "What does the general solution to a first-order ODE typically include?", "options": [{"text": "an arbitrary constant of integration", "correct": true}, {"text": "no free parameters"}, {"text": "an arbitrary function"}, {"text": "two free constants"}], "explain": "First-order ODEs have a one-parameter family of solutions until we apply an initial condition."}, {"q": "What does the general solution to a second-order linear ODE typically include?", "options": [{"text": "two arbitrary constants of integration", "correct": true}, {"text": "one arbitrary constant"}, {"text": "no free parameters"}, {"text": "three arbitrary constants"}], "explain": "Each order of differentiation introduces one constant when we integrate."}, {"q": "What does `sym.dsolve(sym.Eq(sym.diff(y(x), x), 0), y(x))` give?", "options": [{"text": "`Eq(y(x), C1)` \u2014 \\(y\\) is constant", "correct": true}, {"text": "`Eq(y(x), 0)`"}, {"text": "`Eq(y(x), x)`"}, {"text": "an error"}], "explain": "If the derivative is zero, the function is a constant."}, {"q": "Which is the correct way to differentiate `y(x)` twice symbolically?", "options": [{"text": "`sym.diff(y(x), x, 2)`", "correct": true}, {"text": "`y(x).diff(x ** 2)`"}, {"text": "`sym.diff(y, x, 2)`"}, {"text": "`sym.diff(y(x), 2)`"}], "explain": "The third argument is the order of differentiation."}, {"q": "Why use exact symbolic methods for ODEs rather than numerical ones?", "options": [{"text": "we get an exact closed-form solution we can manipulate further", "correct": true}, {"text": "symbolic methods are always faster"}, {"text": "numerical methods do not exist"}, {"text": "numerical methods only work for linear ODEs"}], "explain": "Symbolic solutions are exact; numerical methods are essential when no closed form exists."}, {"q": "Which of these is a first-order linear ODE?", "options": [{"text": "\\(y'(x) + p(x) y(x) = q(x)\\)", "correct": true}, {"text": "\\(y''(x) + y(x) = 0\\)"}, {"text": "\\(y(x) y'(x) = 1\\)"}, {"text": "\\(y'(x)^2 = y(x)\\)"}], "explain": "First-order linear ODEs have the form \\(y' + p y = q\\)."}, {"q": "Which substitution is the most natural workflow for evaluating a solution at \\(x = 0\\)?", "options": [{"text": "`solution.subs({x: 0})`", "correct": true}, {"text": "`solution(0)`"}, {"text": "`sym.eval(solution, 0)`"}, {"text": "`solution.set(x, 0)`"}], "explain": "We use `.subs({variable: value})` exactly as we did in the algebra and calculus chapters."}, {"q": "What is the role of `sym.Function` for ODE work, as opposed to `sym.Symbol`?", "options": [{"text": "it declares `y` as a function whose value at a point we can talk about (e.g. `y(x)`)", "correct": true}, {"text": "it makes `y` invertible"}, {"text": "it forces `y` to be real"}, {"text": "it disables differentiation"}], "explain": "Symbols stand for unknowns; `Function` lets sympy differentiate `y(x)` properly."}]}</script>
+</div>
+
+
+<p>A handout is available <a href="../assets/handouts/autumn/09-differential-equations/main.pdf">here</a>.</p>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2024-11-29-review-of-differential-equations.html">2024-11-29: Lab and Review of Differential Equations</a></h4>
+<p>You can see the recordings from the Lab and the review session below:</p>
+
+<h4><a href="../posts/2024-11-26-introduction-to-differential-equations.html">2024-11-26: Introduction to differential equations</a></h4>
+<p>In class today I gave an overview of how to solve differential equations using
+sympy.</p>
+
+<h4><a href="../posts/2023-12-01-summary-of-differential-equations.html">2023-12-01: Summary of differential equations</a></h4>
+<p>In class today I we did a quiz using all the topics from the first year and we
+also did the differential equations coursework like exercise.</p>
+
+<h4><a href="../posts/2023-11-27-introduction-to-differential-equations.html">2023-11-27: Introduction to differential equations</a></h4>
+<p>In class today I gave an overview of how to solve differential equations
+using <code>sympy</code>.</p>
+
+
+
+
+
+<p><small><code><a href="../class-notes/differential-equations.html">Facilitator notes: Differential Equations</a></code></small></p>
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

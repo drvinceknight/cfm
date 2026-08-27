@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaTeX and Writing Mathematics (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>LaTeX and Writing Mathematics</h1>
+
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand how to use LaTeX</li>
+<li>Have access to guidance on writing</li>
+</ul>
+<h2 id="in-class-discussion">In class discussion</h2>
+<p>Discuss how they already have seen an example a markup language: LaTeX.</p>
+<p>In fact: they have already seen some LaTeX.</p>
+<p>Open up a local editor (do not feel obliged to use VS Code) and show to a LaTeX
+document can be compiled.</p>
+<p>Then show that this is how they are expected to write their paper.</p>
+<p>Specifically type the following::</p>
+<pre><code>\documentclass[a4paper]{article}
+
+% Set up page size
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+
+% Nice way to display code
+\usepackage{minted}
+
+% Import images
+
+\title{The TSP Package}
+\author{Vince Knight}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction:The TSP}
+
+\end{document}
+</code></pre>
+<p>Open overleaf and show how this can be used to write LaTeX.</p>
+<p>Show them the following two guidelines for writing:</p>
+<ul>
+<li><a href="https://vknight.org/cfm/assets/pdf/writing-mathematics-guidelines/main.pdf">https://vknight.org/cfm/assets/pdf/writing-mathematics-guidelines/main.pdf</a></li>
+<li><a href="https://vknight.org/cfm/assets/pdf/a-guide-to-writing-mathematics/main.pdf">https://vknight.org/cfm/assets/pdf/a-guide-to-writing-mathematics/main.pdf</a></li>
+</ul>
+<p>Use breakout rooms/groups and ask students to spend 5/10 minutes finding
+something specifically useful in there.</p>
+<p>After breakout rooms ask all students to write down those things in a shared
+medium (for example the class discord).</p>
+<h2 id="communications">Communications</h2>
+<h3 id="after-class">After class</h3>
+<p>Send the following email after class::</p>
+<pre><code>Hi all,
+
+A recording of today's class is available at &lt;&gt;.
+
+In this class I went over automated writing mathematics. We discuss this
+from a technical point of view (how to use LaTeX) and I refer you to my
+notes on that: https://vknight.org/tex/
+
+We also discussed guidelines for better writing:
+
+- https://vknight.org/cfm/assets/pdf/writing-mathematics-guidelines/main.pdf
+- https://vknight.org/cfm/assets/pdf/a-guide-to-writing-mathematics/main.pdf
+
+On Friday the mathematics subject librarian will take the class to discuss
+finding good sources for your paper (which is specifically a point in the
+marking criteria).
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

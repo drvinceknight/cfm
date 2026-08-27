@@ -1,0 +1,137 @@
+title: Functions and data structures
+pick: 5
+questions:
+  - q: "Which keyword defines a function in Python?"
+    options:
+      - text: "`def`"
+        correct: true
+      - text: "`function`"
+      - text: "`fun`"
+      - text: "`define`"
+    explain: "`def name(parameters):` defines a function."
+
+  - q: "What does `return` do in a function?"
+    options:
+      - text: "exits the function and sends a value back to the caller"
+        correct: true
+      - text: "prints a value to the screen"
+      - text: "saves the value to a file"
+      - text: "raises an exception"
+    explain: "`return value` ends the function and yields `value` to the caller."
+
+  - q: "What is a docstring?"
+    options:
+      - text: "a string immediately inside the function that documents what it does"
+        correct: true
+      - text: "a string variable named `doc`"
+      - text: "a comment beginning with `#`"
+      - text: "a print statement"
+    explain: "Triple-quoted strings immediately after `def` are picked up as the function's documentation."
+
+  - q: "How do we create an empty list?"
+    options:
+      - text: "`[]` or `list()`"
+        correct: true
+      - text: "`()`"
+      - text: "`{}`"
+      - text: "`empty_list`"
+    explain: "`[]` is the literal; `list()` calls the constructor. Both give an empty list."
+
+  - q: "How do we create the tuple `(1, 2, 3)`?"
+    options:
+      - text: "`(1, 2, 3)` or `tuple([1, 2, 3])`"
+        correct: true
+      - text: "`{1, 2, 3}`"
+      - text: "`[1, 2, 3]`"
+      - text: "`tuple(1, 2, 3)`"
+    explain: "Comma-separated values inside parentheses form a tuple."
+
+  - q: "What is the main difference between a tuple and a list?"
+    options:
+      - text: "tuples are immutable; lists are mutable"
+        correct: true
+      - text: "tuples are ordered; lists are unordered"
+      - text: "tuples can hold integers only"
+      - text: "lists cannot be nested"
+    explain: "Once created a tuple cannot be changed; lists can be modified in place."
+
+  - q: "Which method appends an element to a list?"
+    options:
+      - text: "`.append`"
+        correct: true
+      - text: "`.add`"
+      - text: "`.push`"
+      - text: "`.extend` only"
+    explain: "`a_list.append(element)` adds `element` to the end of `a_list`."
+
+  - q: "What does `first_list + other_list` give for two lists?"
+    options:
+      - text: "a new list containing the elements of both, in order"
+        correct: true
+      - text: "an error"
+      - text: "elementwise addition"
+      - text: "the union as a set"
+    explain: "`+` concatenates lists, producing a new list."
+
+  - q: "What is `[x ** 2 for x in range(5)]` an example of?"
+    options:
+      - text: "a list comprehension"
+        correct: true
+      - text: "a generator expression"
+      - text: "a set comprehension"
+      - text: "a dictionary"
+    explain: "`[expr for var in iterable]` is a list comprehension."
+
+  - q: "Which data structure is the most natural for storing a name-to-value mapping?"
+    options:
+      - text: "a dictionary"
+        correct: true
+      - text: "a tuple"
+      - text: "a list"
+      - text: "a set"
+    explain: "Dictionaries store key/value pairs and look up values by key."
+
+  - q: "Given `info = {\"name\": \"Ada\", \"age\": 30}`, how do we read the name?"
+    options:
+      - text: "`info[\"name\"]`"
+        correct: true
+      - text: "`info.name`"
+      - text: "`info(\"name\")`"
+      - text: "`info->name`"
+    explain: "Dictionary lookup uses square brackets with the key."
+
+  - q: "Which is the convention for indexing the first element of a list `data`?"
+    options:
+      - text: "`data[0]`"
+        correct: true
+      - text: "`data[1]`"
+      - text: "`data.first`"
+      - text: "`data(0)`"
+    explain: "Python lists are zero-indexed; the first element is at index 0."
+
+  - q: "How do we count the elements of a list `data`?"
+    options:
+      - text: "`len(data)`"
+        correct: true
+      - text: "`data.length`"
+      - text: "`data.size()`"
+      - text: "`count(data)`"
+    explain: "`len` is the built-in length function for sequences and collections."
+
+  - q: "Which data structure stores unique elements with no order?"
+    options:
+      - text: "a set"
+        correct: true
+      - text: "a tuple"
+      - text: "a list"
+      - text: "a dictionary"
+    explain: "Sets are unordered collections of unique elements; they support union, intersection and difference."
+
+  - q: "Why split a long calculation into smaller functions?"
+    options:
+      - text: "to make each piece testable, named and reusable"
+        correct: true
+      - text: "to make the code run faster"
+      - text: "to avoid using variables"
+      - text: "to make the file shorter only"
+    explain: "Small named functions are easier to test, easier to read, and easier to reuse elsewhere."

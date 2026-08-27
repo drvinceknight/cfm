@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>continued_fractions.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#continued_fractions">Example Group Projects / continued_fractions</a>
+  /
+  continued_fractions.py
+</p>
+
+<h1>continued_fractions.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="sd">&quot;&quot;&quot;Continued fractions of rational numbers.</span>
+
+<span class="sd">We compute the continued fraction expansion of a rational number with the</span>
+<span class="sd">Euclidean algorithm, then turn the resulting list of integer coefficients</span>
+<span class="sd">into a list of convergent rationals.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">continued_fraction</span><span class="p">(</span><span class="n">rational_number</span><span class="p">,</span> <span class="n">maximum_terms</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the continued fraction expansion of a rational number.</span>
+
+<span class="sd">    The continued fraction expansion of a number $r$ is a sequence of</span>
+<span class="sd">    integers $a_0, a_1, a_2, \\dots$ such that</span>
+
+<span class="sd">    $$r = a_0 + \\cfrac{1}{a_1 + \\cfrac{1}{a_2 + \\dots}}.$$</span>
+
+<span class="sd">    For a rational input the expansion terminates after finitely many</span>
+<span class="sd">    steps; the loop stops as soon as the remainder is zero.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    rational_number : sympy.Rational, int, or float</span>
+<span class="sd">        The number to expand.</span>
+<span class="sd">    maximum_terms : int</span>
+<span class="sd">        The maximum number of coefficients to compute.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of int</span>
+<span class="sd">        The coefficients ``[a_0, a_1, ..., a_k]``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">coefficients</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">remaining</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="n">rational_number</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maximum_terms</span><span class="p">):</span>
+        <span class="n">integer_part</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">remaining</span><span class="p">)</span>
+        <span class="n">coefficients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">integer_part</span><span class="p">))</span>
+        <span class="n">fractional_part</span> <span class="o">=</span> <span class="n">remaining</span> <span class="o">-</span> <span class="n">integer_part</span>
+        <span class="k">if</span> <span class="n">fractional_part</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">remaining</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">fractional_part</span>
+    <span class="k">return</span> <span class="n">coefficients</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">convergents</span><span class="p">(</span><span class="n">coefficients</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of convergents of a continued fraction.</span>
+
+<span class="sd">    The convergents are the rational numbers obtained by truncating the</span>
+<span class="sd">    expansion after each term. We use the standard recursion</span>
+
+<span class="sd">    $$\\frac{p_n}{q_n}</span>
+<span class="sd">    = \\frac{a_n p_{n - 1} + p_{n - 2}}{a_n q_{n - 1} + q_{n - 2}}.$$</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    coefficients : list of int</span>
+<span class="sd">        The continued fraction coefficients ``[a_0, a_1, ...]``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of sympy.Rational</span>
+<span class="sd">        The successive convergents.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">earlier_numerator</span><span class="p">,</span> <span class="n">current_numerator</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="n">earlier_denominator</span><span class="p">,</span> <span class="n">current_denominator</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">coefficient</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">:</span>
+        <span class="n">next_numerator</span> <span class="o">=</span> <span class="n">coefficient</span> <span class="o">*</span> <span class="n">current_numerator</span> <span class="o">+</span> <span class="n">earlier_numerator</span>
+        <span class="n">next_denominator</span> <span class="o">=</span> <span class="n">coefficient</span> <span class="o">*</span> <span class="n">current_denominator</span> <span class="o">+</span> <span class="n">earlier_denominator</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="n">next_numerator</span><span class="p">,</span> <span class="n">next_denominator</span><span class="p">))</span>
+        <span class="n">earlier_numerator</span><span class="p">,</span> <span class="n">current_numerator</span> <span class="o">=</span> <span class="n">current_numerator</span><span class="p">,</span> <span class="n">next_numerator</span>
+        <span class="n">earlier_denominator</span><span class="p">,</span> <span class="n">current_denominator</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">current_denominator</span><span class="p">,</span>
+            <span class="n">next_denominator</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">golden_ratio_convergents</span><span class="p">(</span><span class="n">number_of_terms</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the first convergents of the golden ratio.</span>
+
+<span class="sd">    The golden ratio $\\varphi = (1 + \\sqrt{5}) / 2$ has the simplest</span>
+<span class="sd">    possible continued fraction expansion: $[1; 1, 1, 1, \\dots]$.</span>
+<span class="sd">    The convergents are ratios of consecutive Fibonacci numbers.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_of_terms : int</span>
+<span class="sd">        The number of convergents to return.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of sympy.Rational</span>
+<span class="sd">        Successive convergents of the golden ratio.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">convergents</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">number_of_terms</span><span class="p">)</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

@@ -10,9 +10,9 @@ In this tutorial we will see how to use `tsp` to solve instances of the
 Assuming we have the following distance matrix:
 
 ```python
-import numpy as np
+>>> import numpy as np
+>>> distance_matrix = np.array(((0, 5, 2, 9), (5, 0, 3, 1), (2, 3, 0, 7), (9, 1, 7, 0)))
 
-distance_matrix = np.array(((0, 5, 2, 9), (5, 0, 3, 1), (2, 3, 0, 7), (9, 1, 7, 0)))
 ```
 
 We can obtain a tour using the following:

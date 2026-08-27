@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Group-project marking scenarios - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../start-here/">Start here</a></li>
+        <li><a href="../../#schedule">Schedule</a></li>
+        <li><a href="../../assessment/">Assessment</a></li>
+        <li><a href="../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1 id="group-project-marking-scenarios">Group-project marking scenarios</h1>
+<p>The group-project mark combines two scores using a geometric mean:</p>
+<div class="arithmatex">\[\text{Final mark} = \sqrt{M \times E}\]</div>
+<p>where <span class="arithmatex">\(M \in [0, 100]\)</span> is your individual <strong>measurable contribution
+score</strong> (engagement: being present <em>and</em> contributing to the meeting,
+as evidenced by the minutes) and <span class="arithmatex">\(E \in [0, 100]\)</span> is the shared
+<strong>effective contribution score</strong> (the group's mark). The full
+definitions are on the <a href="../../assessment/#marking-scheme">Assessment</a>
+page; the three scenarios below show how the formula behaves for
+three typical kinds of group.</p>
+<h2 id="example-1-the-free-rider">Example 1: the free rider</h2>
+<p>A group of four produces a strong project (<span class="arithmatex">\(E = 74\)</span>). Student D was
+recorded as engaged in one of five meetings (<span class="arithmatex">\(M = 20\)</span>).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Student</th>
+<th style="text-align: right;"><span class="arithmatex">\(M\)</span></th>
+<th style="text-align: right;">Final mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">86.02%</td>
+</tr>
+<tr>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">76.94%</td>
+</tr>
+<tr>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">76.94%</td>
+</tr>
+<tr>
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">38.47%</td>
+</tr>
+</tbody>
+</table>
+<p>Student D cannot pass on the strength of their group's work alone.</p>
+<h2 id="example-2-the-conscientious-student-in-a-struggling-group">Example 2: the conscientious student in a struggling group</h2>
+<p>Student A was recorded as engaged at all five meetings (<span class="arithmatex">\(M = 100\)</span>). The group's
+output is weak (<span class="arithmatex">\(E = 42\)</span>).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Student</th>
+<th style="text-align: right;"><span class="arithmatex">\(M\)</span></th>
+<th style="text-align: right;">Final mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">64.81%</td>
+</tr>
+<tr>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">50.20%</td>
+</tr>
+<tr>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">50.20%</td>
+</tr>
+<tr>
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">40.99%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-3-a-well-functioning-group">Example 3: a well-functioning group</h2>
+<p>All four students attend consistently. The project is solid
+(<span class="arithmatex">\(E = 68\)</span>).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Student</th>
+<th style="text-align: right;"><span class="arithmatex">\(M\)</span></th>
+<th style="text-align: right;">Final mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">82.46%</td>
+</tr>
+<tr>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">73.76%</td>
+</tr>
+<tr>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">73.76%</td>
+</tr>
+<tr>
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">63.85%</td>
+</tr>
+</tbody>
+</table>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../assets/js/quiz.js" defer></script>
+</body>
+</html>

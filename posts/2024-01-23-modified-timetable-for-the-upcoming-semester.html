@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modified timetable for the upcoming Semester - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Modified timetable for the upcoming Semester</h1>
+<p><small>2024-01-23</small></p>
+
+<p>I am going to be away from Cardiff from Week 5 (starting 26th of February) until Easter.</p>
+<p>This does imply some changes to the timetable for the first four weeks of the
+Semester. Do check your timetable carefully:</p>
+<ul>
+<li>Week 1:</li>
+<li>Tuesday 30th of January at 1310 in Law 0.22.</li>
+<li>Friday 2nd of February at 1310 in Abacws 0.01.</li>
+<li>Week 2:</li>
+<li>Friday 9th of February at 1000 in Biosci 1.21.</li>
+<li>Friday 9th of February at 1310 in Abacws 0.01.</li>
+<li>Week 3:</li>
+<li>Tuesday 13th of February at 1310 in Law 0.22.</li>
+<li>Friday 16th of February at 1310 in Abacws 0.01.</li>
+<li>Week 4:</li>
+<li>Friday 23rd of February at 1000 in Biosci 1.21.</li>
+<li>Friday 23rd of February at 1310 in Abacws 0.01.</li>
+</ul>
+<p>The schedule you can see <a href="../">here</a> includes
+expected progress pointers which will hopefully assist you remain on top of the
+work you need to do.</p>
+<p>I will be scheduling a virtual support session during my time away from Cardiff
+and will be available to meet virtually if I can be helpful.</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

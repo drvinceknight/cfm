@@ -1,0 +1,137 @@
+title: Documentation of code
+pick: 5
+questions:
+  - q: "Which framework do we use to organise documentation in this course?"
+    options:
+      - text: "Diataxis"
+        correct: true
+      - text: "Markdown"
+      - text: "Sphinx"
+      - text: "MkDocs"
+    explain: "Diataxis splits documentation into four kinds aimed at different reader needs."
+
+  - q: "What are the four sections of the Diataxis framework?"
+    options:
+      - text: "Tutorial, How-to, Reference, Explanation"
+        correct: true
+      - text: "Tutorial, How-to, Examples, FAQ"
+      - text: "Introduction, Tutorial, API, Glossary"
+      - text: "Quickstart, Reference, Tutorial, Changelog"
+    explain: "Each section serves a distinct purpose: learning, doing, looking up, understanding."
+
+  - q: "Which Diataxis section is aimed at learning?"
+    options:
+      - text: "Tutorial"
+        correct: true
+      - text: "Reference"
+      - text: "Explanation"
+      - text: "How-to"
+    explain: "A tutorial walks a beginner through step-by-step instructions."
+
+  - q: "Which Diataxis section is the right place for step-by-step instructions to solve a specific problem?"
+    options:
+      - text: "How-to"
+        correct: true
+      - text: "Tutorial"
+      - text: "Reference"
+      - text: "Explanation"
+    explain: "How-tos are like recipes: concise, problem-focused, do-not-explain."
+
+  - q: "Which Diataxis section is for looking up details on a particular tool, function or command?"
+    options:
+      - text: "Reference"
+        correct: true
+      - text: "How-to"
+      - text: "Tutorial"
+      - text: "Explanation"
+    explain: "Reference content lets readers find facts; it is information-oriented."
+
+  - q: "Which Diataxis section is for deeper conceptual understanding?"
+    options:
+      - text: "Explanation"
+        correct: true
+      - text: "How-to"
+      - text: "Reference"
+      - text: "Tutorial"
+    explain: "Explanation discusses why something works the way it does."
+
+  - q: "Which markdown syntax produces a top-level section heading?"
+    options:
+      - text: "`# Section`"
+        correct: true
+      - text: "`* Section`"
+      - text: "`-- Section --`"
+      - text: "`> Section`"
+    explain: "One `#` for a top-level heading; two `##` for the next level down."
+
+  - q: "Which markdown syntax embeds a runnable Python code block?"
+    options:
+      - text: "triple backticks with the language: ```python ... ```"
+        correct: true
+      - text: "single backticks: `x = 1`"
+      - text: "angle brackets: `<code>`"
+      - text: "square brackets: `[code]`"
+    explain: "Triple backticks with a language hint render the block with syntax highlighting."
+
+  - q: "Why is a tutorial considered the most important first piece of documentation?"
+    options:
+      - text: "it is the route a new user takes to learn that the library is worth their time"
+        correct: true
+      - text: "tutorials are easiest to write"
+      - text: "tutorials are the shortest section"
+      - text: "tutorials are the only place to show code"
+    explain: "If a new reader cannot follow a tutorial, they are unlikely to read anything else."
+
+  - q: "Why is it useful to keep tutorial code self-contained?"
+    options:
+      - text: "the reader can copy, run and see the result with no prior context"
+        correct: true
+      - text: "tutorials run faster that way"
+      - text: "tutorials cannot import anything"
+      - text: "tutorials are not allowed to use functions"
+    explain: "Self-contained snippets let the reader follow along step by step."
+
+  - q: "Which is the natural file to put a high-level summary, install instructions and a short example in?"
+    options:
+      - text: "`README.md`"
+        correct: true
+      - text: "`tutorial.md`"
+      - text: "`reference.md`"
+      - text: "`__init__.py`"
+    explain: "The README is the entry point most readers reach first; keep it short and welcoming."
+
+  - q: "Why include a docstring on every function in a library?"
+    options:
+      - text: "to give the reader of the code or the help system a one-line description"
+        correct: true
+      - text: "to make the function importable"
+      - text: "Python requires docstrings"
+      - text: "to make the function private"
+    explain: "Docstrings act as inline reference documentation for each function."
+
+  - q: "Which command in Python reveals a function's docstring?"
+    options:
+      - text: "`help(function)`"
+        correct: true
+      - text: "`doc(function)`"
+      - text: "`function.about()`"
+      - text: "`function?`"
+    explain: "`help` displays the docstring of any callable."
+
+  - q: "What is a useful test of whether your documentation is good?"
+    options:
+      - text: "a new reader can install the library and complete a task without further help"
+        correct: true
+      - text: "it has more than 1000 words"
+      - text: "it uses every markdown feature"
+      - text: "it is longer than the code"
+    explain: "Documentation is for readers; user testing is the best feedback."
+
+  - q: "Why follow Diataxis explicitly rather than inventing our own headings?"
+    options:
+      - text: "the split corresponds to four genuinely different reader needs, and the structure helps both writer and reader"
+        correct: true
+      - text: "Diataxis is required by Python"
+      - text: "Diataxis renders better in markdown"
+      - text: "no other structure is allowed"
+    explain: "Diataxis gives a principled way to organise content; each section has a different purpose."

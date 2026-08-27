@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introduction to Probability - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Introduction to Probability</h1>
+<p><small>2023-10-30</small></p>
+
+<p>In class today I gave an overview of how to use the <code>random</code> library to simulate
+random event to study probability problems.</p>
+<p>You can see a recording of the class <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b4800948-60fe-4273-a0d0-b0a600f7d842">here</a></p>
+<p>Here is the notebook I used in class:
+<a href="../assets/nbs/2023-2024/probability.ipynb">probability.ipynb</a></p>
+<p>To solve the following problem:</p>
+<p>A delivery company delivers fragile items. If a delivery is on time it is usually because it was rushed.
+The probability that an item is delivered on time is 3/4.
+The probability that an item is broken given that it arrived on time is 3/10 and if it is late 1/5.</p>
+<ol>
+<li>What is the probability that an item is late?</li>
+<li>Given that an item is broken what is the probability that it was on time?</li>
+</ol>
+<p>Here is a recording of a summary I recorded during the 2020/2021 academic year: <a href="https://www.youtube.com/watch?v=u-ii1TeLHrM">https://www.youtube.com/watch?v=u-ii1TeLHrM</a>.
+You might find that helpful.</p>
+<p>If you have any questions please let me know.</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

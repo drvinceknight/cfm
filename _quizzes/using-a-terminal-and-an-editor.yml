@@ -1,0 +1,137 @@
+title: Using a terminal and an editor
+pick: 5
+questions:
+  - q: "Which command changes the working directory in a terminal?"
+    options:
+      - text: "`cd`"
+        correct: true
+      - text: "`ls`"
+      - text: "`mkdir`"
+      - text: "`mv`"
+    explain: "`cd` stands for change directory."
+
+  - q: "Which command lists files in the current directory?"
+    options:
+      - text: "`ls`"
+        correct: true
+      - text: "`cd`"
+      - text: "`pwd`"
+      - text: "`mkdir`"
+    explain: "`ls` lists the files and directories in the current location."
+
+  - q: "Which command creates a new directory called `scripts`?"
+    options:
+      - text: "`mkdir scripts`"
+        correct: true
+      - text: "`cd scripts`"
+      - text: "`ls scripts`"
+      - text: "`touch scripts`"
+    explain: "`mkdir` stands for make directory."
+
+  - q: "Which command prints the current working directory?"
+    options:
+      - text: "`pwd`"
+        correct: true
+      - text: "`cd`"
+      - text: "`ls`"
+      - text: "`echo`"
+    explain: "`pwd` prints the working directory path."
+
+  - q: "What does `cd ..` do?"
+    options:
+      - text: "moves up one directory level"
+        correct: true
+      - text: "lists files"
+      - text: "creates a directory"
+      - text: "shows the current path"
+    explain: "`..` refers to the parent directory."
+
+  - q: "From a terminal, how do we run a Python script `main.py`?"
+    options:
+      - text: "`python main.py`"
+        correct: true
+      - text: "`run main.py`"
+      - text: "`python.run main.py`"
+      - text: "`python main`"
+    explain: "Pass the file path to the `python` interpreter."
+
+  - q: "Which is a sensible reason to use an editor over a notebook for library code?"
+    options:
+      - text: "the file is a plain `.py` module that can be imported, tested and version-controlled"
+        correct: true
+      - text: "editors are faster than notebooks"
+      - text: "editors render LaTeX better"
+      - text: "notebooks cannot be saved"
+    explain: "Library code belongs in `.py` files; notebooks are better for narrative exploration."
+
+  - q: "Which file extension is used for Python scripts?"
+    options:
+      - text: "`.py`"
+        correct: true
+      - text: "`.python`"
+      - text: "`.pyx`"
+      - text: "`.ipynb`"
+    explain: "Plain Python source files end in `.py`."
+
+  - q: "In a terminal, what does the `$` (or `>`) at the start of a line typically mean?"
+    options:
+      - text: "it is the prompt, indicating the shell is ready for a command (do not type it)"
+        correct: true
+      - text: "it is part of every command"
+      - text: "it raises an error"
+      - text: "it pipes input"
+    explain: "The prompt marks where you type; the dollar sign or angle bracket is not part of the command."
+
+  - q: "Why would we use Git from the terminal in this course?"
+    options:
+      - text: "to track changes to our project and share them with collaborators"
+        correct: true
+      - text: "to install Python packages"
+      - text: "to run tests"
+      - text: "to format code"
+    explain: "Git records the history of changes and supports collaboration via remotes such as GitHub."
+
+  - q: "What does `git status` show?"
+    options:
+      - text: "which files are modified, staged or untracked in the working tree"
+        correct: true
+      - text: "the entire commit history"
+      - text: "the configured author name"
+      - text: "the network status"
+    explain: "`git status` summarises the state of the working directory."
+
+  - q: "What does `git add main.py` do?"
+    options:
+      - text: "stages `main.py` to be included in the next commit"
+        correct: true
+      - text: "commits `main.py` immediately"
+      - text: "creates `main.py`"
+      - text: "pushes `main.py` to the remote"
+    explain: "Staging selects changes to include in the next `git commit`."
+
+  - q: "What does `git commit -m \"...\"` do?"
+    options:
+      - text: "records the staged changes as a new commit, with the given message"
+        correct: true
+      - text: "uploads commits to the remote"
+      - text: "discards local changes"
+      - text: "renames the current branch"
+    explain: "`commit` writes a snapshot of the staged changes to the local repository."
+
+  - q: "What does `git push` do?"
+    options:
+      - text: "uploads local commits to the remote repository"
+        correct: true
+      - text: "downloads commits from the remote"
+      - text: "stages changes"
+      - text: "discards local changes"
+    explain: "`push` sends your local commits to the remote; `pull` is the reverse."
+
+  - q: "Why pair an editor with the terminal rather than working only in a notebook?"
+    options:
+      - text: "editor plus terminal is the natural environment for building, testing and version-controlling a library"
+        correct: true
+      - text: "the terminal is more colourful"
+      - text: "notebooks cannot run Python"
+      - text: "editors prevent typos"
+    explain: "The editor edits the library code; the terminal runs tests, builds docs and operates Git."

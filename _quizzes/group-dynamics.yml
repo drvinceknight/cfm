@@ -1,0 +1,137 @@
+title: Group dynamics
+pick: 5
+questions:
+  - q: "Which statement best describes disagreement in a group?"
+    options:
+      - text: "disagreement is normal and often useful; the aim is to handle it well, not eliminate it"
+        correct: true
+      - text: "disagreement is always a sign of conflict and should be avoided"
+      - text: "groups that never disagree are the most productive"
+      - text: "disagreement should only be raised with the lecturer"
+    explain: "A group that never disagrees may be dominated by one voice or not engaging deeply with the work."
+
+  - q: "What does a group that never disagrees most likely indicate?"
+    options:
+      - text: "either one member is dominating, or the group is not engaging deeply"
+        correct: true
+      - text: "the group is functioning perfectly"
+      - text: "the group is more efficient"
+      - text: "the group is following the agenda"
+    explain: "Genuine engagement leads to some disagreement; its absence is itself a warning sign."
+
+  - q: "Which of these is a disagreement of fact?"
+    options:
+      - text: "two members believe different things about what a function does"
+        correct: true
+      - text: "two members prefer different code styles"
+      - text: "one member feels another is not contributing"
+      - text: "the group disagrees on which task to tackle next"
+    explain: "Factual disagreements are settled by checking the source."
+
+  - q: "Which of these is a disagreement of approach?"
+    options:
+      - text: "the group agrees on the goal but disagrees on how to reach it"
+        correct: true
+      - text: "two members read the docstring differently"
+      - text: "members disagree about how much effort to spend on a task"
+      - text: "one member is not contributing fairly"
+    explain: "Approach disagreements concern means rather than ends."
+
+  - q: "Which of these is a disagreement of priority?"
+    options:
+      - text: "members disagree about which task to tackle next or how much time to spend on it"
+        correct: true
+      - text: "two members hold opposite beliefs about a formula"
+      - text: "the group disagrees on the coding style"
+      - text: "one member is consistently late"
+    explain: "Priority disagreements are about where to invest effort."
+
+  - q: "Which of these is a disagreement of effort?"
+    options:
+      - text: "one member feels that another is not contributing fairly"
+        correct: true
+      - text: "two members disagree on a numerical answer"
+      - text: "the group disagrees on the order of agenda items"
+      - text: "members differ on coding conventions"
+    explain: "Effort disagreements arise when contributions feel unequal."
+
+  - q: "What are the four steps of the framework for handling disagreement?"
+    options:
+      - text: "Listen, Restate, Identify, Choose"
+        correct: true
+      - text: "Discuss, Decide, Defer, Document"
+      - text: "Listen, Discuss, Decide, Defer"
+      - text: "Prepare, Listen, Decide, Record"
+    explain: "These four steps are deliberately prescriptive so they can be recited in the middle of a meeting."
+
+  - q: "Why does the framework ask each person to restate the other's position?"
+    options:
+      - text: "most disagreements shrink once each person understands what the other actually said"
+        correct: true
+      - text: "to slow the conversation down"
+      - text: "to keep the secretary busy"
+      - text: "to make the meeting last longer"
+    explain: "Restating tests whether we have actually heard each other."
+
+  - q: "Why is identifying which kind of disagreement we are in useful?"
+    options:
+      - text: "the right way to resolve depends on the category; identifying it makes the next step obvious"
+        correct: true
+      - text: "it is required by the marking scheme"
+      - text: "it makes the disagreement feel smaller"
+      - text: "it allows the chair to end the meeting"
+    explain: "Fact, approach, priority and effort disagreements all need slightly different resolutions."
+
+  - q: "Why does the course prescribe a four-step framework rather than letting groups develop their own?"
+    options:
+      - text: "this is the first year of a three-year layered approach; we are deliberately scaffolding"
+        correct: true
+      - text: "the framework is the only correct way to handle disagreement"
+      - text: "the framework is shorter than alternatives"
+      - text: "the framework was chosen by the students"
+    explain: "By the final year you will be expected to manage your own group dynamics with confidence."
+
+  - q: "What is the chair's job when a disagreement arises?"
+    options:
+      - text: "to ensure that no one talks over anyone else and that each position is heard in turn"
+        correct: true
+      - text: "to decide the outcome alone"
+      - text: "to write the minutes"
+      - text: "to leave the room"
+    explain: "The chair facilitates the discussion; the resolution comes from the framework."
+
+  - q: "If a factual disagreement persists, what is the natural next step?"
+    options:
+      - text: "check the source: the textbook, the docstring, the data"
+        correct: true
+      - text: "take a vote"
+      - text: "escalate to the lecturer"
+      - text: "defer the work"
+    explain: "Factual disagreements are resolved by consulting the authoritative source."
+
+  - q: "Why is it important to record decisions in the minutes?"
+    options:
+      - text: "so the group has a shared written record of what was agreed and can act on it"
+        correct: true
+      - text: "to please the chair"
+      - text: "because the lecturer reads the minutes"
+      - text: "to make the minutes longer"
+    explain: "Without a written record, the same disagreements tend to recur."
+
+  - q: "Which of these is the right response to a member who feels left out of a discussion?"
+    options:
+      - text: "the chair invites every member to comment in turn (round-robin)"
+        correct: true
+      - text: "ignore it; the member should speak up"
+      - text: "always ask the quietest member to speak first"
+      - text: "skip discussion items and go straight to decisions"
+    explain: "Round-robin invites everyone, with the option to pass; it shares the floor without singling people out."
+
+  - q: "Why is this the first year of a three-year layered approach to group dynamics?"
+    options:
+      - text: "the practices are deliberately prescriptive now and we expect more autonomy in later years"
+        correct: true
+      - text: "the framework will be removed next year"
+      - text: "first-year groups are different from later-year groups"
+      - text: "this is the only year you will work in groups"
+    explain: "Scaffolding is removed gradually as students gain experience."

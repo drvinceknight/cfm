@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Computing for Mathematics</title>
+  <link rel="shortcut icon" href="./assets/favicon.ico">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="./">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="./start-here/">Start here</a></li>
+        <li><a href="./#schedule">Schedule</a></li>
+        <li><a href="./assessment/">Assessment</a></li>
+        <li><a href="./assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Computing for Mathematics</h1>
+
+<div class="textbook-note">
+  <strong>About the textbook.</strong> This course follows the open-source
+  textbook <em>Python for mathematics</em> at
+  <a href="https://vknight.org/pfm/">vknight.org/pfm</a>, which contains every
+  topic we cover, with worked tutorials, how-to recipes, exercises and full
+  solutions. Not every chapter of the textbook is on the course: the schedule
+  below lists what we cover, but you are very welcome to read the other
+  chapters too.
+</div>
+
+<h2 id="schedule">Schedule</h2>
+
+
+<h3>Tools for mathematics</h3>
+
+<h4>Week 1</h4>
+<ul>
+
+  <li><a href="./topics/about-the-course.html">About the course</a></li>
+
+  <li><a href="./topics/writing-mathematics.html">Writing mathematics</a></li>
+
+  <li><a href="./topics/using-notebooks.html">Using notebooks</a></li>
+
+</ul>
+
+<h4>Week 2</h4>
+<ul>
+
+  <li><a href="./topics/algebra.html">Algebra</a></li>
+
+</ul>
+
+<h4>Week 3</h4>
+<ul>
+
+  <li><a href="./topics/calculus.html">Calculus</a></li>
+
+  <li><a href="./topics/differential-equations.html">Differential equations</a></li>
+
+  <li><a href="./topics/sequences.html">Sequences</a></li>
+
+</ul>
+
+<h4>Week 4</h4>
+<ul>
+
+  <li><a href="./topics/combinatorics.html">Combinatorics</a></li>
+
+  <li><a href="./topics/probability.html">Probability</a></li>
+
+</ul>
+
+<h4>Week 5</h4>
+<ul>
+
+  <li><a href="./topics/matrices.html">Matrices</a></li>
+
+  <li><a href="./topics/statistics.html">Statistics</a></li>
+
+  <li><a href="./topics/release-of-individual-coursework.html">Release of individual coursework</a></li>
+
+</ul>
+
+<h4>Week 6</h4>
+<ul>
+
+  <li><a href="./topics/mock-individual-coursework.html">Mock individual coursework</a></li>
+
+</ul>
+
+
+<h3>Group project</h3>
+
+<h4>Week 6</h4>
+<ul>
+
+  <li><a href="./topics/meetings.html">Meetings</a></li>
+
+  <li><a href="./topics/variables-conditional-statements-and-while-loops.html">Variables, conditional statements, and while loops</a></li>
+
+  <li><a href="./topics/functions-and-data-structures.html">Functions and data structures</a></li>
+
+  <li><a href="./topics/meeting-minutes-week-6.html">Meeting minutes: Week 6</a></li>
+
+</ul>
+
+<h4>Week 7</h4>
+<ul>
+
+  <li><a href="./topics/group-dynamics.html">Group dynamics</a></li>
+
+  <li><a href="./topics/object-oriented-programming.html">Object Oriented Programming</a></li>
+
+  <li><a href="./topics/using-a-terminal-and-an-editor.html">Using a terminal and an editor</a></li>
+
+  <li><a href="./topics/meeting-minutes-week-7.html">Meeting minutes: Week 7</a></li>
+
+</ul>
+
+<h4>Week 8</h4>
+<ul>
+
+  <li><a href="./topics/writing.html">Writing</a></li>
+
+  <li><a href="./topics/modularisation-of-code.html">Modularisation of code</a></li>
+
+  <li><a href="./topics/meeting-minutes-week-8.html">Meeting minutes: Week 8</a></li>
+
+</ul>
+
+<h4>Week 9</h4>
+<ul>
+
+  <li><a href="./topics/presentation.html">Presentation</a></li>
+
+  <li><a href="./topics/documentation-of-code.html">Documentation of code</a></li>
+
+  <li><a href="./topics/meeting-minutes-week-9.html">Meeting minutes: Week 9</a></li>
+
+</ul>
+
+<h4>Week 10</h4>
+<ul>
+
+  <li><a href="./topics/testing-of-code.html">Testing of code</a></li>
+
+  <li><a href="./topics/meeting-minutes-week-10.html">Meeting minutes: Week 10</a></li>
+
+</ul>
+
+<h4>Week 11</h4>
+<ul>
+
+  <li><a href="./topics/submission.html">Submission</a></li>
+
+</ul>
+
+
+
+<h2 id="faqs">FAQs</h2>
+
+<h3 id="can-i-use-concepts-learnt-elsewhere">Can I use concepts learnt elsewhere?</h3>
+<p>I do not discourage you from using concepts learnt elsewhere. In most
+materials I point at other materials. However if you want to be sure to have
+done things correctly for your assessment I recommend using the concepts
+taught in this course.</p>
+
+<h3 id="how-can-i-be-sure-i-have-sufficient-programming-knowledge-to-succeed-in-this-course">Can I succeed in this course even if I am unsure about my programming ability?</h3>
+<p>This class assumes no prior programming knowledge and many students have in fact obtained full marks with no prior programming knowledge.</p>
+
+<h3 id="how-can-i-follow-along-in-class-with-my-computer">How can I follow along in class with my computer?</h3>
+<p>Just like in any other mathematics class, if you would like to try and follow
+along with the various steps we do in class: I recommend that you do.</p>
+<p>If at some point you no longer are able to follow, make a note, perhaps skip
+where you are and continue to follow along or just continue to make notes.</p>
+
+<h3 id="how-do-i-open-the-coursework">How do I open the individual coursework notebook</h3>
+<ol>
+<li>Right click on the link to the coursework and save the file to your
+   computer (make a note of where it is on your computer).</li>
+<li><strong>Do not double click on the file you have downloaded.</strong> (see
+   <a href="https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/why/main.html#why-can-i-not-double-click-on-a-jupyter-notebook-file">https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/why/main.html#why-can-i-not-double-click-on-a-jupyter-notebook-file</a>
+   for an explanation).</li>
+<li>Start a Jupyter notebook server (see
+   <a href="https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/how/main.html#start-a-jupyter-notebook-server">https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/how/main.html#start-a-jupyter-notebook-server</a>
+   for instructions).</li>
+<li>Using the Jupyter notebook interface navigate to the notebook file you
+   saved on your computer in step 1 and click on it.</li>
+</ol>
+
+<h3 id="how-do-office-hours-work">How do office hours work?</h3>
+<p>During the agreed office hours, you can come to my office (you do not need to
+book). If you would prefer to meet online, just send me an email or message me
+on discord.</p>
+
+<h3 id="what-do-you-recommend-for-python">What do you recommend for Python?</h3>
+<p>I recommend using the Anaconda distribution for Python which includes a large
+number of libraries for doing mathematics.
+Here are some resources that you might find helpful:</p>
+<ol>
+<li>A chapter of Python for Mathematics on installing and using Python: <a href="https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html">https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html</a></li>
+<li>A chapter of Python for Mathematics on installing and using other libraries: <a href="https://vknight.org/pfm/further-information/04-pip-installing/introduction/main.html">https://vknight.org/pfm/further-information/04-pip-installing/introduction/main.html</a></li>
+</ol>
+
+<h3 id="why-do-we-use-jupyter-notebooks">Why do we use Jupyter notebooks?</h3>
+<p>Using Jupyter notebooks is a common approach when <strong>using</strong> python as opposed to developing tools in python.
+You can see a longer explanation of this here: <a href="https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/why/main.html#why-use-jupyter">https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/why/main.html#why-use-jupyter</a></p>
+<p>We will be using Python through a different interface in the Spring Semester.</p>
+<p>I hope that through this course you gain an appreciation for different ways to use Python and become adapt at choosing the best one for the
+particular task you are undertaking.</p>
+
+
+<h2 id="assessment-link"><a href="./assessment/">Assessment</a></h2>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="./assets/js/quiz.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+title: Object oriented programming
+pick: 5
+questions:
+  - q: "Which keyword defines a class in Python?"
+    options:
+      - text: "`class`"
+        correct: true
+      - text: "`def`"
+      - text: "`type`"
+      - text: "`object`"
+    explain: "`class Name:` introduces a new class."
+
+  - q: "What is an attribute of an instance?"
+    options:
+      - text: "a piece of data attached to that instance"
+        correct: true
+      - text: "a parent class"
+      - text: "a docstring"
+      - text: "a print statement"
+    explain: "Attributes hold the state of an instance, e.g. `self.amount_of_magic = 100`."
+
+  - q: "What is a method?"
+    options:
+      - text: "a function defined inside a class that acts on an instance"
+        correct: true
+      - text: "an attribute that is not assigned"
+      - text: "a string at the top of the class"
+      - text: "a class with one attribute"
+    explain: "Methods are functions defined inside a class; they typically take `self` as their first parameter."
+
+  - q: "What does `self` refer to inside a method?"
+    options:
+      - text: "the specific instance the method was called on"
+        correct: true
+      - text: "the class itself"
+      - text: "the parent class"
+      - text: "a copy of the instance"
+    explain: "`self` is the instance; we use it to read and modify that instance's attributes."
+
+  - q: "Which method is called automatically when we create an instance?"
+    options:
+      - text: "`__init__`"
+        correct: true
+      - text: "`__new__` only"
+      - text: "`__call__`"
+      - text: "`init`"
+    explain: "`__init__` is the initialiser; it sets up the new instance's attributes."
+
+  - q: "Given `class Country: ...` with an `__init__` taking `name` and `amount_of_magic`, how do we create an instance?"
+    options:
+      - text: "`Country(\"Wales\", 100)`"
+        correct: true
+      - text: "`Country.new(\"Wales\", 100)`"
+      - text: "`new Country(\"Wales\", 100)`"
+      - text: "`Country.init(\"Wales\", 100)`"
+    explain: "We call the class as if it were a function; Python forwards the arguments to `__init__`."
+
+  - q: "What is a 'dunder' method?"
+    options:
+      - text: "a method whose name starts and ends with double underscores, called by Python in particular situations"
+        correct: true
+      - text: "a method that is private"
+      - text: "a method without a docstring"
+      - text: "a method that does not use `self`"
+    explain: "Dunder (double-underscore) methods like `__init__`, `__repr__`, `__eq__` are hooked into Python's syntax."
+
+  - q: "Which of these calls a method `spend` on the instance `wales` with argument 30?"
+    options:
+      - text: "`wales.spend(30)`"
+        correct: true
+      - text: "`spend(wales, 30)`"
+      - text: "`Country.spend(30)`"
+      - text: "`wales->spend(30)`"
+    explain: "Dot notation: `instance.method(arguments)`."
+
+  - q: "When we define `def spend(self, amount):` and call `wales.spend(30)`, what does `self` receive?"
+    options:
+      - text: "the instance `wales`"
+        correct: true
+      - text: "the value 30"
+      - text: "the class `Country`"
+      - text: "`None`"
+    explain: "Python passes the instance implicitly as the first argument."
+
+  - q: "Why use a class instead of a collection of standalone functions?"
+    options:
+      - text: "to bundle state and the operations on that state into a single named type"
+        correct: true
+      - text: "to make the code shorter"
+      - text: "to avoid using lists"
+      - text: "because Python requires classes for anything non-trivial"
+    explain: "Classes group the data and the behaviour together, which is often cleaner when both depend on each other."
+
+  - q: "What does `self.amount_of_magic -= amount_spent` do?"
+    options:
+      - text: "decreases the instance's `amount_of_magic` attribute by `amount_spent`"
+        correct: true
+      - text: "deletes the attribute"
+      - text: "returns the new amount"
+      - text: "creates a class-level variable"
+    explain: "`-=` is in-place subtraction; here it mutates the attribute on the instance."
+
+  - q: "Which of these is the natural way to make instances printable in a useful way?"
+    options:
+      - text: "define a `__repr__` method"
+        correct: true
+      - text: "rename the class"
+      - text: "use `__init__`"
+      - text: "use `print` inside `__init__`"
+    explain: "`__repr__` is called by `repr` and by the interactive prompt to display an instance."
+
+  - q: "Which of these is the natural way to control how `==` works on instances?"
+    options:
+      - text: "define an `__eq__` method"
+        correct: true
+      - text: "rely on `__init__`"
+      - text: "use `is` instead"
+      - text: "use `__compare__`"
+    explain: "`__eq__` defines the semantics of `==` between two instances."
+
+  - q: "What is an instance?"
+    options:
+      - text: "an object created from a class"
+        correct: true
+      - text: "a class without methods"
+      - text: "a method without arguments"
+      - text: "a module"
+    explain: "An instance is a particular object made from a class; e.g. `wales = Country(...)`."
+
+  - q: "Which of these is a sensible reason to add a new method to a class rather than a standalone function?"
+    options:
+      - text: "the operation depends on the instance's own attributes"
+        correct: true
+      - text: "the operation has no input"
+      - text: "the operation runs faster"
+      - text: "the operation uses `import`"
+    explain: "Methods make sense when the operation naturally belongs to an instance and uses its state."

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testing of code (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Testing of code</h1>
+
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand the general structure required for documentation</li>
+<li>Understand how to write further markdown</li>
+</ul>
+<h2 id="first-meeting">First meeting</h2>
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand how assertion statements work</li>
+<li>Understand how to write unit tests using assert statements</li>
+<li>Understand how to write tests for documentation</li>
+</ul>
+<h3 id="testing-software">Testing software</h3>
+<p>Discuss how we will write automated tests for the <code>tsp</code> library we wrote in the
+first section.</p>
+<h4 id="writing-the-unit-tests">Writing the unit tests</h4>
+<p>Write the following in a <code>test_tsp.py</code> file::</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+import tsp
+
+def test_get_tour_with_no_seed():
+    number_of_stops = 4
+    tour = tsp.get_tour(number_of_stops=number_of_stops)
+    assert np.array_equal(tour, np.array([0, 1, 2, 3, 0]))
+
+def test_get_tour_with_seed_0():
+    number_of_stops = 4
+    seed = 0
+    tour = tsp.get_tour(number_of_stops=number_of_stops, seed=seed)
+    assert np.array_equal(tour, np.array([0, 3, 2, 1, 0])), f"Obtained output is {tour}"
+
+def test_get_tour_with_seed_1():
+    number_of_stops = 4
+    seed = 1
+    tour = tsp.get_tour(number_of_stops=number_of_stops, seed=seed)
+    assert np.array_equal(tour, np.array([0, 1, 3, 2, 0])), f"Obtained output is {tour}"
+
+
+def test_swap_cities():
+    tour = [0, 1, 3, 2, 4, 0]
+    steps = (4, 1)
+    new_tour = tsp.swap_cities(tour=tour, steps=steps)
+    assert new_tour == [0, 4, 2, 3, 1, 0], f"Obtained output is {new_tour}"
+
+
+def test_get_cost():
+    distance_matrix = np.array(((0, 5, 2, 9), (5, 0, 3, 1), (2, 3, 0, 7), (9, 1, 7, 0)))
+    tour = [0, 1, 2, 3, 0]
+    cost = tsp.get_cost(tour=tour, distance_matrix=distance_matrix)
+    assert cost == 24
+
+
+def test_run_2_opt_algorithm_with_seed_0():
+    distance_matrix = np.array(((0, 5, 2, 9), (5, 0, 3, 1), (2, 3, 0, 7), (9, 1, 7, 0)))
+    number_of_stops = 4
+    seed = 0
+    iterations = 50
+    tour = tsp.run_2_opt_algorithm(number_of_stops=number_of_stops,
+            distance_matrix=distance_matrix, seed=seed, iterations=iterations)
+    assert tour == [0, 2, 3, 1, 0], f"Obtained output is {tour}"
+
+def test_run_2_opt_algorithm_with_seed_1():
+    distance_matrix = np.array(((0, 5, 2, 9), (5, 0, 3, 1), (2, 3, 0, 7), (9, 1, 7, 0)))
+    number_of_stops = 4
+    seed = 1
+    iterations = 50
+    tour = tsp.run_2_opt_algorithm(number_of_stops=number_of_stops,
+            distance_matrix=distance_matrix, seed=seed, iterations=iterations)
+    assert tour == [0, 2, 1, 3, 0], f"Obtained output is {tour}"
+
+def test_plot_tour():
+    x = np.array([2, 3])
+    y = np.array([2, 3])
+    tour = np.array([0, 1, 0])
+    plot = tsp.plot_tour(x=x, y=y, tour=tour)
+    assert plot is None
+
+test_get_tour_with_no_seed()
+test_get_tour_with_seed_0()
+test_get_tour_with_seed_1()
+test_swap_cities()
+test_get_cost()
+test_run_2_opt_algorithm_with_seed_0()
+test_run_2_opt_algorithm_with_seed_1()
+test_plot_tour()
+</code></pre>
+<p>Run the above tests by running:</p>
+<pre><code>$ python test_tsp.py
+</code></pre>
+<p>Depending on time now discuss refactoring some of the code. For example:</p>
+<ul>
+<li>Modify <code>swap_cities</code> to be called <code>swap_steps</code> as this name is more generic.</li>
+<li>Possibly modify <code>swap_cities</code>/<code>swap_steps</code> so that it can handle numpy array
+  outputs.</li>
+</ul>
+<p>At each step modify the source code and then modify the tests.</p>
+<p>Discuss importance of tests as a debugging tool.</p>
+<p>Testing the documentation</p>
+<hr />
+<p>Modify the documentation in the <code>README.md</code> file to use doctests::</p>
+<pre><code># TSP
+
+A library for solving instances of the travelling sales agent problem
+
+## Tutorial
+
+In this tutorial we will see how to use `tsp` to solve instances of the
+[Travelling Salesman Problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem)
+
+Assuming we have the following distance matrix:
+
+```python
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; distance_matrix = np.array(((0, 5, 2, 9), (5, 0, 3, 1), (2, 3, 0, 7), (9, 1, 7, 0)))
+
+```
+
+We can obtain a tour using the following:
+
+```python
+&gt;&gt;&gt; import tsp  # doctest: +SKIP
+&gt;&gt;&gt; tour = tsp.run_2_opt_algorithm(number_of_stops=4, distance_matrix=distance_matrix, iterations=1000, seed=0)  # doctest: +SKIP
+&gt;&gt;&gt; tour  # doctest: +SKIP
+[0, 3, 1, 2, 0]
+
+```
+
+The `tsp` library includes further functionality which you can read in the
+How To guides.
+</code></pre>
+<p><strong>Note</strong> that the doctests are skipped when checked for this documentation.</p>
+<p>Run the doc tests by typing::</p>
+<pre><code>$ python -m doctest README.md
+</code></pre>
+<p>Discussion around 3 pillars of software development</p>
+<hr />
+<p>Specifically look at diagram in further information section:
+<a href="https://vknight.org/pfm/building-tools/07-testing/why/main.html#how-are-modularisation-documentation-and-testing-related">https://vknight.org/pfm/building-tools/07-testing/why/main.html#how-are-modularisation-documentation-and-testing-related</a></p>
+<h2 id="communications">Communications</h2>
+<h3 id="after-class">After class</h3>
+<p>Send the following email after class::</p>
+<pre><code>Hi all,
+
+A recording of today's class is available at &lt;&gt;.
+
+In this class I went over automated testing.
+
+In class we wrote unit and doctests for the Travelling Salesagent Problem.
+You can find a different example (studying snakes and ladders) here:
+https://vknight.org/pfm/building-tools/07-testing/tutorial/main.html
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

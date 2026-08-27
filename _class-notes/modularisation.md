@@ -144,7 +144,9 @@ Discuss the need for docstrings.
 
 Then put the code in `tsp.py` and show how it can be imported.
 
-## After class communication
+## Communications
+
+### After class
 
 Send the following email after class::
 

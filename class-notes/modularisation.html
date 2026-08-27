@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modularisation of code (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Modularisation of code</h1>
+
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand the idea of modularising code itself.</li>
+<li>Understand how to import a file from a file.</li>
+</ul>
+<p>Show students the following code and ask them to go in breakout rooms and
+discuss what it does:</p>
+<pre><code>&gt;&gt;&gt; def run_2_opt_algorithm(
+...     number_of_stops,
+...     distance_matrix,
+...     iterations,
+...     seed=None,
+... ):
+...
+...     internal_stops = list(range(1, number_of_stops))
+...     if seed is not None:
+...         np.random.seed(seed)
+...         np.random.shuffle(internal_stops)
+...     tour = [0] + internal_stops + [0]
+...     best_cost = sum(
+...         distance_matrix[current_stop, next_stop]
+...         for current_stop, next_stop in
+...         zip(tour[:-1], tour[1:])
+...         )
+...     for _ in range(iterations):
+...
+...         two_indices = np.random.choice(range(1, number_of_stops), 2)
+...         i, j = sorted(two_indices)
+...
+...         candidate_tour = tour[:i] + tour[i:j + 1][::-1] + tour[j + 1:]
+...
+...         candidate_cost = sum(
+...             distance_matrix[current_stop, next_stop]
+...             for current_stop, next_stop in
+...             zip(candidate_tour[:-1], candidate_tour[1:])
+...             )
+...
+...         if (candidate_cost) &lt;= best_cost:
+...             best_cost = candidate_cost
+...             tour = candidate_tour
+...
+...     return tour
+</code></pre>
+<h2 id="the-mathematical-problem-considered">The mathematical problem considered</h2>
+<p>Ask students what the travelling sales agent problem is.</p>
+<p>Have a discussion about it.</p>
+<p>Consider the following 25 stops with coordinates as follows::</p>
+<pre><code>&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; x = np.array([13, 16, 22,  1,  4, 28,  4,  8, 10, 20, 22, 19,  5, 24,  7, 25, 25, 13, 27,  2,  7,  8, 24, 15, 25])
+&gt;&gt;&gt; y = np.array([18,  6, 26, 14,  9, 10, 21, 20, 17, 20,  6, 16, 16,  1, 19,  4, 25, 18, 20, 20, 20, 15,  8,  1,  2])
+</code></pre>
+<p>We can visualise this::</p>
+<pre><code>&gt;&gt;&gt; import matplotlib.pyplot as plt
+&gt;&gt;&gt; plt.scatter(x, y)
+&lt;matplotlib...
+</code></pre>
+<p>A python library called <code>sklearn</code> has a lot of functionality that can be
+used to look at data, for example we can get the distances here::</p>
+<pre><code>&gt;&gt;&gt; import sklearn.metrics.pairwise
+&gt;&gt;&gt; distance_matrix = sklearn.metrics.pairwise.euclidean_distances(tuple(zip(x, y)))
+&gt;&gt;&gt; distance_matrix
+array([[ 0.        , 12.36931688, ...
+</code></pre>
+<p>Show how the problem is indeed solved (copy the code above and put it in a
+notebook).</p>
+<p>We can use the above code to find a tour::</p>
+<pre><code>&gt;&gt;&gt; tour = run_2_opt_algorithm(number_of_stops=25, distance_matrix=distance_matrix, iterations=500, seed=0)
+&gt;&gt;&gt; tour
+[0, 17, 14, 20, 7, 8, 21, 12, 6, 19, 3, 4, 11, 23, 1, 10, 13, 15, 24, 22, 5, 18, 16, 2, 9, 0]
+</code></pre>
+<p>We want to plot this tour so we need to recover the coordinates::</p>
+<pre><code>&gt;&gt;&gt; def plot_tour(x, y, tour):
+...     ordered_x = x[tour]
+...     ordered_y = y[tour]
+...     plt.figure()
+...     plt.scatter(x, y)
+...     plt.plot(ordered_x, ordered_y)
+&gt;&gt;&gt; plot_tour(x=x, y=y, tour=tour)
+</code></pre>
+<p>This is great but it's code that works and it is not straightforward to see
+how or why it works. Let us fix that::</p>
+<pre><code>&gt;&gt;&gt; def get_tour(number_of_stops, seed=None):
+...     internal_stops = list(range(1, number_of_stops))
+...     if seed is not None:
+...         np.random.seed(seed)
+...         np.random.shuffle(internal_stops)
+...     return [0] + internal_stops + [0]
+&gt;&gt;&gt; def swap_cities(tour, steps):
+...     i, j = sorted(steps)
+...     new_tour = tour[:i] + tour[i:j + 1][::-1] + tour[j + 1:]
+...     return new_tour
+&gt;&gt;&gt; def get_cost(tour, distance_matrix):
+...     return sum(
+...         distance_matrix[current_stop, next_stop]
+...         for current_stop, next_stop in
+...         zip(tour[:-1], tour[1:])
+...     )
+</code></pre>
+<p>We can use this to for example get the cost of our tour::</p>
+<pre><code>&gt;&gt;&gt; get_cost(tour=tour, distance_matrix=distance_matrix)
+np.float64(133.40828432465426)
+</code></pre>
+<p>Show how the code is much cleaner now::</p>
+<pre><code>&gt;&gt;&gt; def run_2_opt_algorithm(
+...     number_of_stops,
+...     distance_matrix,
+...     iterations,
+...     filename=None,
+...     seed=None,
+... ):
+...     tour = get_tour(number_of_stops=number_of_stops, seed=seed)
+...     best_cost = get_cost(tour=tour, distance_matrix=distance_matrix)
+...     for _ in range(iterations):
+...         two_indices = np.random.choice(range(1, number_of_stops), 2)
+...         candidate_tour = swap_cities(tour=tour, steps=two_indices)
+...         if (cost:=get_cost(tour=candidate_tour, distance_matrix=distance_matrix)) &lt;= best_cost:
+...             best_cost = cost
+...             tour = candidate_tour
+...     return tour
+&gt;&gt;&gt; tour = run_2_opt_algorithm(number_of_stops=25, distance_matrix=distance_matrix, iterations=500, seed=0)
+&gt;&gt;&gt; tour
+[0, 17, 14, 20, 7, 8, 21, 12, 6, 19, 3, 4, 11, 23, 1, 10, 13, 15, 24, 22, 5, 18, 16, 2, 9, 0]
+</code></pre>
+<p>Discuss the need for docstrings.</p>
+<p>Then put the code in <code>tsp.py</code> and show how it can be imported.</p>
+<h2 id="communications">Communications</h2>
+<h3 id="after-class">After class</h3>
+<p>Send the following email after class::</p>
+<pre><code>Hi all,
+
+A recording of today's class is available at &lt;&gt;.
+
+In this class I went over modularising code which is an important foundation
+of software development.
+
+In class we used an example of solving the travelling salesagent problem and
+you can find a different example (studying snakes and ladders) here:
+https://vknight.org/pfm/building-tools/05-modularisation/tutorial/main.html
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

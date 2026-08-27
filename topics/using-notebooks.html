@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Using notebooks - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Using notebooks</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html">Python for mathematics: Using notebooks</a></li>
+
+</ul>
+
+
+
+<h3>Videos</h3>
+<ol>
+
+  <li>Video demonstration of tutorial. - <a href="https://youtu.be/xvqFZhG71bs">YouTube</a></li>
+
+</ol>
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Using notebooks", "pick": 5, "questions": [{"q": "What is a Jupyter notebook?", "options": [{"text": "a document made of cells that mix code, output and prose, run from the browser", "correct": true}, {"text": "a compiled Python program that runs from the command line"}, {"text": "a text-only configuration file used by Python"}, {"text": "a synonym for a Python script saved as a .py file"}], "explain": "A notebook is a sequence of cells (code, markdown or raw) that can be executed in any order from a browser interface."}, {"q": "What is the file extension of a Jupyter notebook?", "options": [{"text": ".ipynb", "correct": true}, {"text": ".py"}, {"text": ".jpy"}, {"text": ".nbk"}], "explain": "Notebook files use the `.ipynb` extension; under the hood the file is JSON."}, {"q": "What does Shift+Enter do in a Jupyter notebook?", "options": [{"text": "runs the current cell and moves to the next", "correct": true}, {"text": "saves the notebook to disk"}, {"text": "interrupts the kernel"}, {"text": "deletes the current cell"}], "explain": "Shift+Enter executes the active cell and advances. Ctrl+Enter runs the cell without advancing."}, {"q": "Which cell type is used for prose, headings and LaTeX maths?", "options": [{"text": "markdown", "correct": true}, {"text": "code"}, {"text": "raw"}, {"text": "header"}], "explain": "Markdown cells render formatted text, including LaTeX maths via MathJax."}, {"q": "If you run cells out of order, which of the following can happen?", "options": [{"text": "a variable defined later in the notebook is unavailable to an earlier cell that has not been re-run", "correct": true}, {"text": "the notebook automatically re-runs earlier cells for you"}, {"text": "nothing, all cells share state regardless of execution order"}, {"text": "the kernel resets after every cell"}], "explain": "Cells share state with the kernel, but only after they have actually been executed in the current session."}, {"q": "What does the kernel do in a Jupyter notebook?", "options": [{"text": "executes the code in cells and holds the live Python session state", "correct": true}, {"text": "renders the markdown cells"}, {"text": "saves the notebook to disk"}, {"text": "manages the browser tab"}], "explain": "The kernel is the underlying Python (or other language) process that runs code cells."}, {"q": "How do you typeset \\(\\sqrt{2}\\) inside a markdown cell?", "options": [{"text": "wrap it in dollar signs: $\\sqrt{2}$", "correct": true}, {"text": "wrap it in single backticks"}, {"text": "wrap it in triple backticks with the language `latex`"}, {"text": "you cannot show LaTeX in a notebook"}], "explain": "Notebook markdown uses `$...$` and `$$...$$` for MathJax; the LaTeX `\\(...\\)` delimiters are not reliably rendered there."}, {"q": "Which of these is a sensible reason to use a notebook for a mathematics task?", "options": [{"text": "to interleave explanation, computation and output as a single document", "correct": true}, {"text": "to write a library that other people will `import`"}, {"text": "to deploy a website"}, {"text": "to manage version control"}], "explain": "Notebooks shine for narrative computation. They are not the right format for shipping a reusable library."}, {"q": "What happens when you restart the kernel?", "options": [{"text": "all variables are cleared and you must re-run the cells you need", "correct": true}, {"text": "the notebook file is deleted"}, {"text": "the cells are reshuffled"}, {"text": "the markdown is re-rendered but variables persist"}], "explain": "Restarting the kernel discards every defined name; a clean restart followed by Run All is a useful sanity check."}, {"q": "What is the safest sequence to confirm a notebook is reproducible?", "options": [{"text": "Restart the kernel and Run All cells from the top", "correct": true}, {"text": "Save the notebook"}, {"text": "Run only the cell that produced the headline figure"}, {"text": "Close and reopen the browser tab"}], "explain": "A clean restart followed by Run All ensures every result was produced from the code currently on the page."}, {"q": "Why might we still write a Python file rather than a notebook for some work?", "options": [{"text": "to build a reusable library that can be imported, tested and documented", "correct": true}, {"text": "to run any Python at all"}, {"text": "to use LaTeX maths"}, {"text": "to make plots"}], "explain": "Notebooks are great for narrative work; library code lives in `.py` modules so it can be imported, tested and shared."}, {"q": "Where in a notebook do code outputs appear?", "options": [{"text": "directly below the cell that produced them", "correct": true}, {"text": "in a separate terminal window"}, {"text": "in a log file in the working directory"}, {"text": "at the very end of the notebook"}], "explain": "Each code cell's output is captured and shown immediately under that cell."}, {"q": "Which command-line tool launches the modern notebook interface?", "options": [{"text": "`jupyter lab` (or `jupyter notebook`)", "correct": true}, {"text": "`python --notebook`"}, {"text": "`pip notebook`"}, {"text": "`run notebook`"}], "explain": "Either `jupyter lab` or `jupyter notebook` starts a local server you connect to from the browser."}, {"q": "If a code cell never finishes running, what is a good first step?", "options": [{"text": "interrupt the kernel and check the cell for an infinite loop", "correct": true}, {"text": "reinstall Python"}, {"text": "delete the notebook file"}, {"text": "rename the cell"}], "explain": "Interrupting the kernel stops the running cell so we can inspect why it hung, usually an infinite loop or stuck input."}, {"q": "Which of the following is the best use of a notebook in this course?", "options": [{"text": "exploring a calculation interactively and writing up the result alongside the code", "correct": true}, {"text": "running automated tests for a library"}, {"text": "deploying a web application"}, {"text": "editing the library source code"}], "explain": "Notebooks are used for exploratory work and write-ups; library source lives in `.py` files."}]}</script>
+</div>
+
+
+<p>A handout is available <a href="../assets/handouts/autumn/01-using-notebooks/main.pdf">here</a>.</p>
+<h2 id="good-markdown-guide">Good markdown guide:</h2>
+<p><a href="https://www.markdownguide.org/cheat-sheet/">https://www.markdownguide.org/cheat-sheet/</a></p>
+<p>Further reading that might be of interest:</p>
+<h2 id="why-use-anaconda">Why use Anaconda</h2>
+<p>If you want to read more about this here are some web resources:</p>
+<ul>
+<li><a href="https://medium.com/@RustyComer/why-use-anaconda-524bb6765e4d">https://medium.com/@RustyComer/why-use-anaconda-524bb6765e4d</a></li>
+<li><a href="https://medium.com/pankajmathur/what-is-anaconda-and-why-should-i-bother-about-it-4744915bf3e6">https://medium.com/pankajmathur/what-is-anaconda-and-why-should-i-bother-about-it-4744915bf3e6</a></li>
+<li><a href="https://www.reddit.com/r/Python/comments/betkoj/why_use_anaconda/">https://www.reddit.com/r/Python/comments/betkoj/why_use_anaconda/</a></li>
+</ul>
+<h2 id="why-use-jupyter">Why use Jupyter</h2>
+<ul>
+<li>Why Jupyter Notebooks Are So Popular Among Data Scientists: <a href="https://analyticsindiamag.com/why-jupyter-notebooks-are-so-popular-among-data-scientists/">https://analyticsindiamag.com/why-jupyter-notebooks-are-so-popular-among-data-scientists/</a></li>
+<li>10 reasons why data scientists love Jupyter notebooks: <a href="https://hub.packtpub.com/10-reasons-data-scientists-love-jupyter-notebooks/">https://hub.packtpub.com/10-reasons-data-scientists-love-jupyter-notebooks/</a></li>
+<li>I don't like notebooks - Joel Grus (Allen Institute for Artificial Intelligence): <a href="https://www.youtube.com/watch?v=7jiPeIFXb6U">https://www.youtube.com/watch?v=7jiPeIFXb6U</a></li>
+</ul>
+<p>Some further information on using Jupyter:</p>
+<ul>
+<li><a href="https://jupyter-notebook-beginner-guide.readthedocs.io/">https://jupyter-notebook-beginner-guide.readthedocs.io/</a></li>
+<li><a href="https://www.analyticsvidhya.com/blog/2018/05/starters-guide-jupyter-notebook/">https://www.analyticsvidhya.com/blog/2018/05/starters-guide-jupyter-notebook/</a></li>
+</ul>
+<h2 id="other-resources-for-latex-syntax">Other resources for LaTeX syntax.</h2>
+<p>This cheat sheet: <a href="http://tug.ctan.org/info/undergradmath/undergradmath.pdf">http://tug.ctan.org/info/undergradmath/undergradmath.pdf</a></p>
+<p>This web page is my recommended set of resources for learning LaTeX:
+<a href="https://vknight.org/tex/">https://vknight.org/tex/</a>.</p>
+<h2 id="i-only-have-a-chromebook-how-can-i-use-notebooks">I only have a chromebook: how can I use notebooks?</h2>
+<p>There are a number of cloud based services that give access to scientific Python
+environments. This medium article gives a brief review of 5 of them:
+<a href="https://medium.com/@siddesh.001/top-5-online-free-notebook-ipynb-and-other-cloud-services-dbf9580d99e3">https://medium.com/@siddesh.001/top-5-online-free-notebook-ipynb-and-other-cloud-services-dbf9580d99e3</a>
+(this is dated 2018).</p>
+<p>I recommend using cocalc: <a href="https://cocalc.com">https://cocalc.com</a>. The free tier does have some
+limitations but it should be sufficient to be able to work through this book.</p>
+<h2 id="i-only-have-a-tablet-how-can-i-use-notebooks">I only have a tablet: how can I use notebooks?</h2>
+<p>There are two iOS apps that I am aware of for notebooks:</p>
+<ul>
+<li><a href="https://apps.apple.com/us/app/carnets-jupyter/id1450994949">Carnets</a></li>
+<li><a href="https://juno.sh">Juno</a></li>
+</ul>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2024-10-04-review-of-notebooks.html">2024-10-04: Review of notebooks, anaconda, jupyter and markdown</a></h4>
+<p>In class today we covered the usage of notebooks.
+You can see a recording of the class <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=7e5aa1b4-4ec7-4a13-8c92-b1fa00a5686b">here</a>.</p>
+
+<h4><a href="../posts/2023-10-06-review-of-notebooks.html">2023-10-06: Review of notebooks, anaconda, jupyter and markdown</a></h4>
+<p>In class today we covered the usage of notebooks.</p>
+
+
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

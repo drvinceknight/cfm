@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculus - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Calculus</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="https://vknight.org/pfm/tools-for-mathematics/03-calculus/introduction/main.html">Python for mathematics: Calculus</a></li>
+
+</ul>
+
+
+
+<h3>Videos</h3>
+<ol>
+
+  <li>Video demonstration of tutorial. - <a href="https://youtu.be/7j4bqypXi48">YouTube</a></li>
+
+</ol>
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Calculus", "pick": 5, "questions": [{"q": "We import sympy as `sym`. Which call computes \\(\\frac{d}{dx}(x^3 + 2x)\\)?", "options": [{"text": "`sym.diff(x ** 3 + 2 * x, x)`", "correct": true}, {"text": "`sym.integrate(x ** 3 + 2 * x, x)`"}, {"text": "`sym.limit(x ** 3 + 2 * x, x)`"}, {"text": "`sym.solveset(x ** 3 + 2 * x, x)`"}], "explain": "`sym.diff(expression, variable)` returns the derivative with respect to the named variable."}, {"q": "What does `sym.diff(sym.sin(x), x)` return?", "options": [{"text": "\\(\\cos(x)\\)", "correct": true}, {"text": "\\(-\\cos(x)\\)"}, {"text": "\\(\\sin(x)\\)"}, {"text": "\\(-\\sin(x)\\)"}], "explain": "The derivative of \\(\\sin(x)\\) is \\(\\cos(x)\\)."}, {"q": "Which call computes the second derivative of `expression` with respect to \\(x\\)?", "options": [{"text": "`sym.diff(expression, x, 2)`", "correct": true}, {"text": "`sym.diff(expression, x).diff(2)`"}, {"text": "`sym.diff(expression, x ** 2)`"}, {"text": "`sym.integrate(expression, x, 2)`"}], "explain": "The third argument to `sym.diff` is the order of differentiation."}, {"q": "Which call computes the indefinite integral \\(\\int x^2 \\, dx\\)?", "options": [{"text": "`sym.integrate(x ** 2, x)`", "correct": true}, {"text": "`sym.diff(x ** 2, x)`"}, {"text": "`sym.solveset(x ** 2, x)`"}, {"text": "`sym.limit(x ** 2, x)`"}], "explain": "`sym.integrate(expression, variable)` returns the indefinite integral."}, {"q": "How do we compute the definite integral \\(\\int_0^4 x^2 \\, dx\\)?", "options": [{"text": "`sym.integrate(x ** 2, (x, 0, 4))`", "correct": true}, {"text": "`sym.integrate(x ** 2, x, 0, 4)`"}, {"text": "`sym.integrate(x ** 2, x)(0, 4)`"}, {"text": "`sym.diff(x ** 2, (x, 0, 4))`"}], "explain": "Pass `(variable, lower_bound, upper_bound)` as the second argument for a definite integral."}, {"q": "Which call computes \\(\\lim_{h \\to 0} \\frac{\\sin(h)}{h}\\)?", "options": [{"text": "`sym.limit(sym.sin(h) / h, h, 0)`", "correct": true}, {"text": "`sym.solveset(sym.sin(h) / h, h)`"}, {"text": "`sym.diff(sym.sin(h) / h, h)`"}, {"text": "`sym.integrate(sym.sin(h) / h, h)`"}], "explain": "`sym.limit(expression, variable, value)` evaluates the limit as the variable approaches the value."}, {"q": "What is `sym.limit(sym.sin(x) / x, x, 0)` equal to?", "options": [{"text": "1", "correct": true}, {"text": "0"}, {"text": "\\(\\infty\\)"}, {"text": "undefined"}], "explain": "This is the standard \\(\\lim_{x \\to 0} \\sin(x)/x = 1\\)."}, {"q": "What does `sym.diff(sym.exp(x), x)` return?", "options": [{"text": "\\(e^x\\)", "correct": true}, {"text": "\\(x \\cdot e^{x - 1}\\)"}, {"text": "\\(1\\)"}, {"text": "\\(e\\)"}], "explain": "The derivative of \\(e^x\\) is \\(e^x\\)."}, {"q": "How do we evaluate the derivative of `expression` at \\(x = 2\\)?", "options": [{"text": "`sym.diff(expression, x).subs({x: 2})`", "correct": true}, {"text": "`sym.diff(expression, x, 2)`"}, {"text": "`sym.diff(expression(2), x)`"}, {"text": "`sym.eval(sym.diff(expression, x), 2)`"}], "explain": "Differentiate first, then substitute the numerical value with `.subs({variable: value})`."}, {"q": "What is the natural workflow for finding stationary points of \\(f\\)?", "options": [{"text": "differentiate, then use `sym.solveset(sym.Eq(f.diff(x), 0), x)`", "correct": true}, {"text": "integrate, then call `sym.solveset` on the result"}, {"text": "factor the original expression"}, {"text": "take the limit at infinity"}], "explain": "Stationary points satisfy \\(f'(x) = 0\\); use `sym.solveset` on the equation \\(f'(x) = 0\\)."}, {"q": "What does `sym.integrate(1 / x, x)` return?", "options": [{"text": "\\(\\log(x)\\)", "correct": true}, {"text": "\\(\\frac{1}{x^2}\\)"}, {"text": "\\(-\\frac{1}{x^2}\\)"}, {"text": "\\(x\\)"}], "explain": "\\(\\int 1/x \\, dx = \\log(x)\\) (up to a constant)."}, {"q": "What is `sym.limit(1 / x, x, sym.oo)`?", "options": [{"text": "0", "correct": true}, {"text": "1"}, {"text": "\\(\\infty\\)"}, {"text": "undefined"}], "explain": "As \\(x \\to \\infty\\), \\(1/x \\to 0\\). `sym.oo` is sympy's infinity."}, {"q": "Why use symbolic differentiation rather than a numerical derivative?", "options": [{"text": "to obtain an exact expression we can simplify, factor or substitute into", "correct": true}, {"text": "because numerical derivatives are not possible in Python"}, {"text": "because it is faster than numerical differentiation"}, {"text": "because it returns floating-point values"}], "explain": "Symbolic derivatives give exact formulae; numerical derivatives only give approximate values."}, {"q": "Which of these is the derivative of \\(x^2 \\sin(x)\\)?", "options": [{"text": "\\(2x \\sin(x) + x^2 \\cos(x)\\)", "correct": true}, {"text": "\\(2x \\cos(x)\\)"}, {"text": "\\(x^2 \\cos(x)\\)"}, {"text": "\\(2x \\sin(x)\\)"}], "explain": "Apply the product rule: \\((uv)' = u'v + uv'\\). sympy applies this rule for us."}, {"q": "Which call computes the third derivative of \\(\\sin(x)\\)?", "options": [{"text": "`sym.diff(sym.sin(x), x, 3)`", "correct": true}, {"text": "`sym.diff(sym.sin(x), 3)`"}, {"text": "`sym.diff(sym.sin(x) ** 3, x)`"}, {"text": "`sym.diff(sym.sin(x), x).diff(x).diff(x).diff(x)`"}], "explain": "The order of differentiation is the third positional argument to `sym.diff`."}]}</script>
+</div>
+
+
+<p>A handout is available <a href="../assets/handouts/autumn/03-calculus/main.pdf">here</a>.</p>
+<ul>
+<li>Here is the <code>sympy</code> documentation for plotting:
+  <a href="https://docs.sympy.org/latest/modules/plotting.html">https://docs.sympy.org/latest/modules/plotting.html</a></li>
+<li>Here is the official <code>matplotlib</code> documentation: <a href="https://matplotlib.org">https://matplotlib.org</a></li>
+</ul>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2024-10-18-review-of-calculus.html">2024-10-18: Review of Calculus</a></h4>
+<p>In class today we reviewed the calculus content of the course.</p>
+
+<h4><a href="../posts/2024-10-16-virtual-calculus-tutorial.html">2024-10-16: Virtual lab: Calculus</a></h4>
+<p>Today's virtual lab went over the tutorial for the Calculus chapter for <a href="https://vknight.org/pfm/tools-for-mathematics/03-calculus/tutorial/main.html">Python
+for Mathematics</a>.</p>
+
+<h4><a href="../posts/2024-10-15-introduction-to-calculus.html">2024-10-15: Introduction to calculus</a></h4>
+<p>In class today we discussed how to use Sympy to do differentiation, integration
+and take limits.</p>
+
+<h4><a href="../posts/2023-10-20-review-of-calculus.html">2023-10-20: Review of Calculus</a></h4>
+<p>In class today we discussed mid module feedback and reviewed the concepts from the Calculus chapter.</p>
+
+<h4><a href="../posts/2023-10-16-introduction-to-calculus.html">2023-10-16: Introduction to calculus</a></h4>
+<p>In class today we discussed how to use Sympy to do differentiation, integration
+and take limits.</p>
+
+
+
+
+
+<p><small><code><a href="../class-notes/calculus.html">Facilitator notes: Calculus</a></code></small></p>
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>README.md - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#continued_fractions">Example Group Projects / continued_fractions</a>
+  /
+  README.md
+</p>
+
+<h1>README.md</h1>
+
+<div class="highlight"><pre><code class="language-markdown"><span class="gh"># continued_fractions</span>
+
+A small Python library for computing the continued fraction expansion of a
+rational number and the resulting list of convergents.
+
+<span class="gu">## Tutorial</span>
+
+We are going to expand \(22/7\), a common approximation of \(\pi\), as a
+continued fraction. We start by importing the library:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">continued_fractions</span>
+
+<span class="sb">```</span>
+
+The expansion of \(22/7\) is computed with <span class="sb">`continued_fraction`</span>:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">continued_fraction</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="sb">```</span>
+
+The loop terminates as soon as the remainder is zero, so we get the two
+coefficients \([3; 7]\) even though we asked for up to ten.
+
+We can then turn those coefficients back into the corresponding rationals
+with <span class="sb">`convergents`</span>:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">convergents</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="o">/</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="sb">```</span>
+
+The first convergent is \(3\) and the second is \(22/7\), which is the
+original number.
+
+<span class="gu">## How to guide</span>
+
+<span class="gu">### How to get the continued fraction expansion of a rational</span>
+
+To compute the expansion of a rational number we pass a <span class="sb">`sympy.Rational`</span> and
+a cap on the number of terms:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">continued_fractions</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">continued_fraction</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">355</span><span class="p">,</span> <span class="mi">113</span><span class="p">),</span> <span class="mi">20</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to get the convergents from a list of coefficients</span>
+
+To turn a list of integer coefficients into the corresponding convergents:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">continued_fractions</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">convergents</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span> <span class="mi">355</span><span class="o">/</span><span class="mi">113</span><span class="p">]</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to get the Fibonacci-ratio approximation of the golden ratio</span>
+
+The golden ratio has continued fraction \([1; 1, 1, 1, \dots]\). We expose a
+helper that returns its first convergents:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">continued_fractions</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">continued_fractions</span><span class="o">.</span><span class="n">golden_ratio_convergents</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">13</span><span class="o">/</span><span class="mi">8</span><span class="p">]</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## Discussion</span>
+
+Continued fractions are a way of writing a real number as a (possibly
+infinite) nested sequence
+
+\[
+    r = a<span class="ge">_0 + \cfrac{1}{a_</span>1 + \cfrac{1}{a_2 + \cdots}}
+\]
+
+with integer coefficients. For a rational number the expansion terminates
+after finitely many steps; for an irrational number it is infinite. The
+convergents are the rational numbers obtained by truncating the expansion
+after each step, and they are known to give the best rational
+approximations to the original number in the sense that no fraction with a
+smaller denominator is closer.
+
+The golden ratio is the simplest irrational number to expand: every
+coefficient is \(1\), so its convergents are ratios of consecutive
+Fibonacci numbers. We expose a convenience function for this case because
+it is a good worked example to test against.
+
+<span class="gu">### How we built this</span>
+
+We compute the expansion with the Euclidean algorithm: at each step we
+take the integer part of the remaining number, subtract it, and invert the
+fractional part. Keeping the arithmetic symbolic with <span class="sb">`sympy.Rational`</span>
+means that we never lose precision, which matters for known approximations
+such as \(355 / 113\), where any floating-point detour would round.
+
+For the convergents we use the standard recursion
+\(p<span class="ge">_n = a_</span>n p<span class="ge">_{n - 1} + p_</span>{n - 2}\) and
+\(q<span class="ge">_n = a_</span>n q<span class="ge">_{n - 1} + q_</span>{n - 2}\). This avoids reconstructing the
+nested fractions from scratch at each step.
+
+<span class="gu">## Reference</span>
+
+<span class="gu">### List of functionality</span>
+
+A list of functionality in this library is:
+
+<span class="k">-</span><span class="w"> </span><span class="sb">`continued_fraction(rational_number, maximum_terms)`</span>: return the
+  continued fraction expansion of a rational.
+<span class="k">-</span><span class="w"> </span><span class="sb">`convergents(coefficients)`</span>: return the list of convergent rationals.
+<span class="k">-</span><span class="w"> </span><span class="sb">`golden_ratio_convergents(number_of_terms)`</span>: return the first
+  convergents of the golden ratio.
+
+<span class="gu">### Tests</span>
+
+The tests live in <span class="sb">`test_continued_fractions.py`</span> and can be run with:
+
+<span class="sb">```sh</span>
+python<span class="w"> </span>test_continued_fractions.py
+<span class="sb">```</span>
+
+They check the expansion of \(3/2\), \(22/7\), \(355/113\), confirm that
+the convergents of the golden ratio give Fibonacci ratios, and that the
+twentieth convergent agrees with \(\varphi\) to within \(10^{-8}\).
+
+<span class="gu">### Bibliography</span>
+
+[1] Knight, V. <span class="ge">*Python for Mathematics*</span>, vknight.org/pfm. Accessed 2026.
+
+[2] Khinchin, A. Y. <span class="ge">*Continued Fractions*</span>. University of Chicago Press,
+1964.
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

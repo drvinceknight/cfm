@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review of notebooks, anaconda, jupyter and markdown - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Review of notebooks, anaconda, jupyter and markdown</h1>
+<p><small>2024-10-04</small></p>
+
+<p>In class today we covered the usage of notebooks.
+You can see a recording of the class <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=7e5aa1b4-4ec7-4a13-8c92-b1fa00a5686b">here</a>.</p>
+<p>We started by doing a quiz (congratulations to Michael, I'll give the person
+with the most wins a text book at the end of the Semester)
+where we went over:</p>
+<ul>
+<li>The programming language we are using in this module: Python.</li>
+<li>What a markup language is: a tool to write content and describe how it is to be
+  displayed at the same time. This week we saw some basic usage of Markdown and
+  LaTeX</li>
+<li>What distribution of Python we are using: the Anaconda distribution which
+  includes not only Python but a number of useful libraries for mathematics.</li>
+<li>What interface we are using to Python: the Jupyter notebook interface.</li>
+</ul>
+<p>After this, I helped a number of students get their systems ready and set up. If
+you're still having trouble setting up feel free to get in touch to arrange a
+time for me to help you.</p>
+<p>Next week we will be starting to do some symbolic algebra, if you are interested
+you can start reading about it <a href="https://vknight.org/cfm/topics/algebra.html">here</a>.</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

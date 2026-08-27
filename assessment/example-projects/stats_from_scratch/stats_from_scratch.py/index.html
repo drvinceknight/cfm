@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>stats_from_scratch.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#stats_from_scratch">Example Group Projects / stats_from_scratch</a>
+  /
+  stats_from_scratch.py
+</p>
+
+<h1>stats_from_scratch.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="sd">&quot;&quot;&quot;Summary statistics implemented from scratch.</span>
+
+<span class="sd">We provide the mean, the median, the population and sample standard</span>
+<span class="sd">deviations, and the three quartiles. Every function is implemented</span>
+<span class="sd">directly from its definition rather than by calling the standard</span>
+<span class="sd">``statistics`` module.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the arithmetic mean $\\bar{x} = (1/n) \\sum_i x_i$.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the median of ``values``.</span>
+
+<span class="sd">    The data is first sorted. For an odd number of values the median</span>
+<span class="sd">    is the middle value; for an even number of values it is the</span>
+<span class="sd">    average of the two middle values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sorted_values</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">number_of_values</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_values</span><span class="p">)</span>
+    <span class="n">midpoint</span> <span class="o">=</span> <span class="n">number_of_values</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">number_of_values</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sorted_values</span><span class="p">[</span><span class="n">midpoint</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">sorted_values</span><span class="p">[</span><span class="n">midpoint</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">sorted_values</span><span class="p">[</span><span class="n">midpoint</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">population_standard_deviation</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the population standard deviation (divisor $n$).</span>
+
+<span class="sd">    $$\\sigma = \\sqrt{(1/n) \\sum_i (x_i - \\bar{x})^2}.$$</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">squared_deviations</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">value</span> <span class="o">-</span> <span class="n">average</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">squared_deviations</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_standard_deviation</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the sample standard deviation (divisor $n - 1$).</span>
+
+<span class="sd">    $$s = \\sqrt{(1/(n - 1)) \\sum_i (x_i - \\bar{x})^2}.$$</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">squared_deviations</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">value</span> <span class="o">-</span> <span class="n">average</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">squared_deviations</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">quartiles</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the three quartiles $(Q_1, Q_2, Q_3)$ of ``values``.</span>
+
+<span class="sd">    We use the &#39;exclusive&#39; method: the $k$-th quartile is at the</span>
+<span class="sd">    fractional 1-indexed position $k(n + 1)/4$, with linear</span>
+<span class="sd">    interpolation between the surrounding sorted values. This matches</span>
+<span class="sd">    ``statistics.quantiles(values, n=4)`` from the standard library.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sorted_values</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">number_of_values</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_values</span><span class="p">)</span>
+    <span class="n">cut_points</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">quartile_index</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="n">position</span> <span class="o">=</span> <span class="n">quartile_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">number_of_values</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+        <span class="n">lower_rank</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        <span class="n">fraction</span> <span class="o">=</span> <span class="n">position</span> <span class="o">-</span> <span class="n">lower_rank</span>
+        <span class="k">if</span> <span class="n">lower_rank</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">cut_value</span> <span class="o">=</span> <span class="n">sorted_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">lower_rank</span> <span class="o">&gt;=</span> <span class="n">number_of_values</span><span class="p">:</span>
+            <span class="n">cut_value</span> <span class="o">=</span> <span class="n">sorted_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lower_value</span> <span class="o">=</span> <span class="n">sorted_values</span><span class="p">[</span><span class="n">lower_rank</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">upper_value</span> <span class="o">=</span> <span class="n">sorted_values</span><span class="p">[</span><span class="n">lower_rank</span><span class="p">]</span>
+            <span class="n">cut_value</span> <span class="o">=</span> <span class="n">lower_value</span> <span class="o">+</span> <span class="n">fraction</span> <span class="o">*</span> <span class="p">(</span><span class="n">upper_value</span> <span class="o">-</span> <span class="n">lower_value</span><span class="p">)</span>
+        <span class="n">cut_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cut_value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">cut_points</span><span class="p">)</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

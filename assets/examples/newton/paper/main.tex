@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\title{A small library for Newton-Raphson root finding with
+       symbolic differentiation}
+\author{Group N}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present \texttt{newton}, a small Python library that finds roots of
+single-variable expressions using the Newton-Raphson method, with the
+derivative computed symbolically by \texttt{sympy}. We show that the
+library recovers \(\sqrt{2}\) and other roots of low-degree polynomials
+to a tolerance of \(10^{-10}\) in fewer than ten iterations, and we
+illustrate the quadratic convergence rate on a worked example. The
+library is documented following the Diataxis framework and tested with
+both \texttt{assert} statements and doctests embedded in the
+documentation.
+\end{abstract}
+
+\section{Introduction}
+
+The Newton-Raphson method is one of the oldest and most widely used
+techniques for finding roots of a differentiable function~\cite{burden2015}.
+Given a function \(f\) and an initial estimate \(x_0\) of a root, the method
+constructs the sequence
+
+\[
+    x_{n + 1} = x_n - \frac{f(x_n)}{f'(x_n)},
+\]
+
+which, under mild conditions on \(f\), converges quadratically to a simple
+root in a neighbourhood of \(x_0\)~\cite{atkinson1988}.
+
+Many implementations of Newton-Raphson approximate \(f'(x_n)\) numerically.
+We take a different approach. By computing \(f'\) symbolically with
+\texttt{sympy}~\cite{meurer2017}, we avoid the discretisation error of a
+finite-difference approximation and we obtain exact rational iterates when
+\(x_0\) is itself given as a rational.
+
+We present a library, \texttt{newton}, that
+implements three small functions for symbolic Newton-Raphson; we verify
+the implementation against worked examples in tests and doctests; and we
+present convergence data on two low-degree polynomials. The library
+follows the Diataxis framework for documentation~\cite{procida2017} and
+the conventions of the open-source textbook
+\emph{Python for Mathematics}~\cite{knight2024}.
+
+\section{The library}
+
+The library consists of three functions, defined in the single module
+\texttt{newton.py}.
+
+\texttt{newton.newton\_step(expression, variable,
+current\_value)} applies the update
+
+\[
+    x_{n + 1} = x_n - \frac{f(x_n)}{f'(x_n)}
+\]
+
+once. The derivative is computed inside the function with
+\texttt{sympy.diff}; we use \texttt{.subs(\{variable: current\_value\})} to
+evaluate \(f(x_n)\) and \(f'(x_n)\) symbolically.
+
+\texttt{newton.iterate(expression,
+variable, initial\_value, number\_of\_iterations)} returns the list
+
+\[
+    x_0, x_1, \dots, x_N,
+\]
+
+where \(N\) is \texttt{number\_of\_iterations}. Each entry is held
+symbolically so that the trail of iterates can be inspected exactly.
+
+\texttt{newton.find\_root(expression,
+variable, initial\_value, tolerance, maximum\_iterations)} iterates the
+Newton update until two successive iterates differ by less than
+\texttt{tolerance} in absolute value, or until \texttt{maximum\_iterations}
+steps have been taken. It returns a tuple \texttt{(root, iterations)} so
+that the caller can detect early termination at the iteration cap.
+
+\section{Worked example: the square root of two}
+
+We compute \(\sqrt{2}\) by solving \(f(x) = x^2 - 2 = 0\) starting at
+\(x_0 = 1\). The Newton update is
+
+\[
+    x_{n + 1} = x_n - \frac{x_n^2 - 2}{2 x_n} = \frac{x_n^2 + 2}{2 x_n}.
+\]
+
+Calling
+\texttt{newton.iterate(x**2 - 2, x, sympy.S(1), number\_of\_iterations=4)}
+returns the iterates shown in Table~\ref{tab:sqrt2}. The exact rational
+form is preserved at each step.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l l l}
+\toprule
+\(n\) & \(x_n\) (exact) & \(x_n\) (numeric) \\
+\midrule
+0 & \(1\)               & \(1.0000000000\) \\
+1 & \(3/2\)             & \(1.5000000000\) \\
+2 & \(17/12\)           & \(1.4166666667\) \\
+3 & \(577/408\)         & \(1.4142156863\) \\
+4 & \(665857 / 470832\) & \(1.4142135624\) \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Iterates of Newton-Raphson on \(x^2 - 2\).} The library
+preserves the exact rational form of every iterate; the numeric column is
+shown for context. The error \(|x_n - \sqrt{2}|\) is approximately
+\(5 \times 10^{-1}\), \(8 \times 10^{-2}\), \(2 \times 10^{-3}\),
+\(2 \times 10^{-6}\) and \(2 \times 10^{-12}\) for \(n = 0, 1, 2, 3, 4\)
+respectively, which is consistent with the expected doubling of the
+number of correct digits per step.}
+\label{tab:sqrt2}
+\end{table}
+
+\section{A second example: the cube root of eight}
+
+To check that the library is not specialised to quadratics, we also solve
+\(g(x) = x^3 - 8 = 0\) starting at \(x_0 = 1\). The expected root is
+\(x = 2\), since \(8 = 2^3\). Calling
+\texttt{newton.find\_root} on \(x^3 - 8\) from \(x_0 = 1\) with
+tolerance \(10^{-8}\) and a cap of 50 iterations returns \(2.0\) to
+within tolerance in nine iterations. The starting point is deliberately some distance from the
+root, so the early iterates take large steps before settling.
+
+\section{Discussion}
+
+Both examples in this paper exhibit the expected
+quadratic convergence rate near the root. Once the iterate enters a
+neighbourhood of the root in which \(f''/f'\) is bounded, the error
+roughly squares at each step. Table~\ref{tab:sqrt2} shows this effect
+clearly: the error halves in the first step, drops by an order of
+magnitude in the second, and then by several orders of magnitude in each
+of the next two.
+
+The method can diverge if \(x_0\) is too far from
+the root, or if the iterate lands at a point where \(f'\) is close to
+zero. Our \texttt{find\_root} returns the iteration count alongside the
+final iterate so that the caller can detect that the iteration cap was
+reached. A natural extension would be to add a damping factor or a switch
+to bisection when the Newton step grows too large; we leave this as a
+direction for future work.
+
+A finite-difference approximation
+to \(f'\) introduces its own error, which competes with the
+\(\text{O}(h^2)\) of Newton's method. By using \texttt{sympy.diff} we
+sidestep that trade-off entirely. The cost is that the iterates can
+become large symbolic fractions; \texttt{sympy} keeps them in lowest
+terms but a future extension could simplify aggressively to keep the
+trail compact.
+
+\section{Conclusion}
+
+We have presented \texttt{newton}, a three-function Python library that
+combines the classical Newton-Raphson iteration with symbolic
+differentiation. The library is documented following the Diataxis
+framework and tested through both unit tests and doctests in the
+documentation. The library recovers \(\sqrt{2}\) and \(2\) to a
+tolerance of \(10^{-10}\) in fewer than ten iterations from
+\(x_0 = 1\), and the iterates exhibit the expected quadratic convergence
+rate.
+
+A natural extension is to add a safeguarded variant that falls back to
+bisection when the Newton step would diverge; this is a direction for
+future work.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>README.md - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#stats_from_scratch">Example Group Projects / stats_from_scratch</a>
+  /
+  README.md
+</p>
+
+<h1>README.md</h1>
+
+<div class="highlight"><pre><code class="language-markdown"><span class="gh"># stats_from_scratch</span>
+
+A small Python library that implements the mean, the median, the
+population and sample standard deviations, and the three quartiles
+directly from their definitions.
+
+<span class="gu">## Tutorial</span>
+
+We are going to compute the summary statistics of the sequence
+\(1, 2, 3, 4, 5\). We start by importing the library:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">stats_from_scratch</span>
+
+<span class="sb">```</span>
+
+The mean and median are
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="mf">3.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">median</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="mi">3</span>
+
+<span class="sb">```</span>
+
+The population standard deviation (divisor \(n\)) is
+\(\sqrt{2} \approx 1.414\), and the sample standard deviation
+(divisor \(n - 1\)) is \(\sqrt{2.5} \approx 1.581\):
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">population_standard_deviation</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">1.414214</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">sample_standard_deviation</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">1.581139</span>
+
+<span class="sb">```</span>
+
+The three quartiles are
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">quartiles</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## How to guide</span>
+
+<span class="gu">### How to compute the mean</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">stats_from_scratch</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+<span class="mf">25.0</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to compute the median</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">stats_from_scratch</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">median</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="mf">2.5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">median</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="mi">3</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to compute the standard deviations</span>
+
+The two versions differ in the divisor: the population variance uses
+\(n\) and the sample variance uses \(n - 1\).
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">stats_from_scratch</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">population_standard_deviation</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">2.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">sample_standard_deviation</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">2.13809</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to compute the three quartiles</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">stats_from_scratch</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">quartiles</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="p">(</span><span class="mf">2.75</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mf">8.25</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## Discussion</span>
+
+The summary statistics of a sample are the standard way to describe
+its location and spread. The mean and the population standard
+deviation describe the centre and the spread of a fixed sample; the
+sample standard deviation is the unbiased estimator of the standard
+deviation of the underlying distribution and so uses the divisor
+\(n - 1\) instead of \(n\). The three quartiles divide the sorted
+sample into four equally sized groups.
+
+For the quartiles we have to pick a method. There are several in use
+in the literature and in software; the standard library&#39;s
+<span class="sb">`statistics.quantiles(data, n=4)`</span> uses the so-called &#39;exclusive&#39;
+method, in which the \(k\)-th quartile is at the fractional
+1-indexed position \(k (n + 1)/4\). We picked this method so that
+our implementation could be compared directly against the
+<span class="sb">`statistics`</span> module in the tests; on a sample of size five our
+quartiles are exactly \((1.5, 3, 4.5)\), as expected.
+
+<span class="gu">### How we built this</span>
+
+Every function is written from its definition without using the
+<span class="sb">`statistics`</span> module. The mean is the sum divided by the count; the
+median is the middle of the sorted sample, averaging two values for
+an even count; the standard deviations are square roots of mean
+squared deviations from the mean; and the quartiles are computed by
+linear interpolation at the fractional positions described above.
+
+We use the <span class="sb">`statistics`</span> module only in the tests, where it serves as
+a reference implementation. Each function is checked against the
+matching <span class="sb">`statistics`</span> function on at least one sample, and the
+quartiles are also checked against the known small example
+\((1.5, 3, 4.5)\) for the sequence \(1, 2, 3, 4, 5\).
+
+We follow the statistics chapter of <span class="ge">*Python for Mathematics*</span> [1]:
+we reach for <span class="sb">`statistics.mean`</span>, <span class="sb">`statistics.median`</span>,
+<span class="sb">`statistics.pstdev`</span>, <span class="sb">`statistics.stdev`</span>, and <span class="sb">`statistics.quantiles`</span>
+when we want a quick answer, and we drop down to the definitions
+when we want to know what the answer means.
+
+<span class="gu">## Reference</span>
+
+<span class="gu">### List of functionality</span>
+
+A list of functionality in this library is:
+
+<span class="k">-</span><span class="w"> </span><span class="sb">`mean(values)`</span>: arithmetic mean.
+<span class="k">-</span><span class="w"> </span><span class="sb">`median(values)`</span>: median.
+<span class="k">-</span><span class="w"> </span><span class="sb">`population_standard_deviation(values)`</span>: standard deviation with
+  divisor \(n\).
+<span class="k">-</span><span class="w"> </span><span class="sb">`sample_standard_deviation(values)`</span>: standard deviation with
+  divisor \(n - 1\).
+<span class="k">-</span><span class="w"> </span><span class="sb">`quartiles(values)`</span>: the three quartiles
+  \((Q_1, Q<span class="ge">_2, Q_</span>3)\), computed with the &#39;exclusive&#39; method.
+
+<span class="gu">### Tests</span>
+
+The tests live in <span class="sb">`test_stats_from_scratch.py`</span> and can be run with:
+
+<span class="sb">```sh</span>
+python<span class="w"> </span>test_stats_from_scratch.py
+<span class="sb">```</span>
+
+They compare every function with the matching function in the
+standard library <span class="sb">`statistics`</span> module, and they check the quartiles
+against the known small example \([1, 2, 3, 4, 5]\), which gives
+\((1.5, 3, 4.5)\).
+
+<span class="gu">### Bibliography</span>
+
+[1] Knight, V. <span class="ge">*Python for Mathematics*</span>, vknight.org/pfm. Accessed 2026.
+
+[2] Rice, J. A. <span class="ge">*Mathematical Statistics and Data Analysis*</span>. Cengage,
+3rd edition, 2007.
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

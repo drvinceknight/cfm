@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review of Calculus - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Review of Calculus</h1>
+<p><small>2023-10-20</small></p>
+
+<p>In class today we discussed mid module feedback and reviewed the concepts from the Calculus chapter.</p>
+<p>You can see a recording of the class <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5a7666ee-4cd3-4c03-bfbc-b09c00a56a4a">here</a></p>
+<h3 id="mid-module-feedback">Mid module feedback</h3>
+<p>We started the class by discussing the mid module feedback. A number of you
+wrote positive and kind things about the website and the organisation. Helping
+students learn is the part of my job I enjoy the most (by far) so these comments
+mean a lot.</p>
+<p>Some great comments came up:</p>
+<ul>
+<li>Slow down: I go fast when I'm typing. I hear you. I'm going to try and go
+  slower. It is not always easy to ask someone to slow down while they're in
+  full flight but know that if anyone tells me to slow down I will.</li>
+<li>Discussing more Python basics: we will. This Semester you are mainly learning
+  how to use tools. This is partly so that you can already start using them but
+  also to help motivate the second semester during which you will write a tool
+  of your own (by learning and using a lot of Python basics).</li>
+<li>Having solutions available: I didn't see this during class but just to
+  highlight that all the solutions are already available. Let me know if you are
+  unable to find them.</li>
+<li>Being able to download Python for Mathematics as a single large document. This
+  is actually already possible but it's a big book so might be a lot to
+  download. If you'd like me to send you a copy of the pdf just drop me an email.</li>
+<li>Not being able to actually access the mock coursework (I believe this is
+  fixed!).</li>
+</ul>
+<h3 id="weekly-quiz">Weekly quiz</h3>
+<p>This week's quiz was a tie won by: Daf and Anthony.</p>
+<p>So 4 people have a win:</p>
+<ul>
+<li>Anthony</li>
+<li>Daf</li>
+<li>Ben</li>
+<li>Joe</li>
+</ul>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

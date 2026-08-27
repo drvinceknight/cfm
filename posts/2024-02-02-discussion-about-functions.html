@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Functions, docstrings and a mistake by me at the end - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Functions, docstrings and a mistake by me at the end</h1>
+<p><small>2024-02-02</small></p>
+
+<p>In class today we spoke about group coursework a bit but mainly spent time
+looking at docstrings.</p>
+<p>You can see a recording of this here: <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=53ced2ac-b8f5-4b07-9b3a-b10201087ba1">https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=7c020a93-9855-44f2-9f30-b1050118b4a9</a></p>
+<p>We spoke about the numpy docstring format, which is specified here: <a href="https://vknight.org/pfm/building-tools/02-functions-and-data-structures/how/main.html#how-to-write-a-docstring">https://vknight.org/pfm/building-tools/02-functions-and-data-structures/how/main.html#how-to-write-a-docstring</a></p>
+<p>I used the example of verifying the following identity to demonstrate this:</p>
+<div class="arithmatex">\[(a + b) ^ n = \sum_{i=0}^n\binom{n}{i} a ^ i b ^ {n - i}\]</div>
+<p>You can find a notebook with all this <a href="../assets/nbs/2023-2024/functions-and-data-structures.ipynb">here</a></p>
+<p><strong>I'm really sorry about how confusing the ending of class today must have been
+I made a mistake (my fault entirely)</strong>.</p>
+<p>The notebook linked to above does not contain the error.</p>
+<p>When it came to fixing the floating point error I wrote:</p>
+<pre><code class="language-python">sum(int(scipy.special.binom(n, i) * a ** i * b ** (n - i)) for i in range(n + 1))
+</code></pre>
+<p>But the mistake I made here (and again I apologise for the crash and burn at the
+end of the class) is that the closing bracket of <code>int</code> should have been after
+the <code>binom</code> and not after the entire calculation.</p>
+<pre><code class="language-python">sum(int(scipy.special.binom(n, i)) * a ** i * b ** (n - i) for i in range(n + 1))
+</code></pre>
+<p>The difference is subtle but it is important as <code>scipy.special.binom(n, i)</code>
+will always be a float with 0 fractional part. So taking the <code>int</code> of it will
+give what we need.</p>
+<p>I'll happily go over this again on Tuesday if I can clarify things. The
+important thing to take from today is the approach and the docstrings.</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

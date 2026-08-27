@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Object Oriented Programming - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Object Oriented Programming</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="https://vknight.org/pfm/building-tools/03-objects/introduction/main.html">Python for mathematics: Object Oriented Programming</a></li>
+
+</ul>
+
+
+
+<h3>Videos</h3>
+<ol>
+
+  <li>Video demonstration of tutorial. - <a href="https://youtu.be/3DGb2_qqPmk">YouTube</a></li>
+
+</ol>
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Object oriented programming", "pick": 5, "questions": [{"q": "Which keyword defines a class in Python?", "options": [{"text": "`class`", "correct": true}, {"text": "`def`"}, {"text": "`type`"}, {"text": "`object`"}], "explain": "`class Name:` introduces a new class."}, {"q": "What is an attribute of an instance?", "options": [{"text": "a piece of data attached to that instance", "correct": true}, {"text": "a parent class"}, {"text": "a docstring"}, {"text": "a print statement"}], "explain": "Attributes hold the state of an instance, e.g. `self.amount_of_magic = 100`."}, {"q": "What is a method?", "options": [{"text": "a function defined inside a class that acts on an instance", "correct": true}, {"text": "an attribute that is not assigned"}, {"text": "a string at the top of the class"}, {"text": "a class with one attribute"}], "explain": "Methods are functions defined inside a class; they typically take `self` as their first parameter."}, {"q": "What does `self` refer to inside a method?", "options": [{"text": "the specific instance the method was called on", "correct": true}, {"text": "the class itself"}, {"text": "the parent class"}, {"text": "a copy of the instance"}], "explain": "`self` is the instance; we use it to read and modify that instance's attributes."}, {"q": "Which method is called automatically when we create an instance?", "options": [{"text": "`__init__`", "correct": true}, {"text": "`__new__` only"}, {"text": "`__call__`"}, {"text": "`init`"}], "explain": "`__init__` is the initialiser; it sets up the new instance's attributes."}, {"q": "Given `class Country: ...` with an `__init__` taking `name` and `amount_of_magic`, how do we create an instance?", "options": [{"text": "`Country(\"Wales\", 100)`", "correct": true}, {"text": "`Country.new(\"Wales\", 100)`"}, {"text": "`new Country(\"Wales\", 100)`"}, {"text": "`Country.init(\"Wales\", 100)`"}], "explain": "We call the class as if it were a function; Python forwards the arguments to `__init__`."}, {"q": "What is a 'dunder' method?", "options": [{"text": "a method whose name starts and ends with double underscores, called by Python in particular situations", "correct": true}, {"text": "a method that is private"}, {"text": "a method without a docstring"}, {"text": "a method that does not use `self`"}], "explain": "Dunder (double-underscore) methods like `__init__`, `__repr__`, `__eq__` are hooked into Python's syntax."}, {"q": "Which of these calls a method `spend` on the instance `wales` with argument 30?", "options": [{"text": "`wales.spend(30)`", "correct": true}, {"text": "`spend(wales, 30)`"}, {"text": "`Country.spend(30)`"}, {"text": "`wales->spend(30)`"}], "explain": "Dot notation: `instance.method(arguments)`."}, {"q": "When we define `def spend(self, amount):` and call `wales.spend(30)`, what does `self` receive?", "options": [{"text": "the instance `wales`", "correct": true}, {"text": "the value 30"}, {"text": "the class `Country`"}, {"text": "`None`"}], "explain": "Python passes the instance implicitly as the first argument."}, {"q": "Why use a class instead of a collection of standalone functions?", "options": [{"text": "to bundle state and the operations on that state into a single named type", "correct": true}, {"text": "to make the code shorter"}, {"text": "to avoid using lists"}, {"text": "because Python requires classes for anything non-trivial"}], "explain": "Classes group the data and the behaviour together, which is often cleaner when both depend on each other."}, {"q": "What does `self.amount_of_magic -= amount_spent` do?", "options": [{"text": "decreases the instance's `amount_of_magic` attribute by `amount_spent`", "correct": true}, {"text": "deletes the attribute"}, {"text": "returns the new amount"}, {"text": "creates a class-level variable"}], "explain": "`-=` is in-place subtraction; here it mutates the attribute on the instance."}, {"q": "Which of these is the natural way to make instances printable in a useful way?", "options": [{"text": "define a `__repr__` method", "correct": true}, {"text": "rename the class"}, {"text": "use `__init__`"}, {"text": "use `print` inside `__init__`"}], "explain": "`__repr__` is called by `repr` and by the interactive prompt to display an instance."}, {"q": "Which of these is the natural way to control how `==` works on instances?", "options": [{"text": "define an `__eq__` method", "correct": true}, {"text": "rely on `__init__`"}, {"text": "use `is` instead"}, {"text": "use `__compare__`"}], "explain": "`__eq__` defines the semantics of `==` between two instances."}, {"q": "What is an instance?", "options": [{"text": "an object created from a class", "correct": true}, {"text": "a class without methods"}, {"text": "a method without arguments"}, {"text": "a module"}], "explain": "An instance is a particular object made from a class; e.g. `wales = Country(...)`."}, {"q": "Which of these is a sensible reason to add a new method to a class rather than a standalone function?", "options": [{"text": "the operation depends on the instance's own attributes", "correct": true}, {"text": "the operation has no input"}, {"text": "the operation runs faster"}, {"text": "the operation uses `import`"}], "explain": "Methods make sense when the operation naturally belongs to an instance and uses its state."}]}</script>
+</div>
+
+
+<p>A handout is available <a href="../assets/handouts/spring/03-object-oriented-programming/main.pdf">here</a>.</p>
+<h2 id="other-resources-on-objects">Other resources on objects</h2>
+<ul>
+<li>A non programmers tutorial for Python: Object Oriented Programming:
+  <a href="https://en.wikibooks.org/wiki/Non-Programmer%27s_Tutorial_for_Python_3/Intro_to_Object_Oriented_Programming_in_Python_3">https://en.wikibooks.org/wiki/Non-Programmer%27s_Tutorial_for_Python_3/Intro_to_Object_Oriented_Programming_in_Python_3</a></li>
+<li>A tutorial based on a role playing game:
+  <a href="https://inventwithpython.com/blog/2014/12/02/why-is-object-oriented-programming-useful-with-a-role-playing-game-example/">https://inventwithpython.com/blog/2014/12/02/why-is-object-oriented-programming-useful-with-a-role-playing-game-example/</a></li>
+<li>A video: <a href="https://www.youtube.com/watch?v=trOZBgZ8F_c">https://www.youtube.com/watch?v=trOZBgZ8F_c</a></li>
+</ul>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2025-02-14-objects.html">2025-02-14: Objects</a></h4>
+<p>On Friday we spoke about object
+oriented programming.</p>
+
+<h4><a href="../posts/2024-02-09-objects-cli-and-editor.html">2024-02-09: Objects, command line and editors</a></h4>
+<p>On Friday we had two separate classes. In the first we spoke about object
+oriented programming and in the second we spoke about another way of
+interacting with python.</p>
+
+
+
+
+
+<p><small><code><a href="../class-notes/object-oriented-programming.html">Facilitator notes: Object oriented programming</a></code></small></p>
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

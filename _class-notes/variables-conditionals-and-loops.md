@@ -128,7 +128,9 @@ And::
     >>> 1 + 2 + 4 + 8 + 16 + 31 + 62 + 124 + 248
     496
 
-### After class communication
+## Communications
+
+### After class
 
 Send the following email after class::
 

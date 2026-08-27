@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dice.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#dice">Example Group Projects / dice</a>
+  /
+  dice.py
+</p>
+
+<h1>dice.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="sd">&quot;&quot;&quot;Simulation and exact distributions for sums of fair dice.</span>
+
+<span class="sd">We provide a small library that simulates rolls of one or more fair</span>
+<span class="sd">$s$-sided dice, computes the empirical distribution of the simulated</span>
+<span class="sd">sums, and gives the exact distribution as a dictionary of</span>
+<span class="sd">``fractions.Fraction`` for comparison.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fractions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fraction</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">roll</span><span class="p">(</span><span class="n">number_of_dice</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a tuple of ``number_of_dice`` faces from fair $s$-sided dice.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_of_dice : int</span>
+<span class="sd">        The number of dice to roll.</span>
+<span class="sd">    sides : int, optional</span>
+<span class="sd">        The number of sides on each die (default 6).</span>
+<span class="sd">    seed : int, optional</span>
+<span class="sd">        A seed for ``random.seed`` for reproducible rolls.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple of int</span>
+<span class="sd">        The face values, each between 1 and ``sides``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_dice</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_sums</span><span class="p">(</span><span class="n">number_of_dice</span><span class="p">,</span> <span class="n">number_of_rolls</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a list of simulated sums of ``number_of_dice`` dice.</span>
+
+<span class="sd">    Each entry is the total of a single roll of ``number_of_dice`` fair</span>
+<span class="sd">    $s$-sided dice.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_of_dice : int</span>
+<span class="sd">        The number of dice in each roll.</span>
+<span class="sd">    number_of_rolls : int</span>
+<span class="sd">        The number of rolls to simulate.</span>
+<span class="sd">    sides : int, optional</span>
+<span class="sd">        The number of sides on each die (default 6).</span>
+<span class="sd">    seed : int, optional</span>
+<span class="sd">        A seed for ``random.seed`` for reproducible simulations.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of int</span>
+<span class="sd">        The simulated sums, of length ``number_of_rolls``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">sums</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_rolls</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_dice</span><span class="p">))</span>
+        <span class="n">sums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sums</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">empirical_distribution</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the empirical (relative-frequency) distribution.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    samples : list of int</span>
+<span class="sd">        The observed sums.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict of {int: float}</span>
+<span class="sd">        A mapping from each observed value to its relative frequency.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">value</span><span class="p">:</span> <span class="n">count</span> <span class="o">/</span> <span class="n">total</span> <span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">theoretical_distribution</span><span class="p">(</span><span class="n">number_of_dice</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the exact distribution of the sum of ``number_of_dice`` dice.</span>
+
+<span class="sd">    The distribution is computed by repeated convolution of the</span>
+<span class="sd">    single-die distribution. We use ``fractions.Fraction`` so the</span>
+<span class="sd">    probabilities are exact rationals.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_of_dice : int</span>
+<span class="sd">        The number of dice in the sum.</span>
+<span class="sd">    sides : int, optional</span>
+<span class="sd">        The number of sides on each die (default 6).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict of {int: Fraction}</span>
+<span class="sd">        A mapping from each possible total to its exact probability.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">single_die_probability</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span>
+    <span class="n">distribution</span> <span class="o">=</span> <span class="p">{</span><span class="n">face</span><span class="p">:</span> <span class="n">single_die_probability</span> <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sides</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_dice</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">next_distribution</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">current_total</span><span class="p">,</span> <span class="n">current_probability</span> <span class="ow">in</span> <span class="n">distribution</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sides</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">current_total</span> <span class="o">+</span> <span class="n">face</span>
+                <span class="n">next_distribution</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">next_distribution</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+                    <span class="o">+</span> <span class="n">current_probability</span> <span class="o">*</span> <span class="n">single_die_probability</span>
+                <span class="p">)</span>
+        <span class="n">distribution</span> <span class="o">=</span> <span class="n">next_distribution</span>
+    <span class="k">return</span> <span class="n">distribution</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">summary_statistics</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return ``(mean, median, sample_standard_deviation)`` of ``samples``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    samples : list of int or float</span>
+<span class="sd">        The observations.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        ``(mean, median, sample_standard_deviation)``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span> <span class="n">st</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span> <span class="n">st</span><span class="o">.</span><span class="n">stdev</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

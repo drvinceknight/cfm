@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sequences (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Sequences</h1>
+
+<h1 id="sequences-week">Sequences week</h1>
+<h2 id="first-meeting">First meeting</h2>
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand how to use define function recursively</li>
+<li>Know what they need to do to prepare for their seventh tutorial.</li>
+</ul>
+<h3 id="problem">Problem</h3>
+<p>Explain to students that we will be solving the following problem:</p>
+<pre><code>
+A sequence $a_1, a_2, a_3, …$ is defined by:
+
+$$\begin{aligned}
+\left\{
+\begin{array}{l}
+    a_1 = k,\\
+    a_{n + 1} = 3a_n – 4, n \geq 1,
+\end{array}
+\right.
+\end{aligned}$$
+
+where $k$ is a constant.
+
+1.  Write down an expression for $a_2$ in terms of $k$.
+2.  Show that $a_3 = 9k - 16$
+3.  Given that $\sum_{r=1}^{12} a_r = 50$ find the value of $k$.
+
+</code></pre>
+<p>Now explain that we essentially need to add to our tools the ability to
+define a function recursively which we can do:</p>
+<pre><code>&gt;&gt;&gt; def generate_a(k_value, n):
+...     """
+...     Uses recursion to return a_n for a given value of k:
+...     a_1 = k
+...     a_n = 3a_n - 4
+...     """
+...     if n == 1:
+...         return k_value
+...     return 3 * generate_a(k_value, n - 1) - 4
+</code></pre>
+<p>Spend some time explaining what is happening here. Specifically
+highlighting that the programming recursion matches the mathematical
+definition.</p>
+<p>Show how we can make some calls of the function:</p>
+<pre><code>&gt;&gt;&gt; k = 5
+&gt;&gt;&gt; generate_a(k_value=k, n=1)
+5
+&gt;&gt;&gt; generate_a(k_value=k, n=2)
+11
+&gt;&gt;&gt; generate_a(k_value=k, n=3)
+29
+&gt;&gt;&gt; generate_a(k_value=k, n=4)
+83
+&gt;&gt;&gt; generate_a(k_value=k, n=5)
+245
+</code></pre>
+<p>To be able to answer the questions we need <span class="arithmatex">\(k\)</span> as a symbol:</p>
+<pre><code>&gt;&gt;&gt; import sympy as sym
+&gt;&gt;&gt; k = sym.Symbol("k")
+&gt;&gt;&gt; generate_a(k_value=k, n=2)
+3*k - 4
+</code></pre>
+<p>To find <span class="arithmatex">\(a_3\)</span>:</p>
+<pre><code>&gt;&gt;&gt; generate_a(k_value=k, n=3)
+9*k - 16
+</code></pre>
+<p>We now compute the sum of the first 12 terms:</p>
+<pre><code>&gt;&gt;&gt; sum_of_first_12_terms = sum(generate_a(k_value=k, n=r) for r in range(1, 13))
+&gt;&gt;&gt; sum_of_first_12_terms
+265720*k - 531416
+</code></pre>
+<p>Our equation is thus:</p>
+<pre><code>&gt;&gt;&gt; equation = sym.Eq(sum_of_first_12_terms, 50)
+&gt;&gt;&gt; equation
+Eq(265720*k - 531416, 50)
+&gt;&gt;&gt; sym.solveset(equation, k)
+{20441/10220}
+</code></pre>
+<p>Come back: with time take any questions.</p>
+<p>Point at resources.</p>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

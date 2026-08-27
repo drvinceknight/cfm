@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test_dice.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#dice">Example Group Projects / dice</a>
+  /
+  test_dice.py
+</p>
+
+<h1>test_dice.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">fractions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fraction</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">dice</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_roll_returns_the_requested_number_of_dice</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_roll_values_are_in_range</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">face</span> <span class="o">&lt;=</span> <span class="mi">6</span> <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_roll_with_seed_is_reproducible</span><span class="p">():</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">first</span> <span class="o">==</span> <span class="n">second</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_simulate_sums_returns_correct_length</span><span class="p">():</span>
+    <span class="n">sums</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">simulate_sums</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">sums</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_simulate_sums_values_are_in_range</span><span class="p">():</span>
+    <span class="n">sums</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">simulate_sums</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">total</span> <span class="o">&lt;=</span> <span class="mi">12</span> <span class="k">for</span> <span class="n">total</span> <span class="ow">in</span> <span class="n">sums</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_empirical_distribution_sums_to_one</span><span class="p">():</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="n">distribution</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">empirical_distribution</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">distribution</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-12</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_theoretical_distribution_for_one_die_is_uniform</span><span class="p">():</span>
+    <span class="n">distribution</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">theoretical_distribution</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">distribution</span> <span class="o">==</span> <span class="p">{</span><span class="n">face</span><span class="p">:</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_theoretical_distribution_for_two_dice_sums_to_one</span><span class="p">():</span>
+    <span class="n">distribution</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">theoretical_distribution</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="n">distribution</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_theoretical_distribution_for_two_dice_known_values</span><span class="p">():</span>
+    <span class="n">distribution</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">theoretical_distribution</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">distribution</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">36</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">distribution</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">36</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">distribution</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">==</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">36</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_summary_statistics_on_known_data</span><span class="p">():</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">sample_standard_deviation</span> <span class="o">=</span> <span class="n">dice</span><span class="o">.</span><span class="n">summary_statistics</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">mean</span> <span class="o">==</span> <span class="mi">4</span>
+    <span class="k">assert</span> <span class="n">median</span> <span class="o">==</span> <span class="mi">4</span>
+    <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sample_standard_deviation</span> <span class="o">-</span> <span class="mf">1.5811388300841898</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-10</span>
+
+
+<span class="n">test_roll_returns_the_requested_number_of_dice</span><span class="p">()</span>
+<span class="n">test_roll_values_are_in_range</span><span class="p">()</span>
+<span class="n">test_roll_with_seed_is_reproducible</span><span class="p">()</span>
+<span class="n">test_simulate_sums_returns_correct_length</span><span class="p">()</span>
+<span class="n">test_simulate_sums_values_are_in_range</span><span class="p">()</span>
+<span class="n">test_empirical_distribution_sums_to_one</span><span class="p">()</span>
+<span class="n">test_theoretical_distribution_for_one_die_is_uniform</span><span class="p">()</span>
+<span class="n">test_theoretical_distribution_for_two_dice_sums_to_one</span><span class="p">()</span>
+<span class="n">test_theoretical_distribution_for_two_dice_known_values</span><span class="p">()</span>
+<span class="n">test_summary_statistics_on_known_data</span><span class="p">()</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

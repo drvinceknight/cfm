@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}{{ topic.title }} - {{ site_title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ topic.title }}</h1>
+
+{% if topic.note_urls %}
+<h3>Notes</h3>
+<ul>
+{% for url in topic.note_urls %}
+  <li><a href="{{ url }}">{{ url | note_label(topic.title) }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if topic.video_urls %}
+<h3>Videos</h3>
+<ol>
+{% for url_html in topic.video_urls_html %}
+  <li>{{ url_html }}</li>
+{% endfor %}
+</ol>
+{% endif %}
+
+{% if topic.meeting_urls %}
+<h3>Class meeting notes</h3>
+<ul>
+{% for url in topic.meeting_urls %}
+  <li><a href="{{ url }}">{{ url }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if quiz %}
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{{ quiz | quiz_json }}</script>
+</div>
+{% endif %}
+
+{{ topic.content_html }}
+
+{% if related_posts %}
+<h2>Log of past relevant classes</h2>
+{% for post in related_posts %}
+<h4><a href="{{ baseurl }}/posts/{{ post.slug }}.html">{{ post.date_str }}: {{ post.title }}</a></h4>
+{{ post.excerpt }}
+{% endfor %}
+{% endif %}
+
+{% if related_class_notes %}
+{% for note in related_class_notes %}
+<p><small><code><a href="{{ baseurl }}/class-notes/{{ note.slug }}.html">Facilitator notes: {{ note.title }}</a></code></small></p>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

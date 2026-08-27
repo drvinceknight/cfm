@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testing of Code - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Testing of Code</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="https://vknight.org/pfm/building-tools/07-testing/introduction/main.html">Python for mathematics: Testing of Code</a></li>
+
+</ul>
+
+
+
+<h3>Videos</h3>
+<ol>
+
+  <li>Video demonstration of tutorial. - <a href="https://youtu.be/TaZYDG6Vags">YouTube</a></li>
+
+</ol>
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Testing of code", "pick": 5, "questions": [{"q": "Which Python statement do we use to check that a value is what we expect during testing?", "options": [{"text": "`assert`", "correct": true}, {"text": "`check`"}, {"text": "`expect`"}, {"text": "`verify`"}], "explain": "`assert boolean, message` raises an `AssertionError` if the boolean is false."}, {"q": "What does this do? `assert add_one(5) == 6, \"The function gave the wrong answer.\"`", "options": [{"text": "raises an `AssertionError` with the message if `add_one(5)` is not equal to 6", "correct": true}, {"text": "always raises an error"}, {"text": "prints the message and continues"}, {"text": "logs the message to a file"}], "explain": "If the comparison is true, nothing happens; if it is false, an `AssertionError` is raised with the message."}, {"q": "How should we test a function whose output depends on randomness?", "options": [{"text": "seed the random generator and then assert against the deterministic output", "correct": true}, {"text": "test the function manually each time"}, {"text": "remove the randomness"}, {"text": "skip testing it"}], "explain": "Seeding makes the random stream reproducible so we can write meaningful assertions."}, {"q": "Where do we put automated tests for a library `dice`?", "options": [{"text": "in a separate file `test_dice.py`", "correct": true}, {"text": "inside `dice.py` after the functions"}, {"text": "in `README.md`"}, {"text": "in `__init__.py`"}], "explain": "Keeping tests in their own file separates production code from the test suite."}, {"q": "Which is a sensible naming convention for a test function?", "options": [{"text": "starts with `test_`, e.g. `test_roll_a_dice_with_specific_values`", "correct": true}, {"text": "starts with `tst_`"}, {"text": "ends with `_test`"}, {"text": "uses any name; the runner picks it up"}], "explain": "Test runners like pytest discover functions whose names start with `test_`."}, {"q": "Why include `assert dice.roll_a_dice() == 4, \"...\"` rather than just `assert dice.roll_a_dice() == 4`?", "options": [{"text": "the optional message tells us which assertion failed when the test breaks", "correct": true}, {"text": "the message makes the test run faster"}, {"text": "Python requires a message"}, {"text": "the message is the expected output"}], "explain": "Clear messages save time when diagnosing test failures."}, {"q": "After we write tests, how do we run them?", "options": [{"text": "from a terminal, e.g. `python test_dice.py` or with a test runner", "correct": true}, {"text": "tests run automatically when Python starts"}, {"text": "tests can only be run inside a notebook"}, {"text": "we re-read the source code"}], "explain": "We run the test script; a test runner will report any assertion failures."}, {"q": "Why also write a doctest inside a docstring?", "options": [{"text": "the docstring example doubles as documentation that is verified to still work", "correct": true}, {"text": "doctests run faster than `assert`s"}, {"text": "doctests are required by Python"}, {"text": "doctests replace the function body"}], "explain": "Doctests keep documentation honest: if the example breaks, the test fails."}, {"q": "Which command runs every doctest in a markdown file `README.md`?", "options": [{"text": "`python -m doctest README.md`", "correct": true}, {"text": "`python README.md`"}, {"text": "`doctest README.md`"}, {"text": "`pytest README.md`"}], "explain": "The `doctest` module discovers `>>>` examples and verifies their outputs."}, {"q": "What is the role of a test that fails when the bug is present and passes after the fix?", "options": [{"text": "it documents the bug and prevents it from coming back unnoticed", "correct": true}, {"text": "it is purely cosmetic"}, {"text": "it slows down the test suite for no reason"}, {"text": "it replaces the bug report"}], "explain": "Regression tests guard against the same bug returning later."}, {"q": "Why is `assert set(samples) == all_values` more robust than checking the first sample?", "options": [{"text": "it checks that every expected value appears across many random samples", "correct": true}, {"text": "it runs faster"}, {"text": "it uses less memory"}, {"text": "it is shorter"}], "explain": "Tests against random code should cover the distribution, not a single draw."}, {"q": "What is the purpose of the optional second argument to `assert`?", "options": [{"text": "it is the message attached to the `AssertionError` if the assertion fails", "correct": true}, {"text": "it is the expected value"}, {"text": "it is the input to the function"}, {"text": "it determines whether the assertion runs"}], "explain": "The message is shown when the assertion fails; it helps us diagnose the failure."}, {"q": "Why aim for high test coverage of a library?", "options": [{"text": "to gain confidence that changes do not break existing behaviour", "correct": true}, {"text": "coverage is a course requirement only"}, {"text": "high coverage makes tests run faster"}, {"text": "coverage replaces documentation"}], "explain": "Tests are how we know that a refactor or a new feature has not broken existing functionality."}, {"q": "What is the best response to a failing test discovered after a change?", "options": [{"text": "investigate the failure, fix the underlying issue, and re-run the suite", "correct": true}, {"text": "delete the failing test"}, {"text": "skip the test until later"}, {"text": "lower the assertion threshold"}], "explain": "Failing tests are signals; we diagnose and fix the underlying cause."}, {"q": "Why write tests before (or alongside) the code rather than after?", "options": [{"text": "the test forces us to clarify the expected behaviour before we implement it", "correct": true}, {"text": "Python requires it"}, {"text": "tests written first run faster"}, {"text": "tests written first need no assertions"}], "explain": "Writing the test first clarifies the interface and the contract of the function."}]}</script>
+</div>
+
+
+<p>A handout is available <a href="../assets/handouts/spring/05-documentation/main.pdf">here</a>.</p>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2026-03-20-testing-and-latex.html">2026-03-20: Testing and LaTeX</a></h4>
+<p>Today we discussed testing and writing with LaTeX</p>
+
+<h4><a href="../posts/2025-04-04-small-example-of-full-project.html">2025-04-04: A small example of a full project</a></h4>
+<p>On Friday I gave you a further example of all that is required for the software
+aspect of your project.</p>
+
+<h4><a href="../posts/2025-03-24-testing-and-research.html">2025-03-24: Testing and reseach</a></h4>
+<p>On Friday the subject librarian Cathy Parker took our class to discuss
+research, sources and plagiarism. I had also not written a summary of the
+previous class on testing so I'll summarise that here.</p>
+
+<h4><a href="../posts/2024-02-23-testing-and-latex.html">2024-02-23: Testing and LaTeX</a></h4>
+<p>On Friday we discussed testing and writing with LaTeX</p>
+
+
+
+
+
+<p><small><code><a href="../class-notes/testing.html">Facilitator notes: Testing of code</a></code></small></p>
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

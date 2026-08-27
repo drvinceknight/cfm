@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statistics (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Statistics</h1>
+
+<h1 id="statistics-week">Statistics week</h1>
+<h2 id="first-meeting">First meeting</h2>
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand how to use the <code>statsmodels</code> library to fit a line to data.</li>
+</ul>
+<h3 id="problem">Problem</h3>
+<p>Explain to students that we will be solving the following problem:</p>
+<pre><code>I want to know if there is a relationship between distance from home and
+expectation of grade in first year mathematics students.
+
+The variables:
+
+- $x$ is the self reported expectation (between 0 and 100)
+- $y$ is the distance from home (as a percentage of 13,000 miles which is how far New
+Zealand is).
+
+1. Obtain the following summary statistics for both $x$ and $y$:
+    - The mean;
+    - The median;
+    - The quartiles;
+    - The standard deviation;
+2. Obtain the Pearson correlation coefficient between $x$ and $y$.
+3. Obtain a line of best fit $y=ax + b$.
+
+</code></pre>
+<p>If possible, use a web form to get students to input their own data. A quick
+script like the following can be used to transform the data in to tuples:</p>
+<pre><code>import pandas as pd
+
+df = pd.read_excel(
+    &quot;/Users/smavak/Downloads/Relationship between distance from home and
+grade?(1-3).xlsx&quot;
+)
+x = tuple(df[&quot;What year 1 average do you think you will get this year?&quot;])
+y = tuple(df[&quot;How far is home? (Miles)&quot;])
+
+</code></pre>
+<p>Here is some data that would work if not:</p>
+<pre><code>&gt;&gt;&gt; x = (44,
+...      47,
+...      64,
+...      67,
+...      67,
+...      9,
+...      83,
+...      21,
+...      36,
+...      87,
+...      70,
+...      88,
+...      88,
+...      12,
+...      58,
+...      65,
+...      39,
+...      87,
+...      46,
+...      88,
+...      81,
+...      37,
+...      25,
+...      77,
+...      72,
+...      9,
+...      20,
+...      80,
+...      69,
+...      79,
+...      47,
+...      64,
+...      82,
+...      99,
+...      88,
+...      49,
+...      29,
+...      19,
+...      19,
+...      14,
+...      39,
+...      32,
+...      65,
+...      9,
+...      57,
+...      32,
+...      31,
+...      74,
+...      23,
+...      35,
+...      75,
+...      55,
+...      28,
+...      34,
+...      0,
+...      0,
+...      36,
+...      53,
+...      5,
+...      38,
+... )
+&gt;&gt;&gt; y = (17,
+...      79,
+...      4,
+...      42,
+...      58,
+...      31,
+...      1,
+...      65,
+...      41,
+...      57,
+...      35,
+...      11,
+...      46,
+...      82,
+...      91,
+...      0,
+...      14,
+...      99,
+...      53,
+...      12,
+...      42,
+...      84,
+...      75,
+...      68,
+...      6,
+...      68,
+...      47,
+...      3,
+...      76,
+...      52,
+...      78,
+...      15,
+...      20,
+...      99,
+...      58,
+...      23,
+...      79,
+...      13,
+...      85,
+...      48,
+...      49,
+...      69,
+...      41,
+...      35,
+...      64,
+...      95,
+...      69,
+...      94,
+...      0,
+...      50,
+...      36,
+...      34,
+...      48,
+...      93,
+...      3,
+...      98,
+...      42,
+...      77,
+...      21,
+...      73,
+... )
+</code></pre>
+<p>Here is what this looks like (highlight that plotting is not part of this
+chapter -- point students at pfm chapter on matplotlib):</p>
+<pre><code>import matplotlib.pyplot as plt
+plt.figure()
+plt.scatter(x, y)
+plt.xlabel("Expected grade")
+plt.ylabel("Distance from home")
+</code></pre>
+<p>Compute the summary statistics:</p>
+<pre><code>&gt;&gt;&gt; import statistics as st
+&gt;&gt;&gt; st.mean(x)
+49.1
+&gt;&gt;&gt; st.median(x)
+47.0
+&gt;&gt;&gt; st.quantiles(x, n=4)
+[28.25, 47.0, 73.5]
+&gt;&gt;&gt; st.stdev(x) # doctest: +ELLIPSIS
+27.2096...
+&gt;&gt;&gt; st.mean(y) # doctest: +ELLIPSIS
+49.4666...
+&gt;&gt;&gt; st.median(y)
+48.5
+&gt;&gt;&gt; st.quantiles(y, n=4)
+[21.5, 48.5, 75.75]
+&gt;&gt;&gt; st.stdev(y) # doctest: +ELLIPSIS
+29.9510...
+</code></pre>
+<p>Compute the Pearson coefficient of correlation:</p>
+<pre><code>&gt;&gt;&gt; st.correlation(x, y) # doctest: +ELLIPSIS
+-0.10957...
+</code></pre>
+<p>This low but negative coefficient indicates that students who are further away
+expect to do worst. (Note the data here is just random noise.)</p>
+<p>Let us fit a line:</p>
+<pre><code>&gt;&gt;&gt; slope, intercept = st.linear_regression(x, y)
+&gt;&gt;&gt; slope # doctest: +ELLIPSIS
+-0.1206...
+&gt;&gt;&gt; intercept # doctest: +ELLIPSIS
+55.3890...
+</code></pre>
+<p>Highlight here that we are not doing any analysis of whether or not this is a
+GOOD fit.</p>
+<p>Here is what this looks like (highlight that plotting is not part of this
+chapter -- point students at pfm chapter on matplotlib):</p>
+<pre><code>plt.figure()
+plt.scatter(x, y)
+plt.plot((0, 100), (intercept, 100 * slope + intercept), color="black")
+plt.xlabel("Expected grade")
+plt.ylabel("Distance from home")
+</code></pre>
+<p>Come back: with time take any questions.</p>
+<p>Point at resources.</p>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

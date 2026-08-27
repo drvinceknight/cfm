@@ -1,0 +1,137 @@
+title: Meetings
+pick: 5
+questions:
+  - q: "What is the key difference between a meeting and a workshop in this course?"
+    options:
+      - text: "a meeting has a fixed agenda and produces decisions; a workshop is a working session with laptops open"
+        correct: true
+      - text: "meetings happen online; workshops happen in person"
+      - text: "meetings have a chair; workshops do not"
+      - text: "workshops are longer than meetings"
+    explain: "Conflating the two produces a poor version of both."
+
+  - q: "What are the three purposes of a meeting we use in this course?"
+    options:
+      - text: "Inform, Discuss, Decide"
+        correct: true
+      - text: "Plan, Build, Review"
+      - text: "Read, Discuss, Write"
+      - text: "Inform, Plan, Submit"
+    explain: "Every agenda item should serve exactly one of these three purposes."
+
+  - q: "What are the three phases of a meeting?"
+    options:
+      - text: "Before, During, After"
+        correct: true
+      - text: "Open, Discuss, Decide"
+      - text: "Plan, Run, Reflect"
+      - text: "Agenda, Discussion, Minutes"
+    explain: "Each phase has its own job: preparing the agenda, working through it, and following up."
+
+  - q: "What is the role of the chair?"
+    options:
+      - text: "to keep the meeting on time and move it through the agenda"
+        correct: true
+      - text: "to take the minutes"
+      - text: "to write the code afterwards"
+      - text: "to decide alone what the group does"
+    explain: "The chair facilitates; the group decides."
+
+  - q: "What is the role of the secretary?"
+    options:
+      - text: "to record the discussion, decisions and action items"
+        correct: true
+      - text: "to chair the meeting"
+      - text: "to schedule the next meeting only"
+      - text: "to write code during the meeting"
+    explain: "The minutes are the secretary's responsibility for the week."
+
+  - q: "Why rotate the secretary role each week?"
+    options:
+      - text: "so every member shares responsibility and gains experience taking minutes"
+        correct: true
+      - text: "because the marking scheme requires it"
+      - text: "to make the minutes shorter"
+      - text: "to keep the chair happy"
+    explain: "Rotation distributes the workload and gives every member the experience."
+
+  - q: "If an agenda item is neither an information item, a discussion item, nor a decision item, what is the recommendation?"
+    options:
+      - text: "the item is not yet ready for the meeting; revise it first"
+        correct: true
+      - text: "include it anyway and see what happens"
+      - text: "remove it permanently"
+      - text: "ask the chair to clarify it on the spot"
+    explain: "Items that do not have a clear purpose waste meeting time."
+
+  - q: "What is the recommendation about whether to hold a meeting with no clear purpose?"
+    options:
+      - text: "reschedule it; a meeting with no clear purpose is worse than no meeting"
+        correct: true
+      - text: "hold it anyway, in case something comes up"
+      - text: "cancel it permanently"
+      - text: "make it longer to find a purpose"
+    explain: "Meetings cost everyone time; have one only when there is something to inform, discuss or decide."
+
+  - q: "What should an action item include?"
+    options:
+      - text: "the action, the name of the person responsible and the deadline"
+        correct: true
+      - text: "the action only"
+      - text: "the action and the name of the chair"
+      - text: "the action and a list of options"
+    explain: "Action items are how the meeting translates into work; ownership and a deadline are essential."
+
+  - q: "Which of these is the right place for free-flowing discussion of how to fix a bug?"
+    options:
+      - text: "the workshop that follows the meeting"
+        correct: true
+      - text: "the meeting itself"
+      - text: "an email thread after the meeting"
+      - text: "the minutes"
+    explain: "Detailed problem-solving belongs in the workshop, not the meeting."
+
+  - q: "Why share the agenda before the meeting rather than at the start?"
+    options:
+      - text: "so every member can prepare and the meeting can start on time"
+        correct: true
+      - text: "to make the chair's job easier"
+      - text: "to fill space in email"
+      - text: "to allow members to skip the meeting"
+    explain: "Members who have read the agenda contribute better and the meeting runs faster."
+
+  - q: "What is the best way to phrase a discussion item on the agenda?"
+    options:
+      - text: "as a specific question with one or more candidate answers"
+        correct: true
+      - text: "as a single keyword"
+      - text: "as a long paragraph of context"
+      - text: "as a decision already made"
+    explain: "A specific question focuses the discussion; a vague item drifts."
+
+  - q: "What is the best way to phrase a decision item on the agenda?"
+    options:
+      - text: "as the decision to be made, framed as a question"
+        correct: true
+      - text: "as a brainstorm"
+      - text: "as an information item"
+      - text: "as a follow-up to last week"
+    explain: "Stating the decision as a question makes it clear when the item is closed."
+
+  - q: "What is the relationship between the meeting and the minutes you submit?"
+    options:
+      - text: "the minutes record what happened in the meeting and are submitted to evidence the group's work"
+        correct: true
+      - text: "the minutes replace the meeting"
+      - text: "the minutes are only for the chair"
+      - text: "the minutes are private"
+    explain: "Minutes turn a transient conversation into a written record."
+
+  - q: "Why does the meeting end when the agenda is exhausted?"
+    options:
+      - text: "the meeting has done its job; further conversation belongs in a workshop or a later meeting"
+        correct: true
+      - text: "it has to last a fixed time"
+      - text: "the chair gets tired"
+      - text: "the secretary has too much to write"
+    explain: "Meetings are shorter than people expect when the agenda is genuinely followed."

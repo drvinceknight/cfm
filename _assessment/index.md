@@ -5,26 +5,23 @@ tag: assessment
 
 # Individual tests (20%)
 
-A series of 6 individual tests:
+A series of 6 individual tests. Each test contributes 1/6 of the 20%
+test mark.
 
-- Test 1: [Algebra]({{ site.baseurl }}/topics/algebra.html) and [Calculus]({{ site.baseurl }}/topics/calculus.html) (released Week 3 of Autumn Semester)
-- Test 2: [Combinatorics]({{ site.baseurl }}/topics/combinatorics.html) and [Probability]({{ site.baseurl }}/topics/probability.html) (released Week 5 of Autumn Semester).
-- Test 3: [Matrices]({{ site.baseurl }}/topics/matrices.html) and [Sequences]({{ site.baseurl }}/topics/sequences.html) (released Week 7 of Autumn Semester).
-- Test 4: [Statistics]({{ site.baseurl }}/topics/statistics.html) and [Differential Equations]({{ site.baseurl }}/topics/differential-equations.html) (released Week 9 of Autumn Semester).
-- Test 5: [Variables, conditional statements and while loops]({{ site.baseurl }}/topics/variables-conditional-statements-and-while-loops.html) and [Functions and
-  data structures]({{ site.baseurl }}/topics/functions-and-data-structures.html) (released Week 2 of Spring Semester).
-- Test 6: [Object Oriented Programming]({{ site.baseurl }}/topics/object-oriented-programming.html) and [Using a terminal and an
-  editor]({{ site.baseurl }}/topics/using-a-terminal-and-an-editor.html) (released Week 4 of Spring Semester).
+- Test 1: [Algebra]({{ site.baseurl }}/topics/algebra.html) and [Calculus]({{ site.baseurl }}/topics/calculus.html).
+- Test 2: [Combinatorics]({{ site.baseurl }}/topics/combinatorics.html) and [Probability]({{ site.baseurl }}/topics/probability.html).
+- Test 3: [Matrices]({{ site.baseurl }}/topics/matrices.html) and [Sequences]({{ site.baseurl }}/topics/sequences.html).
+- Test 4: [Statistics]({{ site.baseurl }}/topics/statistics.html) and [Differential Equations]({{ site.baseurl }}/topics/differential-equations.html).
+- Test 5: [Variables, conditional statements and while loops]({{ site.baseurl }}/topics/variables-conditional-statements-and-while-loops.html) and [Functions and data structures]({{ site.baseurl }}/topics/functions-and-data-structures.html).
+- Test 6: [Object Oriented Programming]({{ site.baseurl }}/topics/object-oriented-programming.html) and [Using a terminal and an editor]({{ site.baseurl }}/topics/using-a-terminal-and-an-editor.html).
 
-You can complete each test when it is released. The deadline for completing all
-of them is at the end of the Spring Semester.
+You can complete each test as soon as it is released. The deadline for
+completing all of them is at the end of the module.
 
 **I recommend you do each quiz as the corresponding content is covered.**
-Content for the first 4 tests is covered in the Autumn Semester. Content for the
-last 2 tests is covered in the Spring Semester.
-
-Each quiz corresponds to topics covered in the course. You can attempt each quiz
-as many times as you wish (your last attempt is the one that counts).
+Tests 1–4 cover the tools half of the module; tests 5 and 6 cover the
+group-project half. You can attempt each quiz as many times as you wish;
+your last attempt is the one that counts.
 
 # Individual coursework (20%)
 
@@ -35,14 +32,16 @@ Solutions to the mock are [here]({{site.baseurl}}/assets/assessment/mock/mock_so
 
 ## [Marking criteria](#marking-criteria-individual)
 
-There will be 8 questions, each worth 5 marks:
+The coursework has 8 questions, each worth 5 marks, for 40 marks in
+total. That raw mark is then scaled to the 20% of the module mark that
+this component contributes.
 
 + **3 marks** are awarded for the quality of the **analysis**: This means the correctness and the appropriateness of the code.
   - *0 marks*: Code that does not answer the question
   - *1 marks*: Code that partly answers the question correctly
   - *2 marks*: Code that mostly answers the question correctly
   - *3 marks*: Code that answers the question correctly
-+ **2 marks** are awarded for the quality of the **communication**: This means the narrative and story given by words (if appropriate for the question), and the clarity of the code including using sensible variable names.
++ **2 marks** are awarded for the quality of the **communication**: this means the narrative and story given by words (if appropriate for the question), and the clarity of the code including using sensible variable names.
   - *0 marks*: No narrative given
   - *1 marks*: An attempt at some narrative and readable code
   - *2 marks*: Clear narrative, clear code with descriptive variable names
@@ -54,31 +53,73 @@ The coursework for 2025/2026 can be downloaded available [here]({{site.baseurl}}
 
 # Group project (60%)
 
-Build a Python library to provide tools for a problem related to mathematics.
+In a small group you build a Python library that provides tools for a
+mathematical problem of your choice. A 'problem related to mathematics'
+is a deliberately broad brief: every example in the
+[Example Group Projects]({{ site.baseurl }}/assessment/example-projects/)
+listing is one valid answer, and your own project does not need to look
+like any of them. Every component is graded; you do not need to be the
+strongest coder in the group to earn full marks on the project, since
+the paper, the documentation, the tests, and the meeting minutes are
+all marked too.
 
-You will evidence your progress with 2 mediums:
+In one sentence: 60% of your project mark comes from the marking
+criteria below (split as Communication 30%, Scope 50%, Research 20%),
+and the geometric mean with your engagement record then ties your
+individual mark to both your contribution and the group's output.
 
-2. A 2 page paper
-3. A 15 minute recorded presentation
+## [Marking scheme](#marking-scheme)
 
-Your final submission should include the following **7** files:
+We combine two distinct components using a geometric mean:
 
-1. A `main.tex` file: the source file for a 2 page paper written in [LaTeX](({{ site.baseurl }}/topics/latex.html)
-   ).
-2. A `main.pdf` file: the pdf file for a 2 page paper written in [LaTeX](({{ site.baseurl }}/topics/latex.html)
-   ).
-3. A `<library>.py` file: the [source file for your Python library]({{ site.baseurl }}/topics/modularisation-of-code.html)
-4. A `test_<library>.py` file: [the test files for your Python library]({{ site.baseurl }}/topics/testing-of-code.html)
-5. A `README.md` file: [the documentation for your Python library]({{ site.baseurl }}/topics/documentation-of-code.html)
-6. A `presentation.mp4` (or similar file format): the video recording of [your 15 minute presentation]({{ site.baseurl }}/topics/presenting-mathematics.html)
-7. A `contribution.md` file: a file describing the contributions of every member of your group.
+\[\text{Final mark} = \sqrt{M \times E}\]
 
-## [Marking criteria](#marking-criteria)
+where \(M \in [0, 100]\) is the individual **measurable contribution
+score** (in plain English, your engagement record: being present *and*
+contributing to the meeting, as evidenced by the minutes), and
+\(E \in [0, 100]\) is the shared **effective contribution score** (in
+plain English, the mark your group's submission gets). Both dimensions
+must be strong for a high final mark to be possible. A student who
+attends consistently but whose group produces weak work, or who
+free-rides on a strong group, cannot receive full credit.
 
-The various components of the submission should aim to demonstrate how the following
-aspects of the work have been addressed:
+### Component 1: Measurable contribution score (M)
 
-### Communication (both paper and presentation) (30%)
+M is individual, derived from the engagement record in each week's
+meeting minutes. The group submits one set of minutes per week during
+the contact hour; a different member acts as secretary each week (the
+group agrees the rota at its first meeting). The minutes record both
+who was present and what each member contributed, so M rewards
+**meaningful participation**, not just attendance: turning up without
+engaging does not score, and a member who was unwell but caught up
+through the week's minutes and asynchronous contributions can still
+be recorded as engaged.
+
+A student's score is the fraction of the five group meeting weeks
+(Weeks 6 to 10) at which the minutes record them as having engaged:
+
+\[M = \frac{\text{number of meetings at which the student is recorded as engaged}}{5} \times 100\]
+
+The minutes template for each week is linked in the schedule.
+
+### Component 2: Effective contribution score (E)
+
+E is shared equally among all group members. It is the mark awarded to
+the group project submission, assessed against the criteria below.
+
+### [Marking scenarios](#marking-scenarios)
+
+Three [group-project marking scenarios]({{ site.baseurl }}/assessment/geometric-mean/)
+(the free rider, the conscientious student in a struggling group, and
+a well-functioning group) are on a dedicated page; they are the
+clearest way to see why both \(M\) and \(E\) matter.
+
+#### [Marking criteria](#marking-criteria)
+
+The various components of the submission should aim to demonstrate how the
+following aspects of the work have been addressed:
+
+##### Communication (both paper and presentation) (30%)
 
 - **Summary**: Has a clear description of the high-level functionality and
   purpose of the software for a diverse, non-specialist audience been
@@ -96,11 +137,13 @@ Typical description of mark:
 
 - Below 40%
 
-  Difficult to read and lacks a logical train of thought or argument. Very poor organisation and communication of work.
+  Difficult to read and lacks a logical train of thought or argument. Very poor
+  organisation and communication of work.
 
 - Between 40 and 49%
 
-  Poor style of writing with some parts difficult to follow. Poor organisation and presentation of material.
+  Poor style of writing with some parts difficult to follow. Poor organisation
+  and presentation of material.
 
 - Between 50 and 59%
 
@@ -108,13 +151,19 @@ Typical description of mark:
 
 - Between 60 and 69%
 
-  Well organised and clearly written with sound technical content. Results analysed and clearly presented.
+  Well organised and clearly written with sound technical content. Results
+  analysed and clearly presented.
 
 - Above 70%
 
-  Very well organised and clearly written with good technical content. Results assessed critically and arguments very well presented and supported.
+  Very well organised and clearly written with good technical content. Results
+  assessed critically and arguments very well presented and supported. At
+  the *exemplary* end of this band the paper would not look out of place in
+  a Journal of Open Source Software submission, and the presentation lands
+  the high-level idea, the design choices, and the limitations in 15 minutes
+  without rushing.
 
-### Scope (50%)
+##### Scope (50%)
 
 - **Documentation**: Does the documentation have a Tutorial, How to section,
   Reference and Explanation section? Is it clear? Is the source code clear?
@@ -141,16 +190,18 @@ Typical description of mark:
 - Between 60 and 69%
 
   The documentation is clear. The code is written in a modular way with few
-  areas of improvement. The tests confirm most functionality of the code and the
-  documentation.
+  areas of improvement. The tests confirm most functionality of the code and
+  the documentation.
 
 - Above 70%
 
   Well written documentation, code is modular and follows all conventions and
   guidelines covered in the course. The tests cover all functionality of the
-  code and the documentation.
+  code and the documentation. At the *exemplary* end of this band the test
+  suite includes edge cases that the tutorial does not exercise, and the
+  README would be usable by someone outside the group with no extra help.
 
-### Research (20%)
+##### Research (20%)
 
 - **State of the field**: Do the authors describe how this software compares
   to other commonly used packages?
@@ -162,12 +213,11 @@ Typical description of mark:
 
 - Below 40%
 
-  No state if the field or references included.
+  No state of the field or references included.
 
 - Between 40 and 49%
 
-  An inaccurate state of the field included. Some poor references
-  included.
+  An inaccurate state of the field included. Some poor references included.
 
 - Between 50 and 59%
 
@@ -180,19 +230,79 @@ Typical description of mark:
 
 - Above 70%
 
-  Outstanding state of the field demonstrating a great understanding not only of
-  the library but of the already existing tools. The references are all of high
-  quality and a thorough demonstration of understanding is given.
+  Outstanding state of the field demonstrating a great understanding not only
+  of the library but of the already existing tools. The references are all of
+  high quality and a thorough demonstration of understanding is given. At
+  the *exemplary* end of this band the references are integrated into the
+  prose, not relegated to a bibliography that the body never refers back to.
 
-Note that this assessment has some overlap with the review criteria
-for the Journal of Open Source Software
+Note that this assessment has some overlap with the review criteria for the
+Journal of Open Source Software
 <https://joss.readthedocs.io/en/latest/review_checklist.html>. Some examples
 of papers written for that journal that can be helpful are:
 
-- Matching: A Python library for solving matching games <https://joss.theoj.org/papers/10.21105/joss.02169>
-- Nashpy: A Python library for the computation of Nash equilibria <https://joss.theoj.org/papers/10.21105/joss.00904>
+- Matching: A Python library for solving matching games
+  <https://joss.theoj.org/papers/10.21105/joss.02169>
+- Nashpy: A Python library for the computation of Nash equilibria
+  <https://joss.theoj.org/papers/10.21105/joss.00904>
 
-Deadline: TBD.
+## Groups
+
+Groups of four are in place by the time the group-project half of the
+module begins. Groups are **self-selecting**: form a group of four with
+people you want to work with and register it before the deadline. Any
+student who has not joined a self-selected group by the deadline is
+randomly assigned to a group with the other unassigned students. The
+incentive is straightforward: a self-selected group is one in which
+every member has chosen to engage, while a randomly assigned group is
+likely to contain other students who have not yet committed to the
+project.
+
+At the first meeting the group agrees the **secretary rota**: a different
+member is secretary each of the five meeting weeks (Weeks 6 to 10),
+which spreads the minute-taking workload and gives each member a turn at
+documenting the work.
+
+If a group member is unresponsive or disengaged for two consecutive
+meetings, raise it at the next meeting and record it in the minutes;
+the geometric mean already penalises lack of engagement, but flagging
+it early gives the rest of the group time to redistribute work and
+gives the disengaged member a chance to re-engage.
+
+## Submission
+
+Your final submission should include the following **7** files. Every
+component is graded, so a strong submission needs strong work across
+all of them; you do not need to be the most experienced coder in the
+group to earn full marks if you have written the paper, drafted the
+README, or built out the test suite.
+
+1. A `main.tex` file: the source file for a 3 page paper written in
+   [LaTeX]({{ site.baseurl }}/topics/latex.html).
+2. A `main.pdf` file: the pdf file for a 3 page paper written in
+   [LaTeX]({{ site.baseurl }}/topics/latex.html).
+3. A `<library>.py` file: the
+   [source file for your Python library]({{ site.baseurl }}/topics/modularisation-of-code.html).
+4. A `test_<library>.py` file:
+   [the test files for your Python library]({{ site.baseurl }}/topics/testing-of-code.html).
+5. A `README.md` file:
+   [the documentation for your Python library]({{ site.baseurl }}/topics/documentation-of-code.html).
+6. A `presentation.mp4` (or similar file format): the video recording of
+   [your 15 minute presentation]({{ site.baseurl }}/topics/presenting-mathematics.html).
+7. A `contribution.md` file: a file describing the contributions of every
+   member of your group.
+
+The submission deadline is confirmed by the end of Week 2 of the module
+and posted on the schedule.
+
+## [Example projects](#example-projects)
+
+A set of [worked example projects]({{ site.baseurl }}/assessment/example-projects/)
+is available. Each one is a small
+Python library with the same files as your submission (library, tests,
+`README.md`, and a short paper). They are written at the **'good'**
+level of the marking scheme, not the 'exemplary' level: read them as a
+model of what a strong submission looks like, not as a ceiling.
 
 ## [Use of Code Generation Tools](#use-of-code-generation-tools)
 
@@ -218,6 +328,12 @@ You may:
 - Use lecture materials, textbooks, and official documentation
 - Discuss general programming ideas with others (but not share code)
 - Use standard debugging tools
+- Ask a language model to explain an error message you have already
+  read yourself, or to explain a concept from the textbook in different
+  words. The line is between **understanding** and **generating**:
+  generating any part of the submitted work with a tool is not allowed,
+  but learning faster with one is the same as learning faster with a
+  classmate
 
 Automated code generation often produces recognisable artefacts. Where there is
 reasonable evidence that submitted work was generated using such tools, the
@@ -227,25 +343,3 @@ apply.
 **This policy exists to ensure you develop the skills required for later modules
 and professional programming practice.**
 
-## [Past group projects](#past-group-projects)
-
-A list of titles of past projects:
-
-{% for year in site.data.projects %}
-
-### {{ year.year }}
-
-{% for title in year.titles %}
-
-- {{ title }}
-  {% endfor %}
-  {% endfor %}
-
-## [Log of past relevant classes](#log-of-past-relevant-classes)
-
-{% for post in site.posts %}
-{% if post.tags contains page.tag %}
-[{{post.date | date: "%D"}}: {{ post.title }}]({{site.baseurl}}{{post.url}})
-{{ post.excerpt }}
-{% endif %}
-{% endfor %}

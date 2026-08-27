@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{A small library for the binomial distribution}
+\author{Group N}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present \texttt{binomial}, a small Python library for the binomial
+distribution \(X \sim \text{Bin}(n, p)\). The library exposes five
+short functions: the probability mass function, the cumulative
+distribution function, the mean, the variance, and a simulator. The
+binomial coefficient is computed exactly with
+\texttt{scipy.special.comb}~\cite{virtanen2020}. We verify the
+library on the fair-coin case \(n = 10\), \(p = 1/2\): the PMF and
+CDF agree with the textbook values, the PMF sums to one, and the
+empirical mean of \(5000\) simulated draws of \(\text{Bin}(20, 1/2)\)
+lies within \(0.3\) of the theoretical mean of \(10\). The library
+follows the Diataxis framework for documentation~\cite{procida2017}
+and the combinatorics and probability chapters of the open-source
+textbook \emph{Python for Mathematics}~\cite{knight2024}.
+\end{abstract}
+
+\section{Introduction}
+
+The binomial distribution describes the number of successes in \(n\)
+independent Bernoulli trials, each with success probability
+\(p \in [0, 1]\). Writing \(X \sim \text{Bin}(n, p)\), the
+probability mass function and the cumulative distribution function
+are
+
+\[
+    P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k},
+    \qquad
+    P(X \le k) = \sum_{j = 0}^{k} \binom{n}{j} p^j (1 - p)^{n - j},
+\]
+
+and the mean and variance are \(\mathbb{E}[X] = n p\) and
+\(\text{Var}(X) = n p (1 - p)\)~\cite{ross2014}.
+
+The binomial distribution is built into
+\texttt{scipy.stats.binom}~\cite{virtanen2020}, which provides every
+function we implement here. We wanted a small library that we could
+read and understand line by line, with the binomial coefficient
+computed exactly and the simulator written out as Bernoulli trials.
+
+We present a five-function library,
+\texttt{binomial}; we verify it on the fair-coin case \(n = 10\),
+\(p = 1/2\); and we show that the empirical mean of \(5000\)
+simulated draws of \(\text{Bin}(20, 1/2)\) is close to the
+theoretical mean.
+
+\section{The library}
+
+The library lives in the single module \texttt{binomial.py} and
+follows the combinatorics and probability chapters of \emph{Python
+for Mathematics}~\cite{knight2024}.
+
+\texttt{pmf(number\_of\_successes,
+number\_of\_trials, success\_probability)} returns
+\(\binom{n}{k} p^k (1 - p)^{n - k}\). The binomial coefficient is
+computed exactly with \texttt{scipy.special.comb(\dots,
+exact=True)}~\cite{virtanen2020}; we then multiply by the
+probabilities.
+
+\texttt{cdf(number\_of\_successes,
+number\_of\_trials, success\_probability)} returns the partial sum
+of the PMF up to \(k\). Summing eleven floats for a small \(n\) is
+cheap, so we did not reach for \texttt{scipy.stats.binom.cdf}.
+
+\texttt{mean(number\_of\_trials, success\_probability)} and
+\texttt{variance(number\_of\_trials, success\_probability)} return
+\(n p\) and \(n p (1 - p)\) respectively.
+
+\texttt{simulate(number\_of\_trials, success\_probability,
+number\_of\_simulations, seed)} draws each binomial sample as the
+number of \(n\) independent uniform draws that fall below \(p\). The
+``seed'' argument lets us reproduce a simulation.
+
+\section{Worked example}
+
+We illustrate the library on the fair-coin case \(n = 10\),
+\(p = 1/2\). The PMF and CDF agree with the textbook values shown
+in Table~\ref{tab:fair-coin}. The PMF sums to one and the CDF
+reaches one at \(k = n\).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{r l l}
+\toprule
+\(k\) & \(P(X = k)\) & \(P(X \le k)\) \\
+\midrule
+0  & \(1/1024\)    & \(1/1024\) \\
+1  & \(10/1024\)   & \(11/1024\) \\
+2  & \(45/1024\)   & \(56/1024\) \\
+3  & \(120/1024\)  & \(176/1024\) \\
+4  & \(210/1024\)  & \(386/1024\) \\
+5  & \(252/1024\)  & \(638/1024\) \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{The PMF and CDF of $X \sim \text{Bin}(10, 1/2)$.}
+The mode is at \(k = 5\), with probability \(252/1024\). The library
+returns these values to floating-point precision, with the binomial
+coefficient computed exactly.}
+\label{tab:fair-coin}
+\end{table}
+
+For \(\text{Bin}(20, 1/2)\) the theoretical mean is \(10\) and the
+theoretical variance is \(5\). The empirical mean of \(5000\)
+simulated draws lies within \(0.3\) of the theoretical mean in the
+seeded run that we used as a test.
+
+\section{Discussion}
+
+\texttt{scipy.stats.binom} would have
+covered everything. We wrote a small library because we wanted to
+read the formulas inside, and because each function ends up being a
+single line that maps to the definition in the probability
+chapter~\cite{ross2014}.
+
+The default
+\texttt{scipy.special.comb} returns a float, which is fast but
+already rounded for moderately large \(n\). With \texttt{exact=True}
+the function returns a Python integer, so the factor in front of
+\(p^k (1 - p)^{n - k}\) is exact and only the probabilities
+contribute rounding error.
+
+The library handles only the binomial
+distribution. A natural extension is the multinomial distribution,
+which generalises to more than two outcomes per trial. The same
+approach (an exact multinomial coefficient and an explicit
+simulator) would carry over.
+
+\section{Conclusion}
+
+We have presented \texttt{binomial}, a small library for the
+binomial distribution. The library agrees with the textbook values
+for the fair-coin case and the simulator produces samples whose
+empirical mean is close to the theoretical mean.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

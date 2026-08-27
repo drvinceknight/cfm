@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>README.md - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#binomial">Example Group Projects / binomial</a>
+  /
+  README.md
+</p>
+
+<h1>README.md</h1>
+
+<div class="highlight"><pre><code class="language-markdown"><span class="gh"># binomial</span>
+
+A small Python library for the binomial distribution: the probability
+mass function, the cumulative distribution function, the mean, the
+variance, and a simulator.
+
+<span class="gu">## Tutorial</span>
+
+We are going to look at the number of heads in 10 tosses of a fair
+coin. The number of heads is a binomial random variable
+\(X \sim \text{Bin}(10, 1/2)\). The most likely outcome is 5 heads,
+with probability \(252 / 1024\). We start by importing the library:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">binomial</span>
+
+<span class="sb">```</span>
+
+The probability of exactly five heads is
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">binomial</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">0.246094</span>
+
+<span class="sb">```</span>
+
+The probability of at most three heads is
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">binomial</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">0.171875</span>
+
+<span class="sb">```</span>
+
+The mean and variance are
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">binomial</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="mf">5.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">binomial</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="mf">2.5</span>
+
+<span class="sb">```</span>
+
+To simulate the experiment we can also draw samples from the
+distribution:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">samples</span> <span class="o">=</span> <span class="n">binomial</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+<span class="mi">1000</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## How to guide</span>
+
+<span class="gu">### How to compute the probability of a specific number of successes</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">binomial</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">binomial</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">0.3087</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to compute the cumulative probability up to a value</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">binomial</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">binomial</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">0.83692</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to compute the mean and variance</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">binomial</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">binomial</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+<span class="mf">8.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">binomial</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">4.8</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to simulate from the distribution</span>
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">binomial</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">samples</span> <span class="o">=</span> <span class="n">binomial</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">all</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## Discussion</span>
+
+The binomial distribution describes the number of successes in
+\(n\) independent Bernoulli trials, each with success probability
+\(p\). Writing \(X \sim \text{Bin}(n, p)\) the probability mass
+function is
+
+\[
+    P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k},
+    \qquad k = 0, 1, \dots, n,
+\]
+
+and the cumulative distribution function is the partial sum
+
+\[
+    P(X \le k) = \sum_{j = 0}^{k} \binom{n}{j} p^j (1 - p)^{n - j}.
+\]
+
+The mean and variance have the clean forms \(\mathbb{E}[X] = n p\) and
+\(\text{Var}(X) = n p (1 - p)\). These can be derived directly from
+the moment generating function, or by writing \(X = \sum_{i = 1}^{n}
+X_i\) for independent Bernoulli summands.
+
+The binomial distribution is a standard reference distribution in
+introductory probability [2]. It also appears in many other places:
+it is the discrete analogue of the normal distribution for fixed
+\(p\) and large \(n\), and it underpins the binomial test in
+statistics.
+
+<span class="gu">### How we built this</span>
+
+For the binomial coefficient \(\binom{n}{k}\) we use
+<span class="sb">`scipy.special.comb(..., exact=True)`</span>. The exact form returns a
+Python <span class="sb">`int`</span> instead of a <span class="sb">`float`</span>, which keeps the integer
+factor honest before we multiply by the probabilities. This is also
+the function recommended by the combinatorics chapter of *Python for
+Mathematics* [1].
+
+The simulator uses the <span class="sb">`random`</span> module from the standard library:
+for each draw, we count how many of <span class="sb">`number_of_trials`</span> uniform
+draws fall below <span class="sb">`success_probability`</span>. This is the most direct
+simulation of the underlying Bernoulli trials, and it lets us seed
+the generator for reproducibility.
+
+The CDF is computed by summing the PMF rather than by calling a
+ready-made <span class="sb">`scipy.stats.binom.cdf`</span>. We did this because the project
+focuses on understanding the distribution rather than on speed, and
+because summing eleven floats for a small \(n\) is cheap.
+
+<span class="gu">## Reference</span>
+
+<span class="gu">### List of functionality</span>
+
+A list of functionality in this library is:
+
+<span class="k">-</span><span class="w"> </span><span class="sb">`pmf(number_of_successes, number_of_trials, success_probability)`</span>:
+  the probability mass function \(P(X = k)\).
+<span class="k">-</span><span class="w"> </span><span class="sb">`cdf(number_of_successes, number_of_trials, success_probability)`</span>:
+  the cumulative distribution function \(P(X \le k)\).
+<span class="k">-</span><span class="w"> </span><span class="sb">`mean(number_of_trials, success_probability)`</span>: the mean \(n p\).
+<span class="k">-</span><span class="w"> </span><span class="sb">`variance(number_of_trials, success_probability)`</span>: the variance
+  \(n p (1 - p)\).
+<span class="k">-</span><span class="w"> </span>`simulate(number_of_trials, success_probability,
+  number_of_simulations, seed=None)`: simulate draws from the
+  distribution.
+
+<span class="gu">### Tests</span>
+
+The tests live in <span class="sb">`test_binomial.py`</span> and can be run with:
+
+<span class="sb">```sh</span>
+python<span class="w"> </span>test_binomial.py
+<span class="sb">```</span>
+
+They cover the PMF at \(k = 0\) and the mode \(k = n / 2\) of a fair
+coin, check that the PMF sums to 1, that the CDF is monotone and
+reaches 1, and that the empirical mean of 5000 simulated draws of
+\(\text{Bin}(20, 1/2)\) lies within 0.3 of the theoretical mean of 10.
+
+<span class="gu">### Bibliography</span>
+
+[1] Knight, V. <span class="ge">*Python for Mathematics*</span>, vknight.org/pfm. Accessed 2026.
+
+[2] Ross, S. M. <span class="ge">*A First Course in Probability*</span>. Pearson, 9th edition,
+2014.
+
+[3] Virtanen, P. et al. *SciPy 1.0: fundamental algorithms for
+scientific computing in Python.* Nature Methods 17, 261-272, 2020.
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

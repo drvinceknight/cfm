@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matrices - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Matrices</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="https://vknight.org/pfm/tools-for-mathematics/04-matrices/introduction/main.html">Python for mathematics: Matrices</a></li>
+
+</ul>
+
+
+
+<h3>Videos</h3>
+<ol>
+
+  <li>Video demonstration of tutorial. - <a href="https://www.youtube.com/watch?v=9aoz22SxZjY">YouTube</a></li>
+
+</ol>
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Matrices", "pick": 5, "questions": [{"q": "We import sympy as `sym`. How do we create the matrix \\(\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\\)?", "options": [{"text": "`sym.Matrix([[1, 2], [3, 4]])`", "correct": true}, {"text": "`sym.Matrix([1, 2, 3, 4])`"}, {"text": "`sym.Matrix((1, 2), (3, 4))`"}, {"text": "`sym.Matrix(1, 2, 3, 4)`"}], "explain": "`sym.Matrix` takes a list of rows; each row is itself a list."}, {"q": "How do we compute the determinant of a matrix `matrix`?", "options": [{"text": "`matrix.det()`", "correct": true}, {"text": "`sym.det(matrix)`"}, {"text": "`matrix.determinant()`"}, {"text": "`sym.Matrix.det(matrix)`"}], "explain": "The determinant is a method on the matrix object: `matrix.det()`."}, {"q": "How do we compute the inverse of a matrix `matrix`?", "options": [{"text": "`matrix.inv()`", "correct": true}, {"text": "`sym.inv(matrix)`"}, {"text": "`matrix.inverse()`"}, {"text": "`matrix ** -1` only"}], "explain": "`.inv()` returns the matrix inverse."}, {"q": "What is the inverse of a matrix whose determinant is zero?", "options": [{"text": "it does not exist; the matrix is singular", "correct": true}, {"text": "the zero matrix"}, {"text": "the identity matrix"}, {"text": "its transpose"}], "explain": "A matrix is invertible if and only if its determinant is non-zero."}, {"q": "How do we multiply two matrices `a` and `b` in sympy?", "options": [{"text": "`a * b`", "correct": true}, {"text": "`a.times(b)`"}, {"text": "`sym.matmul(a, b)`"}, {"text": "`a @ b` only"}], "explain": "In sympy, `*` is matrix multiplication on `Matrix` objects."}, {"q": "How do we access the entry in row 0, column 1 of a matrix `matrix`?", "options": [{"text": "`matrix[0, 1]`", "correct": true}, {"text": "`matrix(0, 1)`"}, {"text": "`matrix.entry(0, 1)`"}, {"text": "`matrix[0][1]` only"}], "explain": "sympy matrices support tuple indexing: `matrix[row, column]`."}, {"q": "What does `matrix.T` return?", "options": [{"text": "the transpose of the matrix", "correct": true}, {"text": "the inverse of the matrix"}, {"text": "the determinant of the matrix"}, {"text": "the trace of the matrix"}], "explain": "`.T` is the matrix transpose."}, {"q": "What does `matrix.rref()` return?", "options": [{"text": "the reduced row echelon form (and the pivot columns)", "correct": true}, {"text": "the inverse of the matrix"}, {"text": "the rank of the matrix"}, {"text": "the eigenvalues of the matrix"}], "explain": "`.rref()` returns the reduced row echelon form, together with a tuple of pivot columns."}, {"q": "Which call gives the eigenvalues of a matrix?", "options": [{"text": "`matrix.eigenvals()`", "correct": true}, {"text": "`matrix.eigen()`"}, {"text": "`sym.eig(matrix)`"}, {"text": "`matrix.det().eig()`"}], "explain": "`.eigenvals()` returns a dictionary mapping each eigenvalue to its algebraic multiplicity."}, {"q": "How do we solve the linear system \\(A x = b\\) where `a` is a matrix and `b` is a column vector?", "options": [{"text": "`a.solve(b)`", "correct": true}, {"text": "`sym.solveset(a, b)`"}, {"text": "`a.inv(b)`"}, {"text": "`a.b()`"}], "explain": "The `.solve` method on a matrix solves the linear system against the right-hand side."}, {"q": "Why use `sym.Matrix` rather than a list of lists for linear algebra?", "options": [{"text": "it gives us determinant, inverse, transpose and other linear-algebra tools as methods", "correct": true}, {"text": "lists of lists cannot store numbers"}, {"text": "`sym.Matrix` is faster for arbitrary Python tasks"}, {"text": "lists of lists are not supported by Python"}], "explain": "`sym.Matrix` is a dedicated linear-algebra type with the tools we expect."}, {"q": "What does `sym.eye(3)` return?", "options": [{"text": "the \\(3 \\times 3\\) identity matrix", "correct": true}, {"text": "a vector with three ones"}, {"text": "a \\(3 \\times 3\\) zero matrix"}, {"text": "a \\(3 \\times 3\\) matrix of threes"}], "explain": "`sym.eye(n)` is the \\(n \\times n\\) identity matrix."}, {"q": "What does `sym.zeros(2, 3)` return?", "options": [{"text": "a \\(2 \\times 3\\) matrix of zeros", "correct": true}, {"text": "the integer 0 twice and 3 thrice"}, {"text": "a \\(3 \\times 2\\) matrix of zeros"}, {"text": "a vector of two zeros"}], "explain": "`sym.zeros(rows, cols)` builds a zero matrix of that shape."}, {"q": "What does `matrix.rank()` return?", "options": [{"text": "the rank of the matrix", "correct": true}, {"text": "the determinant of the matrix"}, {"text": "the number of rows"}, {"text": "the largest eigenvalue"}], "explain": "`.rank()` returns the rank of the matrix."}, {"q": "Why would we use exact symbolic matrices rather than floating-point ones for theory work?", "options": [{"text": "to keep exact rationals and surds in eigenvalues and inverses", "correct": true}, {"text": "because floating-point matrices cannot be transposed"}, {"text": "because sympy is faster than numpy"}, {"text": "because floats cannot represent integers"}], "explain": "Symbolic matrices avoid floating-point error; numerical libraries are better suited to large numerical computations."}]}</script>
+</div>
+
+
+<p>A handout is available <a href="../assets/handouts/autumn/06-matrices/main.pdf">here</a>.</p>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2024-11-08-matrices.html">2024-11-08: Introduction, lab and review of matrices</a></h4>
+<p>This is a brief summary of the 3 classes we have had this week about matrices.</p>
+
+<h4><a href="../posts/2023-11-10-summary-of-matrices.html">2023-11-10: Summary of Matrices</a></h4>
+<p>In class today I we went over the Matrices chapter.</p>
+
+<h4><a href="../posts/2023-11-06-introduction-to-matrices.html">2023-11-06: Introduction to Matrices</a></h4>
+<p>In class today I gave an overview of how to use the <code>sympy</code> library to study
+matrices.</p>
+
+
+
+
+
+<p><small><code><a href="../class-notes/matrices.html">Facilitator notes: Matrices</a></code></small></p>
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>paper/main.tex - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#continued_fractions">Example Group Projects / continued_fractions</a>
+  /
+  paper/main.tex
+</p>
+
+<h1>paper/main.tex</h1>
+
+<div class="highlight"><pre><code class="language-latex"><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="na">[margin=1in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>parskip<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath, amssymb, amsthm<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
+
+<span class="k">\title</span><span class="nb">{</span>A small library for the continued fraction expansion of rational
+       numbers<span class="nb">}</span>
+<span class="k">\author</span><span class="nb">{</span>Group N<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\maketitle</span>
+
+<span class="k">\begin</span><span class="nb">{</span>abstract<span class="nb">}</span>
+We present <span class="k">\texttt</span><span class="nb">{</span>continued<span class="k">\_fractions</span><span class="nb">}</span>, a small Python library that
+computes the continued fraction expansion of a rational number and the
+corresponding list of convergents. The library is built on top of
+<span class="k">\texttt</span><span class="nb">{</span>sympy<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>meurer2017<span class="nb">}</span> so that every iterate is held exactly.
+We illustrate the library on the rational approximations <span class="s">\(</span><span class="m">3</span><span class="o">/</span><span class="m">2</span><span class="s">\)</span>,
+<span class="s">\(</span><span class="m">22</span><span class="o">/</span><span class="m">7</span><span class="s">\)</span> and <span class="s">\(</span><span class="m">355</span><span class="o">/</span><span class="m">113</span><span class="s">\)</span> of <span class="s">\(</span><span class="nv">\pi</span><span class="s">\)</span>, and we recover the Fibonacci-ratio
+approximations of the golden ratio. The documentation follows the
+Diataxis framework~<span class="k">\cite</span><span class="nb">{</span>procida2017<span class="nb">}</span> and the conventions of the
+open-source textbook <span class="k">\emph</span><span class="nb">{</span>Python for Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+<span class="k">\end</span><span class="nb">{</span>abstract<span class="nb">}</span>
+
+<span class="k">\section</span><span class="nb">{</span>Introduction<span class="nb">}</span>
+
+The continued fraction expansion of a real number <span class="s">\(</span><span class="nb">r</span><span class="s">\)</span> is the (possibly
+infinite) sequence of integers <span class="s">\(</span><span class="nb">a_</span><span class="m">0</span><span class="nb">, a_</span><span class="m">1</span><span class="nb">, a_</span><span class="m">2</span><span class="nb">, </span><span class="nv">\dots</span><span class="s">\)</span> such that
+
+<span class="sb">\[</span>
+<span class="nb">    r </span><span class="o">=</span><span class="nb"> a_</span><span class="m">0</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\cfrac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{a_</span><span class="m">1</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\cfrac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{a_</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\cfrac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{a_</span><span class="m">3</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb">}}}.</span>
+<span class="s">\]</span>
+
+For a rational number the expansion terminates, while for an irrational
+number it is infinite. The convergents are the rational numbers obtained
+by truncating the expansion after each step; they are known to give the
+best rational approximations to <span class="s">\(</span><span class="nb">r</span><span class="s">\)</span> in the sense that no fraction with a
+smaller denominator is closer~<span class="k">\cite</span><span class="nb">{</span>khinchin1964<span class="nb">}</span>.
+
+We wanted a small library that we could use to inspect these expansions
+without losing precision to floating-point rounding. The standard
+library does not provide one. We chose to build on top of <span class="k">\texttt</span><span class="nb">{</span>sympy<span class="nb">}</span>
+so that the iterates stay symbolic; this is the same approach taken by
+the textbook <span class="k">\emph</span><span class="nb">{</span>Python for Mathematics<span class="nb">}</span>~<span class="k">\cite</span><span class="nb">{</span>knight2024<span class="nb">}</span>.
+
+We present a three-function library,
+<span class="k">\texttt</span><span class="nb">{</span>continued<span class="k">\_fractions</span><span class="nb">}</span>; we test it on the well-known rational
+approximations <span class="s">\(</span><span class="m">22</span><span class="o">/</span><span class="m">7</span><span class="s">\)</span> and <span class="s">\(</span><span class="m">355</span><span class="o">/</span><span class="m">113</span><span class="s">\)</span> of <span class="s">\(</span><span class="nv">\pi</span><span class="s">\)</span>; and we recover the
+ratios of consecutive Fibonacci numbers as the convergents of the
+golden ratio.
+
+<span class="k">\section</span><span class="nb">{</span>The library<span class="nb">}</span>
+
+The library lives in the single module <span class="k">\texttt</span><span class="nb">{</span>continued<span class="k">\_fractions</span>.py<span class="nb">}</span>
+and exposes three functions.
+
+<span class="k">\texttt</span><span class="nb">{</span>continued<span class="k">\_fraction</span>(rational<span class="k">\_number</span>,
+maximum<span class="k">\_terms</span>)<span class="nb">}</span> computes the expansion of a rational by the Euclidean
+algorithm: at each step we take the integer part of what is left,
+subtract it, and invert the fractional part. The loop terminates as
+soon as the remainder is zero, so we never run past the natural end of
+the expansion.
+
+<span class="k">\texttt</span><span class="nb">{</span>convergents(coefficients)<span class="nb">}</span> turns a
+list of integer coefficients into the corresponding rationals. We use
+the standard recursion
+
+<span class="sb">\[</span>
+<span class="nb">    </span><span class="nv">\frac</span><span class="nb">{p_n}{q_n}</span>
+<span class="nb">    </span><span class="o">=</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{a_n p_{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">} </span><span class="o">+</span><span class="nb"> p_{n </span><span class="o">-</span><span class="nb"> </span><span class="m">2</span><span class="nb">}}{a_n q_{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">} </span><span class="o">+</span><span class="nb"> q_{n </span><span class="o">-</span><span class="nb"> </span><span class="m">2</span><span class="nb">}}.</span>
+<span class="s">\]</span>
+
+This avoids rebuilding the nested fraction from scratch at each step.
+
+<span class="k">\texttt</span><span class="nb">{</span>golden<span class="k">\_ratio\_convergents</span>(number<span class="k">\_of\_terms</span>)<span class="nb">}</span> returns the
+first convergents of the expansion <span class="s">\(</span><span class="o">[</span><span class="m">1</span><span class="nb">; </span><span class="m">1</span><span class="nb">, </span><span class="m">1</span><span class="nb">, </span><span class="m">1</span><span class="nb">, </span><span class="nv">\dots</span><span class="o">]</span><span class="s">\)</span>. We use this
+as a worked example because the convergents are exactly the ratios of
+consecutive Fibonacci numbers.
+
+<span class="k">\section</span><span class="nb">{</span>Worked examples<span class="nb">}</span>
+
+Two common rational
+approximations of <span class="s">\(</span><span class="nv">\pi</span><span class="s">\)</span> are <span class="s">\(</span><span class="m">22</span><span class="o">/</span><span class="m">7</span><span class="s">\)</span> and <span class="s">\(</span><span class="m">355</span><span class="o">/</span><span class="m">113</span><span class="s">\)</span>. Their
+expansions are <span class="s">\(</span><span class="o">[</span><span class="m">3</span><span class="nb">; </span><span class="m">7</span><span class="o">]</span><span class="s">\)</span> and <span class="s">\(</span><span class="o">[</span><span class="m">3</span><span class="nb">; </span><span class="m">7</span><span class="nb">, </span><span class="m">16</span><span class="o">]</span><span class="s">\)</span> respectively, and the
+convergents recover the original rationals exactly, as shown in
+Table~<span class="k">\ref</span><span class="nb">{</span>tab:pi<span class="nb">}</span>.
+
+<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[h]
+<span class="k">\centering</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>l l l<span class="nb">}</span>
+<span class="k">\toprule</span>
+Number <span class="nb">&amp;</span> Expansion <span class="nb">&amp;</span> Convergents <span class="k">\\</span>
+<span class="k">\midrule</span>
+<span class="s">\(</span><span class="m">22</span><span class="o">/</span><span class="m">7</span><span class="s">\)</span>    <span class="nb">&amp;</span> <span class="s">\(</span><span class="o">[</span><span class="m">3</span><span class="nb">; </span><span class="m">7</span><span class="o">]</span><span class="s">\)</span>     <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">3</span><span class="nb">, </span><span class="m">22</span><span class="o">/</span><span class="m">7</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="s">\(</span><span class="m">355</span><span class="o">/</span><span class="m">113</span><span class="s">\)</span> <span class="nb">&amp;</span> <span class="s">\(</span><span class="o">[</span><span class="m">3</span><span class="nb">; </span><span class="m">7</span><span class="nb">, </span><span class="m">16</span><span class="o">]</span><span class="s">\)</span> <span class="nb">&amp;</span> <span class="s">\(</span><span class="m">3</span><span class="nb">, </span><span class="m">22</span><span class="o">/</span><span class="m">7</span><span class="nb">, </span><span class="m">355</span><span class="o">/</span><span class="m">113</span><span class="s">\)</span> <span class="k">\\</span>
+<span class="k">\bottomrule</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>Two rational approximations of <span class="s">\(</span><span class="nv">\pi</span><span class="s">\)</span>.<span class="nb">}</span> For each
+rational we show the continued fraction expansion and the
+corresponding list of convergents. The last convergent agrees with the
+input rational exactly.<span class="nb">}</span>
+<span class="k">\label</span><span class="nb">{</span>tab:pi<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+
+The continued fraction
+<span class="s">\(</span><span class="o">[</span><span class="m">1</span><span class="nb">; </span><span class="m">1</span><span class="nb">, </span><span class="m">1</span><span class="nb">, </span><span class="m">1</span><span class="nb">, </span><span class="nv">\dots</span><span class="o">]</span><span class="s">\)</span> gives the convergents <span class="s">\(</span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">, </span><span class="m">3</span><span class="o">/</span><span class="m">2</span><span class="nb">, </span><span class="m">5</span><span class="o">/</span><span class="m">3</span><span class="nb">, </span><span class="m">8</span><span class="o">/</span><span class="m">5</span><span class="nb">,</span>
+<span class="m">13</span><span class="o">/</span><span class="m">8</span><span class="nb">, </span><span class="nv">\dots</span><span class="s">\)</span>, which are ratios of consecutive Fibonacci numbers. The
+twentieth convergent agrees with <span class="s">\(</span><span class="nv">\varphi</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">5</span><span class="nb">}</span><span class="o">)</span><span class="nb"> </span><span class="o">/</span><span class="nb"> </span><span class="m">2</span><span class="s">\)</span> to
+within <span class="s">\(</span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">8</span><span class="nb">}</span><span class="s">\)</span>.
+
+<span class="k">\section</span><span class="nb">{</span>Discussion<span class="nb">}</span>
+
+The Euclidean step inverts a fraction, which on
+floating-point arithmetic introduces a small error at each iterate. The
+error compounds; by the third or fourth step it is large enough to
+affect the integer part. Working with <span class="k">\texttt</span><span class="nb">{</span>sympy.Rational<span class="nb">}</span> sidesteps
+this entirely. The cost is that the iterates can become large symbolic
+fractions, but for the inputs we care about (rationals with small
+denominators) this is not an issue.
+
+We only handle rational inputs. A natural
+extension would be to handle the periodic continued fractions of
+quadratic irrationals such as <span class="s">\(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">} </span><span class="o">=</span><span class="nb"> </span><span class="o">[</span><span class="m">1</span><span class="nb">; </span><span class="m">2</span><span class="nb">, </span><span class="m">2</span><span class="nb">, </span><span class="m">2</span><span class="nb">, </span><span class="nv">\dots</span><span class="o">]</span><span class="s">\)</span>, which
+have a known closed form. This is a direction for future work.
+
+<span class="k">\section</span><span class="nb">{</span>Conclusion<span class="nb">}</span>
+
+We have presented <span class="k">\texttt</span><span class="nb">{</span>continued<span class="k">\_fractions</span><span class="nb">}</span>, a small Python library
+for the continued fraction expansion of rational numbers. The library
+recovers the standard rational approximations of <span class="s">\(</span><span class="nv">\pi</span><span class="s">\)</span>, and the
+convergents of the golden ratio match the ratios of consecutive
+Fibonacci numbers to within tolerance.
+
+<span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
+<span class="k">\bibliography</span><span class="nb">{</span>references<span class="nb">}</span>
+
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

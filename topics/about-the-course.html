@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About the Course - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>About the Course</h1>
+
+
+
+
+
+
+
+
+
+<h1 id="computing-for-mathematics-introduction-to-the-course">Computing for Mathematics: Introduction to the course</h1>
+<p>This course will follow 3 mains texts:</p>
+<ol>
+<li>A book covering the use of a programming language called Python:
+   <a href="https://vknight.org/pfm/">vknight.org/pfm/</a></li>
+<li>A set of short tutorials showing how to use the mathematical typesetting
+   language LaTeX: <a href="https://vknight.org/tex/">vknight.org/tex/</a></li>
+<li>A document with guidelines for writing mathematics.</li>
+</ol>
+<p>All course materials are available online at
+<a href="http://vknight.org/cfm/">vknight.org/cfm/</a>. You can also find all the source
+files that create that website at
+<a href="https://github.com/drvinceknight/cfm/">github.com/drvinceknight/cfm/</a>.</p>
+<h2 id="virtual-board">Virtual board</h2>
+<p>I will use a virtual board throughout class:</p>
+<ul>
+<li>This will allow you to see the board more clearly on the class recordings.</li>
+<li>I will share a copy of the board with you after each class.</li>
+</ul>
+<h2 id="technology-in-class">Technology in class</h2>
+<p>Please use whatever resources you need to be successful in this class. Let me
+know if I can help with anything.</p>
+<h2 id="office-hours">Office hours</h2>
+<p>I will not hold specific office hours: please email me to arrange a time to come
+and see me.</p>
+<h2 id="kindness">Kindness</h2>
+<p>In this course every participant (including myself) will be having many
+interactions with other participants. Some potential examples of this:</p>
+<ul>
+<li>Peer to peer discussions during classes;</li>
+<li>Me explaining a given topic.</li>
+</ul>
+<p>I expect <strong>every participant</strong> (including myself) to act with kindness
+during these interactions.</p>
+<p>Some examples of how this applies to me:</p>
+<ul>
+<li>When a student is late or absent at a class <strong>I</strong> will assume they
+  have good reasons. If this happens regularly</li>
+<li>I will first be concerned for their well-being.</li>
+<li>Ask how <strong>I</strong> can help them catch up.</li>
+<li>If a student asks for an explanation of a topic that has been
+  covered multiples times <strong>I</strong> will assume that some set of
+  circumstances has prevented them from seeing these explanations and:</li>
+<li>will explain the topic.</li>
+<li>also point them at the explanations in the course materials
+      and/or class recordings. If this is a regular occurrence I might
+      ask if there are any circumstances that I can help with.</li>
+<li>If <strong>I</strong> make a mistake in a class explanation and someone helpfully
+  points it out. <strong>I</strong> will listen and thank them for pointing it out
+  and either go over the mistake then and there or go over it again at
+  a future meeting.</li>
+</ul>
+<h2 id="structure-of-the-course">Structure of the course</h2>
+<p>The course runs over a single semester and is divided into two halves.</p>
+<p>In the first half (Weeks 1 to 6), we cover the mathematical and computational
+foundations of the module in scheduled classes.</p>
+<p>In the second half (Weeks 6 to 11), the emphasis shifts to self-directed group
+work. Groups meet independently each week to study the Python for Mathematics
+book content and to make progress on their group project. There is a single
+one-hour contact session per week in the second half; this session is used to
+hand in the week's meeting minutes and to ask questions. <strong>Groups are formed
+during Week 1</strong> so that you have your group from the very start of the module.</p>
+<p>Each week in the group project phase has a minutes template linked in the
+schedule. One member acts as secretary for the meeting (the role rotates each
+week) and is responsible for completing the minutes. The group prints the
+minutes and submits the hard copy as a group during the contact hour. The
+attendance recorded in the minutes is the evidence used for the individual
+component of the group project mark.</p>
+<h2 id="assessment">Assessment</h2>
+<p>There are three pieces of assessment in this course:</p>
+<ul>
+<li>Individual coursework (20%)</li>
+<li>A collection of individual quizzes (20%)</li>
+<li>Group coursework (60%)</li>
+</ul>
+<p>More information about assessment: <a href="../assessment/">here</a></p>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2025-05-26-general-feedback-for-group-coursework.html">2025-05-26: Group Project Feedback</a></h4>
+<p>In this post I will discuss the performance of the class for the group
+coursework.</p>
+
+<h4><a href="../posts/2024-12-06-summary-of-mock-coursework.html">2024-12-06: Summary of mock coursework session and clarification about question 4b</a></h4>
+<p>In class today I went over the mock coursework.</p>
+
+<h4><a href="../posts/2024-12-04-summary-of-release-of-individual-coursework.html">2024-12-04: Summary of release of individual coursework</a></h4>
+<p>In class yesterday we took a look at the individual coursework.</p>
+
+<h4><a href="../posts/2024-10-22-introduction-to-combinatorics.html">2024-10-22: Mid module feedback and brief introduction to Combinatorics</a></h4>
+<p>In class today carried out the mid module feedback and briefly introduced the
+combinatorics chapter.</p>
+
+<h4><a href="../posts/2024-10-18-review-of-calculus.html">2024-10-18: Review of Calculus</a></h4>
+<p>In class today we reviewed the calculus content of the course.</p>
+
+<h4><a href="../posts/2024-10-01-welcome-to-class.html">2024-10-01: Overview of the class 2024</a></h4>
+<p>Thanks all for your presence in class today.</p>
+
+<h4><a href="../posts/2024-09-30-welcome-to-the-class.html">2024-09-30: Welcome to the Computing for Mathematics class 2024</a></h4>
+<p>This is a brief message before our first class.</p>
+
+<h4><a href="../posts/2024-05-21-overview-of-assessment-performance.html">2024-05-21: Overview of assessment performance</a></h4>
+<p>In this post I will discuss the performance of the class:</p>
+
+<h4><a href="../posts/2024-02-16-documentation-and-mid-module-feedback.html">2024-02-16: Mid module feedback and documentation</a></h4>
+<p>On Friday we discussed documentation and your mid module feedback.</p>
+
+<h4><a href="../posts/2023-12-08-summary-of-mock-coursework.html">2023-12-08: Summary of mock coursework session</a></h4>
+<p>In class today I demonstrated how to submit and went over the mock coursework.</p>
+
+<h4><a href="../posts/2023-12-04-summary-of-release-of-individual-coursework.html">2023-12-04: Summary of release of individual coursework</a></h4>
+<p>In class yesterday we took a look at the individual coursework.</p>
+
+<h4><a href="../posts/2023-10-20-review-of-calculus.html">2023-10-20: Review of Calculus</a></h4>
+<p>In class today we discussed mid module feedback and reviewed the concepts from the Calculus chapter.</p>
+
+<h4><a href="../posts/2023-10-02-welcome-to-class.html">2023-10-02: Overview of the class 2023</a></h4>
+<p>Thanks all for your presence in class today.</p>
+
+<h4><a href="../posts/2023-01-30-welcome-to-the-class.html">2023-01-30: Welcome to the Computing for Mathematics class 2023</a></h4>
+<p>This is a brief message before our first class.</p>
+
+
+
+
+
+<p><small><code><a href="../class-notes/about-the-course.html">Facilitator notes: About the course</a></code></small></p>
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

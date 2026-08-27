@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - {{ site_title }}{% endblock %}
+
+{% block content %}
+
+<p class="breadcrumb">
+  <a href="{{ baseurl }}/assessment/example-projects/">Example Group Projects</a>
+  /
+  {{ page.title }}
+</p>
+
+<h1>{{ page.title }}</h1>
+
+<p>{{ page.description }}</p>
+
+<h2>Files</h2>
+
+<ul>
+  {% for file in page.files %}
+    <li><a href="{{ baseurl }}/assessment/example-projects/{{ page.slug }}/{{ file.path }}/">{{ file.label }}</a></li>
+  {% endfor %}
+</ul>
+
+{% if page.paper_pdf %}
+  <h2>Paper</h2>
+  <p>
+    <a href="{{ baseurl }}/{{ page.paper_pdf }}">Compiled paper (PDF)</a>
+  </p>
+{% endif %}
+
+{% endblock %}

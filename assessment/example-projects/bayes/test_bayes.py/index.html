@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test_bayes.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#bayes">Example Group Projects / bayes</a>
+  /
+  test_bayes.py
+</p>
+
+<h1>test_bayes.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">bayes</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_basic_compute_posterior</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This checks that the computation</span>
+
+<span class="sd">    P(A | B) = P(B | A) P(A) / P(B)</span>
+
+<span class="sd">    is correct for</span>
+
+<span class="sd">    P(B | A) = 1 / 3</span>
+<span class="sd">    P(A) = 1 / 4</span>
+<span class="sd">    P(B) = 1 / 8</span>
+
+<span class="sd">    which in our case gives:</span>
+
+<span class="sd">    P(A | B) = 2 / 3</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conditional</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span>
+    <span class="n">prior</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">4</span>
+    <span class="n">marginal</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">8</span>
+    <span class="n">posterior</span> <span class="o">=</span> <span class="n">bayes</span><span class="o">.</span><span class="n">compute_posterior</span><span class="p">(</span><span class="n">marginal</span><span class="o">=</span><span class="n">marginal</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">prior</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)</span>
+    <span class="n">expected_posterior</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span>
+    <span class="k">assert</span> <span class="n">posterior</span> <span class="o">==</span> <span class="n">expected_posterior</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Posterior obtained was </span><span class="si">{</span><span class="n">posterior</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_another_compute_posterior_values</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is a similar test to `test_basic_compute_posterior` but with different values.</span>
+
+<span class="sd">    This is in fact the same test that is in the documentation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conditional</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="n">prior</span> <span class="o">=</span> <span class="mf">0.2</span>
+    <span class="n">marginal</span> <span class="o">=</span> <span class="mf">0.05</span>
+    <span class="n">posterior</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>
+        <span class="n">bayes</span><span class="o">.</span><span class="n">compute_posterior</span><span class="p">(</span><span class="n">marginal</span><span class="o">=</span><span class="n">marginal</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">prior</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span> <span class="mi">1</span>
+    <span class="p">)</span>
+    <span class="n">expected_posterior</span> <span class="o">=</span> <span class="mf">0.4</span>
+    <span class="k">assert</span> <span class="n">posterior</span> <span class="o">==</span> <span class="n">expected_posterior</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Posterior obtained was </span><span class="si">{</span><span class="n">posterior</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<span class="n">test_basic_compute_posterior</span><span class="p">()</span>
+<span class="n">test_another_compute_posterior_values</span><span class="p">()</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

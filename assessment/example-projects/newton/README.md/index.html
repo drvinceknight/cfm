@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>README.md - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#newton">Example Group Projects / newton</a>
+  /
+  README.md
+</p>
+
+<h1>README.md</h1>
+
+<div class="highlight"><pre><code class="language-markdown"><span class="gh"># newton</span>
+
+A small Python library for finding roots of single-variable expressions with
+Newton-Raphson iteration.
+
+<span class="gu">## Tutorial</span>
+
+We are going to approximate \(\sqrt{2}\) by finding the positive root of
+\(f(x) = x^2 - 2\). We start by declaring a symbol and importing the
+library:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">newton</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+
+<span class="sb">```</span>
+
+A single Newton step from \(x_0 = 1\) gives
+
+\[
+    x<span class="ge">_1 = x_</span>0 - \frac{f(x_0)}{f&#39;(x_0)} = 1 - \frac{-1}{2} = \frac{3}{2}.
+\]
+
+We can confirm this with the library:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">newton</span><span class="o">.</span><span class="n">newton_step</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="mi">3</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="sb">```</span>
+
+To collect a list of successive iterates, we call <span class="sb">`iterate`</span>:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">iterates</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">number_of_iterations</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">iterates</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">17</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">577</span><span class="o">/</span><span class="mi">408</span><span class="p">,</span> <span class="mi">665857</span><span class="o">/</span><span class="mi">470832</span><span class="p">]</span>
+
+<span class="sb">```</span>
+
+Each iterate is held as an exact rational. To get a closed answer we use
+<span class="sb">`find_root`</span>, which stops as soon as two successive iterates agree to within
+a tolerance:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">root</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">find_root</span><span class="p">(</span>
+<span class="o">...</span>     <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">x</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="o">...</span>     <span class="n">tolerance</span><span class="o">=</span><span class="mi">10</span> <span class="o">**</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">maximum_iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="o">...</span> <span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="mi">8</span><span class="p">)</span>
+<span class="mf">1.41421356</span>
+
+<span class="sb">```</span>
+
+The number of iterations taken is small:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">iterations</span>
+<span class="mi">5</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## How to guide</span>
+
+<span class="gu">### How to take a single Newton step</span>
+
+To take one Newton step from <span class="sb">`current_value`</span> on the expression <span class="sb">`expression`</span>
+in the symbol <span class="sb">`variable`</span>:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">newton</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">newton</span><span class="o">.</span><span class="n">newton_step</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="mi">10</span><span class="o">/</span><span class="mi">3</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to collect a sequence of iterates</span>
+
+To collect the first <span class="sb">`number_of_iterations + 1`</span> iterates of Newton-Raphson:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">newton</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">newton</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">number_of_iterations</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">17</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">577</span><span class="o">/</span><span class="mi">408</span><span class="p">]</span>
+
+<span class="sb">```</span>
+
+<span class="gu">### How to find a root to a given tolerance</span>
+
+To iterate until two successive iterates agree to within <span class="sb">`tolerance`</span>, or
+until <span class="sb">`maximum_iterations`</span> steps have been taken:
+
+<span class="sb">```python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">newton</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">root</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="n">newton</span><span class="o">.</span><span class="n">find_root</span><span class="p">(</span>
+<span class="o">...</span>     <span class="n">x</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">8</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">x</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">sym</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="o">...</span>     <span class="n">tolerance</span><span class="o">=</span><span class="mi">10</span> <span class="o">**</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">maximum_iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="o">...</span> <span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mf">2.0</span>
+
+<span class="sb">```</span>
+
+<span class="gu">## Discussion</span>
+
+Newton-Raphson is a method for finding a root of a differentiable function
+\(f\). Starting from an initial guess \(x_0\) close to a root, the method
+updates the iterate by
+
+\[
+    x<span class="ge">_{n + 1} = x_</span>n - \frac{f(x_n)}{f&#39;(x_n)}.
+\]
+
+Geometrically each step replaces \(f\) by its tangent line at \(x_n\) and
+takes the root of that line as the new iterate. When the method converges
+to a simple root the error is squared at each step: this is the
+quadratic-convergence property that makes Newton-Raphson the standard
+choice when a derivative is available.
+
+The method can fail to converge: a poor initial guess can land the iterate
+in a region where the derivative is small, and the next step can overshoot.
+A <span class="sb">`maximum_iterations`</span> cap protects against this. We return both the final
+iterate and the number of iterations taken so the caller can detect that
+the cap was reached.
+
+<span class="gu">### How we built this</span>
+
+We keep the iterates symbolic by using <span class="sb">`sympy`</span> because this avoids
+floating-point drift in the early steps; we only call <span class="sb">`float`</span> when we
+report the final answer. The derivative is computed inside <span class="sb">`newton_step`</span>
+with <span class="sb">`sympy.diff`</span>, and the substitution at the current value uses the
+dict form <span class="sb">`expression.subs({variable: current_value})`</span>. The library
+accepts both symbolic and numeric inputs, but a symbolic <span class="sb">`current_value`</span>
+(using <span class="sb">`sympy.S`</span>) gives the cleanest trail of iterates [1].
+
+<span class="gu">## Reference</span>
+
+<span class="gu">### List of functionality</span>
+
+A list of functionality in this library is:
+
+<span class="k">-</span><span class="w"> </span><span class="sb">`newton_step(expression, variable, current_value)`</span>: apply one
+  Newton-Raphson step.
+<span class="k">-</span><span class="w"> </span><span class="sb">`iterate(expression, variable, initial_value, number_of_iterations)`</span>:
+  collect the first <span class="sb">`number_of_iterations + 1`</span> iterates.
+<span class="k">-</span><span class="w"> </span>`find_root(expression, variable, initial_value, tolerance,
+  maximum_iterations)`: iterate to a tolerance.
+
+<span class="gu">### Tests</span>
+
+The tests live in <span class="sb">`test_newton.py`</span> and can be run with:
+
+<span class="sb">```sh</span>
+python<span class="w"> </span>test_newton.py
+<span class="sb">```</span>
+
+The tests cover all three functions, check that the iterates have the
+expected exact rational form, and check that <span class="sb">`find_root`</span> recovers
+\(\sqrt{2}\) and \(2\) (as the real root of \(x^3 - 8\)) to within
+tolerance.
+
+<span class="gu">### Bibliography</span>
+
+[1] Knight, V. <span class="ge">*Python for Mathematics*</span>, vknight.org/pfm. Accessed 2026.
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ode_flow.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#ode_flow">Example Group Projects / ode_flow</a>
+  /
+  ode_flow.py
+</p>
+
+<h1>ode_flow.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="sd">&quot;&quot;&quot;Solving and sampling initial value problems for first-order ODEs.</span>
+
+<span class="sd">We use ``sympy.dsolve`` to solve initial value problems of the form</span>
+<span class="sd">$y&#39;(t) = f(t, y(t))$ with $y(t_0) = y_0$, and we sample the resulting</span>
+<span class="sd">symbolic solution at a list of times to give a list of floats that can</span>
+<span class="sd">be plotted or compared with a numerical reference.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sym</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_initial_value_problem</span><span class="p">(</span>
+    <span class="n">right_hand_side</span><span class="p">,</span> <span class="n">time_variable</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">initial_time</span><span class="p">,</span> <span class="n">initial_value</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the symbolic solution to a first-order initial value problem.</span>
+
+<span class="sd">    Solves $y&#39;(t) = f(t, y(t))$ subject to $y(t_0) = y_0$.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    right_hand_side : sympy.Expr</span>
+<span class="sd">        The right-hand side $f(t, y(t))$ as a symbolic expression in</span>
+<span class="sd">        ``time_variable`` and ``function(time_variable)``.</span>
+<span class="sd">    time_variable : sympy.Symbol</span>
+<span class="sd">        The independent variable $t$.</span>
+<span class="sd">    function : sympy.Function</span>
+<span class="sd">        The unknown function $y$.</span>
+<span class="sd">    initial_time : sympy.Expr or numeric</span>
+<span class="sd">        The initial time $t_0$.</span>
+<span class="sd">    initial_value : sympy.Expr or numeric</span>
+<span class="sd">        The value of the function at the initial time, $y_0$.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sympy.Expr</span>
+<span class="sd">        The right-hand side of the symbolic solution.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">equation</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">time_variable</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">time_variable</span><span class="p">),</span> <span class="n">right_hand_side</span><span class="p">)</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span>
+        <span class="n">equation</span><span class="p">,</span>
+        <span class="n">function</span><span class="p">(</span><span class="n">time_variable</span><span class="p">),</span>
+        <span class="n">ics</span><span class="o">=</span><span class="p">{</span><span class="n">function</span><span class="p">(</span><span class="n">initial_time</span><span class="p">):</span> <span class="n">initial_value</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">solution</span><span class="o">.</span><span class="n">rhs</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">trajectory</span><span class="p">(</span><span class="n">solution_expression</span><span class="p">,</span> <span class="n">time_variable</span><span class="p">,</span> <span class="n">sample_times</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sample a symbolic solution at the given times.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    solution_expression : sympy.Expr</span>
+<span class="sd">        The symbolic solution as returned by</span>
+<span class="sd">        :func:`solve_initial_value_problem`.</span>
+<span class="sd">    time_variable : sympy.Symbol</span>
+<span class="sd">        The independent variable $t$.</span>
+<span class="sd">    sample_times : iterable of numeric</span>
+<span class="sd">        The times at which to evaluate the solution.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of float</span>
+<span class="sd">        The values of the solution at each sample time.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">solution_expression</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">time_variable</span><span class="p">:</span> <span class="n">time</span><span class="p">}))</span> <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">sample_times</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">verify_solution</span><span class="p">(</span><span class="n">solution_expression</span><span class="p">,</span> <span class="n">right_hand_side</span><span class="p">,</span> <span class="n">time_variable</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return ``True`` if ``solution_expression`` satisfies the ODE.</span>
+
+<span class="sd">    We substitute the candidate solution into the right-hand side and</span>
+<span class="sd">    compare with the derivative of the candidate solution; the ODE is</span>
+<span class="sd">    satisfied when the difference simplifies to zero.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    solution_expression : sympy.Expr</span>
+<span class="sd">        The candidate solution.</span>
+<span class="sd">    right_hand_side : sympy.Expr</span>
+<span class="sd">        The right-hand side $f(t, y(t))$.</span>
+<span class="sd">    time_variable : sympy.Symbol</span>
+<span class="sd">        The independent variable $t$.</span>
+<span class="sd">    function : sympy.Function</span>
+<span class="sd">        The unknown function $y$.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        ``True`` if the candidate solves the ODE.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">derivative</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">solution_expression</span><span class="p">,</span> <span class="n">time_variable</span><span class="p">)</span>
+    <span class="n">right_hand_side_at_solution</span> <span class="o">=</span> <span class="n">right_hand_side</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">time_variable</span><span class="p">),</span> <span class="n">solution_expression</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sym</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">derivative</span> <span class="o">-</span> <span class="n">right_hand_side_at_solution</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

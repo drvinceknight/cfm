@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Release of individual coursework (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Release of individual coursework</h1>
+
+<h1 id="computing-for-mathematics-release-of-individual-coursework">Computing for Mathematics: Release of individual coursework</h1>
+<h2 id="first-class">First class</h2>
+<p>Send the following announcement to students:</p>
+<pre><code>The coursework is now available to you at &lt;url&gt;.
+
+The deadline to submit is &lt;deadline&gt;.
+
+You will submit the coursework on learning central where you can find the
+corresponding assignement.
+
+If you have any queries please let me know.
+</code></pre>
+<p>In class, download and open the coursework.</p>
+<p>Invite students to have a read through and discuss amongst themselves. Take any
+questions.</p>
+<p>In class show where to submit the coursework.</p>
+<p>If there is time, walk through the example coursework <a href="../assets/assessment/example/assignment.ipynb">here</a>.</p>
+<p>The solution is available <a href="../assets/assessment/example/solution.ipynb">here</a></p>
+<p>More information about assessment: <a href="../assessment/">here</a></p>
+<h2 id="second-class">Second class</h2>
+<p>Ask students if they know where to submit the work. Show them.</p>
+<p>Clarify the deadline.</p>
+<p>Go over the mock coursework:</p>
+<ul>
+<li><a href="../assets/assessment/mock/assignment.ipynb">assignment.ipynb</a>.</li>
+<li><a href="../assets/assessment/mock/solution.ipynb">solution.ipynb</a></li>
+</ul>
+<p>Ask students if they have any questions.</p>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

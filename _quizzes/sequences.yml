@@ -1,0 +1,137 @@
+title: Sequences
+pick: 5
+questions:
+  - q: "A recursively defined sequence is specified by which two ingredients?"
+    options:
+      - text: "a base case and a recursive rule"
+        correct: true
+      - text: "an integral and a derivative"
+      - text: "a base case and a closed form"
+      - text: "a loop and a list"
+    explain: "We give a starting term (base case) and a rule that expresses each later term in terms of earlier ones."
+
+  - q: "Which Python feature is the most natural way to translate a recursive definition into code?"
+    options:
+      - text: "a function that calls itself"
+        correct: true
+      - text: "a `while` loop with no exit condition"
+      - text: "a list comprehension over a fixed range"
+      - text: "a dictionary lookup"
+    explain: "Recursive definitions translate directly into functions that call themselves on smaller inputs."
+
+  - q: "For the sequence \\(a_1 = 1\\), \\(a_n = 2 a_{n - 1}\\), which Python function is correct?"
+    options:
+      - text: "`def f(n): return 1 if n == 1 else 2 * f(n - 1)`"
+        correct: true
+      - text: "`def f(n): return 2 * f(n - 1)`"
+      - text: "`def f(n): return 2 * (n - 1)`"
+      - text: "`def f(n): return 1 if n == 1 else f(n - 1)`"
+    explain: "We need the base case `n == 1` and the recursive step `2 * f(n - 1)`."
+
+  - q: "What happens if a recursive function has no base case?"
+    options:
+      - text: "Python raises a `RecursionError` because the recursion never stops"
+        correct: true
+      - text: "Python returns 0"
+      - text: "Python returns the input"
+      - text: "Python returns `None`"
+    explain: "Without a base case the recursion runs until the call stack overflows; Python protects us with `RecursionError`."
+
+  - q: "Which list comprehension collects the first seven terms of `generate_sequence`?"
+    options:
+      - text: "`[generate_sequence(n) for n in range(1, 8)]`"
+        correct: true
+      - text: "`[generate_sequence(n) for n in range(7)]`"
+      - text: "`generate_sequence(range(1, 8))`"
+      - text: "`generate_sequence(7)`"
+    explain: "`range(1, 8)` covers 1 through 7 inclusive."
+
+  - q: "We import sympy as `sym`. How do we declare a symbolic index \\(k\\)?"
+    options:
+      - text: "`k = sym.Symbol(\"k\")`"
+        correct: true
+      - text: "`k = sym.S(\"k\")`"
+      - text: "`k = sym.Function(\"k\")`"
+      - text: "`k = \"k\"`"
+    explain: "`sym.Symbol` declares an algebraic symbol; the same syntax as for the algebra chapter."
+
+  - q: "Which call solves the equation \\(\\text{sum} = 43\\) symbolically?"
+    options:
+      - text: "`sym.solveset(sym.Eq(sum_of_first_four_terms, 43), k)`"
+        correct: true
+      - text: "`sym.solve(sum_of_first_four_terms, 43, k)`"
+      - text: "`sym.Eq(sum_of_first_four_terms, 43).solve()`"
+      - text: "`sum_of_first_four_terms.solve(43)`"
+    explain: "We wrap the equation in `sym.Eq(lhs, rhs)` and pass it to `sym.solveset`."
+
+  - q: "An arithmetic sequence has \\(a_n = a + (n - 1) d\\). What is \\(d\\)?"
+    options:
+      - text: "the common difference between successive terms"
+        correct: true
+      - text: "the first term"
+      - text: "the common ratio"
+      - text: "the limit of the sequence"
+    explain: "An arithmetic sequence adds a constant \\(d\\) at each step."
+
+  - q: "A geometric sequence has \\(a_n = a r^{n - 1}\\). What is \\(r\\)?"
+    options:
+      - text: "the common ratio between successive terms"
+        correct: true
+      - text: "the common difference between successive terms"
+      - text: "the limit of the sequence"
+      - text: "the index of the term"
+    explain: "A geometric sequence multiplies by a constant \\(r\\) at each step."
+
+  - q: "Why is recursion a natural fit for sequence definitions?"
+    options:
+      - text: "the mathematical definition expresses each term in terms of earlier ones, which is what a recursive function does"
+        correct: true
+      - text: "recursion is faster than iteration in Python"
+      - text: "recursion uses less memory than iteration"
+      - text: "recursion is the only way to handle integers"
+    explain: "Recursion mirrors the mathematical recurrence directly; iteration is also fine but less direct."
+
+  - q: "The sum \\(S_n = \\sum_{k=1}^{n} a_k\\) can be written in Python using which construct?"
+    options:
+      - text: "`sum(a(k) for k in range(1, n + 1))`"
+        correct: true
+      - text: "`a[k].sum()`"
+      - text: "`sympy.sum(a, k)`"
+      - text: "`for k in range(n): s += a`"
+    explain: "Use Python's built-in `sum` with a generator expression."
+
+  - q: "Which feature of Python lets us write `sum(a(k) for k in range(1, n + 1))` instead of an explicit loop?"
+    options:
+      - text: "a generator expression"
+        correct: true
+      - text: "a tuple comprehension"
+      - text: "lazy evaluation of `sum`"
+      - text: "a set comprehension"
+    explain: "`(expr for var in iterable)` is a generator expression; `sum` consumes its values one at a time."
+
+  - q: "For a sequence \\(a_n\\), which best summarises the difference between a recurrence and a closed form?"
+    options:
+      - text: "a recurrence expresses \\(a_n\\) in terms of earlier terms; a closed form expresses \\(a_n\\) directly in terms of \\(n\\)"
+        correct: true
+      - text: "they are the same thing"
+      - text: "a closed form requires recursion"
+      - text: "a recurrence is only valid for arithmetic sequences"
+    explain: "Closed forms compute \\(a_n\\) without referring to other terms."
+
+  - q: "If the sequence \\(a_n = 2 a_{n - 1}\\) with \\(a_1 = 1\\) is implemented recursively, what is the recursion depth when computing `f(10)`?"
+    options:
+      - text: "10 calls deep (it unwinds from `f(10)` down to `f(1)`)"
+        correct: true
+      - text: "1 call deep"
+      - text: "2 calls deep"
+      - text: "20 calls deep"
+    explain: "Each call reduces \\(n\\) by 1, and we stop at \\(n = 1\\)."
+
+  - q: "Which is the most natural way to inspect every term of a sequence up to \\(n = N\\)?"
+    options:
+      - text: "use a list comprehension or a `for` loop"
+        correct: true
+      - text: "use a recursive function with no base case"
+      - text: "use `sym.solveset`"
+      - text: "use `random.choice`"
+    explain: "List comprehensions are concise; a `for` loop is equivalent. Recursion is for the term itself, not for collecting all of them."

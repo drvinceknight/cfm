@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overview of the class 2024 - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Overview of the class 2024</h1>
+<p><small>2024-10-01</small></p>
+
+<p>Thanks all for your presence in class today.</p>
+<p>A recording of the class is available <a href="https://cardiff.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f6baad1d-6776-4535-a7f1-b1f700f7d30a">here</a>.</p>
+<p>In class today:</p>
+<ul>
+<li>I introduced myself;</li>
+<li>We had a discussion about what programming is and how mathematicians
+  can use it (if you're interested a link to the paper on Rhino horn
+  is here: <a href="https://arxiv.org/abs/1712.07640">An Evolutionary Game Theoretic Model of Rhino Horn Devaluation</a></li>
+<li>I showed you the class resources which are all here:
+  <a href="https://vknight.org/cfm/">https://vknight.org/cfm/</a></li>
+</ul>
+<p>The overall goal of this week is to ensure you have the software
+needed to take part in the course.</p>
+<p><strong>This week</strong>, you should aim to work through this chapter of the Python for
+Mathematics text: <a href="https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html">Using notebooks
+</a></p>
+<p>NOTE That you do not have to sign up to anything to download the software. If
+you're asked you can just skip that part.</p>
+<p>If you have any trouble installing the software there is an optional
+session in your timetable where you can come and see me to help.</p>
+<p>If you have any questions please let me know.</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

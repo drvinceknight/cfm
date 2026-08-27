@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>binomial.py - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../../../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../../../../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../../../../start-here/">Start here</a></li>
+        <li><a href="../../../../#schedule">Schedule</a></li>
+        <li><a href="../../../../assessment/">Assessment</a></li>
+        <li><a href="../../../../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<p class="breadcrumb">
+  <a href="../../../../assessment/example-projects/#binomial">Example Group Projects / binomial</a>
+  /
+  binomial.py
+</p>
+
+<h1>binomial.py</h1>
+
+<div class="highlight"><pre><code class="language-python"><span class="sd">&quot;&quot;&quot;The binomial distribution: PMF, CDF, mean, variance, and simulation.</span>
+
+<span class="sd">A binomial random variable counts the number of successes in $n$</span>
+<span class="sd">independent Bernoulli trials each with success probability $p$. We</span>
+<span class="sd">provide the probability mass function, the cumulative distribution</span>
+<span class="sd">function, the mean, the variance, and a simulator. The binomial</span>
+<span class="sd">coefficient is computed exactly with ``scipy.special.comb``.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.special</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pmf</span><span class="p">(</span><span class="n">number_of_successes</span><span class="p">,</span> <span class="n">number_of_trials</span><span class="p">,</span> <span class="n">success_probability</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the binomial PMF $P(X = k)$ for $X \\sim \\text{Bin}(n, p)$.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_of_successes : int</span>
+<span class="sd">        The number of successes $k$.</span>
+<span class="sd">    number_of_trials : int</span>
+<span class="sd">        The number of trials $n$.</span>
+<span class="sd">    success_probability : float</span>
+<span class="sd">        The probability of success on a single trial, $p \\in [0, 1]$.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The probability $P(X = k)$.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">coefficient</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">comb</span><span class="p">(</span><span class="n">number_of_trials</span><span class="p">,</span> <span class="n">number_of_successes</span><span class="p">,</span> <span class="n">exact</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">coefficient</span>
+        <span class="o">*</span> <span class="n">success_probability</span><span class="o">**</span><span class="n">number_of_successes</span>
+        <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">success_probability</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">number_of_trials</span> <span class="o">-</span> <span class="n">number_of_successes</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cdf</span><span class="p">(</span><span class="n">number_of_successes</span><span class="p">,</span> <span class="n">number_of_trials</span><span class="p">,</span> <span class="n">success_probability</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the binomial CDF $P(X \\le k)$.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_of_successes : int</span>
+<span class="sd">        The number of successes $k$.</span>
+<span class="sd">    number_of_trials : int</span>
+<span class="sd">        The number of trials $n$.</span>
+<span class="sd">    success_probability : float</span>
+<span class="sd">        The probability of success on a single trial.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The cumulative probability $P(X \\le k)$.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+        <span class="n">pmf</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">number_of_trials</span><span class="p">,</span> <span class="n">success_probability</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_successes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">number_of_trials</span><span class="p">,</span> <span class="n">success_probability</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the binomial mean $n p$.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">number_of_trials</span> <span class="o">*</span> <span class="n">success_probability</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">variance</span><span class="p">(</span><span class="n">number_of_trials</span><span class="p">,</span> <span class="n">success_probability</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the binomial variance $n p (1 - p)$.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">number_of_trials</span> <span class="o">*</span> <span class="n">success_probability</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">success_probability</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate</span><span class="p">(</span><span class="n">number_of_trials</span><span class="p">,</span> <span class="n">success_probability</span><span class="p">,</span> <span class="n">number_of_simulations</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate draws from $\\text{Bin}(n, p)$.</span>
+
+<span class="sd">    Each draw is the number of successes in ``number_of_trials``</span>
+<span class="sd">    independent Bernoulli trials with success probability</span>
+<span class="sd">    ``success_probability``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_of_trials : int</span>
+<span class="sd">        The number of Bernoulli trials per draw.</span>
+<span class="sd">    success_probability : float</span>
+<span class="sd">        The probability of success on a single trial.</span>
+<span class="sd">    number_of_simulations : int</span>
+<span class="sd">        The number of binomial draws to simulate.</span>
+<span class="sd">    seed : int, optional</span>
+<span class="sd">        A seed for ``random.seed`` for reproducible simulations.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of int</span>
+<span class="sd">        The simulated success counts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_simulations</span><span class="p">):</span>
+        <span class="n">successes</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_trials</span><span class="p">)</span> <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">success_probability</span><span class="p">)</span>
+        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">successes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">samples</span>
+</code></pre></div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../../../../assets/js/quiz.js" defer></script>
+</body>
+</html>

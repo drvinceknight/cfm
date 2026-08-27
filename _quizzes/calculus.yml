@@ -1,0 +1,137 @@
+title: Calculus
+pick: 5
+questions:
+  - q: "We import sympy as `sym`. Which call computes \\(\\frac{d}{dx}(x^3 + 2x)\\)?"
+    options:
+      - text: "`sym.diff(x ** 3 + 2 * x, x)`"
+        correct: true
+      - text: "`sym.integrate(x ** 3 + 2 * x, x)`"
+      - text: "`sym.limit(x ** 3 + 2 * x, x)`"
+      - text: "`sym.solveset(x ** 3 + 2 * x, x)`"
+    explain: "`sym.diff(expression, variable)` returns the derivative with respect to the named variable."
+
+  - q: "What does `sym.diff(sym.sin(x), x)` return?"
+    options:
+      - text: "\\(\\cos(x)\\)"
+        correct: true
+      - text: "\\(-\\cos(x)\\)"
+      - text: "\\(\\sin(x)\\)"
+      - text: "\\(-\\sin(x)\\)"
+    explain: "The derivative of \\(\\sin(x)\\) is \\(\\cos(x)\\)."
+
+  - q: "Which call computes the second derivative of `expression` with respect to \\(x\\)?"
+    options:
+      - text: "`sym.diff(expression, x, 2)`"
+        correct: true
+      - text: "`sym.diff(expression, x).diff(2)`"
+      - text: "`sym.diff(expression, x ** 2)`"
+      - text: "`sym.integrate(expression, x, 2)`"
+    explain: "The third argument to `sym.diff` is the order of differentiation."
+
+  - q: "Which call computes the indefinite integral \\(\\int x^2 \\, dx\\)?"
+    options:
+      - text: "`sym.integrate(x ** 2, x)`"
+        correct: true
+      - text: "`sym.diff(x ** 2, x)`"
+      - text: "`sym.solveset(x ** 2, x)`"
+      - text: "`sym.limit(x ** 2, x)`"
+    explain: "`sym.integrate(expression, variable)` returns the indefinite integral."
+
+  - q: "How do we compute the definite integral \\(\\int_0^4 x^2 \\, dx\\)?"
+    options:
+      - text: "`sym.integrate(x ** 2, (x, 0, 4))`"
+        correct: true
+      - text: "`sym.integrate(x ** 2, x, 0, 4)`"
+      - text: "`sym.integrate(x ** 2, x)(0, 4)`"
+      - text: "`sym.diff(x ** 2, (x, 0, 4))`"
+    explain: "Pass `(variable, lower_bound, upper_bound)` as the second argument for a definite integral."
+
+  - q: "Which call computes \\(\\lim_{h \\to 0} \\frac{\\sin(h)}{h}\\)?"
+    options:
+      - text: "`sym.limit(sym.sin(h) / h, h, 0)`"
+        correct: true
+      - text: "`sym.solveset(sym.sin(h) / h, h)`"
+      - text: "`sym.diff(sym.sin(h) / h, h)`"
+      - text: "`sym.integrate(sym.sin(h) / h, h)`"
+    explain: "`sym.limit(expression, variable, value)` evaluates the limit as the variable approaches the value."
+
+  - q: "What is `sym.limit(sym.sin(x) / x, x, 0)` equal to?"
+    options:
+      - text: "1"
+        correct: true
+      - text: "0"
+      - text: "\\(\\infty\\)"
+      - text: "undefined"
+    explain: "This is the standard \\(\\lim_{x \\to 0} \\sin(x)/x = 1\\)."
+
+  - q: "What does `sym.diff(sym.exp(x), x)` return?"
+    options:
+      - text: "\\(e^x\\)"
+        correct: true
+      - text: "\\(x \\cdot e^{x - 1}\\)"
+      - text: "\\(1\\)"
+      - text: "\\(e\\)"
+    explain: "The derivative of \\(e^x\\) is \\(e^x\\)."
+
+  - q: "How do we evaluate the derivative of `expression` at \\(x = 2\\)?"
+    options:
+      - text: "`sym.diff(expression, x).subs({x: 2})`"
+        correct: true
+      - text: "`sym.diff(expression, x, 2)`"
+      - text: "`sym.diff(expression(2), x)`"
+      - text: "`sym.eval(sym.diff(expression, x), 2)`"
+    explain: "Differentiate first, then substitute the numerical value with `.subs({variable: value})`."
+
+  - q: "What is the natural workflow for finding stationary points of \\(f\\)?"
+    options:
+      - text: "differentiate, then use `sym.solveset(sym.Eq(f.diff(x), 0), x)`"
+        correct: true
+      - text: "integrate, then call `sym.solveset` on the result"
+      - text: "factor the original expression"
+      - text: "take the limit at infinity"
+    explain: "Stationary points satisfy \\(f'(x) = 0\\); use `sym.solveset` on the equation \\(f'(x) = 0\\)."
+
+  - q: "What does `sym.integrate(1 / x, x)` return?"
+    options:
+      - text: "\\(\\log(x)\\)"
+        correct: true
+      - text: "\\(\\frac{1}{x^2}\\)"
+      - text: "\\(-\\frac{1}{x^2}\\)"
+      - text: "\\(x\\)"
+    explain: "\\(\\int 1/x \\, dx = \\log(x)\\) (up to a constant)."
+
+  - q: "What is `sym.limit(1 / x, x, sym.oo)`?"
+    options:
+      - text: "0"
+        correct: true
+      - text: "1"
+      - text: "\\(\\infty\\)"
+      - text: "undefined"
+    explain: "As \\(x \\to \\infty\\), \\(1/x \\to 0\\). `sym.oo` is sympy's infinity."
+
+  - q: "Why use symbolic differentiation rather than a numerical derivative?"
+    options:
+      - text: "to obtain an exact expression we can simplify, factor or substitute into"
+        correct: true
+      - text: "because numerical derivatives are not possible in Python"
+      - text: "because it is faster than numerical differentiation"
+      - text: "because it returns floating-point values"
+    explain: "Symbolic derivatives give exact formulae; numerical derivatives only give approximate values."
+
+  - q: "Which of these is the derivative of \\(x^2 \\sin(x)\\)?"
+    options:
+      - text: "\\(2x \\sin(x) + x^2 \\cos(x)\\)"
+        correct: true
+      - text: "\\(2x \\cos(x)\\)"
+      - text: "\\(x^2 \\cos(x)\\)"
+      - text: "\\(2x \\sin(x)\\)"
+    explain: "Apply the product rule: \\((uv)' = u'v + uv'\\). sympy applies this rule for us."
+
+  - q: "Which call computes the third derivative of \\(\\sin(x)\\)?"
+    options:
+      - text: "`sym.diff(sym.sin(x), x, 3)`"
+        correct: true
+      - text: "`sym.diff(sym.sin(x), 3)`"
+      - text: "`sym.diff(sym.sin(x) ** 3, x)`"
+      - text: "`sym.diff(sym.sin(x), x).diff(x).diff(x).diff(x)`"
+    explain: "The order of differentiation is the third positional argument to `sym.diff`."

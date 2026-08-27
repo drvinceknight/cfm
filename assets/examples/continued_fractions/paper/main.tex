@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{A small library for the continued fraction expansion of rational
+       numbers}
+\author{Group N}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present \texttt{continued\_fractions}, a small Python library that
+computes the continued fraction expansion of a rational number and the
+corresponding list of convergents. The library is built on top of
+\texttt{sympy}~\cite{meurer2017} so that every iterate is held exactly.
+We illustrate the library on the rational approximations \(3/2\),
+\(22/7\) and \(355/113\) of \(\pi\), and we recover the Fibonacci-ratio
+approximations of the golden ratio. The documentation follows the
+Diataxis framework~\cite{procida2017} and the conventions of the
+open-source textbook \emph{Python for Mathematics}~\cite{knight2024}.
+\end{abstract}
+
+\section{Introduction}
+
+The continued fraction expansion of a real number \(r\) is the (possibly
+infinite) sequence of integers \(a_0, a_1, a_2, \dots\) such that
+
+\[
+    r = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \cdots}}}.
+\]
+
+For a rational number the expansion terminates, while for an irrational
+number it is infinite. The convergents are the rational numbers obtained
+by truncating the expansion after each step; they are known to give the
+best rational approximations to \(r\) in the sense that no fraction with a
+smaller denominator is closer~\cite{khinchin1964}.
+
+We wanted a small library that we could use to inspect these expansions
+without losing precision to floating-point rounding. The standard
+library does not provide one. We chose to build on top of \texttt{sympy}
+so that the iterates stay symbolic; this is the same approach taken by
+the textbook \emph{Python for Mathematics}~\cite{knight2024}.
+
+We present a three-function library,
+\texttt{continued\_fractions}; we test it on the well-known rational
+approximations \(22/7\) and \(355/113\) of \(\pi\); and we recover the
+ratios of consecutive Fibonacci numbers as the convergents of the
+golden ratio.
+
+\section{The library}
+
+The library lives in the single module \texttt{continued\_fractions.py}
+and exposes three functions.
+
+\texttt{continued\_fraction(rational\_number,
+maximum\_terms)} computes the expansion of a rational by the Euclidean
+algorithm: at each step we take the integer part of what is left,
+subtract it, and invert the fractional part. The loop terminates as
+soon as the remainder is zero, so we never run past the natural end of
+the expansion.
+
+\texttt{convergents(coefficients)} turns a
+list of integer coefficients into the corresponding rationals. We use
+the standard recursion
+
+\[
+    \frac{p_n}{q_n}
+    = \frac{a_n p_{n - 1} + p_{n - 2}}{a_n q_{n - 1} + q_{n - 2}}.
+\]
+
+This avoids rebuilding the nested fraction from scratch at each step.
+
+\texttt{golden\_ratio\_convergents(number\_of\_terms)} returns the
+first convergents of the expansion \([1; 1, 1, 1, \dots]\). We use this
+as a worked example because the convergents are exactly the ratios of
+consecutive Fibonacci numbers.
+
+\section{Worked examples}
+
+Two common rational
+approximations of \(\pi\) are \(22/7\) and \(355/113\). Their
+expansions are \([3; 7]\) and \([3; 7, 16]\) respectively, and the
+convergents recover the original rationals exactly, as shown in
+Table~\ref{tab:pi}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l l l}
+\toprule
+Number & Expansion & Convergents \\
+\midrule
+\(22/7\)    & \([3; 7]\)     & \(3, 22/7\) \\
+\(355/113\) & \([3; 7, 16]\) & \(3, 22/7, 355/113\) \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Two rational approximations of \(\pi\).} For each
+rational we show the continued fraction expansion and the
+corresponding list of convergents. The last convergent agrees with the
+input rational exactly.}
+\label{tab:pi}
+\end{table}
+
+The continued fraction
+\([1; 1, 1, 1, \dots]\) gives the convergents \(1, 2, 3/2, 5/3, 8/5,
+13/8, \dots\), which are ratios of consecutive Fibonacci numbers. The
+twentieth convergent agrees with \(\varphi = (1 + \sqrt{5}) / 2\) to
+within \(10^{-8}\).
+
+\section{Discussion}
+
+The Euclidean step inverts a fraction, which on
+floating-point arithmetic introduces a small error at each iterate. The
+error compounds; by the third or fourth step it is large enough to
+affect the integer part. Working with \texttt{sympy.Rational} sidesteps
+this entirely. The cost is that the iterates can become large symbolic
+fractions, but for the inputs we care about (rationals with small
+denominators) this is not an issue.
+
+We only handle rational inputs. A natural
+extension would be to handle the periodic continued fractions of
+quadratic irrationals such as \(\sqrt{2} = [1; 2, 2, 2, \dots]\), which
+have a known closed form. This is a direction for future work.
+
+\section{Conclusion}
+
+We have presented \texttt{continued\_fractions}, a small Python library
+for the continued fraction expansion of rational numbers. The library
+recovers the standard rational approximations of \(\pi\), and the
+convergents of the golden ratio match the ratios of consecutive
+Fibonacci numbers to within tolerance.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

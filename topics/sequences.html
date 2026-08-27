@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sequences - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Sequences</h1>
+
+
+<h3>Notes</h3>
+<ul>
+
+  <li><a href="https://vknight.org/pfm/tools-for-mathematics/07-sequences/introduction/main.html">Python for mathematics: Sequences</a></li>
+
+</ul>
+
+
+
+<h3>Videos</h3>
+<ol>
+
+  <li>Video demonstration of tutorial. - <a href="https://youtu.be/zSEv9DZ6yvw">YouTube</a></li>
+
+</ol>
+
+
+
+
+
+<h2>Quick quiz</h2>
+<p>A few questions to warm up and check the basics. They are reshuffled each
+time, so you can keep retrying.</p>
+<div class="quiz" data-quiz>
+  <script type="application/json">{"title": "Sequences", "pick": 5, "questions": [{"q": "A recursively defined sequence is specified by which two ingredients?", "options": [{"text": "a base case and a recursive rule", "correct": true}, {"text": "an integral and a derivative"}, {"text": "a base case and a closed form"}, {"text": "a loop and a list"}], "explain": "We give a starting term (base case) and a rule that expresses each later term in terms of earlier ones."}, {"q": "Which Python feature is the most natural way to translate a recursive definition into code?", "options": [{"text": "a function that calls itself", "correct": true}, {"text": "a `while` loop with no exit condition"}, {"text": "a list comprehension over a fixed range"}, {"text": "a dictionary lookup"}], "explain": "Recursive definitions translate directly into functions that call themselves on smaller inputs."}, {"q": "For the sequence \\(a_1 = 1\\), \\(a_n = 2 a_{n - 1}\\), which Python function is correct?", "options": [{"text": "`def f(n): return 1 if n == 1 else 2 * f(n - 1)`", "correct": true}, {"text": "`def f(n): return 2 * f(n - 1)`"}, {"text": "`def f(n): return 2 * (n - 1)`"}, {"text": "`def f(n): return 1 if n == 1 else f(n - 1)`"}], "explain": "We need the base case `n == 1` and the recursive step `2 * f(n - 1)`."}, {"q": "What happens if a recursive function has no base case?", "options": [{"text": "Python raises a `RecursionError` because the recursion never stops", "correct": true}, {"text": "Python returns 0"}, {"text": "Python returns the input"}, {"text": "Python returns `None`"}], "explain": "Without a base case the recursion runs until the call stack overflows; Python protects us with `RecursionError`."}, {"q": "Which list comprehension collects the first seven terms of `generate_sequence`?", "options": [{"text": "`[generate_sequence(n) for n in range(1, 8)]`", "correct": true}, {"text": "`[generate_sequence(n) for n in range(7)]`"}, {"text": "`generate_sequence(range(1, 8))`"}, {"text": "`generate_sequence(7)`"}], "explain": "`range(1, 8)` covers 1 through 7 inclusive."}, {"q": "We import sympy as `sym`. How do we declare a symbolic index \\(k\\)?", "options": [{"text": "`k = sym.Symbol(\"k\")`", "correct": true}, {"text": "`k = sym.S(\"k\")`"}, {"text": "`k = sym.Function(\"k\")`"}, {"text": "`k = \"k\"`"}], "explain": "`sym.Symbol` declares an algebraic symbol; the same syntax as for the algebra chapter."}, {"q": "Which call solves the equation \\(\\text{sum} = 43\\) symbolically?", "options": [{"text": "`sym.solveset(sym.Eq(sum_of_first_four_terms, 43), k)`", "correct": true}, {"text": "`sym.solve(sum_of_first_four_terms, 43, k)`"}, {"text": "`sym.Eq(sum_of_first_four_terms, 43).solve()`"}, {"text": "`sum_of_first_four_terms.solve(43)`"}], "explain": "We wrap the equation in `sym.Eq(lhs, rhs)` and pass it to `sym.solveset`."}, {"q": "An arithmetic sequence has \\(a_n = a + (n - 1) d\\). What is \\(d\\)?", "options": [{"text": "the common difference between successive terms", "correct": true}, {"text": "the first term"}, {"text": "the common ratio"}, {"text": "the limit of the sequence"}], "explain": "An arithmetic sequence adds a constant \\(d\\) at each step."}, {"q": "A geometric sequence has \\(a_n = a r^{n - 1}\\). What is \\(r\\)?", "options": [{"text": "the common ratio between successive terms", "correct": true}, {"text": "the common difference between successive terms"}, {"text": "the limit of the sequence"}, {"text": "the index of the term"}], "explain": "A geometric sequence multiplies by a constant \\(r\\) at each step."}, {"q": "Why is recursion a natural fit for sequence definitions?", "options": [{"text": "the mathematical definition expresses each term in terms of earlier ones, which is what a recursive function does", "correct": true}, {"text": "recursion is faster than iteration in Python"}, {"text": "recursion uses less memory than iteration"}, {"text": "recursion is the only way to handle integers"}], "explain": "Recursion mirrors the mathematical recurrence directly; iteration is also fine but less direct."}, {"q": "The sum \\(S_n = \\sum_{k=1}^{n} a_k\\) can be written in Python using which construct?", "options": [{"text": "`sum(a(k) for k in range(1, n + 1))`", "correct": true}, {"text": "`a[k].sum()`"}, {"text": "`sympy.sum(a, k)`"}, {"text": "`for k in range(n): s += a`"}], "explain": "Use Python's built-in `sum` with a generator expression."}, {"q": "Which feature of Python lets us write `sum(a(k) for k in range(1, n + 1))` instead of an explicit loop?", "options": [{"text": "a generator expression", "correct": true}, {"text": "a tuple comprehension"}, {"text": "lazy evaluation of `sum`"}, {"text": "a set comprehension"}], "explain": "`(expr for var in iterable)` is a generator expression; `sum` consumes its values one at a time."}, {"q": "For a sequence \\(a_n\\), which best summarises the difference between a recurrence and a closed form?", "options": [{"text": "a recurrence expresses \\(a_n\\) in terms of earlier terms; a closed form expresses \\(a_n\\) directly in terms of \\(n\\)", "correct": true}, {"text": "they are the same thing"}, {"text": "a closed form requires recursion"}, {"text": "a recurrence is only valid for arithmetic sequences"}], "explain": "Closed forms compute \\(a_n\\) without referring to other terms."}, {"q": "If the sequence \\(a_n = 2 a_{n - 1}\\) with \\(a_1 = 1\\) is implemented recursively, what is the recursion depth when computing `f(10)`?", "options": [{"text": "10 calls deep (it unwinds from `f(10)` down to `f(1)`)", "correct": true}, {"text": "1 call deep"}, {"text": "2 calls deep"}, {"text": "20 calls deep"}], "explain": "Each call reduces \\(n\\) by 1, and we stop at \\(n = 1\\)."}, {"q": "Which is the most natural way to inspect every term of a sequence up to \\(n = N\\)?", "options": [{"text": "use a list comprehension or a `for` loop", "correct": true}, {"text": "use a recursive function with no base case"}, {"text": "use `sym.solveset`"}, {"text": "use `random.choice`"}], "explain": "List comprehensions are concise; a `for` loop is equivalent. Recursion is for the term itself, not for collecting all of them."}]}</script>
+</div>
+
+
+<p>A handout is available <a href="../assets/handouts/autumn/07-sequences/main.pdf">here</a>.</p>
+
+
+<h2>Log of past relevant classes</h2>
+
+<h4><a href="../posts/2024-11-15-review-of-sequences.html">2024-11-15: Review of Sequences</a></h4>
+<p>In class today we reviewed sequences.</p>
+
+<h4><a href="../posts/2024-11-13-introduction-to-sequences.html">2024-11-13: Introduction to Sequences</a></h4>
+<p>In class yesterday I gave an overview of how to use the recursion
+to directly define mathematical sequences.</p>
+
+<h4><a href="../posts/2024-11-13-virtual-sequences-lab.html">2024-11-13: Virtual lab: Sequences</a></h4>
+<p>Today's virtual lab went over the tutorial for the Sequences chapter for <a href="https://vknight.org/pfm/tools-for-mathematics/07-sequences/tutorial/main.html">Python
+for Mathematics</a>.</p>
+
+<h4><a href="../posts/2023-11-17-summary-of-sequences.html">2023-11-17: Summary of Sequences</a></h4>
+<p>In class today I we went over the Sequences chapter.</p>
+
+<h4><a href="../posts/2023-11-13-introduction-to-sequences.html">2023-11-13: Introduction to Sequences</a></h4>
+<p>In class today I gave an overview of how to use the recursion
+to directly define mathematical sequences.</p>
+
+
+
+
+
+<p><small><code><a href="../class-notes/sequences.html">Facilitator notes: Sequences</a></code></small></p>
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

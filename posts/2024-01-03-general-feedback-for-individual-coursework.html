@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Individual Coursework Feedback - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>Individual Coursework Feedback</h1>
+<p><small>2024-01-03</small></p>
+
+<p>Thanks all for your efforts in doing the individual coursework!</p>
+<p>You can find the solution <a href="../assets/assessment/2023-2024/ind/solution.ipynb">here</a>.</p>
+<p>The performance was really good, below are some summary statistics of your
+marks:</p>
+<ul>
+<li>mean: 84.767068</li>
+<li>standard deviation: 18.338494</li>
+<li>min: 0.00</li>
+<li>25th percentile: 80.00</li>
+<li>50th percentile: 89.00</li>
+<li>75th percentile: 98.00</li>
+<li>max: 100.00</li>
+</ul>
+<p>Here is a plot of the distribution of the marks:</p>
+<p><img alt="" src="../assets/assessment/2023-2024/mark_distribution.png" /></p>
+<p>Here is a detailed summary of the various things I checked for for each question
+as well as the percentage of students who were correct:</p>
+<ul>
+<li>1a check answer is an equation: 96.80 %</li>
+<li>1a check output uses dsolve as opposed to hard coding it: 98.40 %</li>
+<li>1a check answer satisfies differential equation: 96.40 %</li>
+<li>1b check answer is an equation: 96.80 %</li>
+<li>1b check output uses dsolve as opposed to hard coding it: 98.40 %</li>
+<li>1b check answer satisfies differential equation: 92.80 %</li>
+<li>1c check answer is an equation: 87.20 %</li>
+<li>1c check output uses dsolve as opposed to hard coding it: 98.00 %</li>
+<li>1c check answer satisfies differential equation: 87.20 %</li>
+<li>1d check answer is an equation: 98.00 %</li>
+<li>1d check output uses dsolve as opposed to hard coding it: 98.00 %</li>
+<li>1d check output satisfies differentia equation: 81.20 %</li>
+<li>1d check answer satisfies differential equation: 94.40 %</li>
+<li>2a check general solution is a set: 70.00 %</li>
+<li>2a check solution excludes 0: 72.00 %</li>
+<li>2a number of solutions for the cubic must be three: 69.20 %</li>
+<li>2b expected answer for equation: 91.60 %</li>
+<li>3a check function has a docstring: 52.00 %</li>
+<li>3a check function is not defined for correct range of numbers: 90.00 %</li>
+<li>3a check specific values of function: 67.60 %</li>
+<li>3b check correct value for n equals 5: 84.00 %</li>
+<li>3c exact value for p equals one half: 82.40 %</li>
+<li>3c checkout output is approximately correct: 82.40 %</li>
+<li>3d checkout output is correct set: 81.60 %</li>
+<li>3d check answer is obtained using solveset as opposed to hard coding it: 89.60 %</li>
+<li>4a correct value of determinants: 89.20 %</li>
+<li>4a determinants is a list: 76.00 %</li>
+<li>4a input calculated using for loop: 75.60 %</li>
+<li>4b correct value of number_of_rows: 89.60 %</li>
+<li>4b check correct type of output: 80.40 %</li>
+<li>4c check output is calculated using a for loop: 79.60 %</li>
+<li>4c makes use of correlation calculation as opposed to hard coding it: 94.00 %</li>
+<li>4c value is correct to 6 decimal places: 87.60 %</li>
+<li>4c check answer is consistent with values of determinants and number_of_rows: 85.20 %</li>
+<li>4d make use of linear_regression as opposed to hard coding it: 85.20 %</li>
+<li>4d check answer is consistent with values of determinants and number_of_rows: 50.00 %</li>
+</ul>
+<p>Some common errors:</p>
+<ul>
+<li>In question 4d students didn't order the arguments correctly for the
+  calculation of the linear regression.</li>
+<li>Tuples where used when lists were requested.</li>
+<li>Students didn't include a docstring when defining a function.</li>
+</ul>
+<p>On that note I appreciated two docstrings for their humour:</p>
+<ol>
+<li><code>docstring</code></li>
+<li>This is my favourite:</li>
+</ol>
+<p>```
+   this is a docstring dont mark me down :D</p>
+<p>Personally I don't understand how a man whos forte is game theory - whatever that is
+   could possiby think a movie about saving a private named Ryan is an optimal strategy
+   given that so many men died to send him home...</p>
+<p>I would have unsaved private Ryan - personally.</p>
+<p>if there is any doubt though this function generates the sequence stated in the question.</p>
+<p>.................. but it does not bring back Captain John Miller.</p>
+<p>```</p>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

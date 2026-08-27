@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculus (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Calculus</h1>
+
+<h2 id="first-meeting">First meeting</h2>
+<p>After this meeting students should:</p>
+<ul>
+<li>Understand how to use the Sympy library to carry out basic Calculus
+  tasks</li>
+<li>Know what they need to do to prepare for their third tutorial.</li>
+</ul>
+<h3 id="problem">Problem</h3>
+<p>Explain to students that we will be solving the following problem:</p>
+<pre><code class="language-md">Consider the function $f(x)= x ^ 3 - ax ^ 2 + bx - 5$
+
+1.  Given that $\frac{df}{dx}|_{x=0}=0$, $\frac{d^2f}{dx^2}|_{x=0}=5$
+    and that $b&gt;0$ find the values of $a$ and $b$.
+
+2.  For the specific values of $a$ and $b$ find:
+
+    1. $\lim_{x\to 0}f(x)$;
+    2. $\lim_{x\to \infty}f(x)$;
+    3. $\int f(x) dx$;
+    4. $\int_{\pi}^{5} f(x) dx$.
+</code></pre>
+<h3 id="solution">Solution</h3>
+<p>Ask students to spend 5 minutes
+writing a plan to tackle that problem (not necessarily carrying out each
+step).</p>
+<p>Clearly write down these steps:</p>
+<ol>
+<li>Differentiate and write system of equations and solve them for <span class="arithmatex">\(a\)</span>
+    and <span class="arithmatex">\(b\)</span>.</li>
+<li>Take the limits and calculate the integrals.</li>
+</ol>
+<p>Now show how to get code to do this:</p>
+<pre><code>&gt;&gt;&gt; import sympy as sym  # Note that we are using an alias
+&gt;&gt;&gt; x = sym.Symbol("x")
+&gt;&gt;&gt; a = sym.Symbol("a")
+&gt;&gt;&gt; b = sym.Symbol("b")
+&gt;&gt;&gt; expression = x ** 3 - a * x ** 2 + b * x - 5
+&gt;&gt;&gt; expression
+-a*x**2 + b*x + x**3 - 5
+</code></pre>
+<p>So far we have not done anything different to what we saw in the Algebra
+chapter. Now to differentiate:</p>
+<pre><code>&gt;&gt;&gt; derivative = sym.diff(expression, x)
+&gt;&gt;&gt; derivative
+-2*a*x + b + 3*x**2
+</code></pre>
+<p>This can now be used to give us our first equation:</p>
+<pre><code>&gt;&gt;&gt; first_equation = sym.Eq(derivative.subs({x: 0}), 0)
+&gt;&gt;&gt; first_equation
+Eq(b, 0)
+</code></pre>
+<p>Now let us get the second derivative:</p>
+<pre><code>&gt;&gt;&gt; second_derivative = sym.diff(expression, x, 2)
+&gt;&gt;&gt; second_derivative
+2*(-a + 3*x)
+</code></pre>
+<p>and get the second equation:</p>
+<pre><code>&gt;&gt;&gt; second_equation = sym.Eq(second_derivative.subs({x: 0}), 5)
+&gt;&gt;&gt; second_equation
+Eq(-2*a, 5)
+</code></pre>
+<p>Now to solve the first equation to obtain a value for <span class="arithmatex">\(b\)</span>:</p>
+<pre><code>&gt;&gt;&gt; sym.solveset(first_equation, b)
+{0}
+</code></pre>
+<p>Now to substitute that value for $a$ (note that this is not necessary)
+and solve the second equation for $a$:</p>
+<pre><code>&gt;&gt;&gt; second_equation = second_equation.subs({b: 0})
+&gt;&gt;&gt; second_equation
+Eq(-2*a, 5)
+</code></pre>
+<p>We can solve this:</p>
+<pre><code>&gt;&gt;&gt; sym.solveset(second_equation, a)
+{-5/2}
+</code></pre>
+<p>Substituting these back:</p>
+<pre><code>&gt;&gt;&gt; expression = expression.subs({b: 0, a: - sym.S(5) / 2})
+&gt;&gt;&gt; expression
+x**3 + 5*x**2/2 - 5
+</code></pre>
+<p>We can confirm our findings:</p>
+<pre><code>&gt;&gt;&gt; sym.diff(expression, x).subs({x: 0})
+0
+&gt;&gt;&gt; sym.diff(expression, x, 2).subs({x: 0})
+5
+</code></pre>
+<p>Now we can compute the limits and integrals:</p>
+<pre><code>&gt;&gt;&gt; sym.limit(expression, x, 0)
+-5
+&gt;&gt;&gt; sym.limit(expression, x, sym.oo)
+oo
+&gt;&gt;&gt; sym.integrate(expression, x)
+x**4/4 + 5*x**3/6 - 5*x
+&gt;&gt;&gt; sym.factor(sym.integrate(expression, (x, 5, sym.pi)))
+(-5 + pi)*(3*pi**3 + 25*pi**2 + 125*pi + 565)/12
+</code></pre>
+<p>Come back: with time take any questions.</p>
+<p>Point at resources.</p>
+<h2 id="communications">Communications</h2>
+<h3 id="after-class">After class</h3>
+<p>Send the following email after class:</p>
+<pre><code>Hi all,
+
+A recording of today's class is available at &lt;&gt;.
+
+In this class I went over a demonstration of using Python to solve a
+calculus problem. I carried out the following mathematical techniques:
+
+- Differentiation
+- Limits
+- Integrations
+
+In preparation for your tutorial tomorrow please work through the third
+chapter of the Python for mathematics book:
+https://vknight.org/pfm/tools-for-mathematics/03-calculus/introduction/main.html
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+<h2 id="second-meeting">Second meeting</h2>
+<ul>
+<li>Give brief review of the contents of the chapter. Do this by
+  browsing through:
+  <a href="https://vknight.org/pfm/tools-for-mathematics/03-calculus/how/main.html">https://vknight.org/pfm/tools-for-mathematics/03-calculus/how/main.html</a></li>
+<li>Mention that no specific query arose so I will do a coursework type
+  question but also demonstrate some difficulties that might arise
+  with the Kernel.</li>
+</ul>
+<p>I will work through the following problem:</p>
+<p>Consider the functions <span class="arithmatex">\(f(x) = x ^ 3 + 3x - 3\)</span> and <span class="arithmatex">\(g(x) = \cos(x)
+\sin(x)\)</span>.`</p>
+<ol>
+<li>Create a variable [turning_points_of_f]{.title-ref} which has value
+    the turning points of <span class="arithmatex">\(f(X)\)</span>.</li>
+<li>Create a variable [turning_points_of_g]{.title-ref} which has value
+    the turning points of <span class="arithmatex">\(g(X)\)</span>.</li>
+<li>Create a variable [max_of_f_on_unit_circle]{.title-ref} which has
+    the maximum value of <span class="arithmatex">\(f\)</span> for <span class="arithmatex">\(x\in[0, 2\pi]\)</span>.</li>
+<li>Create a variable [max_of_g_on_unit_circle]{.title-ref} which has
+    the maximum value of <span class="arithmatex">\(g\)</span> for <span class="arithmatex">\(x\in[0, 2\pi]\)</span>.</li>
+<li>Which function has the maximum value?</li>
+</ol>
+<p>The solution approach:</p>
+<pre><code>&gt;&gt;&gt; import sympy as sym
+&gt;&gt;&gt; x = sym.Symbol("x")
+&gt;&gt;&gt; f = x ** 3 + 3 * x - 3
+&gt;&gt;&gt; g = sym.cos(x) * sym.sin(x)
+&gt;&gt;&gt; turning_points_of_f = sym.solveset(sym.diff(f, x), x)
+&gt;&gt;&gt; turning_points_of_f
+{-I, I}
+&gt;&gt;&gt; turning_points_of_g = sym.solveset(sym.diff(g, x), x)
+&gt;&gt;&gt; turning_points_of_g
+Union(ImageSet(Lambda(_n, _n*pi + pi/4), Integers), ImageSet(Lambda(_n, _n*pi + 3*pi/4), Integers))
+&gt;&gt;&gt; max_of_f_on_unit_circle = max(f.subs({x: 0}), f.subs({x: 2 * sym.pi}))
+&gt;&gt;&gt; max_of_f_on_unit_circle
+-3 + 6*pi + 8*pi**3
+&gt;&gt;&gt; max_of_g_on_unit_circle = max(g.subs({x: 5 * sym.pi / 4}), g.subs({x: 3 * sym.pi / 4}), g.subs({x: 7 * sym.pi / 4}), g.subs({x: sym.pi / 4}))
+&gt;&gt;&gt; max_of_g_on_unit_circle
+1/2
+&gt;&gt;&gt; float(max_of_f_on_unit_circle)
+263.8997...
+</code></pre>
+<p>Highlight that the answer to the final question is thus <span class="arithmatex">\(f\)</span>.</p>
+<p>Note that [max]{.title-ref} is not a function that has been specifically
+been seen before but that\'s not unexpected.</p>
+<p>Now explain what the kernel is. Draw a picture showing the notebook
+separated from the terminal. Analogy of a brain.</p>
+<p>Restart the kernel, show that the last command does not work.</p>
+<p>Rerun the cells but include a mistake:</p>
+<pre><code>sym.solveset = (sym.diff(f, x), x)
+</code></pre>
+<p>Note the type of error we then get. And show that here we want the
+kernel to forget everything.</p>
+<p><strong>If there is time</strong> demonstrate plotting.</p>
+<p>Discuss that sympy has some basic plotting but that I do not recommend
+it.</p>
+<p>Point at matplotlib and numpy chapters and also specify that we will be
+using other things that are seen in future chapters (list
+comprehensions).:</p>
+<pre><code>&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; import matplotlib.pyplot as plt
+&gt;&gt;&gt; domain = np.linspace(0, 2 * np.pi, 100)
+&gt;&gt;&gt; f_image = [f.subs({x: x_value}) for x_value in domain]
+&gt;&gt;&gt; g_image = [g.subs({x: x_value}) for x_value in domain]
+&gt;&gt;&gt; plt.figure()  # doctest: +SKIP
+&gt;&gt;&gt; plt.plot(domain, f_image, label="$f(x)$")  # doctest: +SKIP
+&gt;&gt;&gt; plt.plot(domain, g_image, label="$g(x)$")  # doctest: +SKIP
+&gt;&gt;&gt; plt.legend()  # doctest: +SKIP
+</code></pre>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

@@ -44,14 +44,6 @@ time, so you can keep retrying.</p>
 
 {{ topic.content_html }}
 
-{% if related_posts %}
-<h2>Log of past relevant classes</h2>
-{% for post in related_posts %}
-<h4><a href="{{ baseurl }}/posts/{{ post.slug }}.html">{{ post.date_str }}: {{ post.title }}</a></h4>
-{{ post.excerpt }}
-{% endfor %}
-{% endif %}
-
 {% if related_class_notes %}
 {% for note in related_class_notes %}
 <p><small><code><a href="{{ baseurl }}/class-notes/{{ note.slug }}.html">Facilitator notes: {{ note.title }}</a></code></small></p>

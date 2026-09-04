@@ -19,13 +19,6 @@ All course materials are available online at
 files that create that website at
 [github.com/drvinceknight/cfm/](https://github.com/drvinceknight/cfm/).
 
-## Virtual board
-
-I will use a virtual board throughout class:
-
-- This will allow you to see the board more clearly on the class recordings.
-- I will share a copy of the board with you after each class.
-
 ## Technology in class
 
 Please use whatever resources you need to be successful in this class. Let me

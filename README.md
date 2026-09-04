@@ -18,7 +18,6 @@ All content lives in collection directories at the repository root:
 | `_topics/`      | `topics/{slug}.html`                 |
 | `_assessment/`  | `assessment/index.html`              |
 | `_class-notes/` | `class-notes/{slug}.html`            |
-| `_posts/`       | `posts/{slug}.html`                  |
 | `_faqs/`        | rendered inside the home page        |
 | `_data/`        | `toc.yml`, `projects.yml`            |
 
@@ -40,7 +39,7 @@ uv run python build.py
 ```
 
 Outputs are written in-place: `index.html`, `topics/*.html`,
-`class-notes/*.html`, `posts/*.html`, `assessment/index.html`.
+`class-notes/*.html`, `assessment/index.html`.
 
 Preview with:
 

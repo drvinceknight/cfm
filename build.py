@@ -2,9 +2,9 @@
 """Build script for the Computing for Mathematics course site.
 
 Reads Jekyll-style sources from ``_topics/``, ``_assessment/``,
-``_class-notes/``, ``_posts/``, ``_faqs/``, ``_data/``, and renders Jinja2
-templates to the repo root.  The built HTML is committed to the repo and
-deployed via GitHub Pages.
+``_class-notes/``, ``_faqs/``, ``_data/``, and renders Jinja2 templates
+to the repo root.  The built HTML is committed to the repo and deployed
+via GitHub Pages.
 
 URLs in the rendered output are relative to each page's depth, so the same
 output works both at the repo root (``python -m http.server``) and under
@@ -17,7 +17,6 @@ Usage::
 
 from __future__ import annotations
 
-import datetime
 import json
 import pathlib
 import re
@@ -81,18 +80,12 @@ def resolve_liquid_refs(text: str) -> str:
     return _BASEURL_RE.sub(BASEURL_PLACEHOLDER, text)
 
 
-def _excerpt(content_html: str) -> str:
-    match = re.search(r"<p>(.*?)</p>", content_html, re.DOTALL)
-    return f"<p>{match.group(1)}</p>" if match else ""
-
-
 def load_item(path: pathlib.Path) -> Item:
     raw = frontmatter.load(path)
     data: Item = dict(raw.metadata)
     data["slug"] = path.stem
     content = resolve_liquid_refs(raw.content)
     data["content_html"] = render_markdown(content)
-    data["excerpt"] = _excerpt(data["content_html"])
     return data
 
 
@@ -100,30 +93,6 @@ def load_collection(path: pathlib.Path) -> list[Item]:
     if not path.exists():
         return []
     return [load_item(p) for p in sorted(path.glob("*.md"))]
-
-
-_POST_FILENAME = re.compile(r"(\d{4})-(\d{2})-(\d{2})-(.+)\.md$")
-
-
-def load_posts(path: pathlib.Path) -> list[Item]:
-    if not path.exists():
-        return []
-    posts: list[Item] = []
-    for filepath in sorted(path.glob("*.md")):
-        match = _POST_FILENAME.match(filepath.name)
-        if not match:
-            continue
-        year, month, day, _ = match.groups()
-        raw = frontmatter.load(filepath)
-        data: Item = dict(raw.metadata)
-        data["slug"] = filepath.stem
-        data["date_obj"] = datetime.date(int(year), int(month), int(day))
-        data["date_str"] = data["date_obj"].isoformat()
-        content = resolve_liquid_refs(raw.content)
-        data["content_html"] = render_markdown(content)
-        data["excerpt"] = _excerpt(data["content_html"])
-        posts.append(data)
-    return sorted(posts, key=lambda p: p["date_obj"], reverse=True)
 
 
 def _video_url_html(line: str) -> str:
@@ -202,12 +171,6 @@ def _has_tag(item: Item, tag: str) -> bool:
     if isinstance(tags, str):
         return tags == tag
     return tag in tags
-
-
-def _related_posts(tag: str, posts: list[Item]) -> list[Item]:
-    if not tag:
-        return []
-    return [p for p in posts if _has_tag(p, tag)]
 
 
 def _related_class_notes(tag: str, class_notes: list[Item]) -> list[Item]:
@@ -419,12 +382,11 @@ def build() -> None:
     class_notes = load_collection(ROOT / "_class-notes")
     assessment_items = load_collection(ROOT / "_assessment")
     faqs = load_collection(ROOT / "_faqs")
-    posts = load_posts(ROOT / "_posts")
     toc = load_toc(ROOT / "_data" / "toc.yml")
     projects = load_toc(ROOT / "_data" / "projects.yml")
     quizzes_by_tag = load_quizzes(ROOT / "_quizzes")
 
-    _render(env, "home.html", ROOT / "index.html", toc=toc, faqs=faqs, posts=posts)
+    _render(env, "home.html", ROOT / "index.html", toc=toc, faqs=faqs)
 
     start_here_path = ROOT / "_start-here" / "index.md"
     if start_here_path.exists():
@@ -442,7 +404,6 @@ def build() -> None:
             "topic.html",
             ROOT / "topics" / f"{topic['slug']}.html",
             topic=topic,
-            related_posts=_related_posts(tag, posts),
             related_class_notes=_related_class_notes(tag, class_notes),
             quiz=quizzes_by_tag.get(tag),
         )
@@ -457,21 +418,16 @@ def build() -> None:
         notes=sorted(individual_notes, key=lambda n: n.get("title", "")),
     )
 
-    for post in posts:
-        _render(env, "post.html", ROOT / "posts" / f"{post['slug']}.html", post=post)
-
     assessment_doc = next(
         (item for item in assessment_items if item.get("slug") == "index"),
         {"content_html": ""},
     )
-    assessment_tag = assessment_doc.get("tag") or "assessment"
     _render(
         env,
         "assessment.html",
         ROOT / "assessment" / "index.html",
         assessment=assessment_doc,
         projects=projects,
-        related_posts=[p for p in posts if _has_tag(p, assessment_tag)],
     )
 
     geometric_mean_doc = next(

@@ -72,24 +72,24 @@ individual mark to both your contribution and the group's output.
 
 We combine two distinct components using a geometric mean:
 
-\[\text{Final mark} = \sqrt{M \times E}\]
+\[\text{Final mark} = \sqrt{I \times Q}\]
 
-where \(M \in [0, 100]\) is the individual **measurable contribution
-score** (in plain English, your engagement record: being present *and*
+where \(I \in [0, 100]\) is the **individual contribution score** (in
+plain English, your engagement record: being present *and*
 contributing to the meeting, as evidenced by the minutes), and
-\(E \in [0, 100]\) is the shared **effective contribution score** (in
-plain English, the mark your group's submission gets). Both dimensions
-must be strong for a high final mark to be possible. A student who
-attends consistently but whose group produces weak work, or who
-free-rides on a strong group, cannot receive full credit.
+\(Q \in [0, 100]\) is the shared **quality score** (in plain English,
+the mark your group's submission gets). Both dimensions must be strong
+for a high final mark to be possible. A student who attends
+consistently but whose group produces weak work, or who free-rides on
+a strong group, cannot receive full credit.
 
-### Component 1: Measurable contribution score (M)
+### Component 1: Individual contribution score (I)
 
-M is individual, derived from the engagement record in each week's
+\(I\) is individual, derived from the engagement record in each week's
 meeting minutes. The group submits one set of minutes per week during
 the contact hour; a different member acts as secretary each week (the
 group agrees the rota at its first meeting). The minutes record both
-who was present and what each member contributed, so M rewards
+who was present and what each member contributed, so \(I\) rewards
 **meaningful participation**, not just attendance: turning up without
 engaging does not score, and a member who was unwell but caught up
 through the week's minutes and asynchronous contributions can still
@@ -98,21 +98,21 @@ be recorded as engaged.
 A student's score is the fraction of the five group meeting weeks
 (Weeks 6 to 10) at which the minutes record them as having engaged:
 
-\[M = \frac{\text{number of meetings at which the student is recorded as engaged}}{5} \times 100\]
+\[I = \frac{\text{number of meetings at which the student is recorded as engaged}}{5} \times 100\]
 
 The minutes template for each week is linked in the schedule.
 
-### Component 2: Effective contribution score (E)
+### Component 2: Quality score (Q)
 
-E is shared equally among all group members. It is the mark awarded to
-the group project submission, assessed against the criteria below.
+\(Q\) is shared equally among all group members. It is the mark awarded
+to the group project submission, assessed against the criteria below.
 
 ### [Marking scenarios](#marking-scenarios)
 
 Three [group-project marking scenarios]({{ site.baseurl }}/assessment/geometric-mean/)
 (the free rider, the conscientious student in a struggling group, and
 a well-functioning group) are on a dedicated page; they are the
-clearest way to see why both \(M\) and \(E\) matter.
+clearest way to see why both \(I\) and \(Q\) matter.
 
 #### [Marking criteria](#marking-criteria)
 

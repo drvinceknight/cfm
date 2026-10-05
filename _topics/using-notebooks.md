@@ -4,6 +4,8 @@ title: "Using notebooks"
 tag: using-notebooks
 note_urls:
   - "https://vknight.org/pfm/tools-for-mathematics/01-using-notebooks/introduction/main.html"
+video_urls:
+  - "Video demonstration of notebooks. - [YouTube](https://youtu.be/RKNcKfyw8O8?si=op4LLVTy07wOHhgQ)"
 ---
 
 A handout is available [here]({{site.baseurl}}/assets/handouts/autumn/01-using-notebooks/main.pdf).

@@ -68,6 +68,36 @@ criteria below (split as Communication 30%, Scope 50%, Research 20%),
 and the geometric mean with your engagement record then ties your
 individual mark to both your contribution and the group's output.
 
+## Submission
+
+Your final submission should include the following **8** files. Every
+component is graded, so a strong submission needs strong work across
+all of them; you do not need to be the most experienced coder in the
+group to earn full marks if you have written the paper, drafted the
+README, or built out the test suite.
+
+1. A `main.tex` file: the source file for a 3 page paper written in
+   [LaTeX]({{ site.baseurl }}/topics/latex-and-writing-mathematics.html).
+2. A `main.pdf` file: the pdf file for a 3 page paper written in
+   [LaTeX]({{ site.baseurl }}/topics/latex-and-writing-mathematics.html).
+3. A `references.bib` file: the bibliography database cited by your
+   paper. The references are part of the
+   [Research](#research-20) criterion, so cite the tools and the
+   literature your project builds on.
+4. A `<library>.py` file: the
+   [source file for your Python library]({{ site.baseurl }}/topics/modularisation-of-code.html).
+5. A `test_<library>.py` file:
+   [the test files for your Python library]({{ site.baseurl }}/topics/testing-of-code.html).
+6. A `README.md` file:
+   [the documentation for your Python library]({{ site.baseurl }}/topics/documentation-of-code.html).
+7. A `presentation.mp4` (or similar file format): the video recording of
+   [your 15 minute presentation]({{ site.baseurl }}/topics/presenting-mathematics.html).
+8. A `contribution.md` file: a file describing the contributions of every
+   member of your group.
+
+The submission deadline is confirmed by the end of Week 2 of the module
+and posted on the schedule.
+
 ## [Marking scheme](#marking-scheme)
 
 We combine two distinct components using a geometric mean:
@@ -268,32 +298,6 @@ meetings, raise it at the next meeting and record it in the minutes;
 the geometric mean already penalises lack of engagement, but flagging
 it early gives the rest of the group time to redistribute work and
 gives the disengaged member a chance to re-engage.
-
-## Submission
-
-Your final submission should include the following **7** files. Every
-component is graded, so a strong submission needs strong work across
-all of them; you do not need to be the most experienced coder in the
-group to earn full marks if you have written the paper, drafted the
-README, or built out the test suite.
-
-1. A `main.tex` file: the source file for a 3 page paper written in
-   [LaTeX]({{ site.baseurl }}/topics/latex.html).
-2. A `main.pdf` file: the pdf file for a 3 page paper written in
-   [LaTeX]({{ site.baseurl }}/topics/latex.html).
-3. A `<library>.py` file: the
-   [source file for your Python library]({{ site.baseurl }}/topics/modularisation-of-code.html).
-4. A `test_<library>.py` file:
-   [the test files for your Python library]({{ site.baseurl }}/topics/testing-of-code.html).
-5. A `README.md` file:
-   [the documentation for your Python library]({{ site.baseurl }}/topics/documentation-of-code.html).
-6. A `presentation.mp4` (or similar file format): the video recording of
-   [your 15 minute presentation]({{ site.baseurl }}/topics/presenting-mathematics.html).
-7. A `contribution.md` file: a file describing the contributions of every
-   member of your group.
-
-The submission deadline is confirmed by the end of Week 2 of the module
-and posted on the schedule.
 
 ## [Example projects](#example-projects)
 

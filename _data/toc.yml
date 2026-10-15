@@ -13,6 +13,7 @@
         - title: Calculus
         - title: Differential equations
         - title: Sequences
+        - title: What is coming with group work
 - title: Group project
   weeks:
     - title: Week 4
@@ -42,13 +43,13 @@
   weeks:
     - title: Week 8
       topics:
-        - title: Writing
+        - title: LaTeX and Writing Mathematics
         - title: Modularisation of code
         - title: "Meeting minutes: Week 8"
         - title: Mock individual coursework
     - title: Week 9
       topics:
-        - title: Presentation
+        - title: Presenting Mathematics
         - title: Documentation of code
         - title: "Meeting minutes: Week 9"
     - title: Week 10

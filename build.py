@@ -343,6 +343,30 @@ def build_pdfs() -> None:
             for stale in src_dir.glob(f"*{ext}"):
                 stale.unlink()
 
+    deck_dir = ROOT / "deck"
+    if deck_dir.exists():
+        preamble = deck_dir / "preamble.tex"
+        for source_dir in sorted(p for p in deck_dir.iterdir() if p.is_dir()):
+            source = source_dir / "main.tex"
+            if not source.exists():
+                continue
+            pdf = source_dir / "main.pdf"
+            if _pdf_is_up_to_date(pdf, [source, preamble]):
+                continue
+            result = subprocess.run(
+                ["pdflatex", "-interaction=nonstopmode", "main.tex"],
+                cwd=source_dir,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if not pdf.exists():
+                print(f"pdflatex failed for {source}:\n{result.stdout[-1000:]}")
+                continue
+            for ext in (".aux", ".log", ".out"):
+                for stale in source_dir.glob(f"*{ext}"):
+                    stale.unlink()
+
     examples_dir = ROOT / "assets" / "examples"
     if examples_dir.exists():
         for paper_dir in sorted(examples_dir.glob("*/paper")):

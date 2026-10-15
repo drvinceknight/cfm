@@ -70,14 +70,52 @@
 
 <h1>Object oriented programming</h1>
 
-<h1 id="object-oriented-programming">Object oriented programming</h1>
+<h2 id="format">Format</h2>
+<p>A group-work week. The single hour is <strong>not</strong> a lecture: students work
+through this topic on their own, and the session is there for you to
+<strong>answer questions and signpost</strong>. Nothing below is material to deliver.</p>
+<p>Open by asking what people got stuck on. If the room is silent, the
+minutes are the way in: ask a group what went into their <em>questions
+arising</em> box this week. That is what the box is for, and it makes the
+point that the minutes are useful to them rather than only to the mark.</p>
+<h2 id="what-students-work-through-on-their-own">What students work through on their own</h2>
+<ul>
+<li><a href="../topics/object-oriented-programming.html">Object Oriented Programming</a>,
+  and the corresponding chapter of
+  <a href="https://vknight.org/pfm/">Python for Mathematics</a>.</li>
+</ul>
+<p>Each member reports on it at the group meeting, which is the first
+standing item on every agenda.</p>
+<h2 id="questions-that-come-up">Questions that come up</h2>
+<p><strong>"Does our project have to use a class?"</strong> No. A library of functions
+is a perfectly good submission, and the marking criteria never mention
+classes. Say this plainly: every year a group contorts a working
+function-based design into classes because they think it scores better.</p>
+<p><strong>"What is <code>self</code> for?"</strong> The instance the method was called on. Showing
+<code>Thing.method(instance)</code> alongside <code>instance.method()</code> once tends to
+settle it faster than an explanation.</p>
+<p><strong>"When is a class the right choice?"</strong> When several functions keep
+passing the same collection of values around. That is the signal.</p>
+<h2 id="signposts">Signposts</h2>
+<ul>
+<li>The <a href="../assessment/">Assessment</a> page, for how this
+  topic shows up in the marking criteria.</li>
+<li>The <a href="../assessment/example-projects/">example projects</a>,
+  which are worked submissions at the level of a good project.</li>
+<li>The <a href="../topics/meeting-minutes-week-5.html">Meeting minutes: Week 5</a>
+  page for this week's form.</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<p>The material below is <strong>not delivered in class</strong>. It is kept here as a
+worked treatment of the topic to draw on when answering questions.</p>
+<h3 id="object-oriented-programming">Object oriented programming</h3>
 <p>After this meeting students should:</p>
 <ul>
 <li>Understand the motivation for using objects</li>
 <li>Understand the basic syntax of how to create classes and instances</li>
 <li>Know what they need to do to prepare for their tutorial</li>
 </ul>
-<h2 id="problem">Problem</h2>
+<h3 id="problem">Problem</h3>
 <p>Tell students we are going to investigate some group theory.</p>
 <pre><code>A group $G$ is defined as:
 
@@ -95,7 +133,7 @@ On two elements: $\{0, 1\}$ there are two permutations:
 
 Obtain the multiplication table for this group.
 </code></pre>
-<h2 id="solution">Solution</h2>
+<h3 id="solution">Solution</h3>
 <div class="arithmatex">\[
    \begin{pmatrix}
     01 &amp; 10\\
@@ -326,7 +364,7 @@ True
 &gt;&gt;&gt; test_group(elements=permutations)
 True
 </code></pre>
-<h2 id="communications">Communications</h2>
+<h3 id="communications">Communications</h3>
 <h3 id="after-class">After class</h3>
 <pre><code>Hi all,
 

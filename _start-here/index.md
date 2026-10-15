@@ -4,8 +4,8 @@ title: "Start here"
 
 # Start here
 
-Whoever you are, this module is designed to be predictable. The first half is
-about using a mathematics-oriented set of Python tools; the second half is a
+Whoever you are, this module is designed to be predictable. It alternates
+between weeks on a mathematics-oriented set of Python tools and weeks on a
 group project in which you build a small library of your own. The
 [schedule]({{ site.baseurl }}/#schedule) lists every topic; the
 [Assessment]({{ site.baseurl }}/assessment/) page lists every component and
@@ -31,7 +31,7 @@ If you do nothing else, do this, in order:
    work through the tutorial and the how-to from the textbook
    [Python for mathematics](https://vknight.org/pfm/).
 3. Submit each weekly quiz and the individual coursework on time.
-4. In the second half of the module, attend every group meeting and let the
+4. In every group-project week, attend the group meeting and let the
    secretary record you as present in the minutes. Your individual
    contribution mark for the group project is based on this record.
 
@@ -80,15 +80,15 @@ mathematics, organising a project, working in a group.
 ## If you do not think you are a coder
 
 You do not have to be a coder when you start. The module is structured so
-that the **first half** introduces tools one at a time, with worked
-examples, and the **second half** lets you build something using those
-tools as part of a group.
+that the **tools weeks** introduce the tools one at a time, with worked
+examples, and the **group-project weeks** let you build something using
+those tools as part of a group.
 
 - Lean on the **notebook-first** workflow: every tools-for-mathematics
   topic starts in a notebook where you can explore.
 - Use each topic's **quick quiz** to confirm the basics have stuck before
   the exercises.
-- In the second half of the module, you do not need to write code from
+- In the group-project weeks, you do not need to write code from
   day one to be a valuable group member. Taking minutes, writing the
   paper, drafting the documentation and running the tests are all part of
   the project. The marking scheme rewards each of these.
@@ -100,10 +100,10 @@ tools as part of a group.
 ## If you are dreading the group project
 
 Group work can be a sore subject if you have had a bad experience of it
-before. The first half of the module is independent: every quiz, the
+before. The individual side of the module stands alone: every quiz, the
 individual coursework, and your engagement with the tutorials are all
-yours alone. The second half is deliberately scaffolded so that the
-group project is fair and not a free-for-all.
+yours alone. The group-project weeks are deliberately scaffolded so that
+the group project is fair and not a free-for-all.
 
 - Get the **individual components** done well early: the quizzes and the
   individual coursework are independent of any group and account for

@@ -1,7 +1,7 @@
 ---
 layout: class-notes
 title: "Individual Coursework Deadline"
-tag: "individual-coursework-deadline"
+tags: "individual-coursework-deadline"
 ---
 
 # Computing for Mathematics: Individual Coursework Deadline

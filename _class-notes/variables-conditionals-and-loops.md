@@ -4,7 +4,55 @@ title: "Variables, conditionals and loops"
 tags: variables-conditional-statements-and-while-loops
 ---
 
-# Variables, conditionals and loops
+## Format
+
+A group-work week. The single hour is **not** a lecture: students work
+through this topic on their own, and the session is there for you to
+**answer questions and signpost**. Nothing below is material to deliver.
+
+Open by asking what people got stuck on. If the room is silent, the
+minutes are the way in: ask a group what went into their *questions
+arising* box this week. That is what the box is for, and it makes the
+point that the minutes are useful to them rather than only to the mark.
+
+## What students work through on their own
+
+- [Variables, conditional statements, and while loops]({{ site.baseurl }}/topics/variables-conditional-statements-and-while-loops.html),
+  and the corresponding chapter of
+  [Python for Mathematics](https://vknight.org/pfm/).
+
+Each member reports on it at the group meeting, which is the first
+standing item on every agenda.
+
+## Questions that come up
+
+**"My while loop never stops."** The commonest cause is that nothing in
+the body changes the condition. Ask them to read the loop out loud and
+say which line moves it towards stopping.
+
+**"When do I use a while loop rather than a for loop?"** When the number
+of repetitions is not known in advance. If they can say how many times
+it runs before it starts, a for loop is clearer.
+
+**"Why does my condition with `=` fail?"** Assignment against
+comparison. This comes up every year and is worth one sentence on the
+board rather than a long explanation.
+
+## Signposts
+
+- The [Assessment]({{ site.baseurl }}/assessment/) page, for how this
+  topic shows up in the marking criteria.
+- The [example projects]({{ site.baseurl }}/assessment/example-projects/),
+  which are worked submissions at the level of a good project.
+- The [Meeting minutes: Week 4]({{ site.baseurl }}/topics/meeting-minutes-week-4.html)
+  page for this week's form.
+
+## Reference
+
+The material below is **not delivered in class**. It is kept here as a
+worked treatment of the topic to draw on when answering questions.
+
+### Variables, conditionals and loops
 
 After this meeting students should:
 
@@ -128,7 +176,7 @@ And::
     >>> 1 + 2 + 4 + 8 + 16 + 31 + 62 + 124 + 248
     496
 
-## Communications
+### Communications
 
 ### After class
 

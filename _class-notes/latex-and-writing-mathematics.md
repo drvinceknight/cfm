@@ -1,84 +1,104 @@
 ---
 layout: class-notes
 title: "LaTeX and Writing Mathematics"
-tag: writing
+tags: writing
 ---
 
-After this meeting students should:
+## Format
 
-- Understand how to use LaTeX
-- Have access to guidance on writing
+A group-work week. The single hour is **not** a lecture on LaTeX:
+students work through the LaTeX notes themselves. This week is one of
+the two exceptions to the question-and-signpost format, because the hour
+is given over to the **mathematics subject librarian**, who runs a
+session on researching sources.
 
-## In class discussion
+## In class session
 
-Discuss how they already have seen an example a markup language: LaTeX.
+The librarian runs the hour on finding and evaluating sources for the
+paper. Introduce them, then hand over.
 
-In fact: they have already seen some LaTeX.
+Before you do, spend two minutes connecting the session to the mark,
+because students who think of the librarian slot as optional will not
+engage with it. The **Research** criterion is 20% of the group project
+and is assessed on two things: whether the paper describes how the
+software compares to other commonly used packages, and whether the
+references are complete, appropriately cited and properly formatted.
+That is precisely what the session is about. Point at the
+[Research criteria]({{ site.baseurl }}/assessment/#research-20) on
+screen before handing over.
 
-Open up a local editor (do not feel obliged to use VS Code) and show to a LaTeX
-document can be compiled.
+Stay for the hour and take any questions at the end. Questions about
+LaTeX itself belong here too, since this is the week students start
+writing.
 
-Then show that this is how they are expected to write their paper.
+## What students work through on their own
 
-Specifically type the following::
+- [LaTeX notes](https://vknight.org/tex/): the tutorials covering the
+  document structure, mathematics, figures, tables and bibliographies.
+- ['Some Guidelines for Good Mathematical Writing' by Francis Su]({{ site.baseurl }}/assets/pdf/writing-mathematics-guidelines/main.pdf)
+- ['A guide to writing mathematics' by Kevin Lee]({{ site.baseurl }}/assets/pdf/a-guide-to-writing-mathematics/main.pdf)
 
-    \documentclass[a4paper]{article}
+They also need `references.bib`, which is one of the eight submitted
+files. The librarian session is where the content of that file comes
+from, so the two halves of this week fit together: the notes teach the
+mechanics of citing, the session is about what is worth citing.
 
-    % Set up page size
-    \usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+## Questions that come up
 
-    % Nice way to display code
-    \usepackage{minted}
+**"Can we use Overleaf?"** Yes. It removes the installation problem
+entirely and supports collaboration, which matters for a group paper.
+The notes cover a local installation for anyone who prefers one.
 
-    % Import images
+**"How many references do we need?"** There is no number. The criterion
+is whether everything that should be cited is cited, and whether the
+state of the field is accurate. A paper with four well-integrated
+references scores better than one with twenty in a bibliography the body
+never refers to.
 
-    \title{The TSP Package}
-    \author{Vince Knight}
-    \date{}
-
-
-    \begin{document}
-    \maketitle
-
-    \section{Introduction:The TSP}
-
-    \end{document}
-
-Open overleaf and show how this can be used to write LaTeX.
-
-Show them the following two guidelines for writing:
-
-- https://vknight.org/cfm/assets/pdf/writing-mathematics-guidelines/main.pdf
-- https://vknight.org/cfm/assets/pdf/a-guide-to-writing-mathematics/main.pdf
-
-Use breakout rooms/groups and ask students to spend 5/10 minutes finding
-something specifically useful in there.
-
-After breakout rooms ask all students to write down those things in a shared
-medium (for example the class discord).
+**"Does the paper have to be three pages?"** Yes, and it is a limit
+worth taking seriously: a great deal of the writing mark is about
+organisation, and organising three pages is the exercise.
 
 ## Communications
 
-### After class
+### Before class
 
-Send the following email after class::
+Send the following message before class:
 
     Hi all,
 
-    A recording of today's class is available at <>.
+    This week's session is run by the mathematics subject librarian, on
+    finding and evaluating sources for your paper.
 
-    In this class I went over automated writing mathematics. We discuss this
-    from a technical point of view (how to use LaTeX) and I refer you to my
-    notes on that: https://vknight.org/tex/
+    This is worth taking seriously: the Research component is 20% of the
+    group project mark, and it is assessed on your state of the field
+    and on your references. That is exactly what this session covers.
 
-    We also discussed guidelines for better writing:
+    Separately, you should be working through the LaTeX notes yourself:
+    https://vknight.org/tex/
 
-    - https://vknight.org/cfm/assets/pdf/writing-mathematics-guidelines/main.pdf
-    - https://vknight.org/cfm/assets/pdf/a-guide-to-writing-mathematics/main.pdf
+    Please get in touch if I can assist with anything,
+    Vince
 
-    On Friday the mathematics subject librarian will take the class to discuss
-    finding good sources for your paper (which is specifically a point in the
-    marking criteria).
+### After class
+
+Send the following message after class:
+
+    Hi all,
+
+    Thank you to the subject librarian for today's session on
+    researching sources.
+
+    A reminder of what you work through on your own this week:
+
+    - The LaTeX notes: https://vknight.org/tex/
+    - Guidelines for good mathematical writing:
+      https://vknight.org/cfm/assets/pdf/writing-mathematics-guidelines/main.pdf
+    - A guide to writing mathematics:
+      https://vknight.org/cfm/assets/pdf/a-guide-to-writing-mathematics/main.pdf
+
+    Your references.bib file is one of the eight files you submit, and
+    the references are part of the Research marking criterion.
 
     Please get in touch if I can assist with anything,
     Vince

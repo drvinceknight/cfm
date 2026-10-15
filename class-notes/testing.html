@@ -70,12 +70,51 @@
 
 <h1>Testing of code</h1>
 
+<h2 id="format">Format</h2>
+<p>A group-work week. The single hour is <strong>not</strong> a lecture: students work
+through this topic on their own, and the session is there for you to
+<strong>answer questions and signpost</strong>. Nothing below is material to deliver.</p>
+<p>Open by asking what people got stuck on. If the room is silent, the
+minutes are the way in: ask a group what went into their <em>questions
+arising</em> box this week. That is what the box is for, and it makes the
+point that the minutes are useful to them rather than only to the mark.</p>
+<h2 id="what-students-work-through-on-their-own">What students work through on their own</h2>
+<ul>
+<li><a href="../topics/testing-of-code.html">Testing of code</a>,
+  and the corresponding chapter of
+  <a href="https://vknight.org/pfm/">Python for Mathematics</a>.</li>
+</ul>
+<p>Each member reports on it at the group meeting, which is the first
+standing item on every agenda.</p>
+<h2 id="questions-that-come-up">Questions that come up</h2>
+<p><strong>"How many tests do we need?"</strong> The criterion is that the tests cover
+all functionality of the code and the documentation, so the question to
+turn back on them is which function is currently untested.</p>
+<p><strong>"Our tests all pass, are we done?"</strong> Ask what happens at the
+boundaries: zero, one, an empty input, a negative where only positives
+were considered. The exemplary band specifically mentions edge cases the
+tutorial does not exercise.</p>
+<p><strong>"Do we need pytest?"</strong> No. Assertion statements in a
+<code>test_&lt;library&gt;.py</code> that runs top to bottom are sufficient and are what
+the example projects use.</p>
+<h2 id="signposts">Signposts</h2>
+<ul>
+<li>The <a href="../assessment/">Assessment</a> page, for how this
+  topic shows up in the marking criteria.</li>
+<li>The <a href="../assessment/example-projects/">example projects</a>,
+  which are worked submissions at the level of a good project.</li>
+<li>The <a href="../topics/meeting-minutes-week-10.html">Meeting minutes: Week 10</a>
+  page for this week's form.</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<p>The material below is <strong>not delivered in class</strong>. It is kept here as a
+worked treatment of the topic to draw on when answering questions.</p>
 <p>After this meeting students should:</p>
 <ul>
 <li>Understand the general structure required for documentation</li>
 <li>Understand how to write further markdown</li>
 </ul>
-<h2 id="first-meeting">First meeting</h2>
+<h3 id="first-meeting">First meeting</h3>
 <p>After this meeting students should:</p>
 <ul>
 <li>Understand how assertion statements work</li>
@@ -85,7 +124,7 @@
 <h3 id="testing-software">Testing software</h3>
 <p>Discuss how we will write automated tests for the <code>tsp</code> library we wrote in the
 first section.</p>
-<h4 id="writing-the-unit-tests">Writing the unit tests</h4>
+<h3 id="writing-the-unit-tests">Writing the unit tests</h3>
 <p>Write the following in a <code>test_tsp.py</code> file::</p>
 <pre><code>import numpy as np
 import matplotlib.pyplot as plt
@@ -210,7 +249,7 @@ How To guides.
 <hr />
 <p>Specifically look at diagram in further information section:
 <a href="https://vknight.org/pfm/building-tools/07-testing/why/main.html#how-are-modularisation-documentation-and-testing-related">https://vknight.org/pfm/building-tools/07-testing/why/main.html#how-are-modularisation-documentation-and-testing-related</a></p>
-<h2 id="communications">Communications</h2>
+<h3 id="communications">Communications</h3>
 <h3 id="after-class">After class</h3>
 <p>Send the following email after class::</p>
 <pre><code>Hi all,

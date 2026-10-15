@@ -4,9 +4,56 @@ title: "Functions and data structures"
 tags: functions-and-data-structures
 ---
 
-# Functions and data structures
+## Format
 
-## First meeting
+A group-work week. The single hour is **not** a lecture: students work
+through this topic on their own, and the session is there for you to
+**answer questions and signpost**. Nothing below is material to deliver.
+
+Open by asking what people got stuck on. If the room is silent, the
+minutes are the way in: ask a group what went into their *questions
+arising* box this week. That is what the box is for, and it makes the
+point that the minutes are useful to them rather than only to the mark.
+
+## What students work through on their own
+
+- [Functions and data structures]({{ site.baseurl }}/topics/functions-and-data-structures.html),
+  and the corresponding chapter of
+  [Python for Mathematics](https://vknight.org/pfm/).
+
+Each member reports on it at the group meeting, which is the first
+standing item on every agenda.
+
+## Questions that come up
+
+**"When should something be a function?"** When it has a name worth
+giving it. For the project the practical answer is firmer: anything the
+tests need to call separately has to be a function.
+
+**"List, tuple, set or dictionary?"** Push back to the mathematics. Is
+order meaningful? Are duplicates meaningful? Is it a lookup from one
+thing to another? The answer usually falls out of those three.
+
+**"Can a function return more than one thing?"** Yes, and it returns a
+tuple when it does. Worth showing, since several projects want it.
+
+## Signposts
+
+- The [Assessment]({{ site.baseurl }}/assessment/) page, for how this
+  topic shows up in the marking criteria.
+- The [example projects]({{ site.baseurl }}/assessment/example-projects/),
+  which are worked submissions at the level of a good project.
+- The [Meeting minutes: Week 4]({{ site.baseurl }}/topics/meeting-minutes-week-4.html)
+  page for this week's form.
+
+## Reference
+
+The material below is **not delivered in class**. It is kept here as a
+worked treatment of the topic to draw on when answering questions.
+
+### Functions and data structures
+
+### First meeting
 
 After this meeting students should:
 
@@ -98,7 +145,7 @@ Come back: with time take any questions.
 
 Point at resources.
 
-## Communications
+### Communications
 
 ### After class
 

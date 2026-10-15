@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Group dynamics (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Group dynamics</h1>
+
+<h2 id="timing">Timing</h2>
+<p>A full session. Roughly: 10 minutes on the categories and the framework,
+25 minutes on the three scenarios, 10 minutes on effort, 10 minutes on
+the chair's two practices, and the last 5 minutes on the closing slide.</p>
+<p>Keep those last 5 minutes. Slide 11 is where this class's content
+attaches to the form: the <em>disagreements and decisions</em> box is the thing
+the whole session has been preparing them to fill in, and it is the
+reminder to meet this week and bring the Week 5 minutes to the next
+session.</p>
+<h2 id="in-class-meeting">In class meeting</h2>
+<p>The opening claim is that disagreement is normal and often useful, and
+that a group which never disagrees is either dominated by one person or
+not engaging with the work. Say it plainly and early, because several
+students will be carrying the opposite assumption.</p>
+<p>Give the four categories (fact, approach, priority, effort) and the
+four-step framework (listen, restate, identify, choose). Point out that
+step 2, restating the other position, is the step that does most of the
+work, and the one everybody skips.</p>
+<p>Then the three scenarios. Put each on the screen, give the groups two or
+three minutes to answer the questions among themselves, then take
+answers from the room:</p>
+<ol>
+<li><strong>Tests before or after the functions.</strong> A disagreement of approach.
+   The resolution is to try one and revisit, and to record the trial in
+   the minutes. Watch for groups that want to resolve it by deciding who
+   is more senior.</li>
+<li><strong>The function runs, so it is correct.</strong> A disagreement of fact,
+   therefore the easiest kind: check the source, or better, write a test
+   that distinguishes the two claims. Ask how long it should have taken.
+   The answer is about two minutes, against the ten it did take.</li>
+<li><strong>The function that is still not written.</strong> A disagreement of effort.
+   This is the one to spend time on. The private messaging is the part
+   to pull out: it feels kind and it is the single most corrosive thing
+   a group can do.</li>
+</ol>
+<p>Handle effort directly. Raise it in a meeting, not outside one. State
+observable facts rather than character judgements, and give them the two
+phrasings side by side. Then connect it to the geometric mean: the
+scheme is built so that neither free-riding nor carrying a group is
+rewarded or punished unfairly, which is why the minutes matter.</p>
+<p>Close on the chair's two weekly practices, round-robin discussion and
+explicit decision checks. Acknowledge that both feel artificial at
+first. Saying this out loud makes groups much more likely to persist
+with them past the first meeting.</p>
+<p>Then the closing slide, which does three jobs. It points at the
+<em>disagreements and decisions</em> box, so today's framework has somewhere
+concrete to land. It reminds them to rotate the chair and the secretary,
+which is the week this starts to slip. And it reminds them to meet in
+their own slot and bring the Week 5 minutes to the next session, the
+second of the five <span class="arithmatex">\(I\)</span> is counted from.</p>
+<h2 id="communications">Communications</h2>
+<h3 id="before-class">Before class</h3>
+<p>Send the following message before class:</p>
+<pre><code>Hi all,
+
+In tomorrow's class we will look at how groups disagree, and how to
+handle it. We will work through three scenarios, all of which are
+things that genuinely happen in group projects in this module.
+
+Nothing to prepare.
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+<h3 id="after-class">After class</h3>
+<p>Send the following message after class:</p>
+<pre><code>Hi all,
+
+The slides from today's class on group dynamics are on the website,
+along with the fuller notes on handling disagreement:
+
+https://vknight.org/cfm/topics/group-dynamics.html
+
+A reminder that your minutes have a disagreements and decisions
+section. Use it, including for disagreements that are still open.
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+<h2 id="answers-for-the-deck">Answers for the deck</h2>
+<p><strong>Slide 3, how would you settle each one?</strong> The four blanks, in order:</p>
+<ul>
+<li><strong>Fact:</strong> check the source. Look it up, or write a test that
+  distinguishes the two claims.</li>
+<li><strong>Approach:</strong> try one and revisit. Agree a review point and record the
+  trial in the minutes.</li>
+<li><strong>Priority:</strong> the chair decides. This is the role's one piece of real
+  authority.</li>
+<li><strong>Effort:</strong> raise it in a meeting, in terms of observable facts.</li>
+</ul>
+<p>Take these from the room rather than reading them out. Fact and approach
+come quickly; priority usually produces "vote", which is worth engaging
+with, since a four-member group splitting two-two is exactly why the
+chair exists.</p>
+<p><strong>Slide 5, scenario 1.</strong> A disagreement of <strong>approach</strong>: both want
+working tested code and disagree on the route. The resolution is to try
+one and revisit at the next meeting. Into the minutes goes the trial and
+the review point, something like "agreed to write tests first for the
+next function and review on Tuesday". Watch for groups that try to
+resolve it by seniority or by who is the better coder.</p>
+<p><strong>Slide 6, scenario 2.</strong> A disagreement of <strong>fact</strong>, and therefore the
+easiest kind. Right now they should write a test that distinguishes the
+two claims, or check the function against a case they can compute by
+hand. "It runs" and "it is correct" are different statements, which is
+worth saying explicitly. It should have taken about two minutes, against
+the ten it did take. The gap between those two numbers is the slide.</p>
+<p><strong>Slide 7, scenario 3.</strong> A disagreement of <strong>effort</strong>. The private
+messaging is the part to pull out: it feels kind and considerate, and it
+is the single most corrosive thing a group can do, because it moves the
+problem somewhere D cannot answer it and the minutes cannot record it.
+The right move is to raise it at the next meeting, in terms of the
+observable fact that the function is not written, and to record what D
+agrees to do before the following meeting. If it does not improve, it
+comes to you in the contact hour.</p>
+<p><strong>Slide 11, before you leave.</strong> Nothing to elicit here, but do not let
+it become a slide you talk over while people pack up. The point worth
+making out loud is that the box exists because disagreement is expected:
+a minutes form with an empty disagreements section every week for five
+weeks is not evidence of a harmonious group, it is evidence that nobody
+is recording what happened. Groups that write "none" every week are
+worth a question in the contact hour.</p>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

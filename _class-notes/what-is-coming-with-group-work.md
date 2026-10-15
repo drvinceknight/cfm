@@ -23,7 +23,7 @@ below the table.
 | 9 | Yes: this is self study | 2 |
 | 10 | How a group-project week works | 2 |
 | 11 | How groups are formed | 1 |
-| 12 | This week, and the Week 4 minutes reminder | 2 |
+| 12 | This week, the email invitation, and the minutes reminder | 2 |
 |  | Questions | 1 |
 |  | **Total** | **26** |
 
@@ -38,6 +38,11 @@ in Week 6 than to state now.
 
 Open with the fact that the group project is 60% of the module and
 starts in Week 4.
+
+Say explicitly that choosing a topic is not something they have to do
+alone, and that you would rather hear from a group early than see a
+project that was never going to work. The invitation is on slides 3 and
+12, with your email address on the closing slide.
 
 Show one worked example project from the
 [example projects]({{ site.baseurl }}/assessment/example-projects/)
@@ -212,3 +217,10 @@ it meant is not. A student who reads a chapter, does not understand it,
 and says so in the meeting is doing exactly what the structure expects.
 A student who reads nothing and says nothing is the failure case, and
 the minutes will show it.
+
+**Slides 3 and 12, the invitation to email.** Not a question to the
+room, but worth saying rather than leaving on screen. Groups that pick a
+topic in silence are the ones that arrive in Week 8 having built
+something too small to carry a three page paper, or too large to finish.
+A five minute conversation in Week 3 fixes both, and almost nobody
+starts it unless they are told twice that they may.

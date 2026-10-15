@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meetings (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>Meetings</h1>
+
+<h2 id="timing">Timing</h2>
+<p>A full session. No meeting takes place in this hour: the groups hold
+their own first meeting in their timetabled group-work slot, and bring
+the completed Week 4 minutes to the next class session.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Section</th>
+<th style="text-align: right;">Minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Framing: why the minutes matter, meeting against workshop</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">The four bad meetings (slides 4 to 7)</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr>
+<td style="text-align: left;">Roles and the standing agenda (slides 8 and 9)</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slide 10: the minutes, <span class="arithmatex">\(I\)</span>, and what happens next</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Slide 11: groups agree their rota, slot and first chair</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td style="text-align: left;">Questions</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<p>If you are running late, cut a bad meeting rather than slide 11. A group
+that leaves without a rota and an agreed time is the group whose first
+meeting does not happen.</p>
+<h2 id="in-class-meeting">In class meeting</h2>
+<p>The spine of this class is four meetings that went wrong. Each one is a
+slide with a diagram and a question; put the question to the room and
+let them answer before you give the reading.</p>
+<p>Do <strong>not</strong> run a demonstration meeting, and no group meeting happens in
+this hour. The bad examples do the work, and the groups hold their own
+first meeting in their timetabled slot afterwards.</p>
+<p>Open with the meeting and workshop distinction. This is the single idea
+that the rest of the class depends on: a meeting has an agenda and
+produces decisions, a workshop has laptops and produces work. Most
+student group sessions are a poor hybrid of the two.</p>
+<p>Then the three purposes: inform, discuss, decide. The test to give them
+is that if you cannot say which of the three an agenda item is, the item
+is not ready.</p>
+<p>Work through the four bad meetings:</p>
+<ol>
+<li><strong>No agenda.</strong> The timeline drifts from "where are we?" to a tangent
+   about LaTeX fonts and ends with nothing decided. Ask what the
+   secretary could possibly write. The answer, that there is nothing to
+   write, is the point.</li>
+<li><strong>A workshop in disguise.</strong> Real work gets done, a genuine bug is
+   fixed, and the meeting fails anyway: three agenda items are never
+   reached and the quiet member contributed nothing and is recorded as
+   having done nothing. Ask what it costs D specifically. This connects
+   back to <span class="arithmatex">\(I\)</span>.</li>
+<li><strong>One person ran it.</strong> A talks for 35 of 40 minutes, everyone agrees,
+   the minutes look immaculate. Ask what is missing. Steer towards the
+   observation that unanimous agreement with no discussion is evidence
+   of a problem, not of a healthy group.</li>
+<li><strong>No record.</strong> Nothing goes wrong in the room at all. A week later
+   nobody can remember who agreed to what. Ask what it costs the group,
+   then what it costs each member.</li>
+</ol>
+<p>Draw the four together: the common failures are no agenda, no separation
+of meeting from workshop, no chair making space, and no secretary. The
+three roles fix all four, and they rotate weekly.</p>
+<p>Finish the taught part with the standing agenda, then slide 10, which is
+the one that matters: the minutes are where <span class="arithmatex">\(I\)</span> comes from, the group
+meets in its own slot this week, and the completed form comes to the
+next session.</p>
+<p>Then slide 11, and give the groups ten minutes on it in the room. They
+need three things settled before they leave: the secretary rota for the
+five meeting weeks, when and where they will meet, and who chairs the
+first one. Walk the room while they do it. A group that cannot name a
+time and a chair will not meet this week, and that is the failure you
+can still prevent from here.</p>
+<p>Two things to flag while you are at it, since they shape the first form.
+A group that writes only a list of names has recorded attendance, not
+engagement, and the form asks for what each member contributed. A group
+of three present and one absent should still record the absent member
+and say so; a member who is genuinely unwell and catches up through the
+minutes can still be recorded as engaged in a later week.</p>
+<h2 id="communications">Communications</h2>
+<h3 id="before-class">Before class</h3>
+<p>Send the following message before class:</p>
+<pre><code>Hi all,
+
+In tomorrow's class we will look at four group meetings that went
+wrong, and work out what went wrong in each one.
+
+This is directly useful to you: your group meets every week from now
+on, and the minutes of those meetings are the evidence for the
+individual part of your project mark.
+
+Nothing to prepare. If you have been in a group that ran badly
+before, bring the memory, it will be relevant.
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+<h3 id="after-class">After class</h3>
+<p>Send the following message after class:</p>
+<pre><code>Hi all,
+
+The slides from today's class on meetings are on the website,
+together with the example agenda for a first meeting and the
+printable minutes template for each week:
+
+https://vknight.org/cfm/topics/meetings.html
+
+Before your first meeting: agree your secretary rota, agree when and
+where you meet, and have the chair circulate an agenda in advance.
+Print the week's minutes template and bring it with you.
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+<h2 id="answers-for-the-deck">Answers for the deck</h2>
+<p><strong>Slide 2, which one have your group sessions been so far?</strong> Almost always
+the honest answer is neither cleanly: an unstructured hybrid. That is the
+point of asking, and it lands better coming from them than from you.</p>
+<p><strong>Slide 4, what does the secretary write?</strong> There is nothing to write.
+No decision was taken, no action was assigned, and no information was
+shared that anybody could act on. Push until someone says this out loud,
+because it is the whole argument for an agenda: the agenda is what makes
+it possible to tell whether the meeting succeeded.</p>
+<p><strong>Slide 5, what did it cost D?</strong> The group got a good bug fix, so the
+cost is invisible at group level. D contributed nothing, so the minutes
+record nothing against D's name, so D's <span class="arithmatex">\(I\)</span> takes the hit for a session
+in which the group did real work. Expect someone to object that this is
+unfair. It is the right objection: the fix is not to mark D differently,
+it is for the chair to have stopped the meeting becoming a workshop.</p>
+<p><strong>Slide 6, what is missing?</strong> Disagreement. Three decisions were taken
+and nobody questioned any of them, which means either the decisions were
+not really examined or the other three did not feel able to speak.
+Unanimity with no discussion is evidence of a problem, not of health.
+The chair prevents it with round-robin discussion and by checking each
+decision member by member, which is next week's material.</p>
+<p><strong>Slide 7, what did it cost?</strong> Two things, and students usually only get
+the first. The group loses the decisions and has to retake them. Each
+member individually loses the evidence of their engagement, because the
+minutes are what <span class="arithmatex">\(I\)</span> is computed from. A meeting that is not recorded
+did not happen as far as the mark is concerned.</p>
+<p><strong>Slide 8, what do the three roles do, and how often do they change?</strong></p>
+<ul>
+<li><strong>Chair:</strong> writes and circulates the agenda beforehand, keeps to time,
+  brings every member in, and calls the decision when the group is split.</li>
+<li><strong>Secretary:</strong> writes the minutes during the meeting: who attended,
+  what was discussed, what was decided, what actions were assigned.</li>
+<li><strong>Members:</strong> everyone else, and the role is active. Contribute, raise
+  questions, accept actions.</li>
+</ul>
+<p>They <strong>rotate every week</strong>, so every member does each role over the five
+meeting weeks. Groups reliably guess chair and secretary and then say
+members "just attend"; that is the one to correct.</p>
+<p><strong>Slide 11, the four items.</strong> The first three are filled in by each
+group for itself, not by you, and they are the ten minutes of group work
+in this session. A group that cannot name next week's chair before
+leaving is the group to check on first. The fourth is the one to say out
+loud rather than leave them to read: they meet in their own slot this
+week, and the completed Week 4 minutes come to the next class session.</p>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

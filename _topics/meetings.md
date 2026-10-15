@@ -4,9 +4,11 @@ title: "Meetings"
 tag: meetings
 ---
 
-In the second half of this module your group meets every week. The quality of
+In the group-project weeks of this module your group meets every week. The quality of
 those meetings is the foundation for everything else you produce together.
 These notes describe what a meeting is, what it is not, and how to run one.
+
+[**Slides: meetings (PDF)**]({{ site.baseurl }}/deck/meetings/main.pdf)
 
 The material is adapted from the
 [Principles of Meetings](https://github.com/drvinceknight/pom) repository,
@@ -127,7 +129,7 @@ make progress.
 
 The chair circulates an agenda before the meeting. As an example of what
 an agenda looks like in practice, we provide one for your group's first
-meeting in Week 6:
+meeting in Week 4:
 
 [**Example agenda: first meeting (PDF)**]({{ site.baseurl }}/assets/agendas/first-meeting.pdf)
 
@@ -167,8 +169,8 @@ week's minutes should contain:
 We provide a printable template for each week. The templates differ
 slightly to match the content of the week:
 
-- [Week 6 minutes template (PDF)]({{ site.baseurl }}/assets/minutes/week-6.pdf)
-- [Week 7 minutes template (PDF)]({{ site.baseurl }}/assets/minutes/week-7.pdf)
+- [Week 4 minutes template (PDF)]({{ site.baseurl }}/assets/minutes/week-4.pdf)
+- [Week 5 minutes template (PDF)]({{ site.baseurl }}/assets/minutes/week-5.pdf)
 - [Week 8 minutes template (PDF)]({{ site.baseurl }}/assets/minutes/week-8.pdf)
 - [Week 9 minutes template (PDF)]({{ site.baseurl }}/assets/minutes/week-9.pdf)
 - [Week 10 minutes template (PDF)]({{ site.baseurl }}/assets/minutes/week-10.pdf)

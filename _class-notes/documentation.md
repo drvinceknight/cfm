@@ -4,12 +4,62 @@ title: "Documentation of code"
 tags: documentation
 ---
 
+## Format
+
+A group-work week. The single hour is **not** a lecture: students work
+through this topic on their own, and the session is there for you to
+**answer questions and signpost**. Nothing below is material to deliver.
+
+Open by asking what people got stuck on. If the room is silent, the
+minutes are the way in: ask a group what went into their *questions
+arising* box this week. That is what the box is for, and it makes the
+point that the minutes are useful to them rather than only to the mark.
+
+## What students work through on their own
+
+- [Documentation of code]({{ site.baseurl }}/topics/documentation-of-code.html),
+  and the corresponding chapter of
+  [Python for Mathematics](https://vknight.org/pfm/).
+
+Each member reports on it at the group meeting, which is the first
+standing item on every agenda.
+
+## Questions that come up
+
+**"What goes in the README against the docstrings?"** The README is for
+somebody deciding whether to use the library and learning how. The
+docstrings are for somebody reading a particular function. The marking
+criteria ask for a tutorial, a how-to section, a reference and an
+explanation, which is the Diataxis split the notes cover.
+
+**"Do the doctests count as tests?"** They count as documentation that
+is verified, which is the point of writing them. The test file is still
+required separately.
+
+**"How much is enough?"** The criterion to quote is that the README
+would be usable by somebody outside the group with no extra help. That
+is a test they can actually apply: give it to another group.
+
+## Signposts
+
+- The [Assessment]({{ site.baseurl }}/assessment/) page, for how this
+  topic shows up in the marking criteria.
+- The [example projects]({{ site.baseurl }}/assessment/example-projects/),
+  which are worked submissions at the level of a good project.
+- The [Meeting minutes: Week 9]({{ site.baseurl }}/topics/meeting-minutes-week-9.html)
+  page for this week's form.
+
+## Reference
+
+The material below is **not delivered in class**. It is kept here as a
+worked treatment of the topic to draw on when answering questions.
+
 After this meeting students should:
 
 - Understand the general structure required for documentation
 - Understand how to write further markdown
 
-# Writing documentation
+### Writing documentation
 
 Discuss how we will write documentation for the `tsp` library we wrote in the
 first section.
@@ -26,7 +76,7 @@ discuss amongst themselves.
 
 Say that we will address this after writing the documentation.
 
-## Writing the tutorial
+### Writing the tutorial
 
 Open a markdown file (in the same location as the `tsp.py` file) and call it
 `README.md`.
@@ -246,7 +296,7 @@ Write the following::
     > Aarts, Emile, Emile HL Aarts, and Jan Karel Lenstra, eds. Local search in
     > combinatorial optimization. Princeton University Press, 2003.
 
-## Communications
+### Communications
 
 ### After class
 

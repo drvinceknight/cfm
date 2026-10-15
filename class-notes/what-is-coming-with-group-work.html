@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What is coming with group work (facilitator notes) - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<div class="facilitator-notes">
+
+<div class="facilitator-banner">
+  <strong>Facilitator notes: not student-facing.</strong>
+  These notes are for planning and running classes.
+  Student resources are at <a href="../">Computing for Mathematics</a>.
+</div>
+
+<h1>What is coming with group work</h1>
+
+<h2 id="timing">Timing</h2>
+<p><strong>25 minutes.</strong> Twenty is not realistic for this deck any more: there
+are five slides the class answers rather than listens to, and rushing
+those is the same as cutting them. If you only have twenty, see the note
+below the table.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Slide</th>
+<th style="text-align: left;">Content</th>
+<th style="text-align: right;">Minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">What goes wrong in group work (blank, from the room)</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">60%, from Week 4, a library built in a four</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">The eight files, with the count blank</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"><span class="arithmatex">\(I\)</span> and <span class="arithmatex">\(Q\)</span>, both boxes blank</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">The worked free-rider table, marks blank</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">Where <span class="arithmatex">\(I\)</span> comes from: five forms, handed in</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">The chapters, and who teaches them</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">Yes: this is self study</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">How a group-project week works</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">How groups are formed</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">This week, the email invitation, and the minutes reminder</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Questions</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>26</strong></td>
+</tr>
+</tbody>
+</table>
+<p>To get to twenty, take two answers on slide 2 instead of filling the
+workspace, and move briskly through 3, 4, 11 and 12, which are
+statements rather than discussions. Do not cut slides 5 to 9. Slides 5
+to 7 are where the marking scheme lands and 8 and 9 are where the
+self-study expectation lands, and those two things are far harder to fix
+in Week 6 than to state now.</p>
+<h2 id="in-class-meeting">In class meeting</h2>
+<p>Open with the fact that the group project is 60% of the module and
+starts in Week 4.</p>
+<p>Say explicitly that choosing a topic is not something they have to do
+alone, and that you would rather hear from a group early than see a
+project that was never going to work. The invitation is on slides 3 and
+12, with your email address on the closing slide.</p>
+<p>Show one worked example project from the
+<a href="../assessment/example-projects/">example projects</a>
+listing. Spend no more than a minute on it: the point is that students
+see a finished library, a README and a three page paper, not that they
+understand the mathematics in it.</p>
+<p>Go through the eight files. Emphasise that every component is graded, so
+a student who writes the paper and the README earns marks just as a
+student who writes the library does. This is the first of two moments in
+the class where a worried student relaxes.</p>
+<p>Introduce the geometric mean. Resist deriving anything. Put up the free
+rider table and let them read it. The question to ask is "what happens
+to D?" and then "why?". This is the second moment: a student who has
+been in a bad group before will be watching for exactly this.</p>
+<p>Then the self-study block, slides 8 to 10, which is the part of this
+class most likely to be misheard. Put the chapters on screen and ask who
+teaches them. Let the silence sit for a moment before answering it. The
+answer is that nobody lectures these chapters: students work through
+them on their own, and the meeting is where they report back and find
+out what they misunderstood.</p>
+<p>Say the words <strong>self study</strong> out loud rather than implying them. Then
+say, equally plainly, that it is not independent study in the sense of
+being left alone: the reading is solitary, the understanding is not.
+Slide 10 makes the division concrete: the reading is homework, and the
+meeting and the workshop are both timetabled, so they are not being
+asked to find a free hour between four diaries.</p>
+<p>Close on the three actions for the week, the first of which is forming a
+group of four.</p>
+<p>Do not let the room start packing up before the box at the bottom of the
+last slide. The group meets <strong>in its own timetabled slot</strong>, not in the
+class hour, so the pattern to state is: print the week's form, complete
+it at the meeting, bring it to the next class session. A group that
+never quite gets round to meeting is the group that loses a week of
+evidence, and it is entirely avoidable with one sentence here. Say that
+<span class="arithmatex">\(I\)</span> is counted from those five forms, which ties the reminder back to
+slide 7 rather than making it sound like an administrative detail.</p>
+<h2 id="communications">Communications</h2>
+<h3 id="before-class">Before class</h3>
+<p>Send the following message before class:</p>
+<pre><code>Hi all,
+
+In tomorrow's class I will spend the last twenty minutes giving you
+an overview of the group project, which starts in Week 4 and is
+worth 60% of the module.
+
+I will cover what you build, the files you hand in, how the mark is
+calculated, and how groups are formed. You do not need to prepare
+anything.
+
+The one thing to know in advance: you will need to be in a group of
+four, and groups are self-selecting. If you already know who you
+want to work with, that is one less thing to do next week.
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+<h3 id="after-class">After class</h3>
+<p>Send the following message after class:</p>
+<pre><code>Hi all,
+
+The slides from today's overview of the group project are on the
+website, along with the full assessment page:
+
+https://vknight.org/cfm/topics/what-is-coming-with-group-work.html
+
+Action this week: form a group of four and register it. Anyone not
+in a group by the deadline will be assigned to one at random.
+
+Please get in touch if I can assist with anything,
+Vince
+</code></pre>
+<h2 id="answers-for-the-deck">Answers for the deck</h2>
+<p><strong>Slide 2, what goes wrong in group work?</strong> Whatever they offer is the
+right answer, and the list is better coming from them. What usually
+comes up: one person does everything, nobody knows what anyone else is
+doing, the work is done the night before, and someone disappears.
+Keep the list on screen, because every item on it is something the
+design of this project is trying to handle, and you can point back at it
+on slides 5 and 6.</p>
+<p><strong>Slide 4, how many files?</strong> Eight. Let them count off the three cards
+on the slide: three for the paper, three for the software, two for the
+record. Counting it themselves is what makes the number stick, and it
+gets them reading the file names rather than skipping past them.</p>
+<p><strong>Slide 5, what goes in each box?</strong></p>
+<ul>
+<li><span class="arithmatex">\(I\)</span>, <strong>individual</strong>: your engagement record, taken from the weekly
+  minutes. The fraction of the five meeting weeks at which the minutes
+  record you as having engaged, out of 100.</li>
+<li><span class="arithmatex">\(Q\)</span>, <strong>quality</strong>: the mark your group's submission receives, shared
+  equally by all four members.</li>
+</ul>
+<p>The important step here, and the one worth drawing out explicitly, is
+that <strong>both components are objective</strong>. Neither is my impression of you
+or your group's impression of you. <span class="arithmatex">\(I\)</span> is counted off the minutes the
+group itself wrote and handed in, and <span class="arithmatex">\(Q\)</span> is the mark the submitted
+artefacts earn against published criteria. Say this plainly. It is the
+answer to the fear that sits behind most of what they listed on slide 2,
+which is that group marks are arbitrary or that the loudest member
+decides who gets credit. It is also what makes the minutes worth taking
+seriously: they are not administration, they are the evidence.</p>
+<p><strong>Slide 6, the four marks.</strong> With <span class="arithmatex">\(Q = 74\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Student</th>
+<th style="text-align: right;"><span class="arithmatex">\(I\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(\sqrt{I \times Q}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">86.02%</td>
+</tr>
+<tr>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">76.94%</td>
+</tr>
+<tr>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">76.94%</td>
+</tr>
+<tr>
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">38.47%</td>
+</tr>
+</tbody>
+</table>
+<p>Give them A to work out first, then let them predict D before you fill
+it in. What happens to D is that a strong group cannot carry them: D
+fails. Make the reverse point too, since it is the one that reassures
+the students who are dreading this: a student with <span class="arithmatex">\(I = 100\)</span> in a weak
+group scoring <span class="arithmatex">\(Q = 42\)</span> still gets 64.81%, well clear of the group's own
+mark. Two further worked scenarios are on the geometric mean page if
+anyone wants them.</p>
+<p><strong>Slide 7, where does <span class="arithmatex">\(I\)</span> come from?</strong> This is the slide that makes
+the previous one actionable, so do not hurry it. <span class="arithmatex">\(I\)</span> is not an
+impression of anybody. It is counted off the five minutes forms the
+group fills in and <strong>hands in</strong>, one in each group-project week: Weeks
+4, 5, 8, 9 and 10. A form that is never handed in is not a late
+submission, it is an absent record, and it costs every member of that
+group, not just the one who was quiet.</p>
+<p>The arithmetic blank: recorded as engaged at 3 of the 5 gives
+<span class="arithmatex">\(I = 3/5 \times 100 = 60\)</span>, and with a group mark of <span class="arithmatex">\(Q = 74\)</span> that is
+a final mark of <span class="arithmatex">\(\sqrt{60 \times 74} = 66.63\%\)</span>. Students who were
+alarmed by D on the previous slide find this reassuring, and it is worth
+letting them have it: the scheme is not trying to catch anybody out, it
+is trying to make the record match what actually happened.</p>
+<p>Tell them now that the group meets in its own timetabled slot and brings
+the completed form to the next class session, so that nobody is waiting
+for the meeting to be arranged for them.</p>
+<p><strong>Slide 8, who teaches you these chapters?</strong> Nobody does, in the sense
+they mean. There is no lecture on any of the seven topics listed. They
+work through the chapters of
+<a href="https://vknight.org/pfm/">Python for Mathematics</a> themselves, and the
+weekly meeting is where each member reports what they covered, which is
+the first standing item on every agenda.</p>
+<p>Expect this to be the least welcome slide in the deck, and expect at
+least one student to ask why they are being taught nothing. The honest
+answer is worth giving: the tools weeks teach a topic at a time with
+worked examples, and the group-project weeks are where they practise
+picking up a topic without that scaffolding, which is the thing the
+final year will require of them. The textbook has tutorials, how-to
+recipes, exercises and full solutions, so the material is not thin, it
+is just not delivered in a lecture.</p>
+<p>The follow-on point, which is slide 9, is that this is self study
+<strong>with a social component</strong>. The reading is solitary; working out what
+it meant is not. A student who reads a chapter, does not understand it,
+and says so in the meeting is doing exactly what the structure expects.
+A student who reads nothing and says nothing is the failure case, and
+the minutes will show it.</p>
+<p><strong>Slides 3 and 12, the invitation to email.</strong> Not a question to the
+room, but worth saying rather than leaving on screen. Groups that pick a
+topic in silence are the ones that arrive in Week 8 having built
+something too small to carry a three page paper, or too large to finish.
+A five minute conversation in Week 3 fixes both, and almost nobody
+starts it unless they are told twice that they may.</p>
+
+</div>
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

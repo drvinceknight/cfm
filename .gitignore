@@ -60,3 +60,10 @@ gc_*.csv
 tex/**/*.pdf
 
 .ipynb_checkpoints/
+
+# Beamer build artefacts.
+deck/*/*.nav
+deck/*/*.snm
+deck/*/main.aux
+deck/*/main.log
+deck/*/main.out

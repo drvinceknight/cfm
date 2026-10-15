@@ -4,6 +4,54 @@ title: "Modularisation of code"
 tags: modularisation
 ---
 
+## Format
+
+A group-work week. The single hour is **not** a lecture: students work
+through this topic on their own, and the session is there for you to
+**answer questions and signpost**. Nothing below is material to deliver.
+
+Open by asking what people got stuck on. If the room is silent, the
+minutes are the way in: ask a group what went into their *questions
+arising* box this week. That is what the box is for, and it makes the
+point that the minutes are useful to them rather than only to the mark.
+
+## What students work through on their own
+
+- [Modularisation of code]({{ site.baseurl }}/topics/modularisation-of-code.html),
+  and the corresponding chapter of
+  [Python for Mathematics](https://vknight.org/pfm/).
+
+Each member reports on it at the group meeting, which is the first
+standing item on every agenda.
+
+## Questions that come up
+
+**"How small should a function be?"** Small enough to test on its own
+and to name without using the word "and". That is a more useful rule
+than a line count.
+
+**"Everything is in one file, is that wrong?"** No. The submission is a
+single `<library>.py`, so one file is the expectation. Modular means the
+functions inside it are separable, not that there are many files.
+
+**"Where do we put the code that runs it?"** Not at the top level of the
+library, or importing it will run it. This is the week to mention
+`if __name__ == "__main__":` for anyone who has hit it.
+
+## Signposts
+
+- The [Assessment]({{ site.baseurl }}/assessment/) page, for how this
+  topic shows up in the marking criteria.
+- The [example projects]({{ site.baseurl }}/assessment/example-projects/),
+  which are worked submissions at the level of a good project.
+- The [Meeting minutes: Week 8]({{ site.baseurl }}/topics/meeting-minutes-week-8.html)
+  page for this week's form.
+
+## Reference
+
+The material below is **not delivered in class**. It is kept here as a
+worked treatment of the topic to draw on when answering questions.
+
 After this meeting students should:
 
 - Understand the idea of modularising code itself.
@@ -48,7 +96,7 @@ discuss what it does:
     ...
     ...     return tour
 
-## The mathematical problem considered
+### The mathematical problem considered
 
 Ask students what the travelling sales agent problem is.
 
@@ -144,7 +192,7 @@ Discuss the need for docstrings.
 
 Then put the code in `tsp.py` and show how it can be imported.
 
-## Communications
+### Communications
 
 ### After class
 

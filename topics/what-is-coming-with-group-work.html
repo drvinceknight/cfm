@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What is coming with group work - Computing for Mathematics</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pygments.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath:  [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="../">Computing for Mathematics</a>
+    <nav>
+      <ul>
+        <li><a href="../start-here/">Start here</a></li>
+        <li><a href="../#schedule">Schedule</a></li>
+        <li><a href="../assessment/">Assessment</a></li>
+        <li><a href="../assessment/example-projects/">Example Group Projects</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </header>
+
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙' : '☀️';
+        btn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'light' ? 'dark' : 'light';
+          if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          btn.textContent = next === 'light' ? '🌙' : '☀️';
+          localStorage.setItem('theme', next);
+        });
+      });
+    })();
+  </script>
+
+  <div class="container">
+    
+
+<h1>What is coming with group work</h1>
+
+
+
+
+
+
+
+
+
+<p>From Week 4 a large part of this module is a group project, worth 60% of
+your mark. This page is the short version: what you will build, how it
+is marked, and what to do this week.</p>
+<p><a href="../deck/what-is-coming-with-group-work/main.pdf"><strong>Slides: what is coming with group work (PDF)</strong></a></p>
+<h2 id="what-you-will-build">What you will build</h2>
+<p>In a group of four you build a Python library that provides tools for a
+mathematical problem of your choice. The brief is deliberately broad.
+There are eight complete
+<a href="../assessment/example-projects/">worked example projects</a>
+on this site, written at the level of a <em>good</em> submission; read them as
+a model rather than as a ceiling.</p>
+<h2 id="what-you-hand-in">What you hand in</h2>
+<p>Eight files: the paper source, the paper PDF and the bibliography; the
+library, its tests and the README; the recording of your presentation
+and the record of contributions. Each is described in the
+<a href="../assessment/#submission">submission requirements</a>.</p>
+<p>Every component is graded. You do not need to be the strongest coder in
+the group to earn full marks, since the paper, the documentation, the
+tests and the minutes are all marked too.</p>
+<h2 id="how-it-is-marked">How it is marked</h2>
+<p>Your mark is not simply your group's mark. It combines an individual
+score with the group's score using a geometric mean, described in full
+in the <a href="../assessment/#marking-scheme">marking scheme</a>,
+with <a href="../assessment/geometric-mean/">worked scenarios</a>
+showing how it behaves.</p>
+<p>The individual half of that, <span class="arithmatex">\(I\)</span>, comes from <strong>the minutes your group
+hands in</strong>. There is one form for each group-project week, in Weeks 4,
+5, 8, 9 and 10, and <span class="arithmatex">\(I\)</span> is the fraction of those five at which the
+minutes record you as having engaged. The minutes are the only record of
+it: a week with no form handed in counts for nobody in the group. The
+Week 4 form is completed and handed in during the Week 4 class itself.</p>
+<h2 id="the-chapters-are-yours-to-work-through">The chapters are yours to work through</h2>
+<p>There is <strong>no lecture</strong> on the programming topics covered in the
+group-project weeks. You work through those chapters of
+<a href="https://vknight.org/pfm/">Python for Mathematics</a> <strong>on your own</strong>:</p>
+<ul>
+<li>Weeks 4 and 5: variables, conditional statements and while loops;
+  functions and data structures; object oriented programming; using a
+  terminal and an editor.</li>
+<li>Weeks 8, 9 and 10: modularisation of code; documentation of code;
+  testing of code.</li>
+</ul>
+<p>Yes, this is <strong>self study</strong>, and it is self study <strong>with a social
+component</strong>. The reading is solitary; working out what it meant is not.
+The first standing item on every meeting agenda is each member
+reporting what they covered since the last meeting, which is where you
+find out what you misunderstood and where you help someone else do the
+same. Reading a chapter, not understanding it, and saying so in the
+meeting is exactly what the structure expects of you.</p>
+<p>The textbook has tutorials, how-to recipes, exercises and full
+solutions for every topic, so you are not working without support. You
+are working without a lecture.</p>
+<h2 id="the-weekly-rhythm">The weekly rhythm</h2>
+<p>Group work is <strong>on your timetable</strong>: you are not expected to find a free
+hour between four diaries. Each timetabled session begins with a short
+<a href="../topics/meetings.html">meeting</a> and continues as a
+workshop. The secretary writes the minutes, and the group hands them in
+at the contact hour.</p>
+<h2 id="this-week">This week</h2>
+<ol>
+<li>Form your group of four and register it before the deadline. Anyone
+   not in a group by then is assigned at random to a group of the other
+   unregistered students.</li>
+<li>Skim the <a href="../assessment/">Assessment</a> page.</li>
+<li>Look at one worked example project.</li>
+</ol>
+
+
+
+<p><small><code><a href="../class-notes/what-is-coming-with-group-work.html">Facilitator notes: What is coming with group work</a></code></small></p>
+
+
+
+
+  </div>
+
+  <footer>
+    <small>
+      Source: <a href="https://github.com/drvinceknight/cfm">@drvinceknight/cfm</a>
+    </small>
+  </footer>
+
+  <script src="../assets/js/quiz.js" defer></script>
+</body>
+</html>

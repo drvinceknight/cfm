@@ -70,6 +70,44 @@
 
 <h1>Modularisation of code</h1>
 
+<h2 id="format">Format</h2>
+<p>A group-work week. The single hour is <strong>not</strong> a lecture: students work
+through this topic on their own, and the session is there for you to
+<strong>answer questions and signpost</strong>. Nothing below is material to deliver.</p>
+<p>Open by asking what people got stuck on. If the room is silent, the
+minutes are the way in: ask a group what went into their <em>questions
+arising</em> box this week. That is what the box is for, and it makes the
+point that the minutes are useful to them rather than only to the mark.</p>
+<h2 id="what-students-work-through-on-their-own">What students work through on their own</h2>
+<ul>
+<li><a href="../topics/modularisation-of-code.html">Modularisation of code</a>,
+  and the corresponding chapter of
+  <a href="https://vknight.org/pfm/">Python for Mathematics</a>.</li>
+</ul>
+<p>Each member reports on it at the group meeting, which is the first
+standing item on every agenda.</p>
+<h2 id="questions-that-come-up">Questions that come up</h2>
+<p><strong>"How small should a function be?"</strong> Small enough to test on its own
+and to name without using the word "and". That is a more useful rule
+than a line count.</p>
+<p><strong>"Everything is in one file, is that wrong?"</strong> No. The submission is a
+single <code>&lt;library&gt;.py</code>, so one file is the expectation. Modular means the
+functions inside it are separable, not that there are many files.</p>
+<p><strong>"Where do we put the code that runs it?"</strong> Not at the top level of the
+library, or importing it will run it. This is the week to mention
+<code>if __name__ == "__main__":</code> for anyone who has hit it.</p>
+<h2 id="signposts">Signposts</h2>
+<ul>
+<li>The <a href="../assessment/">Assessment</a> page, for how this
+  topic shows up in the marking criteria.</li>
+<li>The <a href="../assessment/example-projects/">example projects</a>,
+  which are worked submissions at the level of a good project.</li>
+<li>The <a href="../topics/meeting-minutes-week-8.html">Meeting minutes: Week 8</a>
+  page for this week's form.</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<p>The material below is <strong>not delivered in class</strong>. It is kept here as a
+worked treatment of the topic to draw on when answering questions.</p>
 <p>After this meeting students should:</p>
 <ul>
 <li>Understand the idea of modularising code itself.</li>
@@ -113,7 +151,7 @@ discuss what it does:</p>
 ...
 ...     return tour
 </code></pre>
-<h2 id="the-mathematical-problem-considered">The mathematical problem considered</h2>
+<h3 id="the-mathematical-problem-considered">The mathematical problem considered</h3>
 <p>Ask students what the travelling sales agent problem is.</p>
 <p>Have a discussion about it.</p>
 <p>Consider the following 25 stops with coordinates as follows::</p>
@@ -195,7 +233,7 @@ np.float64(133.40828432465426)
 </code></pre>
 <p>Discuss the need for docstrings.</p>
 <p>Then put the code in <code>tsp.py</code> and show how it can be imported.</p>
-<h2 id="communications">Communications</h2>
+<h3 id="communications">Communications</h3>
 <h3 id="after-class">After class</h3>
 <p>Send the following email after class::</p>
 <pre><code>Hi all,

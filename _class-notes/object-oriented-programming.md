@@ -4,7 +4,55 @@ title: "Object oriented programming"
 tags: object-oriented-programming
 ---
 
-# Object oriented programming
+## Format
+
+A group-work week. The single hour is **not** a lecture: students work
+through this topic on their own, and the session is there for you to
+**answer questions and signpost**. Nothing below is material to deliver.
+
+Open by asking what people got stuck on. If the room is silent, the
+minutes are the way in: ask a group what went into their *questions
+arising* box this week. That is what the box is for, and it makes the
+point that the minutes are useful to them rather than only to the mark.
+
+## What students work through on their own
+
+- [Object Oriented Programming]({{ site.baseurl }}/topics/object-oriented-programming.html),
+  and the corresponding chapter of
+  [Python for Mathematics](https://vknight.org/pfm/).
+
+Each member reports on it at the group meeting, which is the first
+standing item on every agenda.
+
+## Questions that come up
+
+**"Does our project have to use a class?"** No. A library of functions
+is a perfectly good submission, and the marking criteria never mention
+classes. Say this plainly: every year a group contorts a working
+function-based design into classes because they think it scores better.
+
+**"What is `self` for?"** The instance the method was called on. Showing
+`Thing.method(instance)` alongside `instance.method()` once tends to
+settle it faster than an explanation.
+
+**"When is a class the right choice?"** When several functions keep
+passing the same collection of values around. That is the signal.
+
+## Signposts
+
+- The [Assessment]({{ site.baseurl }}/assessment/) page, for how this
+  topic shows up in the marking criteria.
+- The [example projects]({{ site.baseurl }}/assessment/example-projects/),
+  which are worked submissions at the level of a good project.
+- The [Meeting minutes: Week 5]({{ site.baseurl }}/topics/meeting-minutes-week-5.html)
+  page for this week's form.
+
+## Reference
+
+The material below is **not delivered in class**. It is kept here as a
+worked treatment of the topic to draw on when answering questions.
+
+### Object oriented programming
 
 After this meeting students should:
 
@@ -12,7 +60,7 @@ After this meeting students should:
 - Understand the basic syntax of how to create classes and instances
 - Know what they need to do to prepare for their tutorial
 
-## Problem
+### Problem
 
 Tell students we are going to investigate some group theory.
 
@@ -32,7 +80,7 @@ Tell students we are going to investigate some group theory.
 
     Obtain the multiplication table for this group.
 
-## Solution
+### Solution
 
 $$
    \begin{pmatrix}
@@ -291,7 +339,7 @@ We can also use this to check for larger group sizes::
     >>> test_group(elements=permutations)
     True
 
-## Communications
+### Communications
 
 ### After class
 

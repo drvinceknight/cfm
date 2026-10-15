@@ -4,12 +4,61 @@ title: "Testing of code"
 tags: testing
 ---
 
+## Format
+
+A group-work week. The single hour is **not** a lecture: students work
+through this topic on their own, and the session is there for you to
+**answer questions and signpost**. Nothing below is material to deliver.
+
+Open by asking what people got stuck on. If the room is silent, the
+minutes are the way in: ask a group what went into their *questions
+arising* box this week. That is what the box is for, and it makes the
+point that the minutes are useful to them rather than only to the mark.
+
+## What students work through on their own
+
+- [Testing of code]({{ site.baseurl }}/topics/testing-of-code.html),
+  and the corresponding chapter of
+  [Python for Mathematics](https://vknight.org/pfm/).
+
+Each member reports on it at the group meeting, which is the first
+standing item on every agenda.
+
+## Questions that come up
+
+**"How many tests do we need?"** The criterion is that the tests cover
+all functionality of the code and the documentation, so the question to
+turn back on them is which function is currently untested.
+
+**"Our tests all pass, are we done?"** Ask what happens at the
+boundaries: zero, one, an empty input, a negative where only positives
+were considered. The exemplary band specifically mentions edge cases the
+tutorial does not exercise.
+
+**"Do we need pytest?"** No. Assertion statements in a
+`test_<library>.py` that runs top to bottom are sufficient and are what
+the example projects use.
+
+## Signposts
+
+- The [Assessment]({{ site.baseurl }}/assessment/) page, for how this
+  topic shows up in the marking criteria.
+- The [example projects]({{ site.baseurl }}/assessment/example-projects/),
+  which are worked submissions at the level of a good project.
+- The [Meeting minutes: Week 10]({{ site.baseurl }}/topics/meeting-minutes-week-10.html)
+  page for this week's form.
+
+## Reference
+
+The material below is **not delivered in class**. It is kept here as a
+worked treatment of the topic to draw on when answering questions.
+
 After this meeting students should:
 
 - Understand the general structure required for documentation
 - Understand how to write further markdown
 
-## First meeting
+### First meeting
 
 After this meeting students should:
 
@@ -22,7 +71,7 @@ After this meeting students should:
 Discuss how we will write automated tests for the `tsp` library we wrote in the
 first section.
 
-#### Writing the unit tests
+### Writing the unit tests
 
 Write the following in a `test_tsp.py` file::
 
@@ -160,7 +209,7 @@ Discussion around 3 pillars of software development
 Specifically look at diagram in further information section:
 https://vknight.org/pfm/building-tools/07-testing/why/main.html#how-are-modularisation-documentation-and-testing-related
 
-## Communications
+### Communications
 
 ### After class
 

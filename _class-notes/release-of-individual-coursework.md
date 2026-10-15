@@ -1,7 +1,7 @@
 ---
 layout: class-notes
 title: "Release of individual coursework"
-tag: "release-of-individual-coursework"
+tags: "release-of-individual-coursework"
 ---
 
 # Computing for Mathematics: Release of individual coursework
@@ -42,7 +42,7 @@ Clarify the deadline.
 
 Go over the mock coursework:
 
-- [assignment.ipynb]({{site.baseurl}}/assets/assessment/mock/assignment.ipynb).
-- [solution.ipynb]({{site.baseurl}}/assets/assessment/mock/solution.ipynb)
+- [mock.ipynb]({{site.baseurl}}/assets/assessment/mock/mock.ipynb).
+- [mock_solutions.ipynb]({{site.baseurl}}/assets/assessment/mock/mock_solutions.ipynb)
 
 Ask students if they have any questions.

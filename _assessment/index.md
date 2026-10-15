@@ -19,8 +19,8 @@ You can complete each test as soon as it is released. The deadline for
 completing all of them is at the end of the module.
 
 **I recommend you do each quiz as the corresponding content is covered.**
-Tests 1–4 cover the tools half of the module; tests 5 and 6 cover the
-group-project half. You can attempt each quiz as many times as you wish;
+Tests 1–4 cover the tools weeks of the module; tests 5 and 6 cover the
+group-project weeks. You can attempt each quiz as many times as you wish;
 your last attempt is the one that counts.
 
 # Individual coursework (20%)
@@ -30,7 +30,7 @@ A mock coursework is available:
 
 Solutions to the mock are [here]({{site.baseurl}}/assets/assessment/mock/mock_solutions.ipynb).
 
-## [Marking criteria](#marking-criteria-individual)
+## [Individual marking criteria](#individual-marking-criteria)
 
 The coursework has 8 questions, each worth 5 marks, for 40 marks in
 total. That raw mark is then scaled to the 20% of the module mark that
@@ -126,7 +126,7 @@ through the week's minutes and asynchronous contributions can still
 be recorded as engaged.
 
 A student's score is the fraction of the five group meeting weeks
-(Weeks 6 to 10) at which the minutes record them as having engaged:
+(Weeks 4, 5, 8, 9 and 10) at which the minutes record them as having engaged:
 
 \[I = \frac{\text{number of meetings at which the student is recorded as engaged}}{5} \times 100\]
 
@@ -144,7 +144,7 @@ Three [group-project marking scenarios]({{ site.baseurl }}/assessment/geometric-
 a well-functioning group) are on a dedicated page; they are the
 clearest way to see why both \(I\) and \(Q\) matter.
 
-#### [Marking criteria](#marking-criteria)
+#### [Group marking criteria](#group-marking-criteria)
 
 The various components of the submission should aim to demonstrate how the
 following aspects of the work have been addressed:
@@ -278,8 +278,8 @@ of papers written for that journal that can be helpful are:
 
 ## Groups
 
-Groups of four are in place by the time the group-project half of the
-module begins. Groups are **self-selecting**: form a group of four with
+Groups of four are in place by the time the first group-project week
+begins. Groups are **self-selecting**: form a group of four with
 people you want to work with and register it before the deadline. Any
 student who has not joined a self-selected group by the deadline is
 randomly assigned to a group with the other unassigned students. The
@@ -289,7 +289,7 @@ likely to contain other students who have not yet committed to the
 project.
 
 At the first meeting the group agrees the **secretary rota**: a different
-member is secretary each of the five meeting weeks (Weeks 6 to 10),
+member is secretary each of the five meeting weeks (Weeks 4, 5, 8, 9 and 10),
 which spreads the minute-taking workload and gives each member a turn at
 documenting the work.
 

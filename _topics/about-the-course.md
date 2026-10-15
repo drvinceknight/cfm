@@ -60,24 +60,27 @@ Some examples of how this applies to me:
 
 ## Structure of the course
 
-The course runs over a single semester and is divided into two halves.
+The course runs over a single semester and alternates between two kinds of
+week.
 
-In the first half (Weeks 1 to 6), we cover the mathematical and computational
+In **Weeks 1 to 3, 6 and 7** we cover the mathematical and computational
 foundations of the module in scheduled classes.
 
-In the second half (Weeks 6 to 11), the emphasis shifts to self-directed group
-work. Groups meet independently each week to study the Python for Mathematics
-book content and to make progress on their group project. There is a single
-one-hour contact session per week in the second half; this session is used to
-hand in the week's meeting minutes and to ask questions. **Groups are formed
-during Week 1** so that you have your group from the very start of the module.
+In **Weeks 4, 5, and 8 to 11** the emphasis shifts to group work. Your group
+meets each of those weeks to study the Python for Mathematics book content
+and to make progress on the group project. Group work has its own timetabled
+session, so you are not expected to find a free hour between four diaries.
+Each session opens with a short meeting and continues as a workshop, and the
+contact hour is used to hand in the week's minutes and to ask questions.
+**Groups are formed during Week 3**, so that you have your group from the
+start of the first group-project week.
 
-Each week in the group project phase has a minutes template linked in the
-schedule. One member acts as secretary for the meeting (the role rotates each
-week) and is responsible for completing the minutes. The group prints the
-minutes and submits the hard copy as a group during the contact hour. The
-attendance recorded in the minutes is the evidence used for the individual
-component of the group project mark.
+Weeks 4, 5, 8, 9 and 10 each have a minutes template linked in the schedule.
+One member acts as secretary for the meeting (the role rotates each week) and
+is responsible for completing the minutes. The group prints the minutes and
+submits the hard copy as a group during the contact hour. The engagement
+recorded in the minutes is the evidence used for the individual component of
+the group project mark.
 
 ## Assessment
 

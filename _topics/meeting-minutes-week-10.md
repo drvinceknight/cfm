@@ -3,10 +3,11 @@ layout: topic
 title: "Meeting minutes: Week 10"
 ---
 
-This week's group meeting covers the following topic from the
-[Python for Mathematics](https://vknight.org/pfm/) book:
+This week you work through the following topics on your own, and each
+member reports on them at the group meeting:
 
-- [Testing of code]({{ site.baseurl }}/topics/testing-of-code.html)
+- [Testing of code]({{ site.baseurl }}/topics/testing-of-code.html),
+  a chapter of [Python for Mathematics](https://vknight.org/pfm/).
 
 The template's **project progress** section is the place to record the
 current state of the project: what is complete, what is in progress, and

@@ -8,8 +8,6 @@ From Week 4 a large part of this module is a group project, worth 60% of
 your mark. This page is the short version: what you will build, how it
 is marked, and what to do this week.
 
-[**Slides: what is coming with group work (PDF)**]({{ site.baseurl }}/deck/what-is-coming-with-group-work/main.pdf)
-
 ## What you will build
 
 In a group of four you build a Python library that provides tools for a

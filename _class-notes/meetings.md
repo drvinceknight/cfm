@@ -25,6 +25,13 @@ meeting does not happen.
 
 ## In class meeting
 
+**The deck.** There is a write-on deck at
+[/deck/meetings/main.pdf]({{ site.baseurl }}/deck/meetings/main.pdf).
+Each of the four bad meetings on slides 4 to 7 has a workspace under its
+question, the three role cards on slide 8 are empty, and the rota, the
+meeting slot and the first chair on slide 11 are blanks each group fills
+in for itself. Answers are at the end of these notes.
+
 The spine of this class is four meetings that went wrong. Each one is a
 slide with a diagram and a question; put the question to the room and
 let them answer before you give the reading.

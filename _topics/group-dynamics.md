@@ -17,8 +17,6 @@ in which one person is dominating, or a group that is not engaging deeply
 with the work. The aim is not to eliminate disagreement, but to handle it
 productively.
 
-[**Slides: group dynamics (PDF)**]({{ site.baseurl }}/deck/group-dynamics/main.pdf)
-
 ## Why disagreements happen
 
 In academic group work, most disagreements fall into one of a few categories.

@@ -18,6 +18,12 @@ session.
 
 ## In class meeting
 
+**The deck.** There is a write-on deck at
+[/deck/group-dynamics/main.pdf]({{ site.baseurl }}/deck/group-dynamics/main.pdf).
+The resolution for each of the four kinds of disagreement is blank on
+slide 3, and each of the three scenarios on slides 5 to 7 has a
+workspace and a short blank. Answers are at the end of these notes.
+
 The opening claim is that disagreement is normal and often useful, and
 that a group which never disagrees is either dominated by one person or
 not engaging with the work. Say it plainly and early, because several

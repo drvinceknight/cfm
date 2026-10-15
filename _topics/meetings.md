@@ -4,11 +4,10 @@ title: "Meetings"
 tag: meetings
 ---
 
-In the group-project weeks of this module your group meets every week. The quality of
-those meetings is the foundation for everything else you produce together.
-These notes describe what a meeting is, what it is not, and how to run one.
-
-[**Slides: meetings (PDF)**]({{ site.baseurl }}/deck/meetings/main.pdf)
+In the group-project weeks of this module your group meets every week.
+The quality of those meetings is the foundation for everything else you
+produce together. These notes describe what a meeting is, what it is
+not, and how to run one.
 
 The material is adapted from the
 [Principles of Meetings](https://github.com/drvinceknight/pom) repository,

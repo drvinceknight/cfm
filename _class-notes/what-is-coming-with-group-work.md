@@ -36,6 +36,13 @@ in Week 6 than to state now.
 
 ## In class meeting
 
+**The deck.** There is a write-on deck at
+[/deck/what-is-coming-with-group-work/main.pdf]({{ site.baseurl }}/deck/what-is-coming-with-group-work/main.pdf).
+Five things on it are blank and filled in from the room: the workspace
+on slide 2, the file count on slide 4, the \(I\) and \(Q\) boxes on
+slide 5, the four final marks on slide 6, and the \(I\) arithmetic on
+slide 7. Answers for all of them are at the end of these notes.
+
 Open with the fact that the group project is 60% of the module and
 starts in Week 4.
 

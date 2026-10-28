@@ -8,12 +8,44 @@ tags: testing
 
 A group-work week. The single hour is **not** a lecture: students work
 through this topic on their own, and the session is there for you to
-**answer questions and signpost**. Nothing below is material to deliver.
+**answer questions and signpost**. The deck below is questions to put
+to the room, not material to read out, and the reference section at the
+end is not delivered at all.
 
 Open by asking what people got stuck on. If the room is silent, the
 minutes are the way in: ask a group what went into their *questions
 arising* box this week. That is what the box is for, and it makes the
 point that the minutes are useful to them rather than only to the mark.
+
+## Timing
+
+A full session, and the last of the five group-project weeks. The hour
+is still questions and signposting rather than a lecture, but the deck
+gives it a spine for when the room has nothing to ask.
+
+| Section | Minutes |
+|:--|--:|
+| Open with what people got stuck on | 6 |
+| Slide 2: the three pillars, now all read | 4 |
+| Slides 3 to 8: the testing questions | 24 |
+| Slide 9: which function is untested? | 10 |
+| Slides 10 and 11: the eight files, and the run in | 8 |
+| Slide 12: before you leave | 8 |
+
+If the room is talking, let it. The questions they bring beat the
+slides. Slide 9 is the one not to cut, and slide 12 is the other: this
+is the last timetabled meeting week, so it is the last cheap
+opportunity to catch a group that has three of the eight files and no
+plan for the rest.
+
+## The deck
+
+There is a write-on deck at
+[/deck/testing/main.pdf]({{ site.baseurl }}/deck/testing/main.pdf).
+Slides 3 to 8 each carry a short listing, a question and a workspace
+for the answer the room gives. Slides 9 and 10 are filled in by each
+group for itself rather than by you. Answers are at the end of these
+notes.
 
 ## What students work through on their own
 
@@ -47,6 +79,118 @@ the example projects use.
   which are worked submissions at the level of a good project.
 - The [Meeting minutes: Week 10]({{ site.baseurl }}/topics/meeting-minutes-week-10.html)
   page for this week's form.
+
+## Communications
+
+### Before class
+
+Send the following message before class:
+
+    Hi all,
+
+    This week's topic is automated testing, which is the last of the
+    three chapters on turning code that works into software.
+
+    This is also the last group meeting week: Week 10 minutes are the
+    fifth and final set that your engagement record is built from.
+
+    Worth bringing: a list of the functions in your library. We will
+    work out which of them are not yet tested.
+
+    Please get in touch if I can assist with anything,
+    Vince
+
+### After class
+
+Send the following message after class:
+
+    Hi all,
+
+    Today we went through automated testing, and each group listed the
+    functions in its library that have no test yet.
+
+    The topic pages:
+
+    - Testing of code: https://vknight.org/cfm/topics/testing-of-code.html
+    - The chapter in Python for Mathematics:
+      https://vknight.org/pfm/building-tools/07-testing/tutorial/main.html
+
+    From here to the deadline there are no more timetabled meetings.
+    What is left is the eight files:
+
+    1. main.tex
+    2. main.pdf
+    3. references.bib
+    4. <library>.py
+    5. test_<library>.py
+    6. README.md
+    7. presentation.mp4
+    8. contribution.md
+
+    If something in your group is not working, this is the week to
+    raise it in the contact hour rather than the week before
+    submission.
+
+    Please get in touch if I can assist with anything,
+    Vince
+
+## Answers for the deck
+
+**Slide 2, the three pillars.** Nothing to elicit, but it is worth
+thirty seconds. Modularisation, documentation and testing are the three
+chapters they have now read, and the Scope criterion is all three
+together at 50% of the project mark. Small functions are easy to test
+and easy to document; tests are what make documentation that is
+verified possible.
+
+**Slide 3, one line, two parts.** After `assert` comes a claim that
+must be true, and then an optional string that is shown when it is not.
+Push the second part: the string is the message their future self reads
+when the test fails, so `"The function gave the wrong answer"` is
+weaker than a sentence naming what was expected.
+
+**Slide 4, how many tests does this need?** Three, because the function
+does three things. Groups count functions and write one test each; the
+thing to count is behaviours. This is the same argument as the
+modularisation week from the other direction: a function that needs ten
+tests is probably several functions.
+
+**Slide 5, your tests all pass.** Zero, one, an empty input and a
+negative where only positives were considered. The exemplary band asks
+specifically for edge cases that the tutorial does not exercise, and
+these four are where they usually live. Take a real function from a
+group in the room rather than a made-up one.
+
+**Slide 6, how do you test something random?** Seeding. `random.seed(0)`
+fixes the sequence without making the function deterministic in use, so
+the assertion holds every run. Worth adding the second technique: for a
+thousand rolls you can assert the set of values obtained, or that each
+count falls in an expected range, which tests the behaviour rather than
+one draw.
+
+**Slide 7, where the tests live.** A separate `test_<library>.py`, one
+function per behaviour, each with a docstring saying what it checks, and
+the calls at the bottom so that `python test_tsp.py` runs them. They do
+not need `pytest`, and the example projects do not use it. The reason to
+use functions rather than a flat script is that each one has somewhere
+to document what it checks.
+
+**Slide 8, what is a doctest for?** To check that the documentation is
+still true. It is not where the mathematics gets tested, and using it
+that way makes the README unreadable. `python -m doctest README.md`
+runs them. Both are required separately: the doctests are documentation
+that is verified, the test file is the test suite.
+
+**Slide 9, which function is untested?** This is group work, not a
+question to you, and it is the ten minutes of the hour that produce
+actions in the minutes. Walk the room. A group that cannot list its own
+functions has a bigger problem than testing, and that is worth knowing
+now.
+
+**Slide 10, the eight files.** The tick boxes are for them. The useful
+answer is the uncomfortable one, so ask which file nobody has started.
+In most years that is `contribution.md` and the presentation, and both
+are cheap to start and expensive to leave.
 
 ## Reference
 

@@ -70,8 +70,9 @@ In **Weeks 4, 5, and 8 to 11** the emphasis shifts to group work. Your group
 meets each of those weeks to study the Python for Mathematics book content
 and to make progress on the group project. Group work has its own timetabled
 session, so you are not expected to find a free hour between four diaries.
-Each session opens with a short meeting and continues as a workshop, and the
-contact hour is used to hand in the week's minutes and to ask questions.
+Each session holds a short meeting, and the contact hour is used to hand in
+the week's minutes and to ask questions. The project work itself you fit
+around these, on your own or together in a workshop.
 **Groups are formed during Week 3**, so that you have your group from the
 start of the first group-project week.
 

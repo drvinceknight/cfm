@@ -46,6 +46,9 @@ library, or importing it will run it. This is the week to mention
   which are worked submissions at the level of a good project.
 - The [Meeting minutes: Week 8]({{ site.baseurl }}/topics/meeting-minutes-week-8.html)
   page for this week's form.
+- The [LaTeX and writing mathematics]({{ site.baseurl }}/class-notes/latex-and-writing-mathematics.html)
+  class notes. This week's class hour belongs to that topic, and its
+  deck carries the two modularisation slides and the answers to them.
 
 ## Reference
 

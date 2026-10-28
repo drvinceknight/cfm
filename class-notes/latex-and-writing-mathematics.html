@@ -91,6 +91,20 @@ screen before handing over.</p>
 <p>Stay for the hour and take any questions at the end. Questions about
 LaTeX itself belong here too, since this is the week students start
 writing.</p>
+<h2 id="the-deck">The deck</h2>
+<p>There is a write-on deck at
+<a href="../deck/latex-and-writing-mathematics/main.pdf">/deck/latex-and-writing-mathematics/main.pdf</a>.
+It is deliberately not an hour of material, because the hour is not
+ours. It comes in two halves.</p>
+<p>Slides 2 to 4 are the two minutes before you hand over. Slide 4 is the
+one worth doing properly: each group names three tools that already do
+something like what their library will do, and says what theirs does
+differently. That is the state of the field in the only form a student
+can act on, and there is a workspace for the answer.</p>
+<p>Slides 5 to 10 are for the questions at the end, and for students to
+work through afterwards. Three are LaTeX, two are modularisation. When
+the room goes quiet, put one up rather than asking again whether anyone
+has a question. Answers are at the end of these notes.</p>
 <h2 id="what-students-work-through-on-their-own">What students work through on their own</h2>
 <ul>
 <li><a href="https://vknight.org/tex/">LaTeX notes</a>: the tutorials covering the
@@ -102,6 +116,24 @@ writing.</p>
 files. The librarian session is where the content of that file comes
 from, so the two halves of this week fit together: the notes teach the
 mechanics of citing, the session is about what is worth citing.</p>
+<h2 id="this-weeks-python">This week's Python</h2>
+<p>The Python chapter this week is modularisation, and slides 9 and 10
+cover the two things that catch people.</p>
+<p><strong>Slide 9, name this function without using 'and'.</strong> You cannot, which
+is the answer. <code>add_tip_and_get_bill_share</code> is two functions:
+<code>add_tip</code>, which returns a total with the tip included, and
+<code>get_bill_share</code>, which divides a total by the number of payers. The
+rule to give them is that a function should be small enough to test on
+its own and nameable without the word 'and'. Resist giving a line
+count. The chapter they read is explicit that arbitrary line limits
+often add more complexity than they remove.</p>
+<p><strong>Slide 10, why did importing it draw a plot?</strong> Because importing a
+file runs everything at its top level, and this one calls <code>get_tour</code>
+and <code>plot_tour</code> there. The library holds functions; the code that uses
+them belongs in another file, or under <code>if __name__ == "__main__":</code>.
+This is also the week to say that the submission is a single
+<code>&lt;library&gt;.py</code>, so modular means the functions inside one file are
+separable, not that there are many files.</p>
 <h2 id="questions-that-come-up">Questions that come up</h2>
 <p><strong>"Can we use Overleaf?"</strong> Yes. It removes the installation problem
 entirely and supports collaboration, which matters for a group paper.
@@ -153,6 +185,32 @@ the references are part of the Research marking criterion.
 Please get in touch if I can assist with anything,
 Vince
 </code></pre>
+<h2 id="answers-for-the-deck">Answers for the deck</h2>
+<p><strong>Slide 4, name three tools.</strong> Every year a group says there is nothing
+else like their library. It is almost never true, and it is the answer
+that scores worst, because the criterion is explicitly about how the
+software compares with commonly used packages. Push for named tools:
+<code>numpy</code>, <code>scipy</code>, <code>sympy</code>, a specific library on PyPI, whatever their
+A-level teacher used. What theirs does differently can be small and
+honest, such as handling one case in a way the general tool does not
+make obvious.</p>
+<p><strong>Slide 6, where is the title?</strong> <code>\maketitle</code> is missing. The preamble
+says what the title is; <code>\maketitle</code> is what puts it on the page. This
+one catches almost everybody once.</p>
+<p><strong>Slide 7, why is my citation a question mark?</strong> They have run
+<code>pdflatex</code> but not <code>bibtex</code>, and then not <code>pdflatex</code> twice more. Say
+that Overleaf does all four for them and a local install does not,
+since the groups that hit this are the ones who installed something.
+The same answer covers a <code>Figure ??</code> cross reference, which needs the
+second <code>pdflatex</code>.</p>
+<p><strong>Slide 8, two habits to drop.</strong> The first is a preference and they can
+take it or leave it: <code>\(...\)</code> and <code>\[...\]</code> are easier to find in the
+source than <code>$...$</code>, and they fail more usefully when unclosed. The
+second is not a preference. A figure is a float, so LaTeX puts it where
+it fits, which may be the next page or the one before. 'In the picture
+below' is therefore sometimes simply false, where <code>Figure~\ref{...}</code> is
+always true. The tilde stops a line break between the word and the
+number.</p>
 
 </div>
 

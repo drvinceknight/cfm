@@ -78,8 +78,10 @@ Say the words **self study** out loud rather than implying them. Then
 say, equally plainly, that it is not independent study in the sense of
 being left alone: the reading is solitary, the understanding is not.
 Slide 10 makes the division concrete: the reading is homework, and the
-meeting and the workshop are both timetabled, so they are not being
-asked to find a free hour between four diaries.
+meeting is timetabled, so they are not being asked to find a free hour
+between four diaries. Be careful not to imply that a workshop has to
+follow the meeting. Building the library is theirs to arrange, alone or
+together, and the point to make is that none of that is the meeting.
 
 Close on the three actions for the week, the first of which is forming a
 group of four.

@@ -48,6 +48,9 @@ is a test they can actually apply: give it to another group.
   which are worked submissions at the level of a good project.
 - The [Meeting minutes: Week 9]({{ site.baseurl }}/topics/meeting-minutes-week-9.html)
   page for this week's form.
+- The [Presenting mathematics]({{ site.baseurl }}/class-notes/presenting-mathematics.html)
+  class notes. This week's class hour belongs to that topic, and its
+  deck carries the three documentation slides and the answers to them.
 
 ## Reference
 

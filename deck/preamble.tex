@@ -10,6 +10,7 @@
             footskip=0.75cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[default]{sourcesanspro}
+\usepackage[scaled=0.92]{sourcecodepro}
 \usepackage{newtxsf}
 \usepackage{tikz}
 \usepackage{amsmath}
@@ -114,3 +115,21 @@
 % Prompt to the room: a question the class answers, not something I read out.
 \newcommand{\ask}[1]{%
   {\large\color{inkblue}\bfseries #1}\par\vspace{0.5em}}
+
+% A block of code. #1 is the width in cm, #2 the lines, separated by \\ and
+% indented with \idt. Set against white so it reads as a listing rather than
+% as prose.
+\newcommand{\idt}{\hspace*{1.4em}}
+\newcommand{\codebox}[2]{%
+  \begin{tikzpicture}
+    \node[draw=inkfaint, line width=0.7pt, rounded corners=3pt, fill=white,
+          minimum width=#1cm, text width=\dimexpr#1cm-1.0cm\relax,
+          align=left, inner sep=0.5cm, text=inktext,
+          font=\ttfamily\large] {#2};
+  \end{tikzpicture}}
+
+% A line of code that is wrong, for the slides that ask the class what breaks.
+\newcommand{\wrong}[1]{\textcolor{inkred}{#1}}
+
+% A backslash inside a listing, for the slides that show LaTeX source.
+\newcommand{\bs}{\textbackslash}

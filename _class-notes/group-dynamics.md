@@ -7,22 +7,58 @@ tags: group-dynamics
 ## Timing
 
 A full session. Roughly: 10 minutes on the categories and the framework,
-25 minutes on the three scenarios, 10 minutes on effort, 10 minutes on
-the chair's two practices, and the last 5 minutes on the closing slide.
+20 minutes on the three scenarios, 8 minutes on effort, 8 minutes on the
+chair's two practices, 10 minutes on the Python slides, and the last 4
+minutes on the closing slide.
 
-Keep those last 5 minutes. Slide 11 is where this class's content
+Keep those last 4 minutes. Slide 15 is where this class's content
 attaches to the form: the *disagreements and decisions* box is the thing
 the whole session has been preparing them to fill in, and it is the
 reminder to meet this week and bring the Week 5 minutes to the next
 session.
+
+If the scenarios run long, take two of them rather than cutting the
+Python slides. The scenarios are the kind of material that recovers in a
+later week; a group that cannot run its code from a terminal is stuck
+now.
+
+## This week's Python
+
+Slides 11 to 14 cover the week's two chapters, objects and the command
+line. They are not a lecture on either: the students read the chapters
+themselves, and these four slides put the three things that actually
+catch people in front of the room.
+
+**Slide 12, what is `self`?** Let them answer before you do. The answer
+is that `self` is the instance the method was called on, and that Python
+passes it for you, which is why it appears in the definition but not in
+the call. Showing the same method called on two different instances is
+the fastest way to make it land.
+
+**Slide 13, does your project need a class?** The answer on the slide is
+`No`, in large type, and it is there deliberately. Every year a group
+decides it must write classes because the chapter was about classes, and
+produces something worse than the library of plain functions it would
+otherwise have written. A class earns its place when several functions
+keep passing the same things around; say that, and let them decide.
+
+**Slide 14, out of the notebook.** The three commands are `cd`, `ls` and
+`python main.py`, and that is genuinely most of what they need this
+week. The question underneath is the one that matters: the submission is
+a `.py` file, and a notebook remembers what you ran earlier while a file
+does not. Expect `it works in the notebook but not from the terminal`,
+which is almost always a cell that was run out of order or a name that
+only exists in the notebook's memory.
 
 ## In class meeting
 
 **The deck.** There is a write-on deck at
 [/deck/group-dynamics/main.pdf]({{ site.baseurl }}/deck/group-dynamics/main.pdf).
 The resolution for each of the four kinds of disagreement is blank on
-slide 3, and each of the three scenarios on slides 5 to 7 has a
-workspace and a short blank. Answers are at the end of these notes.
+slide 3, each of the three scenarios on slides 5 to 7 has a workspace
+and a short blank, and the three Python slides, 12 to 14, each have a
+workspace for the answer the room gives. Answers are at the end of these
+notes.
 
 The opening claim is that disagreement is normal and often useful, and
 that a group which never disagrees is either dominated by one person or
@@ -143,7 +179,7 @@ observable fact that the function is not written, and to record what D
 agrees to do before the following meeting. If it does not improve, it
 comes to you in the contact hour.
 
-**Slide 11, before you leave.** Nothing to elicit here, but do not let
+**Slide 15, before you leave.** Nothing to elicit here, but do not let
 it become a slide you talk over while people pack up. The point worth
 making out loud is that the box exists because disagreement is expected:
 a minutes form with an empty disagreements section every week for five

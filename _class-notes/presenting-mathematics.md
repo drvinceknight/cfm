@@ -52,12 +52,63 @@ say in class that these are shown with permission. Students are
 noticeably more willing to be in next year's set when they have seen it
 done that way.
 
+## The deck
+
+There is a write-on deck at
+[/deck/presenting-mathematics/main.pdf]({{ site.baseurl }}/deck/presenting-mathematics/main.pdf).
+Slides 2 and 3 are the frame, two minutes at most, before the first
+recording goes on.
+
+Slide 4 is the one to keep coming back to. It is a grid: five questions
+down the side, three columns for the three presentations. Put it up
+after each one and fill a column in from the room. The last row is the
+band, which you give once the discussion has run.
+
+Slides 5 to 8 are for after the last recording. They cover what
+Communication is marked on, a fifteen minute budget each group fills in
+for its own talk, a storyboard of eight empty scenes, and the point
+about the recorded demonstration. Slide 6 is the most useful thing in
+the hour, because the commonest failure becomes visible as soon as the
+numbers are written down.
+
+Slides 9 to 12 are this week's documentation chapter. Answers to
+everything are at the end of these notes.
+
 ## What students work through on their own
 
 - [Principles of presentation](https://vknight.org/pop/).
 - The [example projects]({{ site.baseurl }}/assessment/example-projects/),
   read with the presentation in mind: each has a paper that a
   presentation would be built from.
+
+## This week's Python
+
+The Python chapter this week is documentation, and the deck puts three
+questions to the room.
+
+**Slide 10, four sections, which is which?** The four analogies, in the
+order they appear, are a how-to guide, a tutorial, an explanation and a
+reference. Take them in whatever order the room offers. What matters is
+the reason behind each: a recipe tells you to chop the onion without
+saying why, a first time in a kitchen is somebody being shown every
+step, the chemistry of a cooked onion is understanding, and the list of
+ingredients is somewhere to look things up. The Scope criterion asks
+for all four by name.
+
+**Slide 11, README or docstring?** The README is for somebody deciding
+whether to use the library, and then learning how. The docstrings are
+for somebody reading one function. They need both, and the common
+failure is a long README with no docstrings behind it. The question
+underneath, which of the two a good variable name belongs to, has no
+clean answer and is worth the thirty seconds it takes: a name is
+documentation that cannot go out of date, and it sits in the code
+rather than beside it.
+
+**Slide 12, how do you know it is enough?** Give it to another group.
+The criterion is that the README would be usable by somebody outside
+the group with no extra help, and swapping READMEs with the group at
+the next table tests exactly that in ten minutes. Suggest they do it in
+this week's meeting.
 
 ## Questions that come up
 
@@ -107,3 +158,32 @@ Send the following message after class:
 
     Please get in touch if I can assist with anything,
     Vince
+
+## Answers for the deck
+
+**Slide 4, the grid.** The five rows are deliberately countable rather
+than impressionistic. The first, minutes before the library appeared,
+usually produces a number that surprises the room. The third, what you
+learned that the README would not tell you, is the one that separates a
+presentation from a document read aloud: if the honest answer is
+nothing, the talk had no reason to exist. Hold the band back until the
+discussion has finished, then say which one it sat in and why.
+
+**Slide 6, the fifteen minute budget.** There is no single right
+answer, and it is worth saying so. What is wrong is eleven minutes of
+mathematics and three of software, or a budget with nothing left for
+the design decisions and the limitations. A workable shape is around
+three minutes on the problem, three on the mathematics, five on the
+library and how it is built, two on the demonstration and two on what
+it does not do. Let them argue with it.
+
+**Slide 7, the storyboard.** Eight boxes, and the instruction is to
+storyboard it as a film. The point to make is that a scene is not a
+slide: one scene may need three slides, or none. Groups that plan in
+slides end up with a transcript on the screen, which is exactly what
+the second principle warns against.
+
+**Slide 8, the recorded demonstration.** Nothing can fail live, so a
+failure still sitting in the recording is worse than a live one,
+because it means nobody watched it back. One rehearsal before
+recording, and one viewing before submitting.

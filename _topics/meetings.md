@@ -33,9 +33,11 @@ We emphasise the distinction because the two are often conflated, and the
 result is a poor version of both. A workshop dressed up as a meeting wastes
 time. A meeting that drifts into a workshop never reaches its decisions.
 
-In practice your group will hold a short meeting at the start of each
-collaboration session, then move into a workshop for the rest of the time.
-The meeting is what produces the minutes you submit.
+The work on the project itself happens somewhere else. Some of it you will
+do on your own, and some of it your group may choose to do together in a
+workshop. Both are normal, and how you divide them is up to you. Neither of
+them is the meeting. The meeting is the short, structured part with an
+agenda, and it is what produces the minutes you submit.
 
 ## The three purposes of a meeting
 
@@ -109,8 +111,8 @@ every member experiences both roles over the course of the project.
 
 ## Application to your group meetings this term
 
-Each week of the group project phase, your group holds a meeting at the
-start of its working session. The meeting agenda has three standing items:
+Each week of the group project phase, your group holds a meeting. The
+meeting agenda has three standing items:
 
 1. **Inform.** Each member reports on what they covered in the Python for
    Mathematics book since the previous meeting.
@@ -120,9 +122,9 @@ start of its working session. The meeting agenda has three standing items:
    and any questions to raise with the instructor in the contact hour.
 
 The secretary records the meeting in the week's minutes template (see
-below) and the group submits a printed copy during the contact hour. The
-remainder of the working session is a workshop: open laptops, write code,
-make progress.
+below) and the group submits a printed copy during the contact hour. Once
+the agenda is exhausted, close the meeting. Whatever you do next, on your
+own or together, is no longer the meeting.
 
 ## Example agenda for the first meeting
 

@@ -67,3 +67,10 @@ deck/*/*.snm
 deck/*/main.aux
 deck/*/main.log
 deck/*/main.out
+
+# Engagement records: the roster, the weekly minutes records and the exports
+# all carry identifiable student information.  The machinery in marking/ is
+# tracked; everything it reads and writes is not.  The site is deployed from
+# the repository itself, so a tracked file here would be a published file.
+marking/data/
+*_groupmembers.csv

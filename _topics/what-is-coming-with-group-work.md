@@ -70,10 +70,11 @@ are working without a lecture.
 ## The weekly rhythm
 
 Group work is **on your timetable**: you are not expected to find a free
-hour between four diaries. Each timetabled session begins with a short
-[meeting]({{ site.baseurl }}/topics/meetings.html) and continues as a
-workshop. The secretary writes the minutes, and the group hands them in
-at the contact hour.
+hour between four diaries. Each timetabled session holds a short
+[meeting]({{ site.baseurl }}/topics/meetings.html). The secretary writes
+the minutes, and the group hands them in at the contact hour. The project
+work itself you fit around that, on your own or together in a workshop;
+neither of those is the meeting.
 
 ## This week
 

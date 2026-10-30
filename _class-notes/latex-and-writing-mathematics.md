@@ -4,6 +4,25 @@ title: "LaTeX and Writing Mathematics"
 tags: writing
 ---
 
+## Run sheet
+
+One row per slide, to glance at while the deck is on screen. The
+reasoning behind every answer is in the sections below. Deck:
+[/deck/latex-and-writing-mathematics/main.pdf]({{ site.baseurl }}/deck/latex-and-writing-mathematics/main.pdf).
+
+| Slide | On screen | What you fill in or say |
+|--:|:--|:--|
+| 2 | This hour is not a LaTeX lecture | The librarian has the hour; the notes are theirs to work through. Hand over after slide 4 |
+| 3 | Research is 20% of the project mark | Two things only: state of the field, and references |
+| 4 | Your state of the field, in one question | Push for named tools: `numpy`, `scipy`, `sympy`, something on PyPI. 'There is nothing else like it' is the answer that scores worst |
+| 5 | This week's reading | The LaTeX notes, and the modularisation chapter |
+| 6 | Where is the title? | `\maketitle` is missing. The preamble says what the title is; `\maketitle` puts it on the page |
+| 7 | Why is my citation a question mark? | `pdflatex`, `bibtex`, `pdflatex`, `pdflatex`. Overleaf does all four, a local install does not. Same answer for a `Figure ??` |
+| 8 | Two habits to drop | The first is a preference. The second is not: a figure is a float, so 'the picture below' is sometimes false and `Figure~\ref{...}` never is |
+| 9 | Name this function without using 'and' | Two functions: `add_tip` and `get_bill_share`. The rule is testable on its own and nameable without 'and', not a line count |
+| 10 | Why did importing it draw a plot? | Importing runs everything at the top level. Put the calling code elsewhere, or under `if __name__ == "__main__":` |
+| 11 | Before you leave | The project progress box; rotate the roles; Week 8 minutes to the next session. Third of five |
+
 ## Format
 
 A group-work week. The single hour is **not** a lecture on LaTeX:

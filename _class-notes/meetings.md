@@ -4,6 +4,34 @@ title: "Meetings"
 tags: meetings
 ---
 
+## Run sheet
+
+One row per slide, to glance at while the deck is on screen. The
+reasoning behind every answer is in the sections below. Deck:
+[/deck/meetings/main.pdf]({{ site.baseurl }}/deck/meetings/main.pdf).
+
+| Slide | On screen | What you fill in or say |
+|--:|:--|:--|
+| 2 | A meeting is not a workshop | Ask which theirs have been. The honest answer is neither cleanly: an unstructured hybrid |
+| 3 | Every agenda item is one of three | Inform, discuss, decide. If you cannot say which one an item is, it is not ready |
+| 4 | 1. No agenda | What does the secretary write? Nothing. That is the answer, and the whole argument for an agenda |
+| 5 | 2. A workshop in disguise | The group got a good fix; D contributed nothing, so nothing is recorded and D's \(I\) takes the hit. The fix is the chair, not a different mark |
+| 6 | 3. One person ran it | Missing: disagreement. Unanimity with no discussion is evidence of a problem, not of health |
+| 7 | 4. No record | Two costs. The group retakes the decisions; each member loses the evidence of their engagement |
+| 8 | So what fixes all four? | Chair: agenda, time, brings everyone in, calls the decision. Secretary: who attended, what was discussed, decided, assigned. Members: active. **Rotate weekly** |
+| 9 | Your standing agenda | First item every week is each member reporting on the chapter |
+| 10 | This is how \(I\) is measured | The minutes are the evidence. Meet in your own slot; bring the Week 5 minutes to the next session |
+| 11 | This week's Python | Two chapters, read on your own. The next four slides are the traps |
+| 12 | One equals sign, or two? | Syntax error, not a silent bug. One sign assigns, two ask a question |
+| 13 | The loop that never stops | Add `number = number + 1`. The rule is worth more than the fix: what in the body changes the condition? |
+| 14 | When is something a function? | It wants a name, and giving it one is what a function is for. The docstring is the Week 9 Documentation mark |
+| 15 | List, tuple, set or dictionary? | Roots of a polynomial: list. Point in the plane: tuple. Vertices of a graph: set. Name to mark: dict. Ask order, repeats, does it change |
+| 16 | What the project actually is | A problem in mathematics, a small library, a three page paper, a recorded presentation |
+| 17 | Your week, every week | Read the chapter; meet and report; build it; hand the minutes in |
+| 18 | The whole term | 4 and 5 start, 6 and 7 are a deliberate gap, 8 to 10 build, 11 submit |
+| 19 | Still not sure what to do? | Meet this week; email a topic idea before Week 8; ask any time. Say it is a reasonable thing to say |
+| 20 | Before you leave | Rota, when and where, next chair: all filled by the group, not by you. Then say the fourth box out loud |
+
 ## Timing
 
 A full session. No meeting takes place in this hour: the groups hold

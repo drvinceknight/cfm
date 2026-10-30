@@ -4,6 +4,29 @@ title: "Group dynamics"
 tags: group-dynamics
 ---
 
+## Run sheet
+
+One row per slide, to glance at while the deck is on screen. The
+reasoning behind every answer is in the sections below. Deck:
+[/deck/group-dynamics/main.pdf]({{ site.baseurl }}/deck/group-dynamics/main.pdf).
+
+| Slide | On screen | What you fill in or say |
+|--:|:--|:--|
+| 2 | Start here | Disagreement is normal. A group that never disagrees is dominated by one person or not engaging |
+| 3 | Four kinds, and what each one needs | Fact: check the source. Approach: try one and revisit. Priority: the chair decides. Effort: raise it in a meeting, as observable facts |
+| 4 | The framework | Listen, restate, identify, choose. **Restate** is the one everybody skips |
+| 5 | Scenario 1 | **Approach.** Try one and revisit; record the trial and the review point. Watch for groups resolving it by seniority |
+| 6 | Scenario 2 | **Fact**, so the easiest kind. Write a test that separates the two claims. Two minutes, against the ten it took |
+| 7 | Scenario 3 | **Effort.** The private messaging is the part to pull out: D cannot answer it and the minutes cannot record it |
+| 8 | Effort: say it like this | Observable fact, not character judgement. In a meeting, not outside one |
+| 9 | The chair, every week | Round-robin the discussion; check each decision one member at a time. Say that both feel artificial at first |
+| 10 | When it stalls | Break, try both, defer to the chair, write it down. It goes in the minutes either way, resolved or open |
+| 11 | This week's Python | Objects, and a terminal and an editor. Read on your own |
+| 12 | What is `self`? | The instance the method was called on. Python passes it for you, which is why it is in the definition and not the call |
+| 13 | Does your project need a class? | **No.** A library of plain functions is marked the same. A class earns its place when functions keep passing the same things around |
+| 14 | Out of the notebook | `cd`, `ls`, `python main.py`. A notebook remembers what you ran earlier; a file does not |
+| 15 | Before you leave | The disagreements and decisions box; rotate chair and secretary; Week 5 minutes to the next session |
+
 ## Timing
 
 A full session. Roughly: 10 minutes on the categories and the framework,
@@ -21,34 +44,6 @@ If the scenarios run long, take two of them rather than cutting the
 Python slides. The scenarios are the kind of material that recovers in a
 later week; a group that cannot run its code from a terminal is stuck
 now.
-
-## This week's Python
-
-Slides 11 to 14 cover the week's two chapters, objects and the command
-line. They are not a lecture on either: the students read the chapters
-themselves, and these four slides put the three things that actually
-catch people in front of the room.
-
-**Slide 12, what is `self`?** Let them answer before you do. The answer
-is that `self` is the instance the method was called on, and that Python
-passes it for you, which is why it appears in the definition but not in
-the call. Showing the same method called on two different instances is
-the fastest way to make it land.
-
-**Slide 13, does your project need a class?** The answer on the slide is
-`No`, in large type, and it is there deliberately. Every year a group
-decides it must write classes because the chapter was about classes, and
-produces something worse than the library of plain functions it would
-otherwise have written. A class earns its place when several functions
-keep passing the same things around; say that, and let them decide.
-
-**Slide 14, out of the notebook.** The three commands are `cd`, `ls` and
-`python main.py`, and that is genuinely most of what they need this
-week. The question underneath is the one that matters: the submission is
-a `.py` file, and a notebook remembers what you ran earlier while a file
-does not. Expect `it works in the notebook but not from the terminal`,
-which is almost always a cell that was run out of order or a name that
-only exists in the notebook's memory.
 
 ## In class meeting
 
@@ -104,6 +99,34 @@ concrete to land. It reminds them to rotate the chair and the secretary,
 which is the week this starts to slip. And it reminds them to meet in
 their own slot and bring the Week 5 minutes to the next session, the
 second of the five \(I\) is counted from.
+
+## This week's Python
+
+Slides 11 to 14 cover the week's two chapters, objects and the command
+line. They are not a lecture on either: the students read the chapters
+themselves, and these four slides put the three things that actually
+catch people in front of the room.
+
+**Slide 12, what is `self`?** Let them answer before you do. The answer
+is that `self` is the instance the method was called on, and that Python
+passes it for you, which is why it appears in the definition but not in
+the call. Showing the same method called on two different instances is
+the fastest way to make it land.
+
+**Slide 13, does your project need a class?** The answer on the slide is
+`No`, in large type, and it is there deliberately. Every year a group
+decides it must write classes because the chapter was about classes, and
+produces something worse than the library of plain functions it would
+otherwise have written. A class earns its place when several functions
+keep passing the same things around; say that, and let them decide.
+
+**Slide 14, out of the notebook.** The three commands are `cd`, `ls` and
+`python main.py`, and that is genuinely most of what they need this
+week. The question underneath is the one that matters: the submission is
+a `.py` file, and a notebook remembers what you ran earlier while a file
+does not. Expect `it works in the notebook but not from the terminal`,
+which is almost always a cell that was run out of order or a name that
+only exists in the notebook's memory.
 
 ## Communications
 

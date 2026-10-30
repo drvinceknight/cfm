@@ -4,6 +4,26 @@ title: "Testing of code"
 tags: testing
 ---
 
+## Run sheet
+
+One row per slide, to glance at while the deck is on screen. The
+reasoning behind every answer is in the sections below. Deck:
+[/deck/testing/main.pdf]({{ site.baseurl }}/deck/testing/main.pdf).
+
+| Slide | On screen | What you fill in or say |
+|--:|:--|:--|
+| 2 | You have now read all three | Modular, documented, tested. Together they are the Scope criterion, 50% of the project mark |
+| 3 | One line, two parts | A claim that must be true, then the message you read when it is not. Push on the second: name what was expected |
+| 4 | How many tests does this need? | **Three**, because the function does three things. Count behaviours, not functions |
+| 5 | Your tests all pass. Are you done? | Zero, one, an empty input, a negative. Take a real function from a group in the room |
+| 6 | How do you test something random? | Seeding. Also worth giving: assert the set of values over 1000 rolls, or that each count falls in a range |
+| 7 | Where the tests live | `test_<library>.py`, one function per behaviour, each with a docstring, calls at the bottom, then `python test_tsp.py`. No `pytest` needed |
+| 8 | What is a doctest for? | To check the documentation is still true. Not where the mathematics is tested. `python -m doctest README.md`. Both are required |
+| 9 | So which function is untested? | Group work, ten minutes, not a question to you. Walk the room. A group that cannot list its own functions has a bigger problem |
+| 10 | Eight files, in Week 11 | Ask which one nobody has started. Usually `contribution.md` and the presentation, and both are cheap to start |
+| 11 | From here to the deadline | Minutes this week, then finish it. No more timetabled meetings after this |
+| 12 | Before you leave | The fifth and last minutes; a name against each of the eight files, recorded in the minutes |
+
 ## Format
 
 A group-work week. The single hour is **not** a lecture: students work

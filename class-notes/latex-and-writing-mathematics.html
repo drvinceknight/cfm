@@ -70,6 +70,71 @@
 
 <h1>LaTeX and Writing Mathematics</h1>
 
+<h2 id="run-sheet">Run sheet</h2>
+<p>One row per slide, to glance at while the deck is on screen. The
+reasoning behind every answer is in the sections below. Deck:
+<a href="../deck/latex-and-writing-mathematics/main.pdf">/deck/latex-and-writing-mathematics/main.pdf</a>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Slide</th>
+<th style="text-align: left;">On screen</th>
+<th style="text-align: left;">What you fill in or say</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">This hour is not a LaTeX lecture</td>
+<td style="text-align: left;">The librarian has the hour; the notes are theirs to work through. Hand over after slide 4</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Research is 20% of the project mark</td>
+<td style="text-align: left;">Two things only: state of the field, and references</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Your state of the field, in one question</td>
+<td style="text-align: left;">Push for named tools: <code>numpy</code>, <code>scipy</code>, <code>sympy</code>, something on PyPI. 'There is nothing else like it' is the answer that scores worst</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">This week's reading</td>
+<td style="text-align: left;">The LaTeX notes, and the modularisation chapter</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Where is the title?</td>
+<td style="text-align: left;"><code>\maketitle</code> is missing. The preamble says what the title is; <code>\maketitle</code> puts it on the page</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Why is my citation a question mark?</td>
+<td style="text-align: left;"><code>pdflatex</code>, <code>bibtex</code>, <code>pdflatex</code>, <code>pdflatex</code>. Overleaf does all four, a local install does not. Same answer for a <code>Figure ??</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Two habits to drop</td>
+<td style="text-align: left;">The first is a preference. The second is not: a figure is a float, so 'the picture below' is sometimes false and <code>Figure~\ref{...}</code> never is</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Name this function without using 'and'</td>
+<td style="text-align: left;">Two functions: <code>add_tip</code> and <code>get_bill_share</code>. The rule is testable on its own and nameable without 'and', not a line count</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Why did importing it draw a plot?</td>
+<td style="text-align: left;">Importing runs everything at the top level. Put the calling code elsewhere, or under <code>if __name__ == "__main__":</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Before you leave</td>
+<td style="text-align: left;">The project progress box; rotate the roles; Week 8 minutes to the next session. Third of five</td>
+</tr>
+</tbody>
+</table>
 <h2 id="format">Format</h2>
 <p>A group-work week. The single hour is <strong>not</strong> a lecture on LaTeX:
 students work through the LaTeX notes themselves. This week is one of

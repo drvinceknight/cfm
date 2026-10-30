@@ -70,6 +70,76 @@
 
 <h1>Testing of code</h1>
 
+<h2 id="run-sheet">Run sheet</h2>
+<p>One row per slide, to glance at while the deck is on screen. The
+reasoning behind every answer is in the sections below. Deck:
+<a href="../deck/testing/main.pdf">/deck/testing/main.pdf</a>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Slide</th>
+<th style="text-align: left;">On screen</th>
+<th style="text-align: left;">What you fill in or say</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">You have now read all three</td>
+<td style="text-align: left;">Modular, documented, tested. Together they are the Scope criterion, 50% of the project mark</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">One line, two parts</td>
+<td style="text-align: left;">A claim that must be true, then the message you read when it is not. Push on the second: name what was expected</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">How many tests does this need?</td>
+<td style="text-align: left;"><strong>Three</strong>, because the function does three things. Count behaviours, not functions</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Your tests all pass. Are you done?</td>
+<td style="text-align: left;">Zero, one, an empty input, a negative. Take a real function from a group in the room</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">How do you test something random?</td>
+<td style="text-align: left;">Seeding. Also worth giving: assert the set of values over 1000 rolls, or that each count falls in a range</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Where the tests live</td>
+<td style="text-align: left;"><code>test_&lt;library&gt;.py</code>, one function per behaviour, each with a docstring, calls at the bottom, then <code>python test_tsp.py</code>. No <code>pytest</code> needed</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">What is a doctest for?</td>
+<td style="text-align: left;">To check the documentation is still true. Not where the mathematics is tested. <code>python -m doctest README.md</code>. Both are required</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">So which function is untested?</td>
+<td style="text-align: left;">Group work, ten minutes, not a question to you. Walk the room. A group that cannot list its own functions has a bigger problem</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Eight files, in Week 11</td>
+<td style="text-align: left;">Ask which one nobody has started. Usually <code>contribution.md</code> and the presentation, and both are cheap to start</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">From here to the deadline</td>
+<td style="text-align: left;">Minutes this week, then finish it. No more timetabled meetings after this</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Before you leave</td>
+<td style="text-align: left;">The fifth and last minutes; a name against each of the eight files, recorded in the minutes</td>
+</tr>
+</tbody>
+</table>
 <h2 id="format">Format</h2>
 <p>A group-work week. The single hour is <strong>not</strong> a lecture: students work
 through this topic on their own, and the session is there for you to

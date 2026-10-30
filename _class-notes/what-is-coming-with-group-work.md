@@ -4,6 +4,26 @@ title: "What is coming with group work"
 tags: group-work-preview
 ---
 
+## Run sheet
+
+One row per slide, to glance at while the deck is on screen. The
+reasoning behind every answer is in the sections below. Deck:
+[/deck/what-is-coming-with-group-work/main.pdf]({{ site.baseurl }}/deck/what-is-coming-with-group-work/main.pdf).
+
+| Slide | On screen | What you fill in or say |
+|--:|:--|:--|
+| 2 | Before I say anything | From the room: one person does everything; nobody knows who is doing what; done the night before; someone disappears. Leave it up, point back at it on 5 and 6 |
+| 3 | The shape of it | 60% of the module, starts Week 4, a library built in a four. Say you would rather hear a topic idea early than late |
+| 4 | What you hand in | **Eight.** Let them count the cards: three paper, three software, two record |
+| 5 | How your mark is worked out | \(I\): your engagement record off the minutes, out of 100. \(Q\): the group's submission mark, shared. Both objective; neither is my impression of you |
+| 6 | A strong group | With \(Q = 74\): A 86.02%, B 76.94%, C 76.94%, D 38.47%. Do A first, let them predict D. Reverse case worth giving: \(I = 100\) with \(Q = 42\) is still 64.81% |
+| 7 | So where does \(I\) come from? | Five forms, Weeks 4, 5, 8, 9 and 10, handed in. Engaged at 3 of 5 gives \(I = 60\), and \(\sqrt{60 \times 74} = 66.63\%\) |
+| 8 | Who teaches you these chapters? | Nobody. No lecture on any of the seven. Let the silence sit before you answer it |
+| 9 | Yes: this is self study | Self study with a social component. The reading is solitary, the understanding is not |
+| 10 | How a group-project week works | The reading is homework, the meeting is timetabled. Do not imply a workshop has to follow |
+| 11 | Groups | Self-selecting fours. Anyone not in one by the deadline is assigned |
+| 12 | This week | Form a four and register it; email me a topic idea. Print the form, complete it at the meeting, bring it to the next session. \(I\) is counted off those five |
+
 ## Timing
 
 **25 minutes.** Twenty is not realistic for this deck any more: there

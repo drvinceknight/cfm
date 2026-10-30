@@ -348,6 +348,13 @@ tr:last-child td {
 
 .facilitator-banner strong { color: var(--yellow); }
 
+/* The facilitator pages carry a wide run-sheet table and are never student
+   facing, so give them more room than the rest of the site.  Browsers without
+   :has() simply keep the narrower default. */
+.container:has(.facilitator-notes) {
+  max-width: 1180px;
+}
+
 /* Wrap the whole facilitator page so it reads as something distinct. */
 .facilitator-notes {
   border: 3px solid var(--text);

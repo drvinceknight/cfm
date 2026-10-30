@@ -4,6 +4,27 @@ title: "Presenting Mathematics"
 tags: presenting
 ---
 
+## Run sheet
+
+One row per slide, to glance at while the deck is on screen. The
+reasoning behind every answer is in the sections below. Deck:
+[/deck/presenting-mathematics/main.pdf]({{ site.baseurl }}/deck/presenting-mathematics/main.pdf).
+
+| Slide | On screen | What you fill in or say |
+|--:|:--|:--|
+| 2 | A presentation is a performance | It is not your slides. If they could get it all without you, you wrote a document |
+| 3 | Three more claims | They will look at whatever you put up; less is more; teaching and presenting are not the same thing |
+| 4 | What to watch for | Fill one column per recording, from the room. Hold the band back until the discussion has run |
+| 5 | Communication is 30% of the project mark | Paper and presentation marked together, on five things. One mark covers both |
+| 6 | Fifteen minutes. Spend it. | No single right answer. A workable shape: 3, 3, 5, 2, 2. Wrong: eleven minutes of mathematics and three of software |
+| 7 | Scenes, not slides | A scene is not a slide. One scene may need three slides, or none. Planning in slides produces a transcript |
+| 8 | The demonstration is recorded | A failure left in the recording is worse than a live one, because nobody watched it back. Rehearse once, view once |
+| 9 | This week's reading | Principles of presentation, and the documentation chapter |
+| 10 | Four sections. Which is which? | In the order on the slide: how-to guide, tutorial, explanation, reference |
+| 11 | README, or docstring? | README to decide and to learn; docstrings to read one function. Both. A good name is documentation that cannot go out of date |
+| 12 | How do you know it is enough? | Give it to another group. Suggest they swap READMEs in this week's meeting |
+| 13 | Before you leave | Everyone speaks, matching `contribution.md`; rotate the roles; Week 9 minutes to the next session. Fourth of five |
+
 ## Format
 
 A group-work week. The single hour is **not** a lecture on presenting:

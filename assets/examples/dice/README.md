@@ -9,7 +9,7 @@ statistics.
 
 We are going to look at the sum of two six-sided dice. The classical
 result is that there are 36 equally likely outcomes, the sum
-\(s = 7\) is the most likely, and the sums \(s = 2\) and \(s = 12\)
+$s = 7$ is the most likely, and the sums $s = 2$ and $s = 12$
 are the least likely. We start by importing the library:
 
 ```python
@@ -39,7 +39,7 @@ Fraction(1, 1)
 
 ```
 
-To simulate \(N\) rolls of two dice and look at the empirical
+To simulate $N$ rolls of two dice and look at the empirical
 distribution, we pass a seed for reproducibility:
 
 ```python
@@ -51,7 +51,7 @@ True
 ```
 
 The empirical probability of rolling a 7 is close to the theoretical
-\(1/6 \approx 0.167\).
+$1/6 \approx 0.167$.
 
 ## How to guide
 
@@ -112,25 +112,25 @@ True
 
 ## Discussion
 
-The sum of \(n\) fair \(s\)-sided dice has a known distribution that
-can be computed by hand for small \(n\). For \(n = 2\) and \(s = 6\)
-the well-known triangular distribution gives \(P(s = 2) = 1/36\),
-\(P(s = 7) = 6/36 = 1/6\), and \(P(s = 12) = 1/36\). For larger \(n\)
+The sum of $n$ fair $s$-sided dice has a known distribution that
+can be computed by hand for small $n$. For $n = 2$ and $s = 6$
+the well-known triangular distribution gives $P(s = 2) = 1/36$,
+$P(s = 7) = 6/36 = 1/6$, and $P(s = 12) = 1/36$. For larger $n$
 the formula in closed form involves an alternating sum of binomial
 coefficients, which is awkward to write out by hand. We use repeated
 convolution instead: starting from the uniform distribution of one
-die, we convolve with itself \(n - 1\) times to get the distribution
+die, we convolve with itself $n - 1$ times to get the distribution
 of the sum. This is short to implement and easy to test.
 
 For 10 000 rolls of two dice the empirical probability of a 7 is
 reliably between 0.13 and 0.20, which spans the theoretical
-\(1/6 \approx 0.167\) by a comfortable margin.
+$1/6 \approx 0.167$ by a comfortable margin.
 
 ### How we built this
 
 We keep the probabilities exact using `fractions.Fraction` from the
 standard library, which means that the sum of all probabilities is
-exactly \(1\) (not just approximately). This matches the convention
+exactly $1$ (not just approximately). This matches the convention
 of the textbook chapter on probability [1], where the worked examples
 use rationals rather than decimals.
 
@@ -139,7 +139,7 @@ The empirical distribution is computed from a simulation: we use
 occurs. The `summary_statistics` function uses the `statistics`
 module from the standard library: `statistics.mean`,
 `statistics.median`, and the sample standard deviation
-`statistics.stdev` (with a divisor of \(n - 1\)).
+`statistics.stdev` (with a divisor of $n - 1$).
 
 ## Reference
 

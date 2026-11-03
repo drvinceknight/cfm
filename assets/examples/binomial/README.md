@@ -8,8 +8,8 @@ variance, and a simulator.
 
 We are going to look at the number of heads in 10 tosses of a fair
 coin. The number of heads is a binomial random variable
-\(X \sim \text{Bin}(10, 1/2)\). The most likely outcome is 5 heads,
-with probability \(252 / 1024\). We start by importing the library:
+$X \sim \text{Bin}(10, 1/2)$. The most likely outcome is 5 heads,
+with probability $252 / 1024$. We start by importing the library:
 
 ```python
 >>> import binomial
@@ -96,35 +96,35 @@ True
 ## Discussion
 
 The binomial distribution describes the number of successes in
-\(n\) independent Bernoulli trials, each with success probability
-\(p\). Writing \(X \sim \text{Bin}(n, p)\) the probability mass
+$n$ independent Bernoulli trials, each with success probability
+$p$. Writing $X \sim \text{Bin}(n, p)$ the probability mass
 function is
 
-\[
+$$
     P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k},
     \qquad k = 0, 1, \dots, n,
-\]
+$$
 
 and the cumulative distribution function is the partial sum
 
-\[
+$$
     P(X \le k) = \sum_{j = 0}^{k} \binom{n}{j} p^j (1 - p)^{n - j}.
-\]
+$$
 
-The mean and variance have the clean forms \(\mathbb{E}[X] = n p\) and
-\(\text{Var}(X) = n p (1 - p)\). These can be derived directly from
-the moment generating function, or by writing \(X = \sum_{i = 1}^{n}
-X_i\) for independent Bernoulli summands.
+The mean and variance have the clean forms $\mathbb{E}[X] = n p$ and
+$\text{Var}(X) = n p (1 - p)$. These can be derived directly from
+the moment generating function, or by writing $X = \sum_{i = 1}^{n}
+X_i$ for independent Bernoulli summands.
 
 The binomial distribution is a standard reference distribution in
 introductory probability [2]. It also appears in many other places:
 it is the discrete analogue of the normal distribution for fixed
-\(p\) and large \(n\), and it underpins the binomial test in
+$p$ and large $n$, and it underpins the binomial test in
 statistics.
 
 ### How we built this
 
-For the binomial coefficient \(\binom{n}{k}\) we use
+For the binomial coefficient $\binom{n}{k}$ we use
 `scipy.special.comb(..., exact=True)`. The exact form returns a
 Python `int` instead of a `float`, which keeps the integer
 factor honest before we multiply by the probabilities. This is also
@@ -140,7 +140,7 @@ the generator for reproducibility.
 The CDF is computed by summing the PMF rather than by calling a
 ready-made `scipy.stats.binom.cdf`. We did this because the project
 focuses on understanding the distribution rather than on speed, and
-because summing eleven floats for a small \(n\) is cheap.
+because summing eleven floats for a small $n$ is cheap.
 
 ## Reference
 
@@ -149,12 +149,12 @@ because summing eleven floats for a small \(n\) is cheap.
 A list of functionality in this library is:
 
 - `pmf(number_of_successes, number_of_trials, success_probability)`:
-  the probability mass function \(P(X = k)\).
+  the probability mass function $P(X = k)$.
 - `cdf(number_of_successes, number_of_trials, success_probability)`:
-  the cumulative distribution function \(P(X \le k)\).
-- `mean(number_of_trials, success_probability)`: the mean \(n p\).
+  the cumulative distribution function $P(X \le k)$.
+- `mean(number_of_trials, success_probability)`: the mean $n p$.
 - `variance(number_of_trials, success_probability)`: the variance
-  \(n p (1 - p)\).
+  $n p (1 - p)$.
 - `simulate(number_of_trials, success_probability,
   number_of_simulations, seed=None)`: simulate draws from the
   distribution.
@@ -167,10 +167,10 @@ The tests live in `test_binomial.py` and can be run with:
 python test_binomial.py
 ```
 
-They cover the PMF at \(k = 0\) and the mode \(k = n / 2\) of a fair
+They cover the PMF at $k = 0$ and the mode $k = n / 2$ of a fair
 coin, check that the PMF sums to 1, that the CDF is monotone and
 reaches 1, and that the empirical mean of 5000 simulated draws of
-\(\text{Bin}(20, 1/2)\) lies within 0.3 of the theoretical mean of 10.
+$\text{Bin}(20, 1/2)$ lies within 0.3 of the theoretical mean of 10.
 
 ### Bibliography
 

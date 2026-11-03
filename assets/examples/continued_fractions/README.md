@@ -5,7 +5,7 @@ rational number and the resulting list of convergents.
 
 ## Tutorial
 
-We are going to expand \(22/7\), a common approximation of \(\pi\), as a
+We are going to expand $22/7$, a common approximation of $\pi$, as a
 continued fraction. We start by importing the library:
 
 ```python
@@ -14,7 +14,7 @@ continued fraction. We start by importing the library:
 
 ```
 
-The expansion of \(22/7\) is computed with `continued_fraction`:
+The expansion of $22/7$ is computed with `continued_fraction`:
 
 ```python
 >>> continued_fractions.continued_fraction(sympy.Rational(22, 7), 10)
@@ -23,7 +23,7 @@ The expansion of \(22/7\) is computed with `continued_fraction`:
 ```
 
 The loop terminates as soon as the remainder is zero, so we get the two
-coefficients \([3; 7]\) even though we asked for up to ten.
+coefficients $[3; 7]$ even though we asked for up to ten.
 
 We can then turn those coefficients back into the corresponding rationals
 with `convergents`:
@@ -34,7 +34,7 @@ with `convergents`:
 
 ```
 
-The first convergent is \(3\) and the second is \(22/7\), which is the
+The first convergent is $3$ and the second is $22/7$, which is the
 original number.
 
 ## How to guide
@@ -65,7 +65,7 @@ To turn a list of integer coefficients into the corresponding convergents:
 
 ### How to get the Fibonacci-ratio approximation of the golden ratio
 
-The golden ratio has continued fraction \([1; 1, 1, 1, \dots]\). We expose a
+The golden ratio has continued fraction $[1; 1, 1, 1, \dots]$. We expose a
 helper that returns its first convergents:
 
 ```python
@@ -80,9 +80,9 @@ helper that returns its first convergents:
 Continued fractions are a way of writing a real number as a (possibly
 infinite) nested sequence
 
-\[
+$$
     r = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cdots}}
-\]
+$$
 
 with integer coefficients. For a rational number the expansion terminates
 after finitely many steps; for an irrational number it is infinite. The
@@ -92,7 +92,7 @@ approximations to the original number in the sense that no fraction with a
 smaller denominator is closer.
 
 The golden ratio is the simplest irrational number to expand: every
-coefficient is \(1\), so its convergents are ratios of consecutive
+coefficient is $1$, so its convergents are ratios of consecutive
 Fibonacci numbers. We expose a convenience function for this case because
 it is a good worked example to test against.
 
@@ -102,11 +102,11 @@ We compute the expansion with the Euclidean algorithm: at each step we
 take the integer part of the remaining number, subtract it, and invert the
 fractional part. Keeping the arithmetic symbolic with `sympy.Rational`
 means that we never lose precision, which matters for known approximations
-such as \(355 / 113\), where any floating-point detour would round.
+such as $355 / 113$, where any floating-point detour would round.
 
 For the convergents we use the standard recursion
-\(p_n = a_n p_{n - 1} + p_{n - 2}\) and
-\(q_n = a_n q_{n - 1} + q_{n - 2}\). This avoids reconstructing the
+$p_n = a_n p_{n - 1} + p_{n - 2}$ and
+$q_n = a_n q_{n - 1} + q_{n - 2}$. This avoids reconstructing the
 nested fractions from scratch at each step.
 
 ## Reference
@@ -129,9 +129,9 @@ The tests live in `test_continued_fractions.py` and can be run with:
 python test_continued_fractions.py
 ```
 
-They check the expansion of \(3/2\), \(22/7\), \(355/113\), confirm that
+They check the expansion of $3/2$, $22/7$, $355/113$, confirm that
 the convergents of the golden ratio give Fibonacci ratios, and that the
-twentieth convergent agrees with \(\varphi\) to within \(10^{-8}\).
+twentieth convergent agrees with $\varphi$ to within $10^{-8}$.
 
 ### Bibliography
 

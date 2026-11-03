@@ -7,7 +7,7 @@ directly from their definitions.
 ## Tutorial
 
 We are going to compute the summary statistics of the sequence
-\(1, 2, 3, 4, 5\). We start by importing the library:
+$1, 2, 3, 4, 5$. We start by importing the library:
 
 ```python
 >>> import stats_from_scratch
@@ -24,9 +24,9 @@ The mean and median are
 
 ```
 
-The population standard deviation (divisor \(n\)) is
-\(\sqrt{2} \approx 1.414\), and the sample standard deviation
-(divisor \(n - 1\)) is \(\sqrt{2.5} \approx 1.581\):
+The population standard deviation (divisor $n$) is
+$\sqrt{2} \approx 1.414$, and the sample standard deviation
+(divisor $n - 1$) is $\sqrt{2.5} \approx 1.581$:
 
 ```python
 >>> round(stats_from_scratch.population_standard_deviation([1, 2, 3, 4, 5]), 6)
@@ -69,7 +69,7 @@ The three quartiles are
 ### How to compute the standard deviations
 
 The two versions differ in the divisor: the population variance uses
-\(n\) and the sample variance uses \(n - 1\).
+$n$ and the sample variance uses $n - 1$.
 
 ```python
 >>> import stats_from_scratch
@@ -96,17 +96,17 @@ its location and spread. The mean and the population standard
 deviation describe the centre and the spread of a fixed sample; the
 sample standard deviation is the unbiased estimator of the standard
 deviation of the underlying distribution and so uses the divisor
-\(n - 1\) instead of \(n\). The three quartiles divide the sorted
+$n - 1$ instead of $n$. The three quartiles divide the sorted
 sample into four equally sized groups.
 
 For the quartiles we have to pick a method. There are several in use
 in the literature and in software; the standard library's
 `statistics.quantiles(data, n=4)` uses the so-called 'exclusive'
-method, in which the \(k\)-th quartile is at the fractional
-1-indexed position \(k (n + 1)/4\). We picked this method so that
+method, in which the $k$-th quartile is at the fractional
+1-indexed position $k (n + 1)/4$. We picked this method so that
 our implementation could be compared directly against the
 `statistics` module in the tests; on a sample of size five our
-quartiles are exactly \((1.5, 3, 4.5)\), as expected.
+quartiles are exactly $(1.5, 3, 4.5)$, as expected.
 
 ### How we built this
 
@@ -121,7 +121,7 @@ We use the `statistics` module only in the tests, where it serves as
 a reference implementation. Each function is checked against the
 matching `statistics` function on at least one sample, and the
 quartiles are also checked against the known small example
-\((1.5, 3, 4.5)\) for the sequence \(1, 2, 3, 4, 5\).
+$(1.5, 3, 4.5)$ for the sequence $1, 2, 3, 4, 5$.
 
 We follow the statistics chapter of *Python for Mathematics* [1]:
 we reach for `statistics.mean`, `statistics.median`,
@@ -138,11 +138,11 @@ A list of functionality in this library is:
 - `mean(values)`: arithmetic mean.
 - `median(values)`: median.
 - `population_standard_deviation(values)`: standard deviation with
-  divisor \(n\).
+  divisor $n$.
 - `sample_standard_deviation(values)`: standard deviation with
-  divisor \(n - 1\).
+  divisor $n - 1$.
 - `quartiles(values)`: the three quartiles
-  \((Q_1, Q_2, Q_3)\), computed with the 'exclusive' method.
+  $(Q_1, Q_2, Q_3)$, computed with the 'exclusive' method.
 
 ### Tests
 
@@ -154,8 +154,8 @@ python test_stats_from_scratch.py
 
 They compare every function with the matching function in the
 standard library `statistics` module, and they check the quartiles
-against the known small example \([1, 2, 3, 4, 5]\), which gives
-\((1.5, 3, 4.5)\).
+against the known small example $[1, 2, 3, 4, 5]$, which gives
+$(1.5, 3, 4.5)$.
 
 ### Bibliography
 

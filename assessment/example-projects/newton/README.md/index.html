@@ -75,8 +75,8 @@ Newton-Raphson iteration.
 
 <span class="gu">## Tutorial</span>
 
-We are going to approximate \(\sqrt{2}\) by finding the positive root of
-\(f(x) = x^2 - 2\). We start by declaring a symbol and importing the
+We are going to approximate $\sqrt{2}$ by finding the positive root of
+$f(x) = x^2 - 2$. We start by declaring a symbol and importing the
 library:
 
 <span class="sb">```python</span>
@@ -86,11 +86,11 @@ library:
 
 <span class="sb">```</span>
 
-A single Newton step from \(x_0 = 1\) gives
+A single Newton step from $x_0 = 1$ gives
 
-\[
+$$
     x<span class="ge">_1 = x_</span>0 - \frac{f(x_0)}{f&#39;(x_0)} = 1 - \frac{-1}{2} = \frac{3}{2}.
-\]
+$$
 
 We can confirm this with the library:
 
@@ -187,14 +187,14 @@ until <span class="sb">`maximum_iterations`</span> steps have been taken:
 <span class="gu">## Discussion</span>
 
 Newton-Raphson is a method for finding a root of a differentiable function
-\(f\). Starting from an initial guess \(x_0\) close to a root, the method
+$f$. Starting from an initial guess $x_0$ close to a root, the method
 updates the iterate by
 
-\[
+$$
     x<span class="ge">_{n + 1} = x_</span>n - \frac{f(x_n)}{f&#39;(x_n)}.
-\]
+$$
 
-Geometrically each step replaces \(f\) by its tangent line at \(x_n\) and
+Geometrically each step replaces $f$ by its tangent line at $x_n$ and
 takes the root of that line as the new iterate. When the method converges
 to a simple root the error is squared at each step: this is the
 quadratic-convergence property that makes Newton-Raphson the standard
@@ -239,7 +239,7 @@ python<span class="w"> </span>test_newton.py
 
 The tests cover all three functions, check that the iterates have the
 expected exact rational form, and check that <span class="sb">`find_root`</span> recovers
-\(\sqrt{2}\) and \(2\) (as the real root of \(x^3 - 8\)) to within
+$\sqrt{2}$ and $2$ (as the real root of $x^3 - 8$) to within
 tolerance.
 
 <span class="gu">### Bibliography</span>

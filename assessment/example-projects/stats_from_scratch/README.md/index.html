@@ -77,7 +77,7 @@ directly from their definitions.
 <span class="gu">## Tutorial</span>
 
 We are going to compute the summary statistics of the sequence
-\(1, 2, 3, 4, 5\). We start by importing the library:
+$1, 2, 3, 4, 5$. We start by importing the library:
 
 <span class="sb">```python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">stats_from_scratch</span>
@@ -94,9 +94,9 @@ The mean and median are
 
 <span class="sb">```</span>
 
-The population standard deviation (divisor \(n\)) is
-\(\sqrt{2} \approx 1.414\), and the sample standard deviation
-(divisor \(n - 1\)) is \(\sqrt{2.5} \approx 1.581\):
+The population standard deviation (divisor $n$) is
+$\sqrt{2} \approx 1.414$, and the sample standard deviation
+(divisor $n - 1$) is $\sqrt{2.5} \approx 1.581$:
 
 <span class="sb">```python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">stats_from_scratch</span><span class="o">.</span><span class="n">population_standard_deviation</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span> <span class="mi">6</span><span class="p">)</span>
@@ -139,7 +139,7 @@ The three quartiles are
 <span class="gu">### How to compute the standard deviations</span>
 
 The two versions differ in the divisor: the population variance uses
-\(n\) and the sample variance uses \(n - 1\).
+$n$ and the sample variance uses $n - 1$.
 
 <span class="sb">```python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">stats_from_scratch</span>
@@ -166,17 +166,17 @@ its location and spread. The mean and the population standard
 deviation describe the centre and the spread of a fixed sample; the
 sample standard deviation is the unbiased estimator of the standard
 deviation of the underlying distribution and so uses the divisor
-\(n - 1\) instead of \(n\). The three quartiles divide the sorted
+$n - 1$ instead of $n$. The three quartiles divide the sorted
 sample into four equally sized groups.
 
 For the quartiles we have to pick a method. There are several in use
 in the literature and in software; the standard library&#39;s
 <span class="sb">`statistics.quantiles(data, n=4)`</span> uses the so-called &#39;exclusive&#39;
-method, in which the \(k\)-th quartile is at the fractional
-1-indexed position \(k (n + 1)/4\). We picked this method so that
+method, in which the $k$-th quartile is at the fractional
+1-indexed position $k (n + 1)/4$. We picked this method so that
 our implementation could be compared directly against the
 <span class="sb">`statistics`</span> module in the tests; on a sample of size five our
-quartiles are exactly \((1.5, 3, 4.5)\), as expected.
+quartiles are exactly $(1.5, 3, 4.5)$, as expected.
 
 <span class="gu">### How we built this</span>
 
@@ -191,7 +191,7 @@ We use the <span class="sb">`statistics`</span> module only in the tests, where 
 a reference implementation. Each function is checked against the
 matching <span class="sb">`statistics`</span> function on at least one sample, and the
 quartiles are also checked against the known small example
-\((1.5, 3, 4.5)\) for the sequence \(1, 2, 3, 4, 5\).
+$(1.5, 3, 4.5)$ for the sequence $1, 2, 3, 4, 5$.
 
 We follow the statistics chapter of <span class="ge">*Python for Mathematics*</span> [1]:
 we reach for <span class="sb">`statistics.mean`</span>, <span class="sb">`statistics.median`</span>,
@@ -208,11 +208,11 @@ A list of functionality in this library is:
 <span class="k">-</span><span class="w"> </span><span class="sb">`mean(values)`</span>: arithmetic mean.
 <span class="k">-</span><span class="w"> </span><span class="sb">`median(values)`</span>: median.
 <span class="k">-</span><span class="w"> </span><span class="sb">`population_standard_deviation(values)`</span>: standard deviation with
-  divisor \(n\).
+  divisor $n$.
 <span class="k">-</span><span class="w"> </span><span class="sb">`sample_standard_deviation(values)`</span>: standard deviation with
-  divisor \(n - 1\).
+  divisor $n - 1$.
 <span class="k">-</span><span class="w"> </span><span class="sb">`quartiles(values)`</span>: the three quartiles
-  \((Q_1, Q<span class="ge">_2, Q_</span>3)\), computed with the &#39;exclusive&#39; method.
+  $(Q_1, Q<span class="ge">_2, Q_</span>3)$, computed with the &#39;exclusive&#39; method.
 
 <span class="gu">### Tests</span>
 
@@ -224,8 +224,8 @@ python<span class="w"> </span>test_stats_from_scratch.py
 
 They compare every function with the matching function in the
 standard library <span class="sb">`statistics`</span> module, and they check the quartiles
-against the known small example \([1, 2, 3, 4, 5]\), which gives
-\((1.5, 3, 4.5)\).
+against the known small example $[1, 2, 3, 4, 5]$, which gives
+$(1.5, 3, 4.5)$.
 
 <span class="gu">### Bibliography</span>
 

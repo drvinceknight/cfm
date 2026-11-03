@@ -76,8 +76,8 @@ the vertex of the parabola.
 
 <span class="gu">## Tutorial</span>
 
-We are going to solve the quadratic \(x^2 - 3 x + 2 = 0\). The
-coefficients are \(a = 1\), \(b = -3\), \(c = 2\). We start by importing
+We are going to solve the quadratic $x^2 - 3 x + 2 = 0$. The
+coefficients are $a = 1$, $b = -3$, $c = 2$. We start by importing
 the library:
 
 <span class="sb">```python</span>
@@ -112,7 +112,7 @@ The number of real roots is
 
 <span class="sb">```</span>
 
-and the vertex of the parabola \(y = x^2 - 3 x + 2\) is at
+and the vertex of the parabola $y = x^2 - 3 x + 2$ is at
 
 <span class="sb">```python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">vertex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -124,7 +124,7 @@ and the vertex of the parabola \(y = x^2 - 3 x + 2\) is at
 
 <span class="gu">### How to compute the discriminant</span>
 
-To compute \(b^2 - 4 a c\) for a quadratic \(a x^2 + b x + c\):
+To compute $b^2 - 4 a c$ for a quadratic $a x^2 + b x + c$:
 
 <span class="sb">```python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">quadratic</span>
@@ -179,21 +179,21 @@ If there are no real roots the returned set is empty:
 
 <span class="gu">## Discussion</span>
 
-A quadratic equation has the form \(a x^2 + b x + c = 0\) with
-\(a \ne 0\). The quadratic formula gives the two solutions as
+A quadratic equation has the form $a x^2 + b x + c = 0$ with
+$a \ne 0$. The quadratic formula gives the two solutions as
 
-\[
+$$
     x = \frac{-b \pm \sqrt{b^2 - 4 a c}}{2 a}.
-\]
+$$
 
 The quantity under the square root is the discriminant
-\(\Delta = b^2 - 4 a c\). When \(\Delta &gt; 0\) the equation has two
-distinct real roots; when \(\Delta = 0\) the two roots collapse onto a
-single repeated root; and when \(\Delta &lt; 0\) there are no real roots
+$\Delta = b^2 - 4 a c$. When $\Delta &gt; 0$ the equation has two
+distinct real roots; when $\Delta = 0$ the two roots collapse onto a
+single repeated root; and when $\Delta &lt; 0$ there are no real roots
 because the formula asks for the square root of a negative number.
 
-The vertex of the parabola \(y = a x^2 + b x + c\) is at
-\(x = -b / (2 a)\), which is also halfway between the two real roots
+The vertex of the parabola $y = a x^2 + b x + c$ is at
+$x = -b / (2 a)$, which is also halfway between the two real roots
 when they exist. We expose this as a separate function because it is
 useful for sketching the parabola without having to solve the quadratic
 first.
@@ -219,7 +219,7 @@ The library is built on the conventions of the <span class="sb">`pfm`</span> alg
 A list of functionality in this library is:
 
 <span class="k">-</span><span class="w"> </span>`discriminant(quadratic_coefficient, linear_coefficient,
-  constant_coefficient)`: return \(b^2 - 4 a c\).
+  constant_coefficient)`: return $b^2 - 4 a c$.
 <span class="k">-</span><span class="w"> </span>`solutions(quadratic_coefficient, linear_coefficient,
   constant_coefficient, variable)`: return the real roots as a
   <span class="sb">`sympy.Set`</span>.
@@ -237,7 +237,7 @@ python<span class="w"> </span>test_quadratic.py
 <span class="sb">```</span>
 
 They cover the three discriminant cases and check the vertex against
-the known parabolas \(y = x^2\) and \(y = (x - 1)^2\).
+the known parabolas $y = x^2$ and $y = (x - 1)^2$.
 
 <span class="gu">### Bibliography</span>
 

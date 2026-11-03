@@ -8,8 +8,8 @@ checks that a candidate expression satisfies the equation.
 ## Tutorial
 
 We are going to solve the exponential-growth problem
-\(y'(t) = y(t)\) with \(y(0) = 1\). The exact solution is
-\(y(t) = e^t\). We start by importing the library and declaring the
+$y'(t) = y(t)$ with $y(0) = 1$. The exact solution is
+$y(t) = e^t$. We start by importing the library and declaring the
 symbols:
 
 ```python
@@ -91,8 +91,8 @@ False
 ## Discussion
 
 A first-order initial value problem has the form
-\(y'(t) = f(t, y(t))\) with \(y(t_0) = y_0\). For many right-hand
-sides \(f\), the solution can be written down in closed form by
+$y'(t) = f(t, y(t))$ with $y(t_0) = y_0$. For many right-hand
+sides $f$, the solution can be written down in closed form by
 recognising one of the standard cases (separable, linear, exact). The
 solver `sympy.dsolve` already implements these cases, and a great deal
 more, so we treat it as the engine and focus on the interface.
@@ -108,7 +108,7 @@ is covered in [2].
 
 We pass the right-hand side and the initial condition through
 `sym.Eq` and the `ics=` keyword of `sym.dsolve`. The return value of
-`sym.dsolve` is an `Eq` of the form \(y(t) = \text{expression}\); we
+`sym.dsolve` is an `Eq` of the form $y(t) = \text{expression}$; we
 take `.rhs` to return the expression itself, which is easier to
 substitute into. Inside `trajectory` we convert each substitution to
 `float` so that the output is small and plottable; the symbolic
@@ -142,8 +142,8 @@ python test_ode_flow.py
 ```
 
 They check the solver on the exponential-growth problem
-\(y' = y\), the constant-growth problem \(y' = 1\), the explicit
-time-dependent problem \(y' = 2t\), and the same exponential-growth
+$y' = y$, the constant-growth problem $y' = 1$, the explicit
+time-dependent problem $y' = 2t$, and the same exponential-growth
 problem with a non-zero initial time. They also check that
 `trajectory` returns the correct length and known values, and that
 `verify_solution` accepts a correct candidate and rejects an

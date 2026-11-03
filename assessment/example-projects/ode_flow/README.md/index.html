@@ -78,8 +78,8 @@ checks that a candidate expression satisfies the equation.
 <span class="gu">## Tutorial</span>
 
 We are going to solve the exponential-growth problem
-\(y&#39;(t) = y(t)\) with \(y(0) = 1\). The exact solution is
-\(y(t) = e^t\). We start by importing the library and declaring the
+$y&#39;(t) = y(t)$ with $y(0) = 1$. The exact solution is
+$y(t) = e^t$. We start by importing the library and declaring the
 symbols:
 
 <span class="sb">```python</span>
@@ -161,8 +161,8 @@ symbolic or numeric.
 <span class="gu">## Discussion</span>
 
 A first-order initial value problem has the form
-\(y&#39;(t) = f(t, y(t))\) with \(y(t_0) = y_0\). For many right-hand
-sides \(f\), the solution can be written down in closed form by
+$y&#39;(t) = f(t, y(t))$ with $y(t_0) = y_0$. For many right-hand
+sides $f$, the solution can be written down in closed form by
 recognising one of the standard cases (separable, linear, exact). The
 solver <span class="sb">`sympy.dsolve`</span> already implements these cases, and a great deal
 more, so we treat it as the engine and focus on the interface.
@@ -178,7 +178,7 @@ is covered in [2].
 
 We pass the right-hand side and the initial condition through
 <span class="sb">`sym.Eq`</span> and the <span class="sb">`ics=`</span> keyword of <span class="sb">`sym.dsolve`</span>. The return value of
-<span class="sb">`sym.dsolve`</span> is an <span class="sb">`Eq`</span> of the form \(y(t) = \text{expression}\); we
+<span class="sb">`sym.dsolve`</span> is an <span class="sb">`Eq`</span> of the form $y(t) = \text{expression}$; we
 take <span class="sb">`.rhs`</span> to return the expression itself, which is easier to
 substitute into. Inside <span class="sb">`trajectory`</span> we convert each substitution to
 <span class="sb">`float`</span> so that the output is small and plottable; the symbolic
@@ -212,8 +212,8 @@ python<span class="w"> </span>test_ode_flow.py
 <span class="sb">```</span>
 
 They check the solver on the exponential-growth problem
-\(y&#39; = y\), the constant-growth problem \(y&#39; = 1\), the explicit
-time-dependent problem \(y&#39; = 2t\), and the same exponential-growth
+$y&#39; = y$, the constant-growth problem $y&#39; = 1$, the explicit
+time-dependent problem $y&#39; = 2t$, and the same exponential-growth
 problem with a non-zero initial time. They also check that
 <span class="sb">`trajectory`</span> returns the correct length and known values, and that
 <span class="sb">`verify_solution`</span> accepts a correct candidate and rejects an

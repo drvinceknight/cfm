@@ -3,6 +3,15 @@
 
 \deckname{Meetings}
 
+% A box inside a role card, with what the role does written in for the answer
+% build.
+\newcommand{\rolebox}[1]{%
+  \tikz{\draw[inkfaint, line width=0.7pt, rounded corners=3pt, fill=white]
+      (0,0) rectangle (5.8,2.2);
+    \onlyanswer{\node[text=inkanswer, anchor=north west, align=left,
+      font=\small, inner sep=0pt, draw=none, fill=none, minimum width=0pt,
+      minimum height=0pt, text width=5.2cm] at (0.3,1.95) {#1};}}}
+
 \begin{document}
 
 \titleslide{Meetings}{Four meetings that went wrong}{%
@@ -16,6 +25,7 @@
 
 \newpage
 \slidehead{A meeting is not a workshop}
+\notesref{Meetings}{A meeting is not a workshop}
 
 \vspace{0.5cm}
 
@@ -44,6 +54,7 @@ is the meeting.}
 
 \newpage
 \slidehead{Every agenda item is one of three}
+\notesref{Meetings}{The three purposes of a meeting}
 
 \vspace{0.8cm}
 
@@ -66,6 +77,7 @@ is the meeting.}
 
 \newpage
 \slidehead{1. No agenda}
+\notesref{Meetings}{Before the meeting}
 
 \vspace{0.4cm}
 
@@ -88,11 +100,16 @@ is the meeting.}
 \ask{What does the secretary write in the minutes?}
 
 \begin{center}
-\workspace{22}{4.6}
+\answerspace{22}{4.6}{%
+  Nothing. No decision was taken, no action was assigned, and nothing was
+  shared that anybody could act on.\\[0.5em]
+  That is the whole argument for an agenda: it is what lets you tell whether
+  the meeting worked.}
 \end{center}
 
 \newpage
 \slidehead{2. A workshop in disguise}
+\notesref{Meetings}{A meeting is not a workshop}
 
 \vspace{0.3cm}
 
@@ -110,11 +127,16 @@ is the meeting.}
 \vspace{0pt}
 \ask{Real work got done. What did it cost D?}
 
-\workspace{11.4}{5.4}
+\answerspace{11.4}{5.4}{%
+  The group got a good fix, so the cost is invisible to the group. D
+  contributed nothing, so the minutes record nothing against D, and D's
+  \(I\) takes the hit.\\[0.5em]
+  The fix is the chair keeping it a meeting, not a different mark for D.}
 \end{minipage}
 
 \newpage
 \slidehead{3. One person ran it}
+\notesref{Meetings}{Roles}
 
 \vspace{0.2cm}
 
@@ -141,11 +163,16 @@ Minutes: three decisions, no disagreement.}
 \vspace{0pt}
 \ask{The minutes look perfect. What is missing?}
 
-\workspace{11.8}{5.8}
+\answerspace{11.8}{5.8}{%
+  Disagreement. Three decisions and nobody questioned any of them.\\[0.5em]
+  Either they were never really examined, or the other three did not feel able
+  to speak. Unanimity with no discussion is a warning, not a sign of
+  health.}
 \end{minipage}
 
 \newpage
 \slidehead{4. No record}
+\notesref{Meetings}{Format of meeting minutes}
 
 \vspace{0.4cm}
 
@@ -165,11 +192,15 @@ Minutes: three decisions, no disagreement.}
 \ask{Nothing went wrong in the room. What did it cost?}
 
 \begin{center}
-\workspace{22}{3.2}
+\answerspace{22}{3.2}{%
+  Two things. The group loses the decisions and has to take them again. And
+  each member loses the evidence of their engagement, because \(I\) is worked
+  out from the minutes.}
 \end{center}
 
 \newpage
 \slidehead{So what fixes all four?}
+\notesref{Meetings}{Roles}
 
 \vspace{0.5cm}
 
@@ -177,16 +208,13 @@ Minutes: three decisions, no disagreement.}
 \begin{tikzpicture}
   \node at (0,0) {\cardbox{inkblue}{6.6}{4.0}{%
     {\large\bfseries\color{inkblue} Chair}\\[0.5em]
-    \tikz{\draw[inkfaint, line width=0.7pt, rounded corners=3pt, fill=white]
-      (0,0) rectangle (5.8,2.2);}}};
+    \rolebox{Writes and sends the agenda, keeps time, brings every member in, and calls the decision when the group is split.}}};
   \node at (7.5,0) {\cardbox{inkteal}{6.6}{4.0}{%
     {\large\bfseries\color{inkteal} Secretary}\\[0.5em]
-    \tikz{\draw[inkfaint, line width=0.7pt, rounded corners=3pt, fill=white]
-      (0,0) rectangle (5.8,2.2);}}};
+    \rolebox{Writes the minutes as it happens: who came, what was discussed, what was decided, who does what.}}};
   \node at (15.0,0) {\cardbox{inkred}{6.6}{4.0}{%
     {\large\bfseries\color{inkred} Members}\\[0.5em]
-    \tikz{\draw[inkfaint, line width=0.7pt, rounded corners=3pt, fill=white]
-      (0,0) rectangle (5.8,2.2);}}};
+    \rolebox{Everyone else, and active: report, question, disagree, take on actions.}}};
 \end{tikzpicture}
 \end{center}
 
@@ -194,8 +222,12 @@ Minutes: three decisions, no disagreement.}
 
 \ask{What does each of them actually do? And how often do they change?}
 
+\onlyanswer{{\large\color{inkanswer} All three rotate \textbf{every week}, so
+over five meetings everyone does each role.}}
+
 \newpage
 \slidehead{Your standing agenda}
+\notesref{Meetings}{Example agenda for the first meeting}
 
 \vspace{1.2cm}
 
@@ -216,6 +248,7 @@ Minutes: three decisions, no disagreement.}
 
 \newpage
 \slidehead{This is how \(I\) is measured}
+\notesref{Assessment}{Individual contribution score \(I\)}
 
 \vspace{0.8cm}
 
@@ -254,6 +287,7 @@ engagement, for every member of the group.}
 
 \newpage
 \slidehead{This week's Python}
+\notesref{Python for Mathematics}{Variables, conditionals and loops, and Functions and data structures}
 
 \vspace{1.1cm}
 
@@ -277,6 +311,7 @@ parts that catch people.}
 
 \newpage
 \slidehead{One equals sign, or two?}
+\notesref{Python for Mathematics, Variables, conditionals and loops}{Run code if a condition holds}
 
 \vspace{0.5cm}
 
@@ -292,7 +327,10 @@ parts that catch people.}
 \vspace{0pt}
 \ask{What does Python do here, and why?}
 
-\workspace{11.4}{6.6}
+\answerspace{11.4}{6.6}{%
+  It stops with a \texttt{SyntaxError} before running anything.\\[0.5em]
+  One sign assigns a value, which is not a question \texttt{if} can ask. To
+  compare, write \texttt{number == 5}.}
 \end{minipage}
 
 \vspace{0.3cm}
@@ -301,6 +339,7 @@ parts that catch people.}
 
 \newpage
 \slidehead{The loop that never stops}
+\notesref{Python for Mathematics, Variables, conditionals and loops}{Repeat code while a given condition holds}
 
 \vspace{0.5cm}
 
@@ -316,7 +355,10 @@ parts that catch people.}
 \vspace{0pt}
 \ask{This runs forever. Add the missing line.}
 
-\workspace{11.4}{6.6}
+\answerspace{11.4}{6.6}{%
+  \texttt{\ \ \ \ number = number + 1}, indented inside the loop.\\[0.5em]
+  Nothing in the body changed \texttt{number}, so \texttt{number <= 10} was
+  true for ever. Ask what in the body changes the condition.}
 \end{minipage}
 
 \vspace{0.3cm}
@@ -326,6 +368,7 @@ the body changes the condition.}
 
 \newpage
 \slidehead{When is something a function?}
+\notesref{Python for Mathematics, Functions and data structures}{How to define a function}
 
 \vspace{0.6cm}
 
@@ -342,7 +385,11 @@ the body changes the condition.}
 \vspace{0.4em}
 
 \begin{center}
-\workspace{22}{4.2}
+\answerspace{22}{4.2}{%
+  Write a function: give the three lines a name and a docstring, and call it
+  in both places. A mistake is then fixed once, not twice.\\[0.5em]
+  Needing a name is the sign. Giving a calculation a name is what a function
+  is for.}
 \end{center}
 
 \vspace{0.2cm}
@@ -352,19 +399,27 @@ The docstring is part of the mark.}
 
 \newpage
 \slidehead{List, tuple, set or dictionary?}
+\notesref{Python for Mathematics, Functions and data structures}{How: tuples, lists, sets and hash tables}
 
 \vspace{0.7cm}
 
 \begin{center}
 \begin{tikzpicture}
   \node at (0,0) {\cardblank{inkblue}{5.0}{5.4}{%
-    {\large\bfseries\color{inkblue} list}}};
+    {\large\bfseries\color{inkblue} list}\onlyanswer{\\[0.8em]
+    {\color{inkanswer} The roots of a polynomial. Ordered, repeats
+    allowed.}}}};
   \node at (5.85,0) {\cardblank{inkteal}{5.0}{5.4}{%
-    {\large\bfseries\color{inkteal} tuple}}};
+    {\large\bfseries\color{inkteal} tuple}\onlyanswer{\\[0.8em]
+    {\color{inkanswer} A point in the plane. Fixed length, never
+    changes.}}}};
   \node at (11.7,0) {\cardblank{inkred}{5.0}{5.4}{%
-    {\large\bfseries\color{inkred} set}}};
+    {\large\bfseries\color{inkred} set}\onlyanswer{\\[0.8em]
+    {\color{inkanswer} The vertices of a graph. No order, no
+    repeats.}}}};
   \node at (17.55,0) {\cardblank{inkmauve}{5.0}{5.4}{%
-    {\large\bfseries\color{inkmauve} dict}}};
+    {\large\bfseries\color{inkmauve} dict}\onlyanswer{\\[0.8em]
+    {\color{inkanswer} Name to mark. Looked up by key.}}}};
 \end{tikzpicture}
 \end{center}
 
@@ -380,6 +435,7 @@ there be repeats? Does it change?}
 
 \newpage
 \slidehead{What the project actually is}
+\notesref{What is coming with group work}{What you will build}
 
 \vspace{1.3cm}
 
@@ -400,6 +456,7 @@ website is detail about how it is marked.}
 
 \newpage
 \slidehead{Your week, every week}
+\notesref{What is coming with group work}{The weekly rhythm}
 
 \vspace{0.7cm}
 
@@ -429,6 +486,7 @@ five are what \(I\) is counted from.}
 
 \newpage
 \slidehead{The whole term}
+\notesref{What is coming with group work}{The weekly rhythm}
 
 \vspace{1.1cm}
 
@@ -458,6 +516,7 @@ behind if nothing happens in weeks 6 and 7.}
 
 \newpage
 \slidehead{Still not sure what to do?}
+\notesref{What is coming with group work}{This week}
 
 \vspace{0.8cm}
 
@@ -484,6 +543,7 @@ is a reasonable thing to say. Say it early.}
 
 \newpage
 \slidehead{Before you leave}
+\notesref{Meeting minutes: Week 5}{Reminders}
 
 \vspace{0.7cm}
 

@@ -299,6 +299,76 @@ def discover_example_projects(examples_dir: pathlib.Path) -> list[Item]:
     return projects
 
 
+DECK_IMAGES = ROOT / "assets" / "img" / "deck"
+
+
+def build_deck_answers(source_dir: pathlib.Path, preamble: pathlib.Path) -> None:
+    """Render the answer build of a deck as one image per page.
+
+    The deck is compiled a second time with ``\\answermode`` defined, which
+    writes the answers into the boxes, and each page is rendered into
+    ``assets/img/deck/<deck>/`` for the facilitator notes. Both builds come
+    from the one source, so the answers cannot drift away from the deck. The
+    images are committed, so this is skipped when ``pdftoppm`` is missing or
+    when the images are newer than the source.
+    """
+    source = source_dir / "main.tex"
+    if not source.exists() or not shutil.which("pdftoppm"):
+        return
+    image_dir = DECK_IMAGES / source_dir.name
+    images = list(image_dir.glob("page-*.png"))
+    if images:
+        oldest = min(image.stat().st_mtime for image in images)
+        if all(path.stat().st_mtime <= oldest for path in (source, preamble)):
+            return
+    result = subprocess.run(
+        [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-jobname=main-answers",
+            r"\def\answermode{}\input{main.tex}",
+        ],
+        cwd=source_dir,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    answers_pdf = source_dir / "main-answers.pdf"
+    if result.returncode != 0 or not answers_pdf.exists():
+        print(
+            f"pdflatex failed for the answers to {source}:\n{result.stdout[-1000:]}"
+        )
+        return
+    if image_dir.exists():
+        shutil.rmtree(image_dir)
+    image_dir.mkdir(parents=True)
+    subprocess.run(
+        ["pdftoppm", "-r", "100", "-png", answers_pdf.name, str(image_dir / "page")],
+        cwd=source_dir,
+        check=True,
+    )
+    for stale in source_dir.glob("main-answers.*"):
+        stale.unlink()
+
+
+def deck_answer_pages(slug: str) -> list[dict[str, Any]]:
+    """Return the answer pages of the deck for a set of notes, in order."""
+    image_dir = DECK_IMAGES / slug
+    if not image_dir.exists():
+        return []
+    pages = sorted(
+        image_dir.glob("page-*.png"), key=lambda path: int(path.stem.split("-")[1])
+    )
+    return [
+        {
+            "number": int(path.stem.split("-")[1]),
+            "url": path.relative_to(ROOT).as_posix(),
+        }
+        for path in pages
+    ]
+
+
 def build_pdfs() -> None:
     """Compile each ``tex/{minutes,agendas}/*.tex`` and copy the PDF into ``assets/``.
 
@@ -366,6 +436,8 @@ def build_pdfs() -> None:
             for ext in (".aux", ".log", ".out"):
                 for stale in source_dir.glob(f"*{ext}"):
                     stale.unlink()
+        for source_dir in sorted(p for p in deck_dir.iterdir() if p.is_dir()):
+            build_deck_answers(source_dir, preamble)
 
     examples_dir = ROOT / "assets" / "examples"
     if examples_dir.exists():
@@ -434,7 +506,13 @@ def build() -> None:
 
     individual_notes = [n for n in class_notes if n["slug"] != "index"]
     for note in individual_notes:
-        _render(env, "class-notes.html", ROOT / "class-notes" / f"{note['slug']}.html", note=note)
+        _render(
+            env,
+            "class-notes.html",
+            ROOT / "class-notes" / f"{note['slug']}.html",
+            note=note,
+            deck_answers=deck_answer_pages(note["slug"]),
+        )
     _render(
         env,
         "class-notes-index.html",

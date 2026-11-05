@@ -18,6 +18,7 @@ you make of them.}{%
 
 \newpage
 \slidehead{A presentation is a performance}
+\notesref{Principles of Presentation}{Principles of presentation}
 
 \vspace{1.4cm}
 
@@ -32,6 +33,7 @@ without you, you have written a document, not a talk.}
 
 \newpage
 \slidehead{Three more claims}
+\notesref{Principles of Presentation}{Principles of presentation}
 
 \vspace{1.2cm}
 
@@ -58,6 +60,7 @@ everything you know.}
 
 \newpage
 \slidehead{What to watch for}
+\notesref{Principles of Presentation}{Examples}
 
 \vspace{0.5cm}
 
@@ -85,6 +88,7 @@ coursework, shown with their groups' permission.}
 
 \newpage
 \slidehead{Communication is 30\% of the project mark}
+\notesref{Assessment}{Communication (30\%)}
 
 \vspace{1.0cm}
 
@@ -112,27 +116,29 @@ be true of the same group. The marker sees one mark.}
 
 \newpage
 \slidehead{Fifteen minutes. Spend it.}
+\notesref{Principles of Presentation}{Preparation}
 
 \vspace{0.7cm}
 
 {\LARGE
-The problem, and why anyone cares \dotfill \blank[2.2]
+The problem, and why anyone cares \dotfill \answerblank[2.2]{3 minutes}
 
 \vspace{0.5em}
 
-The mathematics \dotfill \blank[2.2]
+The mathematics \dotfill \answerblank[2.2]{3 minutes}
 
 \vspace{0.5em}
 
-What the library does, and how it is built \dotfill \blank[2.2]
+What the library does, and how it is built \dotfill
+\answerblank[2.2]{5 minutes}
 
 \vspace{0.5em}
 
-The demonstration \dotfill \blank[2.2]
+The demonstration \dotfill \answerblank[2.2]{2 minutes}
 
 \vspace{0.5em}
 
-What it does not do \dotfill \blank[2.2]}
+What it does not do \dotfill \answerblank[2.2]{2 minutes}}
 
 \vspace{1.1cm}
 
@@ -141,6 +147,7 @@ is the commonest way to lose this mark.}
 
 \newpage
 \slidehead{Scenes, not slides}
+\notesref{Principles of Presentation}{Story boarding}
 
 \vspace{1.0cm}
 
@@ -151,6 +158,16 @@ is the commonest way to lose this mark.}
       (\x,0) rectangle (\x+5.2,2.9);
     \draw[inkfaint, line width=0.8pt, rounded corners=3pt, fill=white]
       (\x,-3.5) rectangle (\x+5.2,-0.6);}
+  \onlyanswer{%
+    \foreach \x/\top/\bottom in {%
+        0/{1. A question worth asking}/{5. How it is built},
+        5.75/{2. Why it is hard by hand}/{6. The demonstration},
+        11.5/{3. The mathematics}/{7. What it does not do},
+        17.25/{4. What the library does}/{8. What we would do next}}{%
+      \node[text=inkanswer, text width=4.6cm, align=center]
+        at (\x+2.6,1.45) {\top};
+      \node[text=inkanswer, text width=4.6cm, align=center]
+        at (\x+2.6,-2.05) {\bottom};}}
 \end{tikzpicture}
 \end{center}
 
@@ -165,6 +182,7 @@ slides, or none at all.}
 
 \newpage
 \slidehead{The demonstration is recorded}
+\notesref{Principles of Presentation}{Live demonstrations}
 
 \vspace{1.3cm}
 
@@ -183,6 +201,7 @@ it. Then watch it back before you submit.}
 
 \newpage
 \slidehead{This week's reading}
+\notesref{Principles of Presentation}{and Python for Mathematics, Documentation}
 
 \vspace{1.1cm}
 
@@ -206,19 +225,26 @@ parts that catch people.}
 
 \newpage
 \slidehead{Four sections. Which is which?}
+\notesref{Python for Mathematics, Documentation}{What is the purpose of the four separate sections in documentation}
 
 \vspace{0.7cm}
 
 \begin{center}
 \begin{tikzpicture}
   \node at (0,0) {\cardblank{inkblue}{5.0}{4.8}{%
-    {\large\bfseries\color{inkblue} Tutorial}}};
+    {\large\bfseries\color{inkblue} Tutorial}\onlyanswer{\\[0.8em]
+    {\color{inkanswer} Your first time in a kitchen.\\[0.4em] To learn.}}}};
   \node at (5.85,0) {\cardblank{inkteal}{5.0}{4.8}{%
-    {\large\bfseries\color{inkteal} How to}}};
+    {\large\bfseries\color{inkteal} How to}\onlyanswer{\\[0.8em]
+    {\color{inkanswer} A recipe, followed step by step.\\[0.4em] To achieve a goal.}}}};
   \node at (11.7,0) {\cardblank{inkred}{5.0}{4.8}{%
-    {\large\bfseries\color{inkred} Reference}}};
+    {\large\bfseries\color{inkred} Reference}\onlyanswer{\\[0.8em]
+    {\color{inkanswer} Every ingredient in the cupboard, listed.\\[0.4em]
+    To find information.}}}};
   \node at (17.55,0) {\cardblank{inkmauve}{5.0}{4.8}{%
-    {\large\bfseries\color{inkmauve} Explanation}}};
+    {\large\bfseries\color{inkmauve} Explanation}\onlyanswer{\\[0.8em]
+    {\color{inkanswer} Why a cooked onion tastes sweet.\\[0.4em] To
+    understand.}}}};
 \end{tikzpicture}
 \end{center}
 
@@ -234,6 +260,7 @@ information. All four are in the Scope criterion.}
 
 \newpage
 \slidehead{README, or docstring?}
+\notesref{Python for Mathematics, Documentation}{What is documentation}
 
 \vspace{0.9cm}
 
@@ -260,6 +287,7 @@ cannot go out of date.}
 
 \newpage
 \slidehead{How do you know it is enough?}
+\notesref{Python for Mathematics, Documentation}{How to write documentation}
 
 \vspace{1.3cm}
 
@@ -281,6 +309,7 @@ ten minutes.}
 
 \newpage
 \slidehead{Before you leave}
+\notesref{Meeting minutes: Week 9}{Reminders}
 
 \vspace{0.8cm}
 

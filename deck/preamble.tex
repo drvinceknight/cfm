@@ -4,6 +4,8 @@
 % whatever takes time to draw is pre-drawn, and whatever the class produces is
 % left blank. Compile a deck with `pdflatex main.tex` from its own directory,
 % or run `uv run python build.py` from the repository root to build them all.
+% The build also compiles each deck a second time with the answers written in,
+% and renders those pages as the images the facilitator notes show.
 \documentclass[10pt]{article}
 
 \usepackage[papersize={25.6cm,14.4cm}, margin=1.1cm, bottom=1.5cm,
@@ -31,9 +33,20 @@
 \definecolor{inkteal}{HTML}{179299}    % teal
 \definecolor{inkred}{HTML}{FE640B}     % peach, for whatever wants attention
 \definecolor{inkmauve}{HTML}{8839EF}   % mauve
+\definecolor{inkanswer}{HTML}{D20F39}  % red, for anything written by hand
 
 \pagecolor{inkbg}
 \color{inktext}
+
+% Answer mode. A deck compiles blank, which is what we project, and compiles a
+% second time with the answers written in when \answermode is defined ahead of
+% this preamble. Both builds come from the one source, so a key cannot drift
+% away from the deck it answers.
+\newif\ifanswers
+\ifdefined\answermode\answerstrue\fi
+
+% Material that belongs to the answer build alone.
+\newcommand{\onlyanswer}[1]{\ifanswers#1\fi}
 
 % A box to write a short answer into. White against the tinted page, so it
 % reads as somewhere to write rather than as part of the printed material.
@@ -42,14 +55,40 @@
     \draw[inkfaint, line width=0.7pt, rounded corners=2pt, fill=white]
       (0,-0.18) rectangle (#1,0.62);}}
 
+% The same box with its answer in it: blank on the projector, filled in the
+% answer build. A box whose answer belongs to the room rather than to the
+% material stays a plain \blank and is empty in both builds.
+\newcommand{\answerblank}[2][1.6]{%
+  \tikz[baseline=(current bounding box.base)]{%
+    \draw[inkfaint, line width=0.7pt, rounded corners=2pt, fill=white]
+      (0,-0.18) rectangle (#1,0.62);
+    \onlyanswer{%
+      \node[text=inkanswer, font=\small, inner sep=1pt, align=center,
+            anchor=center, draw=none, fill=none, text width=,
+            minimum width=0pt, minimum height=0pt]
+        at (#1/2,0.22) {#2};}}}
+
+% The ruled area itself, drawn inside a picture the caller owns.
+\newcommand{\workspacebox}[2]{%
+  \draw[inkfaint, line width=0.7pt, rounded corners=3pt, fill=white]
+    (0,0) rectangle (#1,#2);
+  \foreach \gx in {0.5,1.0,...,#1}{%
+    \foreach \gy in {0.5,1.0,...,#2}{%
+      \fill[inkfaint] (\gx,\gy) circle (0.5pt);}}}
+
 % A ruled area to work in. Faint dots keep handwriting level on a tablet.
 \newcommand{\workspace}[2]{%
+  \begin{tikzpicture}\workspacebox{#1}{#2}\end{tikzpicture}}
+
+% A ruled area with the answer in it: empty on the projector, written in for
+% the answer build.
+\newcommand{\answerspace}[3]{%
   \begin{tikzpicture}
-    \draw[inkfaint, line width=0.7pt, rounded corners=3pt, fill=white]
-      (0,0) rectangle (#1,#2);
-    \foreach \gx in {0.5,1.0,...,#1}{%
-      \foreach \gy in {0.5,1.0,...,#2}{%
-        \fill[inkfaint] (\gx,\gy) circle (0.5pt);}}
+    \workspacebox{#1}{#2}
+    \onlyanswer{%
+      \node[text=inkanswer, anchor=north west, align=left, font=\large,
+            text width=\dimexpr#1cm-0.9cm\relax]
+        at (0.45,#2-0.35) {#3};}
   \end{tikzpicture}}
 
 % A panel for material that is printed rather than written on.
@@ -94,6 +133,18 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[R]{\small\color{inkgrey}\thepage}
+
+% A pointer into the notes at the foot of a slide, so that the hour reads as a
+% way through the reading rather than a detour from it. The first argument
+% names the notes and the second the section. Each page sets its own, which is
+% read when the page is shipped out, so a page with nothing to point at calls
+% \nonotes.
+\newcommand{\notesline}{}
+\newcommand{\notesref}[2]{\gdef\notesline{%
+  \tikz[baseline=-0.5ex]{\fill[inkteal, rounded corners=1pt]
+    (0,0) rectangle (0.24,0.24);}\;\textbf{#1}\; #2}}
+\newcommand{\nonotes}{\gdef\notesline{}}
+\fancyfoot[L]{\small\color{inkteal}\notesline}
 
 % Deck title pages, which carry no header and no page number.
 \newcommand{\titleslide}[3]{%

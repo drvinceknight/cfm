@@ -24,8 +24,8 @@ reasoning behind every answer is in the sections below. Deck:
 | 11 | This week's Python | Objects, and a terminal and an editor. Read on your own |
 | 12 | What is `self`? | The instance the method was called on. Python passes it for you, which is why it is in the definition and not the call |
 | 13 | Does your project need a class? | **No.** A library of plain functions is marked the same. A class earns its place when functions keep passing the same things around |
-| 14 | Out of the notebook | `cd`, `ls`, `python main.py`. A notebook remembers what you ran earlier; a file does not |
-| 15 | Before you leave | The disagreements and decisions box; rotate chair and secretary; Week 5 minutes to the next session |
+| 14 | Out of the notebook | `cd`, `ls`, `python main.py`. The `.py` file is the library, which the notebook imports; and it is what lets the tests and doctests run |
+| 15 | Before you leave | The disagreements and decisions box; rotate chair and secretary |
 
 ## Timing
 
@@ -36,9 +36,7 @@ minutes on the closing slide.
 
 Keep those last 4 minutes. Slide 15 is where this class's content
 attaches to the form: the *disagreements and decisions* box is the thing
-the whole session has been preparing them to fill in, and it is the
-reminder to meet this week and bring the Week 5 minutes to the next
-session.
+the whole session has been preparing them to fill in.
 
 If the scenarios run long, take two of them rather than cutting the
 Python slides. The scenarios are the kind of material that recovers in a
@@ -93,12 +91,10 @@ explicit decision checks. Acknowledge that both feel artificial at
 first. Saying this out loud makes groups much more likely to persist
 with them past the first meeting.
 
-Then the closing slide, which does three jobs. It points at the
+Then the closing slide, which does two jobs. It points at the
 *disagreements and decisions* box, so today's framework has somewhere
-concrete to land. It reminds them to rotate the chair and the secretary,
-which is the week this starts to slip. And it reminds them to meet in
-their own slot and bring the Week 5 minutes to the next session, the
-second of the five \(I\) is counted from.
+concrete to land. And it reminds them to rotate the chair and the
+secretary, which is the week this starts to slip.
 
 ## This week's Python
 
@@ -123,10 +119,10 @@ keep passing the same things around; say that, and let them decide.
 **Slide 14, out of the notebook.** The three commands are `cd`, `ls` and
 `python main.py`, and that is genuinely most of what they need this
 week. The question underneath is the one that matters: the submission is
-a `.py` file, and a notebook remembers what you ran earlier while a file
-does not. Expect `it works in the notebook but not from the terminal`,
-which is almost always a cell that was run out of order or a name that
-only exists in the notebook's memory.
+a `.py` file because that file is the library. A notebook does not
+provide a library, it imports one. The second reason is the tests: with
+the code in a `.py` file, `python test_<library>.py` and
+`python -m doctest README.md` can run against it from a terminal.
 
 ## Communications
 

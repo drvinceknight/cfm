@@ -17,6 +17,7 @@
 
 \newpage
 \slidehead{You have now read all three}
+\notesref{Python for Mathematics, Testing}{How are modularisation, documentation and testing related?}
 
 \vspace{0.6cm}
 
@@ -46,6 +47,7 @@
 
 \newpage
 \slidehead{One line, two parts}
+\notesref{Python for Mathematics, Testing}{How to write an assert statement?}
 
 \vspace{1.2cm}
 
@@ -62,7 +64,11 @@ for?}
 \vspace{0.4em}
 
 \begin{center}
-\workspace{22}{4.0}
+\answerspace{22}{4.0}{%
+  First, a claim that must be true: \texttt{add\_one(5) == 6}. Second, the
+  message shown when it is not. Make it name what was expected, for example
+  ``\texttt{add\_one(5)} should be 6'', since it is the sentence your future
+  self reads when the test fails.}
 \end{center}
 
 \vspace{0.2cm}
@@ -72,6 +78,7 @@ will read at three in the morning when it is not.}
 
 \newpage
 \slidehead{How many tests does this need?}
+\notesref{Python for Mathematics, Testing}{What should be tested?}
 
 \vspace{0.4cm}
 
@@ -89,7 +96,11 @@ will read at three in the morning when it is not.}
 \vspace{0pt}
 \ask{One test passes. Is the function tested?}
 
-\workspace{10.6}{6.0}
+\answerspace{10.6}{6.0}{%
+  No. It does three things: too low, too high and correct. That needs three
+  tests, one for each.\\[0.5em]
+  Count behaviours, not functions. A function that needs ten tests is
+  probably several functions.}
 \end{minipage}
 
 \vspace{0.2cm}
@@ -99,6 +110,7 @@ number of functions. This one does three.}
 
 \newpage
 \slidehead{Your tests all pass. Are you done?}
+\notesref{Python for Mathematics, Testing}{What should be tested?}
 
 \vspace{1.0cm}
 
@@ -127,6 +139,7 @@ not exercise. These four are where they live.}
 
 \newpage
 \slidehead{How do you test something random?}
+\notesref{Python for Mathematics, Testing}{How to write assert statements for code that acts randomly?}
 
 \vspace{0.4cm}
 
@@ -144,7 +157,11 @@ assert roll\_a\_dice() == 2}
 \ask{The function gives a different answer every time. So what makes this
 test pass, every time?}
 
-\workspace{11.0}{6.0}
+\answerspace{11.0}{6.0}{%
+  The seed. \texttt{random.seed(0)} fixes the sequence of random numbers, so
+  the same roll comes out on every run and the assertion always holds.\\[0.5em]
+  Or roll a thousand times and assert the set of values seen, or that each
+  count falls in a range.}
 \end{minipage}
 
 \vspace{0.2cm}
@@ -154,6 +171,7 @@ You can also assert the shape of a thousand rolls rather than one.}
 
 \newpage
 \slidehead{Where the tests live}
+\notesref{Python for Mathematics, Testing}{How to write a test file?}
 
 \vspace{0.4cm}
 
@@ -179,6 +197,7 @@ with a docstring saying what it checks. No library needed.}
 
 \newpage
 \slidehead{What is a doctest for?}
+\notesref{Python for Mathematics, Testing}{Why do you need doc tests?}
 
 \vspace{0.4cm}
 
@@ -197,7 +216,11 @@ with a docstring saying what it checks. No library needed.}
 \vspace{0pt}
 \ask{You already have a test file. So why write these as well?}
 
-\workspace{11.0}{6.4}
+\answerspace{11.0}{6.4}{%
+  To check that the documentation is still true: every example in the README
+  still runs and still gives what it says.\\[0.5em]
+  The test file tests the mathematics. The doctests test the documentation.
+  Both are required.}
 \end{minipage}
 
 \vspace{0.2cm}
@@ -207,6 +230,7 @@ true. It is not where you test the mathematics.}
 
 \newpage
 \slidehead{So which function is untested?}
+\notesref{Python for Mathematics, Testing}{Tutorial: Writing tests for code}
 
 \vspace{0.5cm}
 
@@ -226,6 +250,7 @@ week. It turns into actions better than anything else on the agenda.}
 
 \newpage
 \slidehead{Eight files, in Week 11}
+\notesref{Assessment}{Submission}
 
 \vspace{1.0cm}
 
@@ -271,6 +296,7 @@ week. It turns into actions better than anything else on the agenda.}
 
 \newpage
 \slidehead{From here to the deadline}
+\notesref{Assessment}{Submission}
 
 \vspace{0.9cm}
 
@@ -296,6 +322,7 @@ is left is yours to arrange, on your own or together.}
 
 \newpage
 \slidehead{Before you leave}
+\notesref{Meeting minutes: Week 10}{Reminders}
 
 \vspace{0.8cm}
 

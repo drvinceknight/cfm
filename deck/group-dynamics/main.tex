@@ -16,6 +16,7 @@
 
 \newpage
 \slidehead{Start here}
+\notesref{Group dynamics}{Why disagreements happen}
 
 \vspace{1.5cm}
 
@@ -30,19 +31,20 @@ by one person, or not engaging with the work.}
 
 \newpage
 \slidehead{Four kinds, and what each one needs}
+\notesref{Group dynamics}{Why disagreements happen}
 
 \vspace{0.6cm}
 
 \begin{center}
 \begin{tikzpicture}
   \node at (0,0) {\cardbox{inkblue}{10.4}{2.6}{%
-    {\large\bfseries\color{inkblue} Fact}\quad\blank[6.2]}};
+    {\large\bfseries\color{inkblue} Fact}\quad\answerblank[6.2]{Check the source}}};
   \node at (11.8,0) {\cardbox{inkteal}{10.4}{2.6}{%
-    {\large\bfseries\color{inkteal} Approach}\quad\blank[5.4]}};
+    {\large\bfseries\color{inkteal} Approach}\quad\answerblank[5.4]{Try one, then revisit}}};
   \node at (0,-3.2) {\cardbox{inkred}{10.4}{2.6}{%
-    {\large\bfseries\color{inkred} Priority}\quad\blank[5.6]}};
+    {\large\bfseries\color{inkred} Priority}\quad\answerblank[5.6]{The chair decides}}};
   \node at (11.8,-3.2) {\cardbox{inkmauve}{10.4}{2.6}{%
-    {\large\bfseries\color{inkmauve} Effort}\quad\blank[6.0]}};
+    {\large\bfseries\color{inkmauve} Effort}\quad\answerblank[6.0]{Raise it in a meeting, as facts}}};
 \end{tikzpicture}
 \end{center}
 
@@ -52,6 +54,7 @@ by one person, or not engaging with the work.}
 
 \newpage
 \slidehead{The framework}
+\notesref{Group dynamics}{A simple framework}
 
 \vspace{1.3cm}
 
@@ -74,6 +77,7 @@ by one person, or not engaging with the work.}
 
 \newpage
 \slidehead{Scenario 1}
+\notesref{Group dynamics}{A simple framework}
 
 \vspace{0.3cm}
 
@@ -89,15 +93,21 @@ C wants the library first, then the tests.\\[0.6em]
 \vspace{0pt}
 \ask{Which kind? What happens next?}
 
-\workspace{11.8}{5.6}
+\answerspace{11.8}{5.6}{%
+  \textbf{Approach.} Both want working, tested code; they disagree on the
+  route.\\[0.5em]
+  Try one for the next function and review it at the next meeting. Not
+  settled by who is the better coder.}
 \end{minipage}
 
 \vspace{0.3cm}
 
-{\large Into the minutes: \blank[12]}
+{\large Into the minutes: \answerblank[12]{Tests first for the next
+function; review at Tuesday's meeting}}
 
 \newpage
 \slidehead{Scenario 2}
+\notesref{Group dynamics}{A simple framework}
 
 \vspace{0.3cm}
 
@@ -113,15 +123,21 @@ D: ``it is wrong''.\\[0.6em]
 \vspace{0pt}
 \ask{Which kind? What do they do right now?}
 
-\workspace{11.8}{5.6}
+\answerspace{11.8}{5.6}{%
+  \textbf{Fact}, so the easiest kind.\\[0.5em]
+  Write a test that separates the two claims, or check the function on a case
+  worked out by hand. Running without an error is not the same as being
+  correct.}
 \end{minipage}
 
 \vspace{0.3cm}
 
-{\large How long should this have taken? \blank[6]}
+{\large How long should this have taken? \answerblank[6]{About two
+minutes}}
 
 \newpage
 \slidehead{Scenario 3}
+\notesref{Group dynamics}{Disagreements of effort}
 
 \vspace{0.3cm}
 
@@ -138,20 +154,27 @@ privately about it.}}
 \vspace{0pt}
 \ask{Which kind? What is wrong with the messages?}
 
-\workspace{11.8}{5.6}
+\answerspace{11.8}{5.6}{%
+  \textbf{Effort.}\\[0.5em]
+  The messages put the problem where D cannot answer it and the minutes cannot
+  record it. Raise it at the next meeting as an observable fact, and record
+  what D agrees to do before the one after.}
 \end{minipage}
 
 \newpage
 \slidehead{Effort: say it like this}
+\notesref{Group dynamics}{Disagreements of effort}
 
 \vspace{0.7cm}
 
 \begin{center}
 \begin{tikzpicture}
   \node at (0,0) {\cardbox{inkteal}{21}{2.0}{%
+    {\large\bfseries\color{inkteal} Say this.}\quad
     {\large\color{inkteal} ``The function that was due last Tuesday is not
      yet written.''}}};
   \node at (0,-2.7) {\cardbox{inkred}{21}{2.0}{%
+    {\large\bfseries\color{inkred} Not this.}\quad
     {\large\color{inkred} ``D is lazy and does not care.''}}};
 \end{tikzpicture}
 \end{center}
@@ -159,11 +182,13 @@ privately about it.}}
 \vspace{0.7cm}
 
 \begin{center}
-{\LARGE In a meeting. Not outside one.}
+{\LARGE A fact D can answer, not a judgement D can only resent.\\[0.5em]
+And in a meeting, not outside one.}
 \end{center}
 
 \newpage
 \slidehead{The chair, every week}
+\notesref{Group dynamics}{Inclusive practice}
 
 \vspace{1.2cm}
 
@@ -184,6 +209,7 @@ a time. A nod is not enough.}
 
 \newpage
 \slidehead{When it stalls}
+\notesref{Group dynamics}{Practical recipes}
 
 \vspace{1.0cm}
 
@@ -204,6 +230,7 @@ Take a \textbf{break}. \qquad
 
 \newpage
 \slidehead{This week's Python}
+\notesref{Python for Mathematics}{Object oriented programming, and Using a command line and an editor}
 
 \vspace{1.1cm}
 
@@ -227,6 +254,7 @@ the parts that catch people.}
 
 \newpage
 \slidehead{What is \texttt{self}?}
+\notesref{Python for Mathematics, Object oriented programming}{What is the self variable for?}
 
 \vspace{0.4cm}
 
@@ -244,7 +272,11 @@ the parts that catch people.}
 \ask{\texttt{degree} takes no argument when you call it. So what is
 \texttt{self}?}
 
-\workspace{10.6}{6.0}
+\answerspace{10.6}{6.0}{%
+  The instance it was called on. \texttt{p.degree()} runs
+  \texttt{degree} with \texttt{self} set to \texttt{p}.\\[0.5em]
+  Python passes it for you, which is why it is in the definition and not in
+  the call.}
 \end{minipage}
 
 \vspace{0.2cm}
@@ -254,6 +286,7 @@ you, which is why it is there in the definition and not in the call.}
 
 \newpage
 \slidehead{Does your project need a class?}
+\notesref{Python for Mathematics, Object oriented programming}{Define a class}
 
 \vspace{1.3cm}
 
@@ -275,11 +308,15 @@ is marked the same way.}
 \vspace{0.4em}
 
 \begin{center}
-\workspace{22}{3.4}
+\answerspace{22}{3.4}{%
+  When several functions keep passing the same things around. A class bundles
+  that data with what you do to it. If your functions do not do that, plain
+  functions are the simpler library.}
 \end{center}
 
 \newpage
 \slidehead{Out of the notebook}
+\notesref{Python for Mathematics, Using a command line and an editor}{Run python code in a file}
 
 \vspace{0.5cm}
 
@@ -292,17 +329,23 @@ is marked the same way.}
 \vspace{0pt}
 \ask{You hand in a \texttt{.py} file, not a notebook. Why?}
 
-\workspace{11.4}{5.8}
+\answerspace{11.4}{5.8}{%
+  Because the \texttt{.py} file \emph{is} the library. A notebook does not
+  provide a library, it imports one.\\[0.5em]
+  And so the tests and doctests can run against it, from a terminal:
+  \texttt{python test\_<library>.py} and
+  \texttt{python -m doctest README.md}.}
 \end{minipage}
 
 \vspace{0.3cm}
 
 {\small\color{inkgrey} \texttt{cd} moves, \texttt{ls} looks, and
-\texttt{python main.py} runs the file. A notebook remembers what you ran
-earlier; a file does not, which is the point.}
+\texttt{python main.py} runs a file. The library is the file; a notebook is
+one of the places that imports it.}
 
 \newpage
 \slidehead{Before you leave}
+\notesref{Meeting minutes: Week 5}{Reminders}
 
 \vspace{0.8cm}
 
@@ -322,19 +365,6 @@ earlier; a file does not, which is the point.}
     \textbf{\color{inkteal} Rotate the roles}\\[0.5em]
     A new \textbf{chair} and a new \textbf{secretary}\\[0.4em]
     Everyone does each job};
-\end{tikzpicture}
-\end{center}
-
-\vspace{0.9cm}
-
-\begin{center}
-\begin{tikzpicture}
-  \node[draw=inkred, line width=1.4pt, rounded corners=4pt, fill=white,
-        minimum width=21.8cm, minimum height=2.2cm, text width=20.6cm,
-        align=center, inner sep=0.35cm, text=inktext, font=\large] {%
-    \textbf{\color{inkred} Meet this week. Bring the Week 5 minutes to
-    the next session.}\quad The second of the five that \(I\) is
-    counted from.};
 \end{tikzpicture}
 \end{center}
 

@@ -17,6 +17,7 @@
 
 \newpage
 \slidehead{This hour is not a LaTeX lecture}
+\notesref{Writing with LaTeX}{Bibliographies}
 
 \vspace{0.9cm}
 
@@ -40,6 +41,7 @@ This hour is about \textbf{what is worth citing}.}
 
 \newpage
 \slidehead{Research is 20\% of the project mark}
+\notesref{Assessment}{Research (20\%)}
 
 \vspace{1.1cm}
 
@@ -61,6 +63,7 @@ in a bibliography the body never mentions.}
 
 \newpage
 \slidehead{Your state of the field, in one question}
+\notesref{Assessment}{Research (20\%): state of the field}
 
 \vspace{0.5cm}
 
@@ -70,7 +73,14 @@ will do. For each one, say what yours does differently.}
 \vspace{0.3em}
 
 \begin{center}
-\workspace{22}{7.0}
+\answerspace{22}{7.0}{%
+  The tools are your group's own. What a good answer looks like:\\[0.5em]
+  Real, named tools: \texttt{numpy}, \texttt{scipy}, \texttt{sympy},
+  \texttt{networkx}, a particular library on PyPI, whatever a teacher or a
+  textbook used.\\[0.5em]
+  For each, one honest sentence on what yours does differently. It can be
+  small, such as one case the general tool does not make obvious.\\[0.5em]
+  `There is nothing else like it' is the answer that scores worst.}
 \end{center}
 
 \vspace{0.2cm}
@@ -80,6 +90,7 @@ true, and it is the answer that scores worst.}
 
 \newpage
 \slidehead{This week's reading}
+\notesref{Writing with LaTeX}{and Python for Mathematics, Modularisation}
 
 \vspace{1.1cm}
 
@@ -103,6 +114,7 @@ parts that catch people.}
 
 \newpage
 \slidehead{Where is the title?}
+\notesref{Writing with LaTeX}{The preamble}
 
 \vspace{0.4cm}
 
@@ -122,7 +134,10 @@ parts that catch people.}
 \ask{This compiles without an error, and the title is nowhere on the
 page. Why?}
 
-\workspace{11.0}{6.0}
+\answerspace{11.0}{6.0}{%
+  \texttt{\bs maketitle} is missing.\\[0.5em]
+  The preamble says what the title is. \texttt{\bs maketitle}, just after
+  \texttt{\bs begin\{document\}}, is what puts it on the page.}
 \end{minipage}
 
 \vspace{0.2cm}
@@ -132,6 +147,7 @@ page. Why?}
 
 \newpage
 \slidehead{Why is my citation a question mark?}
+\notesref{Writing with LaTeX}{Bibliographies}
 
 \vspace{1.0cm}
 
@@ -155,7 +171,11 @@ Which of these four have you not done?}
 \vspace{0.2em}
 
 \begin{center}
-\workspace{22}{3.4}
+\answerspace{22}{3.4}{%
+  \texttt{bibtex}, and then \texttt{pdflatex} twice more. The first run
+  records what is cited, \texttt{bibtex} looks it up, and the last two put
+  it in and settle the numbering. A \texttt{Figure ??} needs the second
+  \texttt{pdflatex} too.}
 \end{center}
 
 \vspace{0.2cm}
@@ -165,6 +185,7 @@ not. Cross references need the second \texttt{pdflatex} too.}
 
 \newpage
 \slidehead{Two habits to drop}
+\notesref{Writing with LaTeX}{Floats and captions}
 
 \vspace{0.8cm}
 
@@ -185,6 +206,11 @@ not. Cross references need the second \texttt{pdflatex} too.}
 
 \ask{The second one is not a matter of taste. What goes wrong?}
 
+\onlyanswer{{\large\color{inkanswer} A figure floats to wherever it fits,
+which may be the next page. `The picture below' is then false;
+\texttt{Figure\textasciitilde\bs ref\{tour\}} is always true. The first
+pair is a preference.}}
+
 \vspace{0.3cm}
 
 {\small\color{inkgrey} A figure is a float. LaTeX puts it where it fits,
@@ -192,6 +218,7 @@ which may not be below anything.}
 
 \newpage
 \slidehead{Name this function without using `and'}
+\notesref{Python for Mathematics, Modularisation}{Break up code into modular components}
 
 \vspace{0.5cm}
 
@@ -209,7 +236,11 @@ number\_of\_payers):\\
 \vspace{0.3em}
 
 \begin{center}
-\workspace{22}{4.0}
+\answerspace{22}{4.0}{%
+  Two. \texttt{add\_tip(total, tip\_proportion)} and
+  \texttt{get\_bill\_share(total, number\_of\_payers)}.\\[0.5em]
+  Each can be tested on its own and named without `and'. That is the rule,
+  not a count of lines.}
 \end{center}
 
 \vspace{0.2cm}
@@ -219,6 +250,7 @@ without `and'. A better rule than counting lines.}
 
 \newpage
 \slidehead{Why did importing it draw a plot?}
+\notesref{Python for Mathematics, Modularisation}{Import code from python files}
 
 \vspace{0.4cm}
 
@@ -236,7 +268,11 @@ def get\_cost(tour, matrix):\\
 \ask{Another group types \texttt{import tsp} and a figure appears. What
 happened?}
 
-\workspace{11.4}{6.0}
+\answerspace{11.4}{6.0}{%
+  Importing a file runs everything at its top level, so the last two lines
+  ran and drew the plot.\\[0.5em]
+  Keep only functions in the library. Put the code that uses them in another
+  file, or under \texttt{if \_\_name\_\_ == "\_\_main\_\_":}.}
 \end{minipage}
 
 \vspace{0.2cm}
@@ -247,6 +283,7 @@ under \texttt{if \_\_name\_\_ == "\_\_main\_\_":}.}
 
 \newpage
 \slidehead{Before you leave}
+\notesref{Meeting minutes: Week 8}{Reminders}
 
 \vspace{0.8cm}
 

@@ -363,6 +363,37 @@ tr:last-child td {
   margin-top: 1rem;
 }
 
+/* The answer build of a deck, one page after another, at full width. */
+.deck-answers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.25rem 0 2rem;
+}
+
+.deck-answers figure {
+  margin: 0;
+}
+
+.deck-answers img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.deck-answers a:hover img {
+  border-color: var(--accent);
+}
+
+.deck-answers figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
 /* ---- Footer ---------------------------------------------------- */
 footer {
   text-align: center;

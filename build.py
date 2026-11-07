@@ -479,7 +479,6 @@ def build() -> None:
     assessment_items = load_collection(ROOT / "_assessment")
     faqs = load_collection(ROOT / "_faqs")
     toc = load_toc(ROOT / "_data" / "toc.yml")
-    projects = load_toc(ROOT / "_data" / "projects.yml")
     quizzes_by_tag = load_quizzes(ROOT / "_quizzes")
 
     _render(env, "home.html", ROOT / "index.html", toc=toc, faqs=faqs)
@@ -529,7 +528,6 @@ def build() -> None:
         "assessment.html",
         ROOT / "assessment" / "index.html",
         assessment=assessment_doc,
-        projects=projects,
     )
 
     geometric_mean_doc = next(

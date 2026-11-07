@@ -74,3 +74,5 @@ deck/*/main.out
 # the repository itself, so a tracked file here would be a published file.
 marking/data/
 *_groupmembers.csv
+
+_data/feedback/

@@ -98,6 +98,45 @@ README, or built out the test suite.
 The submission deadline is confirmed by the end of Week 2 of the module
 and posted on the schedule.
 
+### What each file looks like when it is finished
+
+Every one of the eight is already written out in full in each of the
+[example projects]({{ site.baseurl }}/assessment/example-projects/). If you
+are unsure what is wanted in one of them, open a real one and read it. The
+links below go straight to that file in the `markov` example.
+
+| File | A finished one |
+|:--|:--|
+| `main.tex` | [markov/paper/main.tex]({{ site.baseurl }}/assessment/example-projects/markov/paper-main.tex/) |
+| `main.pdf` | [markov/paper/main.pdf]({{ site.baseurl }}/assets/examples/markov/paper/main.pdf) |
+| `references.bib` | [markov/paper/references.bib]({{ site.baseurl }}/assessment/example-projects/markov/paper-references.bib/) |
+| `<library>.py` | [markov.py]({{ site.baseurl }}/assessment/example-projects/markov/markov.py/) |
+| `test_<library>.py` | [test_markov.py]({{ site.baseurl }}/assessment/example-projects/markov/test_markov.py/) |
+| `README.md` | [markov/README.md]({{ site.baseurl }}/assessment/example-projects/markov/README.md/) |
+| `presentation.mp4` | Not published, since the recordings are the students' own |
+| `contribution.md` | Not published, for the same reason |
+
+### Where your group should be
+
+Different groups move at different speeds and that is fine. What is not fine
+is not knowing whether you are behind, so this is the shape of it. Nothing
+here is submitted week by week: the only thing handed in each group-project
+week is the minutes.
+
+| By the end of | Your group has |
+|:--|:--|
+| Week 4 | A secretary rota, a meeting time, and the Week 4 minutes handed in |
+| Week 5 | A topic: the mathematical problem your library will be about |
+| Weeks 6 and 7 | Nothing. These are the individual coursework weeks, and the project pauses |
+| Week 8 | The library doing one useful thing, and a first draft of the paper's structure |
+| Week 9 | The library mostly written, with a `README.md` somebody outside the group could follow |
+| Week 10 | Tests covering the functionality, the paper written, and the presentation recorded |
+| Week 11 | All eight files submitted |
+
+If your group is a week behind this, you are normal. If it is three weeks
+behind, or if you cannot say what your library is going to do, come to the
+contact hour this week rather than next.
+
 ## [Marking scheme](#marking-scheme)
 
 We combine two distinct components using a geometric mean:

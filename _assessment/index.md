@@ -25,6 +25,9 @@ your last attempt is the one that counts.
 
 # Individual coursework (20%)
 
+The 26/27 individual coursework is available:
+[here]({{site.baseurl}}/assets/assessment/ind/assignment.ipynb). Deadline for submission is 4/12/2026.
+
 A mock coursework is available:
 [here]({{site.baseurl}}/assets/assessment/mock/mock.ipynb).
 
@@ -37,14 +40,14 @@ total. That raw mark is then scaled to the 20% of the module mark that
 this component contributes.
 
 + **3 marks** are awarded for the quality of the **analysis**: This means the correctness and the appropriateness of the code.
-  - *0 marks*: Code that does not answer the question
-  - *1 marks*: Code that partly answers the question correctly
-  - *2 marks*: Code that mostly answers the question correctly
-  - *3 marks*: Code that answers the question correctly
+    - *0 marks*: Code that does not answer the question
+    - *1 marks*: Code that partly answers the question correctly
+    - *2 marks*: Code that mostly answers the question correctly
+    - *3 marks*: Code that answers the question correctly
 + **2 marks** are awarded for the quality of the **communication**: this means the narrative and story given by words (if appropriate for the question), and the clarity of the code including using sensible variable names.
-  - *0 marks*: No narrative given
-  - *1 marks*: An attempt at some narrative and readable code
-  - *2 marks*: Clear narrative, clear code with descriptive variable names
+    - *0 marks*: No narrative given
+    - *1 marks*: An attempt at some narrative and readable code
+    - *2 marks*: Clear narrative, clear code with descriptive variable names
 
 
 The coursework for 2025/2026 can be downloaded available [here]({{site.baseurl}}/assets/assessment/ind/assignment.ipynb).

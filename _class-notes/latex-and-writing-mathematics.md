@@ -12,16 +12,17 @@ reasoning behind every answer is in the sections below. Deck:
 
 | Slide | On screen | What you fill in or say |
 |--:|:--|:--|
-| 2 | This hour is not a LaTeX lecture | The librarian has the hour; the notes are theirs to work through. Hand over after slide 4 |
+| 2 | This hour is not a lecture on either | The librarian has the hour; the notes are theirs to work through. Hand over after slide 4 |
 | 3 | Research is 20% of the project mark | Two things only: state of the field, and references |
 | 4 | Your state of the field, in one question | Push for named tools: `numpy`, `scipy`, `sympy`, something on PyPI. 'There is nothing else like it' is the answer that scores worst |
-| 5 | This week's reading | The LaTeX notes, and the modularisation chapter |
+| 5 | This week's reading | Both chapters: LaTeX and writing, and modularisation |
 | 6 | Where is the title? | `\maketitle` is missing. The preamble says what the title is; `\maketitle` puts it on the page |
-| 7 | Why is my citation a question mark? | `pdflatex`, `bibtex`, `pdflatex`, `pdflatex`. Overleaf does all four, a local install does not. Same answer for a `Figure ??` |
-| 8 | Two habits to drop | The first is a preference. The second is not: a figure is a float, so 'the picture below' is sometimes false and `Figure~\ref{...}` never is |
-| 9 | Name this function without using 'and' | Two functions: `add_tip` and `get_bill_share`. The rule is testable on its own and nameable without 'and', not a line count |
-| 10 | Why did importing it draw a plot? | Importing runs everything at the top level. Put the calling code elsewhere, or under `if __name__ == "__main__":` |
-| 11 | Before you leave | The project progress box; rotate the roles; Week 8 minutes to the next session. Third of five |
+| 7 | Why is my citation a question mark? | `pdflatex`, `bibtex`, `pdflatex`, `pdflatex`. Overleaf does all four, a local install does not. Second question: a figure is a float, so 'the picture below' can be false where `\ref` never is |
+| 8 | What would you call this? | Three functions hiding in one: `get_mean`, `get_population_variance`, and its square root. `process` is not a name |
+| 9 | Now you want the total with the tip | Nothing is reusable: the tip is computed inside. Split into `add_tip` and `get_bill_share` and both become usable and testable on their own |
+| 10 | How many files is a library? | One. Modular is about the functions inside it, not the number of files, and the submission asks for one anyway |
+| 11 | Why did importing it draw a plot? | Importing runs everything at the top level. Put the calling code elsewhere, or under `if __name__ == "__main__":` |
+| 12 | Before you leave | The project progress box; rotate the roles; Week 9 minutes to the next session. Fourth of five |
 
 ## Format
 
@@ -86,25 +87,52 @@ mechanics of citing, the session is about what is worth citing.
 
 ## This week's Python
 
-The Python chapter this week is modularisation, and slides 9 and 10
-cover the two things that catch people.
+The Python chapter this week is modularisation, and slides 8 to 11
+cover the four things that catch people. The first two are the same
+argument at two strengths, so take them in order.
 
-**Slide 9, name this function without using 'and'.** You cannot, which
-is the answer. `add_tip_and_get_bill_share` is two functions:
-`add_tip`, which returns a total with the tip included, and
-`get_bill_share`, which divides a total by the number of payers. The
-rule to give them is that a function should be small enough to test on
-its own and nameable without the word 'and'. Resist giving a line
-count. The chapter they read is explicit that arbitrary line limits
-often add more complexity than they remove.
+**Slide 8, what would you call this?** Nothing sensible, which is the
+answer. `process` names the fact that it is code, not what it does, and
+no better name exists because it is doing three separate things: adding
+up the values, dividing to get the mean, and then computing the mean
+squared deviation and its root. Pulled apart they are `get_mean`,
+`get_population_variance` and `get_standard_deviation`, which are the
+names the chapter's own solutions use, and each is a line or two.
 
-**Slide 10, why did importing it draw a plot?** Because importing a
+Let the room offer names before you give the answer. Every suggestion
+will either be wrong or contain 'and', which is the point, and it makes
+the next slide land because there the name is not the problem.
+
+**Slide 9, what can you reuse?** Nothing, and that is the answer. The
+tip is worked out on the first line and then immediately divided away,
+so a caller who wants the bill with the tip added but not split has no
+way to ask for it. Splitting gives `add_tip`, which returns a total
+with the tip included, and `get_bill_share`, which divides a total by
+the number of payers, and both are then usable and testable alone.
+
+Be ready for the obvious objection, because it is correct: this
+function does one thing. It computes one value, and `bill_share_with_tip`
+would name it perfectly well without the word 'and'. So do not run the
+'and' heuristic as a test the function fails. The honest version is
+that 'and' in a name is a hint to look inside, and what it finds here
+is a useful intermediate value that no caller can reach. That is the
+argument for splitting, and it is the one the chapter makes: the split
+version lets you write each step out explicitly. Resist giving a line
+count; the chapter is explicit that arbitrary line limits often add
+more complexity than they remove.
+
+**Slide 10, how many files is a library?** One. Every year a group
+reads the chapter, concludes that modular means many files, and splits
+a working library into six. The submission asks for a single
+`<library>.py`, so the answer to give is that modularity is a property
+of the functions inside the file: each does one thing, is named for
+that thing, and can be tested without running the rest. This is the
+misconception to correct out loud rather than wait to be asked about.
+
+**Slide 11, why did importing it draw a plot?** Because importing a
 file runs everything at its top level, and this one calls `get_tour`
 and `plot_tour` there. The library holds functions; the code that uses
 them belongs in another file, or under `if __name__ == "__main__":`.
-This is also the week to say that the submission is a single
-`<library>.py`, so modular means the functions inside one file are
-separable, not that there are many files.
 
 ## Questions that come up
 
@@ -188,14 +216,11 @@ since the groups that hit this are the ones who installed something.
 The same answer covers a `Figure ??` cross reference, which needs the
 second `pdflatex`.
 
-**Slide 8, two habits to drop.** The first is a preference and they can
-take it or leave it: `\(...\)` and `\[...\]` are easier to find in the
-source than `$...$`, and they fail more usefully when unclosed. The
-second is not a preference. A figure is a float, so LaTeX puts it where
-it fits, which may be the next page or the one before. 'In the picture
-below' is therefore sometimes simply false, where `Figure~\ref{...}` is
-always true. The tilde stops a line break between the word and the
-number.
+The second question on that slide is a different kind of mistake. A
+figure is a float, so LaTeX puts it where it fits, which may be the
+next page or the one before. 'In the picture below' is therefore
+sometimes simply false, where `Figure~\ref{...}` is always true. The
+tilde stops a line break between the word and the number.
 
 ## If the librarian cannot come
 
@@ -235,7 +260,7 @@ state of the field has done the thing the Research mark asks for.
 | 9 | Then four commands, in order | `pdflatex`, `bibtex`, `pdflatex`, `pdflatex`. Overleaf does all four; a local install does not |
 | 10 | A reference doing work | Four references you argue with beat twenty you list. The top card is from the `markov` example paper |
 | 11 | Write the paragraph now | Three or four sentences: what exists, what it does, what yours does differently, why that is worth doing. It goes in their introduction |
-| 12 | Before you leave | One `references.bib` entry each this week; rotate the roles; Week 8 minutes to the next session |
+| 12 | Before you leave | One `references.bib` entry each this week; rotate the roles; Week 9 minutes to the next session |
 
 ### Answers for the fallback deck
 

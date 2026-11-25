@@ -23,7 +23,7 @@ reasoning behind every answer is in the sections below. Deck:
 | 10 | Four sections. Which is which? | In the order on the slide: how-to guide, tutorial, explanation, reference |
 | 11 | README, or docstring? | README to decide and to learn; docstrings to read one function. Both. A good name is documentation that cannot go out of date |
 | 12 | How do you know it is enough? | Give it to another group. Suggest they swap READMEs in this week's meeting |
-| 13 | Before you leave | Everyone speaks, matching `contribution.md`; rotate the roles; Week 9 minutes to the next session. Fourth of five |
+| 13 | Before you leave | Everyone speaks, matching `contribution.md`; rotate the roles; Week 10 minutes to the next session. Last of five |
 
 ## Format
 

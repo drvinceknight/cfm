@@ -1,22 +1,23 @@
-% LaTeX and writing mathematics: the librarian's hour, framed, and the LaTeX
-% and modularisation questions that come up once students start writing.
+% The paper and the library: the librarian's hour, framed, and the LaTeX and
+% modularisation questions that come up once students start writing.
 \input{../preamble.tex}
 
-\deckname{LaTeX and writing mathematics}
+\deckname{The paper and the library}
 
 \begin{document}
 
-\titleslide{LaTeX and writing mathematics}{Week 8. The paper starts here.}{%
+\titleslide{The paper and the library}{Week 8. Writing it up, and the shape
+of the code.}{%
     \begin{tikzpicture}[font=\small]
       \stepbox{s0}{0.0}{\textbf{Frame}\\[0.25em] Research is 20\%.}
       \stepbox{s1}{6.9}{\textbf{Listen}\\[0.25em] The librarian's hour.}
-      \stepbox{s2}{13.8}{\textbf{Write}\\[0.25em] The notes are yours.}
+      \stepbox{s2}{13.8}{\textbf{Read}\\[0.25em] Two chapters, both yours.}
       \draw[-{Stealth[length=2.5mm]}, inkfaint, line width=1.2pt] (s0) -- (s1);
       \draw[-{Stealth[length=2.5mm]}, inkfaint, line width=1.2pt] (s1) -- (s2);
     \end{tikzpicture}}
 
 \newpage
-\slidehead{This hour is not a LaTeX lecture}
+\slidehead{This hour is not a lecture on either}
 \notesref{Writing with LaTeX}{Bibliographies}
 
 \vspace{0.9cm}
@@ -28,7 +29,7 @@
     {\large The subject librarian, on finding\\ and judging sources.}}};
   \node at (12.6,0) {\cardbox{inkteal}{10.4}{3.4}{%
     {\large\bfseries\color{inkteal} Your own time}\\[0.5em]
-    {\large The LaTeX notes, and the two\\ guides to writing mathematics.}}};
+    {\large Both chapters: LaTeX and writing,\\ and modularisation.}}};
 \end{tikzpicture}
 \end{center}
 
@@ -108,7 +109,7 @@ true, and it is the answer that scores worst.}
 \vspace{1.2cm}
 
 \begin{center}
-{\LARGE You read these \textbf{on your own}. The next five slides are the
+{\LARGE You read these \textbf{on your own}. The next six slides are the
 parts that catch people.}
 \end{center}
 
@@ -149,75 +150,75 @@ page. Why?}
 \slidehead{Why is my citation a question mark?}
 \notesref{Writing with LaTeX}{Bibliographies}
 
-\vspace{1.0cm}
+\vspace{0.7cm}
 
 \begin{center}
 \begin{tikzpicture}
   \foreach \lbl/\x/\n in {pdflatex/0/a, bibtex/5.6/b, pdflatex/11.2/c,
                           pdflatex/16.8/d}{%
     \node[draw=inkblue, line width=1pt, rounded corners=4pt, fill=white,
-          minimum width=4.4cm, minimum height=1.8cm, font=\large\ttfamily,
+          minimum width=4.4cm, minimum height=1.6cm, font=\large\ttfamily,
           text=inkblue] (\n) at (\x,0) {\lbl};}
   \foreach \p/\q in {a/b, b/c, c/d}{%
     \draw[-{Stealth[length=2.5mm]}, inkfaint, line width=1.3pt] (\p) -- (\q);}
 \end{tikzpicture}
 \end{center}
 
-\vspace{1.3cm}
+\vspace{0.6cm}
 
 \ask{You ran \texttt{pdflatex} once and the paper says \texttt{[?]}.
 Which of these four have you not done?}
 
+\vspace{0.1em}
+
+\begin{center}
+\answerspace{22}{1.9}{%
+  \texttt{bibtex}, then \texttt{pdflatex} twice more. Overleaf runs all
+  four for you; a local build does not.}
+\end{center}
+
+\vspace{0.4cm}
+
+\ask{And why is `the picture below' wrong, where
+\texttt{Figure\textasciitilde\bs ref\{tour\}} is not?}
+
+\begin{center}
+\answerspace{22}{1.9}{%
+  A figure floats to wherever it fits, which may be the next page. A
+  \texttt{\bs ref} is true either way.}
+\end{center}
+
+\newpage
+\slidehead{What would you call this?}
+\notesref{Python for Mathematics, Modularisation}{Break up code into modular components}
+
+\vspace{0.4cm}
+
+\begin{center}
+\codebox{20.4}{def process(values):\\
+\idt total = 0\\
+\idt for value in values:\\
+\idt\idt total = total + value\\
+\idt mean = total / len(values)\\
+\idt squares = [(value - mean) ** 2 for value in values]\\
+\idt return mean, (sum(squares) / len(values)) ** 0.5}
+\end{center}
+
+\vspace{0.5cm}
+
+\ask{\texttt{process} is not a name. How many functions are hiding in
+here, and what are they?}
+
 \vspace{0.2em}
 
 \begin{center}
-\answerspace{22}{3.4}{%
-  \texttt{bibtex}, and then \texttt{pdflatex} twice more. The first run
-  records what is cited, \texttt{bibtex} looks it up, and the last two put
-  it in and settle the numbering. A \texttt{Figure ??} needs the second
-  \texttt{pdflatex} too.}
+\answerspace{22}{2.6}{%
+  Three. \texttt{get\_mean}, \texttt{get\_population\_variance}, and its
+  square root. Each is a line or two, and each says what it is.}
 \end{center}
 
-\vspace{0.2cm}
-
-{\small\color{inkgrey} Overleaf does all four for you. A local build does
-not. Cross references need the second \texttt{pdflatex} too.}
-
 \newpage
-\slidehead{Two habits to drop}
-\notesref{Writing with LaTeX}{Floats and captions}
-
-\vspace{0.8cm}
-
-\begin{center}
-\begin{tikzpicture}
-  \node at (0,0) {\cardbox{inkred}{10.4}{2.2}{%
-    {\large\ttfamily\color{inkred} \$x\textasciicircum 2\$}}};
-  \node at (12.6,0) {\cardbox{inkteal}{10.4}{2.2}{%
-    {\large\ttfamily\color{inkteal} \bs(x\textasciicircum 2\bs)}}};
-  \node at (0,-3.0) {\cardbox{inkred}{10.4}{2.2}{%
-    {\large\color{inkred} ``in the picture below''}}};
-  \node at (12.6,-3.0) {\cardbox{inkteal}{10.4}{2.2}{%
-    {\large\color{inkteal} ``in Figure~\texttt{\bs ref\{tour\}}''}}};
-\end{tikzpicture}
-\end{center}
-
-\vspace{1.0cm}
-
-\ask{The second one is not a matter of taste. What goes wrong?}
-
-\onlyanswer{{\large\color{inkanswer} A figure floats to wherever it fits,
-which may be the next page. `The picture below' is then false;
-\texttt{Figure\textasciitilde\bs ref\{tour\}} is always true. The first
-pair is a preference.}}
-
-\vspace{0.3cm}
-
-{\small\color{inkgrey} A figure is a float. LaTeX puts it where it fits,
-which may not be below anything.}
-
-\newpage
-\slidehead{Name this function without using `and'}
+\slidehead{Now you want the total with the tip}
 \notesref{Python for Mathematics, Modularisation}{Break up code into modular components}
 
 \vspace{0.5cm}
@@ -231,22 +232,57 @@ number\_of\_payers):\\
 
 \vspace{0.7cm}
 
-\ask{You cannot. So how many functions is this, and what are they called?}
+\ask{Somewhere else you need the bill with the tip added, but not divided.
+What can you reuse?}
 
 \vspace{0.3em}
 
 \begin{center}
 \answerspace{22}{4.0}{%
-  Two. \texttt{add\_tip(total, tip\_proportion)} and
-  \texttt{get\_bill\_share(total, number\_of\_payers)}.\\[0.5em]
-  Each can be tested on its own and named without `and'. That is the rule,
-  not a count of lines.}
+  Nothing. The tip is worked out inside, and there is no way to ask for it
+  on its own.\\[0.5em]
+  Split it into \texttt{add\_tip} and \texttt{get\_bill\_share} and you
+  have both, each usable and testable by itself.}
 \end{center}
 
 \vspace{0.2cm}
 
-{\small\color{inkgrey} Small enough to test on its own, and nameable
-without `and'. A better rule than counting lines.}
+{\small\color{inkgrey} The `and' in the name is a hint to look, not a
+verdict. What it points at here is a useful piece trapped inside.}
+
+\newpage
+\slidehead{How many files is a library?}
+\notesref{Python for Mathematics, Modularisation}{Import code from python files}
+
+\vspace{0.9cm}
+
+\begin{center}
+\begin{tikzpicture}
+  \node at (0,0) {\cardbox{inkblue}{10.4}{3.0}{%
+    {\large\bfseries\color{inkblue} What you hand in}\\[0.5em]
+    {\large One file. \texttt{<library>.py}}}};
+  \node at (12.6,0) {\cardbox{inkteal}{10.4}{3.0}{%
+    {\large\bfseries\color{inkteal} What modular means}\\[0.5em]
+    {\large Functions inside it you can read\\ and test one at a time.}}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.0cm}
+
+\ask{So what makes a library in one file a modular one?}
+
+\vspace{0.2em}
+
+\begin{center}
+\answerspace{22}{3.0}{%
+  Nothing to do with the number of files. Each function does one thing, is
+  named for that thing, and can be tested without running the rest.}
+\end{center}
+
+\vspace{0.2cm}
+
+{\small\color{inkgrey} Splitting one file into six does not make it
+modular, and the submission asks for one anyway.}
 
 \newpage
 \slidehead{Why did importing it draw a plot?}
@@ -312,8 +348,8 @@ under \texttt{if \_\_name\_\_ == "\_\_main\_\_":}.}
   \node[draw=inkred, line width=1.4pt, rounded corners=4pt, fill=white,
         minimum width=21.8cm, minimum height=2.2cm, text width=20.6cm,
         align=center, inner sep=0.35cm, text=inktext, font=\large] {%
-    \textbf{\color{inkred} Meet this week. Bring the Week 8 minutes to the
-    next session.}\quad The third of the five that \(I\) is counted from.};
+    \textbf{\color{inkred} Meet this week. Bring the Week 9 minutes to the
+    next session.}\quad The fourth of the five that \(I\) is counted from.};
 \end{tikzpicture}
 \end{center}
 

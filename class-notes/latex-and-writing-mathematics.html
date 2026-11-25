@@ -85,7 +85,7 @@ reasoning behind every answer is in the sections below. Deck:
 <tbody>
 <tr>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">This hour is not a LaTeX lecture</td>
+<td style="text-align: left;">This hour is not a lecture on either</td>
 <td style="text-align: left;">The librarian has the hour; the notes are theirs to work through. Hand over after slide 4</td>
 </tr>
 <tr>
@@ -101,7 +101,7 @@ reasoning behind every answer is in the sections below. Deck:
 <tr>
 <td style="text-align: right;">5</td>
 <td style="text-align: left;">This week's reading</td>
-<td style="text-align: left;">The LaTeX notes, and the modularisation chapter</td>
+<td style="text-align: left;">Both chapters: LaTeX and writing, and modularisation</td>
 </tr>
 <tr>
 <td style="text-align: right;">6</td>
@@ -111,27 +111,32 @@ reasoning behind every answer is in the sections below. Deck:
 <tr>
 <td style="text-align: right;">7</td>
 <td style="text-align: left;">Why is my citation a question mark?</td>
-<td style="text-align: left;"><code>pdflatex</code>, <code>bibtex</code>, <code>pdflatex</code>, <code>pdflatex</code>. Overleaf does all four, a local install does not. Same answer for a <code>Figure ??</code></td>
+<td style="text-align: left;"><code>pdflatex</code>, <code>bibtex</code>, <code>pdflatex</code>, <code>pdflatex</code>. Overleaf does all four, a local install does not. Second question: a figure is a float, so 'the picture below' can be false where <code>\ref</code> never is</td>
 </tr>
 <tr>
 <td style="text-align: right;">8</td>
-<td style="text-align: left;">Two habits to drop</td>
-<td style="text-align: left;">The first is a preference. The second is not: a figure is a float, so 'the picture below' is sometimes false and <code>Figure~\ref{...}</code> never is</td>
+<td style="text-align: left;">What would you call this?</td>
+<td style="text-align: left;">Three functions hiding in one: <code>get_mean</code>, <code>get_population_variance</code>, and its square root. <code>process</code> is not a name</td>
 </tr>
 <tr>
 <td style="text-align: right;">9</td>
-<td style="text-align: left;">Name this function without using 'and'</td>
-<td style="text-align: left;">Two functions: <code>add_tip</code> and <code>get_bill_share</code>. The rule is testable on its own and nameable without 'and', not a line count</td>
+<td style="text-align: left;">Now you want the total with the tip</td>
+<td style="text-align: left;">Nothing is reusable: the tip is computed inside. Split into <code>add_tip</code> and <code>get_bill_share</code> and both become usable and testable on their own</td>
 </tr>
 <tr>
 <td style="text-align: right;">10</td>
+<td style="text-align: left;">How many files is a library?</td>
+<td style="text-align: left;">One. Modular is about the functions inside it, not the number of files, and the submission asks for one anyway</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
 <td style="text-align: left;">Why did importing it draw a plot?</td>
 <td style="text-align: left;">Importing runs everything at the top level. Put the calling code elsewhere, or under <code>if __name__ == "__main__":</code></td>
 </tr>
 <tr>
-<td style="text-align: right;">11</td>
+<td style="text-align: right;">12</td>
 <td style="text-align: left;">Before you leave</td>
-<td style="text-align: left;">The project progress box; rotate the roles; Week 8 minutes to the next session. Third of five</td>
+<td style="text-align: left;">The project progress box; rotate the roles; Week 9 minutes to the next session. Fourth of five</td>
 </tr>
 </tbody>
 </table>
@@ -185,23 +190,46 @@ files. The librarian session is where the content of that file comes
 from, so the two halves of this week fit together: the notes teach the
 mechanics of citing, the session is about what is worth citing.</p>
 <h2 id="this-weeks-python">This week's Python</h2>
-<p>The Python chapter this week is modularisation, and slides 9 and 10
-cover the two things that catch people.</p>
-<p><strong>Slide 9, name this function without using 'and'.</strong> You cannot, which
-is the answer. <code>add_tip_and_get_bill_share</code> is two functions:
-<code>add_tip</code>, which returns a total with the tip included, and
-<code>get_bill_share</code>, which divides a total by the number of payers. The
-rule to give them is that a function should be small enough to test on
-its own and nameable without the word 'and'. Resist giving a line
-count. The chapter they read is explicit that arbitrary line limits
-often add more complexity than they remove.</p>
-<p><strong>Slide 10, why did importing it draw a plot?</strong> Because importing a
+<p>The Python chapter this week is modularisation, and slides 8 to 11
+cover the four things that catch people. The first two are the same
+argument at two strengths, so take them in order.</p>
+<p><strong>Slide 8, what would you call this?</strong> Nothing sensible, which is the
+answer. <code>process</code> names the fact that it is code, not what it does, and
+no better name exists because it is doing three separate things: adding
+up the values, dividing to get the mean, and then computing the mean
+squared deviation and its root. Pulled apart they are <code>get_mean</code>,
+<code>get_population_variance</code> and <code>get_standard_deviation</code>, which are the
+names the chapter's own solutions use, and each is a line or two.</p>
+<p>Let the room offer names before you give the answer. Every suggestion
+will either be wrong or contain 'and', which is the point, and it makes
+the next slide land because there the name is not the problem.</p>
+<p><strong>Slide 9, what can you reuse?</strong> Nothing, and that is the answer. The
+tip is worked out on the first line and then immediately divided away,
+so a caller who wants the bill with the tip added but not split has no
+way to ask for it. Splitting gives <code>add_tip</code>, which returns a total
+with the tip included, and <code>get_bill_share</code>, which divides a total by
+the number of payers, and both are then usable and testable alone.</p>
+<p>Be ready for the obvious objection, because it is correct: this
+function does one thing. It computes one value, and <code>bill_share_with_tip</code>
+would name it perfectly well without the word 'and'. So do not run the
+'and' heuristic as a test the function fails. The honest version is
+that 'and' in a name is a hint to look inside, and what it finds here
+is a useful intermediate value that no caller can reach. That is the
+argument for splitting, and it is the one the chapter makes: the split
+version lets you write each step out explicitly. Resist giving a line
+count; the chapter is explicit that arbitrary line limits often add
+more complexity than they remove.</p>
+<p><strong>Slide 10, how many files is a library?</strong> One. Every year a group
+reads the chapter, concludes that modular means many files, and splits
+a working library into six. The submission asks for a single
+<code>&lt;library&gt;.py</code>, so the answer to give is that modularity is a property
+of the functions inside the file: each does one thing, is named for
+that thing, and can be tested without running the rest. This is the
+misconception to correct out loud rather than wait to be asked about.</p>
+<p><strong>Slide 11, why did importing it draw a plot?</strong> Because importing a
 file runs everything at its top level, and this one calls <code>get_tour</code>
 and <code>plot_tour</code> there. The library holds functions; the code that uses
-them belongs in another file, or under <code>if __name__ == "__main__":</code>.
-This is also the week to say that the submission is a single
-<code>&lt;library&gt;.py</code>, so modular means the functions inside one file are
-separable, not that there are many files.</p>
+them belongs in another file, or under <code>if __name__ == "__main__":</code>.</p>
 <h2 id="questions-that-come-up">Questions that come up</h2>
 <p><strong>"Can we use Overleaf?"</strong> Yes. It removes the installation problem
 entirely and supports collaboration, which matters for a group paper.
@@ -271,14 +299,11 @@ that Overleaf does all four for them and a local install does not,
 since the groups that hit this are the ones who installed something.
 The same answer covers a <code>Figure ??</code> cross reference, which needs the
 second <code>pdflatex</code>.</p>
-<p><strong>Slide 8, two habits to drop.</strong> The first is a preference and they can
-take it or leave it: <code>\(...\)</code> and <code>\[...\]</code> are easier to find in the
-source than <code>$...$</code>, and they fail more usefully when unclosed. The
-second is not a preference. A figure is a float, so LaTeX puts it where
-it fits, which may be the next page or the one before. 'In the picture
-below' is therefore sometimes simply false, where <code>Figure~\ref{...}</code> is
-always true. The tilde stops a line break between the word and the
-number.</p>
+<p>The second question on that slide is a different kind of mistake. A
+figure is a float, so LaTeX puts it where it fits, which may be the
+next page or the one before. 'In the picture below' is therefore
+sometimes simply false, where <code>Figure~\ref{...}</code> is always true. The
+tilde stops a line break between the word and the number.</p>
 <h2 id="if-the-librarian-cannot-come">If the librarian cannot come</h2>
 <p>There is a second, standalone deck at
 <a href="../deck/researching-sources/main.pdf">/deck/researching-sources/main.pdf</a>.
@@ -391,7 +416,7 @@ state of the field has done the thing the Research mark asks for.</p>
 <tr>
 <td style="text-align: right;">12</td>
 <td style="text-align: left;">Before you leave</td>
-<td style="text-align: left;">One <code>references.bib</code> entry each this week; rotate the roles; Week 8 minutes to the next session</td>
+<td style="text-align: left;">One <code>references.bib</code> entry each this week; rotate the roles; Week 9 minutes to the next session</td>
 </tr>
 </tbody>
 </table>
@@ -523,6 +548,15 @@ stay empty. Click a page to see it full size.</p>
            loading="lazy">
     </a>
     <figcaption>Page 11</figcaption>
+  </figure>
+  
+  <figure>
+    <a href="../assets/img/deck/latex-and-writing-mathematics/page-12.png">
+      <img src="../assets/img/deck/latex-and-writing-mathematics/page-12.png"
+           alt="Page 12 of the deck, with the answers written in"
+           loading="lazy">
+    </a>
+    <figcaption>Page 12</figcaption>
   </figure>
   
 </div>

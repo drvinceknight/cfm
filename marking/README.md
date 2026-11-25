@@ -27,6 +27,31 @@ names, which the import undoes. Re-run the import whenever groups change;
 engagement is recorded against the student, not the group, so a student
 who moves group keeps their record.
 
+The export carries a row for every empty slot in a group, with no student
+id on it. The import skips those and says how many it skipped. Without
+that they would share one empty id between them, collect one another's
+engagement records, and show as a nameless member scoring full marks in
+every group that has a slot free.
+
+## Leaving somebody out
+
+A student who is not taking the module, because they have already passed
+it or have withdrawn, is still in the VLE export, so deleting them from
+`data/roster.csv` by hand only lasts until the next import. We exclude
+them instead:
+
+```bash
+python main.py exclude <student id> --reason "has already passed"
+python main.py exclude            # list the current exclusions
+python main.py exclude <student id> --lift   # put them back
+```
+
+This writes `data/exclusions.csv`, and every command reads the roster
+through it, so the student is gone from the group views, the report, the
+recording TUI and the export, and stays gone when the roster is rebuilt.
+Any engagement already recorded against them stays in `data/engagement.csv`
+and is simply not read.
+
 ## Recording a week
 
 We record one meeting week at a time:
@@ -121,3 +146,11 @@ python main.py export --quality data/quality.csv
 
 The final mark is the geometric mean \(\sqrt{I \times Q}\), as described
 on the assessment page.
+
+The first column is `on_module`. Anybody excluded is still written out,
+with `on_module` set to `no`, the reason in the last column, and every
+score column left **empty** rather than zero, so they cannot be read as a
+student who scored nothing. The command also prints them by name when it
+runs. Leaving them out of the file altogether would make the marks
+disagree with the VLE group list, which is the kind of thing that is
+noticed too late.

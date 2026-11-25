@@ -20,11 +20,13 @@ from pathlib import Path
 DATA_DIR = Path(__file__).parent / "data"
 ROSTER_PATH = DATA_DIR / "roster.csv"
 ENGAGEMENT_PATH = DATA_DIR / "engagement.csv"
+EXCLUSIONS_PATH = DATA_DIR / "exclusions.csv"
 
 MEETING_WEEKS = (4, 5, 8, 9, 10)
 
 ROSTER_FIELDS = ("student_id", "username", "first_name", "last_name", "group")
 ENGAGEMENT_FIELDS = ("week", "group", "student_id", "status", "note")
+EXCLUSION_FIELDS = ("student_id", "name", "reason")
 
 STATUS_FOR_CODE = {
     "e": "engaged",
@@ -59,13 +61,34 @@ def write_csv(path, fieldnames, rows):
     temporary_path.replace(path)
 
 
+def load_exclusions():
+    """Return the students to leave out of the roster, keyed by student id.
+
+    The roster is rebuilt from the VLE export, so a student removed by hand
+    comes back on the next import.  This file is what makes a removal stick.
+    """
+    if not EXCLUSIONS_PATH.exists():
+        return {}
+    return {row["student_id"]: row for row in read_csv(EXCLUSIONS_PATH)}
+
+
 def load_roster():
     if not ROSTER_PATH.exists():
         sys.exit(
             f"No roster at {ROSTER_PATH}.\n"
             "Import the group export first: python main.py roster <export.csv>"
         )
-    return read_csv(ROSTER_PATH)
+    # The VLE export carries a row for each empty slot in a group, with no
+    # student id on it.  Those rows all share the same empty id, so they would
+    # collect one another's engagement records and score in every group at
+    # once.  The import drops them; this is the guard for a roster that
+    # already has some.
+    excluded = load_exclusions()
+    return [
+        student
+        for student in read_csv(ROSTER_PATH)
+        if student["student_id"] and student["student_id"] not in excluded
+    ]
 
 
 def load_engagement():
@@ -96,7 +119,18 @@ def full_name(student):
 
 
 def counted_weeks(records_for_student):
-    return sum(1 for row in records_for_student if row["status"] in COUNTING_STATUSES)
+    """Count the distinct meeting weeks the student is recorded as engaged in.
+
+    Two records for one week must not score twice, so this counts the weeks
+    rather than the rows.
+    """
+    return len(
+        {
+            int(row["week"])
+            for row in records_for_student
+            if row["status"] in COUNTING_STATUSES
+        }
+    )
 
 
 def individual_score(records_for_student):
@@ -132,6 +166,7 @@ def command_roster(arguments):
             "group": tidy_group_name(row["Group Code"]),
         }
         for row in source_rows
+        if row["Student Id"].strip()
     ]
     roster.sort(key=lambda student: (student["group"], student["last_name"]))
     write_csv(ROSTER_PATH, ROSTER_FIELDS, roster)
@@ -140,6 +175,9 @@ def command_roster(arguments):
     sizes = sorted({len(members) for members in groups.values()})
     print(f"Wrote {len(roster)} students in {len(groups)} groups to {ROSTER_PATH}.")
     print(f"Group sizes: {', '.join(str(size) for size in sizes)}.")
+    empty_slots = len(source_rows) - len(roster)
+    if empty_slots:
+        print(f"Skipped {empty_slots} empty group slots in the export.")
 
     existing = load_engagement()
     group_for_student = {student["student_id"]: student["group"] for student in roster}
@@ -628,12 +666,23 @@ def command_record(arguments):
                 print(f"  {name}")
 
 
+def report_exclusions():
+    """Say who is being left out, so their absence is never a surprise."""
+    excluded = load_exclusions()
+    if not excluded:
+        return
+    print("\nNot on the module, and left out of every count below")
+    for row in sorted(excluded.values(), key=lambda row: row["name"]):
+        print(f"  {row['name']:<28} {row['reason']}")
+
+
 def command_report(arguments):
     """Summarise where every student and every group stands."""
     roster = load_roster()
     groups = members_by_group(roster)
     records = load_engagement()
     by_student = records_by_student(records)
+    report_exclusions()
 
     print("Coverage by week")
     for week in MEETING_WEEKS:
@@ -738,6 +787,45 @@ def command_group(arguments):
             print(f"    Week {week}: {note}")
 
 
+def command_exclude(arguments):
+    """Add, list or lift an exclusion from the roster."""
+    excluded = load_exclusions()
+
+    if arguments.student_id is None:
+        if not excluded:
+            print("Nobody is excluded.")
+            return
+        print(f"\n  {'Student':<12} {'Name':<24} Reason")
+        for row in sorted(excluded.values(), key=lambda row: row["name"]):
+            print(f"  {row['student_id']:<12} {row['name']:<24} {row['reason']}")
+        return
+
+    if arguments.lift:
+        if arguments.student_id not in excluded:
+            sys.exit(f"{arguments.student_id} is not excluded.")
+        row = excluded.pop(arguments.student_id)
+        write_csv(EXCLUSIONS_PATH, EXCLUSION_FIELDS, list(excluded.values()))
+        print(f"{row['name']} is back in the roster at the next import.")
+        return
+
+    # Read the roster directly, since load_roster hides anybody already
+    # excluded and we want to name the student we are about to remove.
+    roster = {row["student_id"]: row for row in read_csv(ROSTER_PATH)}
+    student = roster.get(arguments.student_id)
+    if student is None and arguments.student_id not in excluded:
+        sys.exit(f"No student {arguments.student_id} in the roster.")
+    name = full_name(student) if student else excluded[arguments.student_id]["name"]
+
+    excluded[arguments.student_id] = {
+        "student_id": arguments.student_id,
+        "name": name,
+        "reason": arguments.reason,
+    }
+    write_csv(EXCLUSIONS_PATH, EXCLUSION_FIELDS, list(excluded.values()))
+    print(f"Excluded {name}: {arguments.reason}")
+    print("This holds across roster imports. Lift it with --lift.")
+
+
 def command_export(arguments):
     """Write one row per student with the engagement score."""
     roster = load_roster()
@@ -748,17 +836,23 @@ def command_export(arguments):
         for row in read_csv(arguments.quality):
             quality_for_group[row["group"].strip()] = float(row["quality"])
 
-    fieldnames = ["student_id", "username", "first_name", "last_name", "group"]
+    # ``on_module`` comes first so that anybody reading the marks file sees
+    # straight away that a row is not a mark, and the score columns are left
+    # empty rather than zero so an excluded student cannot be read as a fail.
+    fieldnames = ["on_module"]
+    fieldnames += ["student_id", "username", "first_name", "last_name", "group"]
     fieldnames += [f"week_{week}" for week in MEETING_WEEKS]
     fieldnames += ["weeks_engaged", "individual_score"]
     if quality_for_group:
         fieldnames += ["quality_score", "final_mark"]
+    fieldnames += ["note"]
 
     rows = []
     for student in roster:
         student_records = by_student.get(student["student_id"], [])
         status_for_week = {int(row["week"]): row["status"] for row in student_records}
-        row = {field: student[field] for field in ROSTER_FIELDS}
+        row = {"on_module": "yes"}
+        row.update({field: student[field] for field in ROSTER_FIELDS})
         for week in MEETING_WEEKS:
             row[f"week_{week}"] = status_for_week.get(week, "")
         row["weeks_engaged"] = counted_weeks(student_records)
@@ -770,10 +864,36 @@ def command_export(arguments):
                 "" if quality is None
                 else round((row["individual_score"] * quality) ** 0.5, 1)
             )
+        row["note"] = ""
+        rows.append(row)
+
+    # Excluded students are written out too, with no scores against them.
+    # Leaving them out altogether would make the marks file silently
+    # disagree with the VLE group list, which is the thing that would be
+    # noticed too late.
+    excluded = load_exclusions()
+    excluded_rows = [
+        student
+        for student in read_csv(ROSTER_PATH)
+        if student["student_id"] in excluded
+    ]
+    excluded_rows.sort(key=lambda student: (student["group"], student["last_name"]))
+    for student in excluded_rows:
+        row = {field: "" for field in fieldnames}
+        row["on_module"] = "no"
+        row.update({field: student[field] for field in ROSTER_FIELDS})
+        row["note"] = excluded[student["student_id"]]["reason"]
         rows.append(row)
 
     write_csv(Path(arguments.output), fieldnames, rows)
+    marked = len(rows) - len(excluded_rows)
     print(f"Wrote {len(rows)} rows to {arguments.output}.")
+    print(f"  {marked} on the module, with marks.")
+    if excluded_rows:
+        print(f"  {len(excluded_rows)} NOT on the module, with no marks:")
+        for student in excluded_rows:
+            reason = excluded[student["student_id"]]["reason"]
+            print(f"    {full_name(student)} ({student['group']}): {reason}")
     if arguments.quality and not quality_for_group:
         print("No quality scores were read, so no final marks were written.")
 
@@ -837,6 +957,20 @@ def build_parser():
         "--quality", help="a CSV of group,quality to compute the final mark"
     )
     export_parser.set_defaults(function=command_export)
+
+    exclude_parser = subparsers.add_parser(
+        "exclude", help="keep a student out of the roster across imports"
+    )
+    exclude_parser.add_argument(
+        "student_id", nargs="?", help="omit to list the current exclusions"
+    )
+    exclude_parser.add_argument(
+        "--reason", default="not taking the module", help="why they are excluded"
+    )
+    exclude_parser.add_argument(
+        "--lift", action="store_true", help="put the student back in the roster"
+    )
+    exclude_parser.set_defaults(function=command_exclude)
 
     check_parser = subparsers.add_parser("check", help="check nothing is tracked")
     check_parser.set_defaults(function=command_check)

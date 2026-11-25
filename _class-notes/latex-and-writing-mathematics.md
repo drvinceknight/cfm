@@ -25,6 +25,10 @@ reasoning behind every answer is in the sections below. Deck:
 
 ## Format
 
+If the librarian cannot come, skip to
+[If the librarian cannot come](#if-the-librarian-cannot-come) at the
+bottom of these notes. There is a second deck that fills the hour.
+
 A group-work week. The single hour is **not** a lecture on LaTeX:
 students work through the LaTeX notes themselves. This week is one of
 the two exceptions to the question-and-signpost format, because the hour
@@ -192,3 +196,70 @@ it fits, which may be the next page or the one before. 'In the picture
 below' is therefore sometimes simply false, where `Figure~\ref{...}` is
 always true. The tilde stops a line break between the word and the
 number.
+
+## If the librarian cannot come
+
+There is a second, standalone deck at
+[/deck/researching-sources/main.pdf]({{ site.baseurl }}/deck/researching-sources/main.pdf).
+It covers what the librarian's session covers, teaches the same Research
+criterion, and fills the hour on its own. Project that one instead of the
+usual deck rather than running both: it repeats the framing it needs.
+
+The hour is built around two pieces of group work, slides 5 and 11, which
+between them take about half of it. Everything else is there to set them
+up. If you are short of time, cut slide 7 and shorten slide 4, and keep
+slide 11 whatever happens, because a group that leaves having written its
+state of the field has done the thing the Research mark asks for.
+
+| Section | Minutes |
+|:--|--:|
+| Slides 2 and 3: why this is 20%, and what gets cited | 7 |
+| Slide 4: where to look | 5 |
+| Slide 5: name three tools that already exist | 8 |
+| Slides 6 and 7: judging a source | 9 |
+| Slides 8 to 10: BibTeX, the four commands, a live reference | 10 |
+| Slide 11: write the state of the field | 10 |
+| Slide 12: before you leave | 3 |
+
+### Run sheet
+
+| Slide | On screen | What you fill in or say |
+|--:|:--|:--|
+| 2 | Research is 20% of the project mark | State of the field, and references. The component groups lose most marks on, and the cheapest to fix |
+| 3 | Four things you will need to cite | Software like yours, the mathematics, the method, and what you built on. Ask which they already have; most have none |
+| 4 | Where to look | The library discovery service, Scholar and arXiv, PyPI and the project's own docs, and JOSS. A search is where you start, not what you cite |
+| 5 | Your state of the field, in one question | Push for named tools. 'There is nothing else like it' scores worst. Walk the room while they write |
+| 6 | Is it worth citing? | Who wrote it, is it current, who else cites it, can you check it. The last one is the real test: unverified is repeating, not citing |
+| 7 | Same claim, three places | All three can be cited, for different things. The docs for behaviour, the textbook for the mathematics, the forum answer for neither |
+| 8 | What a reference actually is | Nobody types it. Scholar's 'Cite', the DOI, or Zotero gives you the BibTeX to paste into `references.bib` |
+| 9 | Then four commands, in order | `pdflatex`, `bibtex`, `pdflatex`, `pdflatex`. Overleaf does all four; a local install does not |
+| 10 | A reference doing work | Four references you argue with beat twenty you list. The top card is from the `markov` example paper |
+| 11 | Write the paragraph now | Three or four sentences: what exists, what it does, what yours does differently, why that is worth doing. It goes in their introduction |
+| 12 | Before you leave | One `references.bib` entry each this week; rotate the roles; Week 8 minutes to the next session |
+
+### Answers for the fallback deck
+
+**Slide 3, which of the four do you have?** Usually none, which is the
+point of asking. The fourth is the easy win: every group is building on
+something, `sympy` or `numpy` or the standard library, and that is a
+citation they can add this week without reading anything new.
+
+**Slide 6, what does a good source look like?** Named authors with an
+affiliation; a date or a version recent enough to still describe the
+software; a citation count or an obvious user base; and a claim you can
+check against something else. Students over-weight the first three. The
+fourth is the one that separates a reference they understand from one
+they are passing on.
+
+**Slide 7, which do you cite?** This is not a ranking exercise, which is
+the trap. The documentation is the right citation for what the software
+does, since its authors wrote it. The textbook is the right citation for
+the mathematics. The forum answer is a good way to find either and is
+not a citation for either. Expect somebody to argue the forum answer is
+more useful, and agree: useful and citable are different properties.
+
+**Slide 11, the paragraph.** Take two or three aloud at the end. The
+failure modes are a list of names with no comparison, and a claim of
+novelty that nobody believes. A workable shape is that tool X does A,
+tool Y does B, ours does C, and C is worth doing because of some
+property of the mathematics they care about.

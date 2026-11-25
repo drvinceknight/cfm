@@ -75,4 +75,9 @@ deck/*/main.out
 marking/data/
 *_groupmembers.csv
 
+# The mid-module feedback.  The raw responses quote students on named staff,
+# and the write-ups are drafts to send rather than site content.  The site is
+# deployed from the repository itself, so a tracked file here would be a
+# published one.
 _data/feedback/
+feedback-for-*.md

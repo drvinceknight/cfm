@@ -12,66 +12,76 @@ reasoning behind every answer is in the sections below. Deck:
 
 | Slide | On screen | What you fill in or say |
 |--:|:--|:--|
-| 2 | This hour is not a lecture on either | The librarian has the hour; the notes are theirs to work through. Hand over after slide 4 |
+| 2 | Three of the eight files, this week | The paper, the library, the talk. All three are marked and none is lectured |
 | 3 | Research is 20% of the project mark | Two things only: state of the field, and references |
 | 4 | Your state of the field, in one question | Push for named tools: `numpy`, `scipy`, `sympy`, something on PyPI. 'There is nothing else like it' is the answer that scores worst |
-| 5 | This week's reading | Both chapters: LaTeX and writing, and modularisation |
+| 5 | What you work through on your own | LaTeX, modularisation, and the principles of presentation at `vknight.org/pop` |
 | 6 | Where is the title? | `\maketitle` is missing. The preamble says what the title is; `\maketitle` puts it on the page |
 | 7 | Why is my citation a question mark? | `pdflatex`, `bibtex`, `pdflatex`, `pdflatex`. Overleaf does all four, a local install does not. Second question: a figure is a float, so 'the picture below' can be false where `\ref` never is |
 | 8 | What would you call this? | Three functions hiding in one: `get_mean`, `get_population_variance`, and its square root. `process` is not a name |
 | 9 | Now you want the total with the tip | Nothing is reusable: the tip is computed inside. Split into `add_tip` and `get_bill_share` and both become usable and testable on their own |
-| 10 | How many files is a library? | One. Modular is about the functions inside it, not the number of files, and the submission asks for one anyway |
-| 11 | Why did importing it draw a plot? | Importing runs everything at the top level. Put the calling code elsewhere, or under `if __name__ == "__main__":` |
-| 12 | Before you leave | The project progress box; rotate the roles; Week 9 minutes to the next session. Fourth of five |
+| 10 | A presentation is a performance | It is not your slides. They will look at whatever you put up; less is more; teaching is not presenting. Point at `vknight.org/pop` |
+| 11 | Watch this one | Just the invitation, so the rest is yours to annotate. Take what they noticed from the room afterwards, not during |
+| 12 | What yours has to do | Fifteen minutes, recorded, and marked with the paper under Communication at 30%. Who speaks is theirs to decide, on whatever makes the best talk |
+| 13 | Before you leave | The project progress box; rotate the roles; Week 9 minutes to the next session. Fourth of five |
 
 ## Format
 
-If the librarian cannot come, skip to
-[If the librarian cannot come](#if-the-librarian-cannot-come) at the
-bottom of these notes. There is a second deck that fills the hour.
+A group-work week, and the hour is **ours**. The deck covers the three
+things this week has to carry: the paper, the library and the talk. None
+of the three is lectured; students work through the LaTeX notes, the
+modularisation chapter and the principles of presentation on their own,
+and the hour puts the parts that catch people in front of the room.
 
-A group-work week. The single hour is **not** a lecture on LaTeX:
-students work through the LaTeX notes themselves. This week is one of
-the two exceptions to the question-and-signpost format, because the hour
-is given over to the **mathematics subject librarian**, who runs a
-session on researching sources.
+The subject librarian's session on researching sources has run in this
+slot in previous years. If they are able to come, hand the hour over and
+see [If the librarian comes](#if-the-librarian-comes) below.
 
 ## In class session
 
-The librarian runs the hour on finding and evaluating sources for the
-paper. Introduce them, then hand over.
+The hour is built around four write-on moments and one recording. Take
+the questions from the room before you give any answer: the whole deck
+is questions with space to write, and the answers are on the slides only
+in the facilitator build.
 
-Before you do, spend two minutes connecting the session to the mark,
-because students who think of the librarian slot as optional will not
-engage with it. The **Research** criterion is 20% of the group project
-and is assessed on two things: whether the paper describes how the
-software compares to other commonly used packages, and whether the
-references are complete, appropriately cited and properly formatted.
-That is precisely what the session is about. Point at the
-[Research criteria]({{ site.baseurl }}/assessment/#research-20) on
-screen before handing over.
+Show **one** past presentation on slide 13. Pick a real submission for
+this exact coursework, at a middling rather than a polished standard, so
+the failures are visible and nameable. Confirm the group consented to it
+being shown to later years, and say in the room that it is shown with
+permission. Students are noticeably more willing to be in next year's
+set when they have seen it done that way.
 
-Stay for the hour and take any questions at the end. Questions about
-LaTeX itself belong here too, since this is the week students start
-writing.
+A full recording is fifteen minutes, which is a third of the hour. If
+you want the state-of-the-field exercise on slide 4 as well, show the
+opening five minutes instead and say why you are stopping it. The
+timings below assume the excerpt.
+
+The presentation material here is deliberately a taster. Week 9 is the
+session that does it properly, with two or three recordings, the
+storyboard and the Communication criteria, so resist running that
+discussion to ground today.
 
 ## The deck
 
 There is a write-on deck at
 [/deck/latex-and-writing-mathematics/main.pdf]({{ site.baseurl }}/deck/latex-and-writing-mathematics/main.pdf).
-It is deliberately not an hour of material, because the hour is not
-ours. It comes in two halves.
+Thirteen slides, built to fill the hour.
 
-Slides 2 to 4 are the two minutes before you hand over. Slide 4 is the
-one worth doing properly: each group names three tools that already do
-something like what their library will do, and says what theirs does
-differently. That is the state of the field in the only form a student
-can act on, and there is a workspace for the answer.
+| Section | Minutes |
+|:--|--:|
+| Slides 2 and 3: the three files, and why Research is 20% | 5 |
+| Slide 4: name three tools that already exist | 7 |
+| Slide 5: what you read on your own | 1 |
+| Slides 6 and 7: the two LaTeX questions | 6 |
+| Slides 8 and 9: modularisation | 8 |
+| Slide 10: a presentation is a performance | 3 |
+| Slide 11: watch one, and fill the three lines in | 12 |
+| Slide 12: what yours has to do | 3 |
+| Slide 13: before you leave | 3 |
 
-Slides 5 to 10 are for the questions at the end, and for students to
-work through afterwards. Three are LaTeX, two are modularisation. When
-the room goes quiet, put one up rather than asking again whether anyone
-has a question. Answers are at the end of these notes.
+If you are running late, cut slide 4 rather than the recording. Slide 13
+is the one not to cut: it is the only place the week's minutes get
+mentioned.
 
 ## What students work through on their own
 
@@ -80,16 +90,17 @@ has a question. Answers are at the end of these notes.
 - ['Some Guidelines for Good Mathematical Writing' by Francis Su]({{ site.baseurl }}/assets/pdf/writing-mathematics-guidelines/main.pdf)
 - ['A guide to writing mathematics' by Kevin Lee]({{ site.baseurl }}/assets/pdf/a-guide-to-writing-mathematics/main.pdf)
 
+- [Principles of presentation](https://vknight.org/pop/): short, and the
+  week they should read it is this one, not the week before they record.
+
 They also need `references.bib`, which is one of the eight submitted
-files. The librarian session is where the content of that file comes
-from, so the two halves of this week fit together: the notes teach the
-mechanics of citing, the session is about what is worth citing.
+files. The LaTeX notes teach the mechanics of citing; slide 4 is where
+they work out what is worth citing.
 
 ## This week's Python
 
-The Python chapter this week is modularisation, and slides 8 to 11
-cover the four things that catch people. The first two are the same
-argument at two strengths, so take them in order.
+The Python chapter this week is modularisation, and slides 8 and 9
+are the same argument at two strengths, so take them in order.
 
 **Slide 8, what would you call this?** Nothing sensible, which is the
 answer. `process` names the fact that it is code, not what it does, and
@@ -121,18 +132,6 @@ version lets you write each step out explicitly. Resist giving a line
 count; the chapter is explicit that arbitrary line limits often add
 more complexity than they remove.
 
-**Slide 10, how many files is a library?** One. Every year a group
-reads the chapter, concludes that modular means many files, and splits
-a working library into six. The submission asks for a single
-`<library>.py`, so the answer to give is that modularity is a property
-of the functions inside the file: each does one thing, is named for
-that thing, and can be tested without running the rest. This is the
-misconception to correct out loud rather than wait to be asked about.
-
-**Slide 11, why did importing it draw a plot?** Because importing a
-file runs everything at its top level, and this one calls `get_tour`
-and `plot_tour` there. The library holds functions; the code that uses
-them belongs in another file, or under `if __name__ == "__main__":`.
 
 ## Questions that come up
 
@@ -158,15 +157,16 @@ Send the following message before class:
 
     Hi all,
 
-    This week's session is run by the mathematics subject librarian, on
-    finding and evaluating sources for your paper.
+    This week's class covers the three things you hand in that are not
+    the code: the paper, the way the library is structured, and the
+    presentation.
 
-    This is worth taking seriously: the Research component is 20% of the
-    group project mark, and it is assessed on your state of the field
-    and on your references. That is exactly what this session covers.
+    We will watch a presentation recorded by a group in a previous year
+    for this exact coursework, so you can see what fifteen minutes
+    actually looks like.
 
-    Separately, you should be working through the LaTeX notes yourself:
-    https://vknight.org/tex/
+    Nothing to prepare. If you have started your paper and something
+    has not compiled, bring it.
 
     Please get in touch if I can assist with anything,
     Vince
@@ -177,19 +177,24 @@ Send the following message after class:
 
     Hi all,
 
-    Thank you to the subject librarian for today's session on
-    researching sources.
-
-    A reminder of what you work through on your own this week:
+    What you work through on your own this week:
 
     - The LaTeX notes: https://vknight.org/tex/
+    - Modularisation of code:
+      https://vknight.org/cfm/topics/modularisation-of-code.html
+    - Principles of presentation: https://vknight.org/pop/
     - Guidelines for good mathematical writing:
       https://vknight.org/cfm/assets/pdf/writing-mathematics-guidelines/main.pdf
-    - A guide to writing mathematics:
-      https://vknight.org/cfm/assets/pdf/a-guide-to-writing-mathematics/main.pdf
 
-    Your references.bib file is one of the eight files you submit, and
-    the references are part of the Research marking criterion.
+    Three things from today worth repeating:
+
+    1. Your references.bib is one of the eight files, and the
+       references are part of the Research criterion. Four references
+       the paper argues with beat twenty it never mentions.
+    2. Modular does not mean many files. You hand in one library file;
+       what matters is that each function does one thing you can name.
+    3. The presentation is fifteen minutes, recorded, and every member
+       speaks. It is marked together with the paper.
 
     Please get in touch if I can assist with anything,
     Vince
@@ -222,13 +227,62 @@ next page or the one before. 'In the picture below' is therefore
 sometimes simply false, where `Figure~\ref{...}` is always true. The
 tilde stops a line break between the word and the number.
 
-## If the librarian cannot come
+**Slide 10, a presentation is a performance.** Nothing to elicit, but
+do not read the three claims out and move on. The one that lands is
+the first: whatever is on the screen is what the room looks at, so a
+slide of dense text means nobody is listening to the speaker. The
+honest version of the headline is that if the audience could get
+everything from the visual aids without you, you have written a
+document rather than prepared a talk. Point at `vknight.org/pop` and
+say it takes ten minutes.
 
-There is a second, standalone deck at
+**Slide 11, watch this one.** The slide is deliberately almost empty, so
+there is room to write on it while the discussion runs. Three questions
+are worth putting to the room afterwards rather than during, and they
+are the ones to write up as they are answered:
+
+- How many minutes passed before the library was mentioned? This usually
+  produces a number that surprises the room.
+- Were the visual aids doing work, or were they a transcript?
+- What did you learn that the README would not have told you? This is
+  the one that separates a presentation from a document read aloud: if
+  the honest answer is nothing, the talk had no reason to exist.
+
+Resist giving a band today; that is Week 9's job.
+
+**Slide 12, what yours has to do.** Nothing to elicit. The card worth
+pausing on is who speaks: that is the group's decision, and the thing
+to decide it on is what makes the best talk. Say plainly that nobody
+has to speak in order to be credited, because who did what is recorded
+in `contribution.md`, and that a group splitting the time four ways out
+of fairness usually produces a worse presentation than one that plays
+to its strengths. The fifteen minutes is a target rather than a limit:
+substantially under suggests the work is thin, and substantially over
+usually means the design decisions got squeezed out at the end, which
+is the most valuable part.
+
+## If the librarian comes
+
+Hand the hour over. Use slides 2 to 4 of the main deck as the two
+minutes before you do, since slide 3 connects their session to the
+Research criterion and slide 4 is the exercise their session is about.
+Then stay, and take questions at the end with slides 6 to 11.
+
+That leaves presentation uncovered this week. It is the least urgent of
+the three, because Week 9 is given over to it, so the cost is only that
+students start thinking about the recording a week later than they
+otherwise would. Mention `vknight.org/pop` on the way out.
+
+### A third option: the sources deck
+
+There is also a standalone deck at
 [/deck/researching-sources/main.pdf]({{ site.baseurl }}/deck/researching-sources/main.pdf).
-It covers what the librarian's session covers, teaches the same Research
-criterion, and fills the hour on its own. Project that one instead of the
-usual deck rather than running both: it repeats the framing it needs.
+It teaches the Research criterion properly, which neither of the other
+two shapes does: what gets cited, where to look, judging a source,
+BibTeX, and writing the state of the field. It was built for the case
+where the librarian cancels, and it is still the better choice if you
+would rather cover sources than presentation. Project it instead of the
+main deck rather than alongside it.
 
 The hour is built around two pieces of group work, slides 5 and 11, which
 between them take about half of it. Everything else is there to set them
@@ -262,7 +316,7 @@ state of the field has done the thing the Research mark asks for.
 | 11 | Write the paragraph now | Three or four sentences: what exists, what it does, what yours does differently, why that is worth doing. It goes in their introduction |
 | 12 | Before you leave | One `references.bib` entry each this week; rotate the roles; Week 9 minutes to the next session |
 
-### Answers for the fallback deck
+### Answers for the sources deck
 
 **Slide 3, which of the four do you have?** Usually none, which is the
 point of asking. The fourth is the easy win: every group is building on

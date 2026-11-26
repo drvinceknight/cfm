@@ -23,7 +23,7 @@ reasoning behind every answer is in the sections below. Deck:
 | 10 | Four sections. Which is which? | In the order on the slide: how-to guide, tutorial, explanation, reference |
 | 11 | README, or docstring? | README to decide and to learn; docstrings to read one function. Both. A good name is documentation that cannot go out of date |
 | 12 | How do you know it is enough? | Give it to another group. Suggest they swap READMEs in this week's meeting |
-| 13 | Before you leave | Everyone speaks, matching `contribution.md`; rotate the roles; Week 10 minutes to the next session. Last of five |
+| 13 | Before you leave | Who speaks is theirs to decide, on whatever makes the best talk; rotate the roles; Week 10 minutes to the next session. Last of five |
 
 ## Format
 
@@ -59,7 +59,7 @@ reading. Questions worth putting to the room:
 - Were the visual aids doing work, or were they a transcript?
 - What did you understand about the design that you would not have got
   from reading the README?
-- Did every member speak, and could you tell what each had done?
+- Could you tell what each member had done?
 
 Then signpost the [principles of
 presentation](https://vknight.org/pop/) as the thing to work through,
@@ -133,8 +133,11 @@ this week's meeting.
 
 ## Questions that come up
 
-**"Do we all have to speak?"** Yes. The contribution record and the
-presentation should tell the same story about who did what.
+**"Do we all have to speak?"** No. How you divide the fifteen minutes
+is the group's decision, and the thing to optimise is the presentation:
+make the choices that produce the best talk. Who did what is recorded
+in `contribution.md`, which is a separate file and a separate job, so
+nobody needs to speak in order to be credited.
 
 **"Is 15 minutes a limit or a target?"** A target. Substantially under
 suggests the work is thin; substantially over usually means the design

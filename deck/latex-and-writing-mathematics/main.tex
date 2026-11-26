@@ -1,43 +1,46 @@
-% The paper and the library: the librarian's hour, framed, and the LaTeX and
-% modularisation questions that come up once students start writing.
+% The paper, the library and the talk: the three things Week 8 has to carry
+% when the hour is ours rather than the subject librarian's.
 \input{../preamble.tex}
 
-\deckname{The paper and the library}
+\deckname{The paper, the library, the talk}
 
 \begin{document}
 
-\titleslide{The paper and the library}{Week 8. Writing it up, and the shape
-of the code.}{%
+\titleslide{The paper, the library, and the talk}{Week 8. Three things you
+hand in, and none of them is the code alone.}{%
     \begin{tikzpicture}[font=\small]
-      \stepbox{s0}{0.0}{\textbf{Frame}\\[0.25em] Research is 20\%.}
-      \stepbox{s1}{6.9}{\textbf{Listen}\\[0.25em] The librarian's hour.}
-      \stepbox{s2}{13.8}{\textbf{Read}\\[0.25em] Two chapters, both yours.}
+      \stepbox{s0}{0.0}{\textbf{Write}\\[0.25em] LaTeX, and what you cite.}
+      \stepbox{s1}{6.9}{\textbf{Structure}\\[0.25em] One function, one job.}
+      \stepbox{s2}{13.8}{\textbf{Show}\\[0.25em] Fifteen minutes, recorded.}
       \draw[-{Stealth[length=2.5mm]}, inkfaint, line width=1.2pt] (s0) -- (s1);
       \draw[-{Stealth[length=2.5mm]}, inkfaint, line width=1.2pt] (s1) -- (s2);
     \end{tikzpicture}}
 
 \newpage
-\slidehead{This hour is not a lecture on either}
-\notesref{Writing with LaTeX}{Bibliographies}
+\slidehead{Three of the eight files, this week}
+\notesref{Assessment}{Submission}
 
-\vspace{0.9cm}
+\vspace{1.0cm}
 
 \begin{center}
 \begin{tikzpicture}
-  \node at (0,0) {\cardbox{inkblue}{10.4}{3.4}{%
-    {\large\bfseries\color{inkblue} This hour}\\[0.5em]
-    {\large The subject librarian, on finding\\ and judging sources.}}};
-  \node at (12.6,0) {\cardbox{inkteal}{10.4}{3.4}{%
-    {\large\bfseries\color{inkteal} Your own time}\\[0.5em]
-    {\large Both chapters: LaTeX and writing,\\ and modularisation.}}};
+  \node at (0,0) {\cardbox{inkblue}{6.8}{3.4}{%
+    {\large\bfseries\color{inkblue} The paper}\\[0.5em]
+    {\large \texttt{main.tex}\\ \texttt{references.bib}}}};
+  \node at (8.1,0) {\cardbox{inkteal}{6.8}{3.4}{%
+    {\large\bfseries\color{inkteal} The library}\\[0.5em]
+    {\large \texttt{<library>.py}}}};
+  \node at (16.2,0) {\cardbox{inkred}{6.8}{3.4}{%
+    {\large\bfseries\color{inkred} The talk}\\[0.5em]
+    {\large \texttt{presentation.mp4}}}};
 \end{tikzpicture}
 \end{center}
 
-\vspace{1.2cm}
+\vspace{1.3cm}
 
 \begin{center}
-{\LARGE The two halves fit together. The notes teach you how to cite.\\
-This hour is about \textbf{what is worth citing}.}
+{\LARGE Every one of them is marked, and none of them is taught in a
+lecture. You read; this hour is the parts that catch people.}
 \end{center}
 
 \newpage
@@ -90,27 +93,30 @@ will do. For each one, say what yours does differently.}
 true, and it is the answer that scores worst.}
 
 \newpage
-\slidehead{This week's reading}
+\slidehead{What you work through on your own}
 \notesref{Writing with LaTeX}{and Python for Mathematics, Modularisation}
 
-\vspace{1.1cm}
+\vspace{1.0cm}
 
 \begin{center}
 \begin{tikzpicture}
-  \node at (0,0) {\cardbox{inkblue}{10.4}{3.4}{%
+  \node at (0,0) {\cardbox{inkblue}{6.8}{3.6}{%
     {\large\bfseries\color{inkblue} LaTeX}\\[0.5em]
-    {\large Structure, mathematics, figures,\\ tables, bibliographies.}}};
-  \node at (12.6,0) {\cardbox{inkteal}{10.4}{3.4}{%
-    {\large\bfseries\color{inkteal} Modularisation of code}\\[0.5em]
-    {\large One function doing one thing,\\ and importing a file.}}};
+    {\large Structure, mathematics,\\ figures, bibliographies.}}};
+  \node at (8.1,0) {\cardbox{inkteal}{6.8}{3.6}{%
+    {\large\bfseries\color{inkteal} Modularisation}\\[0.5em]
+    {\large One function doing\\ one thing.}}};
+  \node at (16.2,0) {\cardbox{inkred}{6.8}{3.6}{%
+    {\large\bfseries\color{inkred} Presentation}\\[0.5em]
+    {\large \texttt{vknight.org/pop}\\ It is short. Read it.}}};
 \end{tikzpicture}
 \end{center}
 
-\vspace{1.2cm}
+\vspace{1.3cm}
 
 \begin{center}
-{\LARGE You read these \textbf{on your own}. The next six slides are the
-parts that catch people.}
+{\LARGE Nobody lectures these. The rest of this hour is the parts that
+catch people, one question at a time.}
 \end{center}
 
 \newpage
@@ -251,71 +257,73 @@ What can you reuse?}
 verdict. What it points at here is a useful piece trapped inside.}
 
 \newpage
-\slidehead{How many files is a library?}
-\notesref{Python for Mathematics, Modularisation}{Import code from python files}
-
-\vspace{0.9cm}
-
-\begin{center}
-\begin{tikzpicture}
-  \node at (0,0) {\cardbox{inkblue}{10.4}{3.0}{%
-    {\large\bfseries\color{inkblue} What you hand in}\\[0.5em]
-    {\large One file. \texttt{<library>.py}}}};
-  \node at (12.6,0) {\cardbox{inkteal}{10.4}{3.0}{%
-    {\large\bfseries\color{inkteal} What modular means}\\[0.5em]
-    {\large Functions inside it you can read\\ and test one at a time.}}};
-\end{tikzpicture}
-\end{center}
+\slidehead{A presentation is a performance}
+\notesref{Principles of presentation}{Audience, and visual aids}
 
 \vspace{1.0cm}
 
-\ask{So what makes a library in one file a modular one?}
-
-\vspace{0.2em}
-
 \begin{center}
-\answerspace{22}{3.0}{%
-  Nothing to do with the number of files. Each function does one thing, is
-  named for that thing, and can be tested without running the rest.}
+{\Huge\bfseries\color{inkblue} It is not your slides.}
 \end{center}
 
-\vspace{0.2cm}
+\vspace{1.2cm}
 
-{\small\color{inkgrey} Splitting one file into six does not make it
-modular, and the submission asks for one anyway.}
+{\LARGE
+\textbf{\color{inkblue}1.}\quad Put a visual aid up and the room will
+look at it. So it had better be helping.
+
+\vspace{0.9em}
+
+\textbf{\color{inkteal}2.}\quad Less is more. A shorter presentation is
+better than a longer one.
+
+\vspace{0.9em}
+
+\textbf{\color{inkred}3.}\quad Teaching and presenting are not the same
+thing. You are not teaching us your library.}
+
+\vspace{1.0cm}
+
+{\small\color{inkgrey} All four principles are at
+\texttt{vknight.org/pop}, and they take ten minutes to read.}
 
 \newpage
-\slidehead{Why did importing it draw a plot?}
-\notesref{Python for Mathematics, Modularisation}{Import code from python files}
+\slidehead{Watch this one}
+\notesref{Principles of presentation}{Examples}
 
-\vspace{0.4cm}
+\vspace{3.6cm}
 
-\begin{minipage}[t]{0.46\linewidth}
-\vspace{0pt}
-\codebox{10.4}{\# tsp.py\\[0.2em]
-def get\_cost(tour, matrix):\\
-\idt ...\\[0.4em]
-\wrong{tour = get\_tour(25)}\\
-\wrong{plot\_tour(x, y, tour)}}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.50\linewidth}
-\vspace{0pt}
-\ask{Another group types \texttt{import tsp} and a figure appears. What
-happened?}
+\begin{center}
+{\Huge\bfseries\color{inkblue} Now watch one.}
+\end{center}
 
-\answerspace{11.4}{6.0}{%
-  Importing a file runs everything at its top level, so the last two lines
-  ran and drew the plot.\\[0.5em]
-  Keep only functions in the library. Put the code that uses them in another
-  file, or under \texttt{if \_\_name\_\_ == "\_\_main\_\_":}.}
-\end{minipage}
+\vspace{3.6cm}
 
-\vspace{0.2cm}
+{\small\color{inkgrey} A real submission for this exact piece of
+coursework, shown with its group's permission.}
 
-{\small\color{inkgrey} Importing a file runs everything at its top level.
-Your library holds functions. The code that uses them lives elsewhere, or
-under \texttt{if \_\_name\_\_ == "\_\_main\_\_":}.}
+\newpage
+\slidehead{What yours has to do}
+\notesref{Assessment}{Communication (30\%)}
+
+\vspace{1.1cm}
+
+\begin{center}
+\begin{tikzpicture}
+  \node at (0,0) {\cardbox{inkblue}{10.4}{2.6}{%
+    {\large\bfseries\color{inkblue} Fifteen minutes}\\[0.4em]
+    {\large A target, not a limit.}}};
+  \node at (12.6,0) {\cardbox{inkteal}{10.4}{2.6}{%
+    {\large\bfseries\color{inkteal} Who speaks is up to you}\\[0.4em]
+    {\large Choose whatever makes the best talk.}}};
+  \node at (0,-3.4) {\cardbox{inkred}{10.4}{2.6}{%
+    {\large\bfseries\color{inkred} Recorded}\\[0.4em]
+    {\large So nothing can fail live.}}};
+  \node at (12.6,-3.4) {\cardbox{inkmauve}{10.4}{2.6}{%
+    {\large\bfseries\color{inkmauve} Marked with the paper}\\[0.4em]
+    {\large Communication, 30\%.}}};
+\end{tikzpicture}
+\end{center}
 
 \newpage
 \slidehead{Before you leave}

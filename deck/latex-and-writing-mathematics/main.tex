@@ -39,8 +39,8 @@ hand in, and none of them is the code alone.}{%
 \vspace{1.3cm}
 
 \begin{center}
-{\LARGE Every one of them is marked, and none of them is taught in a
-lecture. You read; this hour is the parts that catch people.}
+{\LARGE Every one of them is marked. The code on its own is not the
+submission.}
 \end{center}
 
 \newpage
@@ -87,11 +87,6 @@ will do. For each one, say what yours does differently.}
   `There is nothing else like it' is the answer that scores worst.}
 \end{center}
 
-\vspace{0.2cm}
-
-{\small\color{inkgrey} `There is nothing else like it' is almost never
-true, and it is the answer that scores worst.}
-
 \newpage
 \slidehead{What you work through on your own}
 \notesref{Writing with LaTeX}{and Python for Mathematics, Modularisation}
@@ -108,15 +103,15 @@ true, and it is the answer that scores worst.}
     {\large One function doing\\ one thing.}}};
   \node at (16.2,0) {\cardbox{inkred}{6.8}{3.6}{%
     {\large\bfseries\color{inkred} Presentation}\\[0.5em]
-    {\large \texttt{vknight.org/pop}\\ It is short. Read it.}}};
+    {\large \texttt{vknight.org/pop}\\ Four short principles.}}};
 \end{tikzpicture}
 \end{center}
 
 \vspace{1.3cm}
 
 \begin{center}
-{\LARGE Nobody lectures these. The rest of this hour is the parts that
-catch people, one question at a time.}
+{\LARGE All three are in the notes. The rest of this hour is a question
+at a time on each of them.}
 \end{center}
 
 \newpage
@@ -156,31 +151,25 @@ page. Why?}
 \slidehead{Why is my citation a question mark?}
 \notesref{Writing with LaTeX}{Bibliographies}
 
-\vspace{0.7cm}
+\vspace{0.6cm}
 
 \begin{center}
-\begin{tikzpicture}
-  \foreach \lbl/\x/\n in {pdflatex/0/a, bibtex/5.6/b, pdflatex/11.2/c,
-                          pdflatex/16.8/d}{%
-    \node[draw=inkblue, line width=1pt, rounded corners=4pt, fill=white,
-          minimum width=4.4cm, minimum height=1.6cm, font=\large\ttfamily,
-          text=inkblue] (\n) at (\x,0) {\lbl};}
-  \foreach \p/\q in {a/b, b/c, c/d}{%
-    \draw[-{Stealth[length=2.5mm]}, inkfaint, line width=1.3pt] (\p) -- (\q);}
-\end{tikzpicture}
+\codebox{20.4}{\% in references.bib: @article\{knight2016, ...\}\\[0.3em]
+\% in main.tex: ... as implemented in \bs cite\{\wrong{knight2017}\}.}
 \end{center}
 
 \vspace{0.6cm}
 
-\ask{You ran \texttt{pdflatex} once and the paper says \texttt{[?]}.
-Which of these four have you not done?}
+\ask{Overleaf runs the whole build for you, and the citation still comes
+out as \texttt{[?]}. Why?}
 
 \vspace{0.1em}
 
 \begin{center}
 \answerspace{22}{1.9}{%
-  \texttt{bibtex}, then \texttt{pdflatex} twice more. Overleaf runs all
-  four for you; a local build does not.}
+  The key does not match. The entry is \texttt{knight2016} and the paper
+  cites \texttt{knight2017}; a missing \texttt{\bs bibliography} does the
+  same.}
 \end{center}
 
 \vspace{0.4cm}
@@ -285,7 +274,7 @@ thing. You are not teaching us your library.}
 \vspace{1.0cm}
 
 {\small\color{inkgrey} All four principles are at
-\texttt{vknight.org/pop}, and they take ten minutes to read.}
+\texttt{vknight.org/pop}.}
 
 \newpage
 \slidehead{Watch this one}

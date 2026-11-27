@@ -12,12 +12,12 @@ reasoning behind every answer is in the sections below. Deck:
 
 | Slide | On screen | What you fill in or say |
 |--:|:--|:--|
-| 2 | Three of the eight files, this week | The paper, the library, the talk. All three are marked and none is lectured |
+| 2 | Three of the eight files, this week | The paper, the library, the talk. All three are marked, and the code alone is not the submission |
 | 3 | Research is 20% of the project mark | Two things only: state of the field, and references |
 | 4 | Your state of the field, in one question | Push for named tools: `numpy`, `scipy`, `sympy`, something on PyPI. 'There is nothing else like it' is the answer that scores worst |
 | 5 | What you work through on your own | LaTeX, modularisation, and the principles of presentation at `vknight.org/pop` |
 | 6 | Where is the title? | `\maketitle` is missing. The preamble says what the title is; `\maketitle` puts it on the page |
-| 7 | Why is my citation a question mark? | `pdflatex`, `bibtex`, `pdflatex`, `pdflatex`. Overleaf does all four, a local install does not. Second question: a figure is a float, so 'the picture below' can be false where `\ref` never is |
+| 7 | Why is my citation a question mark? | The key does not match: the entry is `knight2016` and the paper cites `knight2017`. A missing `\bibliography` does the same. Second question: a figure is a float, so 'the picture below' can be false where `\ref` never is |
 | 8 | What would you call this? | Three functions hiding in one: `get_mean`, `get_population_variance`, and its square root. `process` is not a name |
 | 9 | Now you want the total with the tip | Nothing is reusable: the tip is computed inside. Split into `add_tip` and `get_bill_share` and both become usable and testable on their own |
 | 10 | A presentation is a performance | It is not your slides. They will look at whatever you put up; less is more; teaching is not presenting. Point at `vknight.org/pop` |
@@ -214,12 +214,14 @@ make obvious.
 says what the title is; `\maketitle` is what puts it on the page. This
 one catches almost everybody once.
 
-**Slide 7, why is my citation a question mark?** They have run
-`pdflatex` but not `bibtex`, and then not `pdflatex` twice more. Say
-that Overleaf does all four for them and a local install does not,
-since the groups that hit this are the ones who installed something.
-The same answer covers a `Figure ??` cross reference, which needs the
-second `pdflatex`.
+**Slide 7, why is my citation a question mark?** Everyone is on
+Overleaf, so the build itself is not the problem: Overleaf runs
+`bibtex` and the repeated `pdflatex` passes for them. What is left is
+the key. The entry on the slide is `knight2016` and the paper cites
+`knight2017`, so there is nothing for LaTeX to typeset and it prints
+`[?]`. The other common cause is no `\bibliography{references}` in the
+document at all, which gives the same symptom. A `Figure ??` cross
+reference is the same story with a `\label` that does not match.
 
 The second question on that slide is a different kind of mistake. A
 figure is a float, so LaTeX puts it where it fits, which may be the

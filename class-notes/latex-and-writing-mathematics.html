@@ -86,7 +86,7 @@ reasoning behind every answer is in the sections below. Deck:
 <tr>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Three of the eight files, this week</td>
-<td style="text-align: left;">The paper, the library, the talk. All three are marked and none is lectured</td>
+<td style="text-align: left;">The paper, the library, the talk. All three are marked, and the code alone is not the submission</td>
 </tr>
 <tr>
 <td style="text-align: right;">3</td>
@@ -111,7 +111,7 @@ reasoning behind every answer is in the sections below. Deck:
 <tr>
 <td style="text-align: right;">7</td>
 <td style="text-align: left;">Why is my citation a question mark?</td>
-<td style="text-align: left;"><code>pdflatex</code>, <code>bibtex</code>, <code>pdflatex</code>, <code>pdflatex</code>. Overleaf does all four, a local install does not. Second question: a figure is a float, so 'the picture below' can be false where <code>\ref</code> never is</td>
+<td style="text-align: left;">The key does not match: the entry is <code>knight2016</code> and the paper cites <code>knight2017</code>. A missing <code>\bibliography</code> does the same. Second question: a figure is a float, so 'the picture below' can be false where <code>\ref</code> never is</td>
 </tr>
 <tr>
 <td style="text-align: right;">8</td>
@@ -340,12 +340,14 @@ make obvious.</p>
 <p><strong>Slide 6, where is the title?</strong> <code>\maketitle</code> is missing. The preamble
 says what the title is; <code>\maketitle</code> is what puts it on the page. This
 one catches almost everybody once.</p>
-<p><strong>Slide 7, why is my citation a question mark?</strong> They have run
-<code>pdflatex</code> but not <code>bibtex</code>, and then not <code>pdflatex</code> twice more. Say
-that Overleaf does all four for them and a local install does not,
-since the groups that hit this are the ones who installed something.
-The same answer covers a <code>Figure ??</code> cross reference, which needs the
-second <code>pdflatex</code>.</p>
+<p><strong>Slide 7, why is my citation a question mark?</strong> Everyone is on
+Overleaf, so the build itself is not the problem: Overleaf runs
+<code>bibtex</code> and the repeated <code>pdflatex</code> passes for them. What is left is
+the key. The entry on the slide is <code>knight2016</code> and the paper cites
+<code>knight2017</code>, so there is nothing for LaTeX to typeset and it prints
+<code>[?]</code>. The other common cause is no <code>\bibliography{references}</code> in the
+document at all, which gives the same symptom. A <code>Figure ??</code> cross
+reference is the same story with a <code>\label</code> that does not match.</p>
 <p>The second question on that slide is a different kind of mistake. A
 figure is a float, so LaTeX puts it where it fits, which may be the
 next page or the one before. 'In the picture below' is therefore
